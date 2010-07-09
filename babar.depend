@@ -1,0 +1,121 @@
+# depslib dependency file v1.0
+1277928468 source:/media/documents/projets/tests/babar/src/babar-3/main.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+	"window.h"
+	"game.h"
+	"globals.h"
+
+1277928764 source:/media/documents/projets/tests/babar/src/main.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+	"window.h"
+	"game.h"
+	"globals.h"
+
+1277219689 /media/documents/projets/tests/babar/src/sprites.h
+
+1276976234 /media/documents/projets/tests/babar/src/window.h
+
+1277203546 /media/documents/projets/tests/babar/src/game.h
+	<stdint.h>
+	"sprites.h"
+	"camera.h"
+
+1277570769 /media/documents/projets/tests/babar/src/camera.h
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+
+1277203870 /media/documents/projets/tests/babar/src/globals.h
+	<string>
+	<SDL/SDL.h>
+	"events.h"
+
+1277203847 /media/documents/projets/tests/babar/src/events.h
+
+1277570791 source:/media/documents/projets/tests/babar/src/camera.cpp
+
+1277159139 source:/media/documents/projets/tests/babar/src/collisions.cpp
+	<iostream>
+	<SDL/SDL.h>
+	"collisions.h"
+
+1277200061 /media/documents/projets/tests/babar/src/collisions.h
+
+1277203834 source:/media/documents/projets/tests/babar/src/events.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"events.h"
+
+1277203700 source:/media/documents/projets/tests/babar/src/game.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"game.h"
+	"sprites.h"
+	"window.h"
+	"globals.h"
+	"events.h"
+	"camera.h"
+	"collisions.h"
+
+1277203861 source:/media/documents/projets/tests/babar/src/globals.cpp
+	<string>
+	<SDL/SDL.h>
+	<stdint.h>
+	"globals.h"
+	"events.h"
+
+1277219658 source:/media/documents/projets/tests/babar/src/lists.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"lists.h"
+	"sprites.h"
+
+1277219542 /media/documents/projets/tests/babar/src/lists.h
+	"sprites.h"
+
+1277928402 source:/media/documents/projets/tests/babar/src/sprites.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+	"globals.h"
+	"events.h"
+
+1277127325 source:/media/documents/projets/tests/babar/src/window.cpp
+	<iostream>
+	<stdint.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"window.h"
+	"globals.h"
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/sprites.h
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/window.h
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/game.h
+	<stdint.h>
+	"sprites.h"
+	"camera.h"
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/camera.h
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/globals.h
+	<string>
+	<SDL/SDL.h>
+	"events.h"
+
+1277928443 /media/documents/projets/tests/babar/src/babar-3/events.h
+
