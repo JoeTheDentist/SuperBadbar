@@ -1,0 +1,28 @@
+CC = g++
+CFLAGS = -Wall
+EXEC_NAME = main
+INCLUDES =
+LIBS =
+OBJ_FILES =  main.o sprites.o game.o globals.o window.o events.o camera.o collisions.o lists.o
+INSTALL_DIR = .
+LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image 
+
+all : $(EXEC_NAME)
+
+clean :
+	rm $(EXEC_NAME) $(OBJ_FILES)
+
+$(EXEC_NAME) : $(OBJ_FILES)
+	$(CC) -o $(EXEC_NAME) $(OBJ_FILES) $(LIBS) $(LDFLAGS)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+%.o: %.cc
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+%.o: %.c
+	gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+test:
+	./main
