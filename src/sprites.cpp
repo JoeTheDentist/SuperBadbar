@@ -94,14 +94,14 @@ void Babar::update_speed()
 
 
 /*********************************
-**	Méthodes de Monstre	**
+**	Méthodes de Monster	**
 **********************************/
 
-Monstre::Monstre()
+Monster::Monster()
 {
 }
 
-Monstre::Monstre(uint32_t type, SDL_Rect pos, uint32_t area)
+Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 {
 	m_pos = pos;
 	m_area = area;
@@ -109,11 +109,11 @@ Monstre::Monstre(uint32_t type, SDL_Rect pos, uint32_t area)
 	m_picture[0] = SDL_LoadBMP("../pic/blob.bmp");
 }
 
-Monstre::~Monstre()
+Monster::~Monster()
 {
 }
 
-void Monstre::update_speed()
+void Monster::update_speed()
 {
 	if (m_phase % m_area < m_area / 2)
 		m_speed.x = 5;

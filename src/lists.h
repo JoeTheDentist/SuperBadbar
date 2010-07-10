@@ -3,18 +3,18 @@
 
 #include "sprites.h"
 
-struct cellule_monstre {
-	Monstre monstre;
-	struct cellule_monstre* suiv;
+struct cellule_monster {
+	Monster monster;
+	struct cellule_monster* suiv;
 };
 
-class Monstre_list {
+class Monster_list {
 private:
-	struct cellule_monstre *m_list;
+	struct cellule_monster *m_list;
 public:
-	Monstre_list();
-	~Monstre_list();
-	void ajouter_monstre(uint32_t type, SDL_Rect pos, uint32_t area);
+	Monster_list();
+	~Monster_list();
+	void add_monster(uint32_t type, SDL_Rect pos, uint32_t area);
 	
 	
 };

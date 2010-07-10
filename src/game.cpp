@@ -1,5 +1,5 @@
 /**
- * Contient la boucle de jeu et les paramètres de la partie
+ * Contient la boucle de Game et les paramètres de la partie
  * Sera accessible à partir de la touche "jouer" du menu
 **/
 
@@ -18,31 +18,31 @@
 
 
 
-Jeu::Jeu(): m_monstre(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
+Game::Game(): m_monster(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
 {
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 	m_background = SDL_LoadBMP("../pic/background.bmp");
 }
 	
-Jeu::~Jeu()
+Game::~Game()
 {
 	SDL_FreeSurface(m_background);
 }
 
-void Jeu::update_pos()
+void Game::update_pos()
 {
 	m_babar.update_pos();
-	m_monstre.update_pos();
+	m_monster.update_pos();
 }
 
-void Jeu::update_speed()
+void Game::update_speed()
 {
 	m_babar.update_speed();
-	m_monstre.update_speed();
+	m_monster.update_speed();
 }
 
-void Jeu::refresh_screen()
+void Game::refresh_screen()
 {
 	/* affichage du fond */
 	m_camera.update_pos();
@@ -52,12 +52,12 @@ void Jeu::refresh_screen()
 	SDL_BlitSurface(m_background, NULL, screen, &background_pos); 
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_babar);
-	m_camera.display_sprite(&m_monstre);
+	m_camera.display_sprite(&m_monster);
 	/* mise à jour */
 	SDL_Flip(screen);
 }
 
-void Jeu::game_loop()
+void Game::game_loop()
 {
 	bool end = false;
 	while (!end){
@@ -69,7 +69,7 @@ void Jeu::game_loop()
 			update_speed();
 			update_pos();
 			refresh_screen();
-			if (check_collision(m_babar.position(), m_monstre.position()))
+			if (check_collision(m_babar.position(), m_monster.position()))
 				fprintf(stderr, "COLLISION\n");
 			fprintf(stderr, "pourcentage d'utilisation du temps: %f\n", (float)(m_time - m_previous_time - TIME_LOOP)/100.0); // marge de temps
 			m_previous_time = m_time;

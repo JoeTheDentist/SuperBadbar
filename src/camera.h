@@ -15,10 +15,10 @@
 class Camera {
 private:
 	SDL_Rect m_frame;	/* cadre de la camera */
-	Sprite *m_cible;	/* sprite sur lequel pointe la camera */
+	Sprite *m_target;	/* sprite sur lequel pointe la camera */
 public:
 	Camera();		/* constructeur */
-	Camera(Sprite *cible);	/* constructeur */
+	Camera(Sprite *target);	/* constructeur */
 	~Camera();		/* destructeur */
 	void update_pos();	/* mise à jour de la camera */
 	void display_sprite(Sprite *sprite);

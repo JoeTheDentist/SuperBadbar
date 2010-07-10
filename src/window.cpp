@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdint.h>
 #include <SDL/SDL.h>
-//#include <SDL/SDL_image.h>
 
 #include "window.h"
 #include "globals.h"

@@ -45,14 +45,14 @@ public:
 };
 
 
-class Monstre: public Sprite {	
+class Monster: public Sprite {	
 protected:
 	uint32_t m_type;		/* type de monstre */
 	uint32_t m_area; 		/* taille de la zone d'allez-retour */
 public:
-	Monstre();
-	Monstre(uint32_t type, SDL_Rect pos, uint32_t area);
-	~Monstre();
+	Monster();
+	Monster(uint32_t type, SDL_Rect pos, uint32_t area);
+	~Monster();
 	void update_speed();
 	
 };
