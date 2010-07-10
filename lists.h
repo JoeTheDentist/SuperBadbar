@@ -1,3 +1,9 @@
+/*
+    Implémentation des listes pour pouvoir faire des listes de tout type
+    (voire objets)
+*/
+
+
 #ifndef LISTS_H_INCLUDED
 #define LISTS_H_INCLUDED
 
@@ -5,6 +11,9 @@
 
 using namespace std;
 
+/***************************
+    Structure de cellule
+***************************/
 
 template <class T> struct cell {
     T head;
@@ -12,6 +21,9 @@ template <class T> struct cell {
 };
 
 
+/*************************
+    Classe list
+*************************/
 
 template <class T> class list {
     private :
@@ -24,13 +36,12 @@ template <class T> class list {
         void cut();                     /* Suppression de la tête de m_list avec libération de la mémoire */
         bool empty();                   /* Retourne si la liste est vide */
         T head();                       /* Retourne la tête de la liste */
-        list<T> back();                 /* Retourne la queue de la liste (qui est un objet) */
-        void change_head(T new_head);   /* Modifie la tête de la liste (utilisée pour la méthode map) */
-        void print();                   /* temp */
 
         void do_list(void (*fct)(T));   /* Applique une void fonction à chaque éléments de la liste */
-        void map(T (*fct)(T));          /* Modif tous les éléments de la liste : x = fct(x) */
 };
+
+
+/*****Méthodes*****/
 
 template <class T> list<T>::list()
 {
@@ -42,12 +53,11 @@ template <class T> list<T>::list(cell<T> * l)
     m_list = l;
 }
 
-
 template <class T> list<T>::~list()
 {
-    /*while(!empty()) {
+    while(!empty()) {
         cut();
-    }*/
+    }
 }
 
 template <class T> void list<T>::add(T element)
@@ -75,39 +85,12 @@ template <class T> T list<T>::head()
     return m_list->head;
 }
 
-template <class T> list<T> list<T>::back()
-{
-    list<T> l(m_list->back);
-    return l;
-}
-
-template <class T> void list<T>::change_head(T new_head)
-{
-    m_list->head = new_head;
-}
-
-template <class T> void list<T>::print()
-{
-    if(m_list != NULL) {
-        cout << head() << " ";
-        back().print();
-    }
-    cout << endl;
-}
-
 template <class T> void list<T>::do_list(void (*fct)(T))
 {
-    if(!empty()) {
-        fct(head());
-        back().do_list(fct);
-    }
-}
-
-template <class T> void list<T>::map(T (*fct)(T))
-{
-    if(!empty()) {
-        change_head(fct(head()));
-        back().map(fct);
+    cell<T> * l = m_list;
+    while(l!= NULL) {
+        fct(l->head);
+        l = l->back;
     }
 }
 
