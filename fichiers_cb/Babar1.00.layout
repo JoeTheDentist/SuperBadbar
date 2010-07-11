@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\src\events.h" open="1" top="0" tabpos="11">
+	<File name="..\src\camera.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="847" topLine="33" />
+	</File>
+	<File name="..\src\camera.h" open="1" top="0" tabpos="9">
+		<Cursor position="443" topLine="0" />
+	</File>
+	<File name="..\src\collisions.cpp" open="1" top="0" tabpos="12">
 		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="..\src\events.h" open="1" top="0" tabpos="7">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="..\src\game.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="1053" topLine="39" />
+	</File>
+	<File name="..\src\game.h" open="1" top="0" tabpos="11">
+		<Cursor position="234" topLine="0" />
 	</File>
 	<File name="..\src\globals.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="124" topLine="0" />
+		<Cursor position="151" topLine="0" />
 	</File>
-	<File name="..\src\globals.h" open="1" top="0" tabpos="7">
+	<File name="..\src\globals.h" open="1" top="0" tabpos="6">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="..\src\lists.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="153" topLine="0" />
-	</File>
-	<File name="..\src\lists.h" open="1" top="0" tabpos="4">
-		<Cursor position="155" topLine="0" />
+	<File name="..\src\lists.h" open="1" top="0" tabpos="3">
+		<Cursor position="2024" topLine="0" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="270" topLine="0" />
+		<Cursor position="229" topLine="2" />
 	</File>
-	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="224" topLine="3" />
+	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="669" topLine="0" />
 	</File>
-	<File name="..\src\sprites.h" open="1" top="0" tabpos="6">
-		<Cursor position="240" topLine="37" />
+	<File name="..\src\sprites.h" open="1" top="1" tabpos="5">
+		<Cursor position="869" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

@@ -1,19 +1,17 @@
 /**
- * Classe sprite et ses héritiers: 
+ * Classe sprite et ses héritiers:
  * deplacements individuels des objets dynamiques
  **/
 
 #ifndef _SPRITES_
 #define _SPRITES_
 
+#define BABAR_SPEED 10
+#define ANIMATION_SPEED 20 /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
-/* directions */
-#define DROITE 0
-#define GAUCHE 1
-#define HAUT 2
-#define BAS 3
-
-#define VITESSE_BABAR 10
+enum direction {
+    RIGHT, LEFT, UP, DOWN
+};
 
 class Sprite{
 protected:
@@ -22,7 +20,7 @@ protected:
 	SDL_Rect m_pos; 		/* position du sprite et sa taille */
 	SDL_Rect m_speed;		/* vitesse du sprite */
 	bool m_cache;			/* afficher le sprite ou pas */
-	uint8_t m_direction;		/* direction du sprite */
+	direction m_direction;		/* direction du sprite */
 	uint8_t m_phase;		/* phase pour alterner les images lors du déplacememnt */
 public:
 	Sprite();			/* constructeur */
@@ -37,7 +35,7 @@ public:
 
 class Babar: public Sprite {
 protected:
-	
+
 public:
 	Babar();		/* constructeur */
 	~Babar();		/* destructeur */
@@ -45,7 +43,7 @@ public:
 };
 
 
-class Monster: public Sprite {	
+class Monster: public Sprite {
 protected:
 	uint32_t m_type;		/* type de monstre */
 	uint32_t m_area; 		/* taille de la zone d'allez-retour */
@@ -54,7 +52,7 @@ public:
 	Monster(uint32_t type, SDL_Rect pos, uint32_t area);
 	~Monster();
 	void update_speed();
-	
+
 };
 
 

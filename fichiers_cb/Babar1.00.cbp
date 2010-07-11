@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\Babar1.00" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\Debug\Babar1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\Babar1.00" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\Release\Babar1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -52,7 +52,6 @@
 		<Unit filename="..\src\game.h" />
 		<Unit filename="..\src\globals.cpp" />
 		<Unit filename="..\src\globals.h" />
-		<Unit filename="..\src\lists.cpp" />
 		<Unit filename="..\src\lists.h" />
 		<Unit filename="..\src\main.cpp" />
 		<Unit filename="..\src\sprites.cpp" />

@@ -21,7 +21,7 @@ Sprite::Sprite()
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_cache = true;
-	m_direction = DROITE;
+	m_direction = RIGHT;
 	m_phase = 0;
 	m_picture = new SDL_Surface*[m_nb_pictures];
 }
@@ -41,7 +41,7 @@ void Sprite::update_pos()
 SDL_Surface *Sprite::current_picture()
 {
 	if (m_picture != NULL)
-		return m_picture[0];
+		return m_picture[(m_phase/ANIMATION_SPEED)%m_nb_pictures];
 	else
 		return NULL;
 }
@@ -69,8 +69,11 @@ Babar::Babar()
 {
 	m_pos.w = 163;
 	m_pos.h = 234;
+	m_nb_pictures = 2;
 	m_picture[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
+	m_picture[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
 	SDL_SetColorKey(m_picture[0], SDL_SRCCOLORKEY, SDL_MapRGB(m_picture[0]->format, 0, 0, 255)); /* Transparence bleu 255 */
+	SDL_SetColorKey(m_picture[1], SDL_SRCCOLORKEY, SDL_MapRGB(m_picture[1]->format, 0, 0, 255));
 }
 
 Babar::~Babar()
@@ -82,14 +85,14 @@ void Babar::update_speed()
 {
 	m_speed.x = 0;
 	if (Events_stat.key_down(k_left))
-		m_speed.x -= VITESSE_BABAR;
+		m_speed.x -= BABAR_SPEED;
 	if (Events_stat.key_down(k_right))
-		m_speed.x += VITESSE_BABAR;
+		m_speed.x += BABAR_SPEED;
 	m_speed.y = 0;
 	if (Events_stat.key_down(k_up))
-		m_speed.y -= VITESSE_BABAR;
+		m_speed.y -= BABAR_SPEED;
 	if (Events_stat.key_down(k_down))
-		m_speed.y += VITESSE_BABAR;
+		m_speed.y += BABAR_SPEED;
 }
 
 

@@ -1,5 +1,5 @@
 /**
- * Classe jeu: gestion de la boucle de jeu 
+ * Classe jeu: gestion de la boucle de jeu
  * contient les Game, la caméra, le personnage
  * et gère le temps
  **/
@@ -25,8 +25,8 @@ private:
 public:
 	Game();				/* constructeur */
 	~Game();				/* destructeur */
-	void update_pos();		/* mise à jour des positions des sprites */	
-	void update_speed();		/* mise à jour des vitesses des sprites */	
+	void update_pos();		/* mise à jour des positions des sprites */
+	void update_speed();		/* mise à jour des vitesses des sprites */
 	void refresh_screen();		/* raffraichissement de l'écran */
 	void game_loop();		/* boucle de jeu */
 };
