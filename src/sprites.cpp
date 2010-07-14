@@ -46,7 +46,7 @@ void Sprite::update_pos()
 SDL_Surface *Sprite::current_picture()
 {
 	if (m_animations != NULL)
-		return m_animations[0]->current_pic();
+		return m_animations[m_state]->current_pic();
 	else
 		return NULL;
 }
@@ -72,12 +72,13 @@ uint32_t Sprite::position_y()
 **********************************/
 Babar::Babar()
 {
-    SDL_Surface **array_walking;
-    array_walking = new SDL_Surface*[2];
-
     m_pos.w = 163;
 	m_pos.h = 234;
 	m_nb_animations = 1;
+
+	/* Déclarations des animtions de Babar, avec chargement des images etc etc */
+	SDL_Surface **array_walking;
+    array_walking = new SDL_Surface*[2];
 
     array_walking[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
     array_walking[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
