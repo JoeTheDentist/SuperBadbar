@@ -25,12 +25,15 @@ Sprite::Sprite()
 	m_direction = RIGHT;
 	m_state = STATIC;
 	m_phase = 0;
-	m_animations = new Animation[m_nb_animations];
+	m_animations = new Animation*[m_nb_animations];
 }
 
 Sprite::~Sprite()
 {
-	delete[] m_animations;
+    for(int i = 0; i<m_nb_animations; i++) {
+        delete m_animations[i];
+    }
+    delete[] m_animations;
 }
 
 void Sprite::update_pos()
@@ -43,7 +46,7 @@ void Sprite::update_pos()
 SDL_Surface *Sprite::current_picture()
 {
 	if (m_animations != NULL)
-		return m_animations[0].current_pic();
+		return m_animations[0]->current_pic();
 	else
 		return NULL;
 }
@@ -69,17 +72,20 @@ uint32_t Sprite::position_y()
 **********************************/
 Babar::Babar()
 {
+    SDL_Surface **array_walking;
+    array_walking = new SDL_Surface*[2];
+
     m_pos.w = 163;
 	m_pos.h = 234;
 	m_nb_animations = 1;
 
-    SDL_Surface *array_walking[2];
     array_walking[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
     array_walking[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
     SDL_SetColorKey(array_walking[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[0]->format, 0, 0, 255));
 	SDL_SetColorKey(array_walking[1], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[1]->format, 0, 0, 255));
 
-    Animation walking(2, array_walking);
+    Animation *walking;
+    walking = new Animation(2, array_walking);
     m_animations[0] = walking;
 }
 
@@ -123,7 +129,9 @@ Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 
 	array_static[0] = SDL_LoadBMP("../pic/blob.bmp");
     SDL_SetColorKey(array_static[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_static[0]->format, 0, 0, 255));
-    Animation a_static(1, array_static);
+
+    Animation *a_static;
+    a_static = new Animation(1, array_static);
     m_animations[0] = a_static;
 }
 

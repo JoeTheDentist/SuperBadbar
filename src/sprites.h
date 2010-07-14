@@ -21,7 +21,7 @@ enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'i
 
 class Sprite{
 protected:
-	Animation * m_animations; 	/* tableau d'animations du sprite */
+	Animation ** m_animations; 	/* tableau d'animations du sprite */
 	uint8_t m_nb_animations; 	/* nombre d'animations différentes */
 	SDL_Rect m_pos; 		    /* position du sprite et sa taille */
 	SDL_Rect m_speed;		    /* vitesse du sprite */

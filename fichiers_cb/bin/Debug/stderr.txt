@@ -5,7 +5,7 @@ pourcentage d'utilisation du temps: 0.010000
 COLLISION
 pourcentage d'utilisation du temps: 0.010000
 COLLISION
-pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.030000
 COLLISION
 pourcentage d'utilisation du temps: 0.010000
 COLLISION
@@ -22,10 +22,6 @@ COLLISION
 pourcentage d'utilisation du temps: 0.010000
 COLLISION
 pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.070000
-pourcentage d'utilisation du temps: 0.060000
-pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.230000
 pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
@@ -33,12 +29,10 @@ pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
+COLLISION
 pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.010000
-pourcentage d'utilisation du temps: 0.010000
+COLLISION
+pourcentage d'utilisation du temps: 0.020000
 COLLISION
 pourcentage d'utilisation du temps: 0.010000
 COLLISION
@@ -51,39 +45,36 @@ COLLISION
 pourcentage d'utilisation du temps: 0.010000
 COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
 pourcentage d'utilisation du temps: 0.010000
-COLLISION
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
 pourcentage d'utilisation du temps: 0.010000
