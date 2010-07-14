@@ -42,6 +42,8 @@
 			<Add library="dxguid" />
 			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib" />
 		</Linker>
+		<Unit filename="..\src\animations.cpp" />
+		<Unit filename="..\src\animations.h" />
 		<Unit filename="..\src\camera.cpp" />
 		<Unit filename="..\src\camera.h" />
 		<Unit filename="..\src\collisions.cpp" />

@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "sprites.h"
+#include "animations.h"
 #include "globals.h"
 #include "events.h"
 
@@ -13,7 +14,7 @@
 **********************************/
 Sprite::Sprite()
 {
-	m_nb_pictures = 1;
+	m_nb_animations = 1;
 	m_pos.x = 0;
 	m_pos.y = 0;
 	m_pos.w = 0;
@@ -22,13 +23,14 @@ Sprite::Sprite()
 	m_speed.y = 0;
 	m_cache = true;
 	m_direction = RIGHT;
+	m_state = STATIC;
 	m_phase = 0;
-	m_picture = new SDL_Surface*[m_nb_pictures];
+	m_animations = new Animation[m_nb_animations];
 }
 
 Sprite::~Sprite()
 {
-	delete[] m_picture;
+	delete[] m_animations;
 }
 
 void Sprite::update_pos()
@@ -40,8 +42,8 @@ void Sprite::update_pos()
 
 SDL_Surface *Sprite::current_picture()
 {
-	if (m_picture != NULL)
-		return m_picture[(m_phase/ANIMATION_SPEED)%m_nb_pictures];
+	if (m_animations != NULL)
+		return m_animations[0].current_pic();
 	else
 		return NULL;
 }
@@ -67,13 +69,18 @@ uint32_t Sprite::position_y()
 **********************************/
 Babar::Babar()
 {
-	m_pos.w = 163;
+    m_pos.w = 163;
 	m_pos.h = 234;
-	m_nb_pictures = 2;
-	m_picture[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
-	m_picture[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
-	SDL_SetColorKey(m_picture[0], SDL_SRCCOLORKEY, SDL_MapRGB(m_picture[0]->format, 0, 0, 255)); /* Transparence bleu 255 */
-	SDL_SetColorKey(m_picture[1], SDL_SRCCOLORKEY, SDL_MapRGB(m_picture[1]->format, 0, 0, 255));
+	m_nb_animations = 1;
+
+    SDL_Surface *array_walking[2];
+    array_walking[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
+    array_walking[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
+    SDL_SetColorKey(array_walking[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[0]->format, 0, 0, 255));
+	SDL_SetColorKey(array_walking[1], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[1]->format, 0, 0, 255));
+
+    Animation walking(2, array_walking);
+    m_animations[0] = walking;
 }
 
 Babar::~Babar()
@@ -106,10 +113,18 @@ Monster::Monster()
 
 Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 {
+    SDL_Surface **array_static;
+    array_static = new SDL_Surface*[1];
+
 	m_pos = pos;
 	m_area = area;
 	m_type = type;
-	m_picture[0] = SDL_LoadBMP("../pic/blob.bmp");
+	m_nb_animations = 1;
+
+	array_static[0] = SDL_LoadBMP("../pic/blob.bmp");
+    SDL_SetColorKey(array_static[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_static[0]->format, 0, 0, 255));
+    Animation a_static(1, array_static);
+    m_animations[0] = a_static;
 }
 
 Monster::~Monster()

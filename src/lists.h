@@ -1,6 +1,8 @@
 /**
     Implémentation des listes pour pouvoir faire des listes de tout type
     (voire objets)
+
+    Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
 **/
 
 
