@@ -45,6 +45,10 @@ void Sprite::update_pos()
 
 SDL_Surface *Sprite::current_picture()
 {
+    /* On change d'image tous les ANIMATION_SPEED */
+    if (m_phase%ANIMATION_SPEED==0) {
+        m_animations[m_state]->next_pic();
+    }
 	if (m_animations != NULL)
 		return m_animations[m_state]->current_pic();
 	else
