@@ -11,8 +11,16 @@
 
 class Animation; /* A cause d'une erreur à la compilation : ISO C++ forbids declaration of 'Animation' with no type*/
 
-enum direction {
+/*enum direction {
     RIGHT, LEFT, UP, DOWN
+};*/
+
+enum horizontal {
+    LEFT, MIDDLE_h, RIGHT
+};
+
+enum vertical {
+    UP, MIDDLE_v, DOWN
 };
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
@@ -26,7 +34,9 @@ protected:
 	SDL_Rect m_pos; 		    /* position du sprite et sa taille */
 	SDL_Rect m_speed;		    /* vitesse du sprite */
 	bool m_cache;			    /* afficher le sprite ou pas */
-	direction m_direction;		/* direction du sprite */
+	/*direction m_direction;		/* direction du sprite */
+	horizontal m_horizontal;    /* direction horizontale */
+	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
 	uint8_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 public:
@@ -47,6 +57,7 @@ public:
 	Babar();		/* constructeur */
 	~Babar();		/* destructeur */
 	void update_speed();	/* mise à jour de la vitesse en fonction des touches enfoncées */
+	void update_state();    /* mise à jour de l'état de babar et de sa direction */
 };
 
 

@@ -283,7 +283,7 @@
 
 1278748629 c:\users\guillaume\desktop\svn\src\events.h
 
-1278749823 source:c:\users\guillaume\desktop\svn\src\game.cpp
+1279355960 source:c:\users\guillaume\desktop\svn\src\game.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -300,7 +300,7 @@
 	"sprites.h"
 	"camera.h"
 
-1279122271 c:\users\guillaume\desktop\svn\src\sprites.h
+1279314792 c:\users\guillaume\desktop\svn\src\sprites.h
 
 1278749823 c:\users\guillaume\desktop\svn\src\camera.h
 	<SDL/SDL.h>
@@ -314,7 +314,7 @@
 	<SDL/SDL.h>
 	"events.h"
 
-1278748629 source:c:\users\guillaume\desktop\svn\src\globals.cpp
+1279360301 source:c:\users\guillaume\desktop\svn\src\globals.cpp
 	<string>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -339,7 +339,7 @@
 
 1278749823 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1279139925 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1279355960 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>

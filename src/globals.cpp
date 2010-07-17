@@ -9,5 +9,5 @@
 
 SDL_Surface *screen;
 Events_status Events_stat;
-uint32_t window_height = 400;
-uint32_t window_weight = 600;
+uint32_t window_height = 600;
+uint32_t window_weight = 800;

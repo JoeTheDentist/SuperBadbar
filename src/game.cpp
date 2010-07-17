@@ -24,7 +24,7 @@ Game::Game(): m_monster(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
 	m_previous_time = SDL_GetTicks();
 	m_background = SDL_LoadBMP("../pic/background.bmp");
 }
-	
+
 Game::~Game()
 {
 	SDL_FreeSurface(m_background);
@@ -40,6 +40,8 @@ void Game::update_speed()
 {
 	m_babar.update_speed();
 	m_monster.update_speed();
+
+	m_babar.update_state();         /* A changer de place, en discuter */
 }
 
 void Game::refresh_screen()
@@ -47,9 +49,9 @@ void Game::refresh_screen()
 	/* affichage du fond */
 	m_camera.update_pos();
 	SDL_Rect background_pos = m_camera.frame();
-	background_pos.x = - background_pos.x; 
+	background_pos.x = - background_pos.x;
 	background_pos.y = - background_pos.y;
-	SDL_BlitSurface(m_background, NULL, screen, &background_pos); 
+	SDL_BlitSurface(m_background, NULL, screen, &background_pos);
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_babar);
 	m_camera.display_sprite(&m_monster);

@@ -22,7 +22,9 @@ Sprite::Sprite()
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_cache = true;
-	m_direction = RIGHT;
+	/*m_direction = RIGHT;*/
+	m_horizontal = MIDDLE_h;
+	m_vertical = MIDDLE_v;
 	m_state = STATIC;
 	m_phase = 0;
 	m_animations = new Animation*[m_nb_animations];
@@ -45,7 +47,7 @@ void Sprite::update_pos()
 
 SDL_Surface *Sprite::current_picture()
 {
-    /* On change d'image tous les ANIMATION_SPEED */
+    /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
         m_animations[m_state]->next_pic();
     }
@@ -111,6 +113,21 @@ void Babar::update_speed()
 		m_speed.y -= BABAR_SPEED;
 	if (Events_stat.key_down(k_down))
 		m_speed.y += BABAR_SPEED;
+
+}
+
+void Babar::update_state()
+{
+    m_horizontal = MIDDLE_h;
+    m_vertical = MIDDLE_v;
+	if (Events_stat.key_down(k_left))
+		m_horizontal = LEFT;
+	if (Events_stat.key_down(k_right))
+		m_horizontal = RIGHT;
+	if (Events_stat.key_down(k_up))
+		m_vertical = UP;
+	if (Events_stat.key_down(k_down))
+		m_vertical = DOWN;
 }
 
 
