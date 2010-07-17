@@ -7,20 +7,18 @@
 #define _SPRITES_
 
 #define BABAR_SPEED 10
-#define ANIMATION_SPEED 5 /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
+#define ANIMATION_SPEED 5   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
+#define GRAVITE 4           /* Constante pour la décélération de saut */
 
-class Animation; /* A cause d'une erreur à la compilation : ISO C++ forbids declaration of 'Animation' with no type*/
+class Animation; /* A cause d'une erreur à la compilation : ISO C++ forbids declaration of 'Animation' with no type */
 
-/*enum direction {
-    RIGHT, LEFT, UP, DOWN
-};*/
 
 enum horizontal {
-    LEFT, MIDDLE_h, RIGHT
+    LEFT = -1, MIDDLE_h, RIGHT
 };
 
 enum vertical {
-    UP, MIDDLE_v, DOWN
+    DOWN = -1, MIDDLE_v, UP
 };
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
@@ -34,7 +32,6 @@ protected:
 	SDL_Rect m_pos; 		    /* position du sprite et sa taille */
 	SDL_Rect m_speed;		    /* vitesse du sprite */
 	bool m_cache;			    /* afficher le sprite ou pas */
-	/*direction m_direction;		/* direction du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */

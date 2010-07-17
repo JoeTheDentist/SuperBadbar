@@ -36,7 +36,7 @@ template <class T> class List {
         ~List();                        /* Destructeur */
         void add(T element);            /* Ajoute un élément à la tête de m_list */
         void cut();                     /* Suppression de la tête de m_list avec libération de la mémoire */
-        bool empty();                   /* Retourne si la liste est vide */
+        bool empty();                   /* Retourne true si la liste est vide */
         T head();                       /* Retourne la tête de la liste */
 
         void do_list(void (*fct)(T));   /* Applique une void fonction à chaque éléments de la liste */

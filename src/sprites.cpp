@@ -22,7 +22,6 @@ Sprite::Sprite()
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_cache = true;
-	/*m_direction = RIGHT;*/
 	m_horizontal = MIDDLE_h;
 	m_vertical = MIDDLE_v;
 	m_state = STATIC;
@@ -49,10 +48,10 @@ SDL_Surface *Sprite::current_picture()
 {
     /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[m_state]->next_pic();
+        m_animations[/*m_state*/0]->next_pic();
     }
 	if (m_animations != NULL)
-		return m_animations[m_state]->current_pic();
+		return m_animations[/*m_state*/0]->current_pic();
 	else
 		return NULL;
 }
@@ -103,16 +102,27 @@ Babar::~Babar()
 
 void Babar::update_speed()
 {
-	m_speed.x = 0;
-	if (Events_stat.key_down(k_left))
-		m_speed.x -= BABAR_SPEED;
-	if (Events_stat.key_down(k_right))
-		m_speed.x += BABAR_SPEED;
-	m_speed.y = 0;
-	if (Events_stat.key_down(k_up))
-		m_speed.y -= BABAR_SPEED;
-	if (Events_stat.key_down(k_down))
-		m_speed.y += BABAR_SPEED;
+    if (m_state == JUMP) {
+        m_speed.y += GRAVITE;
+
+        m_speed.x = 0;                      /* Pour pouvoir se diriger en l'air */
+        if (Events_stat.key_down(k_left))
+            m_speed.x -= BABAR_SPEED;
+        if (Events_stat.key_down(k_right))
+            m_speed.x += BABAR_SPEED;
+    }
+    else {
+        m_speed.x = 0;
+        if (Events_stat.key_down(k_left))
+            m_speed.x -= BABAR_SPEED;
+        if (Events_stat.key_down(k_right))
+            m_speed.x += BABAR_SPEED;
+        m_speed.y = 0;
+        if (Events_stat.key_down(k_up))
+            m_speed.y -= BABAR_SPEED;
+        if (Events_stat.key_down(k_down))
+            m_speed.y += BABAR_SPEED;
+    }
 
 }
 
@@ -128,6 +138,13 @@ void Babar::update_state()
 		m_vertical = UP;
 	if (Events_stat.key_down(k_down))
 		m_vertical = DOWN;
+    if (Events_stat.key_down(k_jump)&&(m_state!=JUMP)) {    /* Début du saut */
+        m_state = JUMP;
+        m_speed.y = -5*BABAR_SPEED;
+        m_speed.x = m_horizontal*BABAR_SPEED;
+    }
+    if ((m_pos.y+m_pos.h)>bottom)
+        m_state = STATIC;
 }
 
 
