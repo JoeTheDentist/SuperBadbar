@@ -48,10 +48,10 @@ SDL_Surface *Sprite::current_picture()
 {
     /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[/*m_state*/0]->next_pic();
+        m_animations[/*m_state*/0]->next_pic(); /* a modif quand il y aura les animations */
     }
 	if (m_animations != NULL)
-		return m_animations[/*m_state*/0]->current_pic();
+		return m_animations[/*m_state*/0]->current_pic(); /* a modif quand il y aura les animations */
 	else
 		return NULL;
 }
@@ -102,7 +102,7 @@ Babar::~Babar()
 
 void Babar::update_speed()
 {
-    if (m_state == JUMP) {
+    if ((m_pos.y+m_pos.h)<bottom) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
         m_speed.y += GRAVITE;
 
         m_speed.x = 0;                      /* Pour pouvoir se diriger en l'air */
