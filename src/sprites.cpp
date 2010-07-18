@@ -26,14 +26,16 @@ Sprite::Sprite()
 	m_vertical = MIDDLE_v;
 	m_state = STATIC;
 	m_phase = 0;
-	/*m_animations = new Animation*[m_nb_animations][3][3];*/
+	for(int i = 0; i<3; i++)
+        for(int j = 0; j<3; j++)
+            m_animations[i][j] = new Animation*[m_nb_animations];
 }
 
 Sprite::~Sprite()
 {
     for(int i = 0; i<m_nb_animations; i++) {
-        m_animations[i][0][0]->~Animation();          /* ??? est-ce c'est ce qu'il faut faire ??? */
-        delete m_animations[i][0][0];                   /* Il va y avoir des fuites partout => faire sur toutes les cases ? */
+        m_animations[0][0][i]->~Animation();          /* ??? est-ce c'est ce qu'il faut faire ??? */
+        delete m_animations[0][0];                   /* Il va y avoir des fuites partout => faire sur toutes les cases ? */
     }
     delete[] m_animations;
 }
@@ -49,10 +51,10 @@ SDL_Surface *Sprite::current_picture()
 {
     /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[m_state][m_horizontal][m_vertical]->next_pic();
+        m_animations[m_horizontal][m_vertical][m_state]->next_pic();
     }
 	if (m_animations != NULL)
-		return m_animations[m_state][m_horizontal][m_vertical]->current_pic();
+		return m_animations[m_horizontal][m_vertical][m_state]->current_pic();
 	else
 		return NULL;
 }
@@ -105,9 +107,9 @@ Babar::Babar()
     Animation *a_static_right;
     a_static_right = new Animation(1, array_static_right);
 
-    m_animations[STATIC][RIGHT][DOWN] = a_static_right;
-    m_animations[STATIC][RIGHT][MIDDLE_v] = a_static_right;
-    m_animations[STATIC][RIGHT][UP] = a_static_right;
+    m_animations[RIGHT][DOWN][STATIC] = a_static_right;
+    m_animations[RIGHT][MIDDLE_v][STATIC] = a_static_right;
+    m_animations[RIGHT][UP][STATIC] = a_static_right;
 
         /* Gauche */
     SDL_Surface **array_static_left;
@@ -118,14 +120,14 @@ Babar::Babar()
     Animation *a_static_left;
     a_static_left = new Animation(1, array_static_left);
 
-    m_animations[STATIC][LEFT][DOWN] = a_static_left;
-    m_animations[STATIC][LEFT][MIDDLE_v] = a_static_left;
-    m_animations[STATIC][LEFT][UP] = a_static_left;
+    m_animations[LEFT][DOWN][STATIC] = a_static_left;
+    m_animations[LEFT][MIDDLE_v][STATIC] = a_static_left;
+    m_animations[LEFT][UP][STATIC] = a_static_left;
 
         /* Milieu : inutile mais pour éviter des pb */
-    m_animations[STATIC][MIDDLE_h][DOWN] = a_static_right;
-    m_animations[STATIC][MIDDLE_h][MIDDLE_v] = a_static_right;
-    m_animations[STATIC][MIDDLE_h][UP] = a_static_right;
+    m_animations[MIDDLE_h][DOWN][STATIC] = a_static_right;
+    m_animations[MIDDLE_h][MIDDLE_v][STATIC] = a_static_right;
+    m_animations[MIDDLE_h][UP][STATIC] = a_static_right;
 
 	/*** Animation de marche ***/
         /* Droite */
@@ -138,9 +140,9 @@ Babar::Babar()
     Animation *a_walk_right;
     a_walk_right = new Animation(2, array_walk_right);
 
-    m_animations[WALK][RIGHT][DOWN] = a_walk_right;
-    m_animations[WALK][RIGHT][MIDDLE_v] = a_walk_right;
-    m_animations[WALK][RIGHT][UP] = a_walk_right;
+    m_animations[RIGHT][DOWN][WALK] = a_walk_right;
+    m_animations[RIGHT][MIDDLE_v][WALK] = a_walk_right;
+    m_animations[RIGHT][UP][WALK] = a_walk_right;
 
         /* Gauche */
     SDL_Surface **array_walk_left;
@@ -152,9 +154,9 @@ Babar::Babar()
     Animation *a_walk_left;
     a_walk_left = new Animation(2, array_walk_left);
 
-    m_animations[WALK][LEFT][DOWN] = a_walk_left;
-    m_animations[WALK][LEFT][MIDDLE_v] = a_walk_left;
-    m_animations[WALK][LEFT][UP] = a_walk_left;
+    m_animations[LEFT][DOWN][WALK] = a_walk_left;
+    m_animations[LEFT][MIDDLE_v][WALK] = a_walk_left;
+    m_animations[LEFT][UP][WALK] = a_walk_left;
 
 
     /*** Animation saut ***/
@@ -167,9 +169,9 @@ Babar::Babar()
     Animation *a_jump_right;
     a_jump_right = new Animation(1, array_jump_right);
 
-    m_animations[JUMP][RIGHT][DOWN] = a_jump_right;
-    m_animations[JUMP][RIGHT][MIDDLE_v] = a_jump_right;
-    m_animations[JUMP][RIGHT][UP] = a_jump_right;
+    m_animations[RIGHT][DOWN][JUMP] = a_jump_right;
+    m_animations[RIGHT][MIDDLE_v][JUMP] = a_jump_right;
+    m_animations[RIGHT][UP][JUMP] = a_jump_right;
 
         /* Gauche */
     SDL_Surface **array_jump_left;
@@ -180,9 +182,14 @@ Babar::Babar()
     Animation *a_jump_left;
     a_jump_left = new Animation(1, array_jump_left);
 
-    m_animations[JUMP][LEFT][DOWN] = a_jump_left;
-    m_animations[JUMP][LEFT][MIDDLE_v] = a_jump_left;
-    m_animations[JUMP][LEFT][UP] = a_jump_left;
+    m_animations[LEFT][DOWN][JUMP] = a_jump_left;
+    m_animations[LEFT][MIDDLE_v][JUMP] = a_jump_left;
+    m_animations[LEFT][UP][JUMP] = a_jump_left;
+
+        /* Milieu : ... */
+    m_animations[MIDDLE_h][DOWN][JUMP] = a_jump_left;
+    m_animations[MIDDLE_h][MIDDLE_v][JUMP] = a_jump_left;
+    m_animations[MIDDLE_h][UP][JUMP] = a_jump_left;
 }
 
 Babar::~Babar()
