@@ -39,7 +39,7 @@ template <class T> class List {
         bool empty();                   /* Retourne true si la liste est vide */
         T head();                       /* Retourne la tête de la liste */
 
-        void do_list(void (*fct)(T));   /* Applique une void fonction à chaque éléments de la liste */
+        void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
 };
 
 

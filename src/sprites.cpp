@@ -26,13 +26,14 @@ Sprite::Sprite()
 	m_vertical = MIDDLE_v;
 	m_state = STATIC;
 	m_phase = 0;
-	m_animations = new Animation*[m_nb_animations];
+	/*m_animations = new Animation*[m_nb_animations][3][3];*/
 }
 
 Sprite::~Sprite()
 {
     for(int i = 0; i<m_nb_animations; i++) {
-        delete m_animations[i];
+        m_animations[i][0][0]->~Animation();          /* ??? est-ce c'est ce qu'il faut faire ??? */
+        delete m_animations[i][0][0];                   /* Il va y avoir des fuites partout => faire sur toutes les cases ? */
     }
     delete[] m_animations;
 }
@@ -48,10 +49,10 @@ SDL_Surface *Sprite::current_picture()
 {
     /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[/*m_state*/0]->next_pic(); /* a modif quand il y aura les animations */
+        m_animations[m_state][m_horizontal][m_vertical]->next_pic();
     }
 	if (m_animations != NULL)
-		return m_animations[/*m_state*/0]->current_pic(); /* a modif quand il y aura les animations */
+		return m_animations[m_state][m_horizontal][m_vertical]->current_pic();
 	else
 		return NULL;
 }
@@ -79,20 +80,109 @@ Babar::Babar()
 {
     m_pos.w = 163;
 	m_pos.h = 234;
-	m_nb_animations = 1;
+	m_nb_animations = 3;
 
-	/* Déclarations des animtions de Babar, avec chargement des images etc etc */
-	SDL_Surface **array_walking;
-    array_walking = new SDL_Surface*[2];
+    /*** Chargement des images ***/
 
-    array_walking[0] = SDL_LoadBMP("../pic/babar_fixe_droite.bmp");
-    array_walking[1] = SDL_LoadBMP("../pic/babar_marche_droite.bmp");
-    SDL_SetColorKey(array_walking[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[0]->format, 0, 0, 255));
-	SDL_SetColorKey(array_walking[1], SDL_SRCCOLORKEY, SDL_MapRGB(array_walking[1]->format, 0, 0, 255));
+    SDL_Surface *babar_static_right = SDL_LoadBMP("../pic/babar_static_right.bmp");
+    SDL_Surface *babar_static_left = SDL_LoadBMP("../pic/babar_static_left.bmp");
+    SDL_Surface *babar_walk_right = SDL_LoadBMP("../pic/babar_walk_right.bmp");
+    SDL_Surface *babar_walk_left = SDL_LoadBMP("../pic/babar_walk_left.bmp");
 
-    Animation *walking;
-    walking = new Animation(2, array_walking);
-    m_animations[0] = walking;
+    SDL_SetColorKey(babar_static_right, SDL_SRCCOLORKEY, SDL_MapRGB(babar_static_right->format, 0, 0, 255)); /* transparence bleu 255 */
+    SDL_SetColorKey(babar_static_left, SDL_SRCCOLORKEY, SDL_MapRGB(babar_static_left->format, 0, 0, 255));
+    SDL_SetColorKey(babar_walk_right, SDL_SRCCOLORKEY, SDL_MapRGB(babar_walk_right->format, 0, 0, 255));
+    SDL_SetColorKey(babar_walk_left, SDL_SRCCOLORKEY, SDL_MapRGB(babar_walk_left->format, 0, 0, 255));
+
+	/* Déclarations des animations de Babar */
+	/*** Animation position fixe ***/
+        /* Droite */
+	SDL_Surface **array_static_right;
+    array_static_right = new SDL_Surface*[1];
+
+    array_static_right[0] = babar_static_right;
+
+    Animation *a_static_right;
+    a_static_right = new Animation(1, array_static_right);
+
+    m_animations[STATIC][RIGHT][DOWN] = a_static_right;
+    m_animations[STATIC][RIGHT][MIDDLE_v] = a_static_right;
+    m_animations[STATIC][RIGHT][UP] = a_static_right;
+
+        /* Gauche */
+    SDL_Surface **array_static_left;
+    array_static_left = new SDL_Surface*[1];
+
+    array_static_left[0] = babar_static_left;
+
+    Animation *a_static_left;
+    a_static_left = new Animation(1, array_static_left);
+
+    m_animations[STATIC][LEFT][DOWN] = a_static_left;
+    m_animations[STATIC][LEFT][MIDDLE_v] = a_static_left;
+    m_animations[STATIC][LEFT][UP] = a_static_left;
+
+        /* Milieu : inutile mais pour éviter des pb */
+    m_animations[STATIC][MIDDLE_h][DOWN] = a_static_right;
+    m_animations[STATIC][MIDDLE_h][MIDDLE_v] = a_static_right;
+    m_animations[STATIC][MIDDLE_h][UP] = a_static_right;
+
+	/*** Animation de marche ***/
+        /* Droite */
+	SDL_Surface **array_walk_right;
+    array_walk_right = new SDL_Surface*[2];
+
+    array_walk_right[0] = babar_static_right;
+    array_walk_right[1] = babar_walk_right;
+
+    Animation *a_walk_right;
+    a_walk_right = new Animation(2, array_walk_right);
+
+    m_animations[WALK][RIGHT][DOWN] = a_walk_right;
+    m_animations[WALK][RIGHT][MIDDLE_v] = a_walk_right;
+    m_animations[WALK][RIGHT][UP] = a_walk_right;
+
+        /* Gauche */
+    SDL_Surface **array_walk_left;
+    array_walk_left = new SDL_Surface*[2];
+
+    array_walk_left[0] = babar_static_left;
+    array_walk_left[1] = babar_walk_left;
+
+    Animation *a_walk_left;
+    a_walk_left = new Animation(2, array_walk_left);
+
+    m_animations[WALK][LEFT][DOWN] = a_walk_left;
+    m_animations[WALK][LEFT][MIDDLE_v] = a_walk_left;
+    m_animations[WALK][LEFT][UP] = a_walk_left;
+
+
+    /*** Animation saut ***/
+        /* Droite */
+    SDL_Surface **array_jump_right;
+    array_jump_right = new SDL_Surface*[1];
+
+    array_jump_right[0] = babar_static_right;
+
+    Animation *a_jump_right;
+    a_jump_right = new Animation(1, array_jump_right);
+
+    m_animations[JUMP][RIGHT][DOWN] = a_jump_right;
+    m_animations[JUMP][RIGHT][MIDDLE_v] = a_jump_right;
+    m_animations[JUMP][RIGHT][UP] = a_jump_right;
+
+        /* Gauche */
+    SDL_Surface **array_jump_left;
+    array_jump_left = new SDL_Surface*[1];
+
+    array_jump_left[0] = babar_static_left;
+
+    Animation *a_jump_left;
+    a_jump_left = new Animation(1, array_jump_left);
+
+    m_animations[JUMP][LEFT][DOWN] = a_jump_left;
+    m_animations[JUMP][LEFT][MIDDLE_v] = a_jump_left;
+    m_animations[JUMP][LEFT][UP] = a_jump_left;
 }
 
 Babar::~Babar()
@@ -106,10 +196,10 @@ void Babar::update_speed()
         m_speed.y += GRAVITE;
     }
     else {
-        m_pos.y = bottom-m_pos.h+1;
+        m_pos.y = bottom-m_pos.h+1;         /* Si il est sur le sol, on fixe sa position */
     }
 
-    m_speed.x = 0;                      /* Pour pouvoir se diriger (ttlt) */
+    m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (Events_stat.key_down(k_left))
         m_speed.x -= BABAR_SPEED;
     if (Events_stat.key_down(k_right))
@@ -121,21 +211,32 @@ void Babar::update_state()
 {
     m_horizontal = MIDDLE_h;
     m_vertical = MIDDLE_v;
-	if (Events_stat.key_down(k_left))
+    if(m_state != JUMP) {
+        m_state = STATIC;
+    }
+	if (Events_stat.key_down(k_left)) {
 		m_horizontal = LEFT;
-	if (Events_stat.key_down(k_right))
+	}
+	if (Events_stat.key_down(k_right)) {
 		m_horizontal = RIGHT;
-	if (Events_stat.key_down(k_up))
+	}
+	if (Events_stat.key_down(k_up)) {
 		m_vertical = UP;
-	if (Events_stat.key_down(k_down))
+	}
+	if (Events_stat.key_down(k_down)) {
 		m_vertical = DOWN;
+	}
     if (Events_stat.key_down(k_jump)&&(m_state!=JUMP)) {    /* Début du saut */
         m_state = JUMP;
-        m_speed.y = -5*BABAR_SPEED;
-        m_speed.x = m_horizontal*BABAR_SPEED;
+        m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
     }
-    if ((m_pos.y+m_pos.h)>bottom)
+    if ((m_pos.y+m_pos.h)>bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
+    }
+    if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
+        m_state = WALK;
+    }
+
 }
 
 
@@ -145,6 +246,7 @@ void Babar::update_state()
 
 Monster::Monster()
 {
+
 }
 
 Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
@@ -162,7 +264,7 @@ Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 
     Animation *a_static;
     a_static = new Animation(1, array_static);
-    m_animations[0] = a_static;
+    m_animations[0][MIDDLE_h][MIDDLE_v] = a_static;
 }
 
 Monster::~Monster()
