@@ -104,25 +104,16 @@ void Babar::update_speed()
 {
     if ((m_pos.y+m_pos.h)<bottom) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
         m_speed.y += GRAVITE;
-
-        m_speed.x = 0;                      /* Pour pouvoir se diriger en l'air */
-        if (Events_stat.key_down(k_left))
-            m_speed.x -= BABAR_SPEED;
-        if (Events_stat.key_down(k_right))
-            m_speed.x += BABAR_SPEED;
     }
     else {
-        m_speed.x = 0;
-        if (Events_stat.key_down(k_left))
-            m_speed.x -= BABAR_SPEED;
-        if (Events_stat.key_down(k_right))
-            m_speed.x += BABAR_SPEED;
-        m_speed.y = 0;
-        if (Events_stat.key_down(k_up))
-            m_speed.y -= BABAR_SPEED;
-        if (Events_stat.key_down(k_down))
-            m_speed.y += BABAR_SPEED;
+        m_pos.y = bottom-m_pos.h+1;
     }
+
+    m_speed.x = 0;                      /* Pour pouvoir se diriger (ttlt) */
+    if (Events_stat.key_down(k_left))
+        m_speed.x -= BABAR_SPEED;
+    if (Events_stat.key_down(k_right))
+        m_speed.x += BABAR_SPEED;
 
 }
 

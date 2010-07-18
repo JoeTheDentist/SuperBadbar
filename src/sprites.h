@@ -8,7 +8,7 @@
 
 #define BABAR_SPEED 10
 #define ANIMATION_SPEED 5   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
-#define GRAVITE 4           /* Constante pour la décélération de saut */
+#define GRAVITE 7           /* Constante pour la décélération de saut */
 
 class Animation; /* A cause d'une erreur à la compilation : ISO C++ forbids declaration of 'Animation' with no type */
 
