@@ -1,7 +1,8 @@
 /**
  * La classe Camera pointe sur un sprite
  * Elle le suit dans ses déplacements avec update_pos()
- * et permet d'afficher des sprites à la bonne position
+ * et permet d'afficher des sprites à la bonne position avec display_sprite
+ * La camera suit le sprite pointé sauf lorsqu'il arrive aux limites du niveau
  **/
 
 #ifndef _CAMERA_
