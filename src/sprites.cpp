@@ -14,7 +14,7 @@
 **********************************/
 Sprite::Sprite()
 {
-	m_nb_animations = 1;
+	m_nb_animations = 3;
 	m_pos.x = 0;
 	m_pos.y = 0;
 	m_pos.w = 0;
@@ -37,7 +37,7 @@ Sprite::~Sprite()
     for(int i = 0; i<3;i++) {
         for(int j = 0; j<3;j++) {
             for(int k = 0;k<m_nb_animations;k++) {
-                delete m_animations[i][j][k];
+                m_animations[i][j][k]->~Animation();
             }
             delete[] m_animations[i][j];
         }
@@ -203,7 +203,7 @@ Babar::~Babar()
 
 void Babar::update_speed()
 {
-    if ((m_pos.y+m_pos.h)<bottom) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
+    if ((m_pos.y + m_pos.h) < (int32_t)bottom) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
         m_speed.y += GRAVITE;
     }
     else {
@@ -243,7 +243,7 @@ void Babar::update_state()
         m_state = JUMP;
         m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
     }
-    if ((m_pos.y+m_pos.h)>bottom) {                           /* On remet le bon état à la fin du saut */
+    if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
     }
     if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {

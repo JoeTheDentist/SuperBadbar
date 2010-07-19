@@ -19,7 +19,7 @@ Animation::Animation(uint8_t nb_pics, SDL_Surface **pics)
 
 Animation::~Animation()
 {
-    delete[] m_pics;
+//~     delete[] m_pics;
 }
 
 uint8_t Animation::nb_pics()
