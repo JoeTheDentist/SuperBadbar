@@ -34,11 +34,14 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
-    for(int i = 0; i<m_nb_animations; i++) {
-        m_animations[0][0][i]->~Animation();          /* ??? est-ce c'est ce qu'il faut faire ??? */
-        delete m_animations[0][0];                   /* Il va y avoir des fuites partout => faire sur toutes les cases ? */
+    for(int i = 0; i<3;i++) {
+        for(int j = 0; j<3;j++) {
+            for(int k = 0;k<m_nb_animations;k++) {
+                delete m_animations[i][j][k];
+            }
+            delete[] m_animations[i][j];
+        }
     }
-    delete[] m_animations;
 }
 
 void Sprite::update_pos()

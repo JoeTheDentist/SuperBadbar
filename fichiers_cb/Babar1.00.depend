@@ -339,7 +339,7 @@
 
 1279443412 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1279545175 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1279545511 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
