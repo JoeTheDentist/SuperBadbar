@@ -2,13 +2,13 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="..\src\animations.cpp" open="1" top="0" tabpos="16">
-		<Cursor position="498" topLine="18" />
+		<Cursor position="480" topLine="11" />
 	</File>
 	<File name="..\src\animations.h" open="1" top="0" tabpos="15">
 		<Cursor position="582" topLine="0" />
 	</File>
 	<File name="..\src\camera.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="569" topLine="16" />
+		<Cursor position="884" topLine="24" />
 	</File>
 	<File name="..\src\camera.h" open="1" top="0" tabpos="9">
 		<Cursor position="499" topLine="11" />
@@ -23,10 +23,10 @@
 		<Cursor position="763" topLine="6" />
 	</File>
 	<File name="..\src\events.h" open="1" top="0" tabpos="7">
-		<Cursor position="190" topLine="5" />
+		<Cursor position="190" topLine="0" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="911" topLine="37" />
+		<Cursor position="1487" topLine="45" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="11">
 		<Cursor position="234" topLine="0" />
@@ -35,19 +35,19 @@
 		<Cursor position="248" topLine="0" />
 	</File>
 	<File name="..\src\globals.h" open="1" top="0" tabpos="6">
-		<Cursor position="444" topLine="0" />
+		<Cursor position="444" topLine="1" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="3">
-		<Cursor position="1127" topLine="6" />
+		<Cursor position="491" topLine="0" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="255" topLine="0" />
+		<Cursor position="242" topLine="0" />
 	</File>
 	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="466" topLine="6" />
+		<Cursor position="508" topLine="17" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="5">
-		<Cursor position="1302" topLine="25" />
+		<Cursor position="766" topLine="21" />
 	</File>
 	<File name="..\src\window.h" open="1" top="0" tabpos="17">
 		<Cursor position="326" topLine="3" />

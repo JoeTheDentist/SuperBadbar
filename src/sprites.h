@@ -36,6 +36,7 @@ protected:
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
 	uint8_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
+	horizontal m_last_dir;      /* */
 public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
@@ -49,7 +50,7 @@ public:
 
 class Babar: public Sprite {
 protected:
-
+    horizontal m_last_dir;  /* Se souvient de vers où on regarde */
 public:
 	Babar();		/* constructeur */
 	~Babar();		/* destructeur */

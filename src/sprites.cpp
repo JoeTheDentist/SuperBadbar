@@ -29,6 +29,7 @@ Sprite::Sprite()
 	for(int i = 0; i<3; i++)
         for(int j = 0; j<3; j++)
             m_animations[i][j] = new Animation*[m_nb_animations];
+    m_last_dir = RIGHT;
 }
 
 Sprite::~Sprite()
@@ -51,10 +52,10 @@ SDL_Surface *Sprite::current_picture()
 {
     /* On change d'image tous les ANIMATION_SPEED cycles */
     if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[m_horizontal][m_vertical][m_state]->next_pic();
+        m_animations[m_last_dir][m_vertical][m_state]->next_pic();
     }
 	if (m_animations != NULL)
-		return m_animations[m_horizontal][m_vertical][m_state]->current_pic();
+		return m_animations[m_last_dir][m_vertical][m_state]->current_pic();
 	else
 		return NULL;
 }
@@ -223,9 +224,11 @@ void Babar::update_state()
     }
 	if (Events_stat.key_down(k_left)) {
 		m_horizontal = LEFT;
+		m_last_dir = LEFT;
 	}
 	if (Events_stat.key_down(k_right)) {
 		m_horizontal = RIGHT;
+		m_last_dir = RIGHT;
 	}
 	if (Events_stat.key_down(k_up)) {
 		m_vertical = UP;
@@ -265,13 +268,14 @@ Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 	m_area = area;
 	m_type = type;
 	m_nb_animations = 1;
+	m_last_dir = MIDDLE_h;
 
 	array_static[0] = SDL_LoadBMP("../pic/blob.bmp");
     SDL_SetColorKey(array_static[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_static[0]->format, 0, 0, 255));
 
     Animation *a_static;
     a_static = new Animation(1, array_static);
-    m_animations[0][MIDDLE_h][MIDDLE_v] = a_static;
+    m_animations[MIDDLE_h][MIDDLE_v][0] = a_static; /* Attention on prend pas tout en compte ici... */
 }
 
 Monster::~Monster()
