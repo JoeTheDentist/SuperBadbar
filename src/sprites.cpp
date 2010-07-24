@@ -7,13 +7,14 @@
 #include "animations.h"
 #include "globals.h"
 #include "events.h"
-
+#include "analyser.h"
 
 /*********************************
 **	Méthodes de Sprite 	**
 **********************************/
 Sprite::Sprite()
 {
+	Analyser analyser;
 	m_nb_animations = 3;
 	m_pos.x = 0;
 	m_pos.y = 0;
@@ -29,7 +30,7 @@ Sprite::Sprite()
 	for(int i = 0; i<3; i++)
         for(int j = 0; j<3; j++)
             m_animations[i][j] = new Animation*[m_nb_animations];
-    m_last_dir = RIGHT;
+	m_last_dir = RIGHT;
 }
 
 Sprite::~Sprite()
