@@ -38,6 +38,7 @@ Sprite::~Sprite()
         for(int j = 0; j<3;j++) {
             for(int k = 0;k<m_nb_animations;k++) {
                 m_animations[i][j][k]->~Animation();
+//~ 		delete m_animations[i][j][k];
             }
             delete[] m_animations[i][j];
         }
