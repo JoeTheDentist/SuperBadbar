@@ -294,3 +294,13 @@ void Monster::update_speed()
 	else
 		m_speed.x = -5;
 }
+
+void Monster::set_pos_x(uint32_t x)
+{
+	m_pos.x = x;
+}
+
+void Monster::set_pos_y(uint32_t y)
+{
+	m_pos.y = y;
+}

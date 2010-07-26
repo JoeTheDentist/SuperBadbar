@@ -10,6 +10,8 @@
 #define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
+#include "SDL/SDL.h"
+
 class Animation; /* A cause d'une erreur à la compilation : ISO C++ forbids declaration of 'Animation' with no type */
 
 
@@ -61,13 +63,15 @@ public:
 
 class Monster: public Sprite {
 protected:
-	uint32_t m_type;		/* type de monstre */
-	uint32_t m_area; 		/* taille de la zone d'allez-retour */
+	uint32_t m_type;					/* type de monstre (sa nature) */
+	uint32_t m_area; 					/* taille de la zone d'allez-retour */  // à changer éventuellement 
 public:
-	Monster();
-	Monster(uint32_t type, SDL_Rect pos, uint32_t area);
-	~Monster();
-	void update_speed();
+	Monster();						/* constructeur */
+	Monster(uint32_t type, SDL_Rect pos, uint32_t area);	/* constructeur */
+	~Monster();						/* destructeur */
+	void update_speed();					/* met à jour la vitesse du monstre */
+	void set_pos_x(uint32_t x);				/* m_pos.x = x */
+	void set_pos_y(uint32_t y);				/* m_pos.y = y */
 
 };
 

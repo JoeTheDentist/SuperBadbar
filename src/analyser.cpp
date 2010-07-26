@@ -3,6 +3,7 @@
 #include <string>
 
 #include "analyser.h"
+#include "sprites.h"
 
 
 Analyser::Analyser()
@@ -21,6 +22,7 @@ uint32_t Analyser::open(std::string file)
 	if (m_file == NULL)
 		return 1;
 	m_opened = true;
+	m_current = fgetc(m_file);
 	return 0;
 }
 
@@ -33,17 +35,48 @@ uint32_t Analyser::close()
 
 void Analyser::find_string(std::string str)
 {
-	char current;
 	uint32_t char_found = 0;
 	uint32_t size = str.size();
 	fseek(m_file, 0, SEEK_SET);
-	current = fgetc(m_file);
-	while (current != EOF && char_found < size){
-		if (current == str[char_found])
+	while (m_current != EOF && char_found < size){
+		if (m_current == str[char_found])
 			char_found++;
 		else
 			char_found = 0;
-		current = fgetc(m_file);
+		m_current = fgetc(m_file);
 	}
+	if (m_current !=EOF)
+		m_current = fgetc(m_file);
+}
+
+void Analyser::jump_separators()
+{
+	bool jump = true;
+	while (jump){
+		switch (m_current){
+		case ' ': case '\n':
+			m_current = fgetc(m_file);
+			break;
+		case '/':
+			m_current = fgetc(m_file);
+			if (m_current != '/'){
+				jump = false;
+				break;
+			}
+			while (m_current != '\n')
+				m_current = fgetc(m_file);
+			break;
+		default:
+			jump = false;
+			break;
+		}
+	}
+}
+
+void Analyser::read_monster(Monster *monster)
+{
+	uint32_t current = 0;
+	
+	
 }
 
