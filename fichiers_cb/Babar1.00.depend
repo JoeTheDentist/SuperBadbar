@@ -300,7 +300,8 @@
 	"sprites.h"
 	"camera.h"
 
-1279545175 c:\users\guillaume\desktop\svn\src\sprites.h
+1280153264 c:\users\guillaume\desktop\svn\src\sprites.h
+	"SDL/SDL.h"
 
 1279443412 c:\users\guillaume\desktop\svn\src\camera.h
 	<SDL/SDL.h>
