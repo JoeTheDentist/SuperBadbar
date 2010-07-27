@@ -20,7 +20,7 @@ Events_status::Events_status()
 }
 Events_status::~Events_status()
 {
-	
+
 }
 
 
@@ -31,11 +31,14 @@ void Events_status::update_events()
 	{
 		switch (event.type)
 		{
-		case SDL_QUIT:
+		case SDL_QUIT :
 			m_key_down[k_exit]=1;
 			break;
 		case SDL_KEYDOWN:
 			m_key_down[m_key_config[event.key.keysym.sym]]=1;
+			if (event.key.keysym.sym==SDLK_ESCAPE) {
+			    m_key_down[k_exit]=1;
+			}
 			break;
 		case SDL_KEYUP:
 			m_key_down[m_key_config[event.key.keysym.sym]]=0;

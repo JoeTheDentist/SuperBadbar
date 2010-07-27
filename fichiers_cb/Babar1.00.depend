@@ -275,7 +275,7 @@
 
 1278748629 c:\users\guillaume\desktop\svn\src\collisions.h
 
-1278748629 source:c:\users\guillaume\desktop\svn\src\events.cpp
+1280226082 source:c:\users\guillaume\desktop\svn\src\events.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -340,7 +340,7 @@
 
 1279645745 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1280152839 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1280153264 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -357,14 +357,16 @@
 
 1278921310 c:\users\guillaume\desktop\svn\src\animations.h
 
-1280152839 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
+1280153309 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"analyser.h"
+	"sprites.h"
 
-1280152839 c:\users\guillaume\desktop\svn\src\analyser.h
+1280153264 c:\users\guillaume\desktop\svn\src\analyser.h
 	<string>
+	"sprites.h"
 
 1280152839 source:c:\users\guillaume\desktop\svn\src\levels.cpp
 	<iostream>

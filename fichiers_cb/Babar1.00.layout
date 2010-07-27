@@ -19,23 +19,23 @@
 	<File name="..\src\collisions.h" open="1" top="0" tabpos="13">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="..\src\events.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="763" topLine="6" />
+	<File name="..\src\events.cpp" open="1" top="1" tabpos="14">
+		<Cursor position="742" topLine="35" />
 	</File>
 	<File name="..\src\events.h" open="1" top="0" tabpos="7">
-		<Cursor position="190" topLine="0" />
+		<Cursor position="353" topLine="3" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="1169" topLine="49" />
+		<Cursor position="291" topLine="18" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="11">
-		<Cursor position="234" topLine="0" />
+		<Cursor position="234" topLine="16" />
 	</File>
 	<File name="..\src\globals.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="248" topLine="0" />
+		<Cursor position="124" topLine="0" />
 	</File>
 	<File name="..\src\globals.h" open="1" top="0" tabpos="6">
-		<Cursor position="230" topLine="1" />
+		<Cursor position="129" topLine="0" />
 	</File>
 	<File name="..\src\levels.cpp" open="1" top="0" tabpos="18">
 		<Cursor position="128" topLine="0" />
@@ -46,8 +46,8 @@
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="242" topLine="0" />
 	</File>
-	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="904" topLine="30" />
+	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="6448" topLine="216" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="5">
 		<Cursor position="132" topLine="0" />
