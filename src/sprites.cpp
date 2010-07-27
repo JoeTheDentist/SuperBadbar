@@ -30,7 +30,7 @@ Sprite::Sprite()
 	for(int i = 0; i<3; i++)
         for(int j = 0; j<3; j++)
             m_animations[i][j] = new Animation*[m_nb_animations];
-	m_last_dir = RIGHT;
+	m_last_dir = LEFT;
 }
 
 Sprite::~Sprite()
