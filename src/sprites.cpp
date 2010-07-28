@@ -4,7 +4,6 @@
 #include <stdint.h>
 
 #include "sprites.h"
-#include "animations.h"
 #include "globals.h"
 #include "events.h"
 #include "analyser.h"
@@ -15,7 +14,6 @@
 Sprite::Sprite()
 {
 	Analyser analyser;
-	m_nb_animations = 3;
 	m_pos.x = 0;
 	m_pos.y = 0;
 	m_pos.w = 0;
@@ -27,23 +25,12 @@ Sprite::Sprite()
 	m_vertical = MIDDLE_v;
 	m_state = STATIC;
 	m_phase = 0;
-	for(int i = 0; i<3; i++)
-        for(int j = 0; j<3; j++)
-            m_animations[i][j] = new Animation*[m_nb_animations];
 	m_last_dir = LEFT;
 }
 
 Sprite::~Sprite()
 {
-    for(int i = 0; i<3;i++) {
-        for(int j = 0; j<3;j++) {
-            for(int k = 0;k<m_nb_animations;k++) {
-                m_animations[i][j][k]->~Animation();
-//~ 		delete m_animations[i][j][k];
-            }
-            delete[] m_animations[i][j];
-        }
-    }
+
 }
 
 void Sprite::update_pos()
@@ -53,17 +40,6 @@ void Sprite::update_pos()
 	m_phase++;
 }
 
-SDL_Surface *Sprite::current_picture()
-{
-    /* On change d'image tous les ANIMATION_SPEED cycles */
-    if (m_phase%ANIMATION_SPEED==0) {
-        m_animations[m_last_dir][m_vertical][m_state]->next_pic();
-    }
-	if (m_animations != NULL)
-		return m_animations[m_last_dir][m_vertical][m_state]->current_pic();
-	else
-		return NULL;
-}
 
 SDL_Rect Sprite::position()
 {
@@ -88,119 +64,85 @@ Babar::Babar()
 {
     m_pos.w = 163;
 	m_pos.h = 234;
-	m_nb_animations = 3;
 
-    /*** Chargement des images ***/
+	/*for(int i = 0;i<3;i++) {
+	    for(int j = 0;j<3;j++) {
+	        for(int k = 0;k<3;k++) {
+	            for(int l = 0;l<2;l++) {
+	                m_pics[i][j][k][l] = new SDL_Surface;
+	            }
+	        }
+	    }
+	}*/
 
-    SDL_Surface *babar_static_right = SDL_LoadBMP("../pic/babar_static_right.bmp");
-    SDL_Surface *babar_static_left = SDL_LoadBMP("../pic/babar_static_left.bmp");
-    SDL_Surface *babar_walk_right = SDL_LoadBMP("../pic/babar_walk_right.bmp");
-    SDL_Surface *babar_walk_left = SDL_LoadBMP("../pic/babar_walk_left.bmp");
+    /*** Stockage et chargement dans le tableau des images ***/
 
-    SDL_SetColorKey(babar_static_right, SDL_SRCCOLORKEY, SDL_MapRGB(babar_static_right->format, 0, 0, 255)); /* transparence bleu 255 */
-    SDL_SetColorKey(babar_static_left, SDL_SRCCOLORKEY, SDL_MapRGB(babar_static_left->format, 0, 0, 255));
-    SDL_SetColorKey(babar_walk_right, SDL_SRCCOLORKEY, SDL_MapRGB(babar_walk_right->format, 0, 0, 255));
-    SDL_SetColorKey(babar_walk_left, SDL_SRCCOLORKEY, SDL_MapRGB(babar_walk_left->format, 0, 0, 255));
+    for(int i = 0; i<3;i++) {
+        for(int j = 0;j<2;j++) {
+            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP("../pic/videl_static_left_0.bmp");
+            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP("../pic/videl_static_left_0.bmp");
+        }
+    }
+    for(int i = 0; i<3;i++) {
+        for(int j = 0;j<2;j++) {
+            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_static_right_0.bmp");
+        }
+    }
+    /***/
+    for(int i = 0; i<3;i++) {
+            m_pics[WALK][LEFT][i][0] = SDL_LoadBMP("../pic/videl_walk_left_0.bmp");
+            m_pics[WALK][MIDDLE_h][i][0] = SDL_LoadBMP("../pic/videl_walk_left_0.bmp");
+    }
+    for(int i = 0; i<3;i++) {
+            m_pics[WALK][LEFT][i][1] = SDL_LoadBMP("../pic/videl_walk_left_1.bmp");
+            m_pics[WALK][MIDDLE_h][i][1] = SDL_LoadBMP("../pic/videl_walk_left_1.bmp");
+    }
+    for(int i = 0; i<3;i++) {
+            m_pics[WALK][RIGHT][i][0] = SDL_LoadBMP("../pic/videl_walk_right_0.bmp");
+    }
+    for(int i = 0; i<3;i++) {
+            m_pics[WALK][RIGHT][i][1] = SDL_LoadBMP("../pic/videl_walk_right_1.bmp");
+    }
+    /***/
+    for(int i = 0; i<3;i++) {
+        for(int j = 0;j<2;j++) {
+            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP("../pic/videl_jump_left_0.bmp");
+            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP("../pic/videl_jump_left_0.bmp");
+        }
+    }
+    for(int i = 0; i<3;i++) {
+        for(int j = 0;j<2;j++) {
+            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_jump_right_0.bmp");
+        }
+    }
 
-	/* Déclarations des animations de Babar */
-	/*** Animation position fixe ***/
-        /* Droite */
-	SDL_Surface **array_static_right;
-    array_static_right = new SDL_Surface*[1];
-
-    array_static_right[0] = babar_static_right;
-
-    Animation *a_static_right;
-    a_static_right = new Animation(1, array_static_right);
-
-    m_animations[RIGHT][DOWN][STATIC] = a_static_right;
-    m_animations[RIGHT][MIDDLE_v][STATIC] = a_static_right;
-    m_animations[RIGHT][UP][STATIC] = a_static_right;
-
-        /* Gauche */
-    SDL_Surface **array_static_left;
-    array_static_left = new SDL_Surface*[1];
-
-    array_static_left[0] = babar_static_left;
-
-    Animation *a_static_left;
-    a_static_left = new Animation(1, array_static_left);
-
-    m_animations[LEFT][DOWN][STATIC] = a_static_left;
-    m_animations[LEFT][MIDDLE_v][STATIC] = a_static_left;
-    m_animations[LEFT][UP][STATIC] = a_static_left;
-
-        /* Milieu : inutile mais pour éviter des pb */
-    m_animations[MIDDLE_h][DOWN][STATIC] = a_static_right;
-    m_animations[MIDDLE_h][MIDDLE_v][STATIC] = a_static_right;
-    m_animations[MIDDLE_h][UP][STATIC] = a_static_right;
-
-	/*** Animation de marche ***/
-        /* Droite */
-	SDL_Surface **array_walk_right;
-    array_walk_right = new SDL_Surface*[2];
-
-    array_walk_right[0] = babar_static_right;
-    array_walk_right[1] = babar_walk_right;
-
-    Animation *a_walk_right;
-    a_walk_right = new Animation(2, array_walk_right);
-
-    m_animations[RIGHT][DOWN][WALK] = a_walk_right;
-    m_animations[RIGHT][MIDDLE_v][WALK] = a_walk_right;
-    m_animations[RIGHT][UP][WALK] = a_walk_right;
-
-        /* Gauche */
-    SDL_Surface **array_walk_left;
-    array_walk_left = new SDL_Surface*[2];
-
-    array_walk_left[0] = babar_static_left;
-    array_walk_left[1] = babar_walk_left;
-
-    Animation *a_walk_left;
-    a_walk_left = new Animation(2, array_walk_left);
-
-    m_animations[LEFT][DOWN][WALK] = a_walk_left;
-    m_animations[LEFT][MIDDLE_v][WALK] = a_walk_left;
-    m_animations[LEFT][UP][WALK] = a_walk_left;
-
-
-    /*** Animation saut ***/
-        /* Droite */
-    SDL_Surface **array_jump_right;
-    array_jump_right = new SDL_Surface*[1];
-
-    array_jump_right[0] = babar_static_right;
-
-    Animation *a_jump_right;
-    a_jump_right = new Animation(1, array_jump_right);
-
-    m_animations[RIGHT][DOWN][JUMP] = a_jump_right;
-    m_animations[RIGHT][MIDDLE_v][JUMP] = a_jump_right;
-    m_animations[RIGHT][UP][JUMP] = a_jump_right;
-
-        /* Gauche */
-    SDL_Surface **array_jump_left;
-    array_jump_left = new SDL_Surface*[1];
-
-    array_jump_left[0] = babar_static_left;
-
-    Animation *a_jump_left;
-    a_jump_left = new Animation(1, array_jump_left);
-
-    m_animations[LEFT][DOWN][JUMP] = a_jump_left;
-    m_animations[LEFT][MIDDLE_v][JUMP] = a_jump_left;
-    m_animations[LEFT][UP][JUMP] = a_jump_left;
-
-        /* Milieu : ... */
-    m_animations[MIDDLE_h][DOWN][JUMP] = a_jump_left;
-    m_animations[MIDDLE_h][MIDDLE_v][JUMP] = a_jump_left;
-    m_animations[MIDDLE_h][UP][JUMP] = a_jump_left;
+    for(int i = 0;i<3;i++) {
+	    for(int j = 0;j<3;j++) {
+	        for(int k = 0;k<3;k++) {
+	            for(int l = 0;l<2;l++) {
+	                SDL_SetColorKey(m_pics[i][j][k][l], SDL_SRCCOLORKEY, SDL_MapRGB(m_pics[i][j][k][l]->format, 0, 0, 255));
+	            }
+	        }
+	    }
+	}
 }
 
 Babar::~Babar()
 {
+    for(int i = 0;i<3;i++) {
+	    for(int j = 0;j<3;j++) {
+	        for(int k = 0;k<3;k++) {
+	            for(int l = 0;l<2;l++) {
+	                SDL_FreeSurface(m_pics[i][j][k][l]);
+	            }
+	        }
+	    }
+	}
+}
 
+SDL_Surface *Babar::current_picture()
+{
+    return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%2];
 }
 
 void Babar::update_speed()
@@ -266,25 +208,20 @@ Monster::Monster()
 
 Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 {
-    SDL_Surface **array_static;
-    array_static = new SDL_Surface*[1];
-
 	m_pos = pos;
 	m_area = area;
 	m_type = type;
-	m_nb_animations = 1;
 	m_last_dir = MIDDLE_h;
-
-	array_static[0] = SDL_LoadBMP("../pic/blob.bmp");
-    SDL_SetColorKey(array_static[0], SDL_SRCCOLORKEY, SDL_MapRGB(array_static[0]->format, 0, 0, 255));
-
-    Animation *a_static;
-    a_static = new Animation(1, array_static);
-    m_animations[MIDDLE_h][MIDDLE_v][0] = a_static; /* Attention on prend pas tout en compte ici... */
+	m_pic = SDL_LoadBMP("../pic/blob.bmp");
 }
 
 Monster::~Monster()
 {
+}
+
+SDL_Surface *Monster::current_picture()
+{
+    return m_pic;
 }
 
 void Monster::update_speed()

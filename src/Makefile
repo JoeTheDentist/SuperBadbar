@@ -3,7 +3,7 @@ CFLAGS = -Wall  -g
 EXEC_NAME = main
 INCLUDES =
 LIBS =
-OBJ_FILES =  main.o sprites.o game.o globals.o window.o events.o camera.o collisions.o animations.o levels.o analyser.o
+OBJ_FILES =  main.o sprites.o game.o globals.o window.o events.o camera.o collisions.o levels.o analyser.o
 INSTALL_DIR = .
 LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image 
 

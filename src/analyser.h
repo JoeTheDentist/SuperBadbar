@@ -1,6 +1,6 @@
 /**
  * Description: La classe Analyser sert à lire des fichiers et à les interpréter
- * Utilisation: Utiliser open pour ouvrir un fichier. 
+ * Utilisation: Utiliser open pour ouvrir un fichier.
  * 		L'interpréter avec les méthodes appropriées
  *		Le fermer avec close
  * Fonctionnement: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
@@ -31,7 +31,7 @@ public:
 	void find_string(std::string str);		/* positionne le curseur de m_file après la première occurence de str à partir du début du fichier.
 							Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier */
 	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
-	void read_monster(Monster *monster);		/* Met à jouer (*monster) en fonction des données lues dans le fichier */
+	void read_monster(Monster *monster);		/* Met à jour (*monster) en fonction des données lues dans le fichier */
 
 
 };

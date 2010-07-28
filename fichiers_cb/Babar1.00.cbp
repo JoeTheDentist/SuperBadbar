@@ -44,8 +44,6 @@
 		</Linker>
 		<Unit filename="..\src\analyser.cpp" />
 		<Unit filename="..\src\analyser.h" />
-		<Unit filename="..\src\animations.cpp" />
-		<Unit filename="..\src\animations.h" />
 		<Unit filename="..\src\camera.cpp" />
 		<Unit filename="..\src\camera.h" />
 		<Unit filename="..\src\collisions.cpp" />

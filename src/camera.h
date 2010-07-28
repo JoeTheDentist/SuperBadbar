@@ -22,10 +22,10 @@ public:
 	Camera(Sprite *target);	/* constructeur */
 	~Camera();		/* destructeur */
 	void update_pos();	/* mise à jour de la camera */
-	void display_sprite(Sprite *sprite);
+	void display_sprite(Babar *babar);      /* affichage d'un Babar */
+	void display_sprite(Monster *monster);  /* affichage d'un monstre */
 	SDL_Rect frame();	/* accesseur (m_frame) */
 };
-	
 
 
 
