@@ -14,8 +14,8 @@
 Sprite::Sprite()
 {
 	Analyser analyser;
-	m_pos.x = 0;
-	m_pos.y = 0;
+	m_pos.x = 10;
+	m_pos.y = 1900;
 	m_pos.w = 0;
 	m_pos.h = 0;
 	m_speed.x = 0;
@@ -137,11 +137,14 @@ SDL_Surface *Babar::current_picture()
 
 void Babar::update_speed()
 {
-    if ((m_pos.y + m_pos.h) < (int32_t)bottom) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
+    if ((curr_lvl.collision(m_pos.x/curr_lvl.level_height(),m_pos.y/curr_lvl.level_weight()+1)!=1)) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
         m_speed.y += GRAVITE;
     }
     else {
-        m_pos.y = bottom-m_pos.h+1;         /* Si il est sur le sol, on fixe sa position */
+        if (m_speed.y>0) {
+            m_pos.y = ((uint32_t)(m_pos.y/curr_lvl.level_weight()))*curr_lvl.level_weight()-10;
+            m_speed.y = 0;
+        }
     }
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */

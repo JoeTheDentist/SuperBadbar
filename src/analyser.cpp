@@ -75,8 +75,6 @@ void Analyser::jump_separators()
 void Analyser::fill_statics()
 {
     char link[40];
-    uint32_t posx, posy;
-    uint8_t coll_type;
     SDL_Rect pos;
 
 
@@ -91,9 +89,6 @@ void Analyser::fill_statics()
         jump_separators();
         fscanf(m_file,"%d",&pos.y);
         jump_separators();
-        fscanf(m_file,"%d",&coll_type);
-        jump_separators();
-        curr_lvl.fill_collision(pos.x/BOX_SIZE,pos.y/BOX_SIZE,coll_type);
 
         curr_static = new Static(link,pos);
         fscanf(m_file,"%s",&link);

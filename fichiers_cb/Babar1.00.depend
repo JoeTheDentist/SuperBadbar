@@ -313,7 +313,7 @@
 
 1278748629 c:\users\guillaume\desktop\svn\src\window.h
 
-1280417061 c:\users\guillaume\desktop\svn\src\globals.h
+1280763624 c:\users\guillaume\desktop\svn\src\globals.h
 	<string>
 	<SDL/SDL.h>
 	"statics.h"
@@ -321,7 +321,7 @@
 	"levels.h"
 	"lists.h"
 
-1280746958 source:c:\users\guillaume\desktop\svn\src\globals.cpp
+1280763676 source:c:\users\guillaume\desktop\svn\src\globals.cpp
 	<string>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -347,9 +347,9 @@
 	"window.h"
 	"globals.h"
 
-1280414227 source:c:\users\guillaume\desktop\svn\src\camera.cpp
+1280763591 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1280313872 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1280764802 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -365,7 +365,7 @@
 
 1278921310 c:\users\guillaume\desktop\svn\src\animations.h
 
-1280761711 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
+1280763148 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
 	<iostream>
 	<stdint.h>
 	<string>
@@ -378,14 +378,14 @@
 	"statics.h"
 	"globals.h"
 
-1280746854 source:c:\users\guillaume\desktop\svn\src\levels.cpp
+1280764895 source:c:\users\guillaume\desktop\svn\src\levels.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"levels.h"
 	"analyser.h"
 
-1280743441 c:\users\guillaume\desktop\svn\src\levels.h
+1280764485 c:\users\guillaume\desktop\svn\src\levels.h
 	"SDL/SDL.h"
 
 1280740188 c:\users\guillaume\desktop\svn\src\lists.h
@@ -394,7 +394,7 @@
 1280752469 c:\users\guillaume\desktop\svn\src\statics.h
 	<SDL/SDL.h>
 
-1280761737 source:c:\users\guillaume\desktop\svn\src\statics.cpp
+1280762623 source:c:\users\guillaume\desktop\svn\src\statics.cpp
 	<iostream>
 	<stdint.h>
 	<string>

@@ -15,7 +15,5 @@ List<Static*> statics;
 Events_status Events_stat;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;
-uint32_t bottom = level_height+50;
-uint32_t level_height = 4000;
-uint32_t level_weight = 4000;
+uint32_t bottom = 2100;
 Level curr_lvl(1);
