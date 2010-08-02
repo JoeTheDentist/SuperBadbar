@@ -22,6 +22,7 @@ public:
 	Level();			/* Constructeur par défaut*/
 	Level(uint32_t lvl);		/* Constructeur avec précision du numéro de niveau */
 	~Level();			/* Destructeur */
+	void fill_collision(uint32_t i, uint32_t j, uint8_t collision_type); /* remplit la case i j de la matrice des collisions */
 	SDL_Surface * background();  /* Accesseur */
 };
 

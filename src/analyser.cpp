@@ -12,7 +12,7 @@ Analyser::Analyser()
 }
 Analyser::~Analyser()
 {
-	
+
 }
 
 uint32_t Analyser::open(std::string file)
@@ -72,10 +72,45 @@ void Analyser::jump_separators()
 	}
 }
 
+void Analyser::fill_statics()
+{
+    std::string str;
+    char link[40];
+    for(int i = 0;i<40;i++) {
+        link[i] = ' ';
+    }
+    SDL_Rect pos;
+    uint8_t coll_type;
+
+
+    find_string("#Statics#");
+    jump_separators();
+
+    fscanf(m_file,"%s",&link);
+    str = link;
+    jump_separators();
+    while(link[0]!='!') {
+        Static *curr_static;
+        fscanf(m_file,"%d",&(pos.x));
+        jump_separators();
+        fscanf(m_file,"%d",&(pos.y));
+        jump_separators();
+        fscanf(m_file,"%d",&coll_type);
+        jump_separators();
+        curr_lvl.fill_collision(pos.x/BOX_SIZE,pos.y/BOX_SIZE,coll_type);
+
+        curr_static = new Static(str.c_str(),pos);
+        fscanf(m_file,"%s",&link);
+        jump_separators();
+
+        statics.add(curr_static);
+    }
+}
+
 void Analyser::read_monster(Monster *monster)
 {
 	uint32_t current = 0;
-	
-	
+
+
 }
 

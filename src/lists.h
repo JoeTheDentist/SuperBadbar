@@ -40,6 +40,11 @@ template <class T> class List {
         bool empty();                   /* Retourne true si la liste est vide */
         T head();                       /* Retourne la tête de la liste */
 
+        void init();                    /* Met le curseur au début de la liste */
+        void next();                    /* Le curseur va sur l'élément suivant */
+        T element();                    /* Retourne l'élément sur le curseur */
+        bool end();                     /* Rtourne si le curseur est à la fin de la liste */
+
         void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
 };
 
@@ -49,6 +54,7 @@ template <class T> class List {
 template <class T> List<T>::List()
 {
     m_list = NULL;
+    m_cursor = NULL;
 }
 
 template <class T> List<T>::List(cell<T> * l)
@@ -63,12 +69,33 @@ template <class T> List<T>::~List()
     }
 }
 
+template <class T> void List<T>::init()
+{
+    m_cursor = m_list;
+}
+
+template <class T> void List<T>::next()
+{
+    m_cursor = m_cursor->back;
+}
+
+template <class T> T List<T>::element()
+{
+    return m_cursor->head;
+}
+
+template <class T> bool List<T>::end()
+{
+    return (m_cursor == NULL);
+}
+
 template <class T> void List<T>::add(T element)
 {
     cell<T> * p = new cell<T>;
     p->head = element;
     p->back = m_list;
     m_list = p;
+    init();
 }
 
 template <class T> void List<T>::cut()

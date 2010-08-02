@@ -16,6 +16,7 @@
 #include "camera.h"
 #include "collisions.h"
 #include "levels.h"
+#include "statics.h"
 
 
 Game::Game(): m_monster(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
@@ -46,6 +47,7 @@ void Game::update_speed()
 void Game::refresh_screen()
 {
 	/* affichage du fond */
+	statics.init(); /* On remet le curseur au début pour pouvoir lire les statics */
 	m_camera.update_pos();
 	SDL_Rect background_pos = m_camera.frame();
 	background_pos.x = - background_pos.x;
@@ -55,9 +57,9 @@ void Game::refresh_screen()
 	m_camera.display_sprite(&m_monster);
 	m_camera.display_sprite(&m_babar);
 	/* affichage des static */
-	while(!statics.empty()) {
-	    m_camera.display_static(statics.head());
-	    statics.cut();
+	while(!statics.end()) {
+	    m_camera.display_static(statics.element());
+	    statics.next();
 	}
 	/* mise à jour */
 	SDL_Flip(screen);
@@ -65,8 +67,6 @@ void Game::refresh_screen()
 
 void Game::game_loop()
 {
-    Level new_lvl(1);
-    curr_lvl = new_lvl;
 	bool end = false;
 	while (!end){
 		m_time = SDL_GetTicks();

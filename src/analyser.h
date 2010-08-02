@@ -13,6 +13,8 @@
 
 #include <string>
 #include "sprites.h"
+#include "statics.h"
+#include "globals.h"
 
 
 
@@ -32,6 +34,7 @@ public:
 							Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier */
 	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
 	void read_monster(Monster *monster);		/* Met à jour (*monster) en fonction des données lues dans le fichier */
+	void fill_statics();
 
 
 };

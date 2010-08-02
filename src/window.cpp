@@ -13,7 +13,7 @@ uint8_t open_window(uint16_t weight, uint16_t height)
 		fprintf(stderr, "Erreur d'initialisation de la SDL");
 		return 0;
 	}
-	screen = SDL_SetVideoMode(weight, height, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+	screen = SDL_SetVideoMode(weight, height, 32, SDL_HWSURFACE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 	SDL_WM_SetCaption("Babar Test", NULL);
 	return 1;
 }

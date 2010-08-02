@@ -2,7 +2,8 @@
 
 #Statics#
 ../pics/level1/soil.bmp
-0 0
+0 0 1
+!
 
 #Monsters#
 ../pics/level1/
