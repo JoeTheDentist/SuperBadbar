@@ -17,7 +17,7 @@ Level::Level(uint32_t lvl)
     char str[3];
     std::string str_lvl;
     Analyser analyser;
-    itoa(lvl,str,10);     /* convertion int vers tableau de char, je n'ai pas trouvé avec les strings */
+    sprintf(str, "%d", lvl);    /* convertion int vers tableau de char, je n'ai pas trouvé avec les strings */
     str_lvl = str;
 
     m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str());    /*...besoin d'un tableau de char...*/
