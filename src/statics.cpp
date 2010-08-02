@@ -9,13 +9,14 @@ Static::Static()
     m_image = NULL;
 }
 
-Static::Static(const char *dir_image, SDL_Rect pos)
+Static::Static(char *dir_image, SDL_Rect pos)
 {
     m_image = SDL_LoadBMP(dir_image);
+    SDL_SetColorKey(m_image, SDL_SRCCOLORKEY, SDL_MapRGB(m_image->format, 0, 0, 255));
     m_pos = pos;
 }
 
-Static::Static(const char *dir_image, uint32_t x, uint32_t y)
+Static::Static(char *dir_image, uint32_t x, uint32_t y)
 {
     m_image = SDL_LoadBMP(dir_image);
     m_pos.x = x;

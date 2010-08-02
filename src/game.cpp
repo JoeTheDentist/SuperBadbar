@@ -53,14 +53,14 @@ void Game::refresh_screen()
 	background_pos.x = - background_pos.x;
 	background_pos.y = - background_pos.y;
 	SDL_BlitSurface(curr_lvl.background(), NULL, screen, &background_pos);
-	/* affichage des sprites */
-	m_camera.display_sprite(&m_monster);
-	m_camera.display_sprite(&m_babar);
-	/* affichage des static */
+	/* affichage des static (à faire en premier) */
 	while(!statics.end()) {
 	    m_camera.display_static(statics.element());
 	    statics.next();
 	}
+	/* affichage des sprites */
+	m_camera.display_sprite(&m_monster);
+	m_camera.display_sprite(&m_babar);
 	/* mise à jour */
 	SDL_Flip(screen);
 }
