@@ -1,17 +1,15 @@
 
 
 #Statics#
-
 ../pics/level1/soil.bmp
 0 0
 
-
-#Background# //pas forcement utile, on sait ou il est lui
-../pics/level1/background.bmp
-
 #Monsters#
+../pics/level1/
 1   30   30
+../pics/level1/
 2   60   60
+
 1   150  0
 !
 
