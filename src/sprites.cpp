@@ -25,7 +25,6 @@ Sprite::Sprite()
 	m_vertical = MIDDLE_v;
 	m_state = STATIC;
 	m_phase = 0;
-	m_last_dir = LEFT;
 }
 
 Sprite::~Sprite()
@@ -64,16 +63,7 @@ Babar::Babar()
 {
     m_pos.w = 163;
 	m_pos.h = 234;
-
-	/*for(int i = 0;i<3;i++) {
-	    for(int j = 0;j<3;j++) {
-	        for(int k = 0;k<3;k++) {
-	            for(int l = 0;l<2;l++) {
-	                m_pics[i][j][k][l] = new SDL_Surface;
-	            }
-	        }
-	    }
-	}*/
+	m_last_dir = LEFT;
 
     /*** Stockage et chargement dans le tableau des images ***/
 
@@ -211,7 +201,6 @@ Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
 	m_pos = pos;
 	m_area = area;
 	m_type = type;
-	m_last_dir = MIDDLE_h;
 	m_pic = SDL_LoadBMP("../pic/blob.bmp");
 }
 

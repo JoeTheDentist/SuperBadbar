@@ -15,19 +15,18 @@
 #include "events.h"
 #include "camera.h"
 #include "collisions.h"
-
+#include "levels.h"
 
 
 Game::Game(): m_monster(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
 {
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
-	m_background = SDL_LoadBMP("../pic/background.bmp");
 }
 
 Game::~Game()
 {
-	SDL_FreeSurface(m_background);
+
 }
 
 void Game::update_pos()
@@ -51,16 +50,23 @@ void Game::refresh_screen()
 	SDL_Rect background_pos = m_camera.frame();
 	background_pos.x = - background_pos.x;
 	background_pos.y = - background_pos.y;
-	SDL_BlitSurface(m_background, NULL, screen, &background_pos);
+	SDL_BlitSurface(curr_lvl.background(), NULL, screen, &background_pos);
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_monster);
 	m_camera.display_sprite(&m_babar);
+	/* affichage des static */
+	while(!statics.empty()) {
+	    m_camera.display_static(statics.head());
+	    statics.cut();
+	}
 	/* mise à jour */
 	SDL_Flip(screen);
 }
 
 void Game::game_loop()
 {
+    Level new_lvl(1);
+    curr_lvl = new_lvl;
 	bool end = false;
 	while (!end){
 		m_time = SDL_GetTicks();

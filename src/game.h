@@ -20,7 +20,6 @@ private:
 	Camera m_camera;		/* camera ciblant babar */
 	uint32_t m_time;		/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
-	SDL_Surface *m_background;	/* image de fond */
 
 public:
 	Game();				/* constructeur */

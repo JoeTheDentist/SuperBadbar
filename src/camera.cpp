@@ -8,13 +8,20 @@ void Camera::display_sprite(Babar *babar)
 	SDL_BlitSurface(babar->current_picture(), NULL, screen, &pos_babar);
 
 }
-void Camera::display_sprite(Monster *monster)
+void Camera::display_sprite(Monster *monster)   /* Surcharge car les current_picture appartiennent au classe filles, on pourrait faire une template à la place */
 {
 	SDL_Rect pos_monster = monster->position();
 	pos_monster.x -= m_frame.x;
 	pos_monster.y -= m_frame.y;
 	SDL_BlitSurface(monster->current_picture(), NULL, screen, &pos_monster);
+}
 
+void Camera::display_static(Static *sttc)
+{
+    SDL_Rect pos_static = sttc->position();
+    pos_static.x -= m_frame.x;
+	pos_static.y -= m_frame.y;
+    SDL_BlitSurface(sttc->image(), NULL, screen, &pos_static);
 }
 
 SDL_Rect Camera::frame(){	return m_frame;}

@@ -8,16 +8,21 @@
 
 #include "SDL/SDL.h"
 
+#define BOX_SIZE 5  /* Taille des cases de la grille de colision */
+
 
 class Level {
 private:
 	uint32_t m_level;		/* Numero du niveau */
 	SDL_Surface ** m_monster_pic;	/* tableau des images des monstres présents dans le niveau*/
-	
+	SDL_Surface * m_background;     /* image de fond du niveau */
+	uint8_t ** m_statics_matrix;      /* matrice des statics */
+
 public:
 	Level();			/* Constructeur par défaut*/
 	Level(uint32_t lvl);		/* Constructeur avec précision du numéro de niveau */
 	~Level();			/* Destructeur */
+	SDL_Surface * background();  /* Accesseur */
 };
 
 

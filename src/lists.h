@@ -30,6 +30,7 @@ template <class T> struct cell {
 template <class T> class List {
     private :
         cell<T> * m_list;
+        cell<T> * m_cursor;
     public :
         List();                         /* Constructeur */
         List(cell<T> * l);              /* Constructeur surchargé pour forcer m_list */
