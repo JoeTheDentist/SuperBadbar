@@ -283,7 +283,7 @@
 
 1278748629 c:\users\guillaume\desktop\svn\src\events.h
 
-1280244294 source:c:\users\guillaume\desktop\svn\src\game.cpp
+1280417199 source:c:\users\guillaume\desktop\svn\src\game.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -294,33 +294,41 @@
 	"events.h"
 	"camera.h"
 	"collisions.h"
+	"levels.h"
 
-1278796174 c:\users\guillaume\desktop\svn\src\game.h
+1280353849 c:\users\guillaume\desktop\svn\src\game.h
 	<stdint.h>
 	"sprites.h"
 	"camera.h"
 
-1280302563 c:\users\guillaume\desktop\svn\src\sprites.h
+1280313741 c:\users\guillaume\desktop\svn\src\sprites.h
 	"SDL/SDL.h"
 
-1280244215 c:\users\guillaume\desktop\svn\src\camera.h
+1280414208 c:\users\guillaume\desktop\svn\src\camera.h
 	<SDL/SDL.h>
 	<stdint.h>
 	"sprites.h"
+	"statics.h"
 
 1278748629 c:\users\guillaume\desktop\svn\src\window.h
 
-1279443412 c:\users\guillaume\desktop\svn\src\globals.h
+1280417061 c:\users\guillaume\desktop\svn\src\globals.h
 	<string>
 	<SDL/SDL.h>
+	"statics.h"
 	"events.h"
+	"levels.h"
+	"lists.h"
 
-1279444540 source:c:\users\guillaume\desktop\svn\src\globals.cpp
+1280417061 source:c:\users\guillaume\desktop\svn\src\globals.cpp
 	<string>
 	<SDL/SDL.h>
 	<stdint.h>
-	"globals.h"
 	"events.h"
+	"levels.h"
+	"lists.h"
+	"statics.h"
+	"globals.h"
 
 1278749823 source:c:\users\guillaume\desktop\svn\src\main.cpp
 	<iostream>
@@ -331,16 +339,16 @@
 	"game.h"
 	"globals.h"
 
-1278749823 source:c:\users\guillaume\desktop\svn\src\window.cpp
+1280326060 source:c:\users\guillaume\desktop\svn\src\window.cpp
 	<iostream>
 	<stdint.h>
 	<SDL/SDL.h>
 	"window.h"
 	"globals.h"
 
-1280244215 source:c:\users\guillaume\desktop\svn\src\camera.cpp
+1280414227 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1280302994 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1280313872 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -367,12 +375,25 @@
 	<string>
 	"sprites.h"
 
-1280302987 source:c:\users\guillaume\desktop\svn\src\levels.cpp
+1280511483 source:c:\users\guillaume\desktop\svn\src\levels.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"levels.h"
+	"analyser.h"
 
-1280152839 c:\users\guillaume\desktop\svn\src\levels.h
+1280523872 c:\users\guillaume\desktop\svn\src\levels.h
 	"SDL/SDL.h"
+
+1280523874 c:\users\guillaume\desktop\svn\src\lists.h
+	<iostream>
+
+1280417316 c:\users\guillaume\desktop\svn\src\statics.h
+	<SDL/SDL.h>
+
+1280417337 source:c:\users\guillaume\desktop\svn\src\statics.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"statics.h"
 

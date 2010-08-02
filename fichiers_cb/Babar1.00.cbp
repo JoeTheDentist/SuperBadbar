@@ -60,6 +60,8 @@
 		<Unit filename="..\src\main.cpp" />
 		<Unit filename="..\src\sprites.cpp" />
 		<Unit filename="..\src\sprites.h" />
+		<Unit filename="..\src\statics.cpp" />
+		<Unit filename="..\src\statics.h" />
 		<Unit filename="..\src\window.cpp" />
 		<Unit filename="..\src\window.h" />
 		<Extensions>
