@@ -77,9 +77,7 @@ void Analyser::fill_statics()
     char link[40];
     SDL_Rect pos;
 
-
     find_string("#Statics#");
-    jump_separators();
 
     fscanf(m_file,"%s",&link);
     jump_separators();

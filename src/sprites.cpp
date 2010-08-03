@@ -141,7 +141,7 @@ void Babar::update_speed()
         m_speed.y += GRAVITE;
     }
     else {
-        if (m_speed.y>0) {
+        if (m_speed.y<0) {
             m_pos.y = ((uint32_t)(m_pos.y/curr_lvl.level_weight()))*curr_lvl.level_weight()-10;
             m_speed.y = 0;
         }
