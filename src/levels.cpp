@@ -28,9 +28,9 @@ Level::Level(uint32_t lvl)
     analyser.close();
 
     /*** Allocation du tableau pour les collisions ***/
-    m_statics_matrix = new uint8_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
+    m_statics_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
     for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
-        m_statics_matrix[i] = new uint8_t[m_background->w/BOX_SIZE];
+        m_statics_matrix[i] = new uint32_t[m_background->w/BOX_SIZE];
     }
 
     /*** Remplissage de la matrice pour les collisions ***/
@@ -40,7 +40,9 @@ Level::Level(uint32_t lvl)
         }
     }
     for(int i = 0;i<(m_background->w/BOX_SIZE);i++) {           /* Temp, on met le sol intraversable */
-        m_statics_matrix[(m_background->h/BOX_SIZE)-1][i] = 1;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-1] = 1;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-2] = 1;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-3] = 1;
     }
 
 
@@ -55,7 +57,7 @@ Level::~Level()
     SDL_FreeSurface(m_background);
 }
 
-void Level::fill_collision(uint32_t i, uint32_t j, uint8_t collision_type)
+void Level::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)
 {
     uint32_t a = m_statics_matrix[0][0];
     m_statics_matrix[i][j] = collision_type;
@@ -76,7 +78,7 @@ uint32_t Level::level_weight()
     return m_background->w;
 }
 
-uint8_t Level::collision(uint32_t i, uint32_t j)
+uint32_t Level::collision(uint32_t i, uint32_t j)
 {
-    return m_statics_matrix[i][j];
+    return m_statics_matrix[i/BOX_SIZE][j/BOX_SIZE];
 }

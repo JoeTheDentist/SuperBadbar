@@ -79,7 +79,7 @@ void Analyser::fill_statics()
 
     find_string("#Statics#");
 
-    fscanf(m_file,"%s",&link);
+    fscanf(m_file,"%s",link);
     jump_separators();
     while(link[0]!='!') {
         Static *curr_static;

@@ -33,7 +33,7 @@ protected:
 	horizontal m_horizontal;    /* direction horizontale */
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
-	uint8_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
+	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */

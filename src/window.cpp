@@ -6,7 +6,7 @@
 #include "globals.h"
 
 
-uint8_t open_window(uint16_t weight, uint16_t height)
+uint32_t open_window(uint16_t weight, uint16_t height)
 {
 
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
@@ -18,7 +18,7 @@ uint8_t open_window(uint16_t weight, uint16_t height)
 	return 1;
 }
 
-uint8_t fill_screen(char *picture)
+uint32_t fill_screen(char *picture)
 {
 	SDL_Rect pos_screen = {0,0,0,0};
 	if (picture == NULL){

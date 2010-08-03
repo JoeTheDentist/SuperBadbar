@@ -9,12 +9,12 @@
 /**
  * Ouvre une fenêtre avec la taille spécifiée
  **/
-uint8_t open_window(uint16_t weight, uint16_t height);
+uint32_t open_window(uint16_t weight, uint16_t height);
 
 /**
  * Pose le fond de la fenêtre
  **/
-uint8_t fill_screen(char *picture);
+uint32_t fill_screen(char *picture);
 
 /**
  * Ferme la fenêtre
