@@ -21,7 +21,6 @@ uint32_t Analyser::open(std::string file)
 	if (m_file == NULL)
 		return 1;
 	m_opened = true;
-	m_current = fgetc(m_file);
 	return 0;
 }
 
@@ -36,40 +35,42 @@ void Analyser::find_string(std::string str)
 {
 	uint32_t char_found = 0;
 	uint32_t size = str.size();
+	char current = 'a';
 	fseek(m_file, 0, SEEK_SET);
-	while (m_current != EOF && char_found < size){
-		if (m_current == str[char_found])
+	while (current != EOF && char_found < size){
+		current = fgetc(m_file);		
+		if (current == str[char_found])
 			char_found++;
 		else
 			char_found = 0;
-		m_current = fgetc(m_file);
+
 	}
-	if (m_current !=EOF)
-		m_current = fgetc(m_file);
 }
 
 void Analyser::jump_separators()
 {
+	char current;
 	bool jump = true;
 	while (jump){
-		switch (m_current){
+		current = fgetc(m_file);
+		switch (current){
 		case ' ': case '\n':
-			m_current = fgetc(m_file);
 			break;
 		case '/':
-			m_current = fgetc(m_file);
-			if (m_current != '/'){
+			current = fgetc(m_file);
+			if (current != '/'){
 				jump = false;
 				break;
 			}
-			while (m_current != '\n')
-				m_current = fgetc(m_file);
+			while (current != '\n')
+				current = fgetc(m_file);
 			break;
 		default:
 			jump = false;
 			break;
 		}
 	}
+	fseek(m_file, -1, SEEK_CUR);
 }
 
 void Analyser::fill_statics()

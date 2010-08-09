@@ -37,6 +37,14 @@ void Sprite::update_pos()
 	m_pos.x += m_speed.x;
 	m_pos.y += m_speed.y;
 	m_phase++;
+	if (m_pos.x < 0)
+		m_pos.x = 0;
+	if (m_pos.y < m_pos.h)
+		m_pos.y = m_pos.h;
+	if (m_pos.x  > curr_lvl.level_weight())
+		m_pos.x =  curr_lvl.level_weight();	
+	if (m_pos.y + m_pos.h  > curr_lvl.level_height())
+		m_pos.y =  curr_lvl.level_height() - m_pos.h;
 }
 
 
