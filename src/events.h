@@ -19,6 +19,7 @@ public:
 	~Events_status();	/* destructeur */
 	void update_events();	/* met à jour les touches enfoncées à partir des actions du joueur */
 	bool key_down (enum key k);	/* retourne vrai si la touche est enfoncée */
+	bool key_dir_down();    /* retourne si une touche gauche droite est enfoncée */
 };
 
 

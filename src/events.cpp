@@ -53,3 +53,8 @@ bool Events_status::key_down(enum key k)
 {
 	return m_key_down[k];
 }
+
+bool Events_status::key_dir_down()
+{
+    return (m_key_down[k_left]||m_key_down[k_right]);
+}

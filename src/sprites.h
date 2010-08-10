@@ -41,6 +41,7 @@ public:
 	SDL_Rect position();		/* accesseur */
 	uint32_t position_x(); 		/* accesseur */
 	uint32_t position_y(); 		/* accesseur */
+	uint32_t phase();           /* accesseur */
 };
 
 
@@ -71,6 +72,16 @@ public:
 	void set_pos_x(uint32_t x);				/* m_pos.x = x */
 	void set_pos_y(uint32_t y);				/* m_pos.y = y */
 
+};
+
+
+class Projectile: public Sprite {
+protected:
+    SDL_Surface * m_pic;
+public:
+    Projectile();
+    Projectile(SDL_Rect pos, horizontal h, vertical v);
+    ~Projectile();
 };
 
 

@@ -45,7 +45,10 @@ Level::Level(uint32_t lvl)
         m_statics_matrix[i][(m_background->h/BOX_SIZE)-3] = 1;
     }
 
-
+    m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
+    m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
+    m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
+    m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
 }
 
 Level::~Level()
@@ -55,6 +58,9 @@ Level::~Level()
     }
     delete m_statics_matrix;
     SDL_FreeSurface(m_background);
+    for(int i = 0;i<4;i++) {
+        SDL_FreeSurface(m_proj[i]);
+    }
 }
 
 void Level::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)
@@ -81,4 +87,9 @@ uint32_t Level::level_weight()
 uint32_t Level::collision(uint32_t i, uint32_t j)
 {
     return m_statics_matrix[i/BOX_SIZE][j/BOX_SIZE];
+}
+
+SDL_Surface * Level::proj(uint8_t i)
+{
+    return m_proj[i];
 }

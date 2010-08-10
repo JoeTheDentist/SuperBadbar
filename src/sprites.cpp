@@ -42,7 +42,7 @@ void Sprite::update_pos()
 	if (m_pos.y < m_pos.h)
 		m_pos.y = m_pos.h;
 	if (m_pos.x  > curr_lvl.level_weight())
-		m_pos.x =  curr_lvl.level_weight();	
+		m_pos.x =  curr_lvl.level_weight();
 	if (m_pos.y + m_pos.h  > curr_lvl.level_height())
 		m_pos.y =  curr_lvl.level_height() - m_pos.h;
 }
@@ -61,6 +61,11 @@ uint32_t Sprite::position_x()
 uint32_t Sprite::position_y()
 {
 	return m_pos.y;
+}
+
+uint32_t Sprite::phase()
+{
+    return m_phase;
 }
 
 
@@ -246,4 +251,40 @@ void Monster::set_pos_x(uint32_t x)
 void Monster::set_pos_y(uint32_t y)
 {
 	m_pos.y = y;
+}
+
+
+/**************************
+**  Méthodes projectiles **
+**************************/
+
+Projectile::Projectile()
+{
+
+}
+
+Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
+{
+    m_pos = pos;
+    m_horizontal = h;
+    m_vertical = v;
+
+    /*** Remplissage des images des projectiles (voir level.ccp) ***/
+    if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
+        m_pic = curr_lvl.proj(0);
+    }
+    if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
+        m_pic = curr_lvl.proj(1);
+    }
+    if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
+        m_pic = curr_lvl.proj(2);
+    }
+    if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
+        m_pic = curr_lvl.proj(3);
+    }
+}
+
+Projectile::~Projectile()
+{
+
 }

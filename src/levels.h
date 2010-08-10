@@ -18,6 +18,8 @@ private:
 	SDL_Surface * m_background;     /* image de fond du niveau */
 	uint32_t ** m_statics_matrix;      /* matrice des statics */
 
+	SDL_Surface *m_proj[4];     /* images des projectiles dans tous les sens */
+
 public:
 	Level();			/* Constructeur par défaut*/
 	Level(uint32_t lvl);		/* Constructeur avec précision du numéro de niveau */
@@ -27,6 +29,7 @@ public:
 	SDL_Surface * background();  /* Accesseur */
 	uint32_t level_height();    /* Hauteur du niveau */
 	uint32_t level_weight();    /* Largeur du niveau */
+	SDL_Surface * proj(uint8_t i); /* Renvoie l'image voulue (accesseur) */
 };
 
 
