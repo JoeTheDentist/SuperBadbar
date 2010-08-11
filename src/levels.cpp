@@ -5,6 +5,7 @@
 
 #include "levels.h"
 #include "analyser.h"
+#include "collisions.h"
 
 
 Level::Level()
@@ -40,9 +41,9 @@ Level::Level(uint32_t lvl)
         }
     }
     for(int i = 0;i<(m_background->w/BOX_SIZE);i++) {           /* Temp, on met le sol intraversable */
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-1] = 1;
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-2] = 1;
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-3] = 1;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-1] = FULL_COLL;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-2] = FULL_COLL;
+        m_statics_matrix[i][(m_background->h/BOX_SIZE)-3] = FULL_COLL;
     }
 
     m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
@@ -65,7 +66,7 @@ Level::~Level()
 
 void Level::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)
 {
-    uint32_t a = m_statics_matrix[0][0];
+    //~ uint32_t a = m_statics_matrix[0][0];
     m_statics_matrix[i][j] = collision_type;
 }
 

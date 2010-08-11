@@ -15,19 +15,19 @@
 
 class Game {
 private:
-	Babar m_babar;			/* sprite du personnage controlé par le joueur */
-	Monster m_monster;		// temporaire
-	Camera m_camera;		/* camera ciblant babar */
-	uint32_t m_time;		/* temps actuel */
+	Babar m_babar;					/* sprite du personnage controlé par le joueur */
+	Monster m_monster;				// temporaire
+	Camera m_camera;				/* camera ciblant babar */
+	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 
 public:
-	Game();				/* constructeur */
-	~Game();				/* destructeur */
-	void update_pos();		/* mise à jour des positions des sprites */
+	Game();							/* constructeur */
+	~Game();							/* destructeur */
+	void update_pos();			/* mise à jour des positions des sprites */
 	void update_speed();		/* mise à jour des vitesses des sprites */
 	void refresh_screen();		/* raffraichissement de l'écran */
-	void game_loop();		/* boucle de jeu */
+	void game_loop();			/* boucle de jeu */
 };
 
 
