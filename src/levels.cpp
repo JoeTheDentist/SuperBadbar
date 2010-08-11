@@ -37,7 +37,7 @@ Level::Level(uint32_t lvl)
     /*** Remplissage de la matrice pour les collisions ***/
     for(int i = 0;i<(m_background->h/BOX_SIZE);i++) {
         for(int j = 0;j<(m_background->w/BOX_SIZE);j++) {
-            m_statics_matrix[i][j] = 0;
+            m_statics_matrix[i][j] = NO_COLL;
         }
     }
     for(int i = 0;i<(m_background->w/BOX_SIZE);i++) {           /* Temp, on met le sol intraversable */
@@ -93,4 +93,15 @@ uint32_t Level::collision(uint32_t i, uint32_t j)
 SDL_Surface * Level::proj(uint8_t i)
 {
     return m_proj[i];
+}
+
+
+
+bool Level::down_collision(SDL_Rect pos)
+{
+	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) {
+		if (down_coll(m_statics_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE]))
+			return true;
+	}
+	return false;
 }

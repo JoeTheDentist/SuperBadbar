@@ -14,9 +14,9 @@
 #define DOWN_COLL 0x4
 
 bool check_collision(SDL_Rect A, SDL_Rect B);
-bool up_collision(uint32_t coll_number);			/* renvoie vrai si le bit de rang 4 vaut 1 */
-bool down_collision(uint32_t coll_number);      /* renvoie vrai si le bit de rang 3 vaut 1 */
-bool left_collision(uint32_t coll_number);         	/* renvoie vrai si le bit de rang 2 vaut 1 */
-bool right_collision(uint32_t coll_number);       /* renvoie vrai si le bit de rang 1 vaut 1 */
+bool up_coll(uint32_t coll_number);			/* renvoie vrai si le bit de rang 4 vaut 1 */
+bool down_coll(uint32_t coll_number);      /* renvoie vrai si le bit de rang 3 vaut 1 */
+bool left_coll(uint32_t coll_number);         	/* renvoie vrai si le bit de rang 2 vaut 1 */
+bool right_coll(uint32_t coll_number);       /* renvoie vrai si le bit de rang 1 vaut 1 */
 
 #endif

@@ -8,7 +8,6 @@
 #include "events.h"
 #include "analyser.h"
 
-
 /*********************************
 **	Méthodes de Sprite 	**
 **********************************/
@@ -16,7 +15,7 @@ Sprite::Sprite()
 {
 	Analyser analyser;
 	m_pos.x = 10;
-	m_pos.y = 1800;
+	m_pos.y = 50;
 	m_pos.w = 0;
 	m_pos.h = 0;
 	m_speed.x = 0;
@@ -38,14 +37,19 @@ void Sprite::update_pos()
 	m_pos.x += m_speed.x;
 	m_pos.y += m_speed.y;
 	m_phase++;
-	if (m_pos.x < 0)
-		m_pos.x = 0;
-	if (m_pos.y < m_pos.h)
-		m_pos.y = m_pos.h;
-	if ((uint32_t)m_pos.x  > curr_lvl.level_weight())
-		m_pos.x =  curr_lvl.level_weight();
-	if ((uint32_t)(m_pos.y + m_pos.h) > curr_lvl.level_height())
-		m_pos.y =  curr_lvl.level_height() - m_pos.h;
+	
+	if (curr_lvl.down_collision(m_pos)){
+		fprintf(stderr, "HOURRAAAAAAAAAAAAAAA\n");
+		m_pos.y = 0;
+	}
+	//~ if (m_pos.x < 0)
+		//~ m_pos.x = 0;
+	//~ if (m_pos.y < m_pos.h)
+		//~ m_pos.y = m_pos.h;
+	//~ if ((uint32_t)m_pos.x  > curr_lvl.level_weight())
+		//~ m_pos.x =  curr_lvl.level_weight();
+	//~ if ((uint32_t)(m_pos.y + m_pos.h) > curr_lvl.level_height())
+		//~ m_pos.y =  curr_lvl.level_height() - m_pos.h;
 }
 
 
@@ -151,11 +155,12 @@ SDL_Surface *Babar::current_picture()
 
 void Babar::update_speed()
 {
-    //~ uint32_t x = m_pos.x;
-    //~ uint32_t y = m_pos.y;
-    //~ uint32_t xx = m_pos.x/BOX_SIZE;
-    //~ uint32_t yy = m_pos.y/BOX_SIZE;
-    //~ uint32_t a = curr_lvl.collision(m_pos.x,m_pos.y);
+	fprintf(stderr, "hauteur de babar: %d", m_pos.y);
+    uint32_t x = m_pos.x;
+    uint32_t y = m_pos.y;
+    uint32_t xx = m_pos.x/BOX_SIZE;
+    uint32_t yy = m_pos.y/BOX_SIZE;
+    uint32_t a = curr_lvl.collision(m_pos.x,m_pos.y);
 
     if ((curr_lvl.collision(m_pos.x,m_pos.y)!=1)) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
         m_speed.y += GRAVITE;

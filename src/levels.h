@@ -7,6 +7,7 @@
 #define _LEVELS_
 
 #include "SDL/SDL.h"
+#include "sprites.h"
 
 #define BOX_SIZE 5  /* Taille des cases de la grille de colision */
 
@@ -30,8 +31,9 @@ public:
 	uint32_t level_height();  															 	/* Hauteur du niveau */
 	uint32_t level_weight();   				 												/* Largeur du niveau */
 	SDL_Surface * proj(uint8_t i); 														/* Renvoie l'image voulue (accesseur) */
-};
+	bool down_collision(SDL_Rect pos);
 
+};
 
 
 #endif

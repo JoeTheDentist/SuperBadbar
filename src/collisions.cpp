@@ -14,22 +14,22 @@ bool check_collision(SDL_Rect A, SDL_Rect B) //Optimisable?
 	return A_in_B || B_in_A;
 }
 
-bool up_collision(uint32_t coll_number)
+bool up_coll(uint32_t coll_number)
 {
 	return ((coll_number & 0x8) == 0x8);
 }
 
-bool down_collision(uint32_t coll_number)
+bool down_coll(uint32_t coll_number)
 {
 	return ((coll_number & 0x4) == 0x4);
 }
 
-bool left_collision(uint32_t coll_number)
+bool left_coll(uint32_t coll_number)
 {
 	return ((coll_number & 0x2) == 0x2);
 }
 
-bool right_collision(uint32_t coll_number)
+bool right_coll(uint32_t coll_number)
 {
 	return ((coll_number & 0x1) == 0x1);
 }
