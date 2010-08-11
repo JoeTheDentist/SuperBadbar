@@ -37,7 +37,7 @@ void Sprite::update_pos()
 	m_pos.x += m_speed.x;
 	m_pos.y += m_speed.y;
 	m_phase++;
-	
+
 	if (curr_lvl.down_collision(m_pos)){
 		fprintf(stderr, "HOURRAAAAAAAAAAAAAAA\n");
 		m_pos.y = 0;
@@ -288,6 +288,9 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
     if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
         m_pic = curr_lvl.proj(3);
     }
+
+    m_speed.x = (m_horizontal-1)*PROJ_SPEED;
+    m_speed.y = (m_vertical-1)*PROJ_SPEED;
 }
 
 Projectile::~Projectile()

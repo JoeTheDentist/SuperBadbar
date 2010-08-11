@@ -9,6 +9,7 @@
 #define BABAR_SPEED 10
 #define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
+#define PROJ_SPEED 15       /* Vitesse des projectiles */
 
 #include "SDL/SDL.h"
 
