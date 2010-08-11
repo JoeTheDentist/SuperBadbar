@@ -15,7 +15,7 @@ Sprite::Sprite()
 {
 	Analyser analyser;
 	m_pos.x = 10;
-	m_pos.y = 50;
+	m_pos.y = 1700;
 	m_pos.w = 0;
 	m_pos.h = 0;
 	m_speed.x = 0;
@@ -35,18 +35,35 @@ Sprite::~Sprite()
 void Sprite::update_pos()
 {
 	m_pos.x += m_speed.x;
-	m_pos.y += m_speed.y;
 	m_phase++;
-
-	if (curr_lvl.down_collision(m_pos)){
-		fprintf(stderr, "HOURRAAAAAAAAAAAAAAA\n");
-		m_pos.y = 0;
+	fprintf(stderr, "vitesse verticale: %d\n", m_speed.y);
+	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+		if (curr_lvl.down_collision(m_pos)){
+			speed_y = 0;
+			m_speed.y = 0;
+			m_state = STATIC;
+		}
+		else {
+			m_pos.y += BOX_SIZE;
+		}
+		fprintf(stderr, "yop");
 	}
+	
+	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+		if (curr_lvl.up_collision(m_pos)){
+			speed_y = 0;
+			m_speed.y = 0;
+		}
+		else {
+			m_pos.y -= BOX_SIZE;
+		}
+	}	
+	
+	
 	//~ if (m_pos.x < 0)
 		//~ m_pos.x = 0;
 	//~ if (m_pos.y < m_pos.h)
-		//~ m_pos.y = m_pos.h;
-	//~ if ((uint32_t)m_pos.x  > curr_lvl.level_weight())
+		//~ m_pos.y = m_pos.h;y	//~ if ((uint32_t)m_pos.x  > curr_lvl.level_weight())
 		//~ m_pos.x =  curr_lvl.level_weight();
 	//~ if ((uint32_t)(m_pos.y + m_pos.h) > curr_lvl.level_height())
 		//~ m_pos.y =  curr_lvl.level_height() - m_pos.h;
@@ -162,15 +179,8 @@ void Babar::update_speed()
     uint32_t yy = m_pos.y/BOX_SIZE;
     uint32_t a = curr_lvl.collision(m_pos.x,m_pos.y);
 
-    if ((curr_lvl.collision(m_pos.x,m_pos.y)!=1)) {         /* On regarde si Babar ne touche pas le sol => on remplacera avec des collision de static */
-        m_speed.y += GRAVITE;
-    }
-    else {
-        if (m_speed.y<0) {
-            m_pos.y = 1900;
-            m_speed.y = 0;
-        }
-    }
+	m_speed.y += GRAVITE;
+
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (Events_stat.key_down(k_left))

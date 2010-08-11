@@ -41,10 +41,17 @@ Level::Level(uint32_t lvl)
         }
     }
     for(int i = 0;i<(m_background->w/BOX_SIZE);i++) {           /* Temp, on met le sol intraversable */
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-1] = FULL_COLL;
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-2] = FULL_COLL;
-        m_statics_matrix[i][(m_background->h/BOX_SIZE)-3] = FULL_COLL;
+		m_statics_matrix[i][(m_background->h/BOX_SIZE)-1] = FULL_COLL;
+		if (i < 20 || i > 90){
+			m_statics_matrix[i][(m_background->h/BOX_SIZE)-30] = DOWN_COLL;
+			m_statics_matrix[i][(m_background->h/BOX_SIZE)-60] = DOWN_COLL;
+			m_statics_matrix[i][(m_background->h/BOX_SIZE)-90] = DOWN_COLL;
+			m_statics_matrix[i][(m_background->h/BOX_SIZE)-150] = FULL_COLL;
+		}
     }
+	//~ for (int i = 0 ; i < 100 ; i++){
+		//~ m_statics_matrix[i][i] = FULL_COLL;
+	//~ }
 
     m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
     m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
@@ -105,3 +112,14 @@ bool Level::down_collision(SDL_Rect pos)
 	}
 	return false;
 }
+
+bool Level::up_collision(SDL_Rect pos)
+{
+	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) {
+		if (up_coll(m_statics_matrix[i / BOX_SIZE][pos.y / BOX_SIZE]))
+			return true;
+	}
+	return false;
+}
+
+

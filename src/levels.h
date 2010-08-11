@@ -32,6 +32,7 @@ public:
 	uint32_t level_weight();   				 												/* Largeur du niveau */
 	SDL_Surface * proj(uint8_t i); 														/* Renvoie l'image voulue (accesseur) */
 	bool down_collision(SDL_Rect pos);
+	bool up_collision(SDL_Rect pos);
 
 };
 
