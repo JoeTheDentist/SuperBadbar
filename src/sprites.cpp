@@ -41,7 +41,7 @@ void Sprite::update_pos()
 		if (curr_lvl.down_collision(m_pos)){
 			speed_y = 0;
 			m_speed.y = 0;
-			m_state = STATIC;
+			m_state = WALK;
 		}
 		else {
 			m_pos.y += BOX_SIZE;
