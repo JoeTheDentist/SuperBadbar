@@ -3,12 +3,12 @@
 #include <stdint.h>
 
 #include "collision_matrix.h"
+#include "editor.h"
 
 
 int main(int argc, char *argv[])
 {
-	Collision_matrix grille("test.col");
-	grille.save("copie.col");
-
+	Editor editor;
+	
 	return 0;
 }

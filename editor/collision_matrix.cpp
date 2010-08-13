@@ -18,9 +18,9 @@ Collision_matrix::Collision_matrix(size_t weight, size_t height)
 {
 	m_weight = weight;
 	m_height = height;
-	m_matrix = new uint8_t*[weight];
+	m_matrix = new uint32_t*[weight];
 	for (uint32_t i = 0; i < weight; i++)
-		m_matrix[i] = new uint8_t[height];
+		m_matrix[i] = new uint32_t[height];
 }
 
 
@@ -29,12 +29,12 @@ Collision_matrix::Collision_matrix(std::string file_name)
 	FILE* file = fopen(file_name.c_str(), "r");
 	fscanf(file, "%d", &m_weight);
 	fscanf(file, "%d", &m_height);
-	m_matrix = new uint8_t*[m_weight];
+	m_matrix = new uint32_t*[m_weight];
 	for (uint32_t i = 0; i < m_weight; i++)
-		m_matrix[i] = new uint8_t[m_height];
+		m_matrix[i] = new uint32_t[m_height];
 	for (uint32_t i = 0; i < m_weight; i++)
 		for (uint32_t j = 0; j < m_height; j++)
-			fscanf(file, "%d", m_matrix[i] + j * sizeof(uint8_t));
+			fscanf(file, "%u", m_matrix[i] + j * sizeof(uint32_t));
 	fclose(file);
 }                                       
 
