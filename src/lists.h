@@ -3,6 +3,8 @@
     (voire objets)
 
     Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
+
+    Attention ! Ici on appelle jamais de destructeur (à cause des templates) ainsi, il est préférable de ne pas utiliser d'objets ou bien des objets qui n'ont pas d'allocation de mémoire
 **/
 
 
@@ -29,8 +31,8 @@ template <class T> struct cell {
 
 template <class T> class List {
     private :
-        cell<T> * m_list;
-        cell<T> * m_cursor;
+        cell<T> * m_list;               /* Liste */
+        cell<T> * m_cursor;             /* Curseur permettant de parcourir la liste */
     public :
         List();                         /* Constructeur */
         List(cell<T> * l);              /* Constructeur surchargé pour forcer m_list */
@@ -43,9 +45,10 @@ template <class T> class List {
         void init();                    /* Met le curseur au début de la liste */
         void next();                    /* Le curseur va sur l'élément suivant */
         T element();                    /* Retourne l'élément sur le curseur */
-        bool end();                     /* Rtourne si le curseur est à la fin de la liste */
+        bool end();                     /* Retourne si le curseur est à la fin de la liste */
 
         void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
+        void delete_elements(bool (*fct)(T)); /* Supprime les éléments qui vérifient fct */
 };
 
 
@@ -103,6 +106,7 @@ template <class T> void List<T>::cut()
     cell<T> * p = m_list->back;
     delete m_list;
     m_list = p;
+    init();
 }
 
 template <class T> bool List<T>::empty()
@@ -122,6 +126,28 @@ template <class T> void List<T>::do_list(void (*fct)(T))
         fct(l->head);
         l = l->back;
     }
+}
+
+template <class T> void List<T>::delete_elements(bool (*fct)(T))
+{
+    T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
+    cell<T> * temp;
+    add(a);
+    cell<T> * last = m_list; /* Pointeur sur le précédent */
+    next(); /* Pour que le curseur ne soit pas au même endroit que last */
+    while(!end()) {
+        if(fct(m_cursor->head)) {
+            next();
+            temp = last->back->back;
+            delete last->back;
+            last->back = temp;
+        }
+        else {
+            next();
+            last = last->back;
+        }
+    }
+    cut(); /* Die fucking sentinelle !!! */
 }
 
 #endif // LISTS_H_INCLUDED
