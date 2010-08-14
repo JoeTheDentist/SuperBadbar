@@ -48,7 +48,7 @@ void Sprite::update_pos()
 		}
 		fprintf(stderr, "yop");
 	}
-	
+
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (curr_lvl.up_collision(m_pos)){
 			speed_y = 0;
@@ -57,9 +57,9 @@ void Sprite::update_pos()
 		else {
 			m_pos.y -= BOX_SIZE;
 		}
-	}	
-	
-	
+	}
+
+
 	//~ if (m_pos.x < 0)
 		//~ m_pos.x = 0;
 	//~ if (m_pos.y < m_pos.h)
@@ -173,11 +173,6 @@ SDL_Surface *Babar::current_picture()
 void Babar::update_speed()
 {
 	fprintf(stderr, "hauteur de babar: %d", m_pos.y);
-    uint32_t x = m_pos.x;
-    uint32_t y = m_pos.y;
-    uint32_t xx = m_pos.x/BOX_SIZE;
-    uint32_t yy = m_pos.y/BOX_SIZE;
-    uint32_t a = curr_lvl.collision(m_pos.x,m_pos.y);
 
 	m_speed.y += GRAVITE;
 
@@ -220,6 +215,10 @@ void Babar::update_state()
     }
     if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
         m_state = WALK;
+    }
+    if (Events_stat.key_down(k_fire)) {
+        Projectile * proj = new Projectile(m_pos,m_horizontal,m_vertical);
+        projectiles.add(proj);
     }
 
 }
@@ -287,16 +286,16 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
 
     /*** Remplissage des images des projectiles (voir level.ccp) ***/
     if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
-        m_pic = curr_lvl.proj(0);
-    }
-    if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
-        m_pic = curr_lvl.proj(1);
-    }
-    if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
         m_pic = curr_lvl.proj(2);
     }
-    if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
+    if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
+        m_pic = curr_lvl.proj(0);
+    }
+    if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
         m_pic = curr_lvl.proj(3);
+    }
+    if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
+        m_pic = curr_lvl.proj(1);
     }
 
     m_speed.x = (m_horizontal-1)*PROJ_SPEED;
@@ -306,4 +305,17 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
 Projectile::~Projectile()
 {
 
+}
+
+SDL_Surface *Projectile::current_picture()
+{
+    return m_pic;
+}
+
+
+/*** Fonctions ***/
+
+bool too_old(Projectile * p)
+{
+    return p->phase()>PROJ_LIFE_SPAN;
 }

@@ -10,6 +10,7 @@
 #define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 #define PROJ_SPEED 15       /* Vitesse des projectiles */
+#define PROJ_LIFE_SPAN 30  /* Durée de vie d'un projectile */
 
 #include "SDL/SDL.h"
 
@@ -19,7 +20,7 @@ enum horizontal {
 };
 
 enum vertical {
-    DOWN, MIDDLE_v, UP
+    UP, MIDDLE_v, DOWN
 };
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
@@ -83,7 +84,12 @@ public:
     Projectile();
     Projectile(SDL_Rect pos, horizontal h, vertical v);
     ~Projectile();
+    SDL_Surface * current_picture();
 };
+
+
+
+bool too_old(Projectile * p);
 
 
 #endif

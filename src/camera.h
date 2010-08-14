@@ -25,6 +25,7 @@ public:
 	void update_pos();	/* mise à jour de la camera */
 	void display_sprite(Babar *babar);      /* affichage d'un Babar */
 	void display_sprite(Monster *monster);  /* affichage d'un monstre */
+	void display_sprite(Projectile * proj); /* affichage d'un projectile */
 	void display_static(Static *sttc);
 	SDL_Rect frame();	/* accesseur (m_frame) */
 };

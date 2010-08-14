@@ -16,6 +16,14 @@ void Camera::display_sprite(Babar *babar)
 	SDL_BlitSurface(monster->current_picture(), NULL, screen, &pos_monster);
 }
 
+void Camera::display_sprite(Projectile * proj)   /* Surcharge */
+{
+	SDL_Rect pos_proj = proj->position();
+	pos_proj.x -= m_frame.x;
+	pos_proj.y -= m_frame.y;
+	SDL_BlitSurface(proj->current_picture(), NULL, screen, &pos_proj);
+}
+
 void Camera::display_static(Static *sttc)
 {
     SDL_Rect pos_static = sttc->position();

@@ -5,13 +5,13 @@
 		<Cursor position="731" topLine="70" />
 	</File>
 	<File name="..\src\analyser.h" open="1" top="0" tabpos="22">
-		<Cursor position="514" topLine="0" />
+		<Cursor position="390" topLine="0" />
 	</File>
 	<File name="..\src\camera.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="912" topLine="27" />
+		<Cursor position="1546" topLine="48" />
 	</File>
 	<File name="..\src\camera.h" open="1" top="0" tabpos="9">
-		<Cursor position="384" topLine="14" />
+		<Cursor position="893" topLine="14" />
 	</File>
 	<File name="..\src\collisions.cpp" open="1" top="0" tabpos="12">
 		<Cursor position="0" topLine="0" />
@@ -20,43 +20,43 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="..\src\events.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="701" topLine="17" />
+		<Cursor position="307" topLine="40" />
 	</File>
 	<File name="..\src\events.h" open="1" top="0" tabpos="7">
-		<Cursor position="254" topLine="0" />
+		<Cursor position="753" topLine="5" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="436" topLine="12" />
+		<Cursor position="1536" topLine="31" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="11">
-		<Cursor position="360" topLine="13" />
+		<Cursor position="360" topLine="6" />
 	</File>
 	<File name="..\src\globals.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="283" topLine="0" />
+		<Cursor position="214" topLine="1" />
 	</File>
 	<File name="..\src\globals.h" open="1" top="0" tabpos="6">
-		<Cursor position="537" topLine="4" />
+		<Cursor position="361" topLine="5" />
 	</File>
 	<File name="..\src\levels.cpp" open="1" top="0" tabpos="16">
-		<Cursor position="1588" topLine="32" />
+		<Cursor position="1933" topLine="48" />
 	</File>
 	<File name="..\src\levels.h" open="1" top="0" tabpos="17">
-		<Cursor position="724" topLine="11" />
+		<Cursor position="1083" topLine="16" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="3">
-		<Cursor position="2195" topLine="68" />
+		<Cursor position="3664" topLine="129" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="192" topLine="0" />
 	</File>
-	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="4372" topLine="159" />
+	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="875" topLine="37" />
 	</File>
-	<File name="..\src\sprites.h" open="1" top="0" tabpos="5">
-		<Cursor position="970" topLine="22" />
+	<File name="..\src\sprites.h" open="1" top="1" tabpos="5">
+		<Cursor position="598" topLine="9" />
 	</File>
 	<File name="..\src\statics.cpp" open="1" top="0" tabpos="21">
-		<Cursor position="327" topLine="12" />
+		<Cursor position="441" topLine="12" />
 	</File>
 	<File name="..\src\statics.h" open="1" top="0" tabpos="20">
 		<Cursor position="302" topLine="0" />

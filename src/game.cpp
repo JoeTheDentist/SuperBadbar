@@ -34,6 +34,11 @@ void Game::update_pos()
 {
 	m_babar.update_pos();
 	m_monster.update_pos();
+	while(!projectiles.end()) {
+	    projectiles.element()->update_pos();
+	    projectiles.next();
+	}
+	projectiles.init();
 }
 
 void Game::update_speed()
@@ -47,20 +52,31 @@ void Game::update_speed()
 void Game::refresh_screen()
 {
 	/* affichage du fond */
-	statics.init(); /* On remet le curseur au début pour pouvoir lire les statics */
 	m_camera.update_pos();
 	SDL_Rect background_pos = m_camera.frame();
 	background_pos.x = - background_pos.x;
 	background_pos.y = - background_pos.y;
 	SDL_BlitSurface(curr_lvl.background(), NULL, screen, &background_pos);
-	/* affichage des static (à faire en premier) */
+
+	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	while(!statics.end()) {
 	    m_camera.display_static(statics.element());
 	    statics.next();
 	}
+	statics.init();
+
+	/* affichage des projectiles */
+	while(!projectiles.end()) {
+	    m_camera.display_sprite(projectiles.element());
+	    projectiles.next();
+	}
+	/* suppression de projectiles trop vieux */
+    projectiles.delete_elements(too_old);
+
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_monster);
 	m_camera.display_sprite(&m_babar);
+
 	/* mise à jour */
 	SDL_Flip(screen);
 }

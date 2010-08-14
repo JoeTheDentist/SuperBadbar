@@ -12,6 +12,7 @@
 #define LISTS_H_INCLUDED
 
 #include <iostream>
+#include <typeinfo>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ using namespace std;
 ***************************/
 
 template <class T> struct cell {
-    T head;
+    T * head;
     cell * back;
 };
 
@@ -84,7 +85,7 @@ template <class T> void List<T>::next()
 
 template <class T> T List<T>::element()
 {
-    return m_cursor->head;
+    return *(m_cursor->head);
 }
 
 template <class T> bool List<T>::end()
@@ -95,7 +96,8 @@ template <class T> bool List<T>::end()
 template <class T> void List<T>::add(T element)
 {
     cell<T> * p = new cell<T>;
-    p->head = element;
+    p->head = new T;
+    *(p->head) = element;
     p->back = m_list;
     m_list = p;
     init();
@@ -104,6 +106,7 @@ template <class T> void List<T>::add(T element)
 template <class T> void List<T>::cut()
 {
     cell<T> * p = m_list->back;
+    delete m_list->head;
     delete m_list;
     m_list = p;
     init();
@@ -116,7 +119,7 @@ template <class T> bool List<T>::empty()
 
 template <class T> T List<T>::head()
 {
-    return m_list->head;
+    return *(m_list->head);
 }
 
 template <class T> void List<T>::do_list(void (*fct)(T))
@@ -136,9 +139,10 @@ template <class T> void List<T>::delete_elements(bool (*fct)(T))
     cell<T> * last = m_list; /* Pointeur sur le précédent */
     next(); /* Pour que le curseur ne soit pas au même endroit que last */
     while(!end()) {
-        if(fct(m_cursor->head)) {
+        if(fct(*(m_cursor->head))) {
             next();
             temp = last->back->back;
+	    delete last->back->head;
             delete last->back;
             last->back = temp;
         }
