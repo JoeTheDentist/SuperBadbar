@@ -4,11 +4,15 @@
 
 #include "collision_matrix.h"
 #include "editor.h"
+#include "pic_list.h"
+
 
 
 int main(int argc, char *argv[])
 {
-	Editor editor;
+	Pic_list list;
+	SDL_Rect pos;
+	list.add("../pic/blob.bmp", pos);
 	
 	return 0;
 }

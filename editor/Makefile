@@ -3,7 +3,7 @@ CFLAGS = -Wall  -g
 EXEC_NAME = main
 INCLUDES =
 LIBS =
-OBJ_FILES =  main.o collision_matrix.o editor.o window.o
+OBJ_FILES =  main.o collision_matrix.o editor.o window.o pic_list.o
 INSTALL_DIR = .
 LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image 
 
