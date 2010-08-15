@@ -217,7 +217,13 @@ void Babar::update_state()
         m_state = WALK;
     }
     if (Events_stat.key_down(k_fire)) {
-        Projectile * proj = new Projectile(m_pos,m_horizontal,m_vertical);
+        Projectile * proj;
+        if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
+            proj = new Projectile(m_pos,m_horizontal,m_vertical);
+        }
+        else {
+            proj = new Projectile(m_pos,m_last_dir,m_vertical);
+        }
         projectiles.add(proj);
     }
 

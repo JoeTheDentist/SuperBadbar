@@ -57,6 +57,10 @@ Level::Level(uint32_t lvl)
     m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
     m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
     m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
+
+    for(int i = 0;i<4;i++) {
+        SDL_SetColorKey(m_proj[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj[i]->format, 0, 0, 255));
+    }
 }
 
 Level::~Level()
