@@ -9,8 +9,9 @@
 #define BABAR_SPEED 10
 #define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
-#define PROJ_SPEED 15       /* Vitesse des projectiles */
-#define PROJ_LIFE_SPAN 30  /* Durée de vie d'un projectile */
+#define PROJ_SPEED 20       /* Vitesse des projectiles */
+#define PROJ_LIFE_SPAN 20  /* Durée de vie d'un projectile */
+#define FIRE_DELAY 2        /* Temps entre deux tirs concecutifs */
 
 #include "SDL/SDL.h"
 
@@ -51,6 +52,7 @@ class Babar: public Sprite {
 protected:
     horizontal m_last_dir;  /* Se souvient de vers où on regarde (à cause du tir au et bas) */
     SDL_Surface *m_pics[3][3][3][2]; /* Images des animations : état, gauche droite, bas haut, numéro image */
+    uint32_t m_fire_phase;
 public:
 	Babar();		/* constructeur */
 	~Babar();		/* destructeur */

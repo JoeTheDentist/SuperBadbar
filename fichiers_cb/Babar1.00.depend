@@ -302,7 +302,7 @@
 	"sprites.h"
 	"camera.h"
 
-1281820811 c:\users\guillaume\desktop\svn\src\sprites.h
+1281865254 c:\users\guillaume\desktop\svn\src\sprites.h
 	"SDL/SDL.h"
 
 1281786301 c:\users\guillaume\desktop\svn\src\camera.h
@@ -350,7 +350,7 @@
 
 1281786244 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1281856493 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1281865150 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -379,7 +379,7 @@
 	"statics.h"
 	"globals.h"
 
-1281523604 source:c:\users\guillaume\desktop\svn\src\levels.cpp
+1281857235 source:c:\users\guillaume\desktop\svn\src\levels.cpp
 	<iostream>
 	<stdint.h>
 	<string>

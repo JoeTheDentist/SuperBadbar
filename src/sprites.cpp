@@ -99,6 +99,7 @@ Babar::Babar()
     m_pos.w = 163;
 	m_pos.h = 234;
 	m_last_dir = LEFT;
+	m_fire_phase = 0;
 
     /*** Stockage et chargement dans le tableau des images ***/
 
@@ -216,7 +217,7 @@ void Babar::update_state()
     if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
         m_state = WALK;
     }
-    if (Events_stat.key_down(k_fire)) {
+    if (Events_stat.key_down(k_fire)&&(m_fire_phase>FIRE_DELAY)) {
         Projectile * proj;
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
             proj = new Projectile(m_pos,m_horizontal,m_vertical);
@@ -224,7 +225,11 @@ void Babar::update_state()
         else {
             proj = new Projectile(m_pos,m_last_dir,m_vertical);
         }
+        m_fire_phase = 0;
         projectiles.add(proj);
+    }
+    else {
+        m_fire_phase++;
     }
 
 }
