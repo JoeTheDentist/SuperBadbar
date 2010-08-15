@@ -4,7 +4,7 @@
 
     Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
 
-    Attention ! Ici on appelle jamais de destructeur (à cause des templates) ainsi, il est préférable de ne pas utiliser d'objets ou bien des objets qui n'ont pas d'allocation de mémoire
+    Ce type de liste doit normalement arriver à liberer tout type de variable...
 **/
 
 
@@ -12,7 +12,7 @@
 #define LISTS_H_INCLUDED
 
 #include <iostream>
-#include <typeinfo>
+
 
 using namespace std;
 

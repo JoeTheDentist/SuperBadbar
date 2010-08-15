@@ -13,7 +13,6 @@
 #include "lists.h"
 #include "sprites.h"
 
-
 extern SDL_Surface *screen;		/* ecran de jeu */
 extern List<Static*> statics;  /* liste des statics à afficher */
 extern List<Projectile*> projectiles;  /* liste des projectiles à l'écran */

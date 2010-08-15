@@ -62,6 +62,8 @@
 		<Unit filename="..\src\sprites.h" />
 		<Unit filename="..\src\statics.cpp" />
 		<Unit filename="..\src\statics.h" />
+		<Unit filename="..\src\weapons.cpp" />
+		<Unit filename="..\src\weapons.h" />
 		<Unit filename="..\src\window.cpp" />
 		<Unit filename="..\src\window.h" />
 		<Extensions>

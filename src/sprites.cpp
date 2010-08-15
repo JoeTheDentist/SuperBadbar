@@ -100,6 +100,7 @@ Babar::Babar()
 	m_pos.h = 234;
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
+	m_weapon = Weapon(GUN);
 
     /*** Stockage et chargement dans le tableau des images ***/
 
@@ -217,16 +218,13 @@ void Babar::update_state()
     if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
         m_state = WALK;
     }
-    if (Events_stat.key_down(k_fire)&&(m_fire_phase>FIRE_DELAY)) {
-        Projectile * proj;
+    if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
-            proj = new Projectile(m_pos,m_horizontal,m_vertical);
+            m_weapon.fire(m_pos,m_horizontal,m_vertical);
         }
         else {
-            proj = new Projectile(m_pos,m_last_dir,m_vertical);
+            m_weapon.fire(m_pos,m_last_dir,m_vertical);
         }
-        m_fire_phase = 0;
-        projectiles.add(proj);
     }
     else {
         m_fire_phase++;
@@ -289,7 +287,7 @@ Projectile::Projectile()
 
 }
 
-Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
+Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy)
 {
     m_pos = pos;
     m_horizontal = h;
@@ -309,8 +307,8 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v)
         m_pic = curr_lvl.proj(1);
     }
 
-    m_speed.x = (m_horizontal-1)*PROJ_SPEED;
-    m_speed.y = (m_vertical-1)*PROJ_SPEED;
+    m_speed.x = speedx;
+    m_speed.y = speedy;
 }
 
 Projectile::~Projectile()
