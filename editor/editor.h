@@ -18,6 +18,9 @@ private:
 	
 public:
 	Editor();
+	Editor(std::string file_name);
+	void edit();
+	void right_clic();
 	~Editor();
 	
 	

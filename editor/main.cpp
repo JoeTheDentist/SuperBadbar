@@ -5,14 +5,54 @@
 #include "collision_matrix.h"
 #include "editor.h"
 #include "pic_list.h"
+#include "files.h"
 
 
 
 int main(int argc, char *argv[])
 {
-	Pic_list list;
-	SDL_Rect pos;
-	list.add("../pic/blob.bmp", pos);
+	int choice = 0;
+	size_t weight, height;
+	std::string file_name;
+	bool leave = false;
 	
+	while (choice < 1 || choice > 4){
+		std::cout << "Editeur de niveaux SUPERBARAR" << std::endl;
+		std::cout << "Que voulez-vous faire?" << std::endl;
+		std::cout << "1. Nouveau niveau" << std::endl;
+		std::cout << "2. Charger un niveau" << std::endl;
+		std::cout << "3. Quitter" << std::endl;       
+		std::cout << "4. Défaut (pour les tests)" << std::endl;       
+		std::cin >> choice;
+	}
+	switch (choice) {
+	case 1:
+		std::cout << "Indiquez le chemin/le nom du fichier à créer" << std::endl;
+		std::cin >> file_name;
+		std::cout << "Indiquez la largeur en pixels du niveau à créer" << std::endl;
+		std::cin >> weight;
+		std::cout << "Indiquez la hauteur en pixels du niveau à créer" << std::endl;
+ 		std::cin >> height;
+		new_level_file(file_name, weight, height);
+		break;
+	case 2:
+		std::cout << "Indiquez le chemin/le nom du fichier à charger" << std::endl;
+		std::cin >> file_name;
+		break;
+	case 3:
+		leave = true;
+		break;
+	case 4:
+		file_name = "defaut";
+		break;
+	default:
+		std::cout << "probleme dans le switch du main.cpp de l'editeur" << std::endl;
+		break;
+	}
+	if (leave)
+		return 0;
+	
+	Editor editor(file_name);
+	editor.edit();
 	return 0;
-}
+}    

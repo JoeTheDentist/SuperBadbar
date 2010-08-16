@@ -51,8 +51,8 @@ void Collision_matrix::save(std::string file_name)
 {
 	FILE* file = fopen(file_name.c_str(), "w+");
 	fprintf(file, "%d %d\n", m_weight, m_height);
-	for (uint32_t i = 0; i < m_weight; i++){
-		for (uint32_t j = 0; j < m_height; j++)
+	for (uint32_t i = 0; i < m_height; i++){
+		for (uint32_t j = 0; j < m_weight; j++)
 			fprintf(file, "%d ", m_matrix[i][j]);
 		fprintf(file, "\n");
 	}
