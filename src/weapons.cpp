@@ -9,7 +9,7 @@
 Weapon::Weapon()
 {
     m_weapon_type = GUN;
-    m_reload_time = 10;
+    m_reload_time = 2;
 }
 
 Weapon::Weapon(weapon_type type)
@@ -18,13 +18,13 @@ Weapon::Weapon(weapon_type type)
 
     switch (m_weapon_type) {
         case GUN :
-            m_reload_time = 10;
+            m_reload_time = 2;
             break;
         case MACHINEGUN:
             m_reload_time = 1;
             break;
-        case SHUTGUN:
-            m_reload_time = 5;
+        case SHOTGUN:
+            m_reload_time = 10;
             break;
     }
 }
@@ -36,36 +36,68 @@ Weapon::~Weapon()
 
 void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 {
+    Projectile * proj;
     switch (m_weapon_type) {
         case GUN :
-            Projectile * proj;
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
             projectiles.add(proj);
             break;
         case MACHINEGUN:
-            /*Projectile * proj;*/
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
             projectiles.add(proj);
             break;
-        case SHUTGUN:
-            /*uint32_t x[5];
-            uint32_t y[5];
+        case SHOTGUN:
+            int x[5];
+            int y[5];
             Projectile * proj[5];
-            if(h&&v) { /* le tir se fait en diagonale *//*
+            if((h-1)&&(v-1)) { /* le tir se fait en diagonale */
+                x[0] = 3*PROJ_SPEED/4;
+                x[1] = 7*PROJ_SPEED/8;
+                x[2] = PROJ_SPEED;
+                x[3] = PROJ_SPEED;
+                x[4] = PROJ_SPEED;
 
-            }
-            else if(h) {
+                y[0] = PROJ_SPEED;
+                y[1] = PROJ_SPEED;
+                y[2] = PROJ_SPEED;
+                y[3] = 7*PROJ_SPEED/8;
+                y[4] = 3*PROJ_SPEED/4;
 
+                for(int i = 0;i<5;i++) {
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i], (v-1)*y[i]);
+                    projectiles.add(proj[i]);
+                }
             }
-            else {
+            else if(h-1) { /* tir uniquement dans la dimention horizontale */
+                for(int i = 0;i<5;i++) {
+                    x[i] = PROJ_SPEED;
+                }
+                y[0] = 3*PROJ_SPEED/12;
+                y[1] = 3*PROJ_SPEED/20;
+                y[2] = 0;
+                y[3] = -3*PROJ_SPEED/20;
+                y[4] = -3*PROJ_SPEED/10;
 
+                for(int i = 0;i<5;i++) {
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i], y[i]);
+                    projectiles.add(proj[i]);
+                }
             }
-            for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos, h, v, (h-1)*x[i], (v-1)*y[i]);
-            }*/
-            /*Projectile * proj;*/
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
-            projectiles.add(proj);
+            else {  /* tir uniquement dans la dimension verticale */
+                for(int i = 0;i<5;i++) {
+                    y[i] = PROJ_SPEED;
+                }
+                x[0] = PROJ_SPEED/7;
+                x[1] = PROJ_SPEED/14;
+                x[2] = 0;
+                x[3] = -PROJ_SPEED/14;
+                x[4] = -PROJ_SPEED/7;
+
+                for(int i = 0;i<5;i++) {
+                    proj[i] = new Projectile(pos, h, v, x[i], (v-1)*y[i]);
+                    projectiles.add(proj[i]);
+                }
+            }
             break;
     }
 }

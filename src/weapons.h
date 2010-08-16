@@ -18,7 +18,7 @@ enum vertical {
 /*---*/
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHUTGUN
+    GUN, MACHINEGUN, SHOTGUN
 };
 
 class Weapon

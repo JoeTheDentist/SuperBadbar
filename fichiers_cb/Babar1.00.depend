@@ -342,7 +342,7 @@
 	"game.h"
 	"globals.h"
 
-1281872925 source:c:\users\guillaume\desktop\svn\src\window.cpp
+1281980568 source:c:\users\guillaume\desktop\svn\src\window.cpp
 	<iostream>
 	<stdint.h>
 	<SDL/SDL.h>
@@ -351,7 +351,7 @@
 
 1281786244 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1281949739 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1281980895 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -405,11 +405,11 @@
 	<string>
 	"statics.h"
 
-1281959416 c:\users\guillaume\desktop\svn\src\weapons.h
+1281980474 c:\users\guillaume\desktop\svn\src\weapons.h
 	"sprites.h"
 	"globals.h"
 
-1281959450 source:c:\users\guillaume\desktop\svn\src\weapons.cpp
+1281989255 source:c:\users\guillaume\desktop\svn\src\weapons.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
