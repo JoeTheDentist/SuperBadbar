@@ -9,6 +9,8 @@
 #include "collision_matrix.h"
 #include "window.h"
 
+#define PIXELS_BEFORE_REFRESH 5
+
 class Editor{
 private:
 	bool m_leave;
@@ -20,7 +22,8 @@ public:
 	Editor();
 	Editor(std::string file_name);
 	void edit();
-	void right_clic();
+	void right_clic(int x, int y);
+	void shell();
 	~Editor();
 	
 	
