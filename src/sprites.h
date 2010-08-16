@@ -14,13 +14,13 @@
 #include "weapons.h"
 
 
-enum horizontal {
+/*enum horizontal {
     LEFT, MIDDLE_h, RIGHT
 };
 
 enum vertical {
     UP, MIDDLE_v, DOWN
-};
+};*/
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
     STATIC, WALK, JUMP
@@ -84,7 +84,7 @@ protected:
     SDL_Surface * m_pic;
 public:
     Projectile();
-    Projectile(SDL_Rect pos, horizontal h, vertical v,uint32_t speedx, uint32_t speedy);
+    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy);
     ~Projectile();
     SDL_Surface * current_picture();
 };

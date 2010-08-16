@@ -7,6 +7,7 @@
 #include "levels.h"
 #include "lists.h"
 #include "statics.h"
+#include "sprites.h"
 #include "globals.h"
 
 

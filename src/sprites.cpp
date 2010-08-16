@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "events.h"
 #include "analyser.h"
+#include "weapons.h"
 
 /*********************************
 **	Méthodes de Sprite 	**
@@ -225,6 +226,7 @@ void Babar::update_state()
         else {
             m_weapon.fire(m_pos,m_last_dir,m_vertical);
         }
+        m_fire_phase = 0;
     }
     else {
         m_fire_phase++;

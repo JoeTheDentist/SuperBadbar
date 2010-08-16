@@ -11,7 +11,9 @@
 #include "events.h"
 #include "levels.h"
 #include "lists.h"
-#include "sprites.h"
+
+class Projectile;   /* Pour éviter les bugs */
+class Level;
 
 extern SDL_Surface *screen;		/* ecran de jeu */
 extern List<Static*> statics;  /* liste des statics à afficher */

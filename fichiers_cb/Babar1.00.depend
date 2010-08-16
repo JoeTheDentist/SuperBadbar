@@ -302,7 +302,7 @@
 	"sprites.h"
 	"camera.h"
 
-1281882628 c:\users\guillaume\desktop\svn\src\sprites.h
+1281959398 c:\users\guillaume\desktop\svn\src\sprites.h
 	"SDL/SDL.h"
 	"weapons.h"
 
@@ -314,16 +314,15 @@
 
 1280837295 c:\users\guillaume\desktop\svn\src\window.h
 
-1281884384 c:\users\guillaume\desktop\svn\src\globals.h
+1281950416 c:\users\guillaume\desktop\svn\src\globals.h
 	<string>
 	<SDL/SDL.h>
 	"statics.h"
 	"events.h"
 	"levels.h"
 	"lists.h"
-	"sprites.h"
 
-1281444678 source:c:\users\guillaume\desktop\svn\src\globals.cpp
+1281949996 source:c:\users\guillaume\desktop\svn\src\globals.cpp
 	<string>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -331,6 +330,7 @@
 	"levels.h"
 	"lists.h"
 	"statics.h"
+	"sprites.h"
 	"globals.h"
 
 1278749823 source:c:\users\guillaume\desktop\svn\src\main.cpp
@@ -351,7 +351,7 @@
 
 1281786244 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1281865150 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1281949739 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -359,6 +359,7 @@
 	"globals.h"
 	"events.h"
 	"analyser.h"
+	"weapons.h"
 
 1279645745 source:c:\users\guillaume\desktop\svn\src\animations.cpp
 	<SDL/SDL.h>
@@ -404,7 +405,15 @@
 	<string>
 	"statics.h"
 
-1281884384 c:\users\guillaume\desktop\svn\src\weapons.h
+1281959416 c:\users\guillaume\desktop\svn\src\weapons.h
 	"sprites.h"
 	"globals.h"
+
+1281959450 source:c:\users\guillaume\desktop\svn\src\weapons.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+	"globals.h"
+	"weapons.h"
 

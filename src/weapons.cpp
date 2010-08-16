@@ -9,16 +9,16 @@
 Weapon::Weapon()
 {
     m_weapon_type = GUN;
-    m_reload_time = 2;
+    m_reload_time = 10;
 }
 
 Weapon::Weapon(weapon_type type)
 {
     m_weapon_type = type;
 
-    switch m_weapon_type {
+    switch (m_weapon_type) {
         case GUN :
-            m_reload_time = 2;
+            m_reload_time = 10;
             break;
         case MACHINEGUN:
             m_reload_time = 1;
@@ -34,16 +34,18 @@ Weapon::~Weapon()
 
 }
 
-Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
+void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 {
-    switch m_weapon_type {
+    switch (m_weapon_type) {
         case GUN :
             Projectile * proj;
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
+            projectiles.add(proj);
             break;
         case MACHINEGUN:
-            Projectile * proj;
+            /*Projectile * proj;*/
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
+            projectiles.add(proj);
             break;
         case SHUTGUN:
             /*uint32_t x[5];
@@ -61,8 +63,14 @@ Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos, h, v, (h-1)*x[i], (v-1)*y[i]);
             }*/
-            Projectile * proj;
+            /*Projectile * proj;*/
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
+            projectiles.add(proj);
             break;
     }
+}
+
+uint32_t Weapon::reload_time()
+{
+    return m_reload_time;
 }

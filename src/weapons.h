@@ -7,6 +7,16 @@
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 30       /* Vitesse des projectiles */
 
+/* Pas à leur place ! */
+enum horizontal {
+    LEFT, MIDDLE_h, RIGHT
+};
+
+enum vertical {
+    UP, MIDDLE_v, DOWN
+};
+/*---*/
+
 enum weapon_type {
     GUN, MACHINEGUN, SHUTGUN
 };
