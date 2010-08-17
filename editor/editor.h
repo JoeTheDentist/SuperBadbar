@@ -10,7 +10,7 @@
 #include "pic_list.h"
 #include "window.h"
 
-#define PIXELS_BEFORE_REFRESH 5
+#define PIXELS_BEFORE_REFRESH 3
 
 class Editor{
 private:
@@ -31,6 +31,7 @@ public:
 	void shell();
 	void insert_pic(std::string file_name);
 	void leave_editor();
+	void delete_pic();
 	~Editor();
 	
 	

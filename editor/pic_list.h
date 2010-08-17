@@ -27,6 +27,7 @@ public:
 	void save(FILE* file);
 	void add(std::string file_name, SDL_Rect pos);
 	void display_list(Window *window);
+	void delete_pic(SDL_Rect pos);
 	
 };
 

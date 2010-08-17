@@ -55,6 +55,9 @@ void Editor::edit()
 					case SDLK_s:
 						save(m_file_name);
 						break;
+					case SDLK_d:
+						delete_pic();
+						break;
 					default:
 						break;
 				}
@@ -137,10 +140,15 @@ void Editor::shell()
 
 void Editor::insert_pic(std::string file_name)
 {
+	int phase = 0;
 	SDL_Surface* pic = NULL;
 	SDL_Event event;
 	bool leave = false;
 	pic = SDL_LoadBMP(file_name.c_str());
+	if (pic == NULL){
+		std::cout << "image invalide\n" << std::endl;
+		return;
+	}
 	SDL_Rect pos_pic;
 	std::cout << "Insertion de l'image " << file_name << std::endl;
 	while (!leave && !m_leave){
@@ -162,10 +170,23 @@ void Editor::insert_pic(std::string file_name)
 					right_clic(event.button.x, event.button.y);
 				}
 				break;
-
-				
+			case SDL_MOUSEMOTION:
+				if (phase == 3) {
+					phase = 0;
+					pos_pic = m_window.camera();
+					pos_pic.x += event.motion.x;
+					pos_pic.y += event.motion.y;
+					refresh();
+					m_window.display_pic(pic, pos_pic);
+					m_window.refresh();
+				}
+				else {
+					phase++;
+				}
+				break;
+	
 		}
-		refresh();
+		
 	}
 	
 	
@@ -174,6 +195,52 @@ void Editor::insert_pic(std::string file_name)
 void Editor::leave_editor()
 {
 	m_leave = true;
+}
+
+void Editor::delete_pic()
+{
+	SDL_Event event;
+	bool leave;
+	SDL_Rect pos_pic;
+	int phase = 0;
+	SDL_Surface *boom = SDL_LoadBMP("boom.bmp");
+	while (!leave && !m_leave){
+		SDL_WaitEvent(&event);
+		switch(event.type){
+			case SDL_QUIT:
+				leave_editor();
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				if (event.button.button == SDL_BUTTON_LEFT) {
+					pos_pic = m_window.camera();
+					pos_pic.x += event.button.x;
+					pos_pic.y += event.button.y;
+					m_pic_list.delete_pic(pos_pic);
+					leave = true;
+				}
+				else if (event.button.button == SDL_BUTTON_RIGHT) {
+					right_clic(event.button.x, event.button.y);
+				}
+				break;
+			case SDL_MOUSEMOTION:
+				if (phase == 3) {
+					phase = 0;
+					pos_pic = m_window.camera();
+					pos_pic.x += event.motion.x;
+					pos_pic.y += event.motion.y;
+					refresh();
+					m_window.display_pic(boom, pos_pic);
+					m_window.refresh();
+				}
+				else {
+					phase++;
+				}
+				break;
+	
+		}
+		
+	}
+	fprintf(stderr, "yop");
 }
 
 

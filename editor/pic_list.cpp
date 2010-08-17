@@ -21,6 +21,7 @@ Pic_list::Pic_list(std::string file_name)
 	SDL_Rect pos;
 	bool leave = false;
 	find_string("Pic_list:", file);
+	m_list = NULL;
 	while(!leave){
 		fscanf(file, "%s", temp);
 		if (!strcmp(temp, "end")) {
@@ -65,12 +66,22 @@ void Pic_list::save(FILE* file)
 
 void Pic_list::add(std::string file_name, SDL_Rect pos)
 {
-	pic_cell *head = new pic_cell;
-	head->pic = SDL_LoadBMP(file_name.c_str());
-	head->pos = pos;
-	head->pic_name = file_name;
-	head->suiv = m_list;
-	m_list = head;
+	pic_cell *m_last = m_list;
+	pic_cell *new_cell= new pic_cell;
+
+	new_cell->pic = SDL_LoadBMP(file_name.c_str());
+	new_cell->pos = pos;
+	new_cell->pic_name = file_name;
+	new_cell->suiv = NULL;
+	if (m_list == NULL) {
+		m_list = new_cell;
+	}
+	else {
+		m_last = m_list;
+		while (m_last->suiv != NULL)
+			m_last = m_last->suiv;
+		m_last->suiv = new_cell;
+	}
 }
 
 void Pic_list::display_list(Window *window)
@@ -80,5 +91,38 @@ void Pic_list::display_list(Window *window)
 		window->display_pic(curs->pic, curs->pos);
 		curs = curs->suiv;
 	}
+}
+
+
+bool delete_rec(SDL_Rect pos, pic_cell *curs)
+{
+	pic_cell *temp;
+	if (curs->suiv != NULL ) {
+		if (!delete_rec(pos, curs->suiv)) {
+			temp = curs->suiv;
+			if ((temp->pos.x < pos.x) && (temp->pos.x + temp->pic->w > pos.x)) {
+				if ((temp->pos.y < pos.y) && (temp->pos.y + temp->pic->h > pos.y)) {
+					SDL_FreeSurface(temp->pic);
+					curs->suiv = curs->suiv->suiv;
+					delete temp;
+					return true;
+				}
+			}
+		}
+		else {
+			return true;
+		}
+	}
+	return false;
+}
+void Pic_list::delete_pic(SDL_Rect pos)
+{
+	pic_cell *senti = new pic_cell;
+	senti->suiv = m_list;
+	delete_rec(pos, senti);
+		
+	
+	m_list = senti->suiv;
+	delete senti;
 }
 
