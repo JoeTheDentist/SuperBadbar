@@ -107,6 +107,7 @@ int Analyser::nb_monsters()
 
 void Analyser::fill_monsters_pics(int nb_monsters)
 {
+    /* A utiliser après nb_monster car il se place au bon endroit dans le fichier */
     char link[40];
 
     jump_separators();
@@ -123,3 +124,15 @@ void Analyser::fill_monsters_pics(int nb_monsters)
     }
 }
 
+void Analyser::fill_monsters()
+{
+    uint32_t i,j,monster_type;
+    find_string("#PositionsMonstres#");
+    while(!feof(m_file)) {
+        jump_separators();
+        fscanf(m_file,"%d",&monster_type);
+        fscanf(m_file,"%d",&i);
+        fscanf(m_file,"%d",&j);
+        curr_lvl.fill_monster_pos(i,j,monster_type);
+    }
+}

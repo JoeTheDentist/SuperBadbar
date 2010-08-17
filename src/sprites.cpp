@@ -101,7 +101,7 @@ Babar::Babar()
 	m_pos.h = 234;
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
-	m_weapon = Weapon(SHOTGUN);
+	m_weapon = Weapon(MACHINEGUN);
 
     /*** Stockage et chargement dans le tableau des images ***/
 

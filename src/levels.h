@@ -17,6 +17,7 @@ private:
 	uint32_t m_level;							/* Numero du niveau */
 	int m_nb_monsters;                          /* Nombre de monstres sur le niveau */
 	SDL_Surface ** m_monsters_pics[3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
+	uint32_t ** m_monsters_matrix;              /* Matrice des monstres */
 	SDL_Surface * m_background;     /* image de fond du niveau */
 	uint32_t ** m_statics_matrix;      	/* matrice des statics */
 
@@ -36,6 +37,7 @@ public:
 	bool up_collision(SDL_Rect pos);
 
     void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images desmonstres */
+    void fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type);
 };
 
 

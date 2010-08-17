@@ -38,6 +38,7 @@ public:
 
     int nb_monsters(); /* Renvoie le nombre de monstres différents */
     void fill_monsters_pics(int nb_monsters); /* Charge les images des monstres dans curr_lvl */
+    void fill_monsters();   /* Remplis la matrice de curr_lvl */
 };
 
 

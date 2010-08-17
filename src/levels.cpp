@@ -39,6 +39,17 @@ Level::Level(uint32_t lvl)
         }
     }
     analyser.fill_monsters_pics(m_nb_monsters);
+    /* Allocation de la matrice de monstres */
+    m_monsters_matrix = new uint32_t*[m_background->h/BOX_SIZE];
+    for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
+        m_monsters_matrix[i] = new uint32_t[m_background->w/BOX_SIZE];
+    }
+    for(int i = 0;i<(m_background->h/BOX_SIZE);i++) {
+        for(int j = 0;j<(m_background->w/BOX_SIZE);j++) {
+            m_monsters_matrix[i][j] = 0;
+        }
+    }
+    analyser.fill_monsters();
 
     /*** Allocation du tableau pour les collisions ***/
     m_statics_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
@@ -157,4 +168,7 @@ void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, c
     m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
 }
 
-
+void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type)
+{
+    m_monsters_matrix[i][j] = monster_type;
+}
