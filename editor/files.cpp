@@ -18,7 +18,7 @@ void new_level_file(std::string file_name, size_t weight, size_t height)
 			fprintf(file, "0 ");
 		fprintf(file, "\n");
 	}
-	fprintf(file,"\n\nPictures:\n\n");
+	fprintf(file,"\n\nPic_list:\n\n");
 	fclose(file);
 }
 
