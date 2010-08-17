@@ -44,10 +44,10 @@
 		<Cursor position="1083" topLine="16" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="3">
-		<Cursor position="417" topLine="32" />
+		<Cursor position="543" topLine="0" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="242" topLine="0" />
+		<Cursor position="219" topLine="2" />
 	</File>
 	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="1845" topLine="89" />
@@ -62,7 +62,7 @@
 		<Cursor position="302" topLine="0" />
 	</File>
 	<File name="..\src\weapons.cpp" open="1" top="1" tabpos="23">
-		<Cursor position="509" topLine="0" />
+		<Cursor position="2275" topLine="75" />
 	</File>
 	<File name="..\src\weapons.h" open="1" top="0" tabpos="22">
 		<Cursor position="409" topLine="3" />

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
+#include <time.h>
 
 #include "sprites.h"
 #include "globals.h"
@@ -49,6 +50,16 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
         case SHOTGUN:
             int x[5];
             int y[5];
+            int randx[5];
+            int randy[5];
+
+            for(int i = 0;i<5;i++) {
+                randx[i] = rand()%3 - 1;
+            }
+            for(int i = 0;i<5;i++) {
+                randy[i] = rand()%3 - 1;
+            }
+
             Projectile * proj[5];
             if((h-1)&&(v-1)) { /* le tir se fait en diagonale */
                 x[0] = 3*PROJ_SPEED/4;
@@ -64,7 +75,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 y[4] = 3*PROJ_SPEED/4;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i], (v-1)*y[i]);
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], (v-1)*y[i] + randy[i]);
                     projectiles.add(proj[i]);
                 }
             }
@@ -72,14 +83,14 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 for(int i = 0;i<5;i++) {
                     x[i] = PROJ_SPEED;
                 }
-                y[0] = 3*PROJ_SPEED/12;
+                y[0] = 3*PROJ_SPEED/10;
                 y[1] = 3*PROJ_SPEED/20;
                 y[2] = 0;
                 y[3] = -3*PROJ_SPEED/20;
                 y[4] = -3*PROJ_SPEED/10;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i], y[i]);
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], y[i] + randy[i]);
                     projectiles.add(proj[i]);
                 }
             }
@@ -94,7 +105,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 x[4] = -PROJ_SPEED/7;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, x[i], (v-1)*y[i]);
+                    proj[i] = new Projectile(pos, h, v, x[i] + randx[i], (v-1)*y[i] + randy[i]);
                     projectiles.add(proj[i]);
                 }
             }

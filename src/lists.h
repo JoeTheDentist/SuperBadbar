@@ -4,7 +4,11 @@
 
     Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
 
-    Ce type de liste doit normalement arriver à liberer tout type de variable...
+    /!\ Pour la libération de mémoire ces listes supportent :
+            - Variable normales (int, float,...) car pas besoin de libérer
+            - Les objets (appel de destructeur)
+
+    Remarque : on peut faire la libération de mémoire de liste de pointeurs via la librairie typeinfo, à faire si besoin.
 **/
 
 
