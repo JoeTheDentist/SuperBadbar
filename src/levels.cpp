@@ -34,13 +34,11 @@ Level::Level(uint32_t lvl)
     for(int i=0;i<3;i++) {
         for(int j=0;j<3;j++) {
             for(int k=0;k<3;k++) {
-                for(int l=0;l<3;l++) {
-                    m_monsters_pics[i][j][k][l] = new SDL_Surface*[m_nb_monsters];
-                }
+                m_monsters_pics[i][j][k] = new SDL_Surface*[m_nb_monsters];
             }
         }
     }
-    analyser.fill_monsters_pics();
+    analyser.fill_monsters_pics(m_nb_monsters);
 
     /*** Allocation du tableau pour les collisions ***/
     m_statics_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
@@ -86,6 +84,17 @@ Level::~Level()
     delete m_statics_matrix;
 
     SDL_FreeSurface(m_background);
+
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++) {
+            for(int k=0;k<3;k++) {
+                for(int l=0;l<m_nb_monsters;l++) {
+                    SDL_FreeSurface(m_monsters_pics[i][j][k][l]);
+                }
+                delete[] m_monsters_pics[i][j][k];
+            }
+        }
+    }
 
     for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj[i]);
@@ -143,9 +152,9 @@ bool Level::up_collision(SDL_Rect pos)
 	return false;
 }
 
-void Level::fill_monster_pic(int state, int h, int v, int num_image, int num_monster, std::string link)
+void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, char *link)
 {
-    m_monsters_pics[state][h][v][num_image][num_monster] = SDL_LoadBMP(link.c_str());
+    m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
 }
 
 

@@ -16,7 +16,7 @@ class Level {
 private:
 	uint32_t m_level;							/* Numero du niveau */
 	int m_nb_monsters;                          /* Nombre de monstres sur le niveau */
-	SDL_Surface ** m_monsters_pics[3][3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, up down, noméro image, type de monstre */
+	SDL_Surface ** m_monsters_pics[3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
 	SDL_Surface * m_background;     /* image de fond du niveau */
 	uint32_t ** m_statics_matrix;      	/* matrice des statics */
 
@@ -35,7 +35,7 @@ public:
 	bool down_collision(SDL_Rect pos);
 	bool up_collision(SDL_Rect pos);
 
-    void fill_monster_pic(int state, int h, int v, int num_image, int num_monster, std::string link); /* remplit une case de la matrice des images desmonstres */
+    void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images desmonstres */
 };
 
 

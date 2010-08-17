@@ -105,18 +105,19 @@ int Analyser::nb_monsters()
     return nb;
 }
 
-void Analyser::fill_monsters_pics()
+void Analyser::fill_monsters_pics(int nb_monsters)
 {
     char link[40];
 
     jump_separators();
-    fscanf(m_file,"%s",link);
-    jump_separators();
-    while(link[0]!='!') {
-        for(int i = 0;i<3;i++) {
-            for(int j = 0;j<3;j++) {
-                fscanf(m_file,"%s",&link);
-                jump_separators();
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<3;j++) {
+            for(int k=0;k<3;k++) {
+                for(int l=0;l<3;l++) {
+                    jump_separators();
+                    fscanf(m_file,"%s",&link);
+                    curr_lvl.fill_monster_pic(i,j,k,l,link);
+                }
             }
         }
     }
