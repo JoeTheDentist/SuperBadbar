@@ -6,12 +6,9 @@
 !
 
 #Monsters#
-../pics/level1/
-1   30   30
-../pics/level1/
-2   60   60
-
-1   150  0
+1
+../pics/monsters/
+../pics/monsters/
 !
 
 

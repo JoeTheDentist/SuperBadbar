@@ -14,13 +14,7 @@
 #include "weapons.h"
 
 
-/*enum horizontal {
-    LEFT, MIDDLE_h, RIGHT
-};
-
-enum vertical {
-    UP, MIDDLE_v, DOWN
-};*/
+/* /!\ Les enums horizontal et vertical sont dans weapon... */
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
     STATIC, WALK, JUMP

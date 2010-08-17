@@ -33,10 +33,11 @@ public:
 	void find_string(std::string str);		/* positionne le curseur de m_file après la première occurence de str à partir du début du fichier.
 							Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier */
 	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
-	void read_monster(Monster *monster);		/* Met à jour (*monster) en fonction des données lues dans le fichier */
+
 	void fill_statics();
 
-
+    int nb_monsters(); /* Renvoie le nombre de monstres différents */
+    void fill_monsters_pics(); /* Charge les images des monstres dans curr_lvl */
 };
 
 

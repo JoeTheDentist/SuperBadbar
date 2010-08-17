@@ -28,6 +28,20 @@ Level::Level(uint32_t lvl)
     analyser.fill_statics();
     analyser.close();
 
+    /*** Remplissage des monstres***/
+    analyser.open("../data/levels/level"+str_lvl+".lvl");
+    m_nb_monsters = analyser.nb_monsters();
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++) {
+            for(int k=0;k<3;k++) {
+                for(int l=0;l<3;l++) {
+                    m_monsters_pics[i][j][k][l] = new SDL_Surface*[m_nb_monsters];
+                }
+            }
+        }
+    }
+    analyser.fill_monsters_pics();
+
     /*** Allocation du tableau pour les collisions ***/
     m_statics_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
     for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
@@ -53,6 +67,7 @@ Level::Level(uint32_t lvl)
 		//~ m_statics_matrix[i][i] = FULL_COLL;
 	//~ }
 
+    /*** Images des projectiles ***/
     m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
     m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
     m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
@@ -69,7 +84,9 @@ Level::~Level()
         delete m_statics_matrix[i];
     }
     delete m_statics_matrix;
+
     SDL_FreeSurface(m_background);
+
     for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj[i]);
     }
@@ -124,6 +141,11 @@ bool Level::up_collision(SDL_Rect pos)
 			return true;
 	}
 	return false;
+}
+
+void Level::fill_monster_pic(int state, int h, int v, int num_image, int num_monster, std::string link)
+{
+    m_monsters_pics[state][h][v][num_image][num_monster] = SDL_LoadBMP(link.c_str());
 }
 
 

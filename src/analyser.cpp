@@ -38,7 +38,7 @@ void Analyser::find_string(std::string str)
 	char current = 'a';
 	fseek(m_file, 0, SEEK_SET);
 	while (current != EOF && char_found < size){
-		current = fgetc(m_file);		
+		current = fgetc(m_file);
 		if (current == str[char_found])
 			char_found++;
 		else
@@ -97,10 +97,28 @@ void Analyser::fill_statics()
     }
 }
 
-void Analyser::read_monster(Monster *monster)
+int Analyser::nb_monsters()
 {
-	uint32_t current = 0;
+    int nb;
+    find_string("#Monsters#");
+    fscanf(m_file,"%d",&nb);
+    return nb;
+}
 
+void Analyser::fill_monsters_pics()
+{
+    char link[40];
 
+    jump_separators();
+    fscanf(m_file,"%s",link);
+    jump_separators();
+    while(link[0]!='!') {
+        for(int i = 0;i<3;i++) {
+            for(int j = 0;j<3;j++) {
+                fscanf(m_file,"%s",&link);
+                jump_separators();
+            }
+        }
+    }
 }
 
