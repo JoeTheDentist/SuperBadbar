@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <SDL/SDL.h>
 
-
+#include "window.h"
 
 struct pic_cell {
 	SDL_Surface *pic;
@@ -22,9 +22,11 @@ private:
 	pic_cell *m_list;
 public:
 	Pic_list();
+	Pic_list(std::string file_name);
 	~Pic_list();
+	void save(FILE* file);
 	void add(std::string file_name, SDL_Rect pos);
-	void display_list(SDL_Surface *screen);
+	void display_list(Window *window);
 	
 };
 

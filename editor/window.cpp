@@ -17,7 +17,6 @@ Window::Window()
 Window::Window(std::string file_name)
 {
 	FILE *file = NULL;
-	size_t weight, height;
 	char background[100];
 	m_camera.x = 0;
 	m_camera.y = 0;
@@ -26,26 +25,23 @@ Window::Window(std::string file_name)
 	file = fopen(file_name.c_str(), "r");
 	if (file == NULL)
 		fprintf(stderr, "Erreur lors de l'ouverture du fichier %s", file_name.c_str());
-	fseek(file, 0, SEEK_SET);
-	fscanf(file, "%d", &weight);
-	fscanf(file, "%d", &height);
+	find_string("Size:", file);
+	fscanf(file, "%d", &m_weight);
+	fscanf(file, "%d", &m_height);
+	fprintf(stderr, "%d %d\n", m_weight, m_height);
 	find_string("Background:", file);	
 	fscanf(file, "%s", background);
+	m_background_name = background;
 	fclose(file);
 	/* chargement de la fenetre */
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
 		fprintf(stderr, "Erreur d'initialisation de la SDL");
 	}
-	m_screen = SDL_SetVideoMode(weight, height, 32, SDL_HWSURFACE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
+
+	m_screen = SDL_SetVideoMode(m_weight, m_height, 32, SDL_HWSURFACE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 	SDL_WM_SetCaption("Editeur de superbabar", NULL);
     m_background = SDL_LoadBMP(background);
-	m_monstre = SDL_LoadBMP("blob.bmp");
-	m_pos_monstre.x = 50;
-	m_pos_monstre.y = 50;
-
-	
 	SDL_BlitSurface(m_background, NULL, m_screen, &m_camera);
-
 	SDL_Flip(m_screen);
 }
 
@@ -56,11 +52,22 @@ Window::~Window()
 	SDL_Quit();
 }
 
+void Window::save(FILE* file)
+{
+	fprintf(file, "Size: %d %d\n\n", m_weight, m_height);
+	fprintf(file, "Background: %s\n\n", m_background_name.c_str());
+}
+
+
 SDL_Surface *Window::screen()
 {
 	return m_screen;
 }
 
+SDL_Rect Window::camera()
+{
+	return m_camera;
+}
 
 void Window::translate(int x, int y)
 {
@@ -75,7 +82,6 @@ void Window::update_background()
 	pos_background.y = -m_camera.y;
 
 	SDL_BlitSurface(m_background, NULL, m_screen, &pos_background);
-		display_pic(m_monstre, m_pos_monstre);
 
 }
 

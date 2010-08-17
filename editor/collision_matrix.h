@@ -15,7 +15,7 @@ public:
 	Collision_matrix(size_t weight, size_t height);	/* Constructeur en ne donnant que la taille (la grille est remplie de 0)*/
 	Collision_matrix(std::string file_name);		/* Constructeur en chargeant un fichier */
 	~Collision_matrix();							/* Destructeur */
-	void save(std::string file_name);				/* Sauvegarde de la grille dans un fichier de collision */
+	void save(FILE *file);				/* Sauvegarde de la grille dans un fichier */
 };
 
 #endif
