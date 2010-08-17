@@ -20,7 +20,7 @@ Pic_list::Pic_list(std::string file_name)
 	char temp[100];
 	SDL_Rect pos;
 	bool leave = false;
-	find_string("Pic_list:", file);
+	find_string("#Pictures#", file);
 	m_list = NULL;
 	while(!leave){
 		fscanf(file, "%s", temp);
@@ -54,7 +54,7 @@ Pic_list::~Pic_list()
 void Pic_list::save(FILE* file)
 {
 	pic_cell *curs = m_list;
-	fprintf(file, "Pic_list:\n");
+	fprintf(file, "#Pictures#\n");
 	while (curs != NULL) {
 		fprintf(file, "%s %d %d\n", curs->pic_name.c_str(), curs->pos.x, curs->pos.y);
 		curs = curs->suiv;

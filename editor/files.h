@@ -4,7 +4,7 @@
 #include <string>
 
 
-void new_level_file(std::string file_name, size_t weight, size_t height);
+void new_level_file(std::string file_name);
 void find_string(std::string str, FILE* file);
 
 

@@ -29,11 +29,7 @@ int main(int argc, char *argv[])
 	case 1:
 		std::cout << "Indiquez le chemin/le nom du fichier à créer" << std::endl;
 		std::cin >> file_name;
-		std::cout << "Indiquez la largeur en pixels du niveau à créer" << std::endl;
-		std::cin >> weight;
-		std::cout << "Indiquez la hauteur en pixels du niveau à créer" << std::endl;
- 		std::cin >> height;
-		new_level_file(file_name, weight, height);
+	new_level_file(file_name);
 		break;
 	case 2:
 		std::cout << "Indiquez le chemin/le nom du fichier à charger" << std::endl;
