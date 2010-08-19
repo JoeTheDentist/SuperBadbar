@@ -1,5 +1,5 @@
 hauteur de babar: 1700vitesse verticale: 7
-yopyoppourcentage d'utilisation du temps: 42257483.630000
+yopyoppourcentage d'utilisation du temps: 42245276.100000
 hauteur de babar: 1710vitesse verticale: 14
 yopyopyoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1725vitesse verticale: 21
@@ -7,7 +7,17 @@ yopyopyopyopyoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1750vitesse verticale: 28
 yopyopyopyoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.020000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.050000
+hauteur de babar: 1765vitesse verticale: 7
 yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.020000
 hauteur de babar: 1765vitesse verticale: 7
 yoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1765vitesse verticale: 7
@@ -24,6 +34,454 @@ hauteur de babar: 1765vitesse verticale: 7
 yoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1765vitesse verticale: 7
 yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.040000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yoppourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -22
+vitesse verticale: -26
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: -29
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.030000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -23
+vitesse verticale: -27
+vitesse verticale: -29
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.020000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.080000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 3
+yopvitesse verticale: 10
+yopvitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: -31
+vitesse verticale: -31
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: -31
+vitesse verticale: -31
+vitesse verticale: -29
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.030000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
+hauteur de babar: 1765vitesse verticale: 7
+yopvitesse verticale: -10
+vitesse verticale: -5
+vitesse verticale: 0
+vitesse verticale: 0
+vitesse verticale: 0
+pourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1765vitesse verticale: 7
 yoppourcentage d'utilisation du temps: 0.010000
 hauteur de babar: 1765vitesse verticale: 7

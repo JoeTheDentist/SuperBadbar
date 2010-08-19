@@ -55,13 +55,22 @@ Level::Level(uint32_t lvl)
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2);
     analyser2.close();
-
     analyser.close();
 
 
     /*** Stockage des monstres dans la listes ***/
     SDL_Rect frame = game.camera_frame();
     m_last_pos = frame;
+    for(int i=frame.x/BOX_SIZE;i<(frame.h+frame.x)/BOX_SIZE;i++) {
+        for(int j=frame.y/BOX_SIZE;j<(frame.h+frame.x)/BOX_SIZE;j++) {
+            if(m_monsters_matrix[i][j].type() != -1) {
+                Monster * mstr = new Monster;
+                *mstr = m_monsters_matrix[i][j];
+                monsters.add(mstr);
+                m_monsters_matrix[i][j].set_type(-1);
+            }
+        }
+    }
 
 
     /*** Allocation du tableau pour les collisions ***/
