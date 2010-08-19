@@ -264,7 +264,7 @@ void Editor::leave_editor()
 void Editor::delete_pic()
 {
 	SDL_Event event;
-	bool leave;
+	bool leave = false;
 	SDL_Rect pos_pic;
 	int phase = 0;
 	SDL_Surface *boom = SDL_LoadBMP("boom.bmp");
