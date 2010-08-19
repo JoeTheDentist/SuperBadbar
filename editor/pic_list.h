@@ -28,6 +28,10 @@ public:
 	void add(std::string file_name, SDL_Rect pos);
 	void display_list(Window *window);
 	void delete_pic(SDL_Rect pos);
+	pic_cell *last_pic_cell();
+	pic_cell *previous_pic_cell(pic_cell *cell);
+	pic_cell *next_pic_cell(pic_cell *cell);
+	
 	
 };
 

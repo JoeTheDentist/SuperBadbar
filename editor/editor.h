@@ -30,8 +30,10 @@ public:
 	void right_clic(int x, int y);
 	void shell();
 	void insert_pic(std::string file_name);
+	void insert_last_pic();
 	void leave_editor();
 	void delete_pic();
+	
 	~Editor();
 	
 	

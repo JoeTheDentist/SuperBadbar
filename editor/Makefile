@@ -5,7 +5,7 @@ INCLUDES =
 LIBS =
 OBJ_FILES =  main.o collision_matrix.o editor.o window.o pic_list.o files.o
 INSTALL_DIR = .
-LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image 
+LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image -lSDL_gfx
 
 all : $(EXEC_NAME)
 

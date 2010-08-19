@@ -12,8 +12,7 @@
 int main(int argc, char *argv[])
 {
 	int choice = 0;
-	size_t weight, height;
-	std::string file_name;
+	std::string file_name, background_name;
 	bool leave = false;
 	
 	while (choice < 1 || choice > 4){
@@ -29,7 +28,9 @@ int main(int argc, char *argv[])
 	case 1:
 		std::cout << "Indiquez le chemin/le nom du fichier à créer" << std::endl;
 		std::cin >> file_name;
-	new_level_file(file_name);
+		std::cout << "Indiquez le chemin/le nom du fond d'écran du niveau" << std::endl;
+		std::cin >> background_name;
+		new_level_file(file_name, background_name);
 		break;
 	case 2:
 		std::cout << "Indiquez le chemin/le nom du fichier à charger" << std::endl;
@@ -37,7 +38,8 @@ int main(int argc, char *argv[])
 		break;
 	case 3:
 		leave = true;
-		break;
+		break;                                                               
+
 	case 4:
 		file_name = "defaut";
 		break;

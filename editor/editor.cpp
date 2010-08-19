@@ -46,6 +46,8 @@ void Editor::edit()
 			case SDL_MOUSEBUTTONDOWN:
 				if (event.button.button == SDL_BUTTON_RIGHT) 
 					right_clic(event.button.x, event.button.y);
+				else if (event.button.button == SDL_BUTTON_WHEELDOWN) 
+					insert_last_pic();
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym) {
@@ -58,13 +60,15 @@ void Editor::edit()
 					case SDLK_d:
 						delete_pic();
 						break;
+					case SDLK_l:
+						insert_last_pic();
+						break;
 					default:
 						break;
 				}
 		}
 		refresh();
-	}
-	
+	}	
 }
 
 void Editor::refresh()
@@ -143,6 +147,7 @@ void Editor::insert_pic(std::string file_name)
 	int phase = 0;
 	SDL_Surface* pic = NULL;
 	SDL_Event event;
+	pic_cell *current_pic_cell = NULL;
 	bool leave = false;
 	pic = SDL_LoadBMP(file_name.c_str());
 	if (pic == NULL){
@@ -150,6 +155,12 @@ void Editor::insert_pic(std::string file_name)
 		return;
 	}
 	SDL_Rect pos_pic;
+	pos_pic = m_window.camera();
+	pos_pic.x += event.motion.x;
+	pos_pic.y += event.motion.y;
+	refresh();
+	m_window.display_pic(pic, pos_pic);
+	m_window.refresh();	
 	std::cout << "Insertion de l'image " << file_name << std::endl;
 	while (!leave && !m_leave){
 		SDL_WaitEvent(&event);
@@ -169,6 +180,35 @@ void Editor::insert_pic(std::string file_name)
 				else if (event.button.button == SDL_BUTTON_RIGHT) {
 					right_clic(event.button.x, event.button.y);
 				}
+				else if (event.button.button == SDL_BUTTON_WHEELUP) {
+					current_pic_cell = m_pic_list.next_pic_cell(current_pic_cell);
+					if (current_pic_cell!= NULL) {
+						free(pic);
+						file_name = current_pic_cell->pic_name;
+						pic = SDL_LoadBMP(file_name.c_str());
+						pos_pic = m_window.camera();
+						pos_pic.x += event.motion.x;
+						pos_pic.y += event.motion.y;
+						refresh();
+						m_window.display_pic(pic, pos_pic);
+						m_window.refresh();
+					}	
+				}
+				else if (event.button.button == SDL_BUTTON_WHEELDOWN) {
+					current_pic_cell = m_pic_list.previous_pic_cell(current_pic_cell);
+					if (current_pic_cell!= NULL) {
+						free(pic);
+						file_name = current_pic_cell->pic_name;
+						pic = SDL_LoadBMP(file_name.c_str());
+						pos_pic = m_window.camera();
+						pos_pic.x += event.motion.x;
+						pos_pic.y += event.motion.y;
+						refresh();
+						m_window.display_pic(pic, pos_pic);
+						m_window.refresh();	
+					}
+					break;
+				}
 				break;
 			case SDL_MOUSEMOTION:
 				if (phase == 3) {
@@ -183,13 +223,37 @@ void Editor::insert_pic(std::string file_name)
 				else {
 					phase++;
 				}
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+					case SDLK_l:
+						current_pic_cell = m_pic_list.previous_pic_cell(current_pic_cell);
+						if (current_pic_cell!= NULL) {
+							free(pic);
+							file_name = current_pic_cell->pic_name;
+							pic = SDL_LoadBMP(file_name.c_str());
+						}
+						break;
+					case SDLK_n:
+						current_pic_cell = m_pic_list.next_pic_cell(current_pic_cell);
+						if (current_pic_cell!= NULL) {
+							free(pic);
+							file_name = current_pic_cell->pic_name;
+							pic = SDL_LoadBMP(file_name.c_str());
+						}						
+					
+						break;
+					default:
+						break;
 				break;
-	
+				}
 		}
-		
 	}
-	
-	
+}
+
+void Editor::insert_last_pic()
+{
+	pic_cell* cell = m_pic_list.last_pic_cell();
+	insert_pic(cell->pic_name);
 }
 
 void Editor::leave_editor()

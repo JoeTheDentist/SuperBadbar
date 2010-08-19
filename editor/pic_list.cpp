@@ -93,7 +93,7 @@ void Pic_list::display_list(Window *window)
 	}
 }
 
-
+/* fonction recursive utilisée dans la méthode suivante */
 bool delete_rec(SDL_Rect pos, pic_cell *curs)
 {
 	pic_cell *temp;
@@ -115,14 +115,53 @@ bool delete_rec(SDL_Rect pos, pic_cell *curs)
 	}
 	return false;
 }
+
+
 void Pic_list::delete_pic(SDL_Rect pos)
 {
 	pic_cell *senti = new pic_cell;
 	senti->suiv = m_list;
 	delete_rec(pos, senti);
-		
-	
 	m_list = senti->suiv;
 	delete senti;
 }
+
+pic_cell *Pic_list::last_pic_cell()
+{
+	pic_cell* curs = m_list;
+	while (curs->suiv != NULL)
+		curs = curs->suiv;
+	return curs;
+}
+
+
+pic_cell *Pic_list::previous_pic_cell(pic_cell *cell)
+{
+	pic_cell* curs = m_list;
+	if (cell == m_list)
+		return m_list;
+	if (cell == NULL)
+		return last_pic_cell();
+	while (curs->suiv != cell && curs!=NULL)
+		curs = curs->suiv;
+	if (curs == NULL) {
+		return NULL;
+	}
+	if (curs->pic_name == cell->pic_name)
+		curs = previous_pic_cell(curs);
+	return curs;
+}
+
+pic_cell *Pic_list::next_pic_cell(pic_cell *cell)
+{
+	if (cell == NULL)
+		return NULL;
+	if(cell->suiv == NULL)
+		return NULL;
+	if (cell->pic_name == cell->suiv->pic_name)
+		cell->suiv = next_pic_cell(cell);
+	return cell->suiv;
+}
+	
+
 

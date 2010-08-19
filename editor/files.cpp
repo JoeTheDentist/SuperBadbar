@@ -8,11 +8,11 @@
 #include "files.h"
 		
 		
-void new_level_file(std::string file_name)
+void new_level_file(std::string file_name, std::string background_name)
 {
 	FILE *file;
 	file = fopen(file_name.c_str(), "w+");
-	fprintf(file, "#Background#\nbackground.bmp\n\n#Collisions#\n");
+	fprintf(file, "#Background#\n%s\n\n#Collisions#\n", background_name.c_str());
 	//~ for (size_t i = 0; i < height; i++){
 		//~ for (size_t j = 0; j < weight; j++)
 			//~ fprintf(file, "0 ");

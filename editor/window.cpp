@@ -38,7 +38,7 @@ Window::Window(std::string file_name)
 	m_weight = m_background->w;
 	m_height = m_background->h;
 
-	m_screen = SDL_SetVideoMode(600, 400, 32, SDL_HWSURFACE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
+	m_screen = SDL_SetVideoMode(600, 400, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	SDL_WM_SetCaption("Editeur de superbabar", NULL);
 	SDL_BlitSurface(m_background, NULL, m_screen, &m_camera);
 	SDL_Flip(m_screen);
