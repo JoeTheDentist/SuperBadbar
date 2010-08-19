@@ -59,16 +59,27 @@ public:
 class Monster: public Sprite {
 protected:
 	uint32_t m_type;					/* type de monstre (sa nature) */
-	uint32_t m_area; 					/* taille de la zone d'allez-retour */  // à changer éventuellement
+	uint32_t m_area_begin; 			    /* début de la zone d'allez-retour */
+	uint32_t m_area_end;                /* fin de la zone d'aller-retrou */
+	uint32_t m_speed_def;               /* vitesse en norme */
+	uint32_t m_life;                    /* vies */
+	bool m_can_fire;                    /* si le monstre tire ou non */
 	SDL_Surface * m_pic;                /* temp, faire avec les lvl ensuite */
 public:
 	Monster();						/* constructeur */
-	Monster(uint32_t type, SDL_Rect pos, uint32_t area);	/* constructeur */
+	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
 	~Monster();						/* destructeur */
 	void update_speed();					/* met à jour la vitesse du monstre */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
 	void set_pos_x(uint32_t x);				/* m_pos.x = x */
 	void set_pos_y(uint32_t y);				/* m_pos.y = y */
+	void set_type(uint32_t type);           /* modif m_type */
+	void set_life(uint32_t life);           /* modif m_life */
+	void set_begin(uint32_t begin);         /* ... */
+	void set_end(uint32_t end);             /* ... */
+	void set_fire(bool can_fire);           /* ... */
+	void set_speed(uint32_t speed);         /* ... */
+	uint32_t type();                        /* Accesseur */
 
 };
 

@@ -19,21 +19,33 @@
 #include "statics.h"
 
 
-Game::Game(): m_monster(1, (SDL_Rect){100,100,30,30}, 50), m_camera(&m_babar)
+Game::Game(): m_camera(&m_babar)
 {
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
+
+	/*** Images des projectiles ***/
+    m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
+    m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
+    m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
+    m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
+
+    for(int i = 0;i<4;i++) {
+        SDL_SetColorKey(m_proj[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj[i]->format, 0, 0, 255));
+    }
 }
 
 Game::~Game()
 {
-
+    for(int i = 0;i<4;i++) {
+        SDL_FreeSurface(m_proj[i]);
+    }
 }
 
 void Game::update_pos()
 {
 	m_babar.update_pos();
-	m_monster.update_pos();
+	/*m_monster.update_pos();*/
 	while(!projectiles.end()) {
 	    projectiles.element()->update_pos();
 	    projectiles.next();
@@ -44,7 +56,7 @@ void Game::update_pos()
 void Game::update_speed()
 {
 	m_babar.update_speed();
-	m_monster.update_speed();
+	/*m_monster.update_speed();*/
 
 	m_babar.update_state();         /* A changer de place, en discuter */
 }
@@ -74,7 +86,6 @@ void Game::refresh_screen()
     projectiles.delete_elements(too_old);
 
 	/* affichage des sprites */
-	m_camera.display_sprite(&m_monster);
 	m_camera.display_sprite(&m_babar);
 
 	/* mise à jour */
@@ -93,13 +104,21 @@ void Game::game_loop()
 			update_speed();
 			update_pos();
 			refresh_screen();
-			if (check_collision(m_babar.position(), m_monster.position()))
-				fprintf(stderr, "COLLISION\n");
 			fprintf(stderr, "pourcentage d'utilisation du temps: %f\n", (float)(m_time - m_previous_time - TIME_LOOP)/100.0); // marge de temps
 			m_previous_time = m_time;
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
+}
+
+SDL_Surface * Game::proj(uint8_t i)
+{
+    return m_proj[i];
+}
+
+SDL_Rect Game::camera_frame()
+{
+    return m_camera.frame();
 }
 

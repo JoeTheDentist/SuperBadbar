@@ -6,6 +6,8 @@
 #include "levels.h"
 #include "analyser.h"
 #include "collisions.h"
+#include "game.h"
+#include "sprites.h"
 
 
 Level::Level()
@@ -26,10 +28,10 @@ Level::Level(uint32_t lvl)
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
     analyser.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_statics();
-    analyser.close();
+    /*analyser.close();*/
 
-    /*** Remplissage des monstres***/
-    analyser.open("../data/levels/level"+str_lvl+".lvl");
+    /*** Remplissage des monstres ***/
+    /*analyser.open("../data/levels/level"+str_lvl+".lvl");*/
     m_nb_monsters = analyser.nb_monsters();
     for(int i=0;i<3;i++) {
         for(int j=0;j<3;j++) {
@@ -40,16 +42,27 @@ Level::Level(uint32_t lvl)
     }
     analyser.fill_monsters_pics(m_nb_monsters);
     /* Allocation de la matrice de monstres */
-    m_monsters_matrix = new uint32_t*[m_background->h/BOX_SIZE];
+    m_monsters_matrix = new Monster*[m_background->h/BOX_SIZE];
     for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
-        m_monsters_matrix[i] = new uint32_t[m_background->w/BOX_SIZE];
+        m_monsters_matrix[i] = new Monster[m_background->w/BOX_SIZE];
     }
     for(int i = 0;i<(m_background->h/BOX_SIZE);i++) {
         for(int j = 0;j<(m_background->w/BOX_SIZE);j++) {
-            m_monsters_matrix[i][j] = 0;
+            m_monsters_matrix[i][j].set_type(-1);
         }
     }
-    analyser.fill_monsters();
+    Analyser analyser2;
+    analyser2.open("../data/levels/level"+str_lvl+".lvl");
+    analyser.fill_monsters(&analyser2);
+    analyser2.close();
+
+    analyser.close();
+
+
+    /*** Stockage des monstres dans la listes ***/
+    SDL_Rect frame = game.camera_frame();
+    m_last_pos = frame;
+
 
     /*** Allocation du tableau pour les collisions ***/
     m_statics_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
@@ -75,16 +88,6 @@ Level::Level(uint32_t lvl)
 	//~ for (int i = 0 ; i < 100 ; i++){
 		//~ m_statics_matrix[i][i] = FULL_COLL;
 	//~ }
-
-    /*** Images des projectiles ***/
-    m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
-    m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
-    m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
-    m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
-
-    for(int i = 0;i<4;i++) {
-        SDL_SetColorKey(m_proj[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj[i]->format, 0, 0, 255));
-    }
 }
 
 Level::~Level()
@@ -105,10 +108,6 @@ Level::~Level()
                 delete[] m_monsters_pics[i][j][k];
             }
         }
-    }
-
-    for(int i = 0;i<4;i++) {
-        SDL_FreeSurface(m_proj[i]);
     }
 }
 
@@ -138,12 +137,6 @@ uint32_t Level::collision(uint32_t i, uint32_t j)
     return m_statics_matrix[i/BOX_SIZE][j/BOX_SIZE];
 }
 
-SDL_Surface * Level::proj(uint8_t i)
-{
-    return m_proj[i];
-}
-
-
 
 bool Level::down_collision(SDL_Rect pos)
 {
@@ -168,7 +161,38 @@ void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, c
     m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
 }
 
-void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type)
+void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed)
 {
-    m_monsters_matrix[i][j] = monster_type;
+    m_monsters_matrix[i][j].set_type(monster_type);
+    m_monsters_matrix[i][j].set_begin(begin);
+    m_monsters_matrix[i][j].set_end(end);
+    m_monsters_matrix[i][j].set_life(life);
+    m_monsters_matrix[i][j].set_fire(fire);
+    m_monsters_matrix[i][j].set_speed(speed);
+}
+
+void Level::fill_monster(uint32_t i, uint32_t j, Monster monster)
+{
+    m_monsters_matrix[i][j] = monster;
+}
+
+void Level::update()
+{
+
+}
+
+
+bool to_delete(Monster * monster)
+{
+    SDL_Rect monster_pos = monster->position();
+    SDL_Rect camera_pos = game.camera_frame();
+
+    if(!check_collision(monster_pos,camera_pos)) {  /* Il est trop cool ce Gloups */
+        /* Ici le monstres n'est pas dans l'écran de caméra */
+        curr_lvl.fill_monster(monster_pos.x/BOX_SIZE,monster_pos.y/BOX_SIZE,*monster);    /*On remet le monstre dans le tableau */
+        return true;
+    }
+    else {
+        return false;
+    }
 }

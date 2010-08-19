@@ -6,7 +6,6 @@
 !
 
 #Monsters#
-//images
 1
 ../pic/monsters/blob.bmp
 ../pic/monsters/blob.bmp
@@ -45,6 +44,9 @@
 ../pic/monsters/blob.bmp
 
 
+#StatMonstres#
+#0# 1 0 10
+
 #PositionsMonstres#
-0 10 10
-0 100 100
+0 10 10	5 20
+0 100 100	90 110

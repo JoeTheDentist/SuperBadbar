@@ -114,7 +114,7 @@ void Analyser::fill_monsters_pics(int nb_monsters)
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<3;j++) {
             for(int k=0;k<3;k++) {
-                for(int l=0;l<3;l++) {
+                for(int l=0;l<nb_monsters;l++) {
                     jump_separators();
                     fscanf(m_file,"%s",&link);
                     curr_lvl.fill_monster_pic(i,j,k,l,link);
@@ -124,15 +124,34 @@ void Analyser::fill_monsters_pics(int nb_monsters)
     }
 }
 
-void Analyser::fill_monsters()
+void Analyser::fill_monsters(Analyser * analyser)
 {
-    uint32_t i,j,monster_type;
+    /* Ici l'analyser en argument permet de traiter en parallèle deux bouts de fichiers sans ouvrir le fichier à chaque fois */
+    uint32_t i,j,begin,end,life,speed,monster_type;
+    bool fire;
     find_string("#PositionsMonstres#");
     while(!feof(m_file)) {
         jump_separators();
         fscanf(m_file,"%d",&monster_type);
         fscanf(m_file,"%d",&i);
         fscanf(m_file,"%d",&j);
-        curr_lvl.fill_monster_pos(i,j,monster_type);
+        fscanf(m_file,"%d",&begin);
+        fscanf(m_file,"%d",&end);
+        analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
+        curr_lvl.fill_monster_pos(i/BOX_SIZE,j/BOX_SIZE,begin,end,life,fire,speed,monster_type);
     }
+}
+
+void Analyser::fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint32_t type)
+{
+    char str[3];
+    std::string str_type;
+    sprintf(str, "%d", type);
+    str_type = str;
+
+    find_string("#"+str_type+"#");
+
+    fscanf(m_file,"%d",life);
+    fscanf(m_file,"%d",fire);
+    fscanf(m_file,"%d",speed);
 }

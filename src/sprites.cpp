@@ -3,6 +3,7 @@
 #include <SDL/SDL.h>
 #include <stdint.h>
 
+#include "game.h"
 #include "sprites.h"
 #include "globals.h"
 #include "events.h"
@@ -42,7 +43,6 @@ void Sprite::update_pos()
 		if (curr_lvl.down_collision(m_pos)){
 			speed_y = 0;
 			m_speed.y = 0;
-			m_state = WALK;
 		}
 		else {
 			m_pos.y += BOX_SIZE;
@@ -101,7 +101,7 @@ Babar::Babar()
 	m_pos.h = 234;
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
-	m_weapon = Weapon(MACHINEGUN);
+	m_weapon = Weapon(SHOTGUN);
 
     /*** Stockage et chargement dans le tableau des images ***/
 
@@ -244,10 +244,9 @@ Monster::Monster()
 
 }
 
-Monster::Monster(uint32_t type, SDL_Rect pos, uint32_t area)
+Monster::Monster(uint32_t type, SDL_Rect pos)
 {
 	m_pos = pos;
-	m_area = area;
 	m_type = type;
 	m_pic = SDL_LoadBMP("../pic/blob.bmp");
 }
@@ -263,10 +262,8 @@ SDL_Surface *Monster::current_picture()
 
 void Monster::update_speed()
 {
-	if (m_phase % m_area < m_area / 2)
-		m_speed.x = 5;
-	else
-		m_speed.x = -5;
+	if (m_pos.x<m_area_begin||m_pos.x>m_area_end)
+		m_speed.x = -m_speed.x;
 }
 
 void Monster::set_pos_x(uint32_t x)
@@ -277,6 +274,41 @@ void Monster::set_pos_x(uint32_t x)
 void Monster::set_pos_y(uint32_t y)
 {
 	m_pos.y = y;
+}
+
+void Monster::set_type(uint32_t type)
+{
+    m_type = type;
+}
+
+void Monster::set_life(uint32_t life)
+{
+    m_life = life;
+}
+
+void Monster::set_begin(uint32_t begin)
+{
+    m_area_begin = begin;
+}
+
+void Monster::set_end(uint32_t end)
+{
+    m_area_end = end;
+}
+
+void Monster::set_fire(bool can_fire)
+{
+    m_can_fire = can_fire;
+}
+
+void Monster::set_speed(uint32_t speed)
+{
+    m_speed_def = speed;
+}
+
+uint32_t Monster::type()
+{
+    return m_type;
 }
 
 
@@ -297,16 +329,16 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
 
     /*** Remplissage des images des projectiles (voir level.ccp) ***/
     if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
-        m_pic = curr_lvl.proj(2);
+        m_pic = game.proj(2);
     }
     if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
-        m_pic = curr_lvl.proj(0);
+        m_pic = game.proj(0);
     }
     if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
-        m_pic = curr_lvl.proj(3);
+        m_pic = game.proj(3);
     }
     if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
-        m_pic = curr_lvl.proj(1);
+        m_pic = game.proj(1);
     }
 
     m_speed.x = speedx;

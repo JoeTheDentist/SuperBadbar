@@ -110,6 +110,9 @@ template <class T> void List<T>::add(T element)
 template <class T> void List<T>::cut()
 {
     cell<T> * p = m_list->back;
+    if(typeid(*(m_list->head)).name()[0] == 'P') { /* Si on a une liste de pointeurs on le détruit */
+        delete *(m_list->head);
+    }
     delete m_list->head;
     delete m_list;
     m_list = p;
@@ -146,7 +149,10 @@ template <class T> void List<T>::delete_elements(bool (*fct)(T))
         if(fct(*(m_cursor->head))) {
             next();
             temp = last->back->back;
-	    delete last->back->head;
+            if(typeid(*(last->back->head)).name()[0] == 'P') {
+                delete *(last->back->head);
+            }
+            delete last->back->head;
             delete last->back;
             last->back = temp;
         }
@@ -155,7 +161,11 @@ template <class T> void List<T>::delete_elements(bool (*fct)(T))
             last = last->back;
         }
     }
-    cut(); /* Die fucking sentinelle !!! */
+    cell<T> * p = m_list->back; /* Die fucking sentinelle !!! */
+    delete m_list->head;
+    delete m_list;
+    m_list = p;
+    init();
 }
 
 #endif // LISTS_H_INCLUDED

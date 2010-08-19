@@ -1,0 +1,2 @@
+#PositionsMonstres#	//type, coor, debut zone, fin zone
+#StatMonstres#	//#type# vies, tir, vitesse
