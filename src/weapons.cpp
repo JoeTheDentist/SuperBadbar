@@ -41,11 +41,11 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
     switch (m_weapon_type) {
         case GUN :
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
-            projectiles.add(proj);
+            projectiles_firend.add(proj);
             break;
         case MACHINEGUN:
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
-            projectiles.add(proj);
+            projectiles_firend.add(proj);
             break;
         case SHOTGUN:
             int x[5];
@@ -76,7 +76,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
                 for(int i = 0;i<5;i++) {
                     proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], (v-1)*y[i] + randy[i]);
-                    projectiles.add(proj[i]);
+                    projectiles_firend.add(proj[i]);
                 }
             }
             else if(h-1) { /* tir uniquement dans la dimention horizontale */
@@ -91,7 +91,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
                 for(int i = 0;i<5;i++) {
                     proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], y[i] + randy[i]);
-                    projectiles.add(proj[i]);
+                    projectiles_firend.add(proj[i]);
                 }
             }
             else {  /* tir uniquement dans la dimension verticale */
@@ -106,7 +106,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
                 for(int i = 0;i<5;i++) {
                     proj[i] = new Projectile(pos, h, v, x[i] + randx[i], (v-1)*y[i] + randy[i]);
-                    projectiles.add(proj[i]);
+                    projectiles_firend.add(proj[i]);
                 }
             }
             break;

@@ -46,11 +46,11 @@ void Game::update_pos()
 {
 	m_babar.update_pos();
 	/*m_monster.update_pos();*/
-	while(!projectiles.end()) {
-	    projectiles.element()->update_pos();
-	    projectiles.next();
+	while(!projectiles_firend.end()) {
+	    projectiles_firend.element()->update_pos();
+	    projectiles_firend.next();
 	}
-	projectiles.init();
+	projectiles_firend.init();
 
 	while(!monsters.end()) {
 	    monsters.element()->update_pos();
@@ -101,12 +101,12 @@ void Game::refresh_screen()
 	monsters.init();
 
 	/* affichage des projectiles */
-	while(!projectiles.end()) {
-	    m_camera.display_sprite(projectiles.element());
-	    projectiles.next();
+	while(!projectiles_firend.end()) {
+	    m_camera.display_sprite(projectiles_firend.element());
+	    projectiles_firend.next();
 	}
 	/* suppression de projectiles trop vieux */
-    projectiles.delete_elements(too_old);
+    projectiles_firend.delete_elements(too_old);
 
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_babar);

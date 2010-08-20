@@ -314,7 +314,7 @@
 
 1280837295 c:\users\guillaume\desktop\svn\src\window.h
 
-1282304016 c:\users\guillaume\desktop\svn\src\globals.h
+1282332440 c:\users\guillaume\desktop\svn\src\globals.h
 	<string>
 	<SDL/SDL.h>
 	"statics.h"
@@ -400,8 +400,9 @@
 	"statics.h"
 	"lists.h"
 
-1282208484 c:\users\guillaume\desktop\svn\src\lists.h
+1282330463 c:\users\guillaume\desktop\svn\src\lists.h
 	<iostream>
+	<typeinfo>
 
 1280752469 c:\users\guillaume\desktop\svn\src\statics.h
 	<SDL/SDL.h>
