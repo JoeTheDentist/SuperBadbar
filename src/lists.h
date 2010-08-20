@@ -16,6 +16,7 @@
 #define LISTS_H_INCLUDED
 
 #include <iostream>
+#include <typeinfo>
 
 
 using namespace std;
