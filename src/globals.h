@@ -25,7 +25,7 @@ extern Events_status Events_stat; 	/* tables des touches enfoncées */
 extern uint32_t window_height;		/* hauteur de la fenêtre de jeu */
 extern uint32_t window_weight;		/* largeur de la fenêtre de jeu */
 extern uint32_t bottom;             /* Sol, babar ne peut pas aller plus bas, temporaraire, faire avec les static ensuite */
-extern Level curr_lvl;           /* Niveau en cours */
 extern Game game;                   /* Jeu */
+extern Level curr_lvl;           /* Niveau en cours */
 
 #endif

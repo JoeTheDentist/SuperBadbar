@@ -127,18 +127,18 @@ void Analyser::fill_monsters_pics(int nb_monsters)
 void Analyser::fill_monsters(Analyser * analyser)
 {
     /* Ici l'analyser en argument permet de traiter en parallèle deux bouts de fichiers sans ouvrir le fichier à chaque fois */
-    uint32_t i,j,begin,end,life,speed,monster_type;
+    uint32_t x,y,begin,end,life,speed,monster_type;
     bool fire;
     find_string("#PositionsMonstres#");
     while(!feof(m_file)) {
         jump_separators();
         fscanf(m_file,"%d",&monster_type);
-        fscanf(m_file,"%d",&i);
-        fscanf(m_file,"%d",&j);
+        fscanf(m_file,"%d",&x);
+        fscanf(m_file,"%d",&y);
         fscanf(m_file,"%d",&begin);
         fscanf(m_file,"%d",&end);
         analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
-        curr_lvl.fill_monster_pos(i/BOX_SIZE,j/BOX_SIZE,begin,end,life,fire,speed,monster_type);
+        curr_lvl.fill_monster_pos(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed);
     }
 }
 

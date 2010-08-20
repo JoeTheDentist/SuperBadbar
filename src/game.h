@@ -24,6 +24,7 @@ private:
 public:
 	Game();							/* constructeur */
 	~Game();							/* destructeur */
+	void update_camera();       /* MàJ cam */
 	void update_pos();			/* mise à jour des positions des sprites */
 	void update_speed();		/* mise à jour des vitesses des sprites */
 	void refresh_screen();		/* raffraichissement de l'écran */

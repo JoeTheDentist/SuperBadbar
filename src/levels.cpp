@@ -59,10 +59,11 @@ Level::Level(uint32_t lvl)
 
 
     /*** Stockage des monstres dans la listes ***/
-    SDL_Rect frame = game.camera_frame();
-    m_last_pos = frame;
-    for(int i=frame.x/BOX_SIZE;i<(frame.h+frame.x)/BOX_SIZE;i++) {
-        for(int j=frame.y/BOX_SIZE;j<(frame.h+frame.x)/BOX_SIZE;j++) {
+    game.update_camera();
+    m_last_pos = game.camera_frame();
+    SDL_Rect blabla = m_last_pos;
+    for(int i=m_last_pos.y/BOX_SIZE;i<(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
+        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.h+m_last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j].type() != -1) {
                 Monster * mstr = new Monster;
                 *mstr = m_monsters_matrix[i][j];
@@ -173,11 +174,20 @@ void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, c
 void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed)
 {
     m_monsters_matrix[i][j].set_type(monster_type);
+    m_monsters_matrix[i][j].set_pos_x(j*BOX_SIZE);
+    m_monsters_matrix[i][j].set_pos_y(i*BOX_SIZE);
     m_monsters_matrix[i][j].set_begin(begin);
     m_monsters_matrix[i][j].set_end(end);
     m_monsters_matrix[i][j].set_life(life);
     m_monsters_matrix[i][j].set_fire(fire);
     m_monsters_matrix[i][j].set_speed(speed);
+    for(int k=0;k<3;k++) {
+        for(int l=0;l<3;l++) {
+            for(int m=0;m<3;m++) {
+                m_monsters_matrix[i][j].set_pic(m_monsters_pics[k][l][m][monster_type],k,l,m);
+            }
+        }
+    }
 }
 
 void Level::fill_monster(uint32_t i, uint32_t j, Monster monster)
@@ -187,7 +197,19 @@ void Level::fill_monster(uint32_t i, uint32_t j, Monster monster)
 
 void Level::update()
 {
-
+    m_last_pos = game.camera_frame();
+    monsters.delete_elements(to_delete);
+    for(int i=m_last_pos.y/BOX_SIZE;i<(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
+        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.h+m_last_pos.x)/BOX_SIZE;j++) {
+            if(m_monsters_matrix[i][j].type() != -1) {
+                Monster * mstr = new Monster;
+                /*Monster test = m_monsters_matrix[i][j];*/
+                *mstr = m_monsters_matrix[i][j];
+                monsters.add(mstr);
+                m_monsters_matrix[i][j].set_type(-1);
+            }
+        }
+    }
 }
 
 
@@ -198,7 +220,7 @@ bool to_delete(Monster * monster)
 
     if(!check_collision(monster_pos,camera_pos)) {  /* Il est trop cool ce Gloups */
         /* Ici le monstres n'est pas dans l'écran de caméra */
-        curr_lvl.fill_monster(monster_pos.x/BOX_SIZE,monster_pos.y/BOX_SIZE,*monster);    /*On remet le monstre dans le tableau */
+        curr_lvl.fill_monster(monster_pos.y/BOX_SIZE,monster_pos.x/BOX_SIZE,*monster);    /*On remet le monstre dans le tableau */
         return true;
     }
     else {

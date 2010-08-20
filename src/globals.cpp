@@ -20,6 +20,6 @@ Events_status Events_stat;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;
 uint32_t bottom = 2100;
-Level curr_lvl(1);
 Game game;
+Level curr_lvl(1);
 

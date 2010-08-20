@@ -51,14 +51,30 @@ void Game::update_pos()
 	    projectiles.next();
 	}
 	projectiles.init();
+
+	while(!monsters.end()) {
+	    monsters.element()->update_pos();
+	    monsters.next();
+	}
+	monsters.init();
 }
 
 void Game::update_speed()
 {
 	m_babar.update_speed();
-	/*m_monster.update_speed();*/
+
+    while(!monsters.end()) {
+	    monsters.element()->update_speed();
+	    monsters.next();
+	}
+	monsters.init();
 
 	m_babar.update_state();         /* A changer de place, en discuter */
+}
+
+void Game::update_camera()
+{
+    m_camera.update_pos();
 }
 
 void Game::refresh_screen()
@@ -76,6 +92,13 @@ void Game::refresh_screen()
 	    statics.next();
 	}
 	statics.init();
+
+    /* affichage des monstres */
+	while(!monsters.end()) {
+	    m_camera.display_sprite(monsters.element());
+	    monsters.next();
+	}
+	monsters.init();
 
 	/* affichage des projectiles */
 	while(!projectiles.end()) {
@@ -101,6 +124,7 @@ void Game::game_loop()
 			Events_stat.update_events();
 			if (Events_stat.key_down(k_exit))
 				end = true;
+            curr_lvl.update();
 			update_speed();
 			update_pos();
 			refresh_screen();

@@ -248,7 +248,6 @@ Monster::Monster(uint32_t type, SDL_Rect pos)
 {
 	m_pos = pos;
 	m_type = type;
-	m_pic = SDL_LoadBMP("../pic/blob.bmp");
 }
 
 Monster::~Monster()
@@ -257,7 +256,7 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture()
 {
-    return m_pic;
+    return m_pics[0][0][0]; /* Temp */
 }
 
 void Monster::update_speed()
@@ -304,6 +303,12 @@ void Monster::set_fire(bool can_fire)
 void Monster::set_speed(uint32_t speed)
 {
     m_speed_def = speed;
+    m_speed.x = speed;
+}
+
+void Monster::set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k)
+{
+    m_pics[i][j][k] = pic;
 }
 
 uint32_t Monster::type()

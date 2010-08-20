@@ -64,13 +64,13 @@ protected:
 	uint32_t m_speed_def;               /* vitesse en norme */
 	uint32_t m_life;                    /* vies */
 	bool m_can_fire;                    /* si le monstre tire ou non */
-	SDL_Surface * m_pic;                /* temp, faire avec les lvl ensuite */
+	SDL_Surface * m_pics[3][3][3];      /* Images du monstre : state, gauche droite, num image */
 public:
-	Monster();						/* constructeur */
+	Monster();						        /* constructeur */
 	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
-	~Monster();						/* destructeur */
+	~Monster();						        /* destructeur */
 	void update_speed();					/* met à jour la vitesse du monstre */
-	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
+	SDL_Surface * current_picture();        /* Retourne la bonne image de l'animation */
 	void set_pos_x(uint32_t x);				/* m_pos.x = x */
 	void set_pos_y(uint32_t y);				/* m_pos.y = y */
 	void set_type(uint32_t type);           /* modif m_type */
@@ -79,6 +79,7 @@ public:
 	void set_end(uint32_t end);             /* ... */
 	void set_fire(bool can_fire);           /* ... */
 	void set_speed(uint32_t speed);         /* ... */
+	void set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k); /* ... */
 	uint32_t type();                        /* Accesseur */
 
 };

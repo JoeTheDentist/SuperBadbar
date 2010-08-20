@@ -44,7 +44,7 @@ public:
     void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);
     void fill_monster(uint32_t i, uint32_t j, Monster monster);
 
-    void update();   /* Met à jour la listes des monstres */
+    void update();   /* Met à jour la listes des monstres et le tableau de monstres */
 };
 
 bool to_delete(Monster * monster);
