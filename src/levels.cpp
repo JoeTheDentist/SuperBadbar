@@ -33,6 +33,7 @@ Level::Level(uint32_t lvl)
     /*** Remplissage des monstres ***/
     /*analyser.open("../data/levels/level"+str_lvl+".lvl");*/
     m_nb_monsters = analyser.nb_monsters();
+	fprintf(stderr, "%d", m_nb_monsters);
     for(int i=0;i<3;i++) {
         for(int j=0;j<3;j++) {
             for(int k=0;k<3;k++) {

@@ -7,6 +7,8 @@
 
 #include <string>
 #include <SDL/SDL.h>
+#include "sprites.h"
+
 #include "statics.h"
 #include "events.h"
 #include "levels.h"
