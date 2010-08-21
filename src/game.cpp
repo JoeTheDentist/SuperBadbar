@@ -115,6 +115,8 @@ void Game::refresh_screen()
 	SDL_Flip(screen);
 }
 
+
+
 void Game::game_loop()
 {
 	bool end = false;
@@ -127,6 +129,7 @@ void Game::game_loop()
             curr_lvl.update();
 			update_speed();
 			update_pos();
+			check_monsters();
 			refresh_screen();
 			fprintf(stderr, "pourcentage d'utilisation du temps: %f\n", (float)(m_time - m_previous_time - TIME_LOOP)/100.0); // marge de temps
 			m_previous_time = m_time;
@@ -146,3 +149,27 @@ SDL_Rect Game::camera_frame()
     return m_camera.frame();
 }
 
+void Game::check_monsters()
+{
+    monsters.delete_elements(to_kill);
+}
+
+
+/*** Fonctions ***/
+
+bool to_kill(Monster * monster)
+{
+    while(!projectiles_firend.end()) {
+        if(check_collision(monster->position(),projectiles_firend.element()->position())) {
+            /* Si un projectile traverse le monstre */
+            monster->damage(projectiles_firend.element()->damage());
+            if(monster->dead()) {
+                projectiles_firend.init();
+                return true;
+            }
+        }
+        projectiles_firend.next();
+    }
+    projectiles_firend.init();
+    return false;
+}

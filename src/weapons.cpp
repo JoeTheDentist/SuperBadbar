@@ -40,11 +40,11 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
     Projectile * proj;
     switch (m_weapon_type) {
         case GUN :
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
+            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
             projectiles_firend.add(proj);
             break;
         case MACHINEGUN:
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED);
+            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
             projectiles_firend.add(proj);
             break;
         case SHOTGUN:
@@ -75,7 +75,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 y[4] = 3*PROJ_SPEED/4;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], (v-1)*y[i] + randy[i]);
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], (v-1)*y[i] + randy[i],1);
                     projectiles_firend.add(proj[i]);
                 }
             }
@@ -90,7 +90,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 y[4] = -3*PROJ_SPEED/10;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], y[i] + randy[i]);
+                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + randx[i], y[i] + randy[i],1);
                     projectiles_firend.add(proj[i]);
                 }
             }
@@ -105,7 +105,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 x[4] = -PROJ_SPEED/7;
 
                 for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, x[i] + randx[i], (v-1)*y[i] + randy[i]);
+                    proj[i] = new Projectile(pos, h, v, x[i] + randx[i], (v-1)*y[i] + randy[i],1);
                     projectiles_firend.add(proj[i]);
                 }
             }

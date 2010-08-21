@@ -80,6 +80,8 @@ public:
 	void set_fire(bool can_fire);           /* ... */
 	void set_speed(uint32_t speed);         /* ... */
 	void set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k); /* ... */
+	void damage(uint32_t damage);           /* fait perdre des vies */
+	bool dead();                            /* Si les pt de vies sont >= 0 */
 	uint32_t type();                        /* Accesseur */
 
 };
@@ -88,11 +90,13 @@ public:
 class Projectile: public Sprite {
 protected:
     SDL_Surface * m_pic;
+    uint32_t m_damage;
 public:
     Projectile();
-    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy);
+    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage);
     ~Projectile();
     SDL_Surface * current_picture();
+    uint32_t damage();
 };
 
 

@@ -29,10 +29,11 @@ public:
 	void update_speed();		/* mise à jour des vitesses des sprites */
 	void refresh_screen();		/* raffraichissement de l'écran */
 	void game_loop();			/* boucle de jeu */
+	void check_monsters();      /* Check collision monstres-projectiles */
 	SDL_Surface * proj(uint8_t i);   /* Accesseur : projectiles */
 	SDL_Rect camera_frame();     /* Accesseur : cadre de la caméra */
 };
 
-
+bool to_kill(Monster * monster);
 
 #endif

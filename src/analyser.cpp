@@ -116,7 +116,7 @@ void Analyser::fill_monsters_pics(int nb_monsters)
             for(int k=0;k<3;k++) {
                 for(int l=0;l<nb_monsters;l++) {
                     jump_separators();
-                    fscanf(m_file,"%s",&link);
+                    fscanf(m_file,"%s",link);
                     curr_lvl.fill_monster_pic(i,j,k,l,link);
                 }
             }

@@ -309,6 +309,18 @@ void Monster::set_speed(uint32_t speed)
 void Monster::set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k)
 {
     m_pics[i][j][k] = pic;
+    m_pos.h = pic->h;
+    m_pos.w = pic->w;
+}
+
+void Monster::damage(uint32_t damage)
+{
+    m_life -= damage;
+}
+
+bool Monster::dead()
+{
+    return (m_life >= 0);
 }
 
 uint32_t Monster::type()
@@ -326,11 +338,12 @@ Projectile::Projectile()
 
 }
 
-Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy)
+Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage)
 {
     m_pos = pos;
     m_horizontal = h;
     m_vertical = v;
+    m_damage = damage;
 
     /*** Remplissage des images des projectiles (voir level.ccp) ***/
     if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
@@ -358,6 +371,11 @@ Projectile::~Projectile()
 SDL_Surface *Projectile::current_picture()
 {
     return m_pic;
+}
+
+uint32_t Projectile::damage()
+{
+    return m_damage;
 }
 
 
