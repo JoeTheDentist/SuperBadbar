@@ -5,6 +5,8 @@
 #include <stdint.h>
 #include <string>
 
+#include "SDL/SDL.h"
+
 #include "collision_matrix.h"
 #include "files.h"
 
@@ -30,10 +32,14 @@ Collision_matrix::Collision_matrix(size_t weight, size_t height)
 
 Collision_matrix::Collision_matrix(std::string file_name)
 {
+	char background_name[100];
+	SDL_Surface *background = NULL;
 	FILE* file = fopen(file_name.c_str(), "r");
-	find_string("Size:", file);
-	fscanf(file, "%d", &m_weight);
-	fscanf(file, "%d", &m_height);
+	find_string("#Background#", file);
+	fscanf(file, "%s", background_name);
+	background = SDL_LoadBMP(background_name);
+	m_weight = background->w / SIZE_SQUARE;
+	m_height = background->h / SIZE_SQUARE;
 	fprintf(stderr, "%d %d\n", m_weight, m_height);
 	
 	m_matrix = new uint32_t*[m_weight];

@@ -1,6 +1,8 @@
 #ifndef _COLLISION_MATRIX_
 #define _COLLISION_MATRIX_
 
+#define SIZE_SQUARE 5
+
 #include <string>
 
 

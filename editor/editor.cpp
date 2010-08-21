@@ -15,7 +15,7 @@ Editor::Editor()
 
 }
 
-Editor::Editor(std::string file_name) :  m_leave(false), m_window(file_name), m_pic_list(file_name),/* m_collision_matrix(file_name),*/ m_file_name(file_name)
+Editor::Editor(std::string file_name) :  m_leave(false), m_window(file_name), m_pic_list(file_name), m_collision_matrix(file_name), m_file_name(file_name)
 {
 
 }
@@ -26,7 +26,7 @@ void Editor::save(std::string file_name)
 	FILE* file = fopen(file_name.c_str(), "w+");
 	std::cout << "Enregistrement du fichier " << file_name << std::endl;
 	m_window.save(file);
-	//~ m_collision_matrix.save(file);
+	m_collision_matrix.save(file);
 	m_pic_list.save(file);
 	fclose(file);
 }
