@@ -159,17 +159,27 @@ void Game::check_monsters()
 
 bool to_kill(Monster * monster)
 {
-    while(!projectiles_firend.end()) {
+    projectiles_firend.delete_elements(check_monster_proj, monster);
+    /*while(!projectiles_firend.end()) {
         if(check_collision(monster->position(),projectiles_firend.element()->position())) {
             /* Si un projectile traverse le monstre */
-            monster->damage(projectiles_firend.element()->damage());
+            /*monster->damage(projectiles_firend.element()->damage());*/
             if(monster->dead()) {
-                projectiles_firend.init();
                 return true;
             }
-        }
+        /*}
         projectiles_firend.next();
-    }
-    projectiles_firend.init();
+    }*/
     return false;
+}
+
+bool check_monster_proj(Projectile * proj, Monster * monster)
+{
+    if(check_collision(monster->position(),proj->position())) {
+        monster->damage(proj->damage());
+        return true;
+    }
+    else {
+        return false;
+    }
 }

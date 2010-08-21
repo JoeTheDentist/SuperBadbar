@@ -170,6 +170,8 @@ bool Level::up_collision(SDL_Rect pos)
 void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, char *link)
 {
     m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
+    SDL_SetColorKey(m_monsters_pics[state][h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[state][h][num_image][num_monster]->format, 0, 0, 255));
+
 }
 
 void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed)

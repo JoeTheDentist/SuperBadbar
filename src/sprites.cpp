@@ -320,7 +320,7 @@ void Monster::damage(uint32_t damage)
 
 bool Monster::dead()
 {
-    return (m_life >= 0);
+    return (m_life <= 0);
 }
 
 uint32_t Monster::type()
@@ -358,6 +358,9 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
     if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
         m_pic = game.proj(1);
     }
+
+    m_pos.h = m_pic->h;
+    m_pos.w = m_pic->w;
 
     m_speed.x = speedx;
     m_speed.y = speedy;

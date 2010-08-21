@@ -35,5 +35,6 @@ public:
 };
 
 bool to_kill(Monster * monster);
+bool check_monster_proj(Projectile * proj, Monster * monster);
 
 #endif
