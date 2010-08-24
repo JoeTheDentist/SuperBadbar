@@ -10,25 +10,11 @@
 #include "window.h"
 #include "pic_list.h"
 
-Editor::Editor()
-{
 
-}
 
 Editor::Editor(std::string file_name) :  m_leave(false), m_window(file_name), m_pic_list(file_name), m_collision_matrix(file_name), m_file_name(file_name)
 {
 
-}
-
-
-void Editor::save(std::string file_name)
-{
-	FILE* file = fopen(file_name.c_str(), "w+");
-	std::cout << "Enregistrement du fichier " << file_name << std::endl;
-	m_window.save(file);
-	m_collision_matrix.save(file);
-	m_pic_list.save(file);
-	fclose(file);
 }
 
 
@@ -48,6 +34,8 @@ void Editor::edit()
 					right_clic(event.button.x, event.button.y);
 				else if (event.button.button == SDL_BUTTON_WHEELDOWN) 
 					insert_last_pic();
+				refresh_and_flip();
+
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym) {
@@ -59,31 +47,56 @@ void Editor::edit()
 						break;
 					case SDLK_d:
 						delete_pic();
+						refresh_and_flip();
 						break;
 					case SDLK_l:
 						insert_last_pic();
+						refresh_and_flip();
 						break;
 					default:
 						break;
 				}
 		}
-		refresh();
 	}	
+}
+
+
+void Editor::refresh_and_flip()
+{
+	refresh();
+	flip();
+}
+
+void Editor::flip()
+{
+	m_window.refresh();
 }
 
 void Editor::refresh()
 {
 	m_window.update_background();
 	m_pic_list.display_list(&m_window);
-	m_window.refresh();
 }
+
+
+
+void Editor::save(std::string file_name)
+{
+	FILE* file = fopen(file_name.c_str(), "w+");
+	std::cout << "Enregistrement du fichier " << file_name << std::endl;
+	m_window.save(file);
+	m_collision_matrix.save(file);
+	m_pic_list.save(file);
+	fclose(file);
+}
+
+
 
 
 void Editor::right_clic(int x, int y)
 {
 	SDL_Event event;
-	m_window.translate(x, y);
-	int phase = 0;
+	int phase = PIXELS_BEFORE_REFRESH;
 	while (true){
 		SDL_WaitEvent(&event);
 		switch(event.type){
@@ -92,27 +105,27 @@ void Editor::right_clic(int x, int y)
 				break;
 			case SDL_MOUSEBUTTONUP:    
 				if (event.button.button == SDL_BUTTON_RIGHT){
-					m_window.translate(-event.button.x, -event.button.y);
+					m_window.translate(x-event.button.x, y-event.button.y);
 					return;
 				}
 				break;
 			case SDL_MOUSEMOTION:
 				if(phase == PIXELS_BEFORE_REFRESH){
 					phase = 0;
-					m_window.translate(-event.motion.x, -event.motion.y);
-					m_window.update_background();
-					m_window.refresh();
-					m_window.translate(event.motion.x, event.motion.y);
+					m_window.translate(x-event.motion.x, y-event.motion.y);
+					refresh_and_flip();
+					x = event.motion.x;
+					y = event.motion.y;
 				}
 				else {
 					phase++;
 				}
 				break;
 		}
-
-	}
-	
+	}	
 }
+
+
 
 void Editor::shell()
 {
@@ -121,8 +134,8 @@ void Editor::shell()
 	bool leave = false;
 	std::cout << "Que voulez-vous faire?" << std::endl;
 	std::cout << "1. Insérer une image" << std::endl;
-	std::cout << "" << std::endl;
-	std::cout << "" << std::endl;
+	//~ std::cout << "" << std::endl;
+	//~ std::cout << "" << std::endl;
 	while (!leave) {
 		leave = true;
 		std::cin >> choice;
@@ -132,14 +145,11 @@ void Editor::shell()
 				std::cin >> file_name;
 				insert_pic(file_name);
 				break;
-			
-			
 			default:
 				leave = false;
 				break;
 		}
 	}
-	
 }
 
 void Editor::insert_pic(std::string file_name)
@@ -158,7 +168,7 @@ void Editor::insert_pic(std::string file_name)
 	pos_pic = m_window.camera();
 	pos_pic.x += event.motion.x;
 	pos_pic.y += event.motion.y;
-	refresh();
+	refresh_and_flip();
 	m_window.display_pic(pic, pos_pic);
 	m_window.refresh();	
 	std::cout << "Insertion de l'image " << file_name << std::endl;
@@ -191,7 +201,7 @@ void Editor::insert_pic(std::string file_name)
 						pos_pic.y += event.motion.y;
 						refresh();
 						m_window.display_pic(pic, pos_pic);
-						m_window.refresh();
+						flip();
 					}	
 				}
 				else if (event.button.button == SDL_BUTTON_WHEELDOWN) {
@@ -205,7 +215,7 @@ void Editor::insert_pic(std::string file_name)
 						pos_pic.y += event.motion.y;
 						refresh();
 						m_window.display_pic(pic, pos_pic);
-						m_window.refresh();	
+						flip();
 					}
 					break;
 				}
@@ -240,7 +250,6 @@ void Editor::insert_pic(std::string file_name)
 							file_name = current_pic_cell->pic_name;
 							pic = SDL_LoadBMP(file_name.c_str());
 						}						
-					
 						break;
 					default:
 						break;
@@ -250,16 +259,15 @@ void Editor::insert_pic(std::string file_name)
 	}
 }
 
+
+
+
 void Editor::insert_last_pic()
 {
 	pic_cell* cell = m_pic_list.last_pic_cell();
 	insert_pic(cell->pic_name);
 }
 
-void Editor::leave_editor()
-{
-	m_leave = true;
-}
 
 void Editor::delete_pic()
 {
@@ -304,8 +312,16 @@ void Editor::delete_pic()
 		}
 		
 	}
-	fprintf(stderr, "yop");
 }
+
+
+
+void Editor::leave_editor()
+{
+	m_leave = true;
+}
+
+
 
 
 Editor::~Editor()

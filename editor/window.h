@@ -7,12 +7,14 @@
 #include <SDL/SDL.h>         
 #include <string>
 
+#define CAMERA_W 600		
+#define CAMERA_H 400
 
 class Window{
 private:                                                               
 	SDL_Surface *m_screen; 				/* fenetre de l'éditeur*/
-	SDL_Surface *m_background; 			/* surface de fond d'écran */
-	SDL_Rect m_camera;					/* position de la camera */
+	SDL_Surface *m_background; 		/* surface de fond d'écran */
+	SDL_Rect m_camera;					/* position de la camera (les champs .w et .h sont aussi pertinents)*/
 	size_t m_height;
 	size_t m_weight;
 	std::string m_background_name;

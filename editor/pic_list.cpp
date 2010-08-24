@@ -39,18 +39,6 @@ Pic_list::Pic_list(std::string file_name)
 }
 
 
-Pic_list::~Pic_list()
-{
-	pic_cell *temp;
-	while (m_list != NULL) {
-		temp = m_list;
-		m_list = m_list->suiv;
-		if (temp->pic != NULL)
-			SDL_FreeSurface(temp->pic);
-		delete temp;
-	}
-}
-
 void Pic_list::save(FILE* file)
 {
 	pic_cell *curs = m_list;
@@ -157,11 +145,24 @@ pic_cell *Pic_list::next_pic_cell(pic_cell *cell)
 	if (cell == NULL)
 		return NULL;
 	if(cell->suiv == NULL)
-		return NULL;
+		return cell;
 	if (cell->pic_name == cell->suiv->pic_name)
 		cell->suiv = next_pic_cell(cell);
 	return cell->suiv;
 }
 	
+
+
+Pic_list::~Pic_list()
+{
+	pic_cell *temp;
+	while (m_list != NULL) {
+		temp = m_list;
+		m_list = m_list->suiv;
+		if (temp->pic != NULL)
+			SDL_FreeSurface(temp->pic);
+		delete temp;
+	}
+}
 
 

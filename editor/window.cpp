@@ -37,8 +37,9 @@ Window::Window(std::string file_name)
 	m_background = SDL_LoadBMP(background);
 	m_weight = m_background->w;
 	m_height = m_background->h;
-
-	m_screen = SDL_SetVideoMode(600, 400, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+	m_camera.w =  CAMERA_W;
+	m_camera.h =  CAMERA_H;
+	m_screen = SDL_SetVideoMode(m_camera.w, m_camera.h, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	SDL_WM_SetCaption("Editeur de superbabar", NULL);
 	SDL_BlitSurface(m_background, NULL, m_screen, &m_camera);
 	SDL_Flip(m_screen);
@@ -71,6 +72,14 @@ void Window::translate(int x, int y)
 {
 	m_camera.x += x;
 	m_camera.y += y;
+	if (m_camera.x < 0)
+		m_camera.x = 0;
+	if (m_camera.y < 0)
+		m_camera.y = 0;
+	if (m_camera.x + m_camera.w  > m_background->w)
+		m_camera.x = m_background->w - m_camera.w;	
+	if (m_camera.y + m_camera.h  > m_background->h)
+		m_camera.y = m_background->h - m_camera.h;
 }
 
 void Window::update_background()
