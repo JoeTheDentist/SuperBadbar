@@ -20,7 +20,7 @@
 		<Cursor position="0" topLine="1" />
 	</File>
 	<File name="..\src\events.cpp" open="1" top="1" tabpos="14">
-		<Cursor position="1221" topLine="36" />
+		<Cursor position="558" topLine="3" />
 	</File>
 	<File name="..\src\events.h" open="0" top="0" tabpos="7">
 		<Cursor position="753" topLine="5" />
@@ -50,7 +50,7 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="5111" topLine="198" />
+		<Cursor position="4048" topLine="149" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="3">
 		<Cursor position="797" topLine="21" />
