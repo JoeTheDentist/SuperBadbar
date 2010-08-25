@@ -27,6 +27,9 @@ Events_status::~Events_status()
 void Events_status::update_events()
 {
 	SDL_Event event;
+	Uint8 *keystates = SDL_GetKeyState( NULL );
+	int i = 0;
+
 	while(SDL_PollEvent(&event))
 	{
 		switch (event.type)
@@ -47,6 +50,22 @@ void Events_status::update_events()
 			break;
 		}
 	}
+	if( keystates[ SDLK_UP ] ) {
+        i++;
+    }
+    if( keystates[ SDLK_DOWN ] ) {
+        i++;
+    }
+    if( keystates[ SDLK_LEFT ] ) {
+        i++;
+    }
+    if( keystates[ SDLK_RIGHT ] ) {
+        i++;
+    }
+
+    if(i>3) {
+        std::cout  << "Yop" << std::endl;
+    }
 }
 
 bool Events_status::key_down(enum key k)

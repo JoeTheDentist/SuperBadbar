@@ -144,6 +144,7 @@ Babar::Babar()
         }
     }
 
+    /* Transparence */
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
 	        for(int k = 0;k<3;k++) {
@@ -195,6 +196,7 @@ void Babar::update_state()
     if(m_state != JUMP) {
         m_state = STATIC;
     }
+
 	if (Events_stat.key_down(k_left)) {
 		m_horizontal = LEFT;
 		m_last_dir = LEFT;
@@ -203,22 +205,14 @@ void Babar::update_state()
 		m_horizontal = RIGHT;
 		m_last_dir = RIGHT;
 	}
+
 	if (Events_stat.key_down(k_up)) {
 		m_vertical = UP;
 	}
 	if (Events_stat.key_down(k_down)) {
 		m_vertical = DOWN;
 	}
-    if (Events_stat.key_down(k_jump)&&(m_state!=JUMP)) {    /* Début du saut */
-        m_state = JUMP;
-        m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
-    }
-    if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
-        m_state = STATIC;
-    }
-    if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
-        m_state = WALK;
-    }
+
     if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
             m_weapon.fire(m_pos,m_horizontal,m_vertical);
@@ -232,6 +226,16 @@ void Babar::update_state()
         m_fire_phase++;
     }
 
+    if (Events_stat.key_down(k_jump)&&(m_state!=JUMP)) {    /* Début du saut */
+        m_state = JUMP;
+        m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
+    }
+    if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
+        m_state = STATIC;
+    }
+    if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
+        m_state = WALK;
+    }
 }
 
 

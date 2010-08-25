@@ -4,11 +4,7 @@
 
     Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
 
-    /!\ Pour la libération de mémoire ces listes supportent :
-            - Variable normales (int, float,...) car pas besoin de libérer
-            - Les objets (appel de destructeur)
-
-    Remarque : on peut faire la libération de mémoire de liste de pointeurs via la librairie typeinfo, à faire si besoin.
+    /!\ Pour la libération de mémoire ces listes ne marchent QUE pour des listes de POINTEURS alloués... Malgré le typeid, je compilateur n'es pas content
 **/
 
 
@@ -53,9 +49,9 @@ template <class T> class List {
         T element();                    /* Retourne l'élément sur le curseur */
         bool end();                     /* Retourne si le curseur est à la fin de la liste */
 
-        void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
-        void delete_elements(bool (*fct)(T)); /* Supprime les éléments qui vérifient fct */
-        template <class Q> void delete_elements(bool (*fct)(T,Q), Q arg);
+        void do_list(void (*fct)(T));           /* Applique une void fonction à chaque élément de la liste */
+        void delete_elements(bool (*fct)(T));   /* Supprime les éléments qui vérifient fct */
+        template <class Q> void delete_elements(bool (*fct)(T,Q), Q arg);   /* Surcharge, idem mais la fonction peut avoir un argument */
 };
 
 

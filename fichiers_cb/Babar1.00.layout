@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="..\src\analyser.cpp" open="1" top="0" tabpos="11">
-		<Cursor position="1347" topLine="125" />
+		<Cursor position="1385" topLine="80" />
 	</File>
 	<File name="..\src\analyser.h" open="0" top="0" tabpos="21">
 		<Cursor position="1495" topLine="30" />
@@ -19,41 +19,41 @@
 	<File name="..\src\collisions.h" open="0" top="0" tabpos="13">
 		<Cursor position="0" topLine="1" />
 	</File>
-	<File name="..\src\events.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="558" topLine="19" />
+	<File name="..\src\events.cpp" open="1" top="1" tabpos="14">
+		<Cursor position="1221" topLine="36" />
 	</File>
 	<File name="..\src\events.h" open="0" top="0" tabpos="7">
 		<Cursor position="753" topLine="5" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="4102" topLine="165" />
+		<Cursor position="807" topLine="24" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="7">
-		<Cursor position="1186" topLine="19" />
+		<Cursor position="1186" topLine="9" />
 	</File>
 	<File name="..\src\globals.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="210" topLine="4" />
+		<Cursor position="505" topLine="0" />
 	</File>
 	<File name="..\src\globals.h" open="1" top="0" tabpos="9">
-		<Cursor position="1118" topLine="12" />
+		<Cursor position="329" topLine="3" />
 	</File>
-	<File name="..\src\levels.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="5370" topLine="159" />
+	<File name="..\src\levels.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="4943" topLine="150" />
 	</File>
 	<File name="..\src\levels.h" open="1" top="0" tabpos="4">
-		<Cursor position="1705" topLine="32" />
+		<Cursor position="1705" topLine="21" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="10">
-		<Cursor position="4130" topLine="138" />
+		<Cursor position="2231" topLine="45" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="283" topLine="2" />
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="3737" topLine="141" />
+		<Cursor position="5111" topLine="198" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="3">
-		<Cursor position="3837" topLine="86" />
+		<Cursor position="797" topLine="21" />
 	</File>
 	<File name="..\src\statics.cpp" open="1" top="0" tabpos="15">
 		<Cursor position="182" topLine="6" />
@@ -62,7 +62,7 @@
 		<Cursor position="168" topLine="0" />
 	</File>
 	<File name="..\src\weapons.cpp" open="1" top="0" tabpos="16">
-		<Cursor position="3183" topLine="6" />
+		<Cursor position="1157" topLine="42" />
 	</File>
 	<File name="..\src\weapons.h" open="0" top="0" tabpos="22">
 		<Cursor position="772" topLine="12" />

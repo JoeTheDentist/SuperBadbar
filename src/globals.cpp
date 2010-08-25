@@ -23,4 +23,3 @@ uint32_t window_weight = 800;
 uint32_t bottom = 2100;
 Game game;
 Level curr_lvl(1);
-
