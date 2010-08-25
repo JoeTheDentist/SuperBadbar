@@ -29,14 +29,14 @@ private:
 	SDL_Rect m_last_pos;                        /* Pour se souvenir de l'ancienne prosition de la caméra */
 
 public:
-	Level();													/* Constructeur par défaut*/
-	Level(uint32_t lvl);										/* Constructeur avec précision du numéro de niveau */
-	~Level();													/* Destructeur */
-	void fill_collision(uint32_t i, uint32_t j, uint32_t collision_type); 	/* remplit la case i j de la matrice des collisions */
-	uint32_t collision(uint32_t i, uint32_t j);  										/* Accesseur */
-	SDL_Surface * background();  														/* Accesseur */
-	uint32_t level_height();  															 	/* Hauteur du niveau */
-	uint32_t level_weight();   				 												/* Largeur du niveau */
+	Level();															/* Constructeur par défaut*/
+	Level(uint32_t lvl);												/* Constructeur avec précision du numéro de niveau */
+	~Level();															/* Destructeur */
+	void fill_collision(uint32_t i, uint32_t j, uint32_t collision_type); /* remplit la case i j de la matrice des collisions */
+	uint32_t collision(uint32_t i, uint32_t j);  						/* Accesseur */
+	SDL_Surface * background();  										/* Accesseur */
+	uint32_t level_height();  											/* Hauteur du niveau */
+	uint32_t level_weight();   				 							/* Largeur du niveau */
 	bool down_collision(SDL_Rect pos);
 	bool up_collision(SDL_Rect pos);
 

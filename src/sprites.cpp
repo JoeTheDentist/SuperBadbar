@@ -36,9 +36,10 @@ Sprite::~Sprite()
 
 void Sprite::update_pos()
 {
-	m_pos.x += m_speed.x;
+	//~ m_pos.x += m_speed.x;
 	m_phase++;
-	fprintf(stderr, "vitesse verticale: %d\n", m_speed.y);
+	
+	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		if (curr_lvl.down_collision(m_pos)){
 			speed_y = 0;
@@ -48,22 +49,37 @@ void Sprite::update_pos()
 		}
 		else {
 			m_pos.y += BOX_SIZE;
+			if (m_pos.y + m_pos.h > curr_lvl.level_height())
+				m_pos.y = curr_lvl.level_height() - m_pos.h;
 		}
-		fprintf(stderr, "yop");
 	}
 
+	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (curr_lvl.up_collision(m_pos)){
 			speed_y = 0;
 			m_speed.y = 0;
-			if (m_state == JUMP)
-				m_state = STATIC;
 		}
 		else {
+			if (m_pos.y < 0)
+				m_pos.y = 0;
 			m_pos.y -= BOX_SIZE;
 		}
 	}
 
+	/* cas où le sprite va à droite */
+	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+			m_pos.x += BOX_SIZE;
+			if (m_pos.x + m_pos.w > curr_lvl.level_weight())
+				m_pos.x = curr_lvl.level_weight() - m_pos.w;
+	}
+	
+	/* cas où le sprite va à gauche */
+	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+			m_pos.x -= BOX_SIZE;		
+			if (m_pos.x < 0)
+				m_pos.x = 0;
+	}
 
 	//~ if (m_pos.x < 0)
 		//~ m_pos.x = 0;
@@ -101,8 +117,7 @@ uint32_t Sprite::phase()
 **********************************/
 Babar::Babar()
 {
-    m_pos.w = 163;
-	m_pos.h = 234;
+
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
 	m_weapon = Weapon(SHOTGUN);
@@ -147,7 +162,8 @@ Babar::Babar()
             m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_jump_right_0.bmp");
         }
     }
-
+	m_pos.w = m_pic[0][0][0]->w;
+	m_pos.h = m_pic[0][0][0]->h;
     /* Transparence */
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
