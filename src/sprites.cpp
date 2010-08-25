@@ -162,8 +162,8 @@ Babar::Babar()
             m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_jump_right_0.bmp");
         }
     }
-	m_pos.w = m_pic[0][0][0]->w;
-	m_pos.h = m_pic[0][0][0]->h;
+	m_pos.w = m_pics[0][0][0][0]->w;
+	m_pos.h = m_pics[0][0][0][0]->h;
     /* Transparence */
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
