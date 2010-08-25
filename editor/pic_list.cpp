@@ -6,6 +6,7 @@
 #include "pic_list.h"     
 #include "window.h"
 #include "files.h"
+#include "editor.h"
 
 Pic_list::Pic_list()
 {
@@ -14,7 +15,8 @@ Pic_list::Pic_list()
 
 Pic_list::Pic_list(std::string file_name)
 {
-	FILE *file = fopen(file_name.c_str(), "r");
+	std::string file_n = LEVELS_DIR + file_name;
+	FILE *file = fopen(file_n.c_str(), "r");
 	std::string str;
 	int x, y;
 	char temp[100];
@@ -52,14 +54,13 @@ void Pic_list::save(FILE* file)
 }
 
 
-void Pic_list::add(std::string file_name, SDL_Rect pos)
+void Pic_list::add(std::string static_name, SDL_Rect pos)
 {
 	pic_cell *m_last = m_list;
 	pic_cell *new_cell= new pic_cell;
-
-	new_cell->pic = SDL_LoadBMP(file_name.c_str());
+	new_cell->pic = load_static(static_name);
 	new_cell->pos = pos;
-	new_cell->pic_name = file_name;
+	new_cell->pic_name = static_name;
 	new_cell->suiv = NULL;
 	if (m_list == NULL) {
 		m_list = new_cell;
@@ -146,8 +147,9 @@ pic_cell *Pic_list::next_pic_cell(pic_cell *cell)
 		return NULL;
 	if(cell->suiv == NULL)
 		return cell;
-	if (cell->pic_name == cell->suiv->pic_name)
-		cell->suiv = next_pic_cell(cell);
+	if (cell->pic_name == cell->suiv->pic_name){
+		return next_pic_cell(cell->suiv);
+	}
 	return cell->suiv;
 }
 	

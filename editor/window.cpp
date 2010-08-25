@@ -7,6 +7,7 @@
 
 #include "window.h"
 #include "files.h"
+#include "editor.h"
 
 Window::Window()
 {
@@ -17,12 +18,13 @@ Window::Window()
 Window::Window(std::string file_name)
 {
 	FILE *file = NULL;
+	std::string file_n = LEVELS_DIR + file_name;
 	char background[100];
 	m_camera.x = 0;
 	m_camera.y = 0;
 
 	/* recherche des informations dans le fichier file_name*/
-	file = fopen(file_name.c_str(), "r");
+	file = fopen(file_n.c_str(), "r");
 	if (file == NULL)
 		fprintf(stderr, "Erreur lors de l'ouverture du fichier %s", file_name.c_str());
 	find_string("#Background#", file);

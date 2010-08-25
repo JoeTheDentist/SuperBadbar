@@ -15,6 +15,7 @@
 
 #include "window.h"
 
+
 /**
  * Structure permettant la réalisation d'une liste chainée d'images positionnées dans le niveau
  * la surface de l'image est redondante avec son nom de fichier mais permet d'éviter de la recharger à chaque cycle
@@ -35,7 +36,7 @@ public:
 	Pic_list();										/* Constructeur par défaut (liste vide) */									
 	Pic_list(std::string file_name);				/* Constructeur à partir du fichier file_name (au format .lvl) */	
 	void save(FILE* file);							/* Sauvegarde  la liste dans un fichier .lvl file ouvert et en cours de sauvegarde */
-	void add(std::string file_name, SDL_Rect pos);	/* Ajout d'un élément dans la liste. La surface est chargée à partir du nom de fichier */
+	void add(std::string static_name, SDL_Rect pos);	/* Ajout d'un élément dans la liste. La surface est chargée à partir du nom de fichier */
 	void display_list(Window *window);				/* Affichage (blittage sans raffraichissement) des images dans la caméra */
 	void delete_pic(SDL_Rect pos);					/* Supprime la dernière image ajoutée en collision avec le point pos */
 	pic_cell *last_pic_cell();						/* Accesseur: retourne la derniere pic_cell de la liste */

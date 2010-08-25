@@ -9,6 +9,7 @@
 
 #include "collision_matrix.h"
 #include "files.h"
+#include "editor.h"
 
 Collision_matrix::Collision_matrix()
 {
@@ -17,24 +18,15 @@ Collision_matrix::Collision_matrix()
 	m_matrix = NULL;
 }
 
-Collision_matrix::Collision_matrix(size_t weight, size_t height)
-{
-	m_weight = weight;
-	m_height = height;
-	m_matrix = new uint32_t*[weight];
-	for (uint32_t i = 0; i < weight; i++)
-		m_matrix[i] = new uint32_t[height];
-	for (uint32_t i = 0; i < m_weight; i++)
-		for (uint32_t j = 0; j < m_height; j++)
-			m_matrix[i][j] = 0;
-}
+
 
 
 Collision_matrix::Collision_matrix(std::string file_name)
 {
 	char background_name[100];
 	SDL_Surface *background = NULL;
-	FILE* file = fopen(file_name.c_str(), "r");
+	std::string file_n = LEVELS_DIR + file_name;
+	FILE* file = fopen(file_n.c_str(), "r");
 	find_string("#Background#", file);
 	fscanf(file, "%s", background_name);
 	background = SDL_LoadBMP(background_name);
@@ -43,7 +35,7 @@ Collision_matrix::Collision_matrix(std::string file_name)
 	fprintf(stderr, "%d %d\n", m_weight, m_height);
 	
 	m_matrix = new uint32_t*[m_weight];
-	find_string("Collision:", file);
+	find_string("#Collision#", file);
 	for (uint32_t i = 0; i < m_weight; i++)
 		m_matrix[i] = new uint32_t[m_height];
 	for (uint32_t i = 0; i < m_weight; i++) {
@@ -65,7 +57,7 @@ Collision_matrix::~Collision_matrix()
 
 void Collision_matrix::save(FILE *file)
 {
-	fprintf(file, "Collision:\n");			
+	fprintf(file, "#Collision#\n");			
 	for (uint32_t i = 0; i < m_height; i++){
 		for (uint32_t j = 0; j < m_weight; j++){
 			fprintf(file, "%d ", m_matrix[i][j]);			
