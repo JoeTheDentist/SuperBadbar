@@ -43,6 +43,8 @@ void Sprite::update_pos()
 		if (curr_lvl.down_collision(m_pos)){
 			speed_y = 0;
 			m_speed.y = 0;
+			if (m_state == JUMP)
+				m_state = STATIC;
 		}
 		else {
 			m_pos.y += BOX_SIZE;
@@ -54,6 +56,8 @@ void Sprite::update_pos()
 		if (curr_lvl.up_collision(m_pos)){
 			speed_y = 0;
 			m_speed.y = 0;
+			if (m_state == JUMP)
+				m_state = STATIC;
 		}
 		else {
 			m_pos.y -= BOX_SIZE;
