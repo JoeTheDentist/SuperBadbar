@@ -20,7 +20,7 @@ Static::Static(std::string name) : m_name(name)
 	m_collision_matrix = new uint32_t*[m_weight];
 	for (uint32_t i = 0; i < m_weight; i++){
 		m_collision_matrix[i] = new uint32_t[m_height];
-		for (uint32_t j = 0 ; j < m_height; j++) 
+		for (uint32_t j = 0 ; j < m_height; j++)
 			fscanf(file, "%d", &(m_collision_matrix[i][j]));
 	}
 	fclose(file);
@@ -29,9 +29,9 @@ Static::Static(std::string name) : m_name(name)
 
 Static::~Static()
 {
-	//~ for (uint32_t i = 0; i < m_height; i++) 
-		//~ delete[] m_collision_matrix[i];
-	//~ delete[] m_collision_matrix;
+	for (uint32_t i = 0; i < m_weight; i++)
+		delete[] m_collision_matrix[i];
+	delete[] m_collision_matrix;
 }
 
 
@@ -40,7 +40,7 @@ void Static::save()
 	FILE *file = fopen((STATICS_DIR + m_name + COLL_EXT).c_str(), "w+");
 	fprintf(file, "%d %d\n", m_weight, m_height);
 	for (uint32_t i = 0; i < m_weight; i++){
-		for (uint32_t j = 0 ; j < m_height; j++) 
+		for (uint32_t j = 0 ; j < m_height; j++)
 			fprintf(file, "%d ", m_collision_matrix[i][j]);
 		fprintf(file, "\n");
 	}
@@ -55,9 +55,9 @@ void Static::display_static(Window *window)
 
 
 void Static::display_collisions(Window *window)
-{                   
+{
 	for (uint32_t i = 0; i < m_weight; i++)
-		for (uint32_t j = 0 ; j < m_height; j++) 
+		for (uint32_t j = 0 ; j < m_height; j++)
 			display_square(window, i, j);
 	window->flip_screen();
 }

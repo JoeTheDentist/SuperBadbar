@@ -174,6 +174,7 @@ bool check_monster_proj(Projectile * proj, Monster * monster)
     /* Regarde si un monstre est en collision avec un projectile, si c'est le cas on fait perdre des vies au monstre et on retourne vrai => pour suppr le projectile */
     if(check_collision(monster->position(),proj->position())) {
         monster->damage(proj->damage());
+        Monster test = *monster;
         return true;
     }
     return false;

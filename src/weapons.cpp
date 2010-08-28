@@ -51,6 +51,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
             int x[5];
             int y[5];
             SDL_Rect pos2;
+            SDL_Rect pos3;
 
             Projectile * proj[5];
             if((h-1)&&(v-1)) { /* le tir se fait en diagonale */
@@ -90,12 +91,20 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
             pos2.x = pos.x + 5*h;
             pos2.y = pos.y + 5*v;
 
+            pos3.x = pos.x + 10*h;
+            pos3.y = pos.y + 10*v;
+
+
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
                 projectiles_firend.add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                projectiles_firend.add(proj[i]);
+            }
+            for(int i = 0;i<5;i++) {
+                proj[i] = new Projectile(pos3, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
                 projectiles_firend.add(proj[i]);
             }
 

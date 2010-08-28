@@ -58,11 +58,11 @@ public:
 
 class Monster: public Sprite {
 protected:
-	uint32_t m_type;					/* type de monstre (sa nature) */
-	uint32_t m_area_begin; 			    /* début de la zone d'allez-retour */
-	uint32_t m_area_end;                /* fin de la zone d'aller-retrou */
-	uint32_t m_speed_def;               /* vitesse en norme */
-	uint32_t m_life;                    /* vies */
+	int m_type;					/* type de monstre (sa nature) */
+	int m_area_begin; 			    /* début de la zone d'allez-retour */
+	int m_area_end;                /* fin de la zone d'aller-retrou */
+	int m_speed_def;               /* vitesse en norme */
+	int m_life;                    /* vies */
 	bool m_can_fire;                    /* si le monstre tire ou non */
 	SDL_Surface * m_pics[3][3][3];      /* Images du monstre : state, gauche droite, num image */
 public:

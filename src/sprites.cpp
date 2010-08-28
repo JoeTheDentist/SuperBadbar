@@ -25,7 +25,7 @@ Sprite::Sprite()
 	m_cache = true;
 	m_horizontal = MIDDLE_h;
 	m_vertical = MIDDLE_v;
-	m_state = STATIC;
+	m_state = WALK;
 	m_phase = 0;
 }
 
@@ -117,10 +117,9 @@ uint32_t Sprite::phase()
 **********************************/
 Babar::Babar()
 {
-
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
-	m_weapon = Weapon(SHOTGUN);
+	m_weapon = Weapon(MACHINEGUN);
 
     /*** Stockage et chargement dans le tableau des images ***/
 

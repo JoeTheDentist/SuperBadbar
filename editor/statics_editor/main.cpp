@@ -5,8 +5,15 @@
 #include "editor.h"
 
 
-int main()
+int main(int argc, char *argv[])
 {
+    /* Pour avoir la console sous windows */
+    freopen("CON", "w", stdout);
+    freopen("CON", "r", stdin);
+    freopen("CON", "w", stderr);
+    /* */
+
+
 	std::string static_name;
 	char choice;
 	std::cout << "" << std::endl;
@@ -15,7 +22,7 @@ int main()
 	std::cout << "*Editeur de statics*" << std::endl;
 	std::cout << "********************" << std::endl;
 	std::cout << "" << std::endl;
-	std::cout << "Que voulez-vous faire?" << std::endl; 
+	std::cout << "Que voulez-vous faire?" << std::endl;
 	std::cout << "1. Nouveau static" << std::endl;
 	std::cout << "2. Charger static" << std::endl;
 	std::cout << "Autre touche: Quitter" << std::endl;
@@ -24,7 +31,7 @@ int main()
 		case '1':
 			std::cout << "Entrez le nom du static à créer" << std::endl;
 			std::cin >> static_name;
-			if (!new_static_file(static_name)) 
+			if (!new_static_file(static_name))
 				return 0;
 			std::cout << static_name << std::endl;
 			break;
@@ -36,8 +43,8 @@ int main()
 		default:
 			return 0;
 			break;
-	}		
+	}
 	Editor editor(static_name);
 	editor.edit();
-	
+
 }

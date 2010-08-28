@@ -225,7 +225,5 @@ bool to_delete(Monster * monster)
         curr_lvl.fill_monster(monster_pos.y/BOX_SIZE,monster_pos.x/BOX_SIZE,*monster);    /*On remet le monstre dans le tableau */
         return true;
     }
-    else {
-        return false;
-    }
+    return false;
 }
