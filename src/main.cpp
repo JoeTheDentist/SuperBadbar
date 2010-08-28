@@ -11,6 +11,10 @@
 
 int main(int argc, char *argv[])
 {
+    freopen("CON", "w", stdout);
+    freopen("CON", "r", stdin);
+    freopen("CON", "w", stderr);
+
     srand(time(NULL));
 
 	open_window(window_weight, window_height);

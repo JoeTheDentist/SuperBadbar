@@ -159,27 +159,22 @@ void Game::check_monsters()
 
 bool to_kill(Monster * monster)
 {
+    /* On supprime les projectiles qui en on besoin */
     projectiles_firend.delete_elements(check_monster_proj, monster);
-    /*while(!projectiles_firend.end()) {
-        if(check_collision(monster->position(),projectiles_firend.element()->position())) {
-            /* Si un projectile traverse le monstre */
-            /*monster->damage(projectiles_firend.element()->damage());*/
-            if(monster->dead()) {
-                return true;
-            }
-        /*}
-        projectiles_firend.next();
-    }*/
+
+    /* On retourne si le monstre est mort */
+    if(monster->dead()) {
+        return true;
+    }
     return false;
 }
 
 bool check_monster_proj(Projectile * proj, Monster * monster)
 {
+    /* Regarde si un monstre est en collision avec un projectile, si c'est le cas on fait perdre des vies au monstre et on retourne vrai => pour suppr le projectile */
     if(check_collision(monster->position(),proj->position())) {
         monster->damage(proj->damage());
         return true;
     }
-    else {
-        return false;
-    }
+    return false;
 }

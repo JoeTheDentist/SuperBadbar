@@ -64,7 +64,7 @@ Level::Level(uint32_t lvl)
     m_last_pos = game.camera_frame();
     SDL_Rect blabla = m_last_pos;
     for(int i=m_last_pos.y/BOX_SIZE;i<(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
-        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.h+m_last_pos.x)/BOX_SIZE;j++) {
+        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.w+m_last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j].type() != -1) {
                 Monster * mstr = new Monster;
                 *mstr = m_monsters_matrix[i][j];
@@ -203,10 +203,9 @@ void Level::update()
     m_last_pos = game.camera_frame();
     monsters.delete_elements(to_delete);
     for(int i=m_last_pos.y/BOX_SIZE;i<(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
-        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.h+m_last_pos.x)/BOX_SIZE;j++) {
+        for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.w+m_last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j].type() != -1) {
                 Monster * mstr = new Monster;
-                /*Monster test = m_monsters_matrix[i][j];*/
                 *mstr = m_monsters_matrix[i][j];
                 monsters.add(mstr);
                 m_monsters_matrix[i][j].set_type(-1);

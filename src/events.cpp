@@ -7,16 +7,17 @@
 
 Events_status::Events_status()
 {
+    /* Rappel : le fait de pouvoir detecter plusieurs touches dépends des touches elles mêmes... */
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
 		m_key_config[i] = k_none;
 	for (uint32_t i = 0; i <= k_fire; i++)
 		m_key_down[i] = false;
-	m_key_config[SDLK_UP] = k_up;
-	m_key_config[SDLK_DOWN] = k_down;
-	m_key_config[SDLK_LEFT] = k_left;
-	m_key_config[SDLK_RIGHT] = k_right;
-	m_key_config[SDLK_RCTRL] = k_jump;
-	m_key_config[SDLK_SPACE] = k_fire;
+	m_key_config[SDLK_i] = k_up;
+	m_key_config[SDLK_k] = k_down;
+	m_key_config[SDLK_j] = k_left;
+	m_key_config[SDLK_l] = k_right;
+	m_key_config[SDLK_SPACE] = k_jump;
+	m_key_config[SDLK_w] = k_fire;
 }
 Events_status::~Events_status()
 {

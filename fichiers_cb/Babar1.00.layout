@@ -19,8 +19,8 @@
 	<File name="..\src\collisions.h" open="0" top="0" tabpos="13">
 		<Cursor position="0" topLine="1" />
 	</File>
-	<File name="..\src\events.cpp" open="1" top="1" tabpos="14">
-		<Cursor position="558" topLine="3" />
+	<File name="..\src\events.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="435" topLine="9" />
 	</File>
 	<File name="..\src\events.h" open="0" top="0" tabpos="7">
 		<Cursor position="753" topLine="5" />
@@ -49,8 +49,8 @@
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="12">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="4048" topLine="149" />
+	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="2365" topLine="110" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="3">
 		<Cursor position="797" topLine="21" />

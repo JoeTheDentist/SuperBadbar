@@ -22,7 +22,7 @@ Weapon::Weapon(weapon_type type)
             m_reload_time = 2;
             break;
         case MACHINEGUN:
-            m_reload_time = 1;
+            m_reload_time = 0;
             break;
         case SHOTGUN:
             m_reload_time = 10;
@@ -50,6 +50,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
         case SHOTGUN:
             int x[5];
             int y[5];
+            SDL_Rect pos2;
 
             Projectile * proj[5];
             if((h-1)&&(v-1)) { /* le tir se fait en diagonale */
@@ -64,11 +65,6 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 y[2] = PROJ_SPEED;
                 y[3] = 7*PROJ_SPEED/8;
                 y[4] = 3*PROJ_SPEED/4;
-
-                for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
-                    projectiles_firend.add(proj[i]);
-                }
             }
             else if(h-1) { /* tir uniquement dans la dimention horizontale */
                 for(int i = 0;i<5;i++) {
@@ -79,11 +75,6 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 y[2] = 0;
                 y[3] = /*-3*PROJ_SPEED/20*/2;
                 y[4] = /*-3*PROJ_SPEED/10*/4;
-
-                for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, y[i] + rand()%3-1,1);
-                    projectiles_firend.add(proj[i]);
-                }
             }
             else {  /* tir uniquement dans la dimension verticale */
                 for(int i = 0;i<5;i++) {
@@ -94,12 +85,20 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
                 x[2] = 0;
                 x[3] = -PROJ_SPEED/14;
                 x[4] = -PROJ_SPEED/7;
-
-                for(int i = 0;i<5;i++) {
-                    proj[i] = new Projectile(pos, h, v, x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
-                    projectiles_firend.add(proj[i]);
-                }
             }
+
+            pos2.x = pos.x + 5*h;
+            pos2.y = pos.y + 5*v;
+
+            for(int i = 0;i<5;i++) {
+                proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                projectiles_firend.add(proj[i]);
+            }
+            for(int i = 0;i<5;i++) {
+                proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                projectiles_firend.add(proj[i]);
+            }
+
             break;
     }
 }

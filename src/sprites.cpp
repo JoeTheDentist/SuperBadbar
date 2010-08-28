@@ -38,7 +38,7 @@ void Sprite::update_pos()
 {
 	//~ m_pos.x += m_speed.x;
 	m_phase++;
-	
+
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		if (curr_lvl.down_collision(m_pos)){
@@ -73,10 +73,10 @@ void Sprite::update_pos()
 			if (m_pos.x + m_pos.w > curr_lvl.level_weight())
 				m_pos.x = curr_lvl.level_weight() - m_pos.w;
 	}
-	
+
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			m_pos.x -= BOX_SIZE;		
+			m_pos.x -= BOX_SIZE;
 			if (m_pos.x < 0)
 				m_pos.x = 0;
 	}
@@ -280,13 +280,19 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture()
 {
-    return m_pics[0][0][0]; /* Temp */
+    return m_pics[m_state][m_horizontal][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
 }
 
 void Monster::update_speed()
 {
-	if (m_pos.x<m_area_begin||m_pos.x>m_area_end)
+	if (m_pos.x<m_area_begin) {
+	    m_horizontal = RIGHT;
 		m_speed.x = -m_speed.x;
+	}
+	if (m_pos.x>m_area_end) {
+	    m_horizontal = LEFT;
+	    m_speed.x = -m_speed.x;
+	}
 }
 
 void Monster::set_pos_x(uint32_t x)
