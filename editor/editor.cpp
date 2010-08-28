@@ -24,6 +24,7 @@ void Editor::edit()
 {
 
 	SDL_Event event;
+	refresh_and_flip();
 	while (!m_leave){
 		SDL_WaitEvent(&event);
 		switch(event.type){
