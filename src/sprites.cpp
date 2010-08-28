@@ -49,7 +49,7 @@ void Sprite::update_pos()
 		}
 		else {
 			m_pos.y += BOX_SIZE;
-			if (m_pos.y + m_pos.h > curr_lvl.level_height())
+			if (m_pos.y + m_pos.h > (int32_t)curr_lvl.level_height())
 				m_pos.y = curr_lvl.level_height() - m_pos.h;
 		}
 	}
@@ -70,7 +70,7 @@ void Sprite::update_pos()
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.x += BOX_SIZE;
-			if (m_pos.x + m_pos.w > curr_lvl.level_weight())
+			if (m_pos.x + m_pos.w > (int32_t)curr_lvl.level_weight())
 				m_pos.x = curr_lvl.level_weight() - m_pos.w;
 	}
 
@@ -352,7 +352,7 @@ bool Monster::dead()
     return (m_life <= 0);
 }
 
-uint32_t Monster::type()
+int32_t Monster::type()
 {
     return m_type;
 }

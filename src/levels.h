@@ -25,7 +25,7 @@ private:
 	SDL_Surface ** m_monsters_pics[3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
 	Monster ** m_monsters_matrix;               /* Matrice des monstres */
 	SDL_Surface * m_background;                 /* image de fond du niveau */
-	uint32_t ** m_statics_matrix;      	        /* matrice des statics */
+	uint32_t ** m_collision_matrix;      	        /* matrice des statics */
 	SDL_Rect m_last_pos;                        /* Pour se souvenir de l'ancienne prosition de la caméra */
 
 public:

@@ -90,7 +90,7 @@ void Analyser::fill_statics()
         jump_separators();
 
         curr_static = new Static(link,pos);
-        fscanf(m_file,"%s",&link);
+        fscanf(m_file,"%s",link);
         jump_separators();
 
         statics.add(curr_static);

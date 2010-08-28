@@ -82,7 +82,7 @@ public:
 	void set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k); /* ... */
 	void damage(uint32_t damage);           /* fait perdre des vies */
 	bool dead();                            /* Si les pt de vies sont >= 0 */
-	uint32_t type();                        /* Accesseur */
+	int32_t type();                        /* Accesseur */
 
 };
 
