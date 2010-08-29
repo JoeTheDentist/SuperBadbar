@@ -11,7 +11,7 @@ class Static
 
     public :
         Static();               /* Constructeurs */
-        Static(char *dir_image, SDL_Rect pos);
+        Static(std::string dir_image, SDL_Rect pos);
         Static(char *dir_image, uint32_t x, uint32_t y);
         ~Static();              /* Destructeur */
         SDL_Surface * image();  /* Accesseurs */

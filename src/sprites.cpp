@@ -9,6 +9,8 @@
 #include "events.h"
 #include "analyser.h"
 #include "weapons.h"
+#include "collisions.h"
+#include "levels.h"
 
 /*********************************
 **	Méthodes de Sprite 	**
@@ -18,8 +20,6 @@ Sprite::Sprite()
 	Analyser analyser;
 	m_pos.x = 10;
 	m_pos.y = 1700;
-	m_pos.w = 0;
-	m_pos.h = 0;
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_cache = true;
@@ -69,6 +69,9 @@ void Sprite::update_pos()
 
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+			m_pos.y -= 	BOX_SIZE;
+			if(!curr_lvl.down_collision(m_pos))
+				m_pos.y += BOX_SIZE;
 			m_pos.x += BOX_SIZE;
 			if (m_pos.x + m_pos.w > (int32_t)curr_lvl.level_weight())
 				m_pos.x = curr_lvl.level_weight() - m_pos.w;
@@ -76,6 +79,9 @@ void Sprite::update_pos()
 
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+			m_pos.y -= 	BOX_SIZE;
+			if(!curr_lvl.down_collision(m_pos))
+				m_pos.y += BOX_SIZE;
 			m_pos.x -= BOX_SIZE;
 			if (m_pos.x < 0)
 				m_pos.x = 0;
@@ -163,6 +169,7 @@ Babar::Babar()
     }
 	m_pos.w = m_pics[0][0][0][0]->w;
 	m_pos.h = m_pics[0][0][0][0]->h;
+	std::cout << "hauteur de babar: " << m_pos.h << std::endl;
     /* Transparence */
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
@@ -198,7 +205,6 @@ void Babar::update_speed()
 	fprintf(stderr, "hauteur de babar: %d", m_pos.y);
 
 	m_speed.y += GRAVITE;
-
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (Events_stat.key_down(k_left))

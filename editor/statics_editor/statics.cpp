@@ -18,11 +18,12 @@ Static::Static(std::string name) : m_name(name)
 	fscanf(file, "%d", &m_weight);
 	fscanf(file, "%d", &m_height);
 	m_collision_matrix = new uint32_t*[m_weight];
-	for (uint32_t i = 0; i < m_weight; i++){
+	for (uint32_t i = 0; i < m_weight; i++)
 		m_collision_matrix[i] = new uint32_t[m_height];
-		for (uint32_t j = 0 ; j < m_height; j++)
+	for (uint32_t j = 0; j < m_height; j++)
+		for (uint32_t i = 0; i < m_weight; i++)
 			fscanf(file, "%d", &(m_collision_matrix[i][j]));
-	}
+
 	fclose(file);
 }
 
@@ -39,8 +40,8 @@ void Static::save()
 {
 	FILE *file = fopen((STATICS_DIR + m_name + COLL_EXT).c_str(), "w+");
 	fprintf(file, "%d %d\n", m_weight, m_height);
-	for (uint32_t i = 0; i < m_weight; i++){
-		for (uint32_t j = 0 ; j < m_height; j++)
+	for (uint32_t j = 0 ; j < m_height; j++){
+		for (uint32_t i = 0; i < m_weight; i++)
 			fprintf(file, "%d ", m_collision_matrix[i][j]);
 		fprintf(file, "\n");
 	}

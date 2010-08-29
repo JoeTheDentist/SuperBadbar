@@ -9,9 +9,10 @@ Static::Static()
     m_image = NULL;
 }
 
-Static::Static(char *dir_image, SDL_Rect pos)
+Static::Static(std::string dir_image, SDL_Rect pos)
 {
-    m_image = SDL_LoadBMP(dir_image);
+	std::cout << dir_image << std::endl;
+    m_image = SDL_LoadBMP(dir_image.c_str());
     SDL_SetColorKey(m_image, SDL_SRCCOLORKEY, SDL_MapRGB(m_image->format, 0, 0, 255));
     m_pos = pos;
 }

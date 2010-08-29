@@ -1,9 +1,6 @@
 #Background#
-background.bmp
+background
 
-#Pictures#
-blob.bmp 196 107
-babar_walk_left.bmp 292 93
-boom.bmp 171 277
-blob.bmp 161 320
-end
+#Statics#
+black_board 50 50
+!

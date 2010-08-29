@@ -14,7 +14,7 @@ void new_level_file(std::string file_name, std::string background_name)
 	std::string file_n = LEVELS_DIR + file_name;
 	file = fopen(file_n.c_str(), "w+");
 	fprintf(file, "#Background#\n%s\n\n", background_name.c_str());
-	fprintf(file,"\n\n#Pictures#\n\nend");
+	fprintf(file,"\n\n#Statics#\n\n!");
 	fclose(file);
 }
 
@@ -40,7 +40,9 @@ std::string static_pic_file_name(std::string str)
 
 SDL_Surface *load_static(std::string str)
 {
-	SDL_Surface *pic = SDL_LoadBMP(static_pic_file_name(str).c_str());
+	SDL_Surface *pic = SDL_LoadBMP((static_pic_file_name(str).c_str()));
+	if (pic == NULL)
+		std::cout << "impossible d'ouvrir le fichier "<< static_pic_file_name(str) << std::endl;
 	SDL_SetColorKey(pic, SDL_SRCCOLORKEY, SDL_MapRGB(pic->format, 0, 0, 255));
 	return pic;
 }

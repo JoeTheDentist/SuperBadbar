@@ -28,12 +28,11 @@ Level::Level(uint32_t lvl)
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
     analyser.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_statics();
-    /*analyser.close();*/
 
     /*** Remplissage des monstres ***/
     /*analyser.open("../data/levels/level"+str_lvl+".lvl");*/
     m_nb_monsters = analyser.nb_monsters();
-	fprintf(stderr, "%d", m_nb_monsters);
+	fprintf(stderr, "nombre de monstres: %d", m_nb_monsters);
     for(int i=0;i<3;i++) {
         for(int j=0;j<3;j++) {
             for(int k=0;k<3;k++) {
@@ -56,7 +55,7 @@ Level::Level(uint32_t lvl)
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2);
     analyser2.close();
-    analyser.close();
+    //~ analyser.close();
 
 
     /*** Stockage des monstres dans la listes ***/
@@ -76,9 +75,9 @@ Level::Level(uint32_t lvl)
 
 
     /*** Allocation du tableau pour les collisions ***/
-    m_collision_matrix = new uint32_t*[m_background->h/BOX_SIZE];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
-    for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
-        m_collision_matrix[i] = new uint32_t[m_background->w/BOX_SIZE];
+    m_collision_matrix = new uint32_t*[m_background->w/BOX_SIZE + 1];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
+    for(int i = 0; i<(m_background->w/BOX_SIZE+1);i++) {
+        m_collision_matrix[i] = new uint32_t[m_background->h/BOX_SIZE + 1];
     }
 
     /*** Remplissage de la matrice pour les collisions ***/
@@ -87,18 +86,8 @@ Level::Level(uint32_t lvl)
             m_collision_matrix[i][j] = NO_COLL;
         }
     }
-    for(int i = 0;i<(m_background->w/BOX_SIZE);i++) {           /* Temp, on met le sol intraversable */
-		m_collision_matrix[i][(m_background->h/BOX_SIZE)-1] = FULL_COLL;
-		if (i < 20 || i > 90){
-			m_collision_matrix[i][(m_background->h/BOX_SIZE)-30] = DOWN_COLL;
-			m_collision_matrix[i][(m_background->h/BOX_SIZE)-60] = DOWN_COLL;
-			m_collision_matrix[i][(m_background->h/BOX_SIZE)-90] = DOWN_COLL;
-			m_collision_matrix[i][(m_background->h/BOX_SIZE)-150] = FULL_COLL;
-		}
-    }
-	//~ for (int i = 0 ; i < 100 ; i++){
-		//~ m_collision_matrix[i][i] = FULL_COLL;
-	//~ }
+	analyser.fill_collision_matrix(m_collision_matrix);
+    analyser.close();
 }
 
 Level::~Level()
@@ -151,8 +140,8 @@ uint32_t Level::collision(uint32_t i, uint32_t j)
 
 bool Level::down_collision(SDL_Rect pos)
 {
-	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) {
-		if (down_coll(m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE]))
+	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE) {
+		if (down_coll(m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ))
 			return true;
 	}
 	return false;

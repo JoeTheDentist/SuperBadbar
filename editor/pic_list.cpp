@@ -22,11 +22,11 @@ Pic_list::Pic_list(std::string file_name)
 	char temp[100];
 	SDL_Rect pos;
 	bool leave = false;
-	find_string("#Pictures#", file);
+	find_string("#Statics#", file);
 	m_list = NULL;
 	while(!leave){
 		fscanf(file, "%s", temp);
-		if (!strcmp(temp, "end")) {
+		if (!strcmp(temp, "!")) {
 			leave = true;
 		}
 		else {
@@ -44,12 +44,12 @@ Pic_list::Pic_list(std::string file_name)
 void Pic_list::save(FILE* file)
 {
 	pic_cell *curs = m_list;
-	fprintf(file, "#Pictures#\n");
+	fprintf(file, "#Statics#\n");
 	while (curs != NULL) {
 		fprintf(file, "%s %d %d\n", curs->pic_name.c_str(), curs->pos.x, curs->pos.y);
 		curs = curs->suiv;
 	}
-	fprintf(file, "end");
+	fprintf(file, "!");
 
 }
 
