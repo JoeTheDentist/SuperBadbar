@@ -39,7 +39,7 @@ public:
 	uint32_t level_weight();   				 							/* Largeur du niveau */
 	bool down_collision(SDL_Rect pos);
 	bool up_collision(SDL_Rect pos);
-
+	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
     void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images desmonstres */
     void fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);
     void fill_monster(uint32_t i, uint32_t j, Monster monster);

@@ -36,9 +36,7 @@ Sprite::~Sprite()
 
 void Sprite::update_pos()
 {
-	//~ m_pos.x += m_speed.x;
 	m_phase++;
-
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		if (curr_lvl.down_collision(m_pos)){
@@ -53,7 +51,6 @@ void Sprite::update_pos()
 				m_pos.y = curr_lvl.level_height() - m_pos.h;
 		}
 	}
-
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (curr_lvl.up_collision(m_pos)){
@@ -66,7 +63,6 @@ void Sprite::update_pos()
 			m_pos.y -= BOX_SIZE;
 		}
 	}
-
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
@@ -76,7 +72,6 @@ void Sprite::update_pos()
 			if (m_pos.x + m_pos.w > (int32_t)curr_lvl.level_weight())
 				m_pos.x = curr_lvl.level_weight() - m_pos.w;
 	}
-
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
@@ -87,13 +82,7 @@ void Sprite::update_pos()
 				m_pos.x = 0;
 	}
 
-	//~ if (m_pos.x < 0)
-		//~ m_pos.x = 0;
-	//~ if (m_pos.y < m_pos.h)
-		//~ m_pos.y = m_pos.h;y	//~ if ((uint32_t)m_pos.x  > curr_lvl.level_weight())
-		//~ m_pos.x =  curr_lvl.level_weight();
-	//~ if ((uint32_t)(m_pos.y + m_pos.h) > curr_lvl.level_height())
-		//~ m_pos.y =  curr_lvl.level_height() - m_pos.h;
+
 }
 
 
@@ -211,7 +200,8 @@ void Babar::update_speed()
         m_speed.x -= BABAR_SPEED;
     if (Events_stat.key_down(k_right))
         m_speed.x += BABAR_SPEED;
-
+	if (can_go_down())
+		go_down();
 }
 
 void Babar::update_state()
@@ -251,7 +241,7 @@ void Babar::update_state()
         m_fire_phase++;
     }
 
-    if (Events_stat.key_down(k_jump)&&(m_state!=JUMP)) {    /* Début du saut */
+    if (Events_stat.key_down(k_jump) && (m_state!=JUMP) && !Events_stat.key_down(k_down)) {    /* Début du saut */
         m_state = JUMP;
         m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
     }
@@ -261,6 +251,28 @@ void Babar::update_state()
     if ((Events_stat.key_down(k_right)||Events_stat.key_down(k_left))&&(m_state!=JUMP)) {
         m_state = WALK;
     }
+}
+
+
+bool Babar::can_go_down()
+{
+	return (Events_stat.key_down(k_jump) && Events_stat.key_down(k_down) && (m_state == STATIC || m_state == WALK) && curr_lvl.down_collision(m_pos));
+}
+
+void Babar::go_down()
+{
+	m_pos.y += BOX_SIZE;
+	while (curr_lvl.down_collision(m_pos)){
+		if (curr_lvl.double_collision(m_pos)) {
+			m_pos.y -= BOX_SIZE;
+			break;
+		}
+		else {
+			m_pos.y += BOX_SIZE;
+		}
+
+	}
+	
 }
 
 
@@ -423,3 +435,4 @@ bool too_old(Projectile * p)
 {
     return p->phase()>PROJ_LIFE_SPAN;
 }
+

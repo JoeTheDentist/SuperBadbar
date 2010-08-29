@@ -53,6 +53,8 @@ public:
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
 	void update_speed();	/* mise à jour de la vitesse en fonction des touches enfoncées */
 	void update_state();    /* mise à jour de l'état de babar et de sa direction */
+	bool can_go_down();
+	void go_down();
 };
 
 

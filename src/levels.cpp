@@ -156,6 +156,17 @@ bool Level::up_collision(SDL_Rect pos)
 	return false;
 }
 
+bool Level::double_collision(SDL_Rect pos)
+{
+	for (int32_t i = pos.x / BOX_SIZE ; i <= (pos.x + pos.w) / BOX_SIZE ; i += 1) {
+		if (!(m_collision_matrix[i][pos.y + pos. h - 1] == NO_COLL || m_collision_matrix[i][pos.y + pos. h- 1] == DOWN_COLL))
+			return true;
+		if(m_collision_matrix[i][pos.y + pos. h - 1] != NO_COLL && m_collision_matrix[i][pos.y + pos. h] != NO_COLL)
+			return true;
+	}
+	return false;	
+}
+
 void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, char *link)
 {
     m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
