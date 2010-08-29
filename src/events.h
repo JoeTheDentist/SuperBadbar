@@ -15,11 +15,12 @@ private:
 	enum key m_key_config[SDLK_LAST];
 	bool m_key_down[k_fire + 1];
 public:
-	Events_status();	/* constructeur */  // il faudra le faire à partir d'un fichier de configuration
-	~Events_status();	/* destructeur */
+	Events_status();		/* constructeur */  // il faudra le faire à partir d'un fichier de configuration
+	~Events_status();		/* destructeur */
 	void update_events();	/* met à jour les touches enfoncées à partir des actions du joueur */
 	bool key_down (enum key k);	/* retourne vrai si la touche est enfoncée */
-	bool key_dir_down();    /* retourne si une touche gauche droite est enfoncée */
+	bool key_dir_down();    /* retourne si une touche gauche droite est enfoncée */          
+	void disable_key(enum key k); /* fait remonter la touche passée en paramètre */
 };
 
 

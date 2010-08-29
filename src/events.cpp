@@ -59,3 +59,8 @@ bool Events_status::key_dir_down()
 {
     return (m_key_down[k_left]||m_key_down[k_right]);
 }
+
+void Events_status::disable_key(enum key k)
+{
+	m_key_down[k] = false;
+}

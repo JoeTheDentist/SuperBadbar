@@ -270,8 +270,9 @@ void Babar::go_down()
 		else {
 			m_pos.y += BOX_SIZE;
 		}
-
+	
 	}
+	Events_stat.disable_key(k_jump);
 	
 }
 
