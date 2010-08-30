@@ -1,12 +1,14 @@
 #Background#
 background.bmp
 
-#Pictures#
-blob 196 107
-boom 171 277
-boom 199 143
-boom 297 151
-blob 265 221
-blob 406 134
-blob 406 258
-end
+#Statics#
+soil 0 1800
+up_black_slope 211 1769
+up_black_slope 324 1655
+black_board 609 1652
+black_board 896 1649
+up_black_slope 1100 1470
+down_black_slope 951 1338
+black_board 702 1333
+black_board 429 1337
+!
