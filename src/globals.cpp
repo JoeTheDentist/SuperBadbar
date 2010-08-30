@@ -10,6 +10,7 @@
 #include "sprites.h"
 #include "globals.h"
 #include "game.h"
+#include "talks.h"
 
 
 SDL_Surface *screen;
@@ -23,3 +24,5 @@ uint32_t window_weight = 800;
 uint32_t bottom = 2100;
 Game game;
 Level curr_lvl(1);
+Talks talks;
+bool full_screen = false;

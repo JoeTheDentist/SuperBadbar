@@ -21,11 +21,11 @@ class Monster;
 class Level {
 private:
 	uint32_t m_level;							/* Numero du niveau */
-	int m_nb_monsters;                          /* Nombre de monstres sur le niveau */
+	int m_nb_monsters;                          /* Nombre de monstres DIFFERENTS sur le niveau */
 	SDL_Surface ** m_monsters_pics[3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
 	Monster ** m_monsters_matrix;               /* Matrice des monstres */
 	SDL_Surface * m_background;                 /* image de fond du niveau */
-	uint32_t ** m_collision_matrix;      	        /* matrice des statics */
+	uint32_t ** m_collision_matrix;      	    /* matrice des statics */
 	SDL_Rect m_last_pos;                        /* Pour se souvenir de l'ancienne prosition de la caméra */
 
 public:
@@ -33,14 +33,14 @@ public:
 	Level(uint32_t lvl);												/* Constructeur avec précision du numéro de niveau */
 	~Level();															/* Destructeur */
 	void fill_collision(uint32_t i, uint32_t j, uint32_t collision_type); /* remplit la case i j de la matrice des collisions */
-	uint32_t collision(uint32_t i, uint32_t j);  						/* Accesseur */
+	uint32_t collision(uint32_t x, uint32_t y);  						/* Accesseur: x et y sont en PIXELS */
 	SDL_Surface * background();  										/* Accesseur */
 	uint32_t level_height();  											/* Hauteur du niveau */
 	uint32_t level_weight();   				 							/* Largeur du niveau */
-	bool down_collision(SDL_Rect pos);
-	bool up_collision(SDL_Rect pos);
+	bool down_collision(SDL_Rect pos);									/* retourne vrai si une des cases juste en dessous du rectangle est intraversable vers le bas */
+	bool up_collision(SDL_Rect pos);									/* retourne vrai si une des cases juste au dessus du rectangle est intraversable vers le haut */
 	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
-    void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images desmonstres */
+    void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
     void fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);
     void fill_monster(uint32_t i, uint32_t j, Monster monster);
 

@@ -11,6 +11,7 @@
 #include "weapons.h"
 #include "collisions.h"
 #include "levels.h"
+#include "talks.h"
 
 /*********************************
 **	Méthodes de Sprite 	**
@@ -227,7 +228,11 @@ void Babar::update_state()
 	if (Events_stat.key_down(k_down)) {
 		m_vertical = DOWN;
 	}
-
+   	if (Events_stat.key_down(k_action)) {
+		//~ talks.load_text("yop");
+		talks.load_and_display_text("test.dial");
+	}
+	
     if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
             m_weapon.fire(m_pos,m_horizontal,m_vertical);

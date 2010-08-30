@@ -20,10 +20,11 @@ Level::Level(uint32_t lvl)
     char str[3];
     std::string str_lvl;
     Analyser analyser;
-    sprintf(str, "%d", lvl);    /* convertion int vers tableau de char, je n'ai pas trouvé avec les strings */
+	
+	/*** chargement du fond d'écran ***/
+    sprintf(str, "%d", lvl);
     str_lvl = str;
-
-    m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str());    /*...besoin d'un tableau de char...*/
+    m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str()); 
 
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
     analyser.open("../data/levels/level"+str_lvl+".lvl");
@@ -33,9 +34,9 @@ Level::Level(uint32_t lvl)
     /*analyser.open("../data/levels/level"+str_lvl+".lvl");*/
     m_nb_monsters = analyser.nb_monsters();
 	fprintf(stderr, "nombre de monstres: %d", m_nb_monsters);
-    for(int i=0;i<3;i++) {
-        for(int j=0;j<3;j++) {
-            for(int k=0;k<3;k++) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            for (int k = 0; k < 3; k++) {
                 m_monsters_pics[i][j][k] = new SDL_Surface*[m_nb_monsters];
             }
         }
@@ -113,7 +114,6 @@ Level::~Level()
 
 void Level::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)
 {
-    //~ uint32_t a = m_collision_matrix[0][0];
     m_collision_matrix[i][j] = collision_type;
 }
 
@@ -132,9 +132,9 @@ uint32_t Level::level_weight()
     return m_background->w;
 }
 
-uint32_t Level::collision(uint32_t i, uint32_t j)
+uint32_t Level::collision(uint32_t x, uint32_t y)
 {
-    return m_collision_matrix[i/BOX_SIZE][j/BOX_SIZE];
+    return m_collision_matrix[x/BOX_SIZE][y/BOX_SIZE];
 }
 
 

@@ -29,6 +29,7 @@ uint32_t Analyser::open(std::string file)
 uint32_t Analyser::close()
 {
 	fclose(m_file);
+	m_file = NULL;
 	m_opened = false;
 	return 0;
 }
@@ -62,6 +63,7 @@ void Analyser::jump_separators()
 			current = fgetc(m_file);
 			if (current != '/'){
 				jump = false;
+				fseek(m_file, -1, SEEK_CUR);
 				break;
 			}
 			while (current != '\n')
@@ -82,12 +84,12 @@ void Analyser::fill_statics()
     SDL_Rect pos;
 	uint32_t x, y;
     find_string("#Statics#");
-
     fscanf(m_file,"%s",link);
 	static_name = link;
     jump_separators();
     while(link[0]!='!') {
         Static *curr_static;
+        jump_separators();		
         fscanf(m_file,"%d",&x);
         jump_separators();
         fscanf(m_file,"%d",&y);
@@ -109,19 +111,20 @@ void Analyser::fill_collision_matrix(uint32_t **matrix)
 	uint32_t x, y, static_height, static_weight, temp;
 	char static_name[40];
     find_string("#Statics#");
-
     fscanf(m_file,"%s",static_name);
 	std::string str = static_name;
-
     while(static_name[0]!='!') {
         fscanf(m_file,"%d",&x);
         fscanf(m_file,"%d",&y);
 		FILE* static_file = fopen ((STATICS_DIR + str + COLL_EXT).c_str(), "r");
 		fscanf(static_file, "%d", &static_weight);
+		jump_separators();
 		fscanf(static_file, "%d", &static_height);
+		jump_separators();
 		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++) 
 			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
 				fscanf(static_file, "%d", &temp);
+				jump_separators();
 				matrix[i][j] |= temp; // oh un smiley
 			}
 		fclose(static_file);
@@ -186,7 +189,6 @@ void Analyser::fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint
     str_type = str;
 
     find_string("#"+str_type+"#");
-
     fscanf(m_file,"%d",life);
     fscanf(m_file,"%d",fire);
     fscanf(m_file,"%d",speed);

@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
     //~ freopen("CON", "r", stdin);
     //~ freopen("CON", "w", stderr);
     /* */
+	if (argc > 1)
+		full_screen = true;
 
     srand(time(NULL));
 

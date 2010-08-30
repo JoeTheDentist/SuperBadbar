@@ -16,8 +16,9 @@ Events_status::Events_status()
 	m_key_config[SDLK_k] = k_down;
 	m_key_config[SDLK_j] = k_left;
 	m_key_config[SDLK_l] = k_right;
-	m_key_config[SDLK_SPACE] = k_jump;
-	m_key_config[SDLK_w] = k_fire;
+	m_key_config[SDLK_LCTRL] = k_jump;
+	m_key_config[SDLK_LALT] = k_fire;
+	m_key_config[SDLK_SPACE] = k_action;
 }
 Events_status::~Events_status()
 {

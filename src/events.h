@@ -6,8 +6,8 @@
 #ifndef _EVENTS_
 #define _EVENTS_
 
-enum key {
-	k_none, k_exit, k_up, k_down, k_right, k_left, k_jump, k_fire
+enum key { 
+	k_none, k_exit, k_up, k_down, k_right, k_left, k_action, k_jump, k_fire //k_fire doit etre le dernier
 };
 
 class Events_status {
