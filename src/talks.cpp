@@ -22,6 +22,7 @@ Talks::Talks()
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
 	for (int i = 0; i < LINES_NUMBER; i++){
+		m_text_surface[i] = NULL;
 		m_pos_text[i].x = POSX;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
@@ -30,6 +31,9 @@ Talks::Talks()
 
 Talks::~Talks()
 {
+	SDL_FreeSurface(m_text_background);
+	for (int i = 0; i < LINES_NUMBER; i++)
+		SDL_FreeSurface(m_text_surface[i]);
 	TTF_CloseFont(m_font);
 	TTF_Quit();
 }
@@ -79,6 +83,8 @@ struct cell_string *Talks::cut_text(std::string text)
 
 void Talks::instant_display(std::string str, int line)
 {
+	if (m_text_surface[line] != NULL)
+		SDL_FreeSurface(m_text_surface[line]);
 	m_text_surface[line] = TTF_RenderText_Blended(m_font, str.c_str(), m_font_color);
 	SDL_BlitSurface(m_text_surface[line], NULL, screen, &(m_pos_text[line]));
 	SDL_Flip(screen);
@@ -108,6 +114,7 @@ void Talks::progressive_display(std::string str, int line)
 void Talks::move_up()
 {
 	display_background();
+	SDL_FreeSurface(m_text_surface[0]);
 	for (int i = 0; i < LINES_NUMBER - 1; i++){
 		m_text_surface[i] = m_text_surface[i+1];
 		SDL_BlitSurface(m_text_surface[i], NULL, screen, &(m_pos_text[i]));
@@ -136,6 +143,7 @@ void Talks::display_text(std::string str)
 	std::string curr_text;
 	cell_string *list_string = cut_text(str);
 	cell_string *curr_list = list_string;
+	/* affichage des premieres lignes (tant qu'on a pas besoin de décaler vers le haut) */
 	for (int i = 0; (i < LINES_NUMBER) && (curr_list!=NULL); i++) {
 		progressive_display(curr_list->str, i);		curr_list = curr_list->next;
 	}
