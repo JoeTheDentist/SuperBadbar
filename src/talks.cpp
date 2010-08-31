@@ -89,7 +89,7 @@ void Talks::progressive_display(std::string str, int line)
 	std::string curr_text;
 	SDL_Event event;
 	for (uint32_t i = 0; i < str.size(); i++){
-		SDL_Delay(DISPLAY_SPEED);
+		SDL_Delay(DISPLAY_SPEED);          
 		curr_text += str[i];
 		m_text_surface[line] = TTF_RenderText_Blended(m_font, curr_text.c_str(), m_font_color);
 		SDL_BlitSurface(m_text_surface[line], NULL, screen, &(m_pos_text[line]));
@@ -147,7 +147,7 @@ void Talks::display_text(std::string str)
 		curr_list = curr_list->next;
 	}
 	wait_space();
-	Events_stat.disable_key(k_action);
+	Events_stat.disable_all_keys();
 
 }
 

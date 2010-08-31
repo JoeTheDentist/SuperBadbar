@@ -37,8 +37,8 @@ public:
 	SDL_Surface * background();  										/* Accesseur */
 	uint32_t level_height();  											/* Hauteur du niveau */
 	uint32_t level_weight();   				 							/* Largeur du niveau */
-	bool down_collision(SDL_Rect pos);									/* retourne vrai si une des cases juste en dessous du rectangle est intraversable vers le bas */
-	bool up_collision(SDL_Rect pos);									/* retourne vrai si une des cases juste au dessus du rectangle est intraversable vers le haut */
+	uint32_t down_collision_type(SDL_Rect pos);							/* retourne le type des collisions accumulées des cases situées juste sous le rectangle pos */
+	uint32_t up_collision(SDL_Rect pos);								/* retourne le type des collisions accumulées des cases situées juste au dessus du rectangle pos */
 	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
     void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
     void fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);

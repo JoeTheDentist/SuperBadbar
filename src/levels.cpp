@@ -138,22 +138,20 @@ uint32_t Level::collision(uint32_t x, uint32_t y)
 }
 
 
-bool Level::down_collision(SDL_Rect pos)
+uint32_t Level::down_collision_type(SDL_Rect pos)
 {
-	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE) {
-		if (down_coll(m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ))
-			return true;
-	}
-	return false;
+	uint32_t coll = 0;
+	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE) 
+		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ;
+	return coll;
 }
 
-bool Level::up_collision(SDL_Rect pos)
+uint32_t Level::up_collision(SDL_Rect pos)
 {
-	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) {
-		if (up_coll(m_collision_matrix[i / BOX_SIZE][pos.y / BOX_SIZE]))
-			return true;
-	}
-	return false;
+	uint32_t coll = 0;
+	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) 
+		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ;
+	return coll;
 }
 
 bool Level::double_collision(SDL_Rect pos)

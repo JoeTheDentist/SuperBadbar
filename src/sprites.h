@@ -29,44 +29,45 @@ protected:
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
+	bool m_climb;
 public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
 	void update_pos();		/* mise à jour de la position */
-	SDL_Rect position();		/* accesseur */
-	uint32_t position_x(); 		/* accesseur */
-	uint32_t position_y(); 		/* accesseur */
-	uint32_t phase();           /* accesseur */
+	SDL_Rect position();	/* accesseur */
+	uint32_t position_x(); 	/* accesseur */
+	uint32_t position_y(); 	/* accesseur */
+	uint32_t phase();       /* accesseur */
 };
 
 
 class Babar: public Sprite {
 protected:
-    horizontal m_last_dir;  /* Se souvient de vers où on regarde (à cause du tir au et bas) */
-    SDL_Surface *m_pics[3][3][3][2]; /* Images des animations : état, gauche droite, bas haut, numéro image */
+    horizontal m_last_dir;  /* direction vers laquelle Babar regarde (pour les tirs haut et bas) */
+    SDL_Surface *m_pics[3][3][3][2]; /* Images des animations indicés par: état, gauche droite, bas haut, numéro image */
 
-    Weapon m_weapon;
-    uint32_t m_fire_phase;
+    Weapon m_weapon;		/* arme actuelle de babar */
+    uint32_t m_fire_phase;	/* phase du tir */
 public:
-	Babar();		/* constructeur */
-	~Babar();		/* destructeur */
+	Babar();				/* constructeur */
+	~Babar();				/* destructeur */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
 	void update_speed();	/* mise à jour de la vitesse en fonction des touches enfoncées */
 	void update_state();    /* mise à jour de l'état de babar et de sa direction */
-	bool can_go_down();
-	void go_down();
+	bool can_go_down();		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
+	void go_down();			/* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
 };
 
 
 class Monster: public Sprite {
 protected:
-	int m_type;					/* type de monstre (sa nature) */
-	int m_area_begin; 			    /* début de la zone d'allez-retour */
-	int m_area_end;                /* fin de la zone d'aller-retrou */
-	int m_speed_def;               /* vitesse en norme */
-	int m_life;                    /* vies */
-	bool m_can_fire;                    /* si le monstre tire ou non */
-	SDL_Surface * m_pics[3][3][3];      /* Images du monstre : state, gauche droite, num image */
+	int m_type;						/* type de monstre (sa nature) */
+	int m_area_begin; 			 	/* début de la zone d'allez-retour */
+	int m_area_end;                	/* fin de la zone d'aller-retrou */
+	int m_speed_def;               	/* vitesse en norme */
+	int m_life;                    	/* vies */
+	bool m_can_fire;                /* si le monstre tire ou non */
+	SDL_Surface * m_pics[3][3][3];  /* Images du monstre : state, gauche droite, num image */
 public:
 	Monster();						        /* constructeur */
 	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */

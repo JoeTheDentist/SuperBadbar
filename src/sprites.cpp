@@ -38,9 +38,11 @@ Sprite::~Sprite()
 void Sprite::update_pos()
 {
 	m_phase++;
+	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		if (curr_lvl.down_collision(m_pos)){
+		coll = curr_lvl.down_collision_type(m_pos);
+		if (is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
 			if (m_state == JUMP)
@@ -54,7 +56,7 @@ void Sprite::update_pos()
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (curr_lvl.up_collision(m_pos)){
+		if (is_up_coll(curr_lvl.up_collision(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
 		}
@@ -67,7 +69,7 @@ void Sprite::update_pos()
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!curr_lvl.down_collision(m_pos))
+			if(!is_down_coll(curr_lvl.down_collision_type(m_pos)))
 				m_pos.y += BOX_SIZE;
 			m_pos.x += BOX_SIZE;
 			if (m_pos.x + m_pos.w > (int32_t)curr_lvl.level_weight())
@@ -76,7 +78,7 @@ void Sprite::update_pos()
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!curr_lvl.down_collision(m_pos))
+			if(!is_down_coll(curr_lvl.down_collision_type(m_pos)))
 				m_pos.y += BOX_SIZE;
 			m_pos.x -= BOX_SIZE;
 			if (m_pos.x < 0)
@@ -192,10 +194,7 @@ SDL_Surface *Babar::current_picture()
 
 void Babar::update_speed()
 {
-	fprintf(stderr, "hauteur de babar: %d", m_pos.y);
-
 	m_speed.y += GRAVITE;
-
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (Events_stat.key_down(k_left))
         m_speed.x -= BABAR_SPEED;
@@ -228,10 +227,9 @@ void Babar::update_state()
 	if (Events_stat.key_down(k_down)) {
 		m_vertical = DOWN;
 	}
-   	if (Events_stat.key_down(k_action)) {
-		//~ talks.load_text("yop");
-		talks.load_and_display_text("test.dial");
-	}
+   	//~ if (Events_stat.key_down(k_action)) {
+		//~ talks.load_and_display_text("test.dial");
+	//~ }
 	
     if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
@@ -261,13 +259,14 @@ void Babar::update_state()
 
 bool Babar::can_go_down()
 {
-	return (Events_stat.key_down(k_jump) && Events_stat.key_down(k_down) && (m_state == STATIC || m_state == WALK) && curr_lvl.down_collision(m_pos));
+	return (Events_stat.key_down(k_jump) && Events_stat.key_down(k_down) && (m_state == STATIC || m_state == WALK)
+				&& is_down_coll(curr_lvl.down_collision_type(m_pos)));
 }
 
 void Babar::go_down()
 {
 	m_pos.y += BOX_SIZE;
-	while (curr_lvl.down_collision(m_pos)){
+	while (is_down_coll(curr_lvl.down_collision_type(m_pos))){
 		if (curr_lvl.double_collision(m_pos)) {
 			m_pos.y -= BOX_SIZE;
 			break;
@@ -275,10 +274,8 @@ void Babar::go_down()
 		else {
 			m_pos.y += BOX_SIZE;
 		}
-	
 	}
 	Events_stat.disable_key(k_jump);
-	
 }
 
 

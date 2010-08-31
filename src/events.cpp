@@ -16,8 +16,8 @@ Events_status::Events_status()
 	m_key_config[SDLK_k] = k_down;
 	m_key_config[SDLK_j] = k_left;
 	m_key_config[SDLK_l] = k_right;
-	m_key_config[SDLK_LCTRL] = k_jump;
-	m_key_config[SDLK_LALT] = k_fire;
+	m_key_config[SDLK_q] = k_jump;
+	m_key_config[SDLK_d] = k_fire;
 	m_key_config[SDLK_SPACE] = k_action;
 }
 Events_status::~Events_status()
@@ -65,3 +65,11 @@ void Events_status::disable_key(enum key k)
 {
 	m_key_down[k] = false;
 }
+
+void Events_status::disable_all_keys()
+{
+	for (uint32_t i = 0; i <= k_fire; i++)
+		disable_key((enum key)i);
+}
+
+
