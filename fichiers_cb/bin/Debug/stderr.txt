@@ -1,71 +1,526 @@
-hauteur de babar: 1700pourcentage d'utilisation du temps: 38947493.400000
-hauteur de babar: 1710pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1725pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1750pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1780pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1815pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1860pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1910pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 249.540000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.020000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.250000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
-hauteur de babar: 1945pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 38639390.680000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 1.140000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.220000
+pourcentage d'utilisation du temps: 0.070000
+pourcentage d'utilisation du temps: 0.050000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.030000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.210000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.020000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.070000
+pourcentage d'utilisation du temps: 0.180000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.040000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.040000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.030000
+pourcentage d'utilisation du temps: 0.370000
+pourcentage d'utilisation du temps: 0.220000
+pourcentage d'utilisation du temps: 0.030000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.050000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.080000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.020000
+pourcentage d'utilisation du temps: 0.050000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.020000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.150000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.050000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.140000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000
+pourcentage d'utilisation du temps: 0.010000

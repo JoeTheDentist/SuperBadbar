@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="..\src\analyser.cpp" open="1" top="1" tabpos="11">
-		<Cursor position="1863" topLine="78" />
+	<File name="..\src\analyser.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="1863" topLine="63" />
 	</File>
 	<File name="..\src\analyser.h" open="0" top="0" tabpos="21">
 		<Cursor position="1495" topLine="30" />
@@ -20,13 +20,13 @@
 		<Cursor position="0" topLine="1" />
 	</File>
 	<File name="..\src\events.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="857" topLine="30" />
+		<Cursor position="587" topLine="0" />
 	</File>
 	<File name="..\src\events.h" open="0" top="0" tabpos="7">
 		<Cursor position="753" topLine="5" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="2736" topLine="114" />
+		<Cursor position="3737" topLine="150" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="7">
 		<Cursor position="1186" topLine="9" />
@@ -38,10 +38,10 @@
 		<Cursor position="329" topLine="3" />
 	</File>
 	<File name="..\src\levels.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="6576" topLine="195" />
+		<Cursor position="4504" topLine="143" />
 	</File>
 	<File name="..\src\levels.h" open="1" top="0" tabpos="4">
-		<Cursor position="1705" topLine="21" />
+		<Cursor position="1705" topLine="10" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="10">
 		<Cursor position="2231" topLine="45" />
@@ -49,11 +49,11 @@
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="12">
 		<Cursor position="171" topLine="0" />
 	</File>
-	<File name="..\src\sprites.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="2376" topLine="183" />
+	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="10097" topLine="426" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="3">
-		<Cursor position="2638" topLine="57" />
+		<Cursor position="4273" topLine="80" />
 	</File>
 	<File name="..\src\statics.cpp" open="1" top="0" tabpos="15">
 		<Cursor position="276" topLine="6" />
@@ -61,8 +61,8 @@
 	<File name="..\src\statics.h" open="1" top="0" tabpos="17">
 		<Cursor position="168" topLine="0" />
 	</File>
-	<File name="..\src\talks.cpp" open="1" top="0" tabpos="20">
-		<Cursor position="2249" topLine="75" />
+	<File name="..\src\talks.cpp" open="1" top="0" tabpos="19">
+		<Cursor position="2249" topLine="57" />
 	</File>
 	<File name="..\src\weapons.cpp" open="1" top="0" tabpos="16">
 		<Cursor position="2819" topLine="87" />

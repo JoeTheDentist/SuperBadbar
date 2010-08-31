@@ -100,6 +100,7 @@ public:
     ~Projectile();      /* Destructeur */
     SDL_Surface * current_picture();    /* Returne le pointeur sur image */
     uint32_t damage();  /* Accesseur */
+    SDL_Rect speed();   /* Accesseur */
 };
 
 

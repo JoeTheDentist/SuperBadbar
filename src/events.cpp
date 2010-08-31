@@ -20,6 +20,7 @@ Events_status::Events_status()
 	m_key_config[SDLK_d] = k_fire;
 	m_key_config[SDLK_SPACE] = k_action;
 }
+
 Events_status::~Events_status()
 {
 
