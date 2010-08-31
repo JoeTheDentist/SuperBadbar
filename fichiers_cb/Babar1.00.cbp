@@ -41,6 +41,7 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
 			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib" />
 		</Linker>
 		<Unit filename="..\src\analyser.cpp" />
@@ -63,6 +64,8 @@
 		<Unit filename="..\src\sprites.h" />
 		<Unit filename="..\src\statics.cpp" />
 		<Unit filename="..\src\statics.h" />
+		<Unit filename="..\src\talks.cpp" />
+		<Unit filename="..\src\talks.h" />
 		<Unit filename="..\src\weapons.cpp" />
 		<Unit filename="..\src\weapons.h" />
 		<Unit filename="..\src\window.cpp" />

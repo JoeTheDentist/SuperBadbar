@@ -89,13 +89,13 @@ void Analyser::fill_statics()
     jump_separators();
     while(link[0]!='!') {
         Static *curr_static;
-        jump_separators();		
-        fscanf(m_file,"%d",&x);
         jump_separators();
-        fscanf(m_file,"%d",&y);
+        fscanf(m_file,"%d",&pos.x);
         jump_separators();
-		pos.x = x;
-		pos.y = y;
+        fscanf(m_file,"%d",&pos.y);
+        jump_separators();
+		/*pos.x = x;
+		pos.y = y;*/
         curr_static = new Static(STATICS_DIR + static_name + PICS_EXT,pos);
         fscanf(m_file,"%s",link);
 		static_name = link;
@@ -121,7 +121,7 @@ void Analyser::fill_collision_matrix(uint32_t **matrix)
 		jump_separators();
 		fscanf(static_file, "%d", &static_height);
 		jump_separators();
-		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++) 
+		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++)
 			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
 				fscanf(static_file, "%d", &temp);
 				jump_separators();
@@ -133,7 +133,7 @@ void Analyser::fill_collision_matrix(uint32_t **matrix)
         jump_separators();
     }
 
-	
+
 }
 
 int Analyser::nb_monsters()
