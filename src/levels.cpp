@@ -142,17 +142,34 @@ uint32_t Level::down_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE) 
-		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ;
+		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE + 1] ;
 	return coll;
 }
 
-uint32_t Level::up_collision(SDL_Rect pos)
+uint32_t Level::up_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) 
-		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE - 1] ;
+		coll |= m_collision_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
 }
+
+uint32_t Level::right_collision_type(SDL_Rect pos)
+{
+	uint32_t coll = 0;
+	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE) 
+		coll |= m_collision_matrix[(pos.x + pos.w)/ BOX_SIZE + 1][j / BOX_SIZE];
+	return coll;
+}
+
+uint32_t Level::left_collision_type(SDL_Rect pos)
+{
+	uint32_t coll = 0;
+	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE) 
+		coll |= m_collision_matrix[pos.x / BOX_SIZE - 1][j / BOX_SIZE];
+	return coll;
+}
+
 
 bool Level::double_collision(SDL_Rect pos)
 {

@@ -56,7 +56,7 @@ void Sprite::update_pos()
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (is_up_coll(curr_lvl.up_collision(m_pos))){
+		if (is_up_coll(curr_lvl.up_collision_type(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
 		}
