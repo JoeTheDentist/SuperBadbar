@@ -25,6 +25,7 @@ Window::Window(std::string static_name)
 	SDL_FillRect(m_square_block, NULL,  SDL_MapRGB(m_screen->format, 255, 0, 0));	
 	m_square_down_coll = SDL_CreateRGBSurface(SDL_SWSURFACE, SQUARE_SIZE, SQUARE_SIZE, 32, 0, 0,  0, 0);
 	SDL_FillRect(m_square_down_coll, NULL,  SDL_MapRGB(m_screen->format, 0, 255, 0));
+	m_square_climb_coll = SDL_LoadBMP((EDITOR_PIC_DIR + std::string("climb_coll.bmp")).c_str());
 	/* flip */
 	SDL_Flip(m_screen);
 }
@@ -63,6 +64,9 @@ void Window::blit_square(uint32_t weight, uint32_t height, uint32_t coll_type)
 		break;
 	case FULL_COLL:
 		SDL_BlitSurface(m_square_block, NULL, m_screen, &pos);
+		break;
+	case CLIMB_COLL:
+		SDL_BlitSurface(m_square_climb_coll, NULL, m_screen, &pos);
 		break;
 	default:
 		break;

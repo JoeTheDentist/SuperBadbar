@@ -79,8 +79,10 @@ void Editor::switch_coll()
 		m_curr_coll = FULL_COLL;
 		break;
 	case FULL_COLL:
-		m_curr_coll = NO_COLL;
+		m_curr_coll = CLIMB_COLL;
 		break;
+	case CLIMB_COLL:
+		m_curr_coll = NO_COLL;
 	default:
 		break;
 	}

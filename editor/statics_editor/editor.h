@@ -4,12 +4,14 @@
 #define NO_COLL 0x0
 #define FULL_COLL 0xF
 #define DOWN_COLL 0x4
+#define CLIMB_COLL 0x10
 
 #define SQUARE_SIZE 5
 
 #define STATICS_DIR "../../pic/statics/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
+#define EDITOR_PIC_DIR "../../pic/editor/"
 
 #include "statics.h"
 #include "windows.h"

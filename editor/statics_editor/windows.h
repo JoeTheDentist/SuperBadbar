@@ -11,6 +11,7 @@ private:
 	SDL_Surface *m_background;		/* fond de l'éditeur (image du static) */
 	SDL_Surface *m_square_block;		/* surface d'un carré de collision pleine */
 	SDL_Surface *m_square_down_coll;	/* surface d'un carré de collision inférieure */
+	SDL_Surface *m_square_climb_coll; 	/* surface d'un carré de collision climb */
 public:
 	Window(std::string static_name);/* constructeur à partir du fichier correspondant au static_name */		
 	~Window();						/* destructeur */
