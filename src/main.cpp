@@ -11,11 +11,12 @@
 
 int main(int argc, char *argv[])
 {
-    /* Pour avoir la console sous windows */
-    //~ freopen("CON", "w", stdout);
-    //~ freopen("CON", "r", stdin);
-    //~ freopen("CON", "w", stderr);
-    /* */
+	#ifdef WIN32
+    freopen("CON", "w", stdout);
+    freopen("CON", "r", stdin);
+    freopen("CON", "w", stderr);
+	#endif
+
 	if (argc > 1)
 		full_screen = true;
 

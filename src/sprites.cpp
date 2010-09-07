@@ -227,9 +227,9 @@ void Babar::update_state()
 	if (Events_stat.key_down(k_down)) {
 		m_vertical = DOWN;
 	}
-   	//~ if (Events_stat.key_down(k_action)) {
-		//~ talks.load_and_display_text("test.dial");
-	//~ }
+   	if (Events_stat.key_down(k_action)) {
+		talks.load_and_display_text("test.dial");
+	}
 
     if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
@@ -444,14 +444,14 @@ bool too_old(Projectile * p)
     bool to_return = (p->phase()>PROJ_LIFE_SPAN);
     SDL_Rect speed = p->speed();
     if (speed.x>0)
-        to_return |= curr_lvl.right_collision_type(p->position());
+        to_return |= curr_lvl.right_collision(p->position());
     else
-        to_return |= curr_lvl.left_collision_type(p->position());
+        to_return |= curr_lvl.left_collision(p->position());
 
     if (speed.y>0)
-        to_return |= curr_lvl.down_collision_type(p->position());
+        to_return |= curr_lvl.down_collision(p->position());
     else
-        to_return |= curr_lvl.up_collision_type(p->position());
+        to_return |= curr_lvl.up_collision(p->position());
     return to_return;
 }
 

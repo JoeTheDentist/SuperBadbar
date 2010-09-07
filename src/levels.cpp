@@ -170,6 +170,29 @@ uint32_t Level::left_collision_type(SDL_Rect pos)
 	return coll;
 }
 
+bool Level::up_collision(SDL_Rect pos)
+{
+	return is_up_coll(up_collision_type(pos));
+}
+
+
+bool Level::down_collision(SDL_Rect pos)
+{
+	return is_down_coll(up_collision_type(pos));
+}
+
+
+bool Level::left_collision(SDL_Rect pos)
+{
+	return is_left_coll(up_collision_type(pos));
+}
+
+
+bool Level::right_collision(SDL_Rect pos)
+{
+	return is_right_coll(up_collision_type(pos));
+}
+
 
 bool Level::double_collision(SDL_Rect pos)
 {
