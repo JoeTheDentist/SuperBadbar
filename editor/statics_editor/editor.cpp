@@ -21,6 +21,8 @@ void Editor::edit()
 {
 	SDL_Event event;
 	refresh_screen();
+	uint32_t x_prec = 0, y_prec = 0;
+	int phase = 0;
 	while (!m_leave){
 		SDL_WaitEvent(&event);
 		switch(event.type){
@@ -63,6 +65,20 @@ void Editor::edit()
 					default:
 						break;
 				}
+				break;
+			case SDL_MOUSEMOTION:
+				if (phase > 5){
+					refresh_square(x_prec, y_prec);
+					draw_square(event.button.x, event.button.y);
+					m_window.flip_screen();
+					phase = 0;
+					x_prec = event.button.x;
+					y_prec = event.button.y;
+				}
+				else {
+					phase++;
+				}
+				break;
 		}
 	}	
 
@@ -201,6 +217,11 @@ void Editor::draw_ligne(float x, float y, float X, float Y)
 	}	
 }
 
+void Editor::draw_square(uint32_t x, uint32_t y)
+{
+	m_window.blit_square(x , y , m_curr_coll);
+}
+
 void Editor::write_ligne(float x, float y, float X, float Y)
 {
 	float i = x , j = y, a = (Y-y)/(X-x);
@@ -265,6 +286,11 @@ void Editor::refresh_ligne(float x, float y, float X, float Y)
 			m_static.display_square(&m_window, i / SQUARE_SIZE, j / SQUARE_SIZE);
 		}	
 	}
+}
+
+void Editor::refresh_square(uint32_t x, uint32_t y)
+{
+	m_static.display_square(&m_window, x / SQUARE_SIZE, y / SQUARE_SIZE);
 }
 
 

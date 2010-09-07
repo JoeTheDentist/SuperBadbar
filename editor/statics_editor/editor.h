@@ -33,8 +33,10 @@ public:
 	void refresh_screen();					/* raffraichit l'affichage */
 	void write_square(uint32_t x, uint32_t y); /* met à jour la case cliquée avec m_curr_coll et l'affiche */
 	void draw_ligne(float x, float y, float X, float Y); /* affiche une ligne de carrés de type m_coll_type */
+	void draw_square(uint32_t x, uint32_t y); /* affiche un carrés de type m_coll_type */
 	void write_ligne(float x, float y, float X, float Y); /* trace une ligne de carrés de type m_coll_type */
-	void refresh_ligne(float x, float y, float X, float Y); /* rafraichit la ligne de carrés sélectionnée avec les données du static */
+	void refresh_ligne(float x, float y, float X, float Y); /* rafraichit l'affichage de la ligne de carrés sélectionnée avec les données du static */
+	void refresh_square(uint32_t x, uint32_t y); /* rafraichit l'affichage du carré sélectionnée avec les données du static */
 
 	void leave();							/* quitte l'éditeur */
 };
