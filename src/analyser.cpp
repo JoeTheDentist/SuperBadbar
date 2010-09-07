@@ -2,16 +2,19 @@
 #include <stdint.h>
 #include <string>
 #include "analyser.h"
+#include "debug.h"
 #include "sprites.h"
 
 
 Analyser::Analyser()
 {
+	PRINT_DEBUG(1, "Construction d'un Analyser\n")
 	m_opened = false;
 	m_file = NULL;
 }
 Analyser::~Analyser()
 {
+   	PRINT_DEBUG(1, "Destruction d'un Analyser\n")
 
 }
 
@@ -94,8 +97,6 @@ void Analyser::fill_statics()
         jump_separators();
         fscanf(m_file,"%d",&pos.y);
         jump_separators();
-		/*pos.x = x;
-		pos.y = y;*/
         curr_static = new Static(STATICS_DIR + static_name + PICS_EXT,pos);
         fscanf(m_file,"%s",link);
 		static_name = link;

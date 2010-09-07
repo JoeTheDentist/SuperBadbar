@@ -3,21 +3,29 @@
 #include <stdint.h>
 #include <time.h>
 
+#include "debug.h"
 #include "sprites.h"
 #include "window.h"
 #include "game.h"
 #include "globals.h"
 
 
+
+
+
 int main(int argc, char *argv[])
 {
+
+
 	#ifdef WIN32
     freopen("CON", "w", stdout);
     freopen("CON", "r", stdin);
     freopen("CON", "w", stderr);
 	#endif
-
-	if (argc > 1)
+	
+	PRINT_DEBUG(1,"Lancement du jeu\n")
+	
+	if (argc > 1) 
 		full_screen = true;
 
     srand(time(NULL));

@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -Wall  -g
 EXEC_NAME = main
-INCLUDES =
+INCLUDES = 
 LIBS =
 OBJ_FILES =  main.o sprites.o game.o globals.o window.o events.o camera.o collisions.o levels.o analyser.o statics.o weapons.o talks.o
 INSTALL_DIR = .

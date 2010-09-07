@@ -5,6 +5,8 @@
 #ifndef _GLOBALS_
 #define _GLOBALS_
 
+
+
 #include <string>
 #include <SDL/SDL.h>
 #include "sprites.h"

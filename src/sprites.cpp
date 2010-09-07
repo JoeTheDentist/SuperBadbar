@@ -18,7 +18,6 @@
 **********************************/
 Sprite::Sprite()
 {
-	Analyser analyser;
 	m_pos.x = 10;
 	m_pos.y = 1700;
 	m_speed.x = 0;
