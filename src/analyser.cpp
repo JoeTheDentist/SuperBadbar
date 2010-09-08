@@ -8,13 +8,13 @@
 
 Analyser::Analyser()
 {
-	PRINT_DEBUG(1, "Construction d'un Analyser\n")
+	PRINT_CONSTR(2, "Construction d'un Analyser\n")
 	m_opened = false;
 	m_file = NULL;
 }
 Analyser::~Analyser()
 {
-   	PRINT_DEBUG(1, "Destruction d'un Analyser\n")
+   	PRINT_CONSTR(2, "Destruction d'un Analyser\n")
 
 }
 

@@ -9,6 +9,7 @@
 #include <stdint.h>
 
 #include "game.h"
+#include "debug.h"
 #include "sprites.h"
 #include "window.h"
 #include "globals.h"
@@ -120,9 +121,11 @@ void Game::refresh_screen()
 void Game::game_loop()
 {
 	bool end = false;
+	float used_time = 0;
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {
+			m_previous_time = m_time;
 			Events_stat.update_events();
 			if (Events_stat.key_down(k_exit))
 				end = true;
@@ -131,8 +134,9 @@ void Game::game_loop()
 			update_pos();
 			check_monsters();
 			refresh_screen();
-			fprintf(stderr, "pourcentage d'utilisation du temps: %f\n", (float)(m_time - m_previous_time - TIME_LOOP)/100.0); // marge de temps
-			m_previous_time = m_time;
+			m_time = SDL_GetTicks();
+			used_time = (float)(m_time - m_previous_time)/(float)TIME_LOOP;
+			fprintf(stderr, "pourcentage d'utilisation du temps: %d\%\n", (int)(used_time*100.0)); // marge de temps
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
