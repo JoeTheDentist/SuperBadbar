@@ -3,8 +3,9 @@
 #include <SDL/SDL.h>
 #include <stdint.h>
 
-#include "game.h"
 #include "sprites.h"
+#include "debug.h"
+#include "game.h"
 #include "globals.h"
 #include "events.h"
 #include "analyser.h"
@@ -114,6 +115,7 @@ uint32_t Sprite::phase()
 **********************************/
 Babar::Babar()
 {
+	PRINT_CONSTR(1, "Construction de Babar\n")
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
 	m_weapon = Weapon(MACHINEGUN);
@@ -160,7 +162,7 @@ Babar::Babar()
     }
 	m_pos.w = m_pics[0][0][0][0]->w;
 	m_pos.h = m_pics[0][0][0][0]->h;
-	std::cout << "hauteur de babar: " << m_pos.h << std::endl;
+
     /* Transparence */
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
@@ -175,6 +177,7 @@ Babar::Babar()
 
 Babar::~Babar()
 {
+	PRINT_CONSTR(1, "Destruction de Babar\n")
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
 	        for(int k = 0;k<3;k++) {
@@ -384,11 +387,12 @@ int32_t Monster::type()
 
 Projectile::Projectile()
 {
-
+	PRINT_CONSTR(3, "Construction d'un projectile\n")
 }
 
 Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage)
 {
+	PRINT_CONSTR(3, "Construction d'un projectile\n")
     m_pos = pos;
     m_horizontal = h;
     m_vertical = v;
@@ -417,7 +421,7 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
 
 Projectile::~Projectile()
 {
-
+	PRINT_CONSTR(3, "Destruction d'un projectile\n")
 }
 
 SDL_Surface *Projectile::current_picture()

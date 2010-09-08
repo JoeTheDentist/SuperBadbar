@@ -4,9 +4,7 @@
 **/
 
 
-#include <iostream>
-#include <SDL/SDL.h>
-#include <stdint.h>
+
 
 #include "game.h"
 #include "debug.h"
@@ -120,11 +118,15 @@ void Game::refresh_screen()
 
 void Game::game_loop()
 {
-	bool end = false;
+	int compteur = 0;
 	float used_time = 0;
+	bool end = false;
+	int begining = SDL_GetTicks();
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {
+			PRINT_TRACE(3,"Cycle de jeu n°%d\n", compteur)
+			compteur++;
 			m_previous_time = m_time;
 			Events_stat.update_events();
 			if (Events_stat.key_down(k_exit))
@@ -135,12 +137,16 @@ void Game::game_loop()
 			check_monsters();
 			refresh_screen();
 			m_time = SDL_GetTicks();
-			used_time = (float)(m_time - m_previous_time)/(float)TIME_LOOP;
-			fprintf(stderr, "pourcentage d'utilisation du temps: %d\%\n", (int)(used_time*100.0)); // marge de temps
+			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
+			if (compteur % PERF_CYCLES == 0) {
+				PRINT_PERF("pourcentage d'utilisation du temps: %d\n", (int)((used_time * 100) / PERF_CYCLES))
+				used_time = 0;
+			}
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
+	PRINT_PERF("temps moyen d'un cycle en ms = %d\n", ((SDL_GetTicks() - begining)/compteur))
 }
 
 SDL_Surface * Game::proj(uint8_t i)

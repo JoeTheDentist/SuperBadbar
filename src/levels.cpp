@@ -4,6 +4,7 @@
 #include <string>
 
 #include "levels.h"
+#include "debug.h"
 #include "analyser.h"
 #include "collisions.h"
 #include "game.h"
@@ -12,10 +13,13 @@
 
 Level::Level()
 {
+	PRINT_CONSTR(1, "Construction d'un Level\n")
+
 }
 
 Level::Level(uint32_t lvl)
 {
+	PRINT_CONSTR(1, "Construction d'un Level\n")
 	m_level = lvl;
     char str[3];
     std::string str_lvl;
@@ -92,6 +96,7 @@ Level::Level(uint32_t lvl)
 
 Level::~Level()
 {
+	PRINT_CONSTR(1, "Destruction d'un Level\n")
     for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
         delete m_collision_matrix[i];
     }

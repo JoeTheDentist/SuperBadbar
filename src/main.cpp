@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     freopen("CON", "w", stderr);
 	#endif
 	
-	PRINT_DEBUG(1,"Lancement du jeu\n")
+	PRINT_TRACE(1,"Lancement du jeu\n")
 	
 	if (argc > 1) 
 		full_screen = true;
