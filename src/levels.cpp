@@ -35,7 +35,6 @@ Level::Level(uint32_t lvl)
     analyser.fill_statics();
 
     /*** Remplissage des monstres ***/
-    /*analyser.open("../data/levels/level"+str_lvl+".lvl");*/
     m_nb_monsters = analyser.nb_monsters();
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -59,7 +58,6 @@ Level::Level(uint32_t lvl)
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2);
     analyser2.close();
-    //~ analyser.close();
 
 
     /*** Stockage des monstres dans la listes ***/

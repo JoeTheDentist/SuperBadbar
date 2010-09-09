@@ -14,7 +14,6 @@
 #include "sprites.h"
 #include "statics.h"
 
-#define BACKGROUND_SPEED 0.5
 
 class Camera {
 private:

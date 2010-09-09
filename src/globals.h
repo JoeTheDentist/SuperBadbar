@@ -5,6 +5,7 @@
 #ifndef _GLOBALS_
 #define _GLOBALS_
 
+#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport à Babar */
 
 
 #include <string>

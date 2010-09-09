@@ -93,9 +93,11 @@ void Analyser::fill_statics()
     while(link[0]!='!') {
         Static *curr_static;
         jump_separators();
-        fscanf(m_file,"%d",&pos.x);
+        fscanf(m_file,"%d",&x);
+		pos.x = x;
         jump_separators();
-        fscanf(m_file,"%d",&pos.y);
+        fscanf(m_file,"%d",&y);
+		pos.y = y;
         jump_separators();
         curr_static = new Static(STATICS_DIR + static_name + PICS_EXT,pos);
         fscanf(m_file,"%s",link);
