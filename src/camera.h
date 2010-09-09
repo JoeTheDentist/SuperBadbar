@@ -14,15 +14,18 @@
 #include "sprites.h"
 #include "statics.h"
 
+#define BACKGROUND_SPEED 0.5
+
 class Camera {
 private:
 	SDL_Rect m_frame;	/* cadre de la camera */
 	Sprite *m_target;	/* sprite sur lequel pointe la camera */
 public:
-	Camera();		/* constructeur */
-	Camera(Sprite *target);	/* constructeur */
-	~Camera();		/* destructeur */
-	void update_pos();	/* mise à jour de la camera */
+	Camera();								/* constructeur */
+	Camera(Sprite *target);					/* constructeur */
+	~Camera();								/* destructeur */
+	void update_pos();						/* mise à jour de la camera */
+	void display_background(SDL_Surface *background); /* affichage d'un fond d'écran */
 	void display_sprite(Babar *babar);      /* affichage d'un Babar */
 	void display_sprite(Monster *monster);  /* affichage d'un monstre */
 	void display_sprite(Projectile * proj); /* affichage d'un projectile */

@@ -82,10 +82,7 @@ void Game::refresh_screen()
 {
 	/* affichage du fond */
 	m_camera.update_pos();
-	SDL_Rect background_pos = m_camera.frame();
-	background_pos.x = - background_pos.x;
-	background_pos.y = - background_pos.y;
-	SDL_BlitSurface(curr_lvl.background(), NULL, screen, &background_pos);
+	m_camera.display_background(curr_lvl.background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	while(!statics.end()) {
