@@ -4,10 +4,11 @@
 #include <stdint.h>
 
 #include "events.h"
+#include "debug.h"
 
 Events_status::Events_status()
 {
-    /* Rappel : le fait de pouvoir detecter plusieurs touches dépends des touches elles mêmes... */
+	PRINT_CONSTR(1, "Construction d'Events_status")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
 		m_key_config[i] = k_none;
 	for (uint32_t i = 0; i <= k_fire; i++)
@@ -23,6 +24,7 @@ Events_status::Events_status()
 
 Events_status::~Events_status()
 {
+	PRINT_CONSTR(1, "Destruction d'Events_status")
 
 }
 

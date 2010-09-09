@@ -8,13 +8,13 @@
 
 Analyser::Analyser()
 {
-	PRINT_CONSTR(2, "Construction d'un Analyser\n")
+	PRINT_CONSTR(2, "Construction d'un Analyser")
 	m_opened = false;
 	m_file = NULL;
 }
 Analyser::~Analyser()
 {
-   	PRINT_CONSTR(2, "Destruction d'un Analyser\n")
+   	PRINT_CONSTR(2, "Destruction d'un Analyser")
 
 }
 
@@ -22,7 +22,7 @@ uint32_t Analyser::open(std::string file)
 {
 	m_file = fopen(file.c_str(), "r");
 	if (m_file == NULL){
-		std::cout << "impossible d'ouvrir le fichier " << file << std::endl;
+		PRINT_DEBUG(1, "Impossible d'ouvrir le fichier %s", file.c_str())
 		return 1;
 	}
 	m_opened = true;

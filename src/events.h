@@ -2,6 +2,11 @@
  * Gestion des évènements: contient la configuration des touches
  * et l'utilise pour gérer les actions déclenchées par le joueur
  **/
+ 
+ /* 
+	Rappel : si trop de touches sont appuyées simultanément, certaines ne sont pas détectées
+	Solution: changer la configuration des touches (éviter en particulier les fleches directionnelles)
+*/
 
 #ifndef _EVENTS_
 #define _EVENTS_

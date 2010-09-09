@@ -13,13 +13,13 @@
 
 Level::Level()
 {
-	PRINT_CONSTR(1, "Construction d'un Level\n")
+	PRINT_CONSTR(1, "Construction d'un Level")
 
 }
 
 Level::Level(uint32_t lvl)
 {
-	PRINT_CONSTR(1, "Construction d'un Level\n")
+	PRINT_CONSTR(1, "Construction d'un Level")
 	m_level = lvl;
     char str[3];
     std::string str_lvl;
@@ -96,7 +96,7 @@ Level::Level(uint32_t lvl)
 
 Level::~Level()
 {
-	PRINT_CONSTR(1, "Destruction d'un Level\n")
+	PRINT_CONSTR(1, "Destruction d'un Level")
     for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
         delete m_collision_matrix[i];
     }

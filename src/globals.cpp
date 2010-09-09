@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "events.h"
+#include "debug.h"
 #include "levels.h"
 #include "lists.h"
 #include "statics.h"

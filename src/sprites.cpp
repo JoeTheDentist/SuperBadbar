@@ -115,7 +115,7 @@ uint32_t Sprite::phase()
 **********************************/
 Babar::Babar()
 {
-	PRINT_CONSTR(1, "Construction de Babar\n")
+	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
 	m_weapon = Weapon(MACHINEGUN);
@@ -177,7 +177,7 @@ Babar::Babar()
 
 Babar::~Babar()
 {
-	PRINT_CONSTR(1, "Destruction de Babar\n")
+	PRINT_CONSTR(1, "Destruction de Babar")
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
 	        for(int k = 0;k<3;k++) {
@@ -234,6 +234,7 @@ void Babar::update_state()
 	}
 
     if (Events_stat.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time())) {
+		PRINT_TRACE(2, "Tir de Babar")
         if(Events_stat.key_down(k_up)||Events_stat.key_down(k_down)) {
             m_weapon.fire(m_pos,m_horizontal,m_vertical);
         }
@@ -249,6 +250,7 @@ void Babar::update_state()
     if (Events_stat.key_down(k_jump) && (m_state!=JUMP) && !Events_stat.key_down(k_down)) {    /* Début du saut */
         m_state = JUMP;
         m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
+		PRINT_TRACE(2, "Saut de Babar")
     }
     if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
@@ -278,6 +280,7 @@ void Babar::go_down()
 		}
 	}
 	Events_stat.disable_key(k_jump);
+	PRINT_TRACE(2, "Descente d'une plateforme")
 }
 
 
@@ -387,12 +390,12 @@ int32_t Monster::type()
 
 Projectile::Projectile()
 {
-	PRINT_CONSTR(3, "Construction d'un projectile\n")
+	PRINT_CONSTR(3, "Construction d'un projectile")
 }
 
 Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage)
 {
-	PRINT_CONSTR(3, "Construction d'un projectile\n")
+	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
     m_horizontal = h;
     m_vertical = v;
@@ -421,7 +424,7 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
 
 Projectile::~Projectile()
 {
-	PRINT_CONSTR(3, "Destruction d'un projectile\n")
+	PRINT_CONSTR(3, "Destruction d'un projectile")
 }
 
 SDL_Surface *Projectile::current_picture()

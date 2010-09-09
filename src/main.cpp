@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     freopen("CON", "w", stderr);
 	#endif
 	
-	PRINT_TRACE(1,"Lancement du jeu\n")
+	PRINT_TRACE(1,"Lancement du jeu")
 	
 	if (argc > 1) 
 		full_screen = true;
@@ -34,6 +34,6 @@ int main(int argc, char *argv[])
 	fill_screen(NULL);
 	game.game_loop();
 	close_window();
-
+	PRINT_TRACE(1, "Fermeture du jeu")
 	return 0;
 }

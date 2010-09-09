@@ -20,6 +20,7 @@
 
 Game::Game(): m_camera(&m_babar)
 {
+	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 
@@ -36,7 +37,8 @@ Game::Game(): m_camera(&m_babar)
 
 Game::~Game()
 {
-    for(int i = 0;i<4;i++) {
+	PRINT_CONSTR(1, "Destruction de la classe Game")
+	for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj[i]);
     }
 }
@@ -125,7 +127,7 @@ void Game::game_loop()
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {
-			PRINT_TRACE(3,"Cycle de jeu n°%d\n", compteur)
+			PRINT_TRACE(3,"Cycle de jeu n°%d", compteur)
 			compteur++;
 			m_previous_time = m_time;
 			Events_stat.update_events();
@@ -139,14 +141,17 @@ void Game::game_loop()
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			if (compteur % PERF_CYCLES == 0) {
-				PRINT_PERF("pourcentage d'utilisation du temps: %d\n", (int)((used_time * 100) / PERF_CYCLES))
+				PRINT_PERF("pourcentage d'utilisation du temps: %d", (int)((used_time * 100) / PERF_CYCLES))
 				used_time = 0;
 			}
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
-	PRINT_PERF("temps moyen d'un cycle en ms = %d\n", ((SDL_GetTicks() - begining)/compteur))
+	PRINT_PERF("**************************************")
+	PRINT_PERF("* temps moyen d'un cycle en ms = %d *", ((SDL_GetTicks() - begining)/compteur))
+	PRINT_PERF("**************************************")
+
 }
 
 SDL_Surface * Game::proj(uint8_t i)
