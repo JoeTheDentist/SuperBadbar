@@ -3,20 +3,22 @@
 #include <stdint.h>
 #include <time.h>
 
+#include "debug.h"
 #include "sprites.h"
 #include "globals.h"
 #include "weapons.h"
 
 Weapon::Weapon()
 {
+	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = GUN;
     m_reload_time = 2;
 }
 
 Weapon::Weapon(weapon_type type)
-{
+{  	
+	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = type;
-
     switch (m_weapon_type) {
         case GUN :
             m_reload_time = 2;
@@ -32,7 +34,7 @@ Weapon::Weapon(weapon_type type)
 
 Weapon::~Weapon()
 {
-
+	PRINT_CONSTR(2, "Destruction d'une Weapon")
 }
 
 void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)

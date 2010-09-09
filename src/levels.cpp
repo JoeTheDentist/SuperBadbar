@@ -95,12 +95,11 @@ Level::Level(uint32_t lvl)
 Level::~Level()
 {
 	PRINT_CONSTR(1, "Destruction d'un Level")
-    for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
-        delete m_collision_matrix[i];
+    for(int i = 0; i<(m_background->h/BOX_SIZE + 1);i++) {
+        delete[] m_collision_matrix[i];
     }
-    delete m_collision_matrix;
+    delete[] m_collision_matrix;
 
-    SDL_FreeSurface(m_background);
 
     for(int i=0;i<3;i++) {
         for(int j=0;j<3;j++) {
@@ -112,6 +111,12 @@ Level::~Level()
             }
         }
     }
+	
+	for(int i = 0; i<(m_background->h/BOX_SIZE);i++) 
+		delete[] m_monsters_matrix[i];
+    delete[] m_monsters_matrix;
+    SDL_FreeSurface(m_background);
+
 }
 
 void Level::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)

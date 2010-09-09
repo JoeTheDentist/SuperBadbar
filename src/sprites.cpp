@@ -281,7 +281,7 @@ void Babar::fire()
 
 bool Babar::can_double_jump()
 {
-	return Events_stat.key_down(k_jump) && (!m_double_jump);
+	return m_state == JUMP && Events_stat.key_down(k_jump) && (!m_double_jump);
 }
 
 void Babar::double_jump()

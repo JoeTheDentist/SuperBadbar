@@ -5,6 +5,7 @@
 #include <fstream>
 #include <SDL/SDL_ttf.h>
 #include "talks.h"
+#include "debug.h"
 #include "globals.h"
 #include "events.h"
 
@@ -12,6 +13,7 @@
 
 Talks::Talks()
 {
+	PRINT_CONSTR(1, "Construction de la classe Talks")
 	TTF_Init();
 	std::string background_name = "talks_background.bmp";
 	std::string font_name = "font1.ttf"; //
@@ -31,6 +33,7 @@ Talks::Talks()
 
 Talks::~Talks()
 {
+	PRINT_CONSTR(1, "Destruction de la classe Talks")
 	SDL_FreeSurface(m_text_background);
 	for (int i = 0; i < LINES_NUMBER; i++)
 		SDL_FreeSurface(m_text_surface[i]);
@@ -139,6 +142,7 @@ void Talks::wait_space()
 
 void Talks::display_text(std::string str)
 {
+	PRINT_TRACE(2, "Affichage d'un texte par Talks")
 	display_background();
 	std::string curr_text;
 	cell_string *list_string = cut_text(str);
