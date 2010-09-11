@@ -216,6 +216,7 @@ void Babar::update_state()
 	//~ }
 	
 	update_direction();
+	PRINT_DEBUG(1, "  %d", m_pos.y + m_pos.h)
 
     if (can_fire()) {
 		fire();

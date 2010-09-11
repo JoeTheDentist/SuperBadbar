@@ -45,12 +45,12 @@ Level::Level(uint32_t lvl)
     }
     analyser.fill_monsters_pics(m_nb_monsters);
     /* Allocation de la matrice de monstres */
-    m_monsters_matrix = new Monster*[m_background->h/BOX_SIZE];
-    for(int i = 0; i<(m_background->h/BOX_SIZE);i++) {
-        m_monsters_matrix[i] = new Monster[m_background->w/BOX_SIZE];
+    m_monsters_matrix = new Monster*[level_height()/BOX_SIZE];
+    for(int i = 0; i<(level_height()/BOX_SIZE);i++) {
+        m_monsters_matrix[i] = new Monster[level_weight()/BOX_SIZE];
     }
-    for(int i = 0;i<(m_background->h/BOX_SIZE);i++) {
-        for(int j = 0;j<(m_background->w/BOX_SIZE);j++) {
+    for(int i = 0;i<(level_height()/BOX_SIZE);i++) {
+        for(int j = 0;j<(level_weight()/BOX_SIZE);j++) {
             m_monsters_matrix[i][j].set_type(-1);
         }
     }
@@ -77,14 +77,14 @@ Level::Level(uint32_t lvl)
 
 
     /*** Allocation du tableau pour les collisions ***/
-    m_collision_matrix = new uint32_t*[m_background->w/BOX_SIZE + 1];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
-    for(int i = 0; i<(m_background->w/BOX_SIZE+1);i++) {
-        m_collision_matrix[i] = new uint32_t[m_background->h/BOX_SIZE + 1];
+    m_collision_matrix = new uint32_t*[level_weight()/BOX_SIZE + 1];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
+    for(int i = 0; i<(level_weight()/BOX_SIZE+1);i++) {
+        m_collision_matrix[i] = new uint32_t[level_height()/BOX_SIZE + 1];
     }
 
     /*** Remplissage de la matrice pour les collisions ***/
-    for(int i = 0;i<(m_background->h/BOX_SIZE);i++) {
-        for(int j = 0;j<(m_background->w/BOX_SIZE);j++) {
+    for(int i = 0;i<(level_weight()/BOX_SIZE);i++) {
+        for(int j = 0;j<(level_height()/BOX_SIZE);j++) {
             m_collision_matrix[i][j] = NO_COLL;
         }
     }
@@ -95,7 +95,7 @@ Level::Level(uint32_t lvl)
 Level::~Level()
 {
 	PRINT_CONSTR(1, "Destruction d'un Level")
-    for(int i = 0; i<(m_background->h/BOX_SIZE + 1);i++) {
+    for(int i = 0; i<(level_weight()/BOX_SIZE + 1);i++) {
         delete[] m_collision_matrix[i];
     }
     delete[] m_collision_matrix;
@@ -112,7 +112,7 @@ Level::~Level()
         }
     }
 	
-	for(int i = 0; i<(m_background->h/BOX_SIZE);i++) 
+	for(int i = 0; i<(level_weight()/BOX_SIZE);i++) 
 		delete[] m_monsters_matrix[i];
     delete[] m_monsters_matrix;
     SDL_FreeSurface(m_background);
@@ -131,12 +131,12 @@ SDL_Surface * Level::background()
 
 uint32_t Level::level_height()
 {
-    return m_background->h;
+    return m_background->h / BACKGROUND_SPEED - window_height;
 }
 
 uint32_t Level::level_weight()
 {
-    return m_background->w;
+    return m_background->w / BACKGROUND_SPEED - window_weight;
 }
 
 uint32_t Level::collision(uint32_t x, uint32_t y)
