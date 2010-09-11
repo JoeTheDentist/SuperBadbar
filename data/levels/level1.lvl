@@ -20,45 +20,21 @@ black_board 429 1337
 
 #Monsters#
 1
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_left_1.bmp
 
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_left_2.bmp
 
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_left_3.bmp
 
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_right_1.bmp
 
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_right_2.bmp
 
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
-../pic/monsters/blob.bmp
+../pic/monsters/gailapin_right_3.bmp
 
 
 #StatMonstres#
-#0# 1 0 10
+#0# 5 0 10
 
 #PositionsMonstres#
 0 95 1600	10 170

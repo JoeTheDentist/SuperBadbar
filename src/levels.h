@@ -22,7 +22,7 @@ class Level {
 private:
 	uint32_t m_level;							/* Numero du niveau */
 	int m_nb_monsters;                          /* Nombre de monstres DIFFERENTS sur le niveau */
-	SDL_Surface ** m_monsters_pics[3][3][3];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
+	SDL_Surface ** m_monsters_pics[2][4];	/* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
 	Monster ** m_monsters_matrix;               /* Matrice des monstres */
 	SDL_Surface * m_background;                 /* image de fond du niveau */
 	uint32_t ** m_collision_matrix;      	    /* matrice des statics */
@@ -46,8 +46,8 @@ public:
 	bool left_collision(SDL_Rect pos);									/* renvoie vrai si une des cases situées juste à gauche du rectangle pos est une collision gauche */
 	bool right_collision(SDL_Rect pos);									/* renvoie vrai si une des cases situées juste à droite du rectangle pos est une collision droite */
 	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
-	
-    void fill_monster_pic(int state, int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
+
+    void fill_monster_pic(int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
     void fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);
     void fill_monster(uint32_t i, uint32_t j, Monster monster);
 

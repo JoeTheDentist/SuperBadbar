@@ -214,7 +214,7 @@ void Babar::update_state()
    	//~ if (Events_stat.key_down(k_action)) {
 		//~ talks.load_and_display_text("test.dial");
 	//~ }
-	
+
 	update_direction();
 	PRINT_DEBUG(1, "  %d", m_pos.y + m_pos.h)
 
@@ -225,16 +225,16 @@ void Babar::update_state()
     else {
         m_fire_phase++;
     }
-	
-    if (can_jump()) 
+
+    if (can_jump())
 		jump();
-	
+
 	if (can_double_jump())
 		double_jump();
-	
+
 	if (can_go_down())
 		go_down();
-	
+
     if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
     }
@@ -289,8 +289,8 @@ void Babar::double_jump()
 {
 	m_double_jump = true;
 	PRINT_TRACE(2, "Double-saut de Babar")
-	m_speed.y = -5*BABAR_SPEED; 	
-	
+	m_speed.y = -5*BABAR_SPEED;
+
 }
 
 bool Babar::can_jump()
@@ -350,7 +350,7 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture()
 {
-    return m_pics[m_state][m_horizontal][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
+    return m_pics[m_horizontal/2][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
 }
 
 void Monster::update_speed()
@@ -406,9 +406,9 @@ void Monster::set_speed(uint32_t speed)
     m_speed.x = speed;
 }
 
-void Monster::set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k)
+void Monster::set_pic(SDL_Surface * pic, uint32_t i, uint32_t j)
 {
-    m_pics[i][j][k] = pic;
+    m_pics[i][j] = pic;
     m_pos.h = pic->h;
     m_pos.w = pic->w;
 }

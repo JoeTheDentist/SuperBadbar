@@ -275,19 +275,18 @@
 
 1283284049 c:\users\guillaume\desktop\svn\src\collisions.h
 
-1283286338 source:c:\users\guillaume\desktop\svn\src\events.cpp
+1284051146 source:c:\users\guillaume\desktop\svn\src\events.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
 	"events.h"
+	"debug.h"
 
-1283284049 c:\users\guillaume\desktop\svn\src\events.h
+1284051146 c:\users\guillaume\desktop\svn\src\events.h
 
-1283286338 source:c:\users\guillaume\desktop\svn\src\game.cpp
-	<iostream>
-	<SDL/SDL.h>
-	<stdint.h>
+1284051146 source:c:\users\guillaume\desktop\svn\src\game.cpp
 	"game.h"
+	"debug.h"
 	"sprites.h"
 	"window.h"
 	"globals.h"
@@ -302,11 +301,11 @@
 	"sprites.h"
 	"camera.h"
 
-1283286338 c:\users\guillaume\desktop\svn\src\sprites.h
+1284191712 c:\users\guillaume\desktop\svn\src\sprites.h
 	"SDL/SDL.h"
 	"weapons.h"
 
-1282411973 c:\users\guillaume\desktop\svn\src\camera.h
+1284058977 c:\users\guillaume\desktop\svn\src\camera.h
 	<SDL/SDL.h>
 	<stdint.h>
 	"sprites.h"
@@ -314,7 +313,7 @@
 
 1282411972 c:\users\guillaume\desktop\svn\src\window.h
 
-1283250747 c:\users\guillaume\desktop\svn\src\globals.h
+1284058977 c:\users\guillaume\desktop\svn\src\globals.h
 	<string>
 	<SDL/SDL.h>
 	"sprites.h"
@@ -324,11 +323,12 @@
 	"lists.h"
 	"talks.h"
 
-1283250747 source:c:\users\guillaume\desktop\svn\src\globals.cpp
+1284051146 source:c:\users\guillaume\desktop\svn\src\globals.cpp
 	<string>
 	<SDL/SDL.h>
 	<stdint.h>
 	"events.h"
+	"debug.h"
 	"levels.h"
 	"lists.h"
 	"statics.h"
@@ -337,31 +337,34 @@
 	"game.h"
 	"talks.h"
 
-1283250747 source:c:\users\guillaume\desktop\svn\src\main.cpp
+1284051146 source:c:\users\guillaume\desktop\svn\src\main.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
 	<time.h>
+	"debug.h"
 	"sprites.h"
 	"window.h"
 	"game.h"
 	"globals.h"
 
-1283250747 source:c:\users\guillaume\desktop\svn\src\window.cpp
+1284051146 source:c:\users\guillaume\desktop\svn\src\window.cpp
 	<iostream>
 	<stdint.h>
 	<SDL/SDL.h>
 	"window.h"
+	"debug.h"
 	"globals.h"
 
-1282411973 source:c:\users\guillaume\desktop\svn\src\camera.cpp
+1284190186 source:c:\users\guillaume\desktop\svn\src\camera.cpp
 
-1283286982 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
+1284192560 source:c:\users\guillaume\desktop\svn\src\sprites.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
-	"game.h"
 	"sprites.h"
+	"debug.h"
+	"game.h"
 	"globals.h"
 	"events.h"
 	"analyser.h"
@@ -377,11 +380,12 @@
 
 1278921310 c:\users\guillaume\desktop\svn\src\animations.h
 
-1283255477 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
+1284192304 source:c:\users\guillaume\desktop\svn\src\analyser.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"analyser.h"
+	"debug.h"
 	"sprites.h"
 
 1283250747 c:\users\guillaume\desktop\svn\src\analyser.h
@@ -390,17 +394,18 @@
 	"statics.h"
 	"globals.h"
 
-1283286272 source:c:\users\guillaume\desktop\svn\src\levels.cpp
+1284192545 source:c:\users\guillaume\desktop\svn\src\levels.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"levels.h"
+	"debug.h"
 	"analyser.h"
 	"collisions.h"
 	"game.h"
 	"sprites.h"
 
-1283286272 c:\users\guillaume\desktop\svn\src\levels.h
+1284192339 c:\users\guillaume\desktop\svn\src\levels.h
 	"SDL/SDL.h"
 	"sprites.h"
 	"statics.h"
@@ -413,21 +418,23 @@
 1283250747 c:\users\guillaume\desktop\svn\src\statics.h
 	<SDL/SDL.h>
 
-1283250747 source:c:\users\guillaume\desktop\svn\src\statics.cpp
+1284134275 source:c:\users\guillaume\desktop\svn\src\statics.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"statics.h"
+	"debug.h"
 
 1282411972 c:\users\guillaume\desktop\svn\src\weapons.h
 	"sprites.h"
 	"globals.h"
 
-1282999616 source:c:\users\guillaume\desktop\svn\src\weapons.cpp
+1284134275 source:c:\users\guillaume\desktop\svn\src\weapons.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
 	<time.h>
+	"debug.h"
 	"sprites.h"
 	"globals.h"
 	"weapons.h"
@@ -441,7 +448,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1283286272 source:c:\users\guillaume\desktop\svn\src\talks.cpp
+1284134275 source:c:\users\guillaume\desktop\svn\src\talks.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -449,6 +456,9 @@
 	<fstream>
 	<SDL/SDL_ttf.h>
 	"talks.h"
+	"debug.h"
 	"globals.h"
 	"events.h"
+
+1284051146 c:\users\guillaume\desktop\svn\src\debug.h
 

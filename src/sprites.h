@@ -74,7 +74,7 @@ protected:
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
 	bool m_can_fire;                /* si le monstre tire ou non */
-	SDL_Surface * m_pics[3][3][3];  /* Images du monstre : state, gauche droite, num image */
+	SDL_Surface * m_pics[2][4];  /* Images du monstre : state, gauche droite, num image */
 public:
 	Monster();						        /* constructeur */
 	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
@@ -89,7 +89,7 @@ public:
 	void set_end(uint32_t end);             /* ... */
 	void set_fire(bool can_fire);           /* ... */
 	void set_speed(uint32_t speed);         /* ... */
-	void set_pic(SDL_Surface * pic, uint32_t i, uint32_t j, uint32_t k); /* ... */
+	void set_pic(SDL_Surface * pic, uint32_t i, uint32_t j); /* ... */
 	void damage(uint32_t damage);           /* fait perdre des vies */
 	bool dead();                            /* Si les pt de vies sont >= 0 */
 	int32_t type();                        /* Accesseur */

@@ -24,11 +24,11 @@ Level::Level(uint32_t lvl)
     char str[3];
     std::string str_lvl;
     Analyser analyser;
-	
+
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str()); 
+    m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str());
 
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
     analyser.open("../data/levels/level"+str_lvl+".lvl");
@@ -36,11 +36,9 @@ Level::Level(uint32_t lvl)
 
     /*** Remplissage des monstres ***/
     m_nb_monsters = analyser.nb_monsters();
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            for (int k = 0; k < 3; k++) {
-                m_monsters_pics[i][j][k] = new SDL_Surface*[m_nb_monsters];
-            }
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 4; j++) {
+            m_monsters_pics[i][j] = new SDL_Surface*[m_nb_monsters];
         }
     }
     analyser.fill_monsters_pics(m_nb_monsters);
@@ -101,18 +99,16 @@ Level::~Level()
     delete[] m_collision_matrix;
 
 
-    for(int i=0;i<3;i++) {
-        for(int j=0;j<3;j++) {
-            for(int k=0;k<3;k++) {
-                for(int l=0;l<m_nb_monsters;l++) {
-                    SDL_FreeSurface(m_monsters_pics[i][j][k][l]);
-                }
-                delete[] m_monsters_pics[i][j][k];
+    for(int i=0;i<2;i++) {
+        for(int j=0;j<4;j++) {
+            for(int l=0;l<m_nb_monsters;l++) {
+                SDL_FreeSurface(m_monsters_pics[i][j][l]);
             }
+            delete[] m_monsters_pics[i][j];
         }
     }
-	
-	for(int i = 0; i<(level_weight()/BOX_SIZE);i++) 
+
+	for(int i = 0; i<(level_weight()/BOX_SIZE);i++)
 		delete[] m_monsters_matrix[i];
     delete[] m_monsters_matrix;
     SDL_FreeSurface(m_background);
@@ -148,7 +144,7 @@ uint32_t Level::collision(uint32_t x, uint32_t y)
 uint32_t Level::down_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE) 
+	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE)
 		coll |= m_collision_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE + 1] ;
 	return coll;
 }
@@ -156,7 +152,7 @@ uint32_t Level::down_collision_type(SDL_Rect pos)
 uint32_t Level::up_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE) 
+	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE)
 		coll |= m_collision_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
 }
@@ -164,7 +160,7 @@ uint32_t Level::up_collision_type(SDL_Rect pos)
 uint32_t Level::right_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE) 
+	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
 		coll |= m_collision_matrix[(pos.x + pos.w)/ BOX_SIZE + 1][j / BOX_SIZE];
 	return coll;
 }
@@ -172,7 +168,7 @@ uint32_t Level::right_collision_type(SDL_Rect pos)
 uint32_t Level::left_collision_type(SDL_Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE) 
+	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
 		coll |= m_collision_matrix[pos.x / BOX_SIZE - 1][j / BOX_SIZE];
 	return coll;
 }
@@ -209,13 +205,13 @@ bool Level::double_collision(SDL_Rect pos)
 		if(m_collision_matrix[i][pos.y + pos. h - 1] != NO_COLL && m_collision_matrix[i][pos.y + pos. h] != NO_COLL)
 			return true;
 	}
-	return false;	
+	return false;
 }
 
-void Level::fill_monster_pic(int state, int h, int num_image, int num_monster, char *link)
+void Level::fill_monster_pic(int h, int num_image, int num_monster, char *link)
 {
-    m_monsters_pics[state][h][num_image][num_monster] = SDL_LoadBMP(link);
-    SDL_SetColorKey(m_monsters_pics[state][h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[state][h][num_image][num_monster]->format, 0, 0, 255));
+    m_monsters_pics[h][num_image][num_monster] = SDL_LoadBMP(link);
+    SDL_SetColorKey(m_monsters_pics[h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[h][num_image][num_monster]->format, 0, 0, 255));
 
 }
 
@@ -229,11 +225,9 @@ void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint
     m_monsters_matrix[i][j].set_life(life);
     m_monsters_matrix[i][j].set_fire(fire);
     m_monsters_matrix[i][j].set_speed(speed);
-    for(int k=0;k<3;k++) {
-        for(int l=0;l<3;l++) {
-            for(int m=0;m<3;m++) {
-                m_monsters_matrix[i][j].set_pic(m_monsters_pics[k][l][m][monster_type],k,l,m);
-            }
+    for(int k=0;k<2;k++) {
+        for(int l=0;l<4;l++) {
+            m_monsters_matrix[i][j].set_pic(m_monsters_pics[k][l][monster_type],k,l);
         }
     }
 }
