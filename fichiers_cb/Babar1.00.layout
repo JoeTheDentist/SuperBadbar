@@ -8,13 +8,13 @@
 		<Cursor position="1495" topLine="30" />
 	</File>
 	<File name="..\src\camera.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="567" topLine="21" />
+		<Cursor position="450" topLine="15" />
 	</File>
 	<File name="..\src\camera.h" open="0" top="0" tabpos="9">
 		<Cursor position="454" topLine="9" />
 	</File>
 	<File name="..\src\collisions.cpp" open="1" top="0" tabpos="13">
-		<Cursor position="129" topLine="0" />
+		<Cursor position="657" topLine="10" />
 	</File>
 	<File name="..\src\collisions.h" open="0" top="0" tabpos="13">
 		<Cursor position="0" topLine="1" />
@@ -26,7 +26,7 @@
 		<Cursor position="753" topLine="5" />
 	</File>
 	<File name="..\src\game.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="3737" topLine="150" />
+		<Cursor position="1328" topLine="56" />
 	</File>
 	<File name="..\src\game.h" open="1" top="0" tabpos="7">
 		<Cursor position="1186" topLine="9" />
@@ -38,19 +38,19 @@
 		<Cursor position="329" topLine="3" />
 	</File>
 	<File name="..\src\levels.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="6079" topLine="198" />
+		<Cursor position="7684" topLine="240" />
 	</File>
 	<File name="..\src\levels.h" open="1" top="0" tabpos="4">
-		<Cursor position="2852" topLine="28" />
+		<Cursor position="2280" topLine="28" />
 	</File>
 	<File name="..\src\lists.h" open="1" top="0" tabpos="10">
-		<Cursor position="2231" topLine="45" />
+		<Cursor position="79" topLine="0" />
 	</File>
 	<File name="..\src\main.cpp" open="1" top="0" tabpos="12">
 		<Cursor position="171" topLine="0" />
 	</File>
 	<File name="..\src\sprites.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="8050" topLine="325" />
+		<Cursor position="874" topLine="0" />
 	</File>
 	<File name="..\src\sprites.h" open="1" top="0" tabpos="3">
 		<Cursor position="3327" topLine="65" />
