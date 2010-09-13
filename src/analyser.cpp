@@ -191,9 +191,11 @@ void Analyser::fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint
     std::string str_type;
     sprintf(str, "%d", type);
     str_type = str;
+	int temp;
 
     find_string("#"+str_type+"#");
     fscanf(m_file,"%d",life);
-    fscanf(m_file,"%d",fire);
+    fscanf(m_file,"%d", &temp);
+	*fire = temp & 1;
     fscanf(m_file,"%d",speed);
 }
