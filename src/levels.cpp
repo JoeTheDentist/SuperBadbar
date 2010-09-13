@@ -215,7 +215,7 @@ void Level::fill_monster_pic(int h, int num_image, int num_monster, char *link)
 
 }
 
-void Level::fill_monster_pos(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed)
+void Level::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed)
 {
     Monster * curr_monster = new Monster;
     curr_monster->set_type(monster_type);

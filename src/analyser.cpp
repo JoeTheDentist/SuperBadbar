@@ -181,7 +181,7 @@ void Analyser::fill_monsters(Analyser * analyser)
         fscanf(m_file,"%d",&begin);
         fscanf(m_file,"%d",&end);
         analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
-        curr_lvl.fill_monster_pos(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed);
+        curr_lvl.fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed);
     }
 }
 
