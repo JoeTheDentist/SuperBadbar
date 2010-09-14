@@ -14,6 +14,10 @@
 #include "sprites.h"
 #include "statics.h"
 
+class Babar;
+class Monster;
+class Projectile;
+class Sprite;
 
 class Camera {
 private:

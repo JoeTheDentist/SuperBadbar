@@ -8,17 +8,22 @@
 #include "globals.h"
 #include "weapons.h"
 
-Weapon::Weapon()
+
+
+Weapon::Weapon(List<Projectile*> *projectiles_list)
 {
+	m_projectiles_list = projectiles_list;
 	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = GUN;
     m_reload_time = 2;
 }
 
-Weapon::Weapon(weapon_type type)
+Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list)
 {
+	
 	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = type;
+	m_projectiles_list = projectiles_list;
     switch (m_weapon_type) {
         case GUN :
             m_reload_time = 2;
@@ -43,11 +48,11 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
     switch (m_weapon_type) {
         case GUN :
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
-            projectiles_friend.add(proj);
+            m_projectiles_list->add(proj);
             break;
         case MACHINEGUN:
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
-            projectiles_friend.add(proj);
+            m_projectiles_list->add(proj);
             break;
         case SHOTGUN:
             int x[5];
@@ -99,15 +104,15 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
-                projectiles_friend.add(proj[i]);
+				m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
-                projectiles_friend.add(proj[i]);
+                m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos3, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
-                projectiles_friend.add(proj[i]);
+                m_projectiles_list->add(proj[i]);
             }
 
             break;

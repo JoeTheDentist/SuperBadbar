@@ -4,6 +4,7 @@
 #include "analyser.h"
 #include "debug.h"
 #include "sprites.h"
+#include "dynamic_data.h"
 
 
 Analyser::Analyser()
@@ -167,7 +168,7 @@ void Analyser::fill_monsters_pics(int nb_monsters)
     }
 }
 
-void Analyser::fill_monsters(Analyser * analyser)
+void Analyser::fill_monsters(Analyser * analyser, Level *level, Dynamic_data *dynamic_data)
 {
     /* Ici l'analyser en argument permet de traiter en parallèle deux bouts de fichiers sans ouvrir le fichier à chaque fois */
     uint32_t x,y,begin,end,life,speed,monster_type;
@@ -181,7 +182,7 @@ void Analyser::fill_monsters(Analyser * analyser)
         fscanf(m_file,"%d",&begin);
         fscanf(m_file,"%d",&end);
         analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
-        curr_lvl.fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed);
+        dynamic_data->fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed, level);
     }
 }
 

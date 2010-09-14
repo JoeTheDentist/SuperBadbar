@@ -16,9 +16,10 @@
 #include "collisions.h"
 #include "levels.h"
 #include "statics.h"
+#include "dynamic_data.h"
 
 
-Game::Game(): m_camera(&m_babar)
+Game::Game(): m_camera(&m_babar), m_dynamic_data(&m_camera), m_babar(m_dynamic_data.projectiles_friend())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
@@ -29,10 +30,10 @@ Game::Game(): m_camera(&m_babar)
     m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
     m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
     m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
-
     for(int i = 0;i<4;i++) {
         SDL_SetColorKey(m_proj[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj[i]->format, 0, 0, 255));
     }
+	update_camera();
 }
 
 Game::~Game()
@@ -47,28 +48,17 @@ void Game::update_pos()
 {
 	m_babar.update_pos();
 	/*m_monster.update_pos();*/
-	while(!projectiles_friend.end()) {
-	    projectiles_friend.element()->update_pos();
-	    projectiles_friend.next();
-	}
-	projectiles_friend.init();
+	m_dynamic_data.projectiles_friend_update_pos();
+	m_dynamic_data.monsters_update_pos();
 
-	while(!monsters.end()) {
-	    monsters.element()->update_pos();
-	    monsters.next();
-	}
-	monsters.init();
+	
 }
 
 void Game::update_speed()
 {
 	m_babar.update_speed();
 
-    while(!monsters.end()) {
-	    monsters.element()->update_speed();
-	    monsters.next();
-	}
-	monsters.init();
+	m_dynamic_data.monsters_update_speed();
 
 	m_babar.update_state();         /* A changer de place, en discuter */
 }
@@ -92,21 +82,18 @@ void Game::refresh_screen()
 	statics.init();
 
     /* affichage des monstres */
-	while(!monsters.end()) {
-	    m_camera.display_sprite(monsters.element());
-	    monsters.next();
-	}
-	monsters.init();
+	m_dynamic_data.display_monsters(&m_camera);
+
 
 	/* affichage des projectiles */
-	while(!projectiles_friend.end()) {
-	    m_camera.display_sprite(projectiles_friend.element());
-	    projectiles_friend.next();
-	}
+	m_dynamic_data.display_projectiles_friend(&m_camera);
+	
+	
 	/* suppression de projectiles trop vieux */
-    projectiles_friend.delete_elements(too_old);
-
-	/* affichage des sprites */
+	m_dynamic_data.delete_old_projectiles_friend();
+	
+	
+	/* affichage du sprite babar */
 	m_camera.display_sprite(&m_babar);
 
 	/* mise à jour */
@@ -130,7 +117,7 @@ void Game::game_loop()
 			Events_stat.update_events();
 			if (Events_stat.key_down(k_exit))
 				end = true;
-            curr_lvl.update();
+            m_dynamic_data.update(&m_camera);
 			update_speed();
 			update_pos();
 			check_monsters();
@@ -163,31 +150,7 @@ SDL_Rect Game::camera_frame()
 
 void Game::check_monsters()
 {
-    monsters.delete_elements(to_kill);
+	m_dynamic_data.update_monsters_projectiles();
 }
 
 
-/*** Fonctions ***/
-
-bool to_kill(Monster * monster)
-{
-    /* On supprime les projectiles qui en on besoin */
-    projectiles_friend.delete_elements(check_monster_proj, monster);
-
-    /* On retourne si le monstre est mort */
-    if(monster->dead()) {
-        delete monster;
-        return true;
-    }
-    return false;
-}
-
-bool check_monster_proj(Projectile * proj, Monster * monster)
-{
-    /* Regarde si un monstre est en collision avec un projectile, si c'est le cas on fait perdre des vies au monstre et on retourne vrai => pour suppr le projectile */
-    if(check_collision(monster->position(),proj->position())) {
-        monster->damage(proj->damage());
-        return true;
-    }
-    return false;
-}

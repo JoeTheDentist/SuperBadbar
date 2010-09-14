@@ -11,19 +11,18 @@
 #include "sprites.h"
 #include "globals.h"
 #include "game.h"
-#include "talks.h"
+#include "talks.h"     
+#include "dynamic_data.h"
 
 
 SDL_Surface *screen;
 List<Static*> statics;
-List<Projectile*> projectiles_friend;
-List<Projectile*> projectiles_ennemy;
-List<Monster*> monsters;
+Level curr_lvl(1);
 Events_status Events_stat;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;
 uint32_t bottom = 2100;
 Game game;
-Level curr_lvl(1);
 Talks talks;
 bool full_screen = false;
+//~ Dynamic_data dynamic_data;

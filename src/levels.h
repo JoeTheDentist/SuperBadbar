@@ -16,6 +16,7 @@
 class Static;
 class Projectiles;
 class Monster;
+class Dynamic_data;
 
 
 class Level {
@@ -23,7 +24,6 @@ private:
 	uint32_t m_level;							/* Numero du niveau */
 	int m_nb_monsters;                          /* Nombre de monstres DIFFERENTS sur le niveau */
 	SDL_Surface ** m_monsters_pics[2][4];	    /* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
-	Monster *** m_monsters_matrix;              /* Matrice de pointeurs des monstres */
 	SDL_Surface * m_background;                 /* image de fond du niveau */
 	uint32_t ** m_collision_matrix;      	    /* matrice des statics */
 	SDL_Rect m_last_pos;                        /* Pour se souvenir de l'ancienne prosition de la caméra */
@@ -48,12 +48,10 @@ public:
 	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
 
     void fill_monster_pic(int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
-    void fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed);
-    void fill_monster(uint32_t i, uint32_t j, Monster * monster);
+	SDL_Surface **monster_pic(uint32_t i, uint32_t j); /* accesseur */
 
-    void update();   /* Met à jour la listes des monstres et le tableau de monstres, gére les collisions */
 };
 
-bool to_delete(Monster * monster);
+bool to_delete(Monster * monster, Dynamic_data *dynamic_data);
 
 #endif

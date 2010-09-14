@@ -49,7 +49,8 @@ protected:
     Weapon m_weapon;		/* arme actuelle de babar */
     uint32_t m_fire_phase;	/* phase du tir */
 public:
-	Babar();				/* constructeur */
+	Babar(List<Projectile*> *projectiles_friend);
+				/* constructeur */
 	~Babar();				/* destructeur */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
 	void update_speed();	/* mise à jour de la vitesse en fonction des touches enfoncées */

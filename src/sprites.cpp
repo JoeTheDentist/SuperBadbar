@@ -113,12 +113,11 @@ uint32_t Sprite::phase()
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar()
+Babar::Babar(List<Projectile*> *projectiles_friend) : m_weapon(MACHINEGUN, projectiles_friend)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
-	m_weapon = Weapon(MACHINEGUN);
 	m_double_jump = false;
 
     /*** Stockage et chargement dans le tableau des images ***/

@@ -9,17 +9,22 @@
 #include <stdint.h>
 #include "sprites.h"
 #include "camera.h"
-
+#include "dynamic_data.h"
+#include "levels.h"
 #define TIME_LOOP 50
 
+class Dynamic_data;
 
 class Game {
 private:
+	
+	Level m_level;
 	Babar m_babar;					/* sprite du personnage controlé par le joueur */
 	Camera m_camera;				/* camera ciblant babar */
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 	SDL_Surface *m_proj[4];     	/* images des projectiles dans tous les sens */
+	Dynamic_data m_dynamic_data;
 
 public:
 	Game();							/* constructeur */
@@ -34,7 +39,5 @@ public:
 	SDL_Rect camera_frame();     /* Accesseur : cadre de la caméra */
 };
 
-bool to_kill(Monster * monster);
-bool check_monster_proj(Projectile * proj, Monster * monster);
 
 #endif
