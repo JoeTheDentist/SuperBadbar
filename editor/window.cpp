@@ -37,8 +37,8 @@ Window::Window(std::string file_name)
 	}
 	fprintf(stderr, "%s", background);
 	m_background = SDL_LoadBMP(background);
-	m_weight = m_background->w;
-	m_height = m_background->h;
+	m_weight = m_background->w / BACKGROUND_SPEED;
+	m_height = m_background->h / BACKGROUND_SPEED;
 	m_camera.w =  CAMERA_W;
 	m_camera.h =  CAMERA_H;
 	m_screen = SDL_SetVideoMode(m_camera.w, m_camera.h, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
@@ -78,17 +78,17 @@ void Window::translate(int x, int y)
 		m_camera.x = 0;
 	if (m_camera.y < 0)
 		m_camera.y = 0;
-	if (m_camera.x + m_camera.w  > m_background->w)
-		m_camera.x = m_background->w - m_camera.w;	
-	if (m_camera.y + m_camera.h  > m_background->h)
-		m_camera.y = m_background->h - m_camera.h;
+	if (m_camera.x + m_camera.w  > m_weight)
+		m_camera.x = m_weight- m_camera.w;	
+	if (m_camera.y + m_camera.h  > m_height)
+		m_camera.y = m_height - m_camera.h;
 }
 
 void Window::update_background()
 {
 	SDL_Rect pos_background;
-	pos_background.x = -m_camera.x;
-	pos_background.y = -m_camera.y;
+	pos_background.x = -m_camera.x * BACKGROUND_SPEED;
+	pos_background.y = -m_camera.y * BACKGROUND_SPEED;
 
 	SDL_BlitSurface(m_background, NULL, m_screen, &pos_background);
 

@@ -9,6 +9,7 @@
 
 #define CAMERA_W 600		
 #define CAMERA_H 400
+#define BACKGROUND_SPEED 0.5
 
 class Window{
 private:                                                               
