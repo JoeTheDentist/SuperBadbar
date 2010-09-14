@@ -47,11 +47,11 @@ void Game::update_pos()
 {
 	m_babar.update_pos();
 	/*m_monster.update_pos();*/
-	while(!projectiles_firend.end()) {
-	    projectiles_firend.element()->update_pos();
-	    projectiles_firend.next();
+	while(!projectiles_friend.end()) {
+	    projectiles_friend.element()->update_pos();
+	    projectiles_friend.next();
 	}
-	projectiles_firend.init();
+	projectiles_friend.init();
 
 	while(!monsters.end()) {
 	    monsters.element()->update_pos();
@@ -99,12 +99,12 @@ void Game::refresh_screen()
 	monsters.init();
 
 	/* affichage des projectiles */
-	while(!projectiles_firend.end()) {
-	    m_camera.display_sprite(projectiles_firend.element());
-	    projectiles_firend.next();
+	while(!projectiles_friend.end()) {
+	    m_camera.display_sprite(projectiles_friend.element());
+	    projectiles_friend.next();
 	}
 	/* suppression de projectiles trop vieux */
-    projectiles_firend.delete_elements(too_old);
+    projectiles_friend.delete_elements(too_old);
 
 	/* affichage des sprites */
 	m_camera.display_sprite(&m_babar);
@@ -172,10 +172,11 @@ void Game::check_monsters()
 bool to_kill(Monster * monster)
 {
     /* On supprime les projectiles qui en on besoin */
-    projectiles_firend.delete_elements(check_monster_proj, monster);
+    projectiles_friend.delete_elements(check_monster_proj, monster);
 
     /* On retourne si le monstre est mort */
     if(monster->dead()) {
+        delete monster;
         return true;
     }
     return false;

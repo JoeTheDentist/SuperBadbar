@@ -136,6 +136,7 @@ template <class T> void List<T>::do_list(void (*fct)(T))
     }
 }
 
+/*** Attention ! Pas de libération de la mémoire sur les éléments enlevés de la liste ***/
 template <class T> void List<T>::delete_elements(bool (*fct)(T))
 {
     T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
@@ -147,9 +148,6 @@ template <class T> void List<T>::delete_elements(bool (*fct)(T))
         if(fct(*(m_cursor->head))) {
             next();
             temp = last->back->back;
-            if(typeid(*(last->back->head)).name()[0] == 'P') {
-                delete *(last->back->head);
-            }
             delete last->back->head;
             delete last->back;
             last->back = temp;
@@ -166,6 +164,7 @@ template <class T> void List<T>::delete_elements(bool (*fct)(T))
     init();
 }
 
+/*** Attention ! Pas de libération de la mémoire sur les éléments enlevés de la liste ***/
 template <class T> template <class Q> void List<T>::delete_elements(bool (*fct)(T,Q), Q arg)
 {
     T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
@@ -177,9 +176,6 @@ template <class T> template <class Q> void List<T>::delete_elements(bool (*fct)(
         if(fct(*(m_cursor->head), arg)) {
             next();
             temp = last->back->back;
-            if(typeid(*(last->back->head)).name()[0] == 'P') {
-                delete *(last->back->head);
-            }
             delete last->back->head;
             delete last->back;
             last->back = temp;

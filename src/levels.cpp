@@ -65,9 +65,7 @@ Level::Level(uint32_t lvl)
     for(uint32_t i=m_last_pos.y/BOX_SIZE;i<(uint32_t)(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
         for(uint32_t j=m_last_pos.x/BOX_SIZE;j<(uint32_t)(m_last_pos.w+m_last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j] != NULL) {
-                Monster * mstr = new Monster;
-                mstr = m_monsters_matrix[i][j];
-                monsters.add(mstr);
+                monsters.add(m_monsters_matrix[i][j]);
                 m_monsters_matrix[i][j] = NULL;
             }
         }
@@ -98,7 +96,6 @@ Level::~Level()
     }
     delete[] m_collision_matrix;
 
-
     for(int i=0;i<2;i++) {
         for(int j=0;j<4;j++) {
             for(int l=0;l<m_nb_monsters;l++) {
@@ -108,9 +105,18 @@ Level::~Level()
         }
     }
 
+
+    for(uint32_t i = 0;i<(level_height()/BOX_SIZE);i++) {
+        for(uint32_t j = 0;j<(level_weight()/BOX_SIZE);j++) {
+            if (m_monsters_matrix[i][j] != NULL) {
+                delete m_monsters_matrix[i][j];
+            }
+        }
+    }
 	for(uint32_t i = 0; i<(level_weight()/BOX_SIZE);i++)
 		delete[] m_monsters_matrix[i];
     delete[] m_monsters_matrix;
+
     SDL_FreeSurface(m_background);
 
 }
@@ -247,9 +253,9 @@ void Level::update()
     for(int i=m_last_pos.y/BOX_SIZE;i<(m_last_pos.h+m_last_pos.y)/BOX_SIZE;i++) {
         for(int j=m_last_pos.x/BOX_SIZE;j<(m_last_pos.w+m_last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j] != NULL) {
-                Monster * mstr = new Monster;
-                mstr = m_monsters_matrix[i][j];
-                monsters.add(mstr);
+                /*Monster * mstr = new Monster;
+                mstr = m_monsters_matrix[i][j];*/
+                monsters.add(m_monsters_matrix[i][j]);
                 m_monsters_matrix[i][j] = NULL;
             }
         }

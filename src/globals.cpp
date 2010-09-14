@@ -16,7 +16,7 @@
 
 SDL_Surface *screen;
 List<Static*> statics;
-List<Projectile*> projectiles_firend;
+List<Projectile*> projectiles_friend;
 List<Projectile*> projectiles_ennemy;
 List<Monster*> monsters;
 Events_status Events_stat;

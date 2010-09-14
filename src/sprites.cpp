@@ -346,6 +346,7 @@ Monster::Monster(uint32_t type, SDL_Rect pos)
 
 Monster::~Monster()
 {
+
 }
 
 SDL_Surface *Monster::current_picture()

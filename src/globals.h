@@ -25,7 +25,7 @@ class Monster;
 
 extern SDL_Surface *screen;			/* ecran de jeu */
 extern List<Static*> statics; 		/* liste des statics à afficher */
-extern List<Projectile*> projectiles_firend;    /* liste des projectiles de Babar à l'écran */
+extern List<Projectile*> projectiles_friend;    /* liste des projectiles de Babar à l'écran */
 extern List<Projectile*> projectiles_ennemy;    /* liste des projectiles ennemis */
 extern List<Monster*> monsters;     /* Liste des monsters dans l'écran */
 extern Events_status Events_stat; 	/* tables des touches enfoncées */
