@@ -12,7 +12,7 @@
 
 #include "SDL/SDL.h"
 #include "weapons.h"
-#include "levels.h"
+#include "static_data.h"
 
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
@@ -34,7 +34,7 @@ protected:
 public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
-	void update_pos(Level *level);		/* mise à jour de la position */
+	void update_pos(Static_data *static_data);		/* mise à jour de la position */
 	SDL_Rect position();	/* accesseur */
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */
@@ -55,7 +55,7 @@ public:
 	~Babar();				/* destructeur */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
 	void update_speed();	/* mise à jour de la vitesse en fonction des touches enfoncées */
-	void update_state(Level *level);    /* mise à jour de l'état de babar et de sa direction */
+	void update_state(Static_data *static_data);    /* mise à jour de l'état de babar et de sa direction */
 	void update_direction();/* mise à jour de la direction de babar en fonction des touches enfoncées*/
 	bool can_fire();		/* retourne vrai si le joueur appuie sur tirer et s'il peut tirer à ce moment */
 	void fire();			/* fait tirer Babar */
@@ -63,8 +63,8 @@ public:
 	void double_jump();		/* fait resauter Babar*/
 	bool can_jump();		/* retourne vrai si le joueur appuie sur saut et s'il peut sauter à ce moment */
 	void jump();			/* fait sauter babar */
-	bool can_go_down(Level *level);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
-	void go_down(Level *level);			/* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
+	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
+	void go_down(Static_data *static_data);			/* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
 };
 
 
@@ -114,7 +114,7 @@ public:
 
 
 
-bool too_old(Projectile * p, Level *level);   /* Retourne si un projectile est trop "vieux" (pour la suppression) */
+bool too_old(Projectile * p, Static_data *static_data);   /* Retourne si un projectile est trop "vieux" (pour la suppression) */
 
 
 #endif

@@ -14,12 +14,12 @@
 #include "events.h"
 #include "camera.h"
 #include "collisions.h"
-#include "levels.h"
+#include "static_data.h"
 #include "statics.h"
 #include "dynamic_data.h"
 
 
-Game::Game(): m_camera(&m_babar), m_level(1), m_dynamic_data(&m_camera, &m_level), m_babar(m_dynamic_data.projectiles_friend())
+Game::Game(): m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
@@ -46,10 +46,10 @@ Game::~Game()
 
 void Game::update_pos()
 {
-	m_babar.update_pos(&m_level);
+	m_babar.update_pos(&m_static_data);
 	/*m_monster.update_pos();*/
-	m_dynamic_data.projectiles_friend_update_pos(&m_level);
-	m_dynamic_data.monsters_update_pos(&m_level);
+	m_dynamic_data.projectiles_friend_update_pos(&m_static_data);
+	m_dynamic_data.monsters_update_pos(&m_static_data);
 
 	
 }
@@ -60,19 +60,19 @@ void Game::update_speed()
 
 	m_dynamic_data.monsters_update_speed();
 
-	m_babar.update_state(&m_level);         /* A changer de place, en discuter */
+	m_babar.update_state(&m_static_data);         /* A changer de place, en discuter */
 }
 
 void Game::update_camera()
 {
-    m_camera.update_pos(&m_level);
+    m_camera.update_pos(&m_static_data);
 }
 
 void Game::refresh_screen()
 {
 	/* affichage du fond */
-	m_camera.update_pos(&m_level);
-	m_camera.display_background(m_level.background());
+	m_camera.update_pos(&m_static_data);
+	m_camera.display_background(m_static_data.background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	while(!statics.end()) {
@@ -90,7 +90,7 @@ void Game::refresh_screen()
 	
 	
 	/* suppression de projectiles trop vieux */
-	m_dynamic_data.delete_old_projectiles_friend(&m_level);
+	m_dynamic_data.delete_old_projectiles_friend(&m_static_data);
 	
 	
 	/* affichage du sprite babar */

@@ -5,7 +5,7 @@
 
 #include "events.h"
 #include "debug.h"
-#include "levels.h"
+#include "static_data.h"
 #include "lists.h"
 #include "statics.h"
 #include "sprites.h"

@@ -11,7 +11,7 @@
 #include "analyser.h"
 #include "weapons.h"
 #include "collisions.h"
-#include "levels.h"
+#include "static_data.h"
 #include "talks.h"
 
 /*********************************
@@ -35,13 +35,13 @@ Sprite::~Sprite()
 
 }
 
-void Sprite::update_pos(Level *level)
+void Sprite::update_pos(Static_data *static_data)
 {
 	m_phase++;
 	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = level->down_collision_type(m_pos);
+		coll = static_data->down_collision_type(m_pos);
 		if (is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
@@ -50,13 +50,13 @@ void Sprite::update_pos(Level *level)
 		}
 		else {
 			m_pos.y += BOX_SIZE;
-			if (m_pos.y + m_pos.h > (int32_t)level->level_height())
-				m_pos.y = level->level_height() - m_pos.h;
+			if (m_pos.y + m_pos.h > (int32_t)static_data->static_data_height())
+				m_pos.y = static_data->static_data_height() - m_pos.h;
 		}
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (is_up_coll(level->up_collision_type(m_pos))){
+		if (is_up_coll(static_data->up_collision_type(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
 		}
@@ -69,16 +69,16 @@ void Sprite::update_pos(Level *level)
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(level->down_collision_type(m_pos)))
+			if(!is_down_coll(static_data->down_collision_type(m_pos)))
 				m_pos.y += BOX_SIZE;
 			m_pos.x += BOX_SIZE;
-			if (m_pos.x + m_pos.w > (int32_t)level->level_weight())
-				m_pos.x = level->level_weight() - m_pos.w;
+			if (m_pos.x + m_pos.w > (int32_t)static_data->static_data_weight())
+				m_pos.x = static_data->static_data_weight() - m_pos.w;
 	}
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(level->down_collision_type(m_pos)))
+			if(!is_down_coll(static_data->down_collision_type(m_pos)))
 				m_pos.y += BOX_SIZE;
 			m_pos.x -= BOX_SIZE;
 			if (m_pos.x < 0)
@@ -204,7 +204,7 @@ void Babar::update_speed()
         m_speed.x += BABAR_SPEED;
 }
 
-void Babar::update_state(Level *level)
+void Babar::update_state(Static_data *static_data)
 {
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -231,8 +231,8 @@ void Babar::update_state(Level *level)
 	if (can_double_jump())
 		double_jump();
 
-	if (can_go_down(level))
-		go_down(level);
+	if (can_go_down(static_data))
+		go_down(static_data);
 
     if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
@@ -305,17 +305,17 @@ void Babar::jump()
 	Events_stat.disable_key(k_jump);
 }
 
-bool Babar::can_go_down(Level *level)
+bool Babar::can_go_down(Static_data *static_data)
 {
 	return (Events_stat.key_down(k_jump) && Events_stat.key_down(k_down) && (m_state == STATIC || m_state == WALK)
-				&& is_down_coll(level->down_collision_type(m_pos)));
+				&& is_down_coll(static_data->down_collision_type(m_pos)));
 }
 
-void Babar::go_down(Level *level)
+void Babar::go_down(Static_data *static_data)
 {
 	m_pos.y += BOX_SIZE;
-	while (is_down_coll(level->down_collision_type(m_pos))){
-		if (level->double_collision(m_pos)) {
+	while (is_down_coll(static_data->down_collision_type(m_pos))){
+		if (static_data->double_collision(m_pos)) {
 			m_pos.y -= BOX_SIZE;
 			break;
 		}
@@ -446,7 +446,7 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
     m_vertical = v;
     m_damage = damage;
 
-    /*** Remplissage des images des projectiles (voir level.ccp) ***/
+    /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
     if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
         m_pic = game.proj(2);
     }
@@ -490,19 +490,19 @@ SDL_Rect Projectile::speed()
 
 /*** Fonctions ***/
 
-bool too_old(Projectile * p, Level *level)
+bool too_old(Projectile * p, Static_data *static_data)
 {
     bool to_return = (p->phase()>PROJ_LIFE_SPAN);
     SDL_Rect speed = p->speed();
     if (speed.x>0)
-        to_return |= level->right_collision(p->position());
+        to_return |= static_data->right_collision(p->position());
     else
-        to_return |= level->left_collision(p->position());
+        to_return |= static_data->left_collision(p->position());
 
     if (speed.y>0)
-        to_return |= level->down_collision(p->position());
+        to_return |= static_data->down_collision(p->position());
     else
-        to_return |= level->up_collision(p->position());
+        to_return |= static_data->up_collision(p->position());
     return to_return;
 }
 

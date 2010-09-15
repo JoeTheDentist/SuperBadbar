@@ -17,11 +17,11 @@ Dynamic_data::Dynamic_data()
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera, Level *level) 
+Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data) 
 {
 	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
-	m_matrix_weight = level->level_weight();
-	m_matrix_height = level->level_height();
+	m_matrix_weight = static_data->static_data_weight();
+	m_matrix_height = static_data->static_data_height();
 	std::string str_lvl = "1";      
 	Analyser analyser, analyser2;
 	analyser.open("../data/levels/level"+str_lvl+".lvl");
@@ -36,7 +36,7 @@ Dynamic_data::Dynamic_data(Camera *camera, Level *level)
 		}
     }
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
-    analyser.fill_monsters(&analyser2, level, this);
+    analyser.fill_monsters(&analyser2, static_data, this);
     analyser2.close();
 
     /*** Stockage des monstres dans la listes ***/
@@ -74,19 +74,19 @@ bool Dynamic_data::projectiles_friend_end()
 	return 	m_projectiles_friend.end();
 }
 
-void Dynamic_data::projectiles_friend_update_pos(Level *level)
+void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
 {
 	while(!m_projectiles_friend.end()) {
-	    m_projectiles_friend.element()->update_pos(level);
+	    m_projectiles_friend.element()->update_pos(static_data);
 	    m_projectiles_friend.next();
 	}
 	m_projectiles_friend.init();
 }
 
-void Dynamic_data::monsters_update_pos(Level*level)
+void Dynamic_data::monsters_update_pos(Static_data*static_data)
 {
 	while(!m_monsters.end()) {
-		m_monsters.element()->update_pos(level);
+		m_monsters.element()->update_pos(static_data);
 		m_monsters.next();
 	}
 		m_monsters.init();
@@ -119,9 +119,9 @@ void Dynamic_data::display_projectiles_friend(Camera *camera)
 	}
 }
 
-void Dynamic_data::delete_old_projectiles_friend(Level *level)
+void Dynamic_data::delete_old_projectiles_friend(Static_data *static_data)
 {
-    m_projectiles_friend.delete_elements(too_old, level);	
+    m_projectiles_friend.delete_elements(too_old, static_data);	
 }
 
 void Dynamic_data::update_monsters_projectiles()
@@ -138,7 +138,7 @@ void Dynamic_data::fill_monster(uint32_t i, uint32_t j, Monster * monster)
 }
 
 
-void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Level *level)
+void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
 {
     Monster * curr_monster = new Monster;
     curr_monster->set_type(monster_type);
@@ -151,7 +151,7 @@ void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_t
     curr_monster->set_speed(speed);
     for(int k=0;k<2;k++) {
         for(int l=0;l<4;l++) {
-			SDL_Surface **monster_pics = level->monster_pic(k, l);
+			SDL_Surface **monster_pics = static_data->monster_pic(k, l);
             curr_monster->set_pic(monster_pics[monster_type],k,l);
 //~ 			curr_monster->set_pic(monster_pics[k][l][monster_type],k,l);
 

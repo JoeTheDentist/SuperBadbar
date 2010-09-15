@@ -10,16 +10,17 @@
 #include "sprites.h"
 #include "camera.h"
 #include "dynamic_data.h"
-#include "levels.h"
+#include "static_data.h"
 #define TIME_LOOP 50
 
 class Dynamic_data;
+class Static_data;
 
 class Game {
 private:
 	
 	Camera m_camera;				/* camera ciblant babar */
-	Level m_level;
+	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 	SDL_Surface *m_proj[4];     	/* images des projectiles dans tous les sens */

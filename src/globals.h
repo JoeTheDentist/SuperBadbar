@@ -17,7 +17,7 @@
 #include "lists.h"
 #include "talks.h"
 #include "dynamic_data.h"
-#include "levels.h"
+#include "static_data.h"
 
 class Projectile;   /* Pour éviter les bugs */
 class Game;

@@ -15,7 +15,7 @@
 #include "sprites.h"
 #include "statics.h"
 #include "globals.h"
-#include "levels.h"
+#include "static_data.h"
 #define STATICS_DIR "../pic/statics/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
@@ -39,9 +39,9 @@ public:
 	void fill_statics();				/* Lit dans m_file la section #Statics# et l'ajoute à la liste globale curr_statics */
 	void fill_collision_matrix(uint32_t **matrix); /* Lit dans m_file la section #Statics# et remplit la matrix de collisions matrix*/
     int nb_monsters();							/* Renvoie le nombre de monstres différents dans le fichier m_file*/
-    void fill_monsters_pics(int nb_monsters, Level *level); 	/* Charge les images des monstres dans curr_lvl à partir de la section #Monsters#*/
+    void fill_monsters_pics(int nb_monsters, Static_data *static_data); 	/* Charge les images des monstres dans curr_lvl à partir de la section #Monsters#*/
 												/* DOIT etre utilisé après nb_monsters */
-    void fill_monsters(Analyser * analyser, Level *level, Dynamic_data *dynamic_data);  	/* Remplit la matrice des monstres de curr_lvl */
+    void fill_monsters(Analyser * analyser, Static_data *static_data, Dynamic_data *dynamic_data);  	/* Remplit la matrice des monstres de curr_lvl */
 												/* analyser est un deuxieme analyser qui doit etre ouvert */
     void fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint32_t type); 
 };

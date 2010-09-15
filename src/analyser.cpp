@@ -148,7 +148,7 @@ int Analyser::nb_monsters()
     return nb;
 }
 
-void Analyser::fill_monsters_pics(int nb_monsters, Level *level)
+void Analyser::fill_monsters_pics(int nb_monsters, Static_data *static_data)
 {
     /* A utiliser après nb_monster car il se place au bon endroit dans le fichier */
     char link[40];
@@ -160,15 +160,15 @@ void Analyser::fill_monsters_pics(int nb_monsters, Level *level)
                 jump_separators();
                 fscanf(m_file,"%s",link);
                 if(j==1) {
-                    level->fill_monster_pic(i,3,k,link);
+                    static_data->fill_monster_pic(i,3,k,link);
                 }
-                level->fill_monster_pic(i,j,k,link);
+                static_data->fill_monster_pic(i,j,k,link);
             }
         }
     }
 }
 
-void Analyser::fill_monsters(Analyser * analyser, Level *level, Dynamic_data *dynamic_data)
+void Analyser::fill_monsters(Analyser * analyser, Static_data *static_data, Dynamic_data *dynamic_data)
 {
     /* Ici l'analyser en argument permet de traiter en parallèle deux bouts de fichiers sans ouvrir le fichier à chaque fois */
     uint32_t x,y,begin,end,life,speed,monster_type;
@@ -182,7 +182,7 @@ void Analyser::fill_monsters(Analyser * analyser, Level *level, Dynamic_data *dy
         fscanf(m_file,"%d",&begin);
         fscanf(m_file,"%d",&end);
         analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
-        dynamic_data->fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed, level);
+        dynamic_data->fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed, static_data);
     }
 }
 
