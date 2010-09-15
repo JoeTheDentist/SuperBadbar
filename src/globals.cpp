@@ -17,7 +17,6 @@
 
 SDL_Surface *screen;
 List<Static*> statics;
-Level curr_lvl(1);
 Events_status Events_stat;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;

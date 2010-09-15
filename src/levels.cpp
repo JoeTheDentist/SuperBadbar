@@ -41,7 +41,7 @@ Level::Level(uint32_t lvl)
             m_monsters_pics[i][j] = new SDL_Surface*[m_nb_monsters];
         }
     }
-    analyser.fill_monsters_pics(m_nb_monsters);
+    analyser.fill_monsters_pics(m_nb_monsters, this);
 
 
     /*** Allocation du tableau pour les collisions ***/

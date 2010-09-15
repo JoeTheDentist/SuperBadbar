@@ -17,23 +17,26 @@ Dynamic_data::Dynamic_data()
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera)
+Dynamic_data::Dynamic_data(Camera *camera, Level *level) 
 {
-	std::string str_lvl = "1";
+	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
+	m_matrix_weight = level->level_weight();
+	m_matrix_height = level->level_height();
+	std::string str_lvl = "1";      
 	Analyser analyser, analyser2;
 	analyser.open("../data/levels/level"+str_lvl+".lvl");
     /* Allocation de la matrice de monstres */
-    m_monsters_matrix = new Monster**[curr_lvl.level_height()/BOX_SIZE];
-    for(uint32_t i = 0; i<(curr_lvl.level_height()/BOX_SIZE);i++) {
-        m_monsters_matrix[i] = new Monster*[curr_lvl.level_weight()/BOX_SIZE];
+    m_monsters_matrix = new Monster**[m_matrix_weight];
+    for(uint32_t i = 0; i<(m_matrix_weight);i++) {
+        m_monsters_matrix[i] = new Monster*[m_matrix_height];
     }
-    for(uint32_t i = 0;i<(curr_lvl.level_height()/BOX_SIZE);i++) {
-        for(uint32_t j = 0;j<(curr_lvl.level_weight()/BOX_SIZE);j++) {
+    for(uint32_t i = 0;i<(m_matrix_weight);i++) {
+        for(uint32_t j = 0;j<(m_matrix_height);j++) {
             m_monsters_matrix[i][j] = NULL;
-        }
+		}
     }
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
-    analyser.fill_monsters(&analyser2, &curr_lvl, this);
+    analyser.fill_monsters(&analyser2, level, this);
     analyser2.close();
 
     /*** Stockage des monstres dans la listes ***/
@@ -53,14 +56,14 @@ Dynamic_data::Dynamic_data(Camera *camera)
 
 Dynamic_data::~Dynamic_data()
 {
-	for(uint32_t i = 0;i<(curr_lvl.level_height()/BOX_SIZE);i++) {
-        for(uint32_t j = 0;j<(curr_lvl.level_weight()/BOX_SIZE);j++) {
+	for(uint32_t i = 0;i<(m_matrix_height);i++) {
+        for(uint32_t j = 0;j<(m_matrix_weight);j++) {
             if (m_monsters_matrix[i][j] != NULL) {
                 delete m_monsters_matrix[i][j];
             }
         }
     }
-	for(uint32_t i = 0; i<(curr_lvl.level_weight()/BOX_SIZE);i++)
+	for(uint32_t i = 0; i<(m_matrix_weight);i++)
 		delete[] m_monsters_matrix[i];
     delete[] m_monsters_matrix;
 
@@ -71,19 +74,19 @@ bool Dynamic_data::projectiles_friend_end()
 	return 	m_projectiles_friend.end();
 }
 
-void Dynamic_data::projectiles_friend_update_pos()
+void Dynamic_data::projectiles_friend_update_pos(Level *level)
 {
 	while(!m_projectiles_friend.end()) {
-	    m_projectiles_friend.element()->update_pos();
+	    m_projectiles_friend.element()->update_pos(level);
 	    m_projectiles_friend.next();
 	}
 	m_projectiles_friend.init();
 }
 
-void Dynamic_data::monsters_update_pos()
+void Dynamic_data::monsters_update_pos(Level*level)
 {
 	while(!m_monsters.end()) {
-		m_monsters.element()->update_pos();
+		m_monsters.element()->update_pos(level);
 		m_monsters.next();
 	}
 		m_monsters.init();
@@ -116,9 +119,9 @@ void Dynamic_data::display_projectiles_friend(Camera *camera)
 	}
 }
 
-void Dynamic_data::delete_old_projectiles_friend()
+void Dynamic_data::delete_old_projectiles_friend(Level *level)
 {
-    m_projectiles_friend.delete_elements(too_old);	
+    m_projectiles_friend.delete_elements(too_old, level);	
 }
 
 void Dynamic_data::update_monsters_projectiles()

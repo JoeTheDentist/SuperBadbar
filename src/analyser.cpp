@@ -148,7 +148,7 @@ int Analyser::nb_monsters()
     return nb;
 }
 
-void Analyser::fill_monsters_pics(int nb_monsters)
+void Analyser::fill_monsters_pics(int nb_monsters, Level *level)
 {
     /* A utiliser après nb_monster car il se place au bon endroit dans le fichier */
     char link[40];
@@ -160,9 +160,9 @@ void Analyser::fill_monsters_pics(int nb_monsters)
                 jump_separators();
                 fscanf(m_file,"%s",link);
                 if(j==1) {
-                    curr_lvl.fill_monster_pic(i,3,k,link);
+                    level->fill_monster_pic(i,3,k,link);
                 }
-                curr_lvl.fill_monster_pic(i,j,k,link);
+                level->fill_monster_pic(i,j,k,link);
             }
         }
     }

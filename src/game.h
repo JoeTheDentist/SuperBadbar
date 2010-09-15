@@ -18,13 +18,14 @@ class Dynamic_data;
 class Game {
 private:
 	
-	Level m_level;
-	Babar m_babar;					/* sprite du personnage controlé par le joueur */
 	Camera m_camera;				/* camera ciblant babar */
+	Level m_level;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 	SDL_Surface *m_proj[4];     	/* images des projectiles dans tous les sens */
 	Dynamic_data m_dynamic_data;
+	Babar m_babar;					/* sprite du personnage controlé par le joueur */
+
 
 public:
 	Game();							/* constructeur */

@@ -22,12 +22,10 @@
 class Projectile;   /* Pour éviter les bugs */
 class Game;
 class Monster;
-class Level;
 class Dynamic_data;
 
 extern SDL_Surface *screen;			/* ecran de jeu */
 extern List<Static*> statics; 		/* liste des statics à afficher */
-extern Level curr_lvl;
 extern Events_status Events_stat; 	/* tables des touches enfoncées */
 extern uint32_t window_height;		/* hauteur de la fenêtre de jeu */
 extern uint32_t window_weight;		/* largeur de la fenêtre de jeu */

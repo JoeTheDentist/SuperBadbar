@@ -18,6 +18,7 @@ class Babar;
 class Monster;
 class Projectile;
 class Sprite;
+class Level;
 
 class Camera {
 private:
@@ -27,7 +28,7 @@ public:
 	Camera();								/* constructeur */
 	Camera(Sprite *target);					/* constructeur */
 	~Camera();								/* destructeur */
-	void update_pos();						/* mise à jour de la camera */
+	void update_pos(Level *level);						/* mise à jour de la camera */
 	void display_background(SDL_Surface *background); /* affichage d'un fond d'écran */
 	void display_sprite(Babar *babar);      /* affichage d'un Babar */
 	void display_sprite(Monster *monster);  /* affichage d'un monstre */

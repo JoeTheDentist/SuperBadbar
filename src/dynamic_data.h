@@ -21,18 +21,20 @@ private:
 	List<Projectile*> m_projectiles_ennemy;    /* liste des projectiles ennemis */
 	List<Monster*> m_monsters;     /* Liste des monsters dans l'écran */
 	Monster *** m_monsters_matrix;              /* Matrice de pointeurs des monstres */
+	uint32_t m_matrix_weight;
+	uint32_t m_matrix_height;
 
 public:
 	Dynamic_data();
-	Dynamic_data(Camera *camera);
+	Dynamic_data(Camera *camera, Level *level);
 	~Dynamic_data();
 	bool projectiles_friend_end();
-	void projectiles_friend_update_pos();
-	void monsters_update_pos();
+	void projectiles_friend_update_pos(Level *level);
+	void monsters_update_pos(Level *level);
 	void monsters_update_speed();
 	void display_monsters(Camera *camera);
 	void display_projectiles_friend(Camera *camera);
-	void delete_old_projectiles_friend();
+	void delete_old_projectiles_friend(Level *level);
 	void update_monsters_projectiles();
 	void fill_monster(uint32_t i, uint32_t j, Monster * monster);
     void fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed,  Level *level);
