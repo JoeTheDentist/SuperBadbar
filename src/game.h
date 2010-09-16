@@ -11,6 +11,7 @@
 #include "camera.h"
 #include "dynamic_data.h"
 #include "static_data.h"
+#include "keyboard.h"
 #define TIME_LOOP 50
 
 class Dynamic_data;
@@ -18,7 +19,7 @@ class Static_data;
 
 class Game {
 private:
-	
+	Keyboard m_keyboard;
 	Camera m_camera;				/* camera ciblant babar */
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */

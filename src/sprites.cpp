@@ -113,7 +113,7 @@ uint32_t Sprite::phase()
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(List<Projectile*> *projectiles_friend) : m_weapon(MACHINEGUN, projectiles_friend)
+Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
@@ -198,9 +198,9 @@ void Babar::update_speed()
 {
 	m_speed.y += GRAVITE;
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
-    if (keyboard.key_down(k_left))
+    if (m_keyboard->key_down(k_left))
         m_speed.x -= BABAR_SPEED;
-    if (keyboard.key_down(k_right))
+    if (m_keyboard->key_down(k_right))
         m_speed.x += BABAR_SPEED;
 }
 
@@ -210,7 +210,7 @@ void Babar::update_state(Static_data *static_data)
         m_state = STATIC;
 		m_double_jump = false;
     }
-   	//~ if (keyboard.key_down(k_action)) {
+   	//~ if (m_keyboard->key_down(k_action)) {
 		//~ talks.load_and_display_text("test.dial");
 	//~ }
 
@@ -237,7 +237,7 @@ void Babar::update_state(Static_data *static_data)
     if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
     }
-    if ((keyboard.key_down(k_right)||keyboard.key_down(k_left))&&(m_state!=JUMP)) {
+    if ((m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP)) {
         m_state = WALK;
     }
 }
@@ -246,32 +246,32 @@ void Babar::update_direction()
 {
 	m_horizontal = MIDDLE_h;
     m_vertical = MIDDLE_v;
-	if (keyboard.key_down(k_left)) {
+	if (m_keyboard->key_down(k_left)) {
 		m_horizontal = LEFT;
 		m_last_dir = LEFT;
 	}
-	if (keyboard.key_down(k_right)) {
+	if (m_keyboard->key_down(k_right)) {
 		m_horizontal = RIGHT;
 		m_last_dir = RIGHT;
 	}
 
-	if (keyboard.key_down(k_up)) {
+	if (m_keyboard->key_down(k_up)) {
 		m_vertical = UP;
 	}
-	if (keyboard.key_down(k_down)) {
+	if (m_keyboard->key_down(k_down)) {
 		m_vertical = DOWN;
 	}
 }
 
 bool Babar::can_fire()
 {
-	return keyboard.key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
+	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
 }
 
 void Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
-	if(keyboard.key_down(k_up)||keyboard.key_down(k_down)) {
+	if(m_keyboard->key_down(k_up)||m_keyboard->key_down(k_down)) {
 		m_weapon.fire(m_pos,m_horizontal,m_vertical);
 	}
 	else {
@@ -281,7 +281,7 @@ void Babar::fire()
 
 bool Babar::can_double_jump()
 {
-	return m_state == JUMP && keyboard.key_down(k_jump) && (!m_double_jump);
+	return m_state == JUMP && m_keyboard->key_down(k_jump) && (!m_double_jump);
 }
 
 void Babar::double_jump()
@@ -294,7 +294,7 @@ void Babar::double_jump()
 
 bool Babar::can_jump()
 {
-	return keyboard.key_down(k_jump) && (m_state!=JUMP) && !keyboard.key_down(k_down);
+	return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
 }
 
 void Babar::jump()
@@ -302,12 +302,12 @@ void Babar::jump()
 	m_state = JUMP;
 	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
-	keyboard.disable_key(k_jump);
+	m_keyboard->disable_key(k_jump);
 }
 
 bool Babar::can_go_down(Static_data *static_data)
 {
-	return (keyboard.key_down(k_jump) && keyboard.key_down(k_down) && (m_state == STATIC || m_state == WALK)
+	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
 				&& is_down_coll(static_data->down_collision_type(m_pos)));
 }
 
@@ -323,7 +323,7 @@ void Babar::go_down(Static_data *static_data)
 			m_pos.y += BOX_SIZE;
 		}
 	}
-	keyboard.disable_key(k_jump);
+	m_keyboard->disable_key(k_jump);
 	PRINT_TRACE(2, "Descente d'une plateforme")
 }
 

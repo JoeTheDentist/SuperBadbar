@@ -19,7 +19,7 @@
 #include "dynamic_data.h"
 
 
-Game::Game(): m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend())
+Game::Game(): m_keyboard(), m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
@@ -114,8 +114,8 @@ void Game::game_loop()
 			PRINT_TRACE(3,"Cycle de jeu n°%d", compteur)
 			compteur++;
 			m_previous_time = m_time;
-			keyboard.update_events();
-			if (keyboard.key_down(k_exit))
+			m_keyboard.update_events();
+			if (m_keyboard.key_down(k_exit))
 				end = true;
             m_dynamic_data.update(&m_camera);
 			update_speed();

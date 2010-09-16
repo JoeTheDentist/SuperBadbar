@@ -13,6 +13,7 @@
 #include "SDL/SDL.h"
 #include "weapons.h"
 #include "static_data.h"
+#include "keyboard.h"
 
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
@@ -44,13 +45,14 @@ public:
 
 class Babar: public Sprite {
 protected:
+	Keyboard *m_keyboard;	/* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
     horizontal m_last_dir;  /* direction vers laquelle Babar regarde (pour les tirs haut et bas) */
     SDL_Surface *m_pics[3][3][3][2]; /* Images des animations indicés par: état, gauche droite, bas haut, numéro image */
 	bool m_double_jump;		/* vaut vrai si Babar est en double saut */
-    Weapon m_weapon;		/* arme actuelle de babar */
+    Weapon m_weapon;		/* arme actuelle de babar  */
     uint32_t m_fire_phase;	/* phase du tir */
 public:
-	Babar(List<Projectile*> *projectiles_friend);
+	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard);
 				/* constructeur */
 	~Babar();				/* destructeur */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */

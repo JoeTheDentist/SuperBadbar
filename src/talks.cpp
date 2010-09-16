@@ -159,7 +159,6 @@ void Talks::display_text(std::string str)
 		curr_list = curr_list->next;
 	}
 	wait_space();
-	keyboard.disable_all_keys();
 
 }
 
