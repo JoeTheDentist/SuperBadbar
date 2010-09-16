@@ -7,7 +7,7 @@
 #include "talks.h"
 #include "debug.h"
 #include "globals.h"
-#include "events.h"
+#include "keyboard.h"
 
 
 
@@ -94,7 +94,7 @@ void Talks::instant_display(std::string str, int line)
 }
 
 void Talks::progressive_display(std::string str, int line)
-{
+{                                            
 	std::string curr_text;
 	SDL_Event event;
 	for (uint32_t i = 0; i < str.size(); i++){
@@ -159,7 +159,7 @@ void Talks::display_text(std::string str)
 		curr_list = curr_list->next;
 	}
 	wait_space();
-	Events_stat.disable_all_keys();
+	keyboard.disable_all_keys();
 
 }
 

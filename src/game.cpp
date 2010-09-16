@@ -11,7 +11,7 @@
 #include "sprites.h"
 #include "window.h"
 #include "globals.h"
-#include "events.h"
+#include "keyboard.h"
 #include "camera.h"
 #include "collisions.h"
 #include "static_data.h"
@@ -114,8 +114,8 @@ void Game::game_loop()
 			PRINT_TRACE(3,"Cycle de jeu n°%d", compteur)
 			compteur++;
 			m_previous_time = m_time;
-			Events_stat.update_events();
-			if (Events_stat.key_down(k_exit))
+			keyboard.update_events();
+			if (keyboard.key_down(k_exit))
 				end = true;
             m_dynamic_data.update(&m_camera);
 			update_speed();

@@ -13,7 +13,7 @@
 #include "sprites.h"
 
 #include "statics.h"
-#include "events.h"
+#include "keyboard.h"
 #include "lists.h"
 #include "talks.h"
 #include "dynamic_data.h"
@@ -26,7 +26,7 @@ class Dynamic_data;
 
 extern SDL_Surface *screen;			/* ecran de jeu */
 extern List<Static*> statics; 		/* liste des statics à afficher */
-extern Events_status Events_stat; 	/* tables des touches enfoncées */
+extern Keyboard keyboard; 	/* tables des touches enfoncées */
 extern uint32_t window_height;		/* hauteur de la fenêtre de jeu */
 extern uint32_t window_weight;		/* largeur de la fenêtre de jeu */
 extern uint32_t bottom;             /* Sol, babar ne peut pas aller plus bas, temporaraire, faire avec les static ensuite */

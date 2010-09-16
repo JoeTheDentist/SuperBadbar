@@ -34,9 +34,7 @@ private:
 	TTF_Font *m_font;
 	SDL_Color m_font_color;
 
-public:
-	Talks();
-	~Talks();
+
 	void display_background();
 	struct cell_string *cut_text(std::string text);
 	void instant_display(std::string str, int line);
@@ -44,8 +42,11 @@ public:
 	void move_up();
 	void display_line(int line);
 	void wait_space();
-	void display_text(std::string str);
-	void load_and_display_text(std::string filename);
+public:
+	Talks();
+	~Talks();
+	void display_text(std::string str);					/* Doit etre suivi d'un keyboard.disable_all_keys(); */
+	void load_and_display_text(std::string filename);	/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 
 };
 
