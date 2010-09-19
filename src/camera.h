@@ -13,6 +13,9 @@
 
 #include "sprites.h"
 #include "statics.h"
+#include "globals.h"
+
+
 
 class Babar;
 class Monster;

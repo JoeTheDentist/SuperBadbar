@@ -4,7 +4,7 @@
 #include <string>
 #include <SDL/SDL_ttf.h>
 
-
+#include "camera.h"
 
 #define PIC_TALKS_DIR "../pic/talks/"
 #define FONTS_TALKS_DIR "../data/talks/fonts/"

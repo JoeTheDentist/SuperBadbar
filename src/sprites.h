@@ -18,6 +18,8 @@
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
+class Static_data;
+
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
     STATIC, WALK, JUMP
 };

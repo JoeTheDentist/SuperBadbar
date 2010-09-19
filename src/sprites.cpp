@@ -6,7 +6,6 @@
 #include "sprites.h"
 #include "debug.h"
 #include "game.h"
-#include "globals.h"
 #include "keyboard.h"
 #include "analyser.h"
 #include "weapons.h"

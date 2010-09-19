@@ -9,7 +9,6 @@
 #include "game.h"
 #include "debug.h"
 #include "sprites.h"
-#include "globals.h"
 #include "keyboard.h"
 #include "camera.h"
 #include "collisions.h"

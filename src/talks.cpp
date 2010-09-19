@@ -6,7 +6,6 @@
 #include <SDL/SDL_ttf.h>
 #include "talks.h"
 #include "debug.h"
-#include "globals.h"
 #include "keyboard.h"
 
 

@@ -6,7 +6,6 @@
 #include "debug.h"
 #include "sprites.h"
 #include "game.h"
-#include "globals.h"
 
 
 
@@ -25,8 +24,6 @@ int main(int argc, char *argv[])
 	PRINT_TRACE(1,"Lancement du jeu")
 	Game game;
 
-	if (argc > 1) 
-		full_screen = true;
 
     srand(time(NULL));
 

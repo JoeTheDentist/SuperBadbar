@@ -2,7 +2,6 @@
 #define WEAPONS_H_INCLUDED
 
 #include "sprites.h"
-#include "globals.h"
 #include "lists.h"
 
 

@@ -14,7 +14,6 @@
 #include <string>
 #include "sprites.h"
 #include "statics.h"
-#include "globals.h"
 #include "static_data.h"
 #define STATICS_DIR "../pic/statics/"
 #define COLL_EXT ".col"

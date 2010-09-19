@@ -12,9 +12,11 @@
 #include "dynamic_data.h"
 #include "static_data.h"
 #include "keyboard.h"
+#include "talks.h"
 #define TIME_LOOP 50
 
 class Dynamic_data;
+class Talks;
 class Static_data;
 
 class Game {

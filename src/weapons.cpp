@@ -5,7 +5,6 @@
 
 #include "debug.h"
 #include "sprites.h"
-#include "globals.h"
 #include "weapons.h"
 
 

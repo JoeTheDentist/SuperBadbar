@@ -3,7 +3,7 @@ CFLAGS = -Wall  -g
 EXEC_NAME = main
 INCLUDES = 
 LIBS =
-OBJ_FILES =  main.o sprites.o game.o globals.o keyboard.o camera.o collisions.o static_data.o analyser.o statics.o weapons.o talks.o dynamic_data.o
+OBJ_FILES =  main.o sprites.o game.o keyboard.o camera.o collisions.o static_data.o analyser.o statics.o weapons.o talks.o dynamic_data.o
 INSTALL_DIR = .
 LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image 
 
