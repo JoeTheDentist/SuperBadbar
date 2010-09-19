@@ -19,7 +19,8 @@
 #define LINES_NUMBER 3
 #define DISPLAY_SPEED 20
 
-                          
+class Camera;
+
 struct cell_string {
 	std::string str;
 	cell_string *next;
@@ -33,6 +34,7 @@ private:
 	SDL_Rect m_pos_text[LINES_NUMBER];
 	TTF_Font *m_font;
 	SDL_Color m_font_color;
+	Camera *m_camera;
 
 
 	void display_background();
@@ -43,7 +45,7 @@ private:
 	void display_line(int line);
 	void wait_space();
 public:
-	Talks();
+	Talks(Camera *camera);
 	~Talks();
 	void display_text(std::string str);					/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 	void load_and_display_text(std::string filename);	/* Doit etre suivi d'un keyboard.disable_all_keys(); */

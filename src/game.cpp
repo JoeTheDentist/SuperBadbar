@@ -9,7 +9,6 @@
 #include "game.h"
 #include "debug.h"
 #include "sprites.h"
-#include "window.h"
 #include "globals.h"
 #include "keyboard.h"
 #include "camera.h"
@@ -19,7 +18,7 @@
 #include "dynamic_data.h"
 
 
-Game::Game(): m_keyboard(), m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data)
+Game::Game(): m_keyboard(), m_camera(&m_babar), m_talks(&m_camera), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
@@ -83,7 +82,7 @@ void Game::refresh_screen()
 	m_camera.display_sprite(&m_babar);
 
 	/* mise à jour */
-	SDL_Flip(screen);
+	m_camera.flip_camera();
 }
 
 

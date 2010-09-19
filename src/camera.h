@@ -24,8 +24,8 @@ class Camera {
 private:
 	SDL_Rect m_frame;	/* cadre de la camera */
 	Sprite *m_target;	/* sprite sur lequel pointe la camera */
+	SDL_Surface *m_screen;
 public:
-	Camera();								/* constructeur */
 	Camera(Sprite *target);					/* constructeur */
 	~Camera();								/* destructeur */
 	void update_pos(Static_data *static_data);						/* mise à jour de la camera */
@@ -35,6 +35,9 @@ public:
 	void display_sprite(Projectile * proj); /* affichage d'un projectile */
 	void display_static(Static *sttc);
 	SDL_Rect frame();	/* accesseur (m_frame) */
+	void display_picture(SDL_Surface *pic, SDL_Rect *pos); /* ATTENTION: pos designe la position par rapport à la fenetre: m_frame n'est pas pris en compte dans cette fonction */
+
+	void flip_camera();
 };
 
 

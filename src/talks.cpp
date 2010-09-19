@@ -11,8 +11,9 @@
 
 
 
-Talks::Talks()
+Talks::Talks(Camera *camera)
 {
+	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
 	TTF_Init();
 	std::string background_name = "talks_background.bmp";
@@ -43,7 +44,7 @@ Talks::~Talks()
 
 void Talks::display_background()
 {
-	SDL_BlitSurface(m_text_background, NULL, screen, &m_pos_background);
+	m_camera->display_picture(m_text_background, &m_pos_background);
 }
 
 
@@ -89,8 +90,8 @@ void Talks::instant_display(std::string str, int line)
 	if (m_text_surface[line] != NULL)
 		SDL_FreeSurface(m_text_surface[line]);
 	m_text_surface[line] = TTF_RenderText_Blended(m_font, str.c_str(), m_font_color);
-	SDL_BlitSurface(m_text_surface[line], NULL, screen, &(m_pos_text[line]));
-	SDL_Flip(screen);
+	m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
+	m_camera->flip_camera();
 }
 
 void Talks::progressive_display(std::string str, int line)
@@ -101,8 +102,8 @@ void Talks::progressive_display(std::string str, int line)
 		SDL_Delay(DISPLAY_SPEED);          
 		curr_text += str[i];
 		m_text_surface[line] = TTF_RenderText_Blended(m_font, curr_text.c_str(), m_font_color);
-		SDL_BlitSurface(m_text_surface[line], NULL, screen, &(m_pos_text[line]));
-		SDL_Flip(screen);
+		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
+		m_camera->flip_camera();
 		while(SDL_PollEvent(&event)) {
 			if(event.type == SDL_KEYDOWN)
 				if(event.key.keysym.sym == SDLK_SPACE) {
@@ -120,10 +121,10 @@ void Talks::move_up()
 	SDL_FreeSurface(m_text_surface[0]);
 	for (int i = 0; i < LINES_NUMBER - 1; i++){
 		m_text_surface[i] = m_text_surface[i+1];
-		SDL_BlitSurface(m_text_surface[i], NULL, screen, &(m_pos_text[i]));
+		m_camera->display_picture(m_text_surface[i], &(m_pos_text[i]));
 	}
 	m_text_surface[LINES_NUMBER - 1] = NULL;
-	SDL_Flip(screen);
+	m_camera->flip_camera();
 }
 
 void Talks::wait_space()

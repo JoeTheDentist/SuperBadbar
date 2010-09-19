@@ -21,6 +21,8 @@ class Game {
 private:
 	Keyboard m_keyboard;
 	Camera m_camera;				/* camera ciblant babar */
+	Talks m_talks;
+
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */

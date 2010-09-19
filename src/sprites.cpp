@@ -234,7 +234,7 @@ void Babar::update_state(Static_data *static_data)
 	if (can_go_down(static_data))
 		go_down(static_data);
 
-    if ((m_pos.y + m_pos.h) > static_data->static_data_height()) {                           /* On remet le bon état à la fin du saut */
+    if ((uint32_t)(m_pos.y + m_pos.h) > static_data->static_data_height()) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
     }
     if ((m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP)) {

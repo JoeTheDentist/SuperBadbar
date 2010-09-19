@@ -24,10 +24,8 @@ class Projectile;   /* Pour éviter les bugs */
 class Monster;
 class Dynamic_data;
 
-extern SDL_Surface *screen;			/* ecran de jeu */
 extern uint32_t window_height;		/* hauteur de la fenêtre de jeu */
 extern uint32_t window_weight;		/* largeur de la fenêtre de jeu */
-extern Talks talks;					/* Boite de dialogues */
 extern bool full_screen;			/* activation du mode full_screen */
 
 #endif

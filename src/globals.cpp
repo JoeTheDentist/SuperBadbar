@@ -15,8 +15,6 @@
 #include "dynamic_data.h"
 
 
-SDL_Surface *screen;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;
-Talks talks;
 bool full_screen = false;
