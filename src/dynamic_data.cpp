@@ -166,7 +166,7 @@ void Dynamic_data::update(Camera *camera)
 /* Optimisable ! Pas besoin de tout recharger */
 {
     SDL_Rect last_pos = camera->frame();
-    m_monsters.delete_elements(to_delete, this);
+    m_monsters.delete_elements(to_delete, this, camera);
     for(int i=last_pos.y/BOX_SIZE;i<(last_pos.h+last_pos.y)/BOX_SIZE;i++) {
         for(int j=last_pos.x/BOX_SIZE;j<(last_pos.w+last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j] != NULL) {

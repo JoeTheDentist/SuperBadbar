@@ -19,7 +19,7 @@ SDL_Surface *screen;
 List<Static*> statics;
 uint32_t window_height = 600;
 uint32_t window_weight = 800;
-Game game;
+//~ Game game;
 Talks talks;
 bool full_screen = false;
 //~ Dynamic_data dynamic_data;
