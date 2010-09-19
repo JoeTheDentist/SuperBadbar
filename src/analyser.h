@@ -36,7 +36,7 @@ public:
 										Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier */
 	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
 
-	void fill_statics();				/* Lit dans m_file la section #Statics# et l'ajoute à la liste globale curr_statics */
+	void fill_statics(Static_data *static_data);				/* Lit dans m_file la section #Statics# et l'ajoute à la liste globale curr_statics */
 	void fill_collision_matrix(uint32_t **matrix); /* Lit dans m_file la section #Statics# et remplit la matrix de collisions matrix*/
     int nb_monsters();							/* Renvoie le nombre de monstres différents dans le fichier m_file*/
     void fill_monsters_pics(int nb_monsters, Static_data *static_data); 	/* Charge les images des monstres dans curr_lvl à partir de la section #Monsters#*/

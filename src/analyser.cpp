@@ -81,7 +81,7 @@ void Analyser::jump_separators()
 	fseek(m_file, -1, SEEK_CUR);
 }
 
-void Analyser::fill_statics()
+void Analyser::fill_statics(Static_data *static_data)
 {
     char link[40];
 	std::string static_name;
@@ -104,7 +104,8 @@ void Analyser::fill_statics()
         fscanf(m_file,"%s",link);
 		static_name = link;
         jump_separators();
-        statics.add(curr_static);
+//~         statics.add(curr_static);
+		static_data->add_static(curr_static);
     }
 
 }

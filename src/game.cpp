@@ -65,11 +65,7 @@ void Game::refresh_screen()
 	m_camera.display_background(m_static_data.background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
-	while(!statics.end()) {
-	    m_camera.display_static(statics.element());
-	    statics.next();
-	}
-	statics.init();
+	m_static_data.display_statics(&m_camera);
 
     /* affichage des monstres */
 	m_dynamic_data.display_monsters(&m_camera);
