@@ -24,7 +24,6 @@ private:
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
-	SDL_Surface *m_proj[4];     	/* images des projectiles dans tous les sens */
 	Dynamic_data m_dynamic_data;
 	Babar m_babar;					/* sprite du personnage controlé par le joueur */
 
@@ -38,8 +37,8 @@ public:
 	void refresh_screen();		/* raffraichissement de l'écran */
 	void game_loop();			/* boucle de jeu */
 	void check_monsters();      /* Check collision monstres-projectiles */
-	SDL_Surface * proj(uint8_t i);   /* Accesseur : projectiles */
 	SDL_Rect camera_frame();     /* Accesseur : cadre de la caméra */
+	
 };
 
 

@@ -32,9 +32,10 @@ class Weapon
         weapon_type m_weapon_type;              /* type de l'arme */
         uint32_t m_reload_time;                 /* temps entre deux tirs */
 		List<Projectile*> *m_projectiles_list;				/* liste de projectiles dans laquelle "tire" l'arme */
+		SDL_Surface **m_proj_pics;
     public:
-        Weapon(List<Projectile*> *projectiles_list);
-        Weapon(weapon_type type, List<Projectile*> *projectiles_list);
+        Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics);
+        Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics);
         ~Weapon();
         void fire(SDL_Rect pos, horizontal h, vertical v);    /* crée les projectiles de l'arme */
         uint32_t reload_time();                 /* accesseur */

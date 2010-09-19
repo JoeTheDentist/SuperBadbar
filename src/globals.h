@@ -28,7 +28,6 @@ extern SDL_Surface *screen;			/* ecran de jeu */
 extern List<Static*> statics; 		/* liste des statics à afficher */
 extern uint32_t window_height;		/* hauteur de la fenêtre de jeu */
 extern uint32_t window_weight;		/* largeur de la fenêtre de jeu */
-extern uint32_t bottom;             /* Sol, babar ne peut pas aller plus bas, temporaraire, faire avec les static ensuite */
 extern Game game;                   /* Jeu */
 extern Talks talks;					/* Boite de dialogues */
 extern bool full_screen;			/* activation du mode full_screen */

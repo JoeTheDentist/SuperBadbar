@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 	#endif
 	
 	PRINT_TRACE(1,"Lancement du jeu")
-	
+//~ 	Game game;
+
 	if (argc > 1) 
 		full_screen = true;
 
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
 
 	open_window(window_weight, window_height);
 	fill_screen(NULL);
+	Game game;
 	game.game_loop();
 	close_window();
 	PRINT_TRACE(1, "Fermeture du jeu")

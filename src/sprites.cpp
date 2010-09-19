@@ -113,7 +113,7 @@ uint32_t Sprite::phase()
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend)
+Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics())
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
@@ -234,7 +234,7 @@ void Babar::update_state(Static_data *static_data)
 	if (can_go_down(static_data))
 		go_down(static_data);
 
-    if ((m_pos.y + m_pos.h) > (int32_t)bottom) {                           /* On remet le bon état à la fin du saut */
+    if ((m_pos.y + m_pos.h) > static_data->static_data_height()) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
     }
     if ((m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP)) {
@@ -438,7 +438,7 @@ Projectile::Projectile()
 	PRINT_CONSTR(3, "Construction d'un projectile")
 }
 
-Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage)
+Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
@@ -448,16 +448,16 @@ Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, 
 
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
     if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
-        m_pic = game.proj(2);
+        m_pic = pics[2];
     }
     if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
-        m_pic = game.proj(0);
+        m_pic = pics[0];
     }
     if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
-        m_pic = game.proj(3);
+        m_pic = pics[3];
     }
     if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
-        m_pic = game.proj(1);
+        m_pic = pics[1];
     }
 
     m_pos.h = m_pic->h;

@@ -10,18 +10,21 @@
 
 
 
-Weapon::Weapon(List<Projectile*> *projectiles_list)
+Weapon::Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
 {
 	m_projectiles_list = projectiles_list;
+	m_proj_pics = proj_pics;
 	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = GUN;
     m_reload_time = 2;
 }
 
-Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list)
+Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
 {
 	
 	PRINT_CONSTR(2, "Construction d'une Weapon")
+	m_proj_pics = proj_pics;
+
     m_weapon_type = type;
 	m_projectiles_list = projectiles_list;
     switch (m_weapon_type) {
@@ -47,11 +50,11 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
     Projectile * proj;
     switch (m_weapon_type) {
         case GUN :
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
+            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
             break;
         case MACHINEGUN:
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1);
+            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
             break;
         case SHOTGUN:
@@ -103,15 +106,15 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
 
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
 				m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
                 m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos3, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1);
+                proj[i] = new Projectile(pos3, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
                 m_projectiles_list->add(proj[i]);
             }
 

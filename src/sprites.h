@@ -52,7 +52,7 @@ protected:
     Weapon m_weapon;		/* arme actuelle de babar  */
     uint32_t m_fire_phase;	/* phase du tir */
 public:
-	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard);
+	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data);
 				/* constructeur */
 	~Babar();				/* destructeur */
 	SDL_Surface * current_picture();  /* Retourne la bonne image de l'animation */
@@ -107,7 +107,7 @@ protected:
     uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 public:
     Projectile();       /* Constructeurs */
-    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage);
+    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics);
     ~Projectile();      /* Destructeur */
     SDL_Surface * current_picture();    /* Returne le pointeur sur image */
     uint32_t damage();  /* Accesseur */

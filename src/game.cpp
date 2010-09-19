@@ -19,29 +19,19 @@
 #include "dynamic_data.h"
 
 
-Game::Game(): m_keyboard(), m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard)
+Game::Game(): m_keyboard(), m_camera(&m_babar), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
                                                                    
-	/*** Images des projectiles ***/
-    m_proj[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
-    m_proj[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
-    m_proj[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
-    m_proj[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
-    for(int i = 0;i<4;i++) {
-        SDL_SetColorKey(m_proj[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj[i]->format, 0, 0, 255));
-    }
 	update_camera();
 }
 
 Game::~Game()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Game")
-	for(int i = 0;i<4;i++) {
-        SDL_FreeSurface(m_proj[i]);
-    }
+
 }
 
 void Game::update_pos()
@@ -138,10 +128,7 @@ void Game::game_loop()
 
 }
 
-SDL_Surface * Game::proj(uint8_t i)
-{
-    return m_proj[i];
-}
+
 
 SDL_Rect Game::camera_frame()
 {
