@@ -52,6 +52,7 @@ template <class T> class List {
         void do_list(void (*fct)(T));           /* Applique une void fonction à chaque élément de la liste */
         void delete_elements(bool (*fct)(T));   /* Supprime les éléments qui vérifient fct */
         template <class Q> void delete_elements(bool (*fct)(T,Q), Q arg);   /* Surcharge, idem mais la fonction peut avoir un argument */
+        template <class Q, class R> void delete_elements(bool (*fct)(T,Q,R), Q arg, R arg2);
 };
 
 
@@ -174,6 +175,33 @@ template <class T> template <class Q> void List<T>::delete_elements(bool (*fct)(
     next(); /* Pour que le curseur ne soit pas au même endroit que last */
     while(!end()) {
         if(fct(*(m_cursor->head), arg)) {
+            next();
+            temp = last->back->back;
+            delete last->back->head;
+            delete last->back;
+            last->back = temp;
+        }
+        else {
+            next();
+            last = last->back;
+        }
+    }
+    cell<T> * p = m_list->back; /* Die fucking sentinelle !!! */
+    delete m_list->head;
+    delete m_list;
+    m_list = p;
+    init();
+}
+
+template <class T> template <class Q, class R> void List<T>::delete_elements(bool (*fct)(T,Q,R), Q arg, R arg2)
+{
+    T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
+    cell<T> * temp;
+    add(a);
+    cell<T> * last = m_list; /* Pointeur sur le précédent */
+    next(); /* Pour que le curseur ne soit pas au même endroit que last */
+    while(!end()) {
+        if(fct(*(m_cursor->head), arg, arg2)) {
             next();
             temp = last->back->back;
             delete last->back->head;
