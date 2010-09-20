@@ -26,6 +26,11 @@ class Analyser {
 private:
 	bool m_opened;
 	FILE * m_file;
+	
+
+
+	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
+
 public:
 	Analyser();							/* constructeur */
 	~Analyser();						/* destructeur */
@@ -33,7 +38,6 @@ public:
 	uint32_t close();					/* ferme le fichier ouvert */
 	void find_string(std::string str);	/* positionne le curseur de m_file après la première occurence de str à partir du début du fichier.
 										Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier */
-	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
 
 	void fill_statics(Static_data *static_data);				/* Lit dans m_file la section #Statics# et l'ajoute à la liste globale curr_statics */
 	void fill_collision_matrix(uint32_t **matrix); /* Lit dans m_file la section #Statics# et remplit la matrix de collisions matrix*/

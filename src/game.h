@@ -32,16 +32,18 @@ private:
 	Babar m_babar;					/* sprite du personnage controlé par le joueur */
 
 
-public:
-	Game();							/* constructeur */
-	~Game();							/* destructeur */
 	void update_camera();       /* MàJ cam */
 	void update_pos();			/* mise à jour des positions des sprites */
 	void update_speed();		/* mise à jour des vitesses des sprites */
 	void refresh_screen();		/* raffraichissement de l'écran */
+
+
+
+public:
+	Game();						/* constructeur */
+	~Game();					/* destructeur */
 	void game_loop();			/* boucle de jeu */
 	void check_monsters();      /* Check collision monstres-projectiles */
-	SDL_Rect camera_frame();     /* Accesseur : cadre de la caméra */
 	
 };
 

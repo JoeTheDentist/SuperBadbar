@@ -1,3 +1,10 @@
+/**
+ * Classe Static: donnée d'une image et de sa position
+
+
+
+**/
+
 #ifndef STATICS_H_INCLUDED
 #define STATICS_H_INCLUDED
 

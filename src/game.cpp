@@ -124,10 +124,6 @@ void Game::game_loop()
 
 
 
-SDL_Rect Game::camera_frame()
-{
-    return m_camera.frame();
-}
 
 void Game::check_monsters()
 {

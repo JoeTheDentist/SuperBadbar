@@ -1,9 +1,5 @@
-#ifndef _DEBUG_
-#define _DEBUG_
-
-
 /**
- * Trois macros de debug:
+ * Trois macros de debug et une de performance:
  * PRINT_CONSTR pour tracer les constructeurs et destructeurs, 
  * PRINT_TRACE pour tracer le reste
  * PRINT_DEBUG  pour du debugage localisé et pour les messages d'erreurs classiques
@@ -12,9 +8,8 @@
  * de messages. 
  * Ces messages ne doivent pas apparaitre dans le projet final et servent seulement à suivre
  * le comportement du programme.
-**/
-
-/**
+ *
+ *
  * PRINT_PERF():  macro utilisée par Game pour afficher 
  * le pourcentage de cpu utilisé par le programme sur un tour
  * de jeu
@@ -22,6 +17,8 @@
  * entre lesquels se fait l'affichage
 **/
 
+#ifndef _DEBUG_
+#define _DEBUG_
 
 #define DEBUG 2
 #define TRACE 2
