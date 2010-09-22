@@ -10,6 +10,7 @@
 Sound_manager::Sound_manager()
 {
 	FSOUND_Init(44100, 32, 0);
+	m_fire = new FSOUND_SAMPLE*[MACHINEGUN + 1];
 	m_music = FSOUND_Stream_Open("../sound/music/level1.mp3", 0, 0, 0);
 	if (m_music == NULL) {
 		PRINT_DEBUG(1, "Impossible de charger la musique")
@@ -34,7 +35,8 @@ void Sound_manager::play_music()
 }
 
 
-void Sound_manager::play_fire(enum weapon_type weapon)
+void Sound_manager::play_fire(int weapon)
 {
 	 FSOUND_PlaySound(FSOUND_FREE, m_fire[weapon]);
+	
 }

@@ -3,9 +3,9 @@
 #include <stdint.h>
 #include <time.h>
 
+#include "weapons.h"
 #include "debug.h"
 #include "sprites.h"
-#include "weapons.h"
 
 
 

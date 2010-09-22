@@ -1,13 +1,17 @@
 #ifndef WEAPONS_H_INCLUDED
 #define WEAPONS_H_INCLUDED
 
-#include "sprites.h"
+#include "SDL/SDL.h"
 #include "lists.h"
 #include "sound_manager.h"
 
-
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 30       /* Vitesse des projectiles */
+
+
+class Sprites;
+class Babar;
+class Sound_manager;
 
 /* Pas à leur place ! */
 enum horizontal {

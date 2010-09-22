@@ -11,8 +11,8 @@
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
 #include "SDL/SDL.h"
-#include "sound_manager.h"
 #include "weapons.h"
+
 #include "static_data.h"
 #include "keyboard.h"
 
