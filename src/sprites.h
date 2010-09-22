@@ -12,7 +12,6 @@
 
 #include "SDL/SDL.h"
 #include "sound_manager.h"
-#include "sound_manager.h"
 #include "weapons.h"
 #include "static_data.h"
 #include "keyboard.h"
@@ -22,6 +21,8 @@
 
 class Static_data;
 class Sound_manager;
+
+
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
     STATIC, WALK, JUMP

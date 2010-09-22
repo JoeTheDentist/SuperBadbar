@@ -55,7 +55,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
         case MACHINEGUN:
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
-			m_sound_manager->play_fire();
+			m_sound_manager->play_fire(m_weapon_type);
             break;
         case SHOTGUN:
             int x[5];

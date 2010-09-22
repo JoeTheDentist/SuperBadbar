@@ -20,7 +20,7 @@ enum vertical {
 /*---*/
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN
+    GUN, MACHINEGUN, SHOTGUN // ATTENTION: SHOTGUN doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas 
 };
 
 class Projectile;

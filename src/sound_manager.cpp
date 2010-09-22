@@ -14,7 +14,7 @@ Sound_manager::Sound_manager()
 	if (m_music == NULL) {
 		PRINT_DEBUG(1, "Impossible de charger la musique")
 	}
-	m_fire =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/raygun-01.wav", 0, 0, 0);
+	m_fire[MACHINEGUN] =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/raygun-01.wav", 0, 0, 0);
 
 }
 
@@ -34,7 +34,7 @@ void Sound_manager::play_music()
 }
 
 
-void Sound_manager::play_fire()
+void Sound_manager::play_fire(enum weapon_type weapon)
 {
-	 FSOUND_PlaySound(FSOUND_FREE, m_fire);
+	 FSOUND_PlaySound(FSOUND_FREE, m_fire[weapon]);
 }
