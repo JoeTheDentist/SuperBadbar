@@ -112,7 +112,7 @@ uint32_t Sprite::phase()
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
+Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(SHOTGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
