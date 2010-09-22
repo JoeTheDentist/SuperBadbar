@@ -17,7 +17,7 @@
 #include "dynamic_data.h"
 
 
-Game::Game(): m_keyboard(), m_camera(&m_babar), m_talks(&m_camera), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data)
+Game::Game(): m_keyboard(), m_camera(&m_babar), m_talks(&m_camera), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data, &m_sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_time = SDL_GetTicks();
@@ -92,6 +92,7 @@ void Game::game_loop()
 	float used_time = 0;
 	bool end = false;
 	int begining = SDL_GetTicks();
+	m_sound_manager.play_music();
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {

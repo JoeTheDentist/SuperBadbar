@@ -18,12 +18,12 @@ Weapon::Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
     m_reload_time = 2;
 }
 
-Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
+Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics, Sound_manager *sound_manager)
 {
 	
 	PRINT_CONSTR(2, "Construction d'une Weapon")
 	m_proj_pics = proj_pics;
-
+	m_sound_manager = sound_manager;
     m_weapon_type = type;
 	m_projectiles_list = projectiles_list;
     switch (m_weapon_type) {
@@ -55,6 +55,7 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
         case MACHINEGUN:
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
+			m_sound_manager->play_fire();
             break;
         case SHOTGUN:
             int x[5];

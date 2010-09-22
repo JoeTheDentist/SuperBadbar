@@ -11,6 +11,8 @@
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
 #include "SDL/SDL.h"
+#include "sound_manager.h"
+#include "sound_manager.h"
 #include "weapons.h"
 #include "static_data.h"
 #include "keyboard.h"
@@ -19,6 +21,7 @@
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
 class Static_data;
+class Sound_manager;
 
 enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
     STATIC, WALK, JUMP
@@ -52,9 +55,10 @@ protected:
     SDL_Surface *m_pics[3][3][3][2]; /* Images des animations indicés par: état, gauche droite, bas haut, numéro image */
 	bool m_double_jump;		/* vaut vrai si Babar est en double saut */
     Weapon m_weapon;		/* arme actuelle de babar  */
-    uint32_t m_fire_phase;	/* phase du tir */
+    uint32_t m_fire_phase;	/* phase du tir */ 
+	Sound_manager *m_sound_manager;
 public:
-	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data);/* constructeur */
+	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager);/* constructeur */
 	~Babar();							/* destructeur */
 	SDL_Surface * current_picture();  	/* Retourne la bonne image de l'animation */
 	void update_speed();				/* mise à jour de la vitesse en fonction des touches enfoncées */

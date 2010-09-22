@@ -13,17 +13,20 @@
 #include "static_data.h"
 #include "keyboard.h"
 #include "talks.h"
+#include "sound_manager.h"
 #define TIME_LOOP 50
 
 class Dynamic_data;
 class Talks;
 class Static_data;
+class Sound_manager;
 
 class Game {
 private:
 	Keyboard m_keyboard;
 	Camera m_camera;				/* camera ciblant babar */
 	Talks m_talks;
+	Sound_manager m_sound_manager;
 
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
