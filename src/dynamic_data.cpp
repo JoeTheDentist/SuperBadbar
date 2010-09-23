@@ -17,18 +17,19 @@ Dynamic_data::Dynamic_data()
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data) 
+Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager) 
 {
-	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
+	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")  
+	m_sound_manager = sound_manager;
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
 	std::string str_lvl = "1";      
 	Analyser analyser, analyser2;
 	analyser.open("../data/levels/level"+str_lvl+".lvl");
     /* Allocation de la matrice de monstres */
-    m_monsters_matrix = new Monster**[m_matrix_weight];
+    m_monsters_matrix = new Monster**[m_matrix_weight + 1];
     for(uint32_t i = 0; i<(m_matrix_weight);i++) {
-        m_monsters_matrix[i] = new Monster*[m_matrix_height];
+        m_monsters_matrix[i] = new Monster*[m_matrix_height + 1];
     }
     for(uint32_t i = 0;i<(m_matrix_weight);i++) {
         for(uint32_t j = 0;j<(m_matrix_height);j++) {
@@ -140,7 +141,7 @@ void Dynamic_data::fill_monster(uint32_t i, uint32_t j, Monster * monster)
 
 void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
 {
-    Monster * curr_monster = new Monster;
+    Monster * curr_monster = new Monster(m_sound_manager);
     curr_monster->set_type(monster_type);
     curr_monster->set_pos_x(j*BOX_SIZE);
     curr_monster->set_pos_y(i*BOX_SIZE);

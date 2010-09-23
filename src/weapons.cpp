@@ -23,6 +23,7 @@ Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surfac
 	
 	PRINT_CONSTR(2, "Construction d'une Weapon")
 	m_proj_pics = proj_pics;
+
 	m_sound_manager = sound_manager;
     m_weapon_type = type;
 	m_projectiles_list = projectiles_list;
@@ -46,6 +47,7 @@ Weapon::~Weapon()
 
 void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 {
+
     Projectile * proj;
 	m_sound_manager->play_fire(m_weapon_type);
     switch (m_weapon_type) {

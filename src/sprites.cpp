@@ -112,7 +112,7 @@ uint32_t Sprite::phase()
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(SHOTGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
+Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_last_dir = LEFT;
@@ -267,7 +267,7 @@ bool Babar::can_fire()
 {
 	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
 }
-
+                                                
 void Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
@@ -289,6 +289,7 @@ void Babar::double_jump()
 	m_double_jump = true;
 	PRINT_TRACE(2, "Double-saut de Babar")
 	m_speed.y = -5*BABAR_SPEED;
+	m_sound_manager->play_babar_jump();
 
 }
 
@@ -303,6 +304,7 @@ void Babar::jump()
 	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
 	m_keyboard->disable_key(k_jump);
+	m_sound_manager->play_babar_jump();
 }
 
 bool Babar::can_go_down(Static_data *static_data)
@@ -332,9 +334,9 @@ void Babar::go_down(Static_data *static_data)
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster()
+Monster::Monster(Sound_manager *sound_manager)
 {
-
+	m_sound_manager = sound_manager;
 }
 
 Monster::Monster(uint32_t type, SDL_Rect pos)
@@ -415,8 +417,12 @@ void Monster::set_pic(SDL_Surface * pic, uint32_t i, uint32_t j)
 
 void Monster::damage(uint32_t damage)
 {
+	PRINT_DEBUG(1, "YOOOOOOOOOOOO")
+	m_sound_manager->play_monster_damage();
     m_life -= damage;
 }
+
+
 
 bool Monster::dead()
 {

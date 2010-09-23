@@ -15,6 +15,7 @@
 #include "lists.h"
 #include "camera.h"
 #include "static_data.h"
+#include "sound_manager.h"
 
 class Static_data;
 class Game;
@@ -30,10 +31,11 @@ private:
 	Monster *** m_monsters_matrix;              /* Matrice de pointeurs des monstres */
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
+	Sound_manager *m_sound_manager;
 
 public:
 	Dynamic_data();
-	Dynamic_data(Camera *camera, Static_data *static_data);			/* Constructeur */
+	Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager);			/* Constructeur */
 	~Dynamic_data();												/* Destructeur */
 	bool projectiles_friend_end();									/* Retourne vrai quand on arrive à la fin de la liste des projectiles amis */
 	void projectiles_friend_update_pos(Static_data *static_data);	/*MAJ la position des projectiles amis */

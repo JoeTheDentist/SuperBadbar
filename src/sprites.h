@@ -38,6 +38,7 @@ protected:
 	state m_state;              /* etat du sprite */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	bool m_climb;
+	Sound_manager *m_sound_manager;
 public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
@@ -57,7 +58,6 @@ protected:
 	bool m_double_jump;		/* vaut vrai si Babar est en double saut */
     Weapon m_weapon;		/* arme actuelle de babar  */
     uint32_t m_fire_phase;	/* phase du tir */ 
-	Sound_manager *m_sound_manager;
 public:
 	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager);/* constructeur */
 	~Babar();							/* destructeur */
@@ -86,7 +86,7 @@ protected:
 	bool m_can_fire;                /* si le monstre tire ou non */
 	SDL_Surface * m_pics[2][4];  /* Images du monstre : state, gauche droite, num image */
 public:
-	Monster();						        /* constructeur */
+	Monster(Sound_manager *sound_manager);						        /* constructeur */
 	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
 	~Monster();						        /* destructeur */
 	void update_speed();					/* met à jour la vitesse du monstre */
