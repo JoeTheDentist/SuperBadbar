@@ -15,6 +15,8 @@
 #include "../util/analyser.h"
 #include "../video/camera.h"
 #include "../util/collisions.h"
+#include "../util/globals.h"
+#include "../control/keyboard.h"
 
 
 Dynamic_data::Dynamic_data()
@@ -23,7 +25,7 @@ Dynamic_data::Dynamic_data()
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager) 
+Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard) 
 {
 	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")  
 	m_sound_manager = sound_manager;
@@ -45,26 +47,40 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
     analyser2.open("../data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2, static_data, this);
     analyser2.close();
+	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
 
     /*** Stockage des monstres dans la listes ***/
-    SDL_Rect last_pos = camera->frame();
-    for(uint32_t i=last_pos.y/BOX_SIZE;i<(uint32_t)(last_pos.h+last_pos.y)/BOX_SIZE;i++) {
-        for(uint32_t j=last_pos.x/BOX_SIZE;j<(uint32_t)(last_pos.w+last_pos.x)/BOX_SIZE;j++) {
+	SDL_Rect camera_frame, position_target = m_babar->position();
+	camera_frame.h = WINDOW_HEIGHT;
+	camera_frame.w = WINDOW_WEIGHT;
+	camera_frame.x = position_target.x + (position_target.w / 2) - (camera_frame.w / 2);
+	camera_frame.y = position_target.y + (position_target.h / 2) - (camera_frame.h / 2);
+	if (camera_frame.x < 0)
+		camera_frame.x = 0;
+	if (camera_frame.y < 0)
+		camera_frame.y = 0;
+	if ((uint32_t) (camera_frame.x + camera_frame.w) > static_data->static_data_weight())
+		camera_frame.x = static_data->static_data_weight() - camera_frame.w;
+	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
+		camera_frame.y = static_data->static_data_height() - camera_frame.h;
+
+	for(uint32_t i= camera_frame.x/BOX_SIZE;i<(uint32_t)(camera_frame.w+camera_frame.x)/BOX_SIZE;i++) {
+        for(uint32_t j=camera_frame.y/BOX_SIZE;j<(uint32_t)(camera_frame.h+camera_frame.y)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j] != NULL) {
                 m_monsters.add(m_monsters_matrix[i][j]);
                 m_monsters_matrix[i][j] = NULL;
             }
         }
     }/**/
-
+	
 	
 	analyser.close();
 }
 
 Dynamic_data::~Dynamic_data()
 {
-	for(uint32_t i = 0;i<(m_matrix_height);i++) {
-        for(uint32_t j = 0;j<(m_matrix_weight);j++) {
+	for(uint32_t i = 0;i<(m_matrix_weight);i++) {
+        for(uint32_t j = 0;j<(m_matrix_height);j++) {
             if (m_monsters_matrix[i][j] != NULL) {
                 delete m_monsters_matrix[i][j];
             }
@@ -81,6 +97,7 @@ bool Dynamic_data::projectiles_friend_end()
 	return 	m_projectiles_friend.end();
 }
 
+
 void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
 {
 	while(!m_projectiles_friend.end()) {
@@ -90,6 +107,12 @@ void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
 	m_projectiles_friend.init();
 }
 
+void Dynamic_data::babar_update_pos(Static_data *static_data)
+{
+	m_babar->update_pos(static_data);
+}
+
+
 void Dynamic_data::monsters_update_pos(Static_data*static_data)
 {
 	while(!m_monsters.end()) {
@@ -97,6 +120,16 @@ void Dynamic_data::monsters_update_pos(Static_data*static_data)
 		m_monsters.next();
 	}
 		m_monsters.init();
+}
+   
+void Dynamic_data::babar_update_speed()
+{
+	m_babar->update_speed();
+}
+
+void Dynamic_data::babar_update_state(Static_data *static_data)
+{
+	m_babar->update_state(static_data);
 }
 
 void Dynamic_data::monsters_update_speed()
@@ -192,6 +225,10 @@ List<Projectile*> *Dynamic_data::projectiles_friend()
 }
 
 
+Babar *Dynamic_data::babar()
+{
+	return m_babar;
+}
 
 
 /*** Fonctions ***/

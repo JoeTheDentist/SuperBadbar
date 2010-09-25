@@ -14,8 +14,6 @@
 **********************************/
 Sprite::Sprite()
 {
-	m_pos.x = 10;
-	m_pos.y = 1700;
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_cache = true;

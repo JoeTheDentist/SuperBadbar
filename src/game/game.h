@@ -31,16 +31,15 @@ class Camera;
 class Game {
 private:
 	Keyboard m_keyboard;
-	Camera m_camera;				/* camera ciblant babar */
-	Talks m_talks;
+
 	Sound_manager m_sound_manager;
 
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 	Dynamic_data m_dynamic_data;
-	Babar m_babar;					/* sprite du personnage controlé par le joueur */
-
+	Camera m_camera;				/* camera ciblant babar */
+	Talks m_talks;
 
 	void update_camera();       /* MàJ cam */
 	void update_pos();			/* mise à jour des positions des sprites */
