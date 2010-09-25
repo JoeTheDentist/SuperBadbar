@@ -81,7 +81,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 }
 
 Babar::~Babar()
-{
+{                                  
 	PRINT_CONSTR(1, "Destruction de Babar")
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
@@ -95,8 +95,8 @@ Babar::~Babar()
 }
 
 SDL_Surface *Babar::current_picture()
-{
-	if ((m_invincible <= 0 || m_invincible%2 == 0) && m_lifes > 0)
+{                               
+	if ((m_invincible <= 0 || m_invincible%2 == 0))
 		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%2];
 	else
 		return NULL;

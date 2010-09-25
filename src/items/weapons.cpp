@@ -23,24 +23,29 @@ Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surfac
 {
 	
 	PRINT_CONSTR(2, "Construction d'une Weapon")
+	m_last_dir_v = 3;
+	m_last_dir_h = 3;
+	m_phase_diago = 0;
 	m_proj_pics = proj_pics;
-
 	m_sound_manager = sound_manager;
     m_weapon_type = type;
 	m_projectiles_list = projectiles_list;
     switch (m_weapon_type) {
         case GUN :
-            m_reload_time = 2;
+            m_reload_time = RELOAD_GUN;
+			m_munitions = MUN_GUN;
             break;
         case MACHINEGUN:
-            m_reload_time = 0;
+            m_reload_time = RELOAD_MACHINEGUN;
+			m_munitions = MUN_MACHINEGUN;
             break;
         case SHOTGUN:
-            m_reload_time = 10;
+            m_reload_time = RELOAD_SHOTGUN;
+			m_munitions = MUN_SHOTGUN;
             break;
     }
 }
-
+                            
 Weapon::~Weapon()
 {
 	PRINT_CONSTR(2, "Destruction d'une Weapon")
@@ -51,13 +56,61 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
     Projectile * proj;
 	m_sound_manager->play_fire(m_weapon_type);
+	int dir_h =0, dir_v = 0;
     switch (m_weapon_type) {
         case GUN :
             proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
-            break;
+			m_munitions++;
+			break;
         case MACHINEGUN:
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
+			if (m_last_dir_v != v && m_last_dir_h == h && m_last_dir_h != 1)  {
+				m_phase_diago+= 1 + m_reload_time;
+				if (m_phase_diago == 1) {
+					dir_h = (h-1)*PROJ_SPEED;
+					if (m_last_dir_v !=1)
+						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
+					else 
+						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
+				} else if (m_phase_diago > 1) {
+					dir_h = (h-1)*PROJ_SPEED;
+					if (m_last_dir_v !=1)
+						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
+					else 
+						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
+						
+					m_phase_diago = 0;
+					m_last_dir_v = 3;
+					m_last_dir_h = 3;
+				}
+			} else if (m_last_dir_v == v && m_last_dir_h != h && m_last_dir_v != 1) {
+				m_phase_diago+= 1 + m_reload_time;
+				if (m_phase_diago == 1) {
+					dir_v = (v-1)*PROJ_SPEED;
+					if (m_last_dir_h !=1)
+						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
+					else 
+						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
+				} else if (m_phase_diago > 1) {
+					dir_v = (v-1)*PROJ_SPEED;
+					if (m_last_dir_h !=1)
+						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
+					else 
+						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
+						
+					m_phase_diago = 0;
+					m_last_dir_v = 3;
+					m_last_dir_h = 3;
+				}			
+				
+			} else {
+				dir_h = (h-1)*PROJ_SPEED;
+				dir_v = (v-1)*PROJ_SPEED;
+				m_phase_diago = 0;
+				m_last_dir_v = v;
+				m_last_dir_h = h;
+			}
+			proj = new Projectile(pos, h, v, dir_h, dir_v,1, m_proj_pics);
             m_projectiles_list->add(proj);
             break;
         case SHOTGUN:
@@ -123,9 +176,32 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 
             break;
     }
+	m_munitions --;
+	if (m_munitions <= 0)
+		change_weapon(GUN);
+
 }
 
 uint32_t Weapon::reload_time()
 {
     return m_reload_time;
+}
+
+void Weapon::change_weapon(weapon_type type)
+{
+	m_weapon_type = type;
+    switch (type) {
+        case GUN :
+            m_reload_time = RELOAD_GUN;
+			m_munitions = MUN_GUN;
+            break;
+        case MACHINEGUN:
+            m_reload_time = RELOAD_MACHINEGUN;
+			m_munitions = MUN_MACHINEGUN;
+            break;
+        case SHOTGUN:
+            m_reload_time = RELOAD_SHOTGUN;
+			m_munitions = MUN_SHOTGUN;
+            break;
+    }
 }
