@@ -6,7 +6,7 @@
 #include "weapons.h"
 #include "../util/lists.h"
 #include "../util/debug.h"
-#include "../sprites/sprites.h"
+#include "../sprites/projectiles.h"
 
 
 

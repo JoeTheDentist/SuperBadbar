@@ -42,6 +42,7 @@ public:
 	void monsters_update_pos(Static_data *static_data);				/*MAJ la position des monstres */
 	void babar_update_speed();
 	void babar_update_state(Static_data *static_data);
+	void babar_monsters_collision();
 	void monsters_update_speed();									/*MAJ la vitesse des monstres */
 	void display_monsters(Camera *camera);							/* Affiche les monstres à l'écran */
 	void display_projectiles_friend(Camera *camera);				/* Affiche les projectiles amis */

@@ -132,6 +132,18 @@ void Dynamic_data::babar_update_state(Static_data *static_data)
 	m_babar->update_state(static_data);
 }
 
+void Dynamic_data::babar_monsters_collision()
+{             
+	SDL_Rect babar_pos = m_babar->position();
+	while(!m_monsters.end()) {
+		if (check_collision(m_monsters.element()->position(), babar_pos)) {
+			m_babar->damage(1);
+		}
+	    m_monsters.next();
+	}
+	m_monsters.init();	
+}
+
 void Dynamic_data::monsters_update_speed()
 {
 	while(!m_monsters.end()) {

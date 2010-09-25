@@ -40,7 +40,7 @@ public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
     virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
-	void update_pos(Static_data *static_data);		/* mise à jour de la position */
+	 void update_pos(Static_data *static_data);		/* mise à jour de la position */
 	SDL_Rect position();	/* accesseur */
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */
@@ -51,22 +51,6 @@ public:
 
 
 
-class Projectile: public Sprite {
-protected:
-    SDL_Surface * m_pic;    /* Image du projectile */
-    uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
-public:
-    Projectile();       /* Constructeurs */
-    Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics);
-    ~Projectile();      /* Destructeur */
-    SDL_Surface * current_picture();    /* Returne le pointeur sur image */
-    uint32_t damage();  /* Accesseur */
-    SDL_Rect speed();   /* Accesseur */
-};
-
-
-
-bool too_old(Projectile * p, Static_data *static_data);   /* Retourne si un projectile est trop "vieux" (pour la suppression) */
 
 
 #endif

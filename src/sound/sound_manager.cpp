@@ -21,6 +21,7 @@ Sound_manager::Sound_manager()
 	m_fire_shotgun = FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/shotgun.wav", 0, 0, 0);
 	m_fire[SHOTGUN] =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/shotgun.wav", 0, 0, 0);
 	m_babar_jump = FSOUND_Sample_Load(FSOUND_FREE, "../sound/babar/jump.mp3", 0, 0, 0);
+	m_babar_rugissement = FSOUND_Sample_Load(FSOUND_FREE, "../sound/babar/rugissement.wav", 0, 0, 0);
 	m_monster_damage = FSOUND_Sample_Load(FSOUND_FREE, "../sound/monsters/kickass.mp3", 0, 0, 0);
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
@@ -62,6 +63,12 @@ void Sound_manager::play_babar_jump()
 void Sound_manager::play_monster_damage()
 {
 	FSOUND_PlaySound(5, m_monster_damage);
+
+}
+
+void Sound_manager::play_babar_rugissement()
+{
+	FSOUND_PlaySound(6, m_babar_rugissement);
 
 }
 

@@ -31,6 +31,8 @@ Game::~Game()
 void Game::update_pos()
 {
 //~ 	m_babar.update_pos(&m_static_data);
+		m_dynamic_data.babar_monsters_collision();
+
 	m_dynamic_data.babar_update_pos(&m_static_data);
 	m_dynamic_data.projectiles_friend_update_pos(&m_static_data);
 	m_dynamic_data.monsters_update_pos(&m_static_data);
@@ -46,6 +48,7 @@ void Game::update_speed()
 
 //~ 	m_babar.update_state(&m_static_data);         /* A changer de place, en discuter */   
 	m_dynamic_data.babar_update_state(&m_static_data);
+	
 	
 }
 
