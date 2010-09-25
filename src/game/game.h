@@ -10,6 +10,7 @@
 #include <iostream>
 #include "../util/lists.h"
 #include "../sprites/sprites.h"
+#include "../sprites/babar.h"
 #include "../video/camera.h"
 #include "../video/talks.h"
 #include "../game/dynamic_data.h"

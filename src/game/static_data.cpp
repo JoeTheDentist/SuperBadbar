@@ -10,6 +10,7 @@
 #include "../game/game.h"
 #include "../util/globals.h"
 #include "../sprites/sprites.h"
+#include "../sprites/monsters.h"
 #include "../video/camera.h"
 #include "../video/statics.h"
 

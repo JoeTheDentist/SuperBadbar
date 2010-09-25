@@ -9,7 +9,9 @@
 #include "game.h"
 #include "../util/debug.h"
 #include "../util/collisions.h"
-
+#include "../sprites/babar.h"
+#include "../sprites/monsters.h"
+#include "../sprites/projectiles.h"
 
 Game::Game(): m_keyboard(), m_camera(&m_babar), m_talks(&m_camera), m_static_data(1), m_dynamic_data(&m_camera, &m_static_data, &m_sound_manager), m_babar(m_dynamic_data.projectiles_friend(), &m_keyboard, &m_static_data, &m_sound_manager)
 {

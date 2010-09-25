@@ -1,2 +1,0 @@
-Monstres :
-Besoin de vider la liste dans le destructeur
