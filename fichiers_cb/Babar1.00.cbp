@@ -7,18 +7,25 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\Babar1" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/Babar1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-W" />
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="/usr/include/SDL/SDL_ttf.h" />
+					<Add library="/usr/include/freetype2/freetype/freetype.h" />
+					<Add library="/usr/include/SDL/SDL_image" />
+					<Add library="/usr/include/fmod/fmod.h" />
+				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\Babar1" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/Babar1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,7 +38,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\include" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.14/include" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -41,35 +48,37 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
-			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib" />
+			<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/SDL_ttf.lib" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.14/lib" />
 		</Linker>
-		<Unit filename="..\src\analyser.cpp" />
-		<Unit filename="..\src\analyser.h" />
-		<Unit filename="..\src\camera.cpp" />
-		<Unit filename="..\src\camera.h" />
-		<Unit filename="..\src\collisions.cpp" />
-		<Unit filename="..\src\collisions.h" />
-		<Unit filename="..\src\events.cpp" />
-		<Unit filename="..\src\events.h" />
-		<Unit filename="..\src\game.cpp" />
-		<Unit filename="..\src\game.h" />
-		<Unit filename="..\src\globals.cpp" />
-		<Unit filename="..\src\globals.h" />
-		<Unit filename="..\src\levels.cpp" />
-		<Unit filename="..\src\levels.h" />
-		<Unit filename="..\src\lists.h" />
-		<Unit filename="..\src\main.cpp" />
-		<Unit filename="..\src\sprites.cpp" />
-		<Unit filename="..\src\sprites.h" />
-		<Unit filename="..\src\statics.cpp" />
-		<Unit filename="..\src\statics.h" />
-		<Unit filename="..\src\talks.cpp" />
-		<Unit filename="..\src\talks.h" />
-		<Unit filename="..\src\weapons.cpp" />
-		<Unit filename="..\src\weapons.h" />
-		<Unit filename="..\src\window.cpp" />
-		<Unit filename="..\src\window.h" />
+		<Unit filename="../src/analyser.cpp" />
+		<Unit filename="../src/analyser.h" />
+		<Unit filename="../src/camera.cpp" />
+		<Unit filename="../src/camera.h" />
+		<Unit filename="../src/collisions.cpp" />
+		<Unit filename="../src/collisions.h" />
+		<Unit filename="../src/debug.h" />
+		<Unit filename="../src/dynamic_data.cpp" />
+		<Unit filename="../src/dynamic_data.h" />
+		<Unit filename="../src/game.cpp" />
+		<Unit filename="../src/game.h" />
+		<Unit filename="../src/globals.h" />
+		<Unit filename="../src/keyboard.cpp" />
+		<Unit filename="../src/keyboard.h" />
+		<Unit filename="../src/lists.h" />
+		<Unit filename="../src/main.cpp" />
+		<Unit filename="../src/sound_manager.cpp" />
+		<Unit filename="../src/sound_manager.h" />
+		<Unit filename="../src/sprites.cpp" />
+		<Unit filename="../src/sprites.h" />
+		<Unit filename="../src/static_data.cpp" />
+		<Unit filename="../src/static_data.h" />
+		<Unit filename="../src/statics.cpp" />
+		<Unit filename="../src/statics.h" />
+		<Unit filename="../src/talks.cpp" />
+		<Unit filename="../src/talks.h" />
+		<Unit filename="../src/weapons.cpp" />
+		<Unit filename="../src/weapons.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
