@@ -32,9 +32,8 @@ public:
 	~Camera();								/* destructeur */
 	void update_pos(Static_data *static_data);						/* mise à jour de la camera */
 	void display_background(SDL_Surface *background); /* affichage d'un fond d'écran */
-	void display_sprite(Babar *babar);      /* affichage d'un Babar */
-	void display_sprite(Monster *monster);  /* affichage d'un monstre */
-	void display_sprite(Projectile * proj); /* affichage d'un projectile */
+	void display_sprite(Sprite *sprite);      /* affichage d'un Sprite */
+
 	void display_static(Static *sttc);
 	SDL_Rect frame();	/* accesseur (m_frame) */
 	void display_picture(SDL_Surface *pic, SDL_Rect *pos); /* ATTENTION: pos designe la position par rapport à la fenetre: m_frame n'est pas pris en compte dans cette fonction */

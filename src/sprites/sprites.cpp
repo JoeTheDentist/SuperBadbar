@@ -30,6 +30,12 @@ Sprite::~Sprite()
 
 }
 
+
+SDL_Surface *Sprite::current_picture()
+{
+	return NULL;
+}
+
 void Sprite::update_pos(Static_data *static_data)
 {
 	m_phase++;
