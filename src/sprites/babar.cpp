@@ -19,7 +19,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 	m_pos.x = 0;
 	m_pos.y = 1700;
 	m_invincible = 0;
-	m_lifes = 3;
+	m_lifes = 5;
 	m_last_dir = LEFT;
 	m_fire_phase = 0;
 	m_double_jump = false;
@@ -252,4 +252,9 @@ void Babar::damage(int damages)
 bool Babar::is_invincible()
 {
 	return m_invincible > 0;
+}
+
+int Babar::lifes()
+{
+	return m_lifes;
 }

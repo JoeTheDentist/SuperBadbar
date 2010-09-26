@@ -18,6 +18,7 @@
 #include "../control/keyboard.h"
 #include "../sound/sound_manager.h"
 #include "../video/statics.h"
+#include "../video/dashboard.h"
 
 
 #define TIME_LOOP 50
@@ -31,9 +32,9 @@ class Camera;
 class Game {
 private:
 	Keyboard m_keyboard;
-
+	Dashboard m_dashboard;
 	Sound_manager m_sound_manager;
-
+	
 	Static_data m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */

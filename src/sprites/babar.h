@@ -31,6 +31,7 @@ public:
 	void go_down(Static_data *static_data);			/* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
 	void damage(int damages);
 	bool is_invincible();
+	int lifes();
 };
 
 #endif
