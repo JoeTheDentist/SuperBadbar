@@ -82,7 +82,7 @@ void Game::refresh_screen()
 	m_camera.display_sprite(m_dynamic_data.babar());
 	
 	/* affichage du tableau de board */
-	m_dashboard.draw_dashboard(m_dynamic_data.babar()->lifes(), &m_camera);
+	m_dashboard.draw_dashboard(m_dynamic_data.babar()->lifes(), &m_camera, m_dynamic_data.babar());
 
 	/* mise à jour */
 	m_camera.flip_camera();

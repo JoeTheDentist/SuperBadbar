@@ -3,6 +3,7 @@
  * deplacements individuels des objets dynamiques
  **/
 
+
 #ifndef _SPRITES_
 #define _SPRITES_
 

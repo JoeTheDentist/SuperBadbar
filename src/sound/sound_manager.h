@@ -17,7 +17,6 @@ private:
 	FSOUND_SAMPLE *m_babar_jump;	
 	FSOUND_SAMPLE *m_babar_rugissement;	
 	FSOUND_SAMPLE **m_fire;
-	FSOUND_SAMPLE *m_fire_shotgun;
 	FSOUND_SAMPLE *m_monster_damage;
 
 public:

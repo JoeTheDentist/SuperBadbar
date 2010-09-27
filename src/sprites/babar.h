@@ -32,6 +32,8 @@ public:
 	void damage(int damages);
 	bool is_invincible();
 	int lifes();
+	int munitions();
+	weapon_type type_of_weapon();
 };
 
 #endif

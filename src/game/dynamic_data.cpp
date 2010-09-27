@@ -11,12 +11,14 @@
 #include "../sprites/sprites.h"
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
+#include "../sprites/walking_monsters.h"
 #include "../sprites/projectiles.h"
 #include "../util/analyser.h"
 #include "../video/camera.h"
 #include "../util/collisions.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
+
 
 
 Dynamic_data::Dynamic_data()
@@ -192,7 +194,7 @@ void Dynamic_data::fill_monster(uint32_t i, uint32_t j, Monster * monster)
 
 void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
 {
-    Monster * curr_monster = new Monster(m_sound_manager);
+    Monster * curr_monster = new Walking_monster(m_sound_manager);
     curr_monster->set_type(monster_type);
     curr_monster->set_pos_x(j*BOX_SIZE);
     curr_monster->set_pos_y(i*BOX_SIZE);

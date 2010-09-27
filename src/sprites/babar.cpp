@@ -258,3 +258,13 @@ int Babar::lifes()
 {
 	return m_lifes;
 }
+
+int Babar::munitions()
+{
+	return m_weapon.munitions();
+}
+
+weapon_type Babar::type_of_weapon()
+{
+	return m_weapon.type_of_weapon();
+}

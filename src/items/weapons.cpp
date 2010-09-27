@@ -37,7 +37,7 @@ Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surfac
             break;
         case MACHINEGUN:
             m_reload_time = RELOAD_MACHINEGUN;
-			m_munitions = MUN_MACHINEGUN;
+			m_munitions = 50;
             break;
         case SHOTGUN:
             m_reload_time = RELOAD_SHOTGUN;
@@ -204,4 +204,14 @@ void Weapon::change_weapon(weapon_type type)
 			m_munitions = MUN_SHOTGUN;
             break;
     }
+}
+
+int Weapon::munitions()
+{
+	return m_munitions;
+}
+
+weapon_type Weapon::type_of_weapon()
+{
+	return m_weapon_type;
 }

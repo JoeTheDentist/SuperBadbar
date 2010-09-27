@@ -114,3 +114,4 @@ int32_t Monster::type()
 {
     return m_type;
 }
+

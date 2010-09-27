@@ -3,7 +3,7 @@ CFLAGS = -Wall  -g
 EXEC_NAME = main
 INCLUDES = 
 LIBS = 
-OBJ_FILES =  main.o sprites/sprites.o game/game.o control/keyboard.o video/camera.o video/dashboard.o util/collisions.o game/static_data.o util/analyser.o video/statics.o items/weapons.o video/talks.o  game/dynamic_data.o sound/sound_manager.o sprites/babar.o sprites/monsters.o sprites/projectiles.o
+OBJ_FILES =  main.o sprites/sprites.o game/game.o control/keyboard.o video/camera.o video/dashboard.o util/collisions.o game/static_data.o util/analyser.o video/statics.o items/weapons.o video/talks.o  game/dynamic_data.o sound/sound_manager.o sprites/babar.o sprites/monsters.o sprites/projectiles.o sprites/walking_monsters.o
 INSTALL_DIR = .              
 LDFLAGS	= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod
 

@@ -32,7 +32,6 @@ class Camera;
 class Game {
 private:
 	Keyboard m_keyboard;
-	Dashboard m_dashboard;
 	Sound_manager m_sound_manager;
 	
 	Static_data m_static_data;
@@ -41,7 +40,7 @@ private:
 	Dynamic_data m_dynamic_data;
 	Camera m_camera;				/* camera ciblant babar */
 	Talks m_talks;
-
+	Dashboard m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
 	void update_camera();       /* MàJ cam */
 	void update_pos();			/* mise à jour des positions des sprites */
 	void update_speed();		/* mise à jour des vitesses des sprites */

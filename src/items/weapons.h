@@ -61,6 +61,8 @@ class Weapon
         void fire(SDL_Rect pos, horizontal h, vertical v);    /* crée les projectiles de l'arme */
         uint32_t reload_time();                 /* accesseur */
 		void change_weapon(weapon_type type);
+		int munitions();
+		weapon_type type_of_weapon();
 
 };
 
