@@ -103,11 +103,11 @@ bool Dynamic_data::projectiles_friend_end()
 
 void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
 {
+    m_projectiles_friend.init();
 	while(!m_projectiles_friend.end()) {
 	    m_projectiles_friend.element()->update_pos(static_data);
 	    m_projectiles_friend.next();
 	}
-	m_projectiles_friend.init();
 }
 
 void Dynamic_data::babar_update_pos(Static_data *static_data)
@@ -118,11 +118,11 @@ void Dynamic_data::babar_update_pos(Static_data *static_data)
 
 void Dynamic_data::monsters_update_pos(Static_data*static_data)
 {
+    m_monsters.init();
 	while(!m_monsters.end()) {
 		m_monsters.element()->update_pos(static_data);
 		m_monsters.next();
 	}
-		m_monsters.init();
 }
 
 void Dynamic_data::babar_update_speed()

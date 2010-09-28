@@ -37,7 +37,7 @@ public:
 	Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager, Keyboard *keyboard);			/* Constructeur */
 	~Dynamic_data();												/* Destructeur */
 	bool projectiles_friend_end();									/* Retourne vrai quand on arrive à la fin de la liste des projectiles amis */
-	void projectiles_friend_update_pos(Static_data *static_data);	/*MAJ la position des projectiles amis */
+	void projectiles_friend_update_pos(Static_data *static_data);	/* MAJ la position des projectiles amis */
 	void babar_update_pos(Static_data *static_data);
 	void monsters_update_pos(Static_data *static_data);				/*MAJ la position des monstres */
 	void babar_update_speed();
