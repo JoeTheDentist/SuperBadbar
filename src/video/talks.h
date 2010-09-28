@@ -6,9 +6,9 @@
 
 #include "../video/camera.h"
 
-#define PIC_TALKS_DIR "../pic/talks/"
-#define FONTS_TALKS_DIR "../data/talks/fonts/"
-#define TEXT_TALKS_DIR "../data/talks/texts/"
+#define PIC_TALKS_DIR "/pic/talks/"
+#define FONTS_TALKS_DIR "/data/talks/fonts/"
+#define TEXT_TALKS_DIR "/data/talks/texts/"
 
 
 
@@ -28,7 +28,7 @@ struct cell_string {
 class Talks {
 private:
 	SDL_Surface *m_text_background;
-	SDL_Surface *m_text_surface[LINES_NUMBER];  
+	SDL_Surface *m_text_surface[LINES_NUMBER];
 	SDL_Rect m_pos_background;
 	SDL_Rect m_pos_text[LINES_NUMBER];
 	TTF_Font *m_font;

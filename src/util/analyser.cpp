@@ -7,6 +7,7 @@
 #include "../video/statics.h"
 #include "../game/static_data.h"
 #include "../game/dynamic_data.h"
+#include "../util/globals.h"
 
 
 Analyser::Analyser()
@@ -86,6 +87,7 @@ void Analyser::jump_separators()
 void Analyser::fill_statics(Static_data *static_data)
 {
     char link[40];
+    std::string rac = RAC;
 	std::string static_name;
     SDL_Rect pos;
 	uint32_t x, y;
@@ -102,7 +104,7 @@ void Analyser::fill_statics(Static_data *static_data)
         fscanf(m_file,"%d",&y);
 		pos.y = y;
         jump_separators();
-        curr_static = new Static(STATICS_DIR + static_name + PICS_EXT,pos);
+        curr_static = new Static(rac + STATICS_DIR + static_name + PICS_EXT,pos);
         fscanf(m_file,"%s",link);
 		static_name = link;
         jump_separators();
@@ -114,7 +116,7 @@ void Analyser::fill_statics(Static_data *static_data)
 
 void Analyser::fill_collision_matrix(uint32_t **matrix)
 {
-
+    std::string rac = RAC;
 	uint32_t x, y, static_height, static_weight, temp;
 	char static_name[40];
     find_string("#Statics#");
@@ -123,7 +125,7 @@ void Analyser::fill_collision_matrix(uint32_t **matrix)
     while(static_name[0]!='!') {
         fscanf(m_file,"%d",&x);
         fscanf(m_file,"%d",&y);
-		FILE* static_file = fopen ((STATICS_DIR + str + COLL_EXT).c_str(), "r");
+		FILE* static_file = fopen ((rac + STATICS_DIR + str + COLL_EXT).c_str(), "r");
 		fscanf(static_file, "%d", &static_weight);
 		jump_separators();
 		fscanf(static_file, "%d", &static_height);
@@ -154,7 +156,9 @@ int Analyser::nb_monsters()
 void Analyser::fill_monsters_pics(int nb_monsters, Static_data *static_data)
 {
     /* A utiliser après nb_monster car il se place au bon endroit dans le fichier */
-    char link[40];
+    char link[20];
+    std::string rac = RAC;
+    std::string monster_name;
 
     jump_separators();
     for(int i = 0;i<2;i++) {
@@ -162,10 +166,11 @@ void Analyser::fill_monsters_pics(int nb_monsters, Static_data *static_data)
             for(int k=0;k<nb_monsters;k++) {
                 jump_separators();
                 fscanf(m_file,"%s",link);
+                monster_name = link;
                 if(j==1) {
-                    static_data->fill_monster_pic(i,3,k,link);
+                    static_data->fill_monster_pic(i,3,k, (rac+MONSTERS_DIR+monster_name+PICS_EXT).c_str());
                 }
-                static_data->fill_monster_pic(i,j,k,link);
+                static_data->fill_monster_pic(i,j,k, (rac+MONSTERS_DIR+monster_name+PICS_EXT).c_str());
             }
         }
     }

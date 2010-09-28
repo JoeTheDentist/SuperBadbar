@@ -7,25 +7,21 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Babar1" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin\Debug\Babar1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
-					<Add option="-W" />
+					<Add option="-w" />
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-W" />
 				</Compiler>
-				<Linker>
-					<Add library="/usr/include/SDL/SDL_ttf.h" />
-					<Add library="/usr/include/freetype2/freetype/freetype.h" />
-					<Add library="/usr/include/SDL/SDL_image" />
-					<Add library="/usr/include/fmod/fmod.h" />
-				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Babar1" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="bin\Release\Babar1" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -37,8 +33,11 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-w" />
 			<Add option="-Wall" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.14/include" />
+			<Add option="-g" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\include" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\MinGW\include" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -48,37 +47,49 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/SDL_ttf.lib" />
-			<Add directory="C:/Program Files (x86)/CodeBlocks/SDL-1.2.14/lib" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libfmod.a" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib\SDL_ttf.lib" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib" />
+			<Add directory="C:\Program Files (x86)\CodeBlocks\MinGW\lib" />
 		</Linker>
-		<Unit filename="../src/analyser.cpp" />
-		<Unit filename="../src/analyser.h" />
-		<Unit filename="../src/camera.cpp" />
-		<Unit filename="../src/camera.h" />
-		<Unit filename="../src/collisions.cpp" />
-		<Unit filename="../src/collisions.h" />
-		<Unit filename="../src/debug.h" />
-		<Unit filename="../src/dynamic_data.cpp" />
-		<Unit filename="../src/dynamic_data.h" />
-		<Unit filename="../src/game.cpp" />
-		<Unit filename="../src/game.h" />
-		<Unit filename="../src/globals.h" />
-		<Unit filename="../src/keyboard.cpp" />
-		<Unit filename="../src/keyboard.h" />
-		<Unit filename="../src/lists.h" />
-		<Unit filename="../src/main.cpp" />
-		<Unit filename="../src/sound_manager.cpp" />
-		<Unit filename="../src/sound_manager.h" />
-		<Unit filename="../src/sprites.cpp" />
-		<Unit filename="../src/sprites.h" />
-		<Unit filename="../src/static_data.cpp" />
-		<Unit filename="../src/static_data.h" />
-		<Unit filename="../src/statics.cpp" />
-		<Unit filename="../src/statics.h" />
-		<Unit filename="../src/talks.cpp" />
-		<Unit filename="../src/talks.h" />
-		<Unit filename="../src/weapons.cpp" />
-		<Unit filename="../src/weapons.h" />
+		<Unit filename="..\src\control\keyboard.cpp" />
+		<Unit filename="..\src\control\keyboard.h" />
+		<Unit filename="..\src\game\dynamic_data.cpp" />
+		<Unit filename="..\src\game\dynamic_data.h" />
+		<Unit filename="..\src\game\game.cpp" />
+		<Unit filename="..\src\game\game.h" />
+		<Unit filename="..\src\game\static_data.cpp" />
+		<Unit filename="..\src\game\static_data.h" />
+		<Unit filename="..\src\items\weapons.cpp" />
+		<Unit filename="..\src\items\weapons.h" />
+		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\sound\sound_manager.cpp" />
+		<Unit filename="..\src\sound\sound_manager.h" />
+		<Unit filename="..\src\sprites\babar.cpp" />
+		<Unit filename="..\src\sprites\babar.h" />
+		<Unit filename="..\src\sprites\monsters.cpp" />
+		<Unit filename="..\src\sprites\monsters.h" />
+		<Unit filename="..\src\sprites\projectiles.cpp" />
+		<Unit filename="..\src\sprites\projectiles.h" />
+		<Unit filename="..\src\sprites\sprites.cpp" />
+		<Unit filename="..\src\sprites\sprites.h" />
+		<Unit filename="..\src\sprites\walking_monsters.cpp" />
+		<Unit filename="..\src\sprites\walking_monsters.h" />
+		<Unit filename="..\src\util\analyser.cpp" />
+		<Unit filename="..\src\util\analyser.h" />
+		<Unit filename="..\src\util\collisions.cpp" />
+		<Unit filename="..\src\util\collisions.h" />
+		<Unit filename="..\src\util\debug.h" />
+		<Unit filename="..\src\util\globals.h" />
+		<Unit filename="..\src\util\lists.h" />
+		<Unit filename="..\src\video\camera.cpp" />
+		<Unit filename="..\src\video\camera.h" />
+		<Unit filename="..\src\video\dashboard.cpp" />
+		<Unit filename="..\src\video\dashboard.h" />
+		<Unit filename="..\src\video\statics.cpp" />
+		<Unit filename="..\src\video\statics.h" />
+		<Unit filename="..\src\video\talks.cpp" />
+		<Unit filename="..\src\video\talks.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

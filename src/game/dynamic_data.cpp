@@ -23,19 +23,20 @@
 
 Dynamic_data::Dynamic_data()
 {
-	
+
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard) 
+Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
-	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")  
+    std::string rac = RAC;
+	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
 	m_sound_manager = sound_manager;
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
-	std::string str_lvl = "1";      
+	std::string str_lvl = "1";
 	Analyser analyser, analyser2;
-	analyser.open("../data/levels/level"+str_lvl+".lvl");
+	analyser.open(rac+"/data/levels/level"+str_lvl+".lvl");
     /* Allocation de la matrice de monstres */
     m_monsters_matrix = new Monster**[m_matrix_weight + 1];
     for(uint32_t i = 0; i<(m_matrix_weight);i++) {
@@ -46,7 +47,7 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
             m_monsters_matrix[i][j] = NULL;
 		}
     }
-    analyser2.open("../data/levels/level"+str_lvl+".lvl");
+    analyser2.open(rac+"/data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2, static_data, this);
     analyser2.close();
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
@@ -74,8 +75,8 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
             }
         }
     }/**/
-	
-	
+
+
 	analyser.close();
 }
 
@@ -123,7 +124,7 @@ void Dynamic_data::monsters_update_pos(Static_data*static_data)
 	}
 		m_monsters.init();
 }
-   
+
 void Dynamic_data::babar_update_speed()
 {
 	m_babar->update_speed();
@@ -135,7 +136,7 @@ void Dynamic_data::babar_update_state(Static_data *static_data)
 }
 
 void Dynamic_data::babar_monsters_collision()
-{             
+{
 	SDL_Rect babar_pos = m_babar->position();
 	while(!m_monsters.end()) {
 		if (check_collision(m_monsters.element()->position(), babar_pos)) {
@@ -143,7 +144,7 @@ void Dynamic_data::babar_monsters_collision()
 		}
 	    m_monsters.next();
 	}
-	m_monsters.init();	
+	m_monsters.init();
 }
 
 void Dynamic_data::monsters_update_speed()
@@ -175,7 +176,7 @@ void Dynamic_data::display_projectiles_friend(Camera *camera)
 
 void Dynamic_data::delete_old_projectiles_friend(Static_data *static_data)
 {
-    m_projectiles_friend.delete_elements(too_old, static_data);	
+    m_projectiles_friend.delete_elements(too_old, static_data);
 }
 
 void Dynamic_data::update_monsters_projectiles()

@@ -15,7 +15,8 @@
 
 
 
-#define STATICS_DIR "../pic/statics/"
+#define STATICS_DIR "/pic/statics/"
+#define MONSTERS_DIR "/pic/monsters/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
 
@@ -28,7 +29,7 @@ class Analyser {
 private:
 	bool m_opened;
 	FILE * m_file;
-	
+
 
 
 	void jump_separators();				/* Saute les espaces, les retours à la ligne et les passages commentés (c'est-à-dire précédés de "//") */
@@ -48,7 +49,7 @@ public:
 												/* DOIT etre utilisé après nb_monsters */
     void fill_monsters(Analyser * analyser, Static_data *static_data, Dynamic_data *dynamic_data);  	/* Remplit la matrice des monstres de curr_lvl */
 												/* analyser est un deuxieme analyser qui doit etre ouvert */
-    void fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint32_t type); 
+    void fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint32_t type);
 };
 
 

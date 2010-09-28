@@ -23,6 +23,7 @@ Static_data::Static_data()
 
 Static_data::Static_data(uint32_t lvl)
 {
+    std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
 	m_static_data = lvl;
     char str[3];
@@ -32,19 +33,19 @@ Static_data::Static_data(uint32_t lvl)
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = SDL_LoadBMP(("../pic/backgrounds/level"+str_lvl+".bmp").c_str());
-	
+    m_background = SDL_LoadBMP((rac+"/pic/backgrounds/level"+str_lvl+".bmp").c_str());
+
 		/*** Images des projectiles ***/
-    m_proj_pics[0] = SDL_LoadBMP("../pic/projectiles/left-right.bmp");
-    m_proj_pics[1] = SDL_LoadBMP("../pic/projectiles/up-down.bmp");
-    m_proj_pics[2] = SDL_LoadBMP("../pic/projectiles/top-left.bmp");
-    m_proj_pics[3] = SDL_LoadBMP("../pic/projectiles/top-right.bmp");
+    m_proj_pics[0] = SDL_LoadBMP((rac+"/pic/projectiles/left-right.bmp").c_str());
+    m_proj_pics[1] = SDL_LoadBMP((rac+"/pic/projectiles/up-down.bmp").c_str());
+    m_proj_pics[2] = SDL_LoadBMP((rac+"/pic/projectiles/top-left.bmp").c_str());
+    m_proj_pics[3] = SDL_LoadBMP((rac+"/pic/projectiles/top-right.bmp").c_str());
 	for(int i = 0;i<4;i++) {
         SDL_SetColorKey(m_proj_pics[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj_pics[i]->format, 0, 0, 255));
     }
 
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
-    analyser.open("../data/levels/level"+str_lvl+".lvl");
+    analyser.open(rac+"/data/levels/level"+str_lvl+".lvl");
     analyser.fill_statics(this);
 
     /*** Remplissage des monstres ***/
@@ -89,7 +90,7 @@ Static_data::~Static_data()
             delete[] m_monsters_pics[i][j];
         }
     }
-	
+
 	for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj_pics[i]);
     }
@@ -192,7 +193,7 @@ bool Static_data::double_collision(SDL_Rect pos)
 	return false;
 }
 
-void Static_data::fill_monster_pic(int h, int num_image, int num_monster, char *link)
+void Static_data::fill_monster_pic(int h, int num_image, int num_monster, const char *link)
 {
     m_monsters_pics[h][num_image][num_monster] = SDL_LoadBMP(link);
     SDL_SetColorKey(m_monsters_pics[h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[h][num_image][num_monster]->format, 0, 0, 255));

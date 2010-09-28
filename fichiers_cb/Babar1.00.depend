@@ -292,8 +292,6 @@
 	"events.h"
 	"debug.h"
 
-1284134275 
-
 1284051146 c:\users\guillaume\desktop\svn\src\events.h
 
 1284447674 source:c:\users\guillaume\desktop\svn\src\game.cpp
@@ -664,4 +662,302 @@
 	"weapons.h"
 	"debug.h"
 	"sprites.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\control\keyboard.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"keyboard.h"
+	"../util/debug.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\control\keyboard.h
+	"SDL/SDL.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\util\debug.h
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\dynamic_data.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	<string>
+	"dynamic_data.h"
+	"../game/static_data.h"
+	"../sound/sound_manager.h"
+	"../control/keyboard.h"
+	"../util/debug.h"
+	"../sprites/sprites.h"
+	"../sprites/babar.h"
+	"../sprites/monsters.h"
+	"../sprites/walking_monsters.h"
+	"../sprites/projectiles.h"
+	"../util/analyser.h"
+	"../video/camera.h"
+	"../util/collisions.h"
+	"../util/globals.h"
+	"../control/keyboard.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\game\dynamic_data.h
+	"../util/lists.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\util\lists.h
+	<iostream>
+	<typeinfo>
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\game\static_data.h
+	"SDL/SDL.h"
+	"../util/lists.h"
+
+1285651475 c:\users\guillaume\desktop\superbabar\src\sound\sound_manager.h
+	<fmod/fmod.h>
+	"../items/weapons.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\items\weapons.h
+	"SDL/SDL.h"
+	"../util/lists.h"
+	"../sound/sound_manager.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\sprites.h
+	"SDL/SDL.h"
+	"../items/weapons.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\babar.h
+	"sprites.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\monsters.h
+	"sprites.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\walking_monsters.h
+	"../sprites/monsters.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\projectiles.h
+	"sprites.h"
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\util\analyser.h
+	<string>
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\video\camera.h
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\util\collisions.h
+
+1285611012 c:\users\guillaume\desktop\superbabar\src\util\globals.h
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\game.cpp
+	"game.h"
+	"../util/debug.h"
+	"../util/collisions.h"
+	"../sprites/babar.h"
+	"../sprites/monsters.h"
+	"../sprites/projectiles.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\game\game.h
+	<stdint.h>
+	<iostream>
+	"../util/lists.h"
+	"../sprites/sprites.h"
+	"../sprites/babar.h"
+	"../video/camera.h"
+	"../video/talks.h"
+	"../game/dynamic_data.h"
+	"../game/static_data.h"
+	"../control/keyboard.h"
+	"../sound/sound_manager.h"
+	"../video/statics.h"
+	"../video/dashboard.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\video\talks.h
+	<string>
+	<SDL/SDL_ttf.h>
+	"../video/camera.h"
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\video\statics.h
+	<SDL/SDL.h>
+
+1285611011 c:\users\guillaume\desktop\superbabar\src\video\dashboard.h
+	<SDL/SDL_ttf.h>
+	"../items/weapons.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\static_data.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"static_data.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"../util/collisions.h"
+	"../game/game.h"
+	"../util/globals.h"
+	"../sprites/sprites.h"
+	"../sprites/monsters.h"
+	"../video/camera.h"
+	"../video/statics.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\items\weapons.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	<time.h>
+	"weapons.h"
+	"../util/lists.h"
+	"../util/debug.h"
+	"../sprites/projectiles.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\main.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	<time.h>
+	"util/debug.h"
+	"sprites/sprites.h"
+	"game/game.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\sound\sound_manager.cpp
+	<iostream>
+	<stdint.h>
+	<stdio.h>
+	"sound_manager.h"
+	"../util/debug.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\babar.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"babar.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../util/collisions.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\monsters.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"monsters.h"
+	"../util/debug.h"
+	"../util/collisions.h"
+	"../game/game.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\projectiles.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"projectiles.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../game/static_data.h"
+	"../util/collisions.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\sprites.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"sprites.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../util/collisions.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\walking_monsters.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	"walking_monsters.h"
+	"../util/debug.h"
+	"../sound/sound_manager.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\util\analyser.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"analyser.h"
+	"../util/debug.h"
+	"../video/statics.h"
+	"../game/static_data.h"
+	"../game/dynamic_data.h"
+
+1285611012 source:c:\users\guillaume\desktop\superbabar\src\util\collisions.cpp
+	<iostream>
+	<SDL/SDL.h>
+	"collisions.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\video\camera.cpp
+
+1285652663 source:c:\users\guillaume\desktop\superbabar\src\video\dashboard.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	<SDL/SDL_ttf.h>
+	"dashboard.h"
+	"../video/camera.h"
+	"../util/debug.h"
+	"../sprites/babar.h"
+	"../video/talks.h"
+
+1285653389 source:c:\users\guillaume\desktop\superbabar\src\video\statics.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"statics.h"
+	"../util/debug.h"
+
+1285611011 source:c:\users\guillaume\desktop\superbabar\src\video\talks.cpp
+	<iostream>
+	<SDL/SDL.h>
+	<stdint.h>
+	<string>
+	<fstream>
+	<SDL/SDL_ttf.h>
+	"talks.h"
+	"../util/debug.h"
+	"../control/keyboard.h"
+
+1250308682 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1250308674 c:\program files (x86)\codeblocks\mingw\include\_mingw.h
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
+	<_mingw.h>
+	<stddef.h>
+
+1250308678 c:\program files (x86)\codeblocks\mingw\include\malloc.h
+	<_mingw.h>
+	<stdlib.h>
+
+1250308678 c:\program files (x86)\codeblocks\mingw\include\memory.h
+	<string.h>
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\string.h
+	<_mingw.h>
+	<stddef.h>
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\strings.h
+	<string.h>
+
+1250308676 c:\program files (x86)\codeblocks\mingw\include\inttypes.h
+	<_mingw.h>
+	<stdint.h>
+	<stddef.h>
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\stdint.h
+	<stddef.h>
+
+1250308676 c:\program files (x86)\codeblocks\mingw\include\ctype.h
+	<_mingw.h>
+	<stddef.h>
+
+1250308678 c:\program files (x86)\codeblocks\mingw\include\process.h
+	<_mingw.h>
+	<sys/types.h>
+	<stdint.h>
+
+1130493530 c:\program files (x86)\codeblocks\mingw\include\fmod\fmod.h
+
+1250308680 c:\program files (x86)\codeblocks\mingw\include\time.h
+	<_mingw.h>
+	<stddef.h>
 

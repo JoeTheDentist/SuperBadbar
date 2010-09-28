@@ -8,6 +8,7 @@
 #include "talks.h"
 #include "../util/debug.h"
 #include "../control/keyboard.h"
+#include "../util/globals.h"
 
 
 
@@ -17,12 +18,13 @@ Talks::Talks(Camera *camera)
 	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
 	TTF_Init();
+	std::string rac = RAC;
 	std::string background_name = "talks_background.bmp";
 	std::string font_name = "font1.ttf"; //
 	m_font_color.r = 0;
 	m_font_color.g = 0;
 	m_font_color.b = 0;
-	m_text_background = SDL_LoadBMP((PIC_TALKS_DIR + background_name).c_str());
+	m_text_background = SDL_LoadBMP((rac + PIC_TALKS_DIR + background_name).c_str());
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
 	for (int i = 0; i < LINES_NUMBER; i++){
@@ -30,7 +32,7 @@ Talks::Talks(Camera *camera)
 		m_pos_text[i].x = POSX;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
-	m_font = TTF_OpenFont((FONTS_TALKS_DIR + font_name).c_str(), 30);
+	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);
 }
 
 Talks::~Talks()
@@ -96,11 +98,11 @@ void Talks::instant_display(std::string str, int line)
 }
 
 void Talks::progressive_display(std::string str, int line)
-{                                            
+{
 	std::string curr_text;
 	SDL_Event event;
 	for (uint32_t i = 0; i < str.size(); i++){
-		SDL_Delay(DISPLAY_SPEED);          
+		SDL_Delay(DISPLAY_SPEED);
 		curr_text += str[i];
 		m_text_surface[line] = TTF_RenderText_Blended(m_font, curr_text.c_str(), m_font_color);
 		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));

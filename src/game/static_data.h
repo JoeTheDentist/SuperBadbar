@@ -1,7 +1,7 @@
 /**
  * Classe Static_data: classe singleton contenant toutes les données d'un niveau
  * ne variant pas au cours d'un cycle de jeu.
- * 
+ *
 
 **/
 
@@ -50,7 +50,7 @@ public:
 	bool right_collision(SDL_Rect pos);									/* renvoie vrai si une des cases situées juste à droite du rectangle pos est une collision droite */
 	bool double_collision(SDL_Rect pos);								/* renvoie vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle */
 
-    void fill_monster_pic(int h, int num_image, int num_monster, char * link); /* remplit une case de la matrice des images des monstres */
+    void fill_monster_pic(int h, int num_image, int num_monster, const char *link); /* remplit une case de la matrice des images des monstres */
 	SDL_Surface **monster_pic(uint32_t i, uint32_t j); /* accesseur */
 	SDL_Surface **proj_pics();
 	void display_statics(Camera *camera);

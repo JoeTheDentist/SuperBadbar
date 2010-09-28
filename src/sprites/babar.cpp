@@ -6,6 +6,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../util/collisions.h"
+#include "../util/globals.h"
 
 
 
@@ -14,7 +15,7 @@
 **********************************/
 Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
-	
+	std:string rac = RAC;
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
 	m_pos.y = 1700;
@@ -29,40 +30,40 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 
     for(int i = 0; i<3;i++) {
         for(int j = 0;j<2;j++) {
-            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP("../pic/videl_static_left_0.bmp");
-            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP("../pic/videl_static_left_0.bmp");
+            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_left_0.bmp").c_str());
+            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_left_0.bmp").c_str());
         }
     }
     for(int i = 0; i<3;i++) {
         for(int j = 0;j<2;j++) {
-            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_static_right_0.bmp");
+            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_right_0.bmp").c_str());
         }
     }
     /***/
     for(int i = 0; i<3;i++) {
-            m_pics[WALK][LEFT][i][0] = SDL_LoadBMP("../pic/videl_walk_left_0.bmp");
-            m_pics[WALK][MIDDLE_h][i][0] = SDL_LoadBMP("../pic/videl_walk_left_0.bmp");
+            m_pics[WALK][LEFT][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_left_0.bmp").c_str());
+            m_pics[WALK][MIDDLE_h][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_left_0.bmp").c_str());
     }
     for(int i = 0; i<3;i++) {
-            m_pics[WALK][LEFT][i][1] = SDL_LoadBMP("../pic/videl_walk_left_1.bmp");
-            m_pics[WALK][MIDDLE_h][i][1] = SDL_LoadBMP("../pic/videl_walk_left_1.bmp");
+            m_pics[WALK][LEFT][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_left_1.bmp").c_str());
+            m_pics[WALK][MIDDLE_h][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_left_1.bmp").c_str());
     }
     for(int i = 0; i<3;i++) {
-            m_pics[WALK][RIGHT][i][0] = SDL_LoadBMP("../pic/videl_walk_right_0.bmp");
+            m_pics[WALK][RIGHT][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_right_0.bmp").c_str());
     }
     for(int i = 0; i<3;i++) {
-            m_pics[WALK][RIGHT][i][1] = SDL_LoadBMP("../pic/videl_walk_right_1.bmp");
+            m_pics[WALK][RIGHT][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_right_1.bmp").c_str());
     }
     /***/
     for(int i = 0; i<3;i++) {
         for(int j = 0;j<2;j++) {
-            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP("../pic/videl_jump_left_0.bmp");
-            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP("../pic/videl_jump_left_0.bmp");
+            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_left_0.bmp").c_str());
+            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_left_0.bmp").c_str());
         }
     }
     for(int i = 0; i<3;i++) {
         for(int j = 0;j<2;j++) {
-            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP("../pic/videl_jump_right_0.bmp");
+            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_right_0.bmp").c_str());
         }
     }
 	m_pos.w = m_pics[0][0][0][0]->w;
@@ -81,7 +82,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 }
 
 Babar::~Babar()
-{                                  
+{
 	PRINT_CONSTR(1, "Destruction de Babar")
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<3;j++) {
@@ -95,7 +96,7 @@ Babar::~Babar()
 }
 
 SDL_Surface *Babar::current_picture()
-{                               
+{
 	if ((m_invincible <= 0 || m_invincible%2 == 0))
 		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%2];
 	else
@@ -176,7 +177,7 @@ bool Babar::can_fire()
 {
 	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
 }
-                                                
+
 void Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
@@ -245,7 +246,7 @@ void Babar::damage(int damages)
 		m_sound_manager->play_babar_rugissement();
 		m_lifes -= damages;
 		m_invincible = 20;
-	
+
 	}
 }
 

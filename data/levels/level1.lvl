@@ -25,17 +25,17 @@ black_board 429 1337
 
 #Monsters#
 1
-../pic/monsters/gailapin_left_1.bmp
+gailapin_left_1
 
-../pic/monsters/gailapin_left_2.bmp
+gailapin_left_2
 
-../pic/monsters/gailapin_left_3.bmp
+gailapin_left_3
 
-../pic/monsters/gailapin_right_1.bmp
+gailapin_right_1
 
-../pic/monsters/gailapin_right_2.bmp
+gailapin_right_2
 
-../pic/monsters/gailapin_right_3.bmp
+gailapin_right_3
 
 
 #StatMonstres#
