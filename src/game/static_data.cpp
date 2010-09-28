@@ -23,6 +23,8 @@ Static_data::Static_data()
 
 Static_data::Static_data(uint32_t lvl)
 {
+    m_statics.void_list();
+
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
 	m_static_data = lvl;
@@ -95,6 +97,7 @@ Static_data::~Static_data()
         SDL_FreeSurface(m_proj_pics[i]);
     }
 
+    m_statics.~List();
 
     SDL_FreeSurface(m_background);
 

@@ -4,25 +4,27 @@
 #include <stdio.h>
 #include "sound_manager.h"
 #include "../util/debug.h"
-
+#include "../util/globals.h"
 
 
 Sound_manager::Sound_manager()
 {
+    std::string rac = RAC;
+
 	PRINT_CONSTR(1, "Construction du Sound_manager")
 	FSOUND_Init(44100, 32, 0);
 	m_fire = new FSOUND_SAMPLE*[SHOTGUN + 1];
-	m_music = FSOUND_Stream_Open("../sound/music/level1.mp3", 0, 0, 0);
+	m_music = FSOUND_Stream_Open((rac+"/sound/music/level1.mp3").c_str(), 0, 0, 0);
 	if (m_music == NULL) {
 		PRINT_DEBUG(1, "Impossible de charger la musique")
 	}
-	m_fire[MACHINEGUN] =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/machingun.wav", 0, 0, 0);
-	m_fire[GUN] =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/machingun.wav", 0, 0, 0);
+	m_fire[MACHINEGUN] =  FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/weapons/machingun.wav").c_str(), 0, 0, 0);
+	m_fire[GUN] =  FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/weapons/machingun.wav").c_str(), 0, 0, 0);
 
-	m_fire[SHOTGUN] =  FSOUND_Sample_Load(FSOUND_FREE, "../sound/weapons/shotgun.wav", 0, 0, 0);
-	m_babar_jump = FSOUND_Sample_Load(FSOUND_FREE, "../sound/babar/jump.mp3", 0, 0, 0);
-	m_babar_rugissement = FSOUND_Sample_Load(FSOUND_FREE, "../sound/babar/rugissement.wav", 0, 0, 0);
-	m_monster_damage = FSOUND_Sample_Load(FSOUND_FREE, "../sound/monsters/kickass.mp3", 0, 0, 0);
+	m_fire[SHOTGUN] =  FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/weapons/shotgun.wav").c_str(), 0, 0, 0);
+	m_babar_jump = FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/babar/jump.mp3").c_str(), 0, 0, 0);
+	m_babar_rugissement = FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/babar/rugissement.wav").c_str(), 0, 0, 0);
+	m_monster_damage = FSOUND_Sample_Load(FSOUND_FREE, (rac+"/sound/monsters/kickass.mp3").c_str(), 0, 0, 0);
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
 }
@@ -34,7 +36,7 @@ Sound_manager::~Sound_manager()
 {
 	PRINT_CONSTR(1, "Destruction du Sound_manager")
 	FSOUND_Close();
-	
+
 }
 
 
@@ -52,7 +54,7 @@ void Sound_manager::play_fire(int weapon)
 
 	int channel = FSOUND_PlaySound(BABAR_FIRE_CANAL, m_fire[weapon]);
 	FSOUND_SetVolume(channel, 100);
-	
+
 }
 
 void Sound_manager::play_babar_jump()

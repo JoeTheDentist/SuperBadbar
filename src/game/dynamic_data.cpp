@@ -29,6 +29,10 @@ Dynamic_data::Dynamic_data()
 
 Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
+    m_projectiles_ennemy.void_list();
+    m_projectiles_friend.void_list();
+    m_monsters.void_list();
+
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
 	m_sound_manager = sound_manager;
@@ -93,6 +97,11 @@ Dynamic_data::~Dynamic_data()
 		delete[] m_monsters_matrix[i];
     delete[] m_monsters_matrix;
 
+    m_projectiles_ennemy.~List();
+    m_projectiles_friend.~List();
+    m_monsters.~List();
+
+    delete m_babar;
 }
 
 bool Dynamic_data::projectiles_friend_end()
