@@ -133,7 +133,7 @@ void Dynamic_data::monsters_update_speed()
 {
     m_monsters.init();
 	while ( !m_monsters.end() ) {
-	    m_monsters.element()->update_speed();
+	    m_monsters.element()->update_speed(m_babar);
 	    m_monsters.next();
 	}
 }
@@ -201,6 +201,7 @@ void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_t
     curr_monster->set_end(end);
     curr_monster->set_life(life);
     curr_monster->set_fire(fire);
+    speed += rand()%4;
     curr_monster->set_speed(speed);
     for (int k=0;k<2;k++) {
         for (int l=0;l<4;l++) {
@@ -211,7 +212,6 @@ void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_t
     }
     m_monsters.add(curr_monster);
 }
-
 
 
 void Dynamic_data::update(Camera *camera)

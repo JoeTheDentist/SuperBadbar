@@ -49,6 +49,20 @@ void Monster::update_speed()
 	}
 }
 
+void Monster::update_speed(Babar * babar)
+{
+	m_speed.y += GRAVITE;
+
+	if (m_pos.x<m_area_begin) {
+	    m_horizontal = RIGHT;
+		m_speed.x = -m_speed.x;
+	}
+	if (m_pos.x>m_area_end) {
+	    m_horizontal = LEFT;
+	    m_speed.x = -m_speed.x;
+	}
+}
+
 void Monster::set_pos_x(uint32_t x)
 {
 	m_pos.x = x;

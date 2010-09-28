@@ -41,7 +41,7 @@ public:
 	Sprite();			    /* constructeur */
 	virtual ~Sprite();		/* destructeur */
     virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
-	 void update_pos(Static_data *static_data);		/* mise à jour de la position */
+    void update_pos(Static_data *static_data);		/* mise à jour de la position */
 	SDL_Rect position();	/* accesseur */
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */

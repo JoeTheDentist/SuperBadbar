@@ -17,6 +17,7 @@ public:
 	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
 	~Monster();						        /* destructeur */
 	void virtual update_speed();					/* met à jour la vitesse du monstre */
+	void virtual update_speed(Babar * babar);
 	SDL_Surface * current_picture();        /* Retourne la bonne image de l'animation */
 	void set_pos_x(uint32_t x);				/* m_pos.x = x */
 	void set_pos_y(uint32_t y);				/* m_pos.y = y */

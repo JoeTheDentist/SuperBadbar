@@ -13,7 +13,7 @@ private:
 public:
 	Walking_monster(Sound_manager *sound_manager);
 	~Walking_monster();
-	void update_speed();	
+	void update_speed(Babar *babar);
 };
 
 
