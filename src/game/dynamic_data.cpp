@@ -138,36 +138,38 @@ void Dynamic_data::babar_update_state(Static_data *static_data)
 void Dynamic_data::babar_monsters_collision()
 {
 	SDL_Rect babar_pos = m_babar->position();
+
+	m_monsters.init();
 	while(!m_monsters.end()) {
 		if (check_collision(m_monsters.element()->position(), babar_pos)) {
 			m_babar->damage(1);
 		}
 	    m_monsters.next();
 	}
-	m_monsters.init();
 }
 
 void Dynamic_data::monsters_update_speed()
 {
-	while(!m_monsters.end()) {
+    m_monsters.init();
+	while ( !m_monsters.end() ) {
 	    m_monsters.element()->update_speed();
 	    m_monsters.next();
 	}
-	m_monsters.init();
 }
 
 void Dynamic_data::display_monsters(Camera *camera)
 {
+    m_monsters.init();
 	while(!m_monsters.end()) {
 	    camera->display_sprite(m_monsters.element());
 	    m_monsters.next();
 	}
-	m_monsters.init();
 }
 
 
 void Dynamic_data::display_projectiles_friend(Camera *camera)
 {
+    m_projectiles_friend.init();
 	while(!projectiles_friend_end()) {
 	    camera->display_sprite(m_projectiles_friend.element());
 	    m_projectiles_friend.next();
@@ -176,12 +178,35 @@ void Dynamic_data::display_projectiles_friend(Camera *camera)
 
 void Dynamic_data::delete_old_projectiles_friend(Static_data *static_data)
 {
-    m_projectiles_friend.delete_elements(too_old, static_data);
+    m_projectiles_friend.init();
+    while ( !m_projectiles_friend.end() ) {
+        if ( too_old(m_projectiles_friend.element(),static_data) ) {
+            m_projectiles_friend.delete_element(1);
+        } else {
+            m_projectiles_friend.next();
+        }
+    }
 }
 
 void Dynamic_data::update_monsters_projectiles()
 {
-   m_monsters.delete_elements(to_kill, &m_projectiles_friend);
+    m_monsters.init();
+    while ( !m_monsters.end() ) {
+        m_projectiles_friend.init();
+        while ( !m_projectiles_friend.end() ) {
+            if ( check_collision(m_monsters.element()->position(),m_projectiles_friend.element()->position()) ) {
+                m_monsters.element()->damage(m_projectiles_friend.element()->damage());
+                m_projectiles_friend.delete_element(1);
+            }
+            m_projectiles_friend.next();
+        }
+
+        if ( m_monsters.element()->dead() ) {
+            m_monsters.delete_element(1);
+        } else {
+            m_monsters.next();
+        }
+    }
 }
 
 
@@ -221,12 +246,19 @@ void Dynamic_data::update(Camera *camera)
 /* Optimisable ! Pas besoin de tout recharger */
 {
     SDL_Rect last_pos = camera->frame();
-    m_monsters.delete_elements(to_delete, this, camera);
+
+    m_monsters.init();
+    while ( !m_monsters.end() ) {
+        if ( to_delete(m_monsters.element(), this, camera) ) {
+            m_monsters.delete_element(1);
+        } else {
+            m_monsters.next();
+        }
+    }
+
     for(int i=last_pos.y/BOX_SIZE;i<(last_pos.h+last_pos.y)/BOX_SIZE;i++) {
         for(int j=last_pos.x/BOX_SIZE;j<(last_pos.w+last_pos.x)/BOX_SIZE;j++) {
             if(m_monsters_matrix[i][j] != NULL) {
-                /*Monster * mstr = new Monster;
-                mstr = m_monsters_matrix[i][j];*/
                 m_monsters.add(m_monsters_matrix[i][j]);
                 m_monsters_matrix[i][j] = NULL;
             }
@@ -245,28 +277,3 @@ Babar *Dynamic_data::babar()
 	return m_babar;
 }
 
-
-/*** Fonctions ***/
-
-bool to_kill(Monster * monster, List<Projectile*> *projectiles_friend)
-{
-    /* On supprime les projectiles qui en on besoin */
-    projectiles_friend->delete_elements(check_monster_proj, monster);
-
-    /* On retourne si le monstre est mort */
-    if(monster->dead()) {
-        delete monster;
-        return true;
-    }
-    return false;
-}
-
-bool check_monster_proj(Projectile * proj, Monster * monster)
-{
-    /* Regarde si un monstre est en collision avec un projectile, si c'est le cas on fait perdre des vies au monstre et on retourne vrai => pour suppr le projectile */
-    if(check_collision(monster->position(),proj->position())) {
-        monster->damage(proj->damage());
-        return true;
-    }
-    return false;
-}

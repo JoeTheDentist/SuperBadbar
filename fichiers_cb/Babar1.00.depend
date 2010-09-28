@@ -675,7 +675,7 @@
 
 1285611012 c:\users\guillaume\desktop\superbabar\src\util\debug.h
 
-1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\dynamic_data.cpp
+1285660067 source:c:\users\guillaume\desktop\superbabar\src\game\dynamic_data.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -703,7 +703,7 @@
 	<iostream>
 	<typeinfo>
 
-1285611011 c:\users\guillaume\desktop\superbabar\src\game\static_data.h
+1285661733 c:\users\guillaume\desktop\superbabar\src\game\static_data.h
 	"SDL/SDL.h"
 	"../util/lists.h"
 
@@ -732,14 +732,14 @@
 1285611012 c:\users\guillaume\desktop\superbabar\src\sprites\projectiles.h
 	"sprites.h"
 
-1285611012 c:\users\guillaume\desktop\superbabar\src\util\analyser.h
+1285662058 c:\users\guillaume\desktop\superbabar\src\util\analyser.h
 	<string>
 
 1285611011 c:\users\guillaume\desktop\superbabar\src\video\camera.h
 
 1285611012 c:\users\guillaume\desktop\superbabar\src\util\collisions.h
 
-1285611012 c:\users\guillaume\desktop\superbabar\src\util\globals.h
+1285659973 c:\users\guillaume\desktop\superbabar\src\util\globals.h
 
 1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\game.cpp
 	"game.h"
@@ -764,7 +764,7 @@
 	"../video/statics.h"
 	"../video/dashboard.h"
 
-1285611011 c:\users\guillaume\desktop\superbabar\src\video\talks.h
+1285664975 c:\users\guillaume\desktop\superbabar\src\video\talks.h
 	<string>
 	<SDL/SDL_ttf.h>
 	"../video/camera.h"
@@ -776,7 +776,7 @@
 	<SDL/SDL_ttf.h>
 	"../items/weapons.h"
 
-1285611011 source:c:\users\guillaume\desktop\superbabar\src\game\static_data.cpp
+1285665195 source:c:\users\guillaume\desktop\superbabar\src\game\static_data.cpp
 	<iostream>
 	<stdint.h>
 	<string>
@@ -817,7 +817,7 @@
 	"sound_manager.h"
 	"../util/debug.h"
 
-1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\babar.cpp
+1285664693 source:c:\users\guillaume\desktop\superbabar\src\sprites\babar.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -825,6 +825,7 @@
 	"../util/debug.h"
 	"../game/game.h"
 	"../util/collisions.h"
+	"../util/globals.h"
 
 1285611012 source:c:\users\guillaume\desktop\superbabar\src\sprites\monsters.cpp
 	<iostream>
@@ -862,7 +863,7 @@
 	"../util/debug.h"
 	"../sound/sound_manager.h"
 
-1285611012 source:c:\users\guillaume\desktop\superbabar\src\util\analyser.cpp
+1285662058 source:c:\users\guillaume\desktop\superbabar\src\util\analyser.cpp
 	<iostream>
 	<stdint.h>
 	<string>
@@ -871,6 +872,7 @@
 	"../video/statics.h"
 	"../game/static_data.h"
 	"../game/dynamic_data.h"
+	"../util/globals.h"
 
 1285611012 source:c:\users\guillaume\desktop\superbabar\src\util\collisions.cpp
 	<iostream>
@@ -879,7 +881,7 @@
 
 1285611011 source:c:\users\guillaume\desktop\superbabar\src\video\camera.cpp
 
-1285652663 source:c:\users\guillaume\desktop\superbabar\src\video\dashboard.cpp
+1285665070 source:c:\users\guillaume\desktop\superbabar\src\video\dashboard.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -889,15 +891,16 @@
 	"../util/debug.h"
 	"../sprites/babar.h"
 	"../video/talks.h"
+	"../util/globals.h"
 
-1285653389 source:c:\users\guillaume\desktop\superbabar\src\video\statics.cpp
+1285665196 source:c:\users\guillaume\desktop\superbabar\src\video\statics.cpp
 	<iostream>
 	<stdint.h>
 	<string>
 	"statics.h"
 	"../util/debug.h"
 
-1285611011 source:c:\users\guillaume\desktop\superbabar\src\video\talks.cpp
+1285665031 source:c:\users\guillaume\desktop\superbabar\src\video\talks.cpp
 	<iostream>
 	<SDL/SDL.h>
 	<stdint.h>
@@ -907,6 +910,7 @@
 	"talks.h"
 	"../util/debug.h"
 	"../control/keyboard.h"
+	"../util/globals.h"
 
 1250308682 c:\program files (x86)\codeblocks\mingw\include\sys\types.h
 	<_mingw.h>

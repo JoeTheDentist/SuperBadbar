@@ -35,10 +35,12 @@ template <class T> class List {
     private :
         cell<T> * m_list;               /* Liste */
         cell<T> * m_cursor;             /* Curseur permettant de parcourir la liste */
+        cell<T> * m_last;               /* Avant curseur */
     public :
         List();                         /* Constructeur */
         List(cell<T> * l);              /* Constructeur surchargé pour forcer m_list */
         ~List();                        /* Destructeur */
+        void void_list();               /* Vide la liste en gardant la sentinelle */
         void add(T element);            /* Ajoute un élément à la tête de m_list */
         void cut();                     /* Suppression de la tête de m_list avec libération de la mémoire */
         bool empty();                   /* Retourne true si la liste est vide */
@@ -48,11 +50,10 @@ template <class T> class List {
         void next();                    /* Le curseur va sur l'élément suivant */
         T element();                    /* Retourne l'élément sur le curseur */
         bool end();                     /* Retourne si le curseur est à la fin de la liste */
+        void delete_element(bool cond); /* Supprime l'élément sur curseur si cond */
+        void free_element(bool cond);   /* Supprime l'élément sur curseur si cond, et libère la mémoire */
 
-        void do_list(void (*fct)(T));           /* Applique une void fonction à chaque élément de la liste */
-        void delete_elements(bool (*fct)(T));   /* Supprime les éléments qui vérifient fct */
-        template <class Q> void delete_elements(bool (*fct)(T,Q), Q arg);   /* Surcharge, idem mais la fonction peut avoir un argument */
-        template <class Q, class R> void delete_elements(bool (*fct)(T,Q,R), Q arg, R arg2);
+        void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
 };
 
 
@@ -61,7 +62,13 @@ template <class T> class List {
 template <class T> List<T>::List()
 {
     m_list = NULL;
-    m_cursor = NULL;
+    T a;            /* Sentinelle puis ajout */
+    cell<T> * p = new cell<T>;
+    p->head = new T;
+    *(p->head) = a;
+    p->back = m_list;
+    m_list = p;
+    init();
 }
 
 template <class T> List<T>::List(cell<T> * l)
@@ -76,14 +83,23 @@ template <class T> List<T>::~List()
     }
 }
 
+template <class T> void List<T>::void_list()
+{
+    while ( m_list->back != NULL ) {
+        cut();
+    }
+}
+
 template <class T> void List<T>::init()
 {
-    m_cursor = m_list;
+    m_cursor = m_list->back;
+    m_last = m_list;
 }
 
 template <class T> void List<T>::next()
 {
     m_cursor = m_cursor->back;
+    m_last = m_last->back;
 }
 
 template <class T> T List<T>::element()
@@ -101,26 +117,29 @@ template <class T> void List<T>::add(T element)
     cell<T> * p = new cell<T>;
     p->head = new T;
     *(p->head) = element;
-    p->back = m_list;
-    m_list = p;
+    p->back = m_list->back;
+    m_list->back = p;
     init();
 }
 
 template <class T> void List<T>::cut()
 {
-    cell<T> * p = m_list->back;
-    if(typeid(*(m_list->head)).name()[0] == 'P') { /* Si on a une liste de pointeurs on le détruit */
-        delete *(m_list->head);
+    cell<T> * p = m_list->back->back;
+    delete *(m_list->back->head);
+    delete m_list->back->head;
+    delete m_list->back;
+    m_list->back = p;
+    if ( m_list != NULL ) {
+        init();
+    } else {
+        m_cursor = NULL;
+        m_last = NULL;
     }
-    delete m_list->head;
-    delete m_list;
-    m_list = p;
-    init();
 }
 
 template <class T> bool List<T>::empty()
 {
-    return (m_list == NULL);
+    return (m_list->back == NULL);
 }
 
 template <class T> T List<T>::head()
@@ -128,96 +147,37 @@ template <class T> T List<T>::head()
     return *(m_list->head);
 }
 
+/* Attention ! La suppréssion ne libère pas la mémoire !!!!!!!! */
+template <class T> void List<T>::delete_element(bool cond)
+{
+    if ( cond ) {
+        cell<T> * temp = m_last->back->back;
+        m_cursor = m_cursor->back;
+        delete m_last->back->head;
+        delete m_last->back;
+        m_last->back = temp;
+    }
+}
+
+template <class T> void List<T>::free_element(bool cond)
+{
+    if ( cond ) {
+        cell<T> * temp = m_last->back->back;
+        m_cursor = m_cursor->back;
+        delete *(m_last->back->head);
+        delete m_last->back->head;
+        delete m_last->back;
+        m_last->back = temp;
+    }
+}
+
 template <class T> void List<T>::do_list(void (*fct)(T))
 {
-    cell<T> * l = m_list;
-    while(l!= NULL) {
-        fct(l->head);
+    cell<T> * l = m_list->back;
+    while ( l != NULL ) {
+        fct(*(l->head));
         l = l->back;
     }
-}
-
-/*** Attention ! Pas de libération de la mémoire sur les éléments enlevés de la liste ***/
-template <class T> void List<T>::delete_elements(bool (*fct)(T))
-{
-    T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
-    cell<T> * temp;
-    add(a);
-    cell<T> * last = m_list; /* Pointeur sur le précédent */
-    next(); /* Pour que le curseur ne soit pas au même endroit que last */
-    while(!end()) {
-        if(fct(*(m_cursor->head))) {
-            next();
-            temp = last->back->back;
-            delete last->back->head;
-            delete last->back;
-            last->back = temp;
-        }
-        else {
-            next();
-            last = last->back;
-        }
-    }
-    cell<T> * p = m_list->back; /* Die fucking sentinelle !!! */
-    delete m_list->head;
-    delete m_list;
-    m_list = p;
-    init();
-}
-
-/*** Attention ! Pas de libération de la mémoire sur les éléments enlevés de la liste ***/
-template <class T> template <class Q> void List<T>::delete_elements(bool (*fct)(T,Q), Q arg)
-{
-    T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
-    cell<T> * temp;
-    add(a);
-    cell<T> * last = m_list; /* Pointeur sur le précédent */
-    next(); /* Pour que le curseur ne soit pas au même endroit que last */
-    while(!end()) {
-        if(fct(*(m_cursor->head), arg)) {
-            next();
-            temp = last->back->back;
-            delete last->back->head;
-            delete last->back;
-            last->back = temp;
-        }
-        else {
-            next();
-            last = last->back;
-        }
-    }
-    cell<T> * p = m_list->back; /* Die fucking sentinelle !!! */
-    delete m_list->head;
-    delete m_list;
-    m_list = p;
-    init();
-}
-
-template <class T> template <class Q, class R> void List<T>::delete_elements(bool (*fct)(T,Q,R), Q arg, R arg2)
-{
-    T a; /* Sentinelle, Dieu que c'est bien de ne pas devoir initialiser quelque chose qu'on ne connait pas et dont on a pas besoin */
-    cell<T> * temp;
-    add(a);
-    cell<T> * last = m_list; /* Pointeur sur le précédent */
-    next(); /* Pour que le curseur ne soit pas au même endroit que last */
-    while(!end()) {
-        if(fct(*(m_cursor->head), arg, arg2)) {
-            next();
-            temp = last->back->back;
-            delete last->back->head;
-            delete last->back;
-            last->back = temp;
-        }
-        else {
-            next();
-            last = last->back;
-        }
-    }
-    cell<T> * p = m_list->back; /* Die fucking sentinelle !!! */
-    delete m_list->head;
-    delete m_list;
-    m_list = p;
-    init();
 }
 
 #endif // LISTS_H_INCLUDED

@@ -3,8 +3,8 @@
  * de la partie susceptibles de changer à chaque cycle de jeu.
  * Elle contient les listes de projectiles amies et ennemies, la liste des monstres à l'écran,
  * et la matrix des monstres du niveau.
- 
- 
+
+
  **/
 
 #ifndef _DYNAMIC_DATA_
@@ -46,19 +46,15 @@ public:
 	void monsters_update_speed();									/*MAJ la vitesse des monstres */
 	void display_monsters(Camera *camera);							/* Affiche les monstres à l'écran */
 	void display_projectiles_friend(Camera *camera);				/* Affiche les projectiles amis */
-	void delete_old_projectiles_friend(Static_data *static_data);	
-	void update_monsters_projectiles();								
-	void fill_monster(uint32_t i, uint32_t j, Monster * monster);	
+	void delete_old_projectiles_friend(Static_data *static_data);
+	void update_monsters_projectiles();
+	void fill_monster(uint32_t i, uint32_t j, Monster * monster);
     void fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed,  Static_data *static_data);
     void update(Camera *m_camera);   /* Met à jour la listes des monstres et le tableau de monstres, gére les collisions */
 	List<Projectile*> *projectiles_friend();						/* Accesseur sur la liste des projectiles amis */
 	Babar *babar();
-	
+
 };
-
-
-bool to_kill(Monster * monster, List<Projectile*> *projectiles_friend);
-bool check_monster_proj(Projectile * proj, Monster * monster);
 
 
 
