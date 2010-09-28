@@ -197,8 +197,9 @@ void Dynamic_data::update_monsters_projectiles()
             if ( check_collision(m_monsters.element()->position(),m_projectiles_friend.element()->position()) ) {
                 m_monsters.element()->damage(m_projectiles_friend.element()->damage());
                 m_projectiles_friend.delete_element(1);
+            } else {
+                m_projectiles_friend.next();
             }
-            m_projectiles_friend.next();
         }
 
         if ( m_monsters.element()->dead() ) {
@@ -208,8 +209,6 @@ void Dynamic_data::update_monsters_projectiles()
         }
     }
 }
-
-
 
 
 void Dynamic_data::fill_monster(uint32_t i, uint32_t j, Monster * monster)
