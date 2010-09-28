@@ -41,16 +41,9 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
 	std::string str_lvl = "1";
 	Analyser analyser, analyser2;
 	analyser.open(rac+"/data/levels/level"+str_lvl+".lvl");
+
     /* Allocation de la matrice de monstres */
-    m_monsters_matrix = new Monster**[m_matrix_weight + 1];
-    for(uint32_t i = 0; i<(m_matrix_weight);i++) {
-        m_monsters_matrix[i] = new Monster*[m_matrix_height + 1];
-    }
-    for(uint32_t i = 0;i<(m_matrix_weight);i++) {
-        for(uint32_t j = 0;j<(m_matrix_height);j++) {
-            m_monsters_matrix[i][j] = NULL;
-		}
-    }
+
     analyser2.open(rac+"/data/levels/level"+str_lvl+".lvl");
     analyser.fill_monsters(&analyser2, static_data, this);
     analyser2.close();
@@ -71,32 +64,11 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
 	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
 		camera_frame.y = static_data->static_data_height() - camera_frame.h;
 
-	for(uint32_t i= camera_frame.x/BOX_SIZE;i<(uint32_t)(camera_frame.w+camera_frame.x)/BOX_SIZE;i++) {
-        for(uint32_t j=camera_frame.y/BOX_SIZE;j<(uint32_t)(camera_frame.h+camera_frame.y)/BOX_SIZE;j++) {
-            if(m_monsters_matrix[i][j] != NULL) {
-                m_monsters.add(m_monsters_matrix[i][j]);
-                m_monsters_matrix[i][j] = NULL;
-            }
-        }
-    }/**/
-
-
 	analyser.close();
 }
 
 Dynamic_data::~Dynamic_data()
 {
-	for(uint32_t i = 0;i<(m_matrix_weight);i++) {
-        for(uint32_t j = 0;j<(m_matrix_height);j++) {
-            if (m_monsters_matrix[i][j] != NULL) {
-                delete m_monsters_matrix[i][j];
-            }
-        }
-    }
-	for(uint32_t i = 0; i<(m_matrix_weight);i++)
-		delete[] m_monsters_matrix[i];
-    delete[] m_monsters_matrix;
-
     m_projectiles_ennemy.~List();
     m_projectiles_friend.~List();
     m_monsters.~List();
@@ -219,13 +191,6 @@ void Dynamic_data::update_monsters_projectiles()
     }
 }
 
-
-void Dynamic_data::fill_monster(uint32_t i, uint32_t j, Monster * monster)
-{
-    m_monsters_matrix[i][j] = monster;
-}
-
-
 void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
 {
     Monster * curr_monster = new Walking_monster(m_sound_manager);
@@ -237,41 +202,21 @@ void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_t
     curr_monster->set_life(life);
     curr_monster->set_fire(fire);
     curr_monster->set_speed(speed);
-    for(int k=0;k<2;k++) {
-        for(int l=0;l<4;l++) {
+    for (int k=0;k<2;k++) {
+        for (int l=0;l<4;l++) {
 			SDL_Surface **monster_pics = static_data->monster_pic(k, l);
             curr_monster->set_pic(monster_pics[monster_type],k,l);
 //~ 			curr_monster->set_pic(monster_pics[k][l][monster_type],k,l);
-
         }
     }
-    m_monsters_matrix[i][j] = curr_monster;
+    m_monsters.add(curr_monster);
 }
 
 
 
 void Dynamic_data::update(Camera *camera)
-/* Optimisable ! Pas besoin de tout recharger */
 {
-    SDL_Rect last_pos = camera->frame();
 
-    m_monsters.init();
-    while ( !m_monsters.end() ) {
-        if ( to_delete(m_monsters.element(), this, camera) ) {
-            m_monsters.delete_element(1);
-        } else {
-            m_monsters.next();
-        }
-    }
-
-    for(int i=last_pos.y/BOX_SIZE;i<(last_pos.h+last_pos.y)/BOX_SIZE;i++) {
-        for(int j=last_pos.x/BOX_SIZE;j<(last_pos.w+last_pos.x)/BOX_SIZE;j++) {
-            if(m_monsters_matrix[i][j] != NULL) {
-                m_monsters.add(m_monsters_matrix[i][j]);
-                m_monsters_matrix[i][j] = NULL;
-            }
-        }
-    }
 }
 
 List<Projectile*> *Dynamic_data::projectiles_friend()

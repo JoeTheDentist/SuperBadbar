@@ -226,17 +226,3 @@ void Static_data::add_static(Static *stat)
 {
 	m_statics.add(stat);
 }
-
-
-bool to_delete(Monster * monster, Dynamic_data *dynamic_data, Camera *camera)
-{
-    SDL_Rect monster_pos = monster->position();
-    SDL_Rect camera_pos = camera->frame();
-
-    if(!check_collision(monster_pos,camera_pos)) {  /* Il est trop cool ce Gloups */
-        /* Ici le monstres n'est pas dans l'écran de caméra */
-        dynamic_data->fill_monster(monster_pos.y/BOX_SIZE,monster_pos.x/BOX_SIZE,monster);    /*On remet le monstre dans le tableau */
-        return true;
-    }
-    return false;
-}

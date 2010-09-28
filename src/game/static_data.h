@@ -58,6 +58,4 @@ public:
 
 };
 
-bool to_delete(Monster * monster, Dynamic_data *dynamic_data, Camera *camera);
-
 #endif
