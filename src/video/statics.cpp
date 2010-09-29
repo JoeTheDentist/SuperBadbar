@@ -13,6 +13,8 @@ Static::Static()
 
 Static::Static(std::string dir_image, SDL_Rect pos)
 {
+    const char * test;
+    test = dir_image.c_str();
 	PRINT_CONSTR(3, "Construction du Static %s", dir_image.c_str())
     m_image = SDL_LoadBMP(dir_image.c_str());
     SDL_SetColorKey(m_image, SDL_SRCCOLORKEY, SDL_MapRGB(m_image->format, 0, 0, 255));

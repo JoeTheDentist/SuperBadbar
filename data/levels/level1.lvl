@@ -9,15 +9,8 @@ background.bmp
 #Statics#
 
 soil 0 1800
-block1 100 1500
-up_black_slope 211 1769
-up_black_slope 324 1655
-black_board 609 1652
-black_board 896 1649
-up_black_slope 1100 1470
-down_black_slope 951 1338
-black_board 702 1333
-black_board 429 1337
+block1 100 1450
+block2 800	1200
 !
 
 

@@ -8,10 +8,10 @@
 
 #define SQUARE_SIZE 5
 
-#define STATICS_DIR "../../pic/statics/"
+#define STATICS_DIR "../../../pic/statics/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
-#define EDITOR_PIC_DIR "../../pic/editor/"
+#define EDITOR_PIC_DIR "../../../pic/editor/"
 
 #include "statics.h"
 #include "windows.h"
@@ -22,7 +22,7 @@ private:
 	Static m_static;			/* static à modifier */
 	uint32_t m_curr_coll;		/* carré de collision à blitter */
 	bool m_leave;				/* booléen pour quitter */
-public:       
+public:
 	Editor(std::string static_name);		/* constructeur à partir du nom du static à éditer */
 	~Editor();								/* destructeur */
 	void edit();							/* fonction principale d'édition */
