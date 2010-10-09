@@ -28,57 +28,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 
     /*** Stockage et chargement dans le tableau des images ***/
 
-    for(int i = 0; i<3;i++) {
-        for(int j = 0;j<2;j++) {
-            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_left_0.bmp").c_str());
-            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_left_0.bmp").c_str());
-        }
-    }
-    for(int i = 0; i<3;i++) {
-        for(int j = 0;j<2;j++) {
-            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/videl_static_right_0.bmp").c_str());
-        }
-    }
-    /***/
-    for(int i = 0; i<3;i++) {
-            m_pics[WALK][LEFT][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_left_0.bmp").c_str());
-            m_pics[WALK][MIDDLE_h][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_left_0.bmp").c_str());
-    }
-    for(int i = 0; i<3;i++) {
-            m_pics[WALK][LEFT][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_left_1.bmp").c_str());
-            m_pics[WALK][MIDDLE_h][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_left_1.bmp").c_str());
-    }
-    for(int i = 0; i<3;i++) {
-            m_pics[WALK][RIGHT][i][0] = SDL_LoadBMP((rac+"/pic/videl_walk_right_0.bmp").c_str());
-    }
-    for(int i = 0; i<3;i++) {
-            m_pics[WALK][RIGHT][i][1] = SDL_LoadBMP((rac+"/pic/videl_walk_right_1.bmp").c_str());
-    }
-    /***/
-    for(int i = 0; i<3;i++) {
-        for(int j = 0;j<2;j++) {
-            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_left_0.bmp").c_str());
-            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_left_0.bmp").c_str());
-        }
-    }
-    for(int i = 0; i<3;i++) {
-        for(int j = 0;j<2;j++) {
-            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/videl_jump_right_0.bmp").c_str());
-        }
-    }
-	m_pos.w = m_pics[0][0][0][0]->w;
-	m_pos.h = m_pics[0][0][0][0]->h;
-
-    /* Transparence */
-    for(int i = 0;i<3;i++) {
-	    for(int j = 0;j<3;j++) {
-	        for(int k = 0;k<3;k++) {
-	            for(int l = 0;l<2;l++) {
-	                SDL_SetColorKey(m_pics[i][j][k][l], SDL_SRCCOLORKEY, SDL_MapRGB(m_pics[i][j][k][l]->format, 0, 0, 255));
-	            }
-	        }
-	    }
-	}
+    load(1);
 }
 
 Babar::~Babar()
@@ -95,10 +45,86 @@ Babar::~Babar()
 	}
 }
 
+void Babar::load(char age)
+{
+    char age_c = '0', i_c = '0';
+    age_c += age;
+    std:string rac = RAC;
+
+    /** Charge static **/
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+        }
+    }
+    string test = (rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str();
+
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_1.bmp").c_str());
+        }
+    }
+    for(int i = 0;i<3;i++) {    /* don't care */
+        for(int j = 0;j<4;j++) {
+            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+        }
+    }
+
+    /** Charge walk **/
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            char num = i_c+j+1;
+            m_pics[WALK][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_"+num+".bmp").c_str());
+        }
+    }
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            char num = i_c+j+1;
+            m_pics[WALK][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_"+num+".bmp").c_str());
+        }
+    }
+    for(int i = 0;i<3;i++) {    /* don't care */
+        for(int j = 0;j<4;j++) {
+            m_pics[WALK][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+        }
+    }
+
+    /** Charge jump **/
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str());
+        }
+    }
+    for(int i = 0;i<3;i++) {
+        for(int j = 0;j<4;j++) {
+            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_2.bmp").c_str());
+        }
+    }
+    for(int i = 0;i<3;i++) {    /* don't care */
+        for(int j = 0;j<4;j++) {
+            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str());
+        }
+    }
+
+    m_pos.w = m_pics[0][0][0][0]->w;
+	m_pos.h = m_pics[0][0][0][0]->h;
+
+    /* Transparence */
+    for(int i = 0;i<3;i++) {
+	    for(int j = 0;j<3;j++) {
+	        for(int k = 0;k<3;k++) {
+	            for(int l = 0;l<4;l++) {
+	                SDL_SetColorKey(m_pics[i][j][k][l], SDL_SRCCOLORKEY, SDL_MapRGB(m_pics[i][j][k][l]->format, 0, 0, 255));
+	            }
+	        }
+	    }
+	}
+}
+
 SDL_Surface *Babar::current_picture()
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0))
-		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%2];
+		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%4];
 	else
 		return NULL;
 }
