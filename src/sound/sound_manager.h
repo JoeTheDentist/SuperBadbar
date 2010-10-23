@@ -1,5 +1,5 @@
-#ifndef _SOUND_
-#define _SOUND_
+#ifndef _SOUND_MANAGER
+#define _SOUND_MANAGER
 
 //~ #ifndef WIN32
 	#include <fmod/fmod.h>
@@ -18,6 +18,7 @@ private:
 	FSOUND_SAMPLE *m_babar_rugissement;
 	FSOUND_SAMPLE **m_fire;
 	FSOUND_SAMPLE *m_monster_damage;
+	
 
 public:
 	Sound_manager();

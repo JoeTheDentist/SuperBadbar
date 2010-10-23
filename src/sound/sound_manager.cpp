@@ -31,7 +31,6 @@ Sound_manager::Sound_manager()
 
 
 
-
 Sound_manager::~Sound_manager()
 {
 	PRINT_CONSTR(1, "Destruction du Sound_manager")
@@ -71,6 +70,7 @@ void Sound_manager::play_monster_damage()
 
 void Sound_manager::play_babar_rugissement()
 {
+	
 	FSOUND_PlaySound(6, m_babar_rugissement);
 
 }

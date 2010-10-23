@@ -12,6 +12,20 @@
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
 #include "../sprites/projectiles.h"
+#include "../util/lists.h"
+#include "../sprites/sprites.h"
+#include "../sprites/babar.h"
+#include "../video/camera.h"
+#include "../video/talks.h"
+#include "../game/dynamic_data.h"
+#include "../game/static_data.h"
+#include "../control/keyboard.h"
+//~ #include "../sound/sound.h"
+#include "../sound/sound_manager.h"
+#include "../video/statics.h"
+#include "../video/dashboard.h"
+
+
 
 Game::Game(): m_keyboard(),m_static_data(1),   m_dynamic_data(&m_camera, &m_static_data, &m_sound_manager, &m_keyboard), m_camera(m_dynamic_data.babar()), m_talks(&m_camera)
 {
