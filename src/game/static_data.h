@@ -33,8 +33,8 @@ private:
 
 public:
 	Static_data();														/* Constructeur par défaut*/
-	Static_data(uint32_t lvl);											/* Constructeur avec précision du numéro de niveau */
 	~Static_data();														/* Destructeur */
+	void init_static_data(uint32_t lvl);
 	void fill_collision(uint32_t i, uint32_t j, uint32_t collision_type); /* remplit la case i j de la matrice des collisions */
 	uint32_t collision(uint32_t x, uint32_t y);  						/* Accesseur: x et y sont en PIXELS */
 	SDL_Surface * background();  										/* Accesseur */

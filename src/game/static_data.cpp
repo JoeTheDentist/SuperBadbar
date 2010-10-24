@@ -21,7 +21,36 @@ Static_data::Static_data()
 
 }
 
-Static_data::Static_data(uint32_t lvl)
+
+
+Static_data::~Static_data()
+{
+	PRINT_CONSTR(1, "Destruction d'un Static_data")
+    for(uint32_t i = 0; i<(static_data_weight()/BOX_SIZE + 1);i++) {
+        delete[] m_collision_matrix[i];
+    }
+    delete[] m_collision_matrix;
+
+    for(int i=0;i<2;i++) {
+        for(int j=0;j<4;j++) {
+            for(int l=0;l<m_nb_monsters;l++) {
+                SDL_FreeSurface(m_monsters_pics[i][j][l]);
+            }
+            delete[] m_monsters_pics[i][j];
+        }
+    }
+
+	for(int i = 0;i<4;i++) {
+        SDL_FreeSurface(m_proj_pics[i]);
+    }
+
+    m_statics.~List();
+
+    SDL_FreeSurface(m_background);
+
+}
+
+void Static_data::init_static_data(uint32_t lvl)
 {
     m_statics.void_list();
 
@@ -73,34 +102,7 @@ Static_data::Static_data(uint32_t lvl)
         }
     }
 	analyser.fill_collision_matrix(m_collision_matrix);
-    analyser.close();
-}
-
-Static_data::~Static_data()
-{
-	PRINT_CONSTR(1, "Destruction d'un Static_data")
-    for(uint32_t i = 0; i<(static_data_weight()/BOX_SIZE + 1);i++) {
-        delete[] m_collision_matrix[i];
-    }
-    delete[] m_collision_matrix;
-
-    for(int i=0;i<2;i++) {
-        for(int j=0;j<4;j++) {
-            for(int l=0;l<m_nb_monsters;l++) {
-                SDL_FreeSurface(m_monsters_pics[i][j][l]);
-            }
-            delete[] m_monsters_pics[i][j];
-        }
-    }
-
-	for(int i = 0;i<4;i++) {
-        SDL_FreeSurface(m_proj_pics[i]);
-    }
-
-    m_statics.~List();
-
-    SDL_FreeSurface(m_background);
-
+    analyser.close();	
 }
 
 void Static_data::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)

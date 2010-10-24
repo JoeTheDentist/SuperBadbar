@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <iostream>
 
+#include "../sound/sound.h"
 
 
 #define TIME_LOOP 50
@@ -19,19 +20,19 @@ class Static_data;
 class Sound_manager;
 class Camera;
 class Dashboard;
+class Keyboard;
 
-class Game{
+class Game {
 private:
-	Keyboard m_keyboard;
-	Sound_manager m_sound_manager;
-	
-	Static_data m_static_data;
+	Sound_manager *m_sound_manager;
+	Keyboard *m_keyboard;
+	Static_data *m_static_data;
 	uint32_t m_time;					/* temps actuel */
 	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
-	Dynamic_data m_dynamic_data;
-	Camera m_camera;				/* camera ciblant babar */
-	Talks m_talks;
-	Dashboard m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
+	Dynamic_data *m_dynamic_data;
+	Camera *m_camera;				/* camera ciblant babar */
+	Talks *m_talks;
+	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
 	void update_camera();       /* MàJ cam */
 	void update_pos();			/* mise à jour des positions des sprites */
 	void update_speed();		/* mise à jour des vitesses des sprites */

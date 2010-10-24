@@ -44,8 +44,9 @@ private:
 	void display_line(int line);
 	void wait_space();
 public:
-	Talks(Camera *camera);
+	Talks();
 	~Talks();
+	void init_talks(Camera *camera);
 	void display_text(std::string str);					/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 	void load_and_display_text(std::string filename);	/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 

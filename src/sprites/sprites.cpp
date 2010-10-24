@@ -6,6 +6,7 @@
 #include "sprites.h"
 #include "../util/debug.h"
 #include "../game/game.h"
+#include "../game/static_data.h"
 
 #include "../util/collisions.h"
 

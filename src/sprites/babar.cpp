@@ -7,7 +7,9 @@
 #include "../game/game.h"
 #include "../util/collisions.h"
 #include "../util/globals.h"
-
+#include "../control/keyboard.h"
+#include "../game/static_data.h"
+#include "../game/dynamic_data.h"
 
 
 /*********************************
@@ -18,7 +20,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 	std:string rac = RAC;
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
-	m_pos.y = 1700;
+	m_pos.y = 1600;
 	m_invincible = 0;
 	m_lifes = 5;
 	m_last_dir = LEFT;

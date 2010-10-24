@@ -9,6 +9,8 @@
 #ifndef _COLLISIONS_
 #define _COLLISIONS_
 
+#include <SDL/SDL.h>
+
 #define NO_COLL 0x0
 #define FULL_COLL 0xF
 #define DOWN_COLL 0x4

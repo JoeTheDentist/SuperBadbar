@@ -28,8 +28,9 @@ private:
 	Sprite *m_target;	/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;
 public:
-	Camera(Sprite *target);					/* constructeur */
+	Camera();					/* constructeur */
 	~Camera();								/* destructeur */
+	void init_camera(Sprite *target);
 	void update_pos(Static_data *static_data);						/* mise à jour de la camera */
 	void display_background(SDL_Surface *background); /* affichage d'un fond d'écran */
 	void display_sprite(Sprite *sprite);      /* affichage d'un Sprite */

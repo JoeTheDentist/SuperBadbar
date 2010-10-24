@@ -13,7 +13,22 @@
 
 
 
-Talks::Talks(Camera *camera)
+Talks::Talks()
+{
+
+}
+
+Talks::~Talks()
+{
+	PRINT_CONSTR(1, "Destruction de la classe Talks")
+	SDL_FreeSurface(m_text_background);
+	for (int i = 0; i < LINES_NUMBER; i++)
+		SDL_FreeSurface(m_text_surface[i]);
+	TTF_CloseFont(m_font);
+	TTF_Quit();
+}
+
+void Talks::init_talks(Camera *camera)
 {
 	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
@@ -32,19 +47,8 @@ Talks::Talks(Camera *camera)
 		m_pos_text[i].x = POSX;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
-	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);
+	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);	
 }
-
-Talks::~Talks()
-{
-	PRINT_CONSTR(1, "Destruction de la classe Talks")
-	SDL_FreeSurface(m_text_background);
-	for (int i = 0; i < LINES_NUMBER; i++)
-		SDL_FreeSurface(m_text_surface[i]);
-	TTF_CloseFont(m_font);
-	TTF_Quit();
-}
-
 void Talks::display_background()
 {
 	m_camera->display_picture(m_text_background, &m_pos_background);

@@ -23,11 +23,22 @@
 
 Dynamic_data::Dynamic_data()
 {
-
+	m_sound_manager = NULL;
+	m_babar = NULL;
 }
 
 
-Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
+
+Dynamic_data::~Dynamic_data()
+{
+    m_projectiles_ennemy.~List();
+    m_projectiles_friend.~List();
+    m_monsters.~List();
+
+    delete m_babar;
+}
+
+void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
     m_projectiles_ennemy.void_list();
     m_projectiles_friend.void_list();
@@ -64,16 +75,7 @@ Dynamic_data::Dynamic_data(Camera *camera, Static_data *static_data, Sound_manag
 	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
 		camera_frame.y = static_data->static_data_height() - camera_frame.h;
 
-	analyser.close();
-}
-
-Dynamic_data::~Dynamic_data()
-{
-    m_projectiles_ennemy.~List();
-    m_projectiles_friend.~List();
-    m_monsters.~List();
-
-    delete m_babar;
+	analyser.close();	
 }
 
 bool Dynamic_data::projectiles_friend_end()
