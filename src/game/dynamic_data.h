@@ -11,6 +11,7 @@
 #define _DYNAMIC_DATA_
 
 #include "../util/lists.h"
+#include <stdint.h>
 
 class Static_data;
 class Game;

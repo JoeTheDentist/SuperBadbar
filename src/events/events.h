@@ -10,8 +10,9 @@ private:
 public:
 	Event();
 	~Event();
-	bool can_start();
-	void start();
+	virtual void update();
+	virtual bool can_start();
+	virtual void start();
 	
 	
 };

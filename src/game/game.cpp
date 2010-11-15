@@ -24,17 +24,19 @@
 #include "../sound/sound_manager.h"
 #include "../video/statics.h"
 #include "../video/dashboard.h"
+#include "../events/events_manager.h"
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_dynamic_data(new Dynamic_data()), m_camera(new Camera), m_talks(new Talks())
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_dynamic_data(new Dynamic_data()), m_camera(new Camera), m_talks(new Talks()),  m_events_manager(new Events_manager)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
 	m_dynamic_data->init_dynamic_data(m_camera, m_static_data, m_sound_manager, m_keyboard);
 	m_camera->init_camera(m_dynamic_data->babar());
 	m_talks->init_talks(m_camera);
+	m_events_manager->init_events_manager(m_static_data, m_dynamic_data);
+	m_events_manager->load_events();
 	m_dashboard = new Dashboard();
-	
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 	update_camera();
@@ -74,6 +76,12 @@ void Game::update_camera()
 {
     m_camera->update_pos(m_static_data);
 }
+
+void Game::update_events_manager()
+{
+	m_events_manager->update();
+}
+
 
 void Game::refresh_screen()
 {
@@ -122,6 +130,7 @@ void Game::game_loop()
 			compteur++;
 			m_previous_time = m_time;
 			m_keyboard->update_events();
+			update_events_manager();
 			if (m_keyboard->key_down(k_exit))
 				end = true;
             m_dynamic_data->update(m_camera);

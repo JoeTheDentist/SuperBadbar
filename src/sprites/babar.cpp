@@ -319,6 +319,11 @@ void Babar::damage(int damages)
 	}
 }
 
+void Babar::change_weapon(weapon_type weapon)
+{
+	m_weapon.change_weapon(weapon);
+}
+
 bool Babar::is_invincible()
 {
 	return m_invincible > 0;

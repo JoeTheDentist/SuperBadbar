@@ -38,6 +38,7 @@ public:
 	bool can_stop_fly();
 	void stop_fly();
 	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
+	void change_weapon(weapon_type weapon);
 	bool is_invincible();
 	int lifes();
 	int munitions();
