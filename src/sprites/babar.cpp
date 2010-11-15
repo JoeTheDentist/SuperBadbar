@@ -27,6 +27,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 	m_fire_phase = 0;
 	m_double_jump = false;
 	m_sound_manager = sound_manager;
+	m_fly = false;
 
     /*** Stockage et chargement dans le tableau des images ***/
 
@@ -133,7 +134,10 @@ SDL_Surface *Babar::current_picture()
 
 void Babar::update_speed()
 {
-	m_speed.y += GRAVITE;
+	if (m_fly)
+		m_speed.y = GRAVITE/5;
+	else
+		m_speed.y += GRAVITE;
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (m_keyboard->key_down(k_left))
         m_speed.x -= BABAR_SPEED;
@@ -146,13 +150,21 @@ void Babar::update_state(Static_data *static_data)
     if(m_state != JUMP) {
         m_state = STATIC;
 		m_double_jump = false;
+		m_fly = false;
     }
+	if (m_fly && m_keyboard->key_down(k_jump)) {
+		m_keyboard->disable_key(k_jump);
+		m_fly = false;
+	}
    	//~ if (m_keyboard->key_down(k_action)) {
 		//~ talks.load_and_display_text("test.dial");
 	//~ }
 
 	update_direction();
-
+	
+	if(can_fly()) {
+		fly();
+	} 
     if (can_fire()) {
 		fire();
         m_fire_phase = 0;
@@ -228,6 +240,7 @@ void Babar::double_jump()
 	PRINT_TRACE(2, "Double-saut de Babar")
 	m_speed.y = -5*BABAR_SPEED;
 	m_sound_manager->play_babar_jump();
+	m_keyboard->disable_key(k_jump);
 
 }
 
@@ -236,6 +249,17 @@ bool Babar::can_jump()
 	return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
 }
 
+void Babar::fly() 
+{
+	m_keyboard->disable_key(k_jump);
+	PRINT_DEBUG(1, "yooo");
+	m_fly = true;
+}
+
+bool Babar::can_fly()
+{
+	return m_double_jump && m_keyboard->key_down(k_jump);
+}
 void Babar::jump()
 {
 	m_state = JUMP;

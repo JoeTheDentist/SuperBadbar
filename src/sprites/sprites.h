@@ -7,7 +7,7 @@
 #ifndef _SPRITES_
 #define _SPRITES_
 
-#define BABAR_SPEED 10
+
 #define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
@@ -30,12 +30,10 @@ class Sprite{
 protected:
 	SDL_Rect m_pos; 		    /* position du sprite et sa taille */
 	SDL_Rect m_speed;		    /* vitesse du sprite */
-	bool m_cache;			    /* afficher le sprite ou pas */
 	horizontal m_horizontal;    /* direction horizontale */
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
-	bool m_climb;
 	Sound_manager *m_sound_manager;
 public:
 	Sprite();			    /* constructeur */

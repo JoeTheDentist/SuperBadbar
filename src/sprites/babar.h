@@ -2,7 +2,7 @@
 #define _BABAR_
 
 #include "sprites.h"
-
+#define BABAR_SPEED 15
 
 class Babar: public Sprite {
 protected:
@@ -10,6 +10,7 @@ protected:
     horizontal m_last_dir;              /* direction vers laquelle Babar regarde (pour les tirs haut et bas) */
     SDL_Surface *m_pics[3][3][3][4];    /* Images des animations indicés par: état, gauche droite, bas haut, numéro image */
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
+	bool m_fly;
     Weapon m_weapon;		            /* arme actuelle de babar  */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
@@ -30,7 +31,9 @@ public:
 	SDL_Surface * current_picture();  	/* Retourne la bonne image de l'animation */
 	bool can_fire();					/* retourne vrai si le joueur appuie sur tirer et s'il peut tirer à ce moment */
 	bool can_double_jump();				/* retourne vrai si Babar peut resauter */
-	bool can_jump();					/* retourne vrai si le joueur appuie sur saut et s'il peut sauter à ce moment */
+	bool can_jump();	/* retourne vrai si le joueur appuie sur saut et s'il peut sauter à ce moment */
+	bool can_fly();
+	void fly();
 	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
 	bool is_invincible();
 	int lifes();

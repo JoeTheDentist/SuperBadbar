@@ -17,7 +17,6 @@ Sprite::Sprite()
 {
 	m_speed.x = 0;
 	m_speed.y = 0;
-	m_cache = true;
 	m_horizontal = MIDDLE_h;
 	m_vertical = MIDDLE_v;
 	m_state = WALK;
