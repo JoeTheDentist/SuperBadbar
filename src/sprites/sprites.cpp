@@ -108,6 +108,24 @@ uint32_t Sprite::phase()
     return m_phase;
 }
 
+int Sprite::direction_h() 
+{
+	if (m_horizontal == MIDDLE_h)
+		return 0;
+	if (m_horizontal == RIGHT)
+		return 1;
+	else
+		return -1;
+}
 
+int Sprite::direction_v() 
+{
+	if (m_vertical == MIDDLE_v)
+		return 0;
+	if (m_vertical == DOWN)
+		return 1;
+	else
+		return -1;
+}
 
 

@@ -44,6 +44,8 @@ public:
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */
 	uint32_t phase();       /* accesseur */
+	int direction_h(); /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+	int direction_v(); /* retourne la direction verticale du sprite (-1 pour haut, 0 pour middle, 1 pour bas */
 };
 
 
