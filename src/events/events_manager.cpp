@@ -26,11 +26,23 @@ void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data 
 void Events_manager::load_events()
 {
 	PRINT_TRACE(1, "Chargement des evenements");
-	m_event = new Event_weapon(m_dynamic_data->babar());
+	Event *event = new Event_weapon(m_dynamic_data->babar());
+	m_list_events.push_back(event);	
 }
 
 void Events_manager::update()
 {
-	if(m_event->can_start())
-		m_event->start();
+	std::list<Event*>::iterator curs;
+	for (curs = m_list_events.begin(); curs != m_list_events.end(); ) { // si on met le curs++ dans la boucle, on a un pb de curs après erase!
+		if((*curs)->can_start())
+			(*curs)->start();		
+		if((*curs)->can_be_destroyed()) {
+			(*curs)->destroy();
+			m_list_events.erase(curs++);
+		} else {
+			curs++;
+		}
+	}
 }
+
+

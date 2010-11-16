@@ -28,3 +28,14 @@ bool Event::can_start()
 void Event::start()
 {
 }
+
+bool Event::can_be_destroyed() 
+{
+	return false;
+}
+
+void Event::destroy()
+{
+	
+}
+
