@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="superbabar" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\superbabar" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\superbabar" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="$(#sdl.include)" />
+		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="SDLmain" />
+			<Add library="SDL.dll" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libfmodex.a" />
+			<Add directory="$(#sdl.lib)" />
+		</Linker>
+		<Unit filename="..\src\control\keyboard.cpp" />
+		<Unit filename="..\src\control\keyboard.h" />
+		<Unit filename="..\src\events\event_weapon.cpp" />
+		<Unit filename="..\src\events\event_weapon.h" />
+		<Unit filename="..\src\events\events.cpp" />
+		<Unit filename="..\src\events\events.h" />
+		<Unit filename="..\src\events\events_manager.cpp" />
+		<Unit filename="..\src\events\events_manager.h" />
+		<Unit filename="..\src\game\dynamic_data.cpp" />
+		<Unit filename="..\src\game\dynamic_data.h" />
+		<Unit filename="..\src\game\game.cpp" />
+		<Unit filename="..\src\game\game.h" />
+		<Unit filename="..\src\game\static_data.cpp" />
+		<Unit filename="..\src\game\static_data.h" />
+		<Unit filename="..\src\items\weapons.cpp" />
+		<Unit filename="..\src\items\weapons.h" />
+		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\sound\sound.cpp" />
+		<Unit filename="..\src\sound\sound.h" />
+		<Unit filename="..\src\sound\sound_manager.cpp" />
+		<Unit filename="..\src\sound\sound_manager.h" />
+		<Unit filename="..\src\sprites\babar.cpp" />
+		<Unit filename="..\src\sprites\babar.h" />
+		<Unit filename="..\src\sprites\monsters.cpp" />
+		<Unit filename="..\src\sprites\monsters.h" />
+		<Unit filename="..\src\sprites\projectiles.cpp" />
+		<Unit filename="..\src\sprites\projectiles.h" />
+		<Unit filename="..\src\sprites\sprites.cpp" />
+		<Unit filename="..\src\sprites\sprites.h" />
+		<Unit filename="..\src\sprites\walking_monsters.cpp" />
+		<Unit filename="..\src\sprites\walking_monsters.h" />
+		<Unit filename="..\src\util\analyser.cpp" />
+		<Unit filename="..\src\util\analyser.h" />
+		<Unit filename="..\src\util\collisions.cpp" />
+		<Unit filename="..\src\util\collisions.h" />
+		<Unit filename="..\src\util\debug.h" />
+		<Unit filename="..\src\util\globals.h" />
+		<Unit filename="..\src\util\lists.h" />
+		<Unit filename="..\src\video\camera.cpp" />
+		<Unit filename="..\src\video\camera.h" />
+		<Unit filename="..\src\video\dashboard.cpp" />
+		<Unit filename="..\src\video\dashboard.h" />
+		<Unit filename="..\src\video\statics.cpp" />
+		<Unit filename="..\src\video\statics.h" />
+		<Unit filename="..\src\video\talks.cpp" />
+		<Unit filename="..\src\video\talks.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
