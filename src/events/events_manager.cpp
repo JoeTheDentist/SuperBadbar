@@ -5,6 +5,7 @@
 #include "../game/static_data.h"
 #include "../util/debug.h"
 #include "../events/event_weapon.h"
+#include "../video/camera.h"
 
 
 Events_manager::Events_manager()
@@ -34,6 +35,7 @@ void Events_manager::update()
 {
 	std::list<Event*>::iterator curs;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); ) { // si on met le curs++ dans la boucle, on a un pb de curs après erase!
+		(*curs)->update();
 		if((*curs)->can_start())
 			(*curs)->start();		
 		if((*curs)->can_be_destroyed()) {
@@ -42,6 +44,14 @@ void Events_manager::update()
 		} else {
 			curs++;
 		}
+	}
+}
+
+void Events_manager::display_events(Camera *camera)
+{
+	std::list<Event*>::iterator curs;
+	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++) {
+		camera->display_event(*curs);
 	}
 }
 

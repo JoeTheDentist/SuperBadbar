@@ -3,6 +3,9 @@
 #ifndef _EVENTS_
 #define _EVENTS_
 
+#include <SDL/SDL.h>
+
+
 class Event {
 private:
 	
@@ -15,8 +18,8 @@ public:
 	virtual void start();
 	virtual bool can_be_destroyed();
 	virtual void destroy();
-	
-	
+	virtual SDL_Surface *current_picture();
+	virtual SDL_Rect current_pos();
 };
 
 

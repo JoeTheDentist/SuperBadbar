@@ -27,6 +27,7 @@
 #include "../events/events_manager.h"
 
 
+
 Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_dynamic_data(new Dynamic_data()), m_camera(new Camera), m_talks(new Talks()),  m_events_manager(new Events_manager)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
@@ -91,6 +92,9 @@ void Game::refresh_screen()
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	m_static_data->display_statics(m_camera);
+	
+	/* affichage des événements */
+	m_events_manager->display_events(m_camera);
 
     /* affichage des monstres */
 	m_dynamic_data->display_monsters(m_camera);

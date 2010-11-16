@@ -6,7 +6,7 @@
 class Event;
 class Dynamic_data;
 class Static_data;
-
+class Camera;
 
 class Events_manager {
 private:
@@ -18,7 +18,9 @@ public:
 	~Events_manager();
 	void init_events_manager(Static_data *static_data, Dynamic_data *dynamic_data);
 	void load_events();
-	void update ();
+	void update();
+	void display_events(Camera *camera);
+
 };
 
 #endif

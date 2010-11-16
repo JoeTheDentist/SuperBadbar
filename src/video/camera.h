@@ -22,7 +22,8 @@ class Monster;
 class Projectile;
 class Static;
 class Static_data;
-
+class Events_manager;
+class Event;
 
 class Camera {
 private:
@@ -40,6 +41,8 @@ public:
 	void display_background(SDL_Surface *background); /* affichage d'un fond d'écran */
 	void display_sprite(Sprite *sprite);      /* affichage d'un Sprite */
 	void display_static(Static *sttc);
+	void display_events(Events_manager *event_manager);
+	void display_event(Event *event);
 	SDL_Rect frame();	/* accesseur (m_frame) */
 	void display_picture(SDL_Surface *pic, SDL_Rect *pos); /* ATTENTION: pos designe la position par rapport à la fenetre: m_frame n'est pas pris en compte dans cette fonction */
 	void flip_camera();
