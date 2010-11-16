@@ -13,12 +13,12 @@
 
 class Sound_manager {
 private:
-	FSOUND_STREAM *m_music;
+	/*FSOUND_STREAM *m_music;
 	FSOUND_SAMPLE *m_babar_jump;
 	FSOUND_SAMPLE *m_babar_rugissement;
 	FSOUND_SAMPLE **m_fire;
-	FSOUND_SAMPLE *m_monster_damage;
-	
+	FSOUND_SAMPLE *m_monster_damage;*/
+
 
 public:
 	Sound_manager();

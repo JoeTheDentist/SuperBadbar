@@ -102,7 +102,7 @@ void Static_data::init_static_data(uint32_t lvl)
         }
     }
 	analyser.fill_collision_matrix(m_collision_matrix);
-    analyser.close();	
+    analyser.close();
 }
 
 void Static_data::fill_collision(uint32_t i, uint32_t j, uint32_t collision_type)
