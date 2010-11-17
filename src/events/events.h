@@ -7,7 +7,8 @@
 
 
 class Event {
-private:
+protected:
+	bool m_can_be_destroyed;
 	
 
 public:

@@ -5,6 +5,7 @@
 #include "../game/static_data.h"
 #include "../util/debug.h"
 #include "../events/event_weapon.h"
+#include "../events/event_item.h"
 #include "../video/camera.h"
 
 

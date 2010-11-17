@@ -2,11 +2,12 @@
 #include <stdint.h>
 
 #include "events.h"
-
+#include "../util/debug.h"
 
 Event::Event()
 {
-	
+	PRINT_CONSTR(3, "Construction d'un event");
+	m_can_be_destroyed = false;
 }
 
 Event::~Event()
@@ -31,7 +32,7 @@ void Event::start()
 
 bool Event::can_be_destroyed() 
 {
-	return false;
+	return m_can_be_destroyed;
 }
 
 void Event::destroy()
