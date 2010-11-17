@@ -20,10 +20,10 @@ enum key {
 
 class Keyboard {
 private:
-	enum key m_key_config[SDLK_LAST];
-	bool m_key_down[k_fire + 1];
+	enum key m_key_config[SDLK_LAST];	/* tableau de configuration des touches */
+	bool m_key_down[k_fire + 1];		/* tableau des touches enfoncées */
 public:
-	Keyboard();				/* constructeur */  // il faudra le faire à partir d'un fichier de configuration
+	Keyboard();					/* constructeur */ 
 	~Keyboard();				/* destructeur */
 	void update_events();			/* met à jour les touches enfoncées à partir des actions du joueur */
 	bool key_down (enum key k);		/* retourne vrai si la touche est enfoncée */

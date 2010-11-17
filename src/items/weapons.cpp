@@ -53,7 +53,6 @@ Weapon::~Weapon()
 
 void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 {
-
     Projectile * proj;
 	m_sound_manager->play_fire(m_weapon_type);
 	int dir_h =0, dir_v = 0;
@@ -78,7 +77,6 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
 					else 
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
-						
 					m_phase_diago = 0;
 					m_last_dir_v = 3;
 					m_last_dir_h = 3;

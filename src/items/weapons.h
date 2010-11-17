@@ -6,7 +6,7 @@
 #include "../sound/sound_manager.h"
 
 
-#define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
+#define PROJ_LIFE_SPAN 15   /* DurÃ©e de vie d'un projectile */
 #define PROJ_SPEED 30       /* Vitesse des projectiles */  
 
 /* nombre maximal de munitions par armes */
@@ -15,7 +15,6 @@
 #define MUN_SHOTGUN 10
 
 /* temps de recharge des armes */
-
 #define RELOAD_GUN 2
 #define RELOAD_MACHINEGUN 0
 #define RELOAD_SHOTGUN 10
@@ -25,7 +24,7 @@ class Sprites;
 class Babar;
 class Sound_manager;
 
-/* Pas à leur place ! */
+/* Pas Ã  leur place ! */
 enum horizontal {
     LEFT, MIDDLE_h, RIGHT
 };
@@ -58,7 +57,7 @@ class Weapon
         Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics);
         Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics, Sound_manager *sound_manager);
         ~Weapon();
-        void fire(SDL_Rect pos, horizontal h, vertical v);    /* crée les projectiles de l'arme */
+        void fire(SDL_Rect pos, horizontal h, vertical v);    /* crÃ©e les projectiles de l'arme */
         uint32_t reload_time();                 /* accesseur */
 		void change_weapon(weapon_type type);
 		int munitions();

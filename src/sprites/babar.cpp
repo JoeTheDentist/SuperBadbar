@@ -54,23 +54,23 @@ void Babar::load(char age)
     char age_c = '0', i_c = '0';
     age_c += age;
     std:string rac = RAC;
-
+	std::string babar_pic_dir = rac + "/pic/babar/";
     /** Charge static **/
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
-            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
         }
     }
-    string test = (rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str();
+    string test = (babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str();
 
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
-            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_1.bmp").c_str());
+            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp").c_str());
         }
     }
     for(int i = 0;i<3;i++) {    /* don't care */
         for(int j = 0;j<4;j++) {
-            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
         }
     }
 
@@ -78,35 +78,35 @@ void Babar::load(char age)
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
             char num = i_c+j+1;
-            m_pics[WALK][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_"+num+".bmp").c_str());
+            m_pics[WALK][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp").c_str());
         }
     }
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
             char num = i_c+j+1;
-            m_pics[WALK][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_"+num+".bmp").c_str());
+            m_pics[WALK][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp").c_str());
         }
     }
     for(int i = 0;i<3;i++) {    /* don't care */
         for(int j = 0;j<4;j++) {
-            m_pics[WALK][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_1.bmp").c_str());
+            m_pics[WALK][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
         }
     }
 
     /** Charge jump **/
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
-            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str());
+            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str());
         }
     }
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
-            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_right_2.bmp").c_str());
+            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp").c_str());
         }
     }
     for(int i = 0;i<3;i++) {    /* don't care */
         for(int j = 0;j<4;j++) {
-            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((rac+"/pic/babar_"+age_c+"_walk_left_2.bmp").c_str());
+            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str());
         }
     }
 

@@ -2,7 +2,6 @@
  * Classe Static_data: classe singleton contenant toutes les données d'un niveau
  * ne variant pas au cours d'un cycle de jeu.
  *
-
 **/
 
 #ifndef _STATIC_DATA_
@@ -20,16 +19,15 @@ class Camera;
 
 
 class Static_data {
+	
 private:
-	uint32_t m_static_data;							/* Numero du niveau */
-	int m_nb_monsters;                          /* Nombre de monstres DIFFERENTS sur le niveau */
-	SDL_Surface ** m_monsters_pics[2][4];	    /* Tableau de toutes les images de monstre : etat, gauche droite, noméro image, type de monstre */
-	SDL_Surface * m_background;                 /* image de fond du niveau */
-	uint32_t ** m_collision_matrix;      	    /* matrice des statics */
-	SDL_Rect m_last_pos;                        /* Pour se souvenir de l'ancienne prosition de la caméra */
-	SDL_Surface *m_proj_pics[4];
-	List<Static*> m_statics;
-
+	uint32_t m_static_data;					/* Numero du niveau */
+	int m_nb_monsters;                 		/* Nombre de monstres DIFFERENTS sur le niveau */
+	SDL_Surface ** m_monsters_pics[2][4];	/* Tableau de toutes les images de monstre : [etat][gauche droite][numéro image][type de monstre]*/
+	SDL_Surface * m_background;             /* image de fond du niveau */
+	uint32_t ** m_collision_matrix;      	/* matrice des statics */
+	SDL_Surface *m_proj_pics[4];			/* images des projetctiles */
+	List<Static*> m_statics;				/* liste des statics du niveau */
 
 public:
 	Static_data();														/* Constructeur par défaut*/
@@ -52,9 +50,9 @@ public:
 
     void fill_monster_pic(int h, int num_image, int num_monster, const char *link); /* remplit une case de la matrice des images des monstres */
 	SDL_Surface **monster_pic(uint32_t i, uint32_t j); /* accesseur */
-	SDL_Surface **proj_pics();
-	void display_statics(Camera *camera);
-	void add_static(Static *stat);
+	SDL_Surface **proj_pics();				/* accesseur */
+	void display_statics(Camera *camera);	/* fonction d'affichage des statics */
+	void add_static(Static *stat);			/* ajoute un static */
 
 };
 

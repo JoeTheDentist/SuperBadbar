@@ -8,7 +8,7 @@
 
 Keyboard::Keyboard()
 {
-	PRINT_CONSTR(1, "Construction d'Keyboard")
+	PRINT_CONSTR(1, "Construction de Keyboard")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
 		m_key_config[i] = k_none;
 	for (uint32_t i = 0; i <= k_fire; i++)
@@ -25,28 +25,24 @@ Keyboard::Keyboard()
 Keyboard::~Keyboard()
 {
 	PRINT_CONSTR(1, "Destruction d'Keyboard")
-
 }
-
 
 void Keyboard::update_events()
 {
 	SDL_Event event;
-	while(SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
+	while(SDL_PollEvent(&event)) {
+		switch (event.type) {
 		case SDL_QUIT :
-			m_key_down[k_exit]=1;
+			m_key_down[k_exit] = 1;
 			break;
 		case SDL_KEYDOWN:
-			m_key_down[m_key_config[event.key.keysym.sym]]=1;
+			m_key_down[m_key_config[event.key.keysym.sym]]= 1;
 			if (event.key.keysym.sym==SDLK_ESCAPE) {
 			    m_key_down[k_exit]=1;
 			}
 			break;
 		case SDL_KEYUP:
-			m_key_down[m_key_config[event.key.keysym.sym]]=0;
+			m_key_down[m_key_config[event.key.keysym.sym]] = 0;
 			break;
 		default:
 			break;
@@ -74,5 +70,3 @@ void Keyboard::disable_all_keys()
 	for (uint32_t i = 0; i <= k_fire; i++)
 		disable_key((enum key)i);
 }
-
-

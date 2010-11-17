@@ -21,8 +21,6 @@ Static_data::Static_data()
 
 }
 
-
-
 Static_data::~Static_data()
 {
 	PRINT_CONSTR(1, "Destruction d'un Static_data")
@@ -30,7 +28,6 @@ Static_data::~Static_data()
         delete[] m_collision_matrix[i];
     }
     delete[] m_collision_matrix;
-
     for(int i=0;i<2;i++) {
         for(int j=0;j<4;j++) {
             for(int l=0;l<m_nb_monsters;l++) {
@@ -39,13 +36,10 @@ Static_data::~Static_data()
             delete[] m_monsters_pics[i][j];
         }
     }
-
 	for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj_pics[i]);
     }
-
     m_statics.~List();
-
     SDL_FreeSurface(m_background);
 
 }

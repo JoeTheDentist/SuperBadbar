@@ -1,0 +1,54 @@
+
+
+general:
+	- généraliser la gestion des répertoires
+	- recommencer l'éditeur
+	- refaire l'analyser
+	- gérer le son
+
+controls:
+	keyboard:
+		- faire le chargement de la configuration des touches à partir d'un fichier de configuration
+		- donner la possibilité de changer la configuration (dynamiquement)
+events:
+	events:
+		- Commenter
+		- développer
+	events_manager:
+		- Commenter
+		- Méthode d'ajout d'un élément
+		- Faire correctement le init et le load
+	event_weapon:
+		- Faire une classe mère intermédiaire pour les items
+		- Refaire le constructeur 
+		- Changer l'image
+		- Commenter
+game:
+	game:
+		- Cleaner un peu?
+	dynamic_data:
+		- Cleaner un peu?
+items:
+	weapon:
+		- Dans le header essaie de remettre les structures horizontal et vertical à leurs places
+		- Commenter
+		- Lire les données des armes depuis un fichier?
+		- Découper fire() en plusieurs méthodes selon l'arme...
+sound:
+	- A retravailler entièrement (et à faire marcher sous windows)
+sprites:
+	- Redéfinir la hierarchie
+	- Tout revoir
+	- Définir une bonne structure de monstres
+	- Organiser un peu mieux le traitement de Babar
+video:
+	- RAS (alli)
+
+	
+	
+	
+	
+general mais plus tard:
+	- gérer les niveaux
+	- faire des menus (start, options, quitter, sauvegarder...)
+	- permettre au joueur de sauvegarder
