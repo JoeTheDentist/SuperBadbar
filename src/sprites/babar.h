@@ -23,26 +23,26 @@ public:
 	void update_speed();				/* mise à jour de la vitesse en fonction des touches enfoncées */
 	void update_state(Static_data *static_data);    /* mise à jour de l'état de babar et de sa direction */
 	void update_direction();			/* mise à jour de la direction de babar en fonction des touches enfoncées*/
-	void fire();						/* fait tirer Babar */
-	void double_jump();					/* fait resauter Babar*/
-	void jump();						/* fait sauter babar */
-	void go_down(Static_data *static_data);     /* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
-	void damage(int damages);
-
-	SDL_Surface * current_picture();  	/* Retourne la bonne image de l'animation */
-	bool can_fire();					/* retourne vrai si le joueur appuie sur tirer et s'il peut tirer à ce moment */
+	bool can_fire();
+	void fire();	/* fait tirer Babar */
 	bool can_double_jump();				/* retourne vrai si Babar peut resauter */
+	void double_jump();					/* fait resauter Babar*/
 	bool can_jump();	/* retourne vrai si le joueur appuie sur saut et s'il peut sauter à ce moment */
+	void jump();						/* fait sauter babar */
+	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
+	void go_down(Static_data *static_data);     /* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
 	bool can_fly();
 	void fly();
 	bool can_stop_fly();
 	void stop_fly();
-	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
 	void change_weapon(weapon_type weapon);
 	bool is_invincible();
 	int lifes();
 	int munitions();
 	weapon_type type_of_weapon();
+	void damage(int damages);
+	SDL_Surface * current_picture();  	/* Retourne la bonne image de l'animation */
+
 };
 
 #endif

@@ -125,14 +125,6 @@ void Babar::load(char age)
 	}
 }
 
-SDL_Surface *Babar::current_picture()
-{
-	if ((m_invincible <= 0 || m_invincible%2 == 0))
-		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%4];
-	else
-		return NULL;
-}
-
 void Babar::update_speed()
 {
 	if (m_plane)
@@ -244,38 +236,11 @@ void Babar::double_jump()
 
 }
 
+
 bool Babar::can_jump()
 {
 	return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
 }
-
-void Babar::fly() 
-{
-	m_keyboard->disable_key(k_jump);
-	m_plane = true;
-}
-
-bool Babar::can_fly()
-{
-	if (m_plane || !m_allowed_to_plane)
-		return false;
-	return m_double_jump && m_keyboard->key_down(k_jump);
-}
-
-void Babar::stop_fly()
-{
-	m_keyboard->disable_key(k_jump);
-	m_plane = false;	
-}
-
-bool Babar::can_stop_fly()
-{
-	if (!m_plane)
-		return false;
-	return (m_plane && m_keyboard->key_down(k_jump)) || m_state == STATIC;
-	
-}
-
 
 void Babar::jump()
 {
@@ -307,6 +272,34 @@ void Babar::go_down(Static_data *static_data)
 	m_keyboard->disable_key(k_jump);
 	PRINT_TRACE(2, "Descente d'une plateforme")
 }
+
+void Babar::fly() 
+{
+	m_keyboard->disable_key(k_jump);
+	m_plane = true;
+}
+
+bool Babar::can_fly()
+{
+	if (m_plane || !m_allowed_to_plane)
+		return false;
+	return m_double_jump && m_keyboard->key_down(k_jump);
+}
+
+bool Babar::can_stop_fly()
+{
+	if (!m_plane)
+		return false;
+	return (m_plane && m_keyboard->key_down(k_jump)) || m_state == STATIC;
+	
+}
+
+void Babar::stop_fly()
+{
+	m_keyboard->disable_key(k_jump);
+	m_plane = false;	
+}
+
 
 void Babar::damage(int damages)
 {
@@ -344,4 +337,11 @@ weapon_type Babar::type_of_weapon()
 	return m_weapon.type_of_weapon();
 }
 
+SDL_Surface *Babar::current_picture()
+{
+	if ((m_invincible <= 0 || m_invincible%2 == 0))
+		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%4];
+	else
+		return NULL;
+}
 
