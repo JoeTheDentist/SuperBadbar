@@ -23,7 +23,6 @@ events:
 		- Méthode d'ajout d'un élément
 		- Faire correctement le init et le load
 	event_weapon:
-		- Faire une classe mère intermédiaire pour les items
 		- Refaire le constructeur 
 		- Changer l'image
 		- Commenter

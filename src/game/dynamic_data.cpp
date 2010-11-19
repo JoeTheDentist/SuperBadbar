@@ -31,10 +31,6 @@ Dynamic_data::Dynamic_data()
 
 Dynamic_data::~Dynamic_data()
 {
-    m_projectiles_ennemy.~List();
-    m_projectiles_friend.~List();
-    m_monsters.~List();
-
     delete m_babar;
 }
 

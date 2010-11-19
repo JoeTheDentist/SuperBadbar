@@ -28,7 +28,7 @@ Monster::Monster(uint32_t type, SDL_Rect pos)
 
 Monster::~Monster()
 {
-
+	PRINT_CONSTR(2, "destruction d'un monstre")
 }
 
 SDL_Surface *Monster::current_picture()

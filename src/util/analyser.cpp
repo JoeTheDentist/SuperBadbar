@@ -33,12 +33,11 @@ uint32_t Analyser::open(std::string file)
 	return 0;
 }
 
-uint32_t Analyser::close()
+void Analyser::close()
 {
 	fclose(m_file);
 	m_file = NULL;
 	m_opened = false;
-	return 0;
 }
 
 void Analyser::find_string(std::string str)

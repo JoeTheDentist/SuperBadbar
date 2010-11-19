@@ -23,6 +23,7 @@ class Dashboard;
 class Keyboard;
 class Events_manager;
 
+
 class Game {
 private:
 	Sound_manager *m_sound_manager;
