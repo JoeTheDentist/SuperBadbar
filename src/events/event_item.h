@@ -11,7 +11,7 @@ protected:
 	SDL_Rect m_pos;
 	int m_phase;
 public:
-	Event_item(Babar *target);
+	Event_item(Babar *target, SDL_Rect pos);
 	~Event_item();
 	virtual void update();
 	virtual bool can_start();

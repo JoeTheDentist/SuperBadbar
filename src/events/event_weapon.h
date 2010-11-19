@@ -6,6 +6,7 @@
 #include "../items/weapons.h"
 #include <SDL/SDL.h>
 
+class Pictures_container;
 class Babar;
 class Weapon;
 
@@ -13,7 +14,7 @@ class Event_weapon: public Event_item{
 private:
 	weapon_type m_weapon_type;
 public:
-	Event_weapon(Babar *target);
+	Event_weapon(Babar *target, SDL_Rect pos, Pictures_container *pictures_container);
 	~Event_weapon();
 	void start();
 	SDL_Surface *current_picture();

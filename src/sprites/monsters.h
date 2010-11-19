@@ -2,6 +2,9 @@
 #define _MONSTERS_
 
 #include "sprites.h"
+#include "../video/pictures_container.h"
+class Pictures_container;
+
 
 class Monster: public Sprite {
 protected:

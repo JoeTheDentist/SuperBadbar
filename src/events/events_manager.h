@@ -7,12 +7,14 @@ class Event;
 class Dynamic_data;
 class Static_data;
 class Camera;
+class Pictures_container;
 
 class Events_manager {
 private:
 	Dynamic_data *m_dynamic_data;
 	Static_data *m_static_data;
 	std::list<Event*> m_list_events;	
+	Pictures_container *m_pictures_container;
 public:
 	Events_manager();
 	~Events_manager();

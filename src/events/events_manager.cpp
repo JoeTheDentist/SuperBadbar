@@ -7,6 +7,8 @@
 #include "../events/event_weapon.h"
 #include "../events/event_item.h"
 #include "../video/camera.h"
+#include "../sprites/babar.h"
+#include "../video/pictures_container.h"
 
 
 Events_manager::Events_manager()
@@ -24,12 +26,22 @@ void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data 
 	PRINT_TRACE(1, "Initilisation de Events_manager")
 	m_dynamic_data = dynamic_data;
 	m_static_data = static_data;
+	m_pictures_container = new Pictures_container();
 }
 
 void Events_manager::load_events()
 {
 	PRINT_TRACE(1, "Chargement des evenements");
-	Event *event = new Event_weapon(m_dynamic_data->babar());
+	SDL_Rect pos1;
+	pos1.x = m_dynamic_data->babar()->position_x() + 400;
+	pos1.y = 1500;
+	pos1.h = 50;
+	pos1.w = 50;
+	SDL_Rect pos2 = pos1;
+	pos2.x += 150;
+	Event *event = new Event_weapon(m_dynamic_data->babar(), pos1, m_pictures_container);
+	m_list_events.push_back(event);		
+	event = new Event_weapon(m_dynamic_data->babar(), pos2, m_pictures_container);
 	m_list_events.push_back(event);	
 }
 

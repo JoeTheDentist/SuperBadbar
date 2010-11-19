@@ -9,7 +9,7 @@
 
 
 
-Event_item::Event_item(Babar *target)
+Event_item::Event_item(Babar *target, SDL_Rect pos) : m_pos(pos)
 {
 	PRINT_CONSTR(3, "CONSTRUCTION D'UN EVENT ITEM");
 	m_target = target;
