@@ -15,8 +15,6 @@
 
 
 
-#define STATICS_DIR "/pic/statics/"
-#define MONSTERS_DIR "/pic/monsters/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
 
