@@ -13,13 +13,13 @@ class Weapon;
 class Event_weapon: public Event_item{
 private:
 	weapon_type m_weapon_type;
+	static int yop;
 public:
 	Event_weapon(Babar *target, SDL_Rect pos, Pictures_container *pictures_container);
 	~Event_weapon();
 	void start();
 	SDL_Surface *current_picture();
 }; 
-
 
 
 #endif

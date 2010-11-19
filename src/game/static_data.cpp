@@ -47,7 +47,7 @@ Static_data::~Static_data()
 void Static_data::init_static_data(uint32_t lvl)
 {
     m_statics.void_list();
-
+	std::string rep;
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
 	m_static_data = lvl;
@@ -58,13 +58,14 @@ void Static_data::init_static_data(uint32_t lvl)
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = SDL_LoadBMP((rac+"/pic/backgrounds/level"+str_lvl+".bmp").c_str());
+    m_background = SDL_LoadBMP((PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp").c_str());
 
 		/*** Images des projectiles ***/
-    m_proj_pics[0] = SDL_LoadBMP((rac+"/pic/projectiles/left-right.bmp").c_str());
-    m_proj_pics[1] = SDL_LoadBMP((rac+"/pic/projectiles/up-down.bmp").c_str());
-    m_proj_pics[2] = SDL_LoadBMP((rac+"/pic/projectiles/top-left.bmp").c_str());
-    m_proj_pics[3] = SDL_LoadBMP((rac+"/pic/projectiles/top-right.bmp").c_str());
+	rep = PIC_PROJ_R;
+    m_proj_pics[0] = SDL_LoadBMP((rep + "left-right.bmp").c_str());
+    m_proj_pics[1] = SDL_LoadBMP((rep + "up-down.bmp").c_str());
+    m_proj_pics[2] = SDL_LoadBMP((rep + "top-left.bmp").c_str());
+    m_proj_pics[3] = SDL_LoadBMP((rep + "top-right.bmp").c_str());
 	for(int i = 0;i<4;i++) {
         SDL_SetColorKey(m_proj_pics[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj_pics[i]->format, 0, 0, 255));
     }

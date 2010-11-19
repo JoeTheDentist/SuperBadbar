@@ -54,14 +54,13 @@ void Babar::load(char age)
     char age_c = '0', i_c = '0';
     age_c += age;
     std:string rac = RAC;
-	std::string babar_pic_dir = rac + "/pic/babar/";
+	std::string babar_pic_dir = PIC_BABAR_R;
     /** Charge static **/
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
             m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
         }
     }
-    string test = (babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str();
 
     for(int i = 0;i<3;i++) {
         for(int j = 0;j<4;j++) {
