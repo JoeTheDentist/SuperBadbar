@@ -1,7 +1,9 @@
 
 
 general:
-	- généraliser la gestion des répertoires
+	- changer le gameplay
+	- gérer le multijoueur
+	- supprimer un maximum de chemin, noms de fichiers ou autre strings dans les .cpp
 	- recommencer l'éditeur
 	- refaire l'analyser
 	- gérer le son
@@ -10,6 +12,7 @@ controls:
 	keyboard:
 		- faire le chargement de la configuration des touches à partir d'un fichier de configuration
 		- donner la possibilité de changer la configuration (dynamiquement)
+		- gérer le temps d'appui (changer les booleens de retour en integer)
 events:
 	events:
 		- Commenter
@@ -38,11 +41,11 @@ sound:
 	- A retravailler entièrement (et à faire marcher sous windows)
 sprites:
 	- Redéfinir la hierarchie
-	- Tout revoir
+	- Tout relire
 	- Définir une bonne structure de monstres
-	- Organiser un peu mieux le traitement de Babar
+	- Refaire les états de Babar
 video:
-	- RAS (alli)
+	- refaire la camera si on change les touches
 
 	
 	

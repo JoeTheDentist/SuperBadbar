@@ -71,7 +71,8 @@ void Static_data::init_static_data(uint32_t lvl)
     }
 
     /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
-    analyser.open(rac+"/data/levels/level"+str_lvl+".lvl");
+	rep = LEVELS_R;
+    analyser.open(rep + "level" + str_lvl + ".lvl");
     analyser.fill_statics(this);
 
     /*** Remplissage des monstres ***/

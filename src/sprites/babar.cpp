@@ -17,7 +17,6 @@
 **********************************/
 Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
-	std:string rac = RAC;
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
 	m_pos.y = 1600;
@@ -53,7 +52,6 @@ void Babar::load(char age)
 {
     char age_c = '0', i_c = '0';
     age_c += age;
-    std:string rac = RAC;
 	std::string babar_pic_dir = PIC_BABAR_R;
     /** Charge static **/
     for(int i = 0;i<3;i++) {

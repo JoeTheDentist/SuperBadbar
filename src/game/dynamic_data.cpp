@@ -45,17 +45,18 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
     m_monsters.void_list();
 
     std::string rac = RAC;
+	std::string rep;
 	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
 	m_sound_manager = sound_manager;
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
 	std::string str_lvl = "1";
 	Analyser analyser, analyser2;
-	analyser.open(rac+"/data/levels/level"+str_lvl+".lvl");
+	rep = LEVELS_R;
+	analyser.open(rep + "level" + str_lvl + ".lvl");
 
     /* Allocation de la matrice de monstres */
-
-    analyser2.open(rac+"/data/levels/level"+str_lvl+".lvl");
+    analyser2.open(rep + "level" +str_lvl+".lvl");
     analyser.fill_monsters(&analyser2, static_data, this);
     analyser2.close();
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);

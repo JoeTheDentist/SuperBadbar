@@ -114,7 +114,6 @@ void Analyser::fill_statics(Static_data *static_data)
 
 void Analyser::fill_collision_matrix(uint32_t **matrix)
 {
-    std::string rac = RAC;
 	std::string static_pic_rep = PIC_STATICS_R;
 	uint32_t x, y, static_height, static_weight, temp;
 	char static_name[40];
@@ -176,7 +175,7 @@ void Analyser::fill_monsters_pics(int nb_monsters, Static_data *static_data)
 
 void Analyser::fill_monsters(Analyser * analyser, Static_data *static_data, Dynamic_data *dynamic_data)
 {
-    /* Ici l'analyser en argument permet de traiter en parallèle deux bouts de fichiers sans ouvrir le fichier à chaque fois */
+    /* Ici l'analyser en argument permet de traiter en parallÃ¨le deux bouts de fichiers sans ouvrir le fichier Ã  chaque fois */
     uint32_t x,y,begin,end,life,speed,monster_type;
     bool fire;
     find_string("#PositionsMonstres#");
