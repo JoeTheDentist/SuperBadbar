@@ -8,7 +8,7 @@
 
 #define SQUARE_SIZE 5
 
-#define STATICS_DIR "../../../pic/statics/"
+#define STATICS_DIR "../../pic/statics/"
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
 #define EDITOR_PIC_DIR "../../../pic/editor/"

@@ -150,10 +150,10 @@ void Babar::update_state(Static_data *static_data)
 	//~ }
 
 	update_direction();
-	
+
 	if(can_fly()) {
 		fly();
-	} 
+	}
 	if (can_stop_fly()) {
 		stop_fly();
 	}
@@ -273,7 +273,7 @@ void Babar::go_down(Static_data *static_data)
 	PRINT_TRACE(2, "Descente d'une plateforme")
 }
 
-void Babar::fly() 
+void Babar::fly()
 {
 	m_keyboard->disable_key(k_jump);
 	m_plane = true;
@@ -291,13 +291,13 @@ bool Babar::can_stop_fly()
 	if (!m_plane)
 		return false;
 	return (m_plane && m_keyboard->key_down(k_jump)) || m_state == STATIC;
-	
+
 }
 
 void Babar::stop_fly()
 {
 	m_keyboard->disable_key(k_jump);
-	m_plane = false;	
+	m_plane = false;
 }
 
 
