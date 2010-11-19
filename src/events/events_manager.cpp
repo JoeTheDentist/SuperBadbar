@@ -19,6 +19,7 @@ Events_manager::Events_manager()
 Events_manager::~Events_manager()
 {
 	PRINT_CONSTR(1, "Destruction de Events_manager") 
+	delete m_pictures_container;
 }
 
 void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data *dynamic_data)

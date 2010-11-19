@@ -14,6 +14,7 @@ Event_item::Event_item(Babar *target, SDL_Rect pos) : m_pos(pos)
 	PRINT_CONSTR(3, "CONSTRUCTION D'UN EVENT ITEM");
 	m_target = target;
 	m_can_be_destroyed = false;
+	m_phase = 0;
 }
 
 Event_item::~Event_item()

@@ -46,6 +46,13 @@ Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m
 Game::~Game()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Game")
+	delete m_sound_manager;
+	delete m_keyboard;
+	delete m_static_data;
+	delete m_dynamic_data;
+	delete m_camera;
+	delete m_dashboard;
+	delete m_events_manager;
 
 }
 

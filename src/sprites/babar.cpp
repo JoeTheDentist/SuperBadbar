@@ -300,7 +300,7 @@ void Babar::stop_fly()
 
 void Babar::damage(int damages)
 {
-	PRINT_TRACE(2, "Babar bobo")
+	PRINT_TRACE(3, "Babar bobo")
 	if (!is_invincible()) {
 		m_sound_manager->play_babar_rugissement();
 		m_lifes -= damages;

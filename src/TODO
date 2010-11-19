@@ -1,6 +1,7 @@
 
 
 general:
+	- supprimer un maximum de fuites mémoires
 	- changer le gameplay
 	- gérer le multijoueur
 	- supprimer un maximum de chemin, noms de fichiers ou autre strings dans les .cpp
