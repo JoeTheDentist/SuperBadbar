@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     freopen("CON", "r", stdin);
     freopen("CON", "w", stderr);
 	#endif
-	
+
 	PRINT_TRACE(1,"Lancement du jeu")
 	Game game;
 

@@ -15,7 +15,7 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster(Sound_manager *sound_manager) 
+Monster::Monster(Sound_manager *sound_manager)
 {
 	m_sound_manager = sound_manager;
 }
@@ -28,7 +28,7 @@ Monster::Monster(uint32_t type, SDL_Rect pos)
 
 Monster::~Monster()
 {
-	PRINT_CONSTR(2, "destruction d'un monstre")
+	PRINT_CONSTR(3, "destruction d'un monstre")
 }
 
 SDL_Surface *Monster::current_picture()

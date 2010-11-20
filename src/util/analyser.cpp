@@ -138,15 +138,11 @@ void Analyser::fill_collision_matrix(uint32_t **matrix)
 		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++)
 			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
 				static_file >> temp;
-				jump_separators();
 				matrix[i][j] |= temp; // oh un smiley
 			}
-		static_file.close();
-		*m_file >> static_name;
-        jump_separators();
+            static_file.close();
+            *m_file >> static_name;
 		}
-
-
 }
 
 int Analyser::nb_monsters()
