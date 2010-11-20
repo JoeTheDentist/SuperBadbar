@@ -82,6 +82,22 @@ void Analyser::jump_separators()
 	fseek(m_file, -1, SEEK_CUR);
 }
 
+int Analyser::read_int()
+{
+	int res;
+	jump_separators();
+	fscanf(m_file, "%d", &res);
+	return res;
+}
+
+uint32_t Analyser::read_uint32_t()
+{
+	uint32_t res;
+	jump_separators();
+	fscanf(m_file, "%u", &res);
+	return res;	
+}
+
 void Analyser::fill_statics(Static_data *static_data)
 {
     char link[40];

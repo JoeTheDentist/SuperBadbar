@@ -70,6 +70,20 @@ public:
 	* @param str La chaine cherchée
 	*/
 	void find_string(std::string str);
+	
+	/*!
+	* @brief Lit et renvoie le prochain int du fichier, en sautant les séparateurs
+	* 
+	* @return l'int lu
+	*/
+	int read_int();
+	
+	/*!
+	* @brief Lit et renvoie le prochain uint32_t du fichier, en sautant les séparateurs
+	* 
+	* @return l'uint32_t lu
+	*/	
+	uint32_t read_uint32_t();
 
 	/*!
 	* @brief Lit dans le fichier la section suivant #Statics# et l'ajout à la liste globale curr_statics
