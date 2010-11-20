@@ -53,7 +53,7 @@ void Analyser::find_string(std::string str)
 		else
 			char_found = 0;
 	}
-	
+
 }
 
 void Analyser::jump_separators()
@@ -96,8 +96,8 @@ uint32_t Analyser::read_uint32_t()
 {
 	uint32_t res;
 	jump_separators();
-	*m_file >> res;	
-	return res;	
+	*m_file >> res;
+	return res;
 }
 
 void Analyser::fill_statics(Static_data *static_data)
@@ -110,18 +110,14 @@ void Analyser::fill_statics(Static_data *static_data)
 	*m_file >> static_name;
     while(static_name[0]!='!') {
         Static *curr_static;
-        jump_separators();
 		*m_file >> x;
 		pos.x = x;
-        jump_separators();
 		*m_file >> y;
 		pos.y = y;
-        jump_separators();
 
         curr_static = new Static(static_pic_rep + static_name + PICS_EXT,pos);
 		*m_file >> static_name;
 
-        jump_separators();
 		static_data->add_static(curr_static);
     }
 
@@ -166,11 +162,9 @@ void Analyser::fill_monsters_pics(int nb_monsters, Static_data *static_data)
     /* A utiliser après nb_monster car il se place au bon endroit dans le fichier */
     std::string pic_monsters_rep = PIC_MONSTERS_R;
     std::string monster_name;
-    jump_separators();
     for(int i = 0;i<2;i++) {
         for(int j = 0;j<3;j++) {
             for(int k=0;k<nb_monsters;k++) {
-                jump_separators();
 				*m_file >> monster_name;
                 if(j==1) {
                     static_data->fill_monster_pic(i,3,k, (pic_monsters_rep+monster_name+PICS_EXT).c_str());
@@ -188,7 +182,6 @@ void Analyser::fill_monsters(Analyser * analyser, Static_data *static_data, Dyna
     bool fire;
     find_string("#PositionsMonstres#");
     while(!m_file->eof()) {
-        jump_separators();
 		*m_file >> monster_type >> x >> y >> begin >> end;
         analyser->fill_monsters_2(&life,&fire,&speed,monster_type);
         dynamic_data->fill_monster_stats(y/BOX_SIZE,x/BOX_SIZE,monster_type,begin,end,life,fire,speed, static_data);

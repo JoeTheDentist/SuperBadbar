@@ -30,7 +30,7 @@ private:
 	std::ifstream *m_file;
 
 
-	
+
 
 public:
 	/*!
@@ -53,61 +53,62 @@ public:
   	/*!
 	* @brief ferme le fichier ouvert
 	*/
-	void close();	
+	void close();
 
    	/*!
 	* @brief Saute les séparateurs dans le fichier ouvert
-	* 
+	*
 	* Un séparateur est un espace, un retour à la ligne ou une ligne suivant //
+	* Ne marche que sous linux...
 	*/
-	void jump_separators();	
-	
+	void jump_separators();
+
 	/*!
 	* @brief Positionne le curseur après la première occurence de str à partir du début du fichier
 	*
-	* Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier
+	* Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier.
 	*
 	* @param str La chaine cherchée
 	*/
 	void find_string(std::string str);
-	
+
 	/*!
 	* @brief Lit et renvoie le prochain int du fichier, en sautant les séparateurs
-	* 
+	*
 	* @return l'int lu
 	*/
 	int read_int();
-	
+
 	/*!
 	* @brief Lit et renvoie le prochain uint32_t du fichier, en sautant les séparateurs
-	* 
+	*
 	* @return l'uint32_t lu
-	*/	
+	*/
 	uint32_t read_uint32_t();
 
 	/*!
 	* @brief Lit dans le fichier la section suivant #Statics# et l'ajout à la liste globale curr_statics
 	*/
-	void fill_statics(Static_data *static_data);	
-	
+	void fill_statics(Static_data *static_data);
+
 	/*!
 	* @brief Lit dans m_file la section #Statics# et remplit la matrix de collisions matrix
 	*/
-	void fill_collision_matrix(uint32_t **matrix); 
-	
+	void fill_collision_matrix(uint32_t **matrix);
+
 	/*!
-	* @brief Renvoie le nombre de monstres différents dans le fichier ouvert 
+	* @brief Renvoie le nombre de monstres différents dans le fichier ouvert
 	* @return   le nombre de monstres différents dans le fichier ouvert
-	*/               
+	*/
     int nb_monsters();
-	
+
 	/*!
 	* @brief Charge les images des monstres dans static_data à partir de la section #Monsters#
 	* @param nb_monsters le nombre de monstres du niveau
 	* @param static_data un pointeur vers la classe qui va stocker les images chargées
 	*/
     void fill_monsters_pics(int nb_monsters, Static_data *static_data);
-	
+
 	/*!
 	* @brief Fonction un peu chelou (à refaire)
 	*/
