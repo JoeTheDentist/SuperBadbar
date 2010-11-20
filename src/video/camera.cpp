@@ -43,9 +43,9 @@ void Camera::display_event(Event *event){	SDL_Surface *picture = event->curren
     pos_temp.y = m_frame.y;
     pos_temp.h = m_frame.h;
     pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(SDL_Surface *pic, Rect *pos){
-    SDL_Rect * pos_sdl;
+    SDL_Rect * pos_sdl = new SDL_Rect;
     pos_sdl->x = (int)pos->x;
     pos_sdl->y = (int)pos->y;
     pos_sdl->h = (unsigned int)pos->h;
-    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(pic, NULL, m_screen, pos_sdl);}
+    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(pic, NULL, m_screen, pos_sdl);	delete pos_sdl;}
 void Camera::flip_camera(){	SDL_Flip(m_screen);}
