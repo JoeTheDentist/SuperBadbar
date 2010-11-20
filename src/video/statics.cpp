@@ -11,7 +11,7 @@ Static::Static()
     m_image = NULL;
 }
 
-Static::Static(std::string dir_image, SDL_Rect pos)
+Static::Static(std::string dir_image, Rect pos)
 {
     const char * test;
     test = dir_image.c_str();
@@ -40,7 +40,7 @@ SDL_Surface * Static::image()
     return m_image;
 }
 
-SDL_Rect Static::position()
+Rect Static::position()
 {
     return m_pos;
 }

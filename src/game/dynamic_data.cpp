@@ -58,7 +58,7 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
 
     /*** Stockage des monstres dans la listes ***/
-	SDL_Rect camera_frame, position_target = m_babar->position();
+	Rect camera_frame, position_target = m_babar->position();
 	camera_frame.h = WINDOW_HEIGHT;
 	camera_frame.w = WINDOW_WEIGHT;
 	camera_frame.x = position_target.x + (position_target.w / 2) - (camera_frame.w / 2);
@@ -72,7 +72,7 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
 		camera_frame.y = static_data->static_data_height() - camera_frame.h;
 
-	analyser.close();	
+	analyser.close();
 }
 
 bool Dynamic_data::projectiles_friend_end()
@@ -117,7 +117,7 @@ void Dynamic_data::babar_update_state(Static_data *static_data)
 
 void Dynamic_data::babar_monsters_collision()
 {
-	SDL_Rect babar_pos = m_babar->position();
+	Rect babar_pos = m_babar->position();
 
 	m_monsters.init();
 	while(!m_monsters.end()) {

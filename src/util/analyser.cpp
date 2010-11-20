@@ -104,7 +104,7 @@ void Analyser::fill_statics(Static_data *static_data)
 {
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name;
-    SDL_Rect pos;
+    Rect pos;
 	uint32_t x, y;
     find_string("#Statics#");
 	*m_file >> static_name;

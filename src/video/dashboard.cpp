@@ -12,6 +12,7 @@
 #include "../util/globals.h"
 
 
+
 Dashboard::Dashboard()
 {
     std::string rac = RAC;
@@ -56,7 +57,7 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera, Babar *babar)
 	m_lifes_pos.x -= lifes * 30;
 
 	camera->display_picture(m_weapons_pictures[babar->type_of_weapon()], &m_weapons_pos);
-	SDL_Rect pos_munitions;
+	Rect pos_munitions;
 	SDL_Surface *munitions_pictures = NULL;
 	char munitions[5];
 	sprintf(munitions, "x %d", babar->munitions());

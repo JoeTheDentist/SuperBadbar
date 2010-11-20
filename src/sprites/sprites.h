@@ -28,8 +28,8 @@ enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'i
 
 class Sprite{
 protected:
-	SDL_Rect m_pos; 		    /* position du sprite et sa taille */
-	SDL_Rect m_speed;		    /* vitesse du sprite */
+	Rect m_pos; 		    /* position du sprite et sa taille */
+	Rect m_speed;		    /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
 	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
@@ -40,7 +40,7 @@ public:
 	virtual ~Sprite();		/* destructeur */
     virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
     void update_pos(Static_data *static_data);		/* mise à jour de la position */
-	SDL_Rect position();	/* accesseur */
+	Rect position();	/* accesseur */
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */
 	uint32_t phase();       /* accesseur */

@@ -88,7 +88,7 @@ void Sprite::update_pos(Static_data *static_data)
 }
 
 
-SDL_Rect Sprite::position()
+Rect Sprite::position()
 {
 	return m_pos;
 }
@@ -108,7 +108,7 @@ uint32_t Sprite::phase()
     return m_phase;
 }
 
-int Sprite::direction_h() 
+int Sprite::direction_h()
 {
 	if (m_horizontal == MIDDLE_h)
 		return 0;
@@ -118,7 +118,7 @@ int Sprite::direction_h()
 		return -1;
 }
 
-int Sprite::direction_v() 
+int Sprite::direction_v()
 {
 	if (m_vertical == MIDDLE_v)
 		return 0;

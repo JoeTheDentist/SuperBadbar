@@ -127,7 +127,7 @@ uint32_t Static_data::collision(uint32_t x, uint32_t y)
 }
 
 
-uint32_t Static_data::down_collision_type(SDL_Rect pos)
+uint32_t Static_data::down_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE)
@@ -135,7 +135,7 @@ uint32_t Static_data::down_collision_type(SDL_Rect pos)
 	return coll;
 }
 
-uint32_t Static_data::up_collision_type(SDL_Rect pos)
+uint32_t Static_data::up_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE)
@@ -143,7 +143,7 @@ uint32_t Static_data::up_collision_type(SDL_Rect pos)
 	return coll;
 }
 
-uint32_t Static_data::right_collision_type(SDL_Rect pos)
+uint32_t Static_data::right_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
@@ -151,7 +151,7 @@ uint32_t Static_data::right_collision_type(SDL_Rect pos)
 	return coll;
 }
 
-uint32_t Static_data::left_collision_type(SDL_Rect pos)
+uint32_t Static_data::left_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
 	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
@@ -159,31 +159,31 @@ uint32_t Static_data::left_collision_type(SDL_Rect pos)
 	return coll;
 }
 
-bool Static_data::up_collision(SDL_Rect pos)
+bool Static_data::up_collision(Rect pos)
 {
 	return is_up_coll(up_collision_type(pos));
 }
 
 
-bool Static_data::down_collision(SDL_Rect pos)
+bool Static_data::down_collision(Rect pos)
 {
 	return is_down_coll(up_collision_type(pos));
 }
 
 
-bool Static_data::left_collision(SDL_Rect pos)
+bool Static_data::left_collision(Rect pos)
 {
 	return is_left_coll(up_collision_type(pos));
 }
 
 
-bool Static_data::right_collision(SDL_Rect pos)
+bool Static_data::right_collision(Rect pos)
 {
 	return is_right_coll(up_collision_type(pos));
 }
 
 
-bool Static_data::double_collision(SDL_Rect pos)
+bool Static_data::double_collision(Rect pos)
 {
 	for (int32_t i = pos.x / BOX_SIZE ; i <= (pos.x + pos.w) / BOX_SIZE ; i += 1) {
 		if (!(m_collision_matrix[i][pos.y + pos. h - 1] == NO_COLL || m_collision_matrix[i][pos.y + pos. h- 1] == DOWN_COLL))

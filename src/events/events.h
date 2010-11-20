@@ -5,11 +5,12 @@
 
 #include <SDL/SDL.h>
 
+struct Rect;
 
 class Event {
 protected:
 	bool m_can_be_destroyed;
-	
+
 
 public:
 	Event();
@@ -20,7 +21,7 @@ public:
 	virtual bool can_be_destroyed();
 	virtual void destroy();
 	virtual SDL_Surface *current_picture();
-	virtual SDL_Rect current_pos();
+	virtual Rect current_pos();
 };
 
 

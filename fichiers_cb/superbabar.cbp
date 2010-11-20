@@ -84,6 +84,7 @@
 		<Unit filename="..\src\util\debug.h" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
+		<Unit filename="..\src\util\repertories.h" />
 		<Unit filename="..\src\video\camera.cpp" />
 		<Unit filename="..\src\video\camera.h" />
 		<Unit filename="..\src\video\dashboard.cpp" />

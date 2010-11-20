@@ -18,7 +18,7 @@ Projectile::Projectile()
 	PRINT_CONSTR(3, "Construction d'un projectile")
 }
 
-Projectile::Projectile(SDL_Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
+Projectile::Projectile(Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
@@ -101,7 +101,7 @@ void Projectile::update_pos(Static_data *static_data)
 			if (m_pos.x < 0)
 				m_pos.x = 0;
 	}
-	
+
 }
 
 
@@ -124,7 +124,7 @@ uint32_t Projectile::damage()
     return m_damage;
 }
 
-SDL_Rect Projectile::speed()
+Rect Projectile::speed()
 {
     return m_speed;
 }
@@ -135,7 +135,7 @@ SDL_Rect Projectile::speed()
 bool too_old(Projectile * p, Static_data *static_data)
 {
     bool to_return = (p->phase()>PROJ_LIFE_SPAN);
-    SDL_Rect speed = p->speed();
+    Rect speed = p->speed();
     if (speed.x>0)
         to_return |= static_data->right_collision(p->position());
     else

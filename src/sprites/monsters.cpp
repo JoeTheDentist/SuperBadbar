@@ -20,7 +20,7 @@ Monster::Monster(Sound_manager *sound_manager)
 	m_sound_manager = sound_manager;
 }
 
-Monster::Monster(uint32_t type, SDL_Rect pos)
+Monster::Monster(uint32_t type, Rect pos)
 {
 	m_pos = pos;
 	m_type = type;

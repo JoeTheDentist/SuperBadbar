@@ -14,11 +14,11 @@ class Event_weapon: public Event_item{
 private:
 	weapon_type m_weapon_type;
 public:
-	Event_weapon(Babar *target, SDL_Rect pos, Pictures_container *pictures_container);
+	Event_weapon(Babar *target, Rect pos, Pictures_container *pictures_container);
 	~Event_weapon();
 	void start();
 	SDL_Surface *current_picture();
-}; 
+};
 
 
 #endif

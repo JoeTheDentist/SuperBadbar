@@ -29,8 +29,8 @@ class Talks {
 private:
 	SDL_Surface *m_text_background;
 	SDL_Surface *m_text_surface[LINES_NUMBER];
-	SDL_Rect m_pos_background;
-	SDL_Rect m_pos_text[LINES_NUMBER];
+	Rect m_pos_background;
+	Rect m_pos_text[LINES_NUMBER];
 	TTF_Font *m_font;
 	SDL_Color m_font_color;
 	Camera *m_camera;

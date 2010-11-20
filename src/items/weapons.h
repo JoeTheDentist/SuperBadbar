@@ -4,10 +4,11 @@
 #include "SDL/SDL.h"
 #include "../util/lists.h"
 #include "../sound/sound_manager.h"
+#include "../util/globals.h"
 
 
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
-#define PROJ_SPEED 30       /* Vitesse des projectiles */  
+#define PROJ_SPEED 30       /* Vitesse des projectiles */
 
 /* nombre maximal de munitions par armes */
 #define MUN_GUN 999
@@ -35,7 +36,7 @@ enum vertical {
 /*---*/
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN // ATTENTION: SHOTGUN doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas 
+    GUN, MACHINEGUN, SHOTGUN // ATTENTION: SHOTGUN doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
 class Projectile;
@@ -57,7 +58,7 @@ class Weapon
         Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics);
         Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics, Sound_manager *sound_manager);
         ~Weapon();
-        void fire(SDL_Rect pos, horizontal h, vertical v);    /* crée les projectiles de l'arme */
+        void fire(Rect pos, horizontal h, vertical v);    /* crée les projectiles de l'arme */
         uint32_t reload_time();                 /* accesseur */
 		void change_weapon(weapon_type type);
 		int munitions();

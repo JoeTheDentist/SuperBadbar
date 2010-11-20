@@ -3,7 +3,7 @@
 
 #include "collisions.h"
 
-bool check_collision(SDL_Rect A, SDL_Rect B) //Optimisable?
+bool check_collision(Rect A, Rect B) //Optimisable?
 {
 	uint16_t A_right = A.x + A.w;
 	uint16_t B_right = B.x + B.w;

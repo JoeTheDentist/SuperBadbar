@@ -2,16 +2,17 @@
 #define _EVENT_ITEM_
 
 #include "../events/events.h"
+#include "../util/globals.h"
 class Babar;
 
 class Event_item: public Event{
 protected:
 	Babar *m_target;
 	SDL_Surface *m_picture;
-	SDL_Rect m_pos;
+	Rect m_pos;
 	int m_phase;
 public:
-	Event_item(Babar *target, SDL_Rect pos);
+	Event_item(Babar *target, Rect pos);
 	~Event_item();
 	virtual void update();
 	virtual bool can_start();
@@ -19,7 +20,7 @@ public:
 //~ 	virtual bool can_be_destroyed();
 //~ 	virtual void destroy();
 	virtual SDL_Surface *current_picture();
-	virtual SDL_Rect current_pos();
-}; 
+	virtual Rect current_pos();
+};
 
 #endif

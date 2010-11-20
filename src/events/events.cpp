@@ -3,6 +3,7 @@
 
 #include "events.h"
 #include "../util/debug.h"
+#include "../util/globals.h"
 
 Event::Event()
 {
@@ -12,12 +13,12 @@ Event::Event()
 
 Event::~Event()
 {
-	
+
 }
 
 void Event::update()
 {
-	
+
 }
 
 bool Event::can_start()
@@ -30,14 +31,14 @@ void Event::start()
 {
 }
 
-bool Event::can_be_destroyed() 
+bool Event::can_be_destroyed()
 {
 	return m_can_be_destroyed;
 }
 
 void Event::destroy()
 {
-	
+
 }
 
 SDL_Surface *Event::current_picture()
@@ -45,9 +46,9 @@ SDL_Surface *Event::current_picture()
 	return NULL;
 }
 
-SDL_Rect Event::current_pos()
+Rect Event::current_pos()
 {
-	SDL_Rect defaut;
+	Rect defaut;
 	defaut.x = 0;
 	defaut.y = 0;
 	defaut.w = 0;

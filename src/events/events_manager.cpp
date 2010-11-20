@@ -13,12 +13,12 @@
 
 Events_manager::Events_manager()
 {
-	PRINT_CONSTR(1, "Construction de Events_manager") 
+	PRINT_CONSTR(1, "Construction de Events_manager")
 }
 
 Events_manager::~Events_manager()
 {
-	PRINT_CONSTR(1, "Destruction de Events_manager") 
+	PRINT_CONSTR(1, "Destruction de Events_manager")
 	delete m_pictures_container;
 }
 
@@ -33,17 +33,17 @@ void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data 
 void Events_manager::load_events()
 {
 	PRINT_TRACE(1, "Chargement des evenements");
-	SDL_Rect pos1;
+	Rect pos1;
 	pos1.x = m_dynamic_data->babar()->position_x() + 400;
 	pos1.y = 1500;
 	pos1.h = 50;
 	pos1.w = 50;
-	SDL_Rect pos2 = pos1;
+	Rect pos2 = pos1;
 	pos2.x += 150;
 	Event *event = new Event_weapon(m_dynamic_data->babar(), pos1, m_pictures_container);
-	m_list_events.push_back(event);		
+	m_list_events.push_back(event);
 	event = new Event_weapon(m_dynamic_data->babar(), pos2, m_pictures_container);
-	m_list_events.push_back(event);	
+	m_list_events.push_back(event);
 }
 
 void Events_manager::update()
@@ -52,7 +52,7 @@ void Events_manager::update()
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); ) { // si on met le curs++ dans la boucle, on a un pb de curs après erase!
 		(*curs)->update();
 		if((*curs)->can_start())
-			(*curs)->start();		
+			(*curs)->start();
 		if((*curs)->can_be_destroyed()) {
 			(*curs)->destroy();
 			m_list_events.erase(curs++);

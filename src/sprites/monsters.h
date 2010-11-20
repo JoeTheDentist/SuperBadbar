@@ -17,7 +17,7 @@ protected:
 	SDL_Surface * m_pics[2][4];  /* Images du monstre : state, gauche droite, num image */
 public:
 	Monster(Sound_manager *sound_manager);						        /* constructeur */
-	Monster(uint32_t type, SDL_Rect pos);	/* constructeur */
+	Monster(uint32_t type, Rect pos);	/* constructeur */
 	~Monster();						        /* destructeur */
 	void virtual update_speed();					/* met à jour la vitesse du monstre */
 	void virtual update_speed(Babar * babar);

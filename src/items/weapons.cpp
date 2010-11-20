@@ -21,7 +21,7 @@ Weapon::Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
 
 Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics, Sound_manager *sound_manager)
 {
-	
+
 	PRINT_CONSTR(2, "Construction d'une Weapon")
 	m_last_dir_v = 3;
 	m_last_dir_h = 3;
@@ -45,13 +45,13 @@ Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surfac
             break;
     }
 }
-                            
+
 Weapon::~Weapon()
 {
 	PRINT_CONSTR(2, "Destruction d'une Weapon")
 }
 
-void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
+void Weapon::fire(Rect pos, horizontal h, vertical v)
 {
     Projectile * proj;
 	m_sound_manager->play_fire(m_weapon_type);
@@ -69,13 +69,13 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 					dir_h = (h-1)*PROJ_SPEED;
 					if (m_last_dir_v !=1)
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
-					else 
+					else
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
 				} else if (m_phase_diago > 1) {
 					dir_h = (h-1)*PROJ_SPEED;
 					if (m_last_dir_v !=1)
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
-					else 
+					else
 						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
 					m_phase_diago = 0;
 					m_last_dir_v = 3;
@@ -87,20 +87,20 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
 					dir_v = (v-1)*PROJ_SPEED;
 					if (m_last_dir_h !=1)
 						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
-					else 
+					else
 						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
 				} else if (m_phase_diago > 1) {
 					dir_v = (v-1)*PROJ_SPEED;
 					if (m_last_dir_h !=1)
 						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
-					else 
+					else
 						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
-						
+
 					m_phase_diago = 0;
 					m_last_dir_v = 3;
 					m_last_dir_h = 3;
-				}			
-				
+				}
+
 			} else {
 				dir_h = (h-1)*PROJ_SPEED;
 				dir_v = (v-1)*PROJ_SPEED;
@@ -114,8 +114,8 @@ void Weapon::fire(SDL_Rect pos, horizontal h, vertical v)
         case SHOTGUN:
             int x[5];
             int y[5];
-            SDL_Rect pos2;
-            SDL_Rect pos3;
+            Rect pos2;
+            Rect pos3;
 
             Projectile * proj[5];
             if((h-1)&&(v-1)) { /* le tir se fait en diagonale */

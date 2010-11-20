@@ -9,20 +9,21 @@
 #define STATICS_H_INCLUDED
 
 #include <SDL/SDL.h>
+#include "../util/globals.h"
 
 class Static
 {
     private :
         SDL_Surface *m_image;
-        SDL_Rect m_pos;
+        Rect m_pos;
 
     public :
         Static();               /* Constructeurs */
-        Static(std::string dir_image, SDL_Rect pos);
+        Static(std::string dir_image, Rect pos);
         Static(char *dir_image, uint32_t x, uint32_t y);
         ~Static();              /* Destructeur */
         SDL_Surface * image();  /* Accesseurs */
-        SDL_Rect position();
+        Rect position();
 };
 
 #endif // STATICS_H_INCLUDED

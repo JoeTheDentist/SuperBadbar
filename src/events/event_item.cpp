@@ -9,7 +9,7 @@
 
 
 
-Event_item::Event_item(Babar *target, SDL_Rect pos) : m_pos(pos)
+Event_item::Event_item(Babar *target, Rect pos) : m_pos(pos)
 {
 	PRINT_CONSTR(3, "CONSTRUCTION D'UN EVENT ITEM");
 	m_target = target;
@@ -19,7 +19,7 @@ Event_item::Event_item(Babar *target, SDL_Rect pos) : m_pos(pos)
 
 Event_item::~Event_item()
 {
-	PRINT_CONSTR(3, "DESTRUCTION D'UN EVENT ITEM");	
+	PRINT_CONSTR(3, "DESTRUCTION D'UN EVENT ITEM");
 }
 
 void Event_item::update()
@@ -48,7 +48,7 @@ void Event_item::start()
 
 //~ void Event_item::destroy()
 //~ {
-//~ 	
+//~
 //~ }
 
 SDL_Surface *Event_item::current_picture()
@@ -56,7 +56,7 @@ SDL_Surface *Event_item::current_picture()
 	return NULL;
 }
 
-SDL_Rect Event_item::current_pos()
+Rect Event_item::current_pos()
 {
 	return m_pos;
 }

@@ -19,13 +19,13 @@ private:
 	SDL_Color m_font_color;
 	SDL_Surface *m_heart;
 	SDL_Surface **m_weapons_pictures;
-	SDL_Rect m_lifes_pos;
-	SDL_Rect m_weapons_pos;
+	Rect m_lifes_pos;
+	Rect m_weapons_pos;
 public:
 	Dashboard();
 	~Dashboard();
 	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
-	
+
 };
 
 
