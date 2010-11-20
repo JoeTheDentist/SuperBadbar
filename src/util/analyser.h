@@ -13,7 +13,7 @@
 #define _ANALYSER_
 
 #include <string>
-
+#include <fstream>
 
 
 #define COLL_EXT ".col"
@@ -27,7 +27,7 @@ class Analyser {
 
 private:
 	bool m_opened;
-	FILE * m_file;
+	std::ifstream *m_file;
 
 
 	
