@@ -17,8 +17,8 @@ Sprite::Sprite()
 {
 	m_speed.x = 0;
 	m_speed.y = 0;
-	m_horizontal = MIDDLE_h;
-	m_vertical = MIDDLE_v;
+	m_horizontal = LEFT;
+	m_vertical = UP;
 	m_state = WALK;
 	m_phase = 0;
 }
@@ -110,8 +110,6 @@ uint32_t Sprite::phase()
 
 int Sprite::direction_h()
 {
-	if (m_horizontal == MIDDLE_h)
-		return 0;
 	if (m_horizontal == RIGHT)
 		return 1;
 	else
@@ -120,8 +118,6 @@ int Sprite::direction_h()
 
 int Sprite::direction_v()
 {
-	if (m_vertical == MIDDLE_v)
-		return 0;
 	if (m_vertical == DOWN)
 		return 1;
 	else

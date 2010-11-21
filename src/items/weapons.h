@@ -27,11 +27,11 @@ class Sound_manager;
 
 /* Pas à leur place ! */
 enum horizontal {
-    LEFT, MIDDLE_h, RIGHT
+    LEFT, RIGHT
 };
 
 enum vertical {
-    UP, MIDDLE_v, DOWN
+    UP, DOWN
 };
 /*---*/
 

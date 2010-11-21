@@ -3,7 +3,9 @@
 
 #include "sprites.h"
 #include "../video/pictures_container.h"
+#include "../video/animation.h"
 class Pictures_container;
+class Animation;
 
 
 class Monster: public Sprite {

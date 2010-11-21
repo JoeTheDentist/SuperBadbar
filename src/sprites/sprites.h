@@ -7,12 +7,11 @@
 #ifndef _SPRITES_
 #define _SPRITES_
 
-
-#define ANIMATION_SPEED 4   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
 #include "SDL/SDL.h"
 #include "../items/weapons.h"
+#include "../video/animation.h"
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 

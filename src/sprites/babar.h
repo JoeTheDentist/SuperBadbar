@@ -2,13 +2,16 @@
 #define _BABAR_
 
 #include "sprites.h"
+#include "../video/animation.h"
 #define BABAR_SPEED 15
 
 class Babar: public Sprite {
 protected:
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
     horizontal m_last_dir;              /* direction vers laquelle Babar regarde (pour les tirs haut et bas) */
-    SDL_Surface *m_pics[3][3][3][4];    /* Images des animations indicés par: état, gauche droite, bas haut, numéro image */
+    Animation * test;
+    Animation * m_anim[3][2][2];        /* Animations : etat, gauche-droite, haut-bas */
+
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
 	bool m_plane;						/* vaut vrai si Babar est en train de planer */
 	bool m_allowed_to_plane;

@@ -33,7 +33,7 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture()
 {
-    return m_pics[m_horizontal/2][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
+    return m_pics[m_horizontal][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
 }
 
 

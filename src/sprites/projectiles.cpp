@@ -27,16 +27,9 @@ Projectile::Projectile(Rect pos, horizontal h, vertical v, uint32_t speedx, uint
     m_damage = damage;
 
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
-    if(((h == LEFT)&&(v == UP))||((h == RIGHT)&&(v == DOWN))) {
-        m_pic = pics[2];
-    }
-    if(((h == LEFT)&&(v == MIDDLE_v))||((h == RIGHT)&&(v == MIDDLE_v))) {
+    if((h == LEFT)||(h == RIGHT)) {
         m_pic = pics[0];
-    }
-    if(((h == LEFT)&&(v == DOWN))||((h == RIGHT)&&(v == UP))) {
-        m_pic = pics[3];
-    }
-    if(((h == MIDDLE_h)&&(v == UP))||((h == MIDDLE_h)&&(v == DOWN))) {
+    } else {
         m_pic = pics[1];
     }
 

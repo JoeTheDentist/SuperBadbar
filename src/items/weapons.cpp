@@ -58,7 +58,7 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
 	int dir_h =0, dir_v = 0;
     switch (m_weapon_type) {
         case GUN :
-            proj = new Projectile(pos, h, v, (h-1)*PROJ_SPEED, (v-1)*PROJ_SPEED,1, m_proj_pics);
+            proj = new Projectile(pos, h, v, (2*h-1)*PROJ_SPEED, (2*v-1)*PROJ_SPEED,1, m_proj_pics);
             m_projectiles_list->add(proj);
 			m_munitions++;
 			break;
@@ -68,15 +68,15 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
 				if (m_phase_diago == 1) {
 					dir_h = (h-1)*PROJ_SPEED;
 					if (m_last_dir_v !=1)
-						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
+						dir_v = (2*m_last_dir_v-1)*PROJ_SPEED*2/3 + (2*v-1)*PROJ_SPEED*2/3;
 					else
-						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
+						dir_v = (2*m_last_dir_v-1)*PROJ_SPEED/3 + (2*v-1)*PROJ_SPEED/3;
 				} else if (m_phase_diago > 1) {
 					dir_h = (h-1)*PROJ_SPEED;
 					if (m_last_dir_v !=1)
-						dir_v = (m_last_dir_v-1)*PROJ_SPEED/3 + (v-1)*PROJ_SPEED/3;
+						dir_v = (2*m_last_dir_v-1)*PROJ_SPEED/3 + (2*v-1)*PROJ_SPEED/3;
 					else
-						dir_v = (m_last_dir_v-1)*PROJ_SPEED*2/3 + (v-1)*PROJ_SPEED*2/3;
+						dir_v = (2*m_last_dir_v-1)*PROJ_SPEED*2/3 + (2*v-1)*PROJ_SPEED*2/3;
 					m_phase_diago = 0;
 					m_last_dir_v = 3;
 					m_last_dir_h = 3;
@@ -86,15 +86,15 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
 				if (m_phase_diago == 1) {
 					dir_v = (v-1)*PROJ_SPEED;
 					if (m_last_dir_h !=1)
-						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
+						dir_h = (2*m_last_dir_h-1)*PROJ_SPEED*2/3 + (2*h-1)*PROJ_SPEED*2/3;
 					else
-						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
+						dir_h = (2*m_last_dir_h-1)*PROJ_SPEED/3 + (2*h-1)*PROJ_SPEED/3;
 				} else if (m_phase_diago > 1) {
 					dir_v = (v-1)*PROJ_SPEED;
 					if (m_last_dir_h !=1)
-						dir_h = (m_last_dir_h-1)*PROJ_SPEED/3 + (h-1)*PROJ_SPEED/3;
+						dir_h = (2*m_last_dir_h-1)*PROJ_SPEED/3 + (2*h-1)*PROJ_SPEED/3;
 					else
-						dir_h = (m_last_dir_h-1)*PROJ_SPEED*2/3 + (h-1)*PROJ_SPEED*2/3;
+						dir_h = (2*m_last_dir_h-1)*PROJ_SPEED*2/3 + (2*h-1)*PROJ_SPEED*2/3;
 
 					m_phase_diago = 0;
 					m_last_dir_v = 3;
@@ -102,8 +102,8 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
 				}
 
 			} else {
-				dir_h = (h-1)*PROJ_SPEED;
-				dir_v = (v-1)*PROJ_SPEED;
+				dir_h = (2*h-1)*PROJ_SPEED;
+				dir_v = (2*v-1)*PROJ_SPEED;
 				m_phase_diago = 0;
 				m_last_dir_v = v;
 				m_last_dir_h = h;
@@ -118,20 +118,7 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
             Rect pos3;
 
             Projectile * proj[5];
-            if((h-1)&&(v-1)) { /* le tir se fait en diagonale */
-                x[0] = 3*PROJ_SPEED/4;
-                x[1] = 7*PROJ_SPEED/8;
-                x[2] = PROJ_SPEED;
-                x[3] = PROJ_SPEED;
-                x[4] = PROJ_SPEED;
-
-                y[0] = PROJ_SPEED;
-                y[1] = PROJ_SPEED;
-                y[2] = PROJ_SPEED;
-                y[3] = 7*PROJ_SPEED/8;
-                y[4] = 3*PROJ_SPEED/4;
-            }
-            else if(h-1) { /* tir uniquement dans la dimention horizontale */
+            else if(h) { /* tir uniquement dans la dimention horizontale */
                 for(int i = 0;i<5;i++) {
                     x[i] = PROJ_SPEED;
                 }
@@ -160,15 +147,15 @@ void Weapon::fire(Rect pos, horizontal h, vertical v)
 
 
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
+                proj[i] = new Projectile(pos, h, v, (2*h-1)*x[i] + rand()%3-1, (2*v-1)*y[i] + rand()%3-1,1, m_proj_pics);
 				m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos2, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
+                proj[i] = new Projectile(pos2, h, v, (2*h-1)*x[i] + rand()%3-1, (2*v-1)*y[i] + rand()%3-1,1, m_proj_pics);
                 m_projectiles_list->add(proj[i]);
             }
             for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos3, h, v, (h-1)*x[i] + rand()%3-1, (v-1)*y[i] + rand()%3-1,1, m_proj_pics);
+                proj[i] = new Projectile(pos3, h, v, (2*h-1)*x[i] + rand()%3-1, (2*v-1)*y[i] + rand()%3-1,1, m_proj_pics);
                 m_projectiles_list->add(proj[i]);
             }
 

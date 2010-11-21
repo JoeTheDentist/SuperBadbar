@@ -17,6 +17,15 @@
 **********************************/
 Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
+    std::string babar_pic_dir = PIC_BABAR_R;
+    std::string links[3];
+    links[0] = babar_pic_dir+"babar_1_walk_left_1.bmp";
+    links[1] = babar_pic_dir+"babar_1_walk_left_2.bmp";
+    links[2] = babar_pic_dir+"babar_1_walk_left_3.bmp";
+
+    test = new Animation(links,3,false);
+
+
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
 	m_pos.y = 1600;
@@ -38,11 +47,9 @@ Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
     for(int i = 0;i<3;i++) {
-	    for(int j = 0;j<3;j++) {
-	        for(int k = 0;k<3;k++) {
-	            for(int l = 0;l<2;l++) {
-	                SDL_FreeSurface(m_pics[i][j][k][l]);
-	            }
+	    for(int j = 0;j<2;j++) {
+	        for(int k = 0;k<2;k++) {
+	            delete m_anim[i][j][k];
 	        }
 	    }
 	}
@@ -54,72 +61,50 @@ void Babar::load(char age)
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
     /** Charge static **/
-    for(int i = 0;i<3;i++) {
-        for(int j = 0;j<4;j++) {
-            m_pics[STATIC][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
-        }
+    for(int i = 0;i<2;i++) {
+        std::string link[1]; /* lien des images a charger dans une animation */
+        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp";
+        m_anim[STATIC][LEFT][i] = new Animation(link,1,false);
     }
-
-    for(int i = 0;i<3;i++) {
-        for(int j = 0;j<4;j++) {
-            m_pics[STATIC][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp").c_str());
-        }
-    }
-    for(int i = 0;i<3;i++) {    /* don't care */
-        for(int j = 0;j<4;j++) {
-            m_pics[STATIC][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
-        }
+    for(int i = 0;i<2;i++) {
+        std::string link[1]; /* lien des images a charger dans une animation */
+        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp";
+        m_anim[STATIC][RIGHT][i] = new Animation(link,1,false);
     }
 
     /** Charge walk **/
-    for(int i = 0;i<3;i++) {
+    for(int i = 0;i<2;i++) {
+        std::string link[4]; /* lien des images a charger dans une animation */
         for(int j = 0;j<4;j++) {
             char num = i_c+j+1;
-            m_pics[WALK][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp").c_str());
+            link[j] = babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp";
         }
+        m_anim[WALK][LEFT][i] = new Animation(link,4,false);
     }
-    for(int i = 0;i<3;i++) {
+    for(int i = 0;i<2;i++) {
+        std::string link[4]; /* lien des images a charger dans une animation */
         for(int j = 0;j<4;j++) {
             char num = i_c+j+1;
-            m_pics[WALK][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp").c_str());
+            link[j] = babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp";
         }
-    }
-    for(int i = 0;i<3;i++) {    /* don't care */
-        for(int j = 0;j<4;j++) {
-            m_pics[WALK][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp").c_str());
-        }
+        m_anim[WALK][RIGHT][i] = new Animation(link,4,false);
     }
 
     /** Charge jump **/
-    for(int i = 0;i<3;i++) {
-        for(int j = 0;j<4;j++) {
-            m_pics[JUMP][LEFT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str());
-        }
+    for(int i = 0;i<2;i++) {
+        std::string link[1]; /* lien des images a charger dans une animation */
+        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp";
+        m_anim[JUMP][LEFT][i] = new Animation(link,1,false);
     }
-    for(int i = 0;i<3;i++) {
-        for(int j = 0;j<4;j++) {
-            m_pics[JUMP][RIGHT][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp").c_str());
-        }
-    }
-    for(int i = 0;i<3;i++) {    /* don't care */
-        for(int j = 0;j<4;j++) {
-            m_pics[JUMP][MIDDLE_h][i][j] = SDL_LoadBMP((babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp").c_str());
-        }
+    for(int i = 0;i<2;i++) {
+        std::string link[1]; /* lien des images a charger dans une animation */
+        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp";
+        m_anim[JUMP][RIGHT][i] = new Animation(link,1,false);
     }
 
-    m_pos.w = m_pics[0][0][0][0]->w;
-	m_pos.h = m_pics[0][0][0][0]->h;
+    m_pos.w = m_anim[0][0][0]->w(0);
+    m_pos.h =  m_anim[0][0][0]->h(0);
 
-    /* Transparence */
-    for(int i = 0;i<3;i++) {
-	    for(int j = 0;j<3;j++) {
-	        for(int k = 0;k<3;k++) {
-	            for(int l = 0;l<4;l++) {
-	                SDL_SetColorKey(m_pics[i][j][k][l], SDL_SRCCOLORKEY, SDL_MapRGB(m_pics[i][j][k][l]->format, 0, 0, 255));
-	            }
-	        }
-	    }
-	}
 }
 
 void Babar::update_speed()
@@ -183,8 +168,6 @@ void Babar::update_state(Static_data *static_data)
 
 void Babar::update_direction()
 {
-	m_horizontal = MIDDLE_h;
-    m_vertical = MIDDLE_v;
 	if (m_keyboard->key_down(k_left)) {
 		m_horizontal = LEFT;
 		m_last_dir = LEFT;
@@ -337,7 +320,7 @@ weapon_type Babar::type_of_weapon()
 SDL_Surface *Babar::current_picture()
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0))
-		return m_pics[m_state][m_last_dir][m_vertical][(m_phase/ANIMATION_SPEED)%4];
+		return m_anim[m_state][m_last_dir][m_vertical]->curr_pic();
 	else
 		return NULL;
 }
