@@ -17,15 +17,6 @@
 **********************************/
 Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
 {
-    std::string babar_pic_dir = PIC_BABAR_R;
-    std::string links[3];
-    links[0] = babar_pic_dir+"babar_1_walk_left_1.bmp";
-    links[1] = babar_pic_dir+"babar_1_walk_left_2.bmp";
-    links[2] = babar_pic_dir+"babar_1_walk_left_3.bmp";
-
-    test = new Animation(links,3,false);
-
-
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
 	m_pos.y = 1600;
@@ -48,9 +39,7 @@ Babar::~Babar()
 	PRINT_CONSTR(1, "Destruction de Babar")
     for(int i = 0;i<3;i++) {
 	    for(int j = 0;j<2;j++) {
-	        for(int k = 0;k<2;k++) {
-	            delete m_anim[i][j][k];
-	        }
+            delete m_anim[i][j];
 	    }
 	}
 }
@@ -60,50 +49,36 @@ void Babar::load(char age)
     char age_c = '0', i_c = '0';
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
+	std::string link[4]; /* lien des images a charger dans une animation */
+
     /** Charge static **/
-    for(int i = 0;i<2;i++) {
-        std::string link[1]; /* lien des images a charger dans une animation */
-        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp";
-        m_anim[STATIC][LEFT][i] = new Animation(link,1,false);
-    }
-    for(int i = 0;i<2;i++) {
-        std::string link[1]; /* lien des images a charger dans une animation */
-        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp";
-        m_anim[STATIC][RIGHT][i] = new Animation(link,1,false);
-    }
+    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp";
+    m_anim[STATIC][LEFT] = new Animation(link,1,false);
+
+    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp";
+    m_anim[STATIC][RIGHT] = new Animation(link,1,false);
 
     /** Charge walk **/
-    for(int i = 0;i<2;i++) {
-        std::string link[4]; /* lien des images a charger dans une animation */
-        for(int j = 0;j<4;j++) {
-            char num = i_c+j+1;
-            link[j] = babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp";
-        }
-        m_anim[WALK][LEFT][i] = new Animation(link,4,false);
+    for(int j = 0;j<4;j++) {
+        char num = i_c+j+1;
+        link[j] = babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp";
     }
-    for(int i = 0;i<2;i++) {
-        std::string link[4]; /* lien des images a charger dans une animation */
-        for(int j = 0;j<4;j++) {
-            char num = i_c+j+1;
-            link[j] = babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp";
-        }
-        m_anim[WALK][RIGHT][i] = new Animation(link,4,false);
+    m_anim[WALK][LEFT] = new Animation(link,4,false);
+
+    for(int j = 0;j<4;j++) {
+        char num = i_c+j+1;
+        link[j] = babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp";
     }
+    m_anim[WALK][RIGHT] = new Animation(link,4,false);
 
     /** Charge jump **/
-    for(int i = 0;i<2;i++) {
-        std::string link[1]; /* lien des images a charger dans une animation */
-        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp";
-        m_anim[JUMP][LEFT][i] = new Animation(link,1,false);
-    }
-    for(int i = 0;i<2;i++) {
-        std::string link[1]; /* lien des images a charger dans une animation */
-        link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp";
-        m_anim[JUMP][RIGHT][i] = new Animation(link,1,false);
-    }
+    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp";
+    m_anim[JUMP][LEFT] = new Animation(link,1,false);
+    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp";
+    m_anim[JUMP][RIGHT] = new Animation(link,1,false);
 
-    m_pos.w = m_anim[0][0][0]->w(0);
-    m_pos.h =  m_anim[0][0][0]->h(0);
+    m_pos.w = m_anim[0][0]->w(0);
+    m_pos.h =  m_anim[0][0]->h(0);
 
 }
 
@@ -175,13 +150,6 @@ void Babar::update_direction()
 	if (m_keyboard->key_down(k_right)) {
 		m_horizontal = RIGHT;
 		m_last_dir = RIGHT;
-	}
-
-	if (m_keyboard->key_down(k_up)) {
-		m_vertical = UP;
-	}
-	if (m_keyboard->key_down(k_down)) {
-		m_vertical = DOWN;
 	}
 }
 
@@ -320,7 +288,7 @@ weapon_type Babar::type_of_weapon()
 SDL_Surface *Babar::current_picture()
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0))
-		return m_anim[m_state][m_last_dir][m_vertical]->curr_pic();
+		return m_anim[m_state][m_last_dir]->curr_pic();
 	else
 		return NULL;
 }

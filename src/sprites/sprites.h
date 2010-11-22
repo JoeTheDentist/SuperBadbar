@@ -30,7 +30,6 @@ protected:
 	Rect m_pos; 		    /* position du sprite et sa taille */
 	Rect m_speed;		    /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
-	vertical m_vertical;        /* direction verticale */
 	state m_state;              /* etat du sprite */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
@@ -44,7 +43,6 @@ public:
 	uint32_t position_y(); 	/* accesseur */
 	uint32_t phase();       /* accesseur */
 	int direction_h(); /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
-	int direction_v(); /* retourne la direction verticale du sprite (-1 pour haut, 0 pour middle, 1 pour bas */
 };
 
 
