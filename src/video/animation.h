@@ -2,7 +2,7 @@
 #define ANIMATION_H_INCLUDED
 
 #include <SDL/SDL.h>
-#define ANIMATION_SPEED 6   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
+#define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
 class Animation {
 private:

@@ -39,8 +39,9 @@ Animation::~Animation() {
 SDL_Surface * Animation::curr_pic() {
     SDL_Surface * image = m_images[m_curr];
     m_phase++;
+    m_phase%=ANIMATION_SPEED;
 
-    if ( m_phase % ANIMATION_SPEED ) {
+    if ( m_phase == 0 ) {
         if ( m_force && m_finished ) {  /* si on a fini en forcé, on garde toujours la derniere image */
             m_curr = m_size-1;
         } else {                        /* sinon on affiche les images cycliquement */
