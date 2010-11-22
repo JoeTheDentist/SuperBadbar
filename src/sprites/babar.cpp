@@ -194,10 +194,10 @@ void Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
 	if(m_keyboard->key_down(k_up)||m_keyboard->key_down(k_down)) {
-		m_weapon.fire(m_pos,m_horizontal,m_vertical);
+		m_weapon.fire(m_pos,m_horizontal);
 	}
 	else {
-		m_weapon.fire(m_pos,m_last_dir,m_vertical);
+		m_weapon.fire(m_pos,m_last_dir);
 	}
 }
 

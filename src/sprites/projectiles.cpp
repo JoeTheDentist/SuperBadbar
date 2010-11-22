@@ -18,12 +18,11 @@ Projectile::Projectile()
 	PRINT_CONSTR(3, "Construction d'un projectile")
 }
 
-Projectile::Projectile(Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
+Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
     m_horizontal = h;
-    m_vertical = v;
     m_damage = damage;
 
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/

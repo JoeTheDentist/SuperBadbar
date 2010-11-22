@@ -11,7 +11,7 @@ protected:
     uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 public:
     Projectile();       /* Constructeurs */
-    Projectile(Rect pos, horizontal h, vertical v, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics);
+    Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics);
     ~Projectile();      /* Destructeur */
 	void update_pos(Static_data *static_data);
     SDL_Surface * current_picture();    /* Returne le pointeur sur image */
