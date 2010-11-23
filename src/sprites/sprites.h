@@ -11,7 +11,13 @@
 
 #include "SDL/SDL.h"
 #include "../items/weapons.h"
+
+enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
+    STATIC, WALK, JUMP
+};
+
 #include "../video/animation.h"
+#include "../video/anim_manager.h"
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
@@ -19,23 +25,20 @@ class Static_data;
 class Sound_manager;
 class Keyboard;
 class Camera;
-
-
-enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
-    STATIC, WALK, JUMP
-};
+class Anim_manager;
 
 class Sprite{
 protected:
-	Rect m_pos; 		    /* position du sprite et sa taille */
-	Rect m_speed;		    /* vitesse du sprite */
+	Rect m_pos; 		        /* position du sprite et sa taille */
+	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
 	state m_state;              /* etat du sprite */
+	/*Anim_manager * m_animm;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
 public:
-	Sprite();			    /* constructeur */
-	virtual ~Sprite();		/* destructeur */
+	Sprite();			        /* constructeur */
+	virtual ~Sprite();		    /* destructeur */
     virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
     void update_pos(Static_data *static_data);		/* mise à jour de la position */
 	Rect position();	/* accesseur */

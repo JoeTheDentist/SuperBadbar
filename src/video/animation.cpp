@@ -16,13 +16,14 @@ Animation::Animation(std::string * s, int size, bool force) {
     m_size = size;
     m_curr = 0;
     m_phase = 0;
+    m_force = force;
 
     for (int i=0;i<size;i++) {
         m_images[i] = SDL_LoadBMP((s[i]).c_str());
         SDL_SetColorKey(m_images[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_images[i]->format, 0, 0, 255));
     }
 
-    if ( force ) {
+    if ( m_force ) {
         m_finished = false;
     } else {
         m_finished = true;
@@ -57,10 +58,6 @@ SDL_Surface * Animation::curr_pic() {
     return image;
 }
 
-unsigned int Animation::h(int i) {
-    return (unsigned int)m_images[i]->h;
-}
-
-unsigned int Animation::w(int i) {
-    return (unsigned int)m_images[i]->w;
+bool Animation::interruptable() {
+    return m_finished;
 }

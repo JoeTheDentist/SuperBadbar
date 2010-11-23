@@ -46,12 +46,6 @@ public:
     * @return booleen, true si on peut l'interrompre.
     */
     bool interruptable();
-
-
-    unsigned int h(int i);
-
-    unsigned int w(int i);
-
 };
 
 #endif // ANIMATION_H_INCLUDED

@@ -37,11 +37,7 @@ Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_d
 Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
-    for(int i = 0;i<3;i++) {
-	    for(int j = 0;j<2;j++) {
-            delete m_anim[i][j];
-	    }
-	}
+    delete m_animm;
 }
 
 void Babar::load(char age)
@@ -49,37 +45,10 @@ void Babar::load(char age)
     char age_c = '0', i_c = '0';
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
-	std::string link[4]; /* lien des images a charger dans une animation */
 
-    /** Charge static **/
-    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_1.bmp";
-    m_anim[STATIC][LEFT] = new Animation(link,1,false);
+	m_animm = new Anim_manager(babar_pic_dir+"babar");
 
-    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_1.bmp";
-    m_anim[STATIC][RIGHT] = new Animation(link,1,false);
-
-    /** Charge walk **/
-    for(int j = 0;j<4;j++) {
-        char num = i_c+j+1;
-        link[j] = babar_pic_dir+"babar_"+age_c+"_walk_left_"+num+".bmp";
-    }
-    m_anim[WALK][LEFT] = new Animation(link,4,false);
-
-    for(int j = 0;j<4;j++) {
-        char num = i_c+j+1;
-        link[j] = babar_pic_dir+"babar_"+age_c+"_walk_right_"+num+".bmp";
-    }
-    m_anim[WALK][RIGHT] = new Animation(link,4,false);
-
-    /** Charge jump **/
-    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_left_2.bmp";
-    m_anim[JUMP][LEFT] = new Animation(link,1,false);
-    link[0] = babar_pic_dir+"babar_"+age_c+"_walk_right_2.bmp";
-    m_anim[JUMP][RIGHT] = new Animation(link,1,false);
-
-    m_pos.w = m_anim[0][0]->w(0);
-    m_pos.h =  m_anim[0][0]->h(0);
-
+    m_animm->setRect(m_pos);
 }
 
 void Babar::update_speed()
@@ -287,9 +256,10 @@ weapon_type Babar::type_of_weapon()
 
 SDL_Surface *Babar::current_picture()
 {
-	if ((m_invincible <= 0 || m_invincible%2 == 0))
-		return m_anim[m_state][m_last_dir]->curr_pic();
-	else
+	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
+		m_animm->change_anim(m_state, m_last_dir);
+        return m_animm->curr_pic();
+	} else
 		return NULL;
 }
 
