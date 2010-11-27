@@ -18,6 +18,7 @@
 #include "../util/collisions.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
+#include "../video/pictures_container.h"
 
 
 
@@ -57,7 +58,7 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 	int compteur = 0;
 	while (compteur++ < 9) {
 		if (analyser.read_string() == "walking_monster") {
-			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser);
+			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser, static_data->get_pictures_container());
 			m_monsters.add(curr_monster);
 
 			

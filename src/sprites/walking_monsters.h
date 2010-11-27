@@ -3,6 +3,7 @@
 
 #include "../sprites/monsters.h"
 
+class Pictures_container;
 class Sound_manager;
 class Analyser;
 
@@ -12,7 +13,7 @@ private:
 
 public:
 	Walking_monster(Sound_manager *sound_manager);
-	Walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel);
+	Walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container);
 	~Walking_monster();
 	void update_speed(Babar *babar);
 };

@@ -13,9 +13,10 @@
 #include "../sprites/monsters.h"
 #include "../video/camera.h"
 #include "../video/statics.h"
+#include "../video/pictures_container.h"
 
 
-Static_data::Static_data()
+Static_data::Static_data() : m_pictures_container(new Pictures_container())
 {
 	PRINT_CONSTR(1, "Construction d'un Static_data")
 
@@ -28,19 +29,12 @@ Static_data::~Static_data()
         delete[] m_collision_matrix[i];
     }
     delete[] m_collision_matrix;
-    for(int i=0;i<2;i++) {
-        for(int j=0;j<4;j++) {
-            for(int l=0;l<m_nb_monsters;l++) {
-                SDL_FreeSurface(m_monsters_pics[i][j][l]);
-            }
-            delete[] m_monsters_pics[i][j];
-        }
-    }
 	for(int i = 0;i<4;i++) {
         SDL_FreeSurface(m_proj_pics[i]);
     }
     m_statics.~List();
     SDL_FreeSurface(m_background);
+	delete m_pictures_container;
 
 }
 
@@ -113,12 +107,12 @@ SDL_Surface * Static_data::background()
 
 uint32_t Static_data::static_data_height()
 {
-    return m_background->h / BACKGROUND_SPEED - WINDOW_HEIGHT;
+    return m_background->h / BACKGROUND_SPEED;
 }
 
 uint32_t Static_data::static_data_weight()
 {
-    return m_background->w / BACKGROUND_SPEED - WINDOW_WEIGHT;
+    return m_background->w / BACKGROUND_SPEED;
 }
 
 uint32_t Static_data::collision(uint32_t x, uint32_t y)
@@ -209,6 +203,11 @@ SDL_Surface **Static_data::monster_pic(uint32_t i, uint32_t j)
 SDL_Surface **Static_data::proj_pics()
 {
 	return m_proj_pics;
+}
+
+Pictures_container *Static_data::get_pictures_container()
+{
+	return m_pictures_container;
 }
 
 void Static_data::display_statics(Camera *camera)

@@ -17,6 +17,7 @@ class Projectiles;
 class Monster;
 class Dynamic_data;
 class Camera;
+class Pictures_container;
 
 
 class Static_data {
@@ -29,6 +30,7 @@ private:
 	uint32_t ** m_collision_matrix;      	/* matrice des statics */
 	SDL_Surface *m_proj_pics[4];			/* images des projetctiles */
 	List<Static*> m_statics;				/* liste des statics du niveau */
+	Pictures_container *m_pictures_container;
 
 public:
 	Static_data();														/* Constructeur par défaut*/
@@ -52,6 +54,7 @@ public:
     void fill_monster_pic(int h, int num_image, int num_monster, const char *link); /* remplit une case de la matrice des images des monstres */
 	SDL_Surface **monster_pic(uint32_t i, uint32_t j); /* accesseur */
 	SDL_Surface **proj_pics();				/* accesseur */
+	Pictures_container *get_pictures_container(); /* accesseur */
 	void display_statics(Camera *camera);	/* fonction d'affichage des statics */
 	void add_static(Static *stat);			/* ajoute un static */
 

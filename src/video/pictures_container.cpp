@@ -13,12 +13,12 @@
 
 Pictures_container::Pictures_container()
 {
-	
+	PRINT_CONSTR(1, "Construction d'un pictures_container");
 }
 
 Pictures_container::~Pictures_container()
 {
-	
+	PRINT_CONSTR(1, "Destruction d'un pictures_container");
 }
 
 SDL_Surface *Pictures_container::load_BMP(std::string key)
