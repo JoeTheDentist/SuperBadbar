@@ -58,7 +58,7 @@ void Analyser::find_string(std::string str)
 
 bool Analyser::end_of_section()
 {
-	jump_separators();
+//~ 	jump_separators();
 	char temp = read_char();
 	m_file->seekg(-1, ios::cur);
 	return temp == '!';
@@ -100,7 +100,7 @@ void Analyser::jump_separators()
 int Analyser::read_int()
 {
 	int res;
-	jump_separators();
+//~ 	jump_separators();
 	*m_file >> res;
 	return res;
 }
@@ -108,14 +108,14 @@ int Analyser::read_int()
 uint32_t Analyser::read_uint32_t()
 {
 	uint32_t res;
-	jump_separators();
+//~ 	jump_separators();
 	*m_file >> res;
 	return res;
 }
 
 std::string Analyser::read_string()
 {
-	jump_separators();
+//~ 	jump_separators();
 	std::string res;
 	*m_file >> res;
 	return res;
