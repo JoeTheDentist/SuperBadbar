@@ -56,6 +56,15 @@ void Analyser::find_string(std::string str)
 
 }
 
+bool Analyser::end_of_section()
+{
+	jump_separators();
+	char temp = read_char();
+	m_file->seekg(-1, ios::cur);
+	return temp == '!';
+}
+                                      
+
 void Analyser::jump_separators()
 {
 	char current;
@@ -63,19 +72,23 @@ void Analyser::jump_separators()
 	while (jump){
 		m_file->get(current);
 		switch (current){
-		case ' ': case '\n':
+		case ' ': 
+			PRINT_DEBUG(1, "espace ");
 			break;
-		case '/':
-			m_file->get(current);
-			if (current != '/'){
-				jump = false;
-				m_file->seekg(-1, ios::cur);
-				break;
-			}
-			while (current != '\n') {
-				m_file->get(current);
-			}
+		case '\n':
+			PRINT_DEBUG(1, "retour chariot ");
 			break;
+//~ 		case '/':
+//~ 			m_file->get(current);
+//~ 			if (current != '/'){
+//~ 				jump = false;
+//~ 				m_file->seekg(-1, ios::cur);
+//~ 				break;
+//~ 			}
+//~ 			while (current != '\n') {
+//~ 				m_file->get(current);
+//~ 			}
+//~ 			break;
 		default:
 			jump = false;
 			break;
@@ -98,6 +111,22 @@ uint32_t Analyser::read_uint32_t()
 	jump_separators();
 	*m_file >> res;
 	return res;
+}
+
+std::string Analyser::read_string()
+{
+	jump_separators();
+	std::string res;
+	*m_file >> res;
+	return res;
+}
+
+char Analyser::read_char()
+{
+	jump_separators();
+	char res;
+	*m_file >> res;
+	return res;	
 }
 
 void Analyser::fill_statics(Static_data *static_data)

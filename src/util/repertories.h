@@ -19,11 +19,12 @@
 	#define PIC_STATICS_R			PIC_R + "statics/"
 	#define PIC_TALKS_R				PIC_R + "talks/"
 #define LEVELS_R RACINE_R + "data/levels/"
+#define MONSTERS_STATS_R RACINE_R + "data/monsters/"
 
 
 
 
-
+#define MONSTERS_EXT ".mstr"
 
 
 

@@ -27,6 +27,7 @@ SDL_Surface *Pictures_container::load_BMP(std::string key)
 	SDL_Surface *surf = NULL;
 	if (it == m_container.end()) {
 		surf = SDL_LoadBMP((key).c_str());
+	SDL_SetColorKey(surf, SDL_SRCCOLORKEY, SDL_MapRGB(surf->format, 0, 0, 255));
 		m_container.insert(std::pair<std::string, SDL_Surface*>(key, surf));
 	} else {
 		surf = (*it).second;

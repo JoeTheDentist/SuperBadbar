@@ -73,6 +73,11 @@ public:
 	void find_string(std::string str);
 
 	/*!
+	* @return vrai si on est à la fin d'une section (si le caractère suivant est un '!'
+	*/
+	bool end_of_section();
+	
+	/*!
 	* @brief Lit et renvoie le prochain int du fichier, en sautant les séparateurs
 	*
 	* @return l'int lu
@@ -85,6 +90,15 @@ public:
 	* @return l'uint32_t lu
 	*/
 	uint32_t read_uint32_t();
+
+	/*!
+	* @brief Lit et renvoie le prochain string du fichier (jusqu'au prochain espace), en sautant les séparateurs
+	*
+	* @return le string lu
+	*/
+	std::string read_string();
+	
+	char read_char();
 
 	/*!
 	* @brief Lit dans le fichier la section suivant #Statics# et l'ajout à la liste globale curr_statics

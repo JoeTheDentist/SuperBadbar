@@ -52,25 +52,40 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 	analyser.open(rep + "level" + str_lvl + ".lvl");
 
     /* Allocation de la matrice de monstres */
-    analyser2.open(rep + "level" +str_lvl+".lvl");
-    analyser.fill_monsters(&analyser2, static_data, this);
-    analyser2.close();
+	analyser.find_string("#Monsters#");
+	analyser.jump_separators();
+	while (!analyser.end_of_section()) {
+		if (analyser.read_string() == "walking_monster") {
+			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser);
+			m_monsters.add(curr_monster);
+
+			
+		}
+	}
+
+//~     analyser2.open(rep + "level" +str_lvl+".lvl");
+//~     analyser.fill_monsters(&analyser2, static_data, this);
+//~     analyser2.close();
+	
+	
+	/* Creation de babar */
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
+	
 
     /*** Stockage des monstres dans la listes ***/
-	Rect camera_frame, position_target = m_babar->position();
-	camera_frame.h = WINDOW_HEIGHT;
-	camera_frame.w = WINDOW_WEIGHT;
-	camera_frame.x = position_target.x + (position_target.w / 2) - (camera_frame.w / 2);
-	camera_frame.y = position_target.y + (position_target.h / 2) - (camera_frame.h / 2);
-	if (camera_frame.x < 0)
-		camera_frame.x = 0;
-	if (camera_frame.y < 0)
-		camera_frame.y = 0;
-	if ((uint32_t) (camera_frame.x + camera_frame.w) > static_data->static_data_weight())
-		camera_frame.x = static_data->static_data_weight() - camera_frame.w;
-	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
-		camera_frame.y = static_data->static_data_height() - camera_frame.h;
+//~ 	Rect camera_frame, position_target = m_babar->position();
+//~ 	camera_frame.h = WINDOW_HEIGHT;
+//~ 	camera_frame.w = WINDOW_WEIGHT;
+//~ 	camera_frame.x = position_target.x + (position_target.w / 2) - (camera_frame.w / 2);
+//~ 	camera_frame.y = position_target.y + (position_target.h / 2) - (camera_frame.h / 2);
+//~ 	if (camera_frame.x < 0)
+//~ 		camera_frame.x = 0;
+//~ 	if (camera_frame.y < 0)
+//~ 		camera_frame.y = 0;
+//~ 	if ((uint32_t) (camera_frame.x + camera_frame.w) > static_data->static_data_weight())
+//~ 		camera_frame.x = static_data->static_data_weight() - camera_frame.w;
+//~ 	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
+//~ 		camera_frame.y = static_data->static_data_height() - camera_frame.h;
 
 	analyser.close();
 }

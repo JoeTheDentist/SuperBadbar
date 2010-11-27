@@ -76,13 +76,13 @@ void Static_data::init_static_data(uint32_t lvl)
     analyser.fill_statics(this);
 
     /*** Remplissage des monstres ***/
-    m_nb_monsters = analyser.nb_monsters();
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 4; j++) {
-            m_monsters_pics[i][j] = new SDL_Surface*[m_nb_monsters];
-        }
-    }
-    analyser.fill_monsters_pics(m_nb_monsters, this);
+//~     m_nb_monsters = analyser.nb_monsters();
+//~     for (int i = 0; i < 2; i++) {
+//~         for (int j = 0; j < 4; j++) {
+//~             m_monsters_pics[i][j] = new SDL_Surface*[m_nb_monsters];
+//~         }
+//~     }
+//~     analyser.fill_monsters_pics(m_nb_monsters, this);
 
     /*** Allocation du tableau pour les collisions ***/
     m_collision_matrix = new uint32_t*[static_data_weight()/BOX_SIZE + 1];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/

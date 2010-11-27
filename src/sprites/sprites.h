@@ -33,7 +33,7 @@ protected:
 	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
 	state m_state;              /* etat du sprite */
-	/*Anim_manager * m_animm;     /* gestionnaire d'animations */
+	//Anim_manager * m_animm;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
 public:
