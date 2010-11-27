@@ -54,7 +54,8 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
     /* Allocation de la matrice de monstres */
 	analyser.find_string("#Monsters#");
 	analyser.jump_separators();
-	while (!analyser.end_of_section()) {
+	int compteur = 0;
+	while (compteur++ < 9) {
 		if (analyser.read_string() == "walking_monster") {
 			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser);
 			m_monsters.add(curr_monster);
