@@ -34,17 +34,16 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	
 	// images
     std::string pic_monsters_rep = PIC_MONSTERS_R;
-//~ 	Pictures_container pictures_container;
+	Pictures_container pictures_container;
 	
-	m_pics[0][0] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_left_1" +PICS_EXT).c_str());
-	m_pics[0][1] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
-	m_pics[0][2] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_left_3" +PICS_EXT).c_str());
-	m_pics[0][3] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
-	m_pics[1][0] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_right_1" +PICS_EXT).c_str());
-	m_pics[1][1] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
-	m_pics[1][2] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_right_3" +PICS_EXT).c_str());
-	m_pics[1][3] =SDL_LoadBMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
-	std::cout << (pic_monsters_rep+ m_nom + "_left_1" +PICS_EXT) << std::endl;
+	m_pics[0][0] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_left_1" +PICS_EXT).c_str());
+	m_pics[0][1] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
+	m_pics[0][2] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_left_3" +PICS_EXT).c_str());
+	m_pics[0][3] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
+	m_pics[1][0] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_right_1" +PICS_EXT).c_str());
+	m_pics[1][1] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
+	m_pics[1][2] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_right_3" +PICS_EXT).c_str());
+	m_pics[1][3] = pictures_container.load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
 	m_speed.x = m_speed_def;
 	m_horizontal = RIGHT;
 	
@@ -52,7 +51,7 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	m_pos.h = m_pics[0][0]->h;
 //~ 	for(int i = 0;i<2;i++) {
 //~ 		for(int j = 0;j<3;j++) {
-//~ 			m_pics[i][j] =SDL_LoadBMP((pic_monsters_rep+ "_left_" + (jm_nom+PICS_EXT).c_str());
+//~ 			m_pics[i][j] = pictures_container.load_BMP((pic_monsters_rep+ "_left_" + (jm_nom+PICS_EXT).c_str());
 //~ 		}
 //~ 	}
 	m_can_fire = false;
