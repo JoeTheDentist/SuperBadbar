@@ -8,10 +8,10 @@ background.bmp
 
 #Statics#
 
-soil 0 1800
-block1 100 1450
-block2 800	1200
-block3 1700 1500
+soil 0 3350
+block1 100 3000
+block2 800	2750
+block3 1700 3050
 !
 
 
