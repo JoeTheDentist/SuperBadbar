@@ -19,9 +19,6 @@
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
 
-class Statics;
-class Static_data;
-class Dynamic_data;
 
 class Analyser {
 
@@ -59,7 +56,7 @@ public:
 	* @brief Saute les séparateurs dans le fichier ouvert
 	*
 	* Un séparateur est un espace, un retour à la ligne ou une ligne suivant //
-	* Ne marche que sous linux...
+	* @warning non fonctionnelle sous windows 
 	*/
 	void jump_separators();
 
@@ -74,6 +71,7 @@ public:
 
 	/*!
 	* @return vrai si on est à la fin d'une section (si le caractère suivant est un '!'
+	* @warning non fonctionnelle sur windows (à cause de jump_separators)
 	*/
 	bool end_of_section();
 	
@@ -100,35 +98,8 @@ public:
 	
 	char read_char();
 
-	/*!
-	* @brief Lit dans le fichier la section suivant #Statics# et l'ajout à la liste globale curr_statics
-	*/
-	void fill_statics(Static_data *static_data);
 
-	/*!
-	* @brief Lit dans m_file la section #Statics# et remplit la matrix de collisions matrix
-	*/
-	void fill_collision_matrix(uint32_t **matrix);
 
-	/*!
-	* @brief Renvoie le nombre de monstres différents dans le fichier ouvert
-	* @return   le nombre de monstres différents dans le fichier ouvert
-	*/
-    int nb_monsters();
-
-	/*!
-	* @brief Charge les images des monstres dans static_data à partir de la section #Monsters#
-	* @param nb_monsters le nombre de monstres du niveau
-	* @param static_data un pointeur vers la classe qui va stocker les images chargées
-	*/
-    void fill_monsters_pics(int nb_monsters, Static_data *static_data);
-
-	/*!
-	* @brief Fonction un peu chelou (à refaire)
-	*/
-    void fill_monsters(Analyser * analyser, Static_data *static_data, Dynamic_data *dynamic_data);  	/*  */
-												/* analyser est un deuxieme analyser qui doit etre ouvert */
-    void fill_monsters_2(uint32_t *life, bool *fire, uint32_t *speed, uint32_t type);
 };
 
 

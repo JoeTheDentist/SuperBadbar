@@ -2,7 +2,6 @@
 #define _MONSTERS_
 
 #include "sprites.h"
-#include "../video/pictures_container.h"
 #include "../video/animation.h"
 class Animation;
 
@@ -17,7 +16,6 @@ protected:
 	int m_life;                    	/* vies */
 	bool m_can_fire;                /* si le monstre tire ou non */
 	SDL_Surface * m_pics[2][4];  /* Images du monstre : state, gauche droite, num image */
-//~ 	Pictures_container m_pictures_container;
 public:
 	Monster(Sound_manager *sound_manager);						        /* constructeur */
 	Monster(uint32_t type, Rect pos);	/* constructeur */

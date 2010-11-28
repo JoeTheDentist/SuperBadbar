@@ -15,8 +15,7 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster(Sound_manager *sound_manager) //: m_pictures_container()
-{
+Monster::Monster(Sound_manager *sound_manager) {
 	m_sound_manager = sound_manager;
 }
 

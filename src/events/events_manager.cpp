@@ -6,6 +6,7 @@
 #include "../util/debug.h"
 #include "../events/event_weapon.h"
 #include "../events/event_item.h"
+#include "../events/events.h"
 #include "../video/camera.h"
 #include "../sprites/babar.h"
 #include "../video/pictures_container.h"
@@ -19,7 +20,10 @@ Events_manager::Events_manager()
 Events_manager::~Events_manager()
 {
 	PRINT_CONSTR(1, "Destruction de Events_manager")
-	delete m_pictures_container;
+	std::list<Event*>::iterator curs;
+	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++ ) {
+		delete (Event*)(*curs);
+	}
 }
 
 void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data *dynamic_data)
@@ -27,7 +31,7 @@ void Events_manager::init_events_manager(Static_data *static_data, Dynamic_data 
 	PRINT_TRACE(1, "Initilisation de Events_manager")
 	m_dynamic_data = dynamic_data;
 	m_static_data = static_data;
-	m_pictures_container = new Pictures_container();
+	m_pictures_container = static_data->get_pictures_container();
 }
 
 void Events_manager::load_events()

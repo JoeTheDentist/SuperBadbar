@@ -51,6 +51,7 @@ Anim_manager::Anim_manager(std::string anim_name) {
 
             /* creation de l'animation */
             m_anim[i-'0'][j-'0'] = new Animation(link,k-'0',false);
+			delete[] link;
         }
     }
 

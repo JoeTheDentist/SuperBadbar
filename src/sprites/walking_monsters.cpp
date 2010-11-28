@@ -7,8 +7,8 @@
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../sound/sound_manager.h"
-#include "babar.h"
 #include "../video/pictures_container.h"
+#include "babar.h"
 
 Walking_monster::Walking_monster(Sound_manager *sound_manager) : Monster(sound_manager)
 {
@@ -49,13 +49,7 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 
 	m_pos.w = m_pics[0][0]->w;
 	m_pos.h = m_pics[0][0]->h;
-//~ 	for(int i = 0;i<2;i++) {
-//~ 		for(int j = 0;j<3;j++) {
-//~ 			m_pics[i][j] = pictures_container->load_BMP((pic_monsters_rep+ "_left_" + (jm_nom+PICS_EXT).c_str());
-//~ 		}
-//~ 	}
 	m_can_fire = false;
-	PRINT_DEBUG(1, "x : %d\n, y: %d\n, lifes:%d", m_pos.x, m_pos.y, m_life);
 }
 
 

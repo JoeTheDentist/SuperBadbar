@@ -9,11 +9,12 @@
 #include "../util/debug.h"
 #include "../sprites/babar.h"
 #include "../video/talks.h"
+#include "../video/pictures_container.h"
 #include "../util/globals.h"
 
 
 
-Dashboard::Dashboard()
+Dashboard::Dashboard(Pictures_container *pictures_container)
 {
     std::string rac = RAC;
 	std::string font_name = "font1.ttf";
@@ -22,15 +23,15 @@ Dashboard::Dashboard()
 	m_font_color.g = 255;
 	m_font_color.b = 255;
 
-	m_heart = SDL_LoadBMP((rac+"/pic/dashboard/heart.bmp").c_str());
+	m_heart = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
 	SDL_SetColorKey(m_heart, SDL_SRCCOLORKEY, SDL_MapRGB(m_heart->format, 0, 0, 255));
 	m_lifes_pos.x = POS_HEART_X;
 	m_lifes_pos.y = POS_HEART_Y;
 
 	m_weapons_pictures = new SDL_Surface*[SHOTGUN + 1];
-	m_weapons_pictures[MACHINEGUN] = SDL_LoadBMP((rac+"/pic/dashboard/heart.bmp").c_str());
-	m_weapons_pictures[GUN] = SDL_LoadBMP((rac+"/pic/statics/black_board.bmp").c_str());
-	m_weapons_pictures[SHOTGUN] = SDL_LoadBMP((rac+"/pic/dashboard/heart.bmp").c_str());
+	m_weapons_pictures[MACHINEGUN] = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
+	m_weapons_pictures[GUN] = pictures_container->load_BMP((rac+"/pic/statics/black_board.bmp").c_str());
+	m_weapons_pictures[SHOTGUN] = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
 	for (int i = 0; i < SHOTGUN + 1; i++)
 		SDL_SetColorKey(m_weapons_pictures[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_weapons_pictures[i]->format, 0, 0, 255));
 	m_weapons_pos.x = POS_WEAPON_X;
@@ -42,7 +43,7 @@ Dashboard::Dashboard()
 
 Dashboard::~Dashboard()
 {
-	SDL_FreeSurface(m_heart);
+	TTF_CloseFont(m_font);
 }
 
 

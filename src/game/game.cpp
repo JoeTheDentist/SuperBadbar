@@ -34,10 +34,10 @@ Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m
 	m_static_data->init_static_data(1);
 	m_dynamic_data->init_dynamic_data(m_camera, m_static_data, m_sound_manager, m_keyboard);
 	m_camera->init_camera(m_dynamic_data->babar());
-	m_talks->init_talks(m_camera);
+	m_talks->init_talks(m_camera, m_static_data->get_pictures_container());
 	m_events_manager->init_events_manager(m_static_data, m_dynamic_data);
 	m_events_manager->load_events();
-	m_dashboard = new Dashboard();
+	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 	update_camera();
@@ -45,15 +45,19 @@ Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m
 
 Game::~Game()
 {
+	
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_sound_manager;
 	delete m_keyboard;
 	delete m_static_data;
 	delete m_dynamic_data;
 	delete m_camera;
+	delete m_talks;
 	delete m_dashboard;
 	delete m_events_manager;
-
+	TTF_Quit();
+	PRINT_TRACE(1, "Fermeture de la SDL")
+	SDL_Quit();
 }
 
 void Game::update_pos()

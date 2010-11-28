@@ -9,7 +9,7 @@
 #include "../util/debug.h"
 #include "../control/keyboard.h"
 #include "../util/globals.h"
-
+#include "../video/pictures_container.h"
 
 
 
@@ -21,14 +21,10 @@ Talks::Talks()
 Talks::~Talks()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Talks")
-	SDL_FreeSurface(m_text_background);
-	for (int i = 0; i < LINES_NUMBER; i++)
-		SDL_FreeSurface(m_text_surface[i]);
 	TTF_CloseFont(m_font);
-	TTF_Quit();
 }
 
-void Talks::init_talks(Camera *camera)
+void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
 	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
@@ -39,7 +35,7 @@ void Talks::init_talks(Camera *camera)
 	m_font_color.r = 0;
 	m_font_color.g = 0;
 	m_font_color.b = 0;
-	m_text_background = SDL_LoadBMP((rac + PIC_TALKS_DIR + background_name).c_str());
+	m_text_background = pictures_container->load_BMP((rac + PIC_TALKS_DIR + background_name).c_str());
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
 	for (int i = 0; i < LINES_NUMBER; i++){

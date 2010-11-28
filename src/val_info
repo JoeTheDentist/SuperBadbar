@@ -1,0 +1,121 @@
+==2243== HEAP SUMMARY:
+==2243==     in use at exit: 21,300,531 bytes in 3,106 blocks
+==2243==   total heap usage: 16,132 allocs, 13,026 frees, 22,881,086 bytes allocated
+==2243== 
+==2243== LEAK SUMMARY:
+==2243==    definitely lost: 120 bytes in 4 blocks
+==2243==    indirectly lost: 3,453,766 bytes in 1,336 blocks
+==2243==      possibly lost: 17,269,141 bytes in 99 blocks
+==2243==    still reachable: 577,504 bytes in 1,667 blocks
+==2243==         suppressed: 0 bytes in 0 blocks
+==2243== Rerun with --leak-check=full to see details of leaked memory
+
+
+==2280==     in use at exit: 21,299,387 bytes in 3,095 blocks
+==2280==   total heap usage: 16,149 allocs, 13,054 frees, 22,932,891 bytes allocated
+==2280== 
+==2280== LEAK SUMMARY:
+==2280==    definitely lost: 120 bytes in 4 blocks
+==2280==    indirectly lost: 3,453,686 bytes in 1,333 blocks
+==2280==      possibly lost: 17,269,221 bytes in 102 blocks
+==2280==    still reachable: 576,360 bytes in 1,656 blocks
+==2280==         suppressed: 0 bytes in 0 blocks
+==2280== Rerun with --leak-check=full to see details of leaked memory
+
+
+==2340==     in use at exit: 21,297,411 bytes in 3,076 blocks
+==2340==   total heap usage: 15,995 allocs, 12,919 frees, 22,866,895 bytes allocated
+==2340== 
+==2340== LEAK SUMMARY:
+==2340==    definitely lost: 120 bytes in 4 blocks
+==2340==    indirectly lost: 3,453,686 bytes in 1,333 blocks
+==2340==      possibly lost: 17,269,221 bytes in 102 blocks
+==2340==    still reachable: 574,384 bytes in 1,637 blocks
+==2340==         suppressed: 0 bytes in 0 blocks
+==2340== Rerun with --leak-check=full to see details of leaked memory
+
+
+==5013==     in use at exit: 691,778 bytes in 1,542 blocks
+==5013==   total heap usage: 15,873 allocs, 14,331 frees, 22,755,267 bytes allocated
+==5013== 
+==5013== LEAK SUMMARY:
+==5013==    definitely lost: 22,352 bytes in 26 blocks
+==5013==    indirectly lost: 69,266 bytes in 66 blocks
+==5013==      possibly lost: 475,940 bytes in 6 blocks
+==5013==    still reachable: 124,220 bytes in 1,444 blocks
+==5013==         suppressed: 0 bytes in 0 blocks
+
+
+==5150==     in use at exit: 529,326 bytes in 1,507 blocks
+==5150==   total heap usage: 15,881 allocs, 14,374 frees, 22,755,607 bytes allocated
+==5150== 
+==5150== LEAK SUMMARY:
+==5150==    definitely lost: 21,992 bytes in 20 blocks
+==5150==    indirectly lost: 39,182 bytes in 43 blocks
+==5150==      possibly lost: 343,940 bytes in 1 blocks
+==5150==    still reachable: 124,212 bytes in 1,443 blocks
+==5150==         suppressed: 0 bytes in 0 blocks
+
+==5804==     in use at exit: 185,246 bytes in 1,502 blocks
+==5804==   total heap usage: 15,893 allocs, 14,391 frees, 22,756,017 bytes allocated
+==5804== 
+==5804== LEAK SUMMARY:
+==5804==    definitely lost: 21,992 bytes in 20 blocks
+==5804==    indirectly lost: 39,042 bytes in 39 blocks
+==5804==      possibly lost: 0 bytes in 0 blocks
+==5804==    still reachable: 124,212 bytes in 1,443 blocks
+==5804==         suppressed: 0 bytes in 0 blocks
+==5804== Rerun with --leak-check=full to see details of leaked mem
+
+==5854==     in use at exit: 129,054 bytes in 1,389 blocks
+==5854==   total heap usage: 15,873 allocs, 14,484 frees, 22,755,577 bytes allocated
+==5854== 
+==5854== LEAK SUMMARY:
+==5854==    definitely lost: 21,900 bytes in 19 blocks
+==5854==    indirectly lost: 17,438 bytes in 40 blocks
+==5854==      possibly lost: 0 bytes in 0 blocks
+==5854==    still reachable: 89,716 bytes in 1,330 blocks
+==5854==         suppressed: 0 bytes in 0 blocks
+
+==6056==     in use at exit: 90,200 bytes in 1,367 blocks
+==6056==   total heap usage: 15,865 allocs, 14,498 frees, 22,748,593 bytes allocated
+==6056== 
+==6056== LEAK SUMMARY:
+==6056==    definitely lost: 224 bytes in 18 blocks
+==6056==    indirectly lost: 612 bytes in 20 blocks
+==6056==      possibly lost: 0 bytes in 0 blocks
+==6056==    still reachable: 89,364 bytes in 1,329 blocks
+==6056==         suppressed: 0 bytes in 0 blocks
+==6056== Rerun with --leak-check=full to see details of leaked memory
+
+
+==6582==     in use at exit: 89,628 bytes in 1,347 blocks
+==6582==   total heap usage: 15,869 allocs, 14,522 frees, 22,748,681 bytes allocated
+==6582== 
+==6582== LEAK SUMMARY:
+==6582==    definitely lost: 144 bytes in 10 blocks
+==6582==    indirectly lost: 120 bytes in 8 blocks
+==6582==      possibly lost: 0 bytes in 0 blocks
+==6582==    still reachable: 89,364 bytes in 1,329 blocks
+==6582==         suppressed: 0 bytes in 0 blocks
+
+
+==6655==     in use at exit: 89,628 bytes in 1,347 blocks
+==6655==   total heap usage: 15,873 allocs, 14,526 frees, 22,748,769 bytes allocated
+==6655== 
+==6655== LEAK SUMMARY:
+==6655==    definitely lost: 144 bytes in 10 blocks
+==6655==    indirectly lost: 120 bytes in 8 blocks
+==6655==      possibly lost: 0 bytes in 0 blocks
+==6655==    still reachable: 89,364 bytes in 1,329 blocks
+==6655==         suppressed: 0 bytes in 0 blocks
+
+==6905==     in use at exit: 89,548 bytes in 1,345 blocks
+==6905==   total heap usage: 15,872 allocs, 14,527 frees, 22,748,745 bytes allocated
+==6905== 
+==6905== LEAK SUMMARY:
+==6905==    definitely lost: 64 bytes in 8 blocks
+==6905==    indirectly lost: 120 bytes in 8 blocks
+==6905==      possibly lost: 0 bytes in 0 blocks
+==6905==    still reachable: 89,364 bytes in 1,329 blocks
+==6905==         suppressed: 0 bytes in 0 blocks

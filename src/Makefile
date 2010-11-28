@@ -21,6 +21,12 @@ clean:
 
 test:
 	./$(EXEC_NAME)
+	
+val: 
+	valgrind ./$(EXEC_NAME)
+
+valfull: 
+	valgrind --leak-check=full --show-reachable=yes ./$(EXEC_NAME) 
 
 edit:
 	#codeblocks cbShell/Shell.cbp&

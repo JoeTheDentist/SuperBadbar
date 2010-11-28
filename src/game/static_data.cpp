@@ -29,11 +29,7 @@ Static_data::~Static_data()
         delete[] m_collision_matrix[i];
     }
     delete[] m_collision_matrix;
-	for(int i = 0;i<4;i++) {
-        SDL_FreeSurface(m_proj_pics[i]);
-    }
     m_statics.~List();
-    SDL_FreeSurface(m_background);
 	delete m_pictures_container;
 
 }
@@ -52,31 +48,33 @@ void Static_data::init_static_data(uint32_t lvl)
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = SDL_LoadBMP((PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp").c_str());
+    m_background = m_pictures_container->load_BMP((PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp").c_str());
 
-		/*** Images des projectiles ***/
+	/*** Images des projectiles ***/
 	rep = PIC_PROJ_R;
-    m_proj_pics[0] = SDL_LoadBMP((rep + "left-right.bmp").c_str());
-    m_proj_pics[1] = SDL_LoadBMP((rep + "up-down.bmp").c_str());
-    m_proj_pics[2] = SDL_LoadBMP((rep + "top-left.bmp").c_str());
-    m_proj_pics[3] = SDL_LoadBMP((rep + "top-right.bmp").c_str());
-	for(int i = 0;i<4;i++) {
-        SDL_SetColorKey(m_proj_pics[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_proj_pics[i]->format, 0, 0, 255));
-    }
+    m_proj_pics[0] = m_pictures_container->load_BMP((rep + "left-right.bmp").c_str());
+    m_proj_pics[1] = m_pictures_container->load_BMP((rep + "up-down.bmp").c_str());
+    m_proj_pics[2] = m_pictures_container->load_BMP((rep + "top-left.bmp").c_str());
+    m_proj_pics[3] = m_pictures_container->load_BMP((rep + "top-right.bmp").c_str());
 
-    /*** Remplissage des statics (et plus tard des monstres) par lecture dans un fichier ***/
+    /*** Remplissage des statics  ***/
 	rep = LEVELS_R;
     analyser.open(rep + "level" + str_lvl + ".lvl");
-    analyser.fill_statics(this);
-
-    /*** Remplissage des monstres ***/
-//~     m_nb_monsters = analyser.nb_monsters();
-//~     for (int i = 0; i < 2; i++) {
-//~         for (int j = 0; j < 4; j++) {
-//~             m_monsters_pics[i][j] = new SDL_Surface*[m_nb_monsters];
-//~         }
-//~     }
-//~     analyser.fill_monsters_pics(m_nb_monsters, this);
+	
+	
+	std::string static_pic_rep = PIC_STATICS_R;
+	std::string static_name;
+    analyser.find_string("#Statics#");
+	static_name = analyser.read_string();
+	Rect pos;
+	Static *curr_static;
+	while(static_name[0]!='!') {
+		pos.x = analyser.read_int();
+		pos.y = analyser.read_int();
+        curr_static = new Static(static_pic_rep + static_name + PICS_EXT,pos);
+		static_name = analyser.read_string();
+		add_static(curr_static);
+    }
 
     /*** Allocation du tableau pour les collisions ***/
     m_collision_matrix = new uint32_t*[static_data_weight()/BOX_SIZE + 1];     /* Il est préférable que le fond soit de dimension divisible par BOX_SIZE*/
@@ -90,8 +88,27 @@ void Static_data::init_static_data(uint32_t lvl)
             m_collision_matrix[i][j] = NO_COLL;
         }
     }
-	analyser.fill_collision_matrix(m_collision_matrix);
-	PRINT_DEBUG(1, "fin");
+	
+	
+	analyser.find_string("#Statics#");
+	static_name = analyser.read_string();
+	Analyser *analyser_static = new Analyser();
+	uint32_t static_weight, static_height;
+    while(static_name[0]!='!') {
+		int x = analyser.read_int();
+		int y = analyser.read_int();
+		analyser_static->open((static_pic_rep + static_name + COLL_EXT));
+		static_weight = analyser_static->read_int();
+		static_height = analyser_static->read_int();
+		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++) {
+			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
+				m_collision_matrix[i][j] |= analyser_static->read_uint32_t();
+			}
+		}
+		analyser_static->close();
+		static_name = analyser.read_string();
+	}
+	delete analyser_static;
     analyser.close();
 }
 
@@ -190,7 +207,7 @@ bool Static_data::double_collision(Rect pos)
 
 void Static_data::fill_monster_pic(int h, int num_image, int num_monster, const char *link)
 {
-    m_monsters_pics[h][num_image][num_monster] = SDL_LoadBMP(link);
+    m_monsters_pics[h][num_image][num_monster] = m_pictures_container->load_BMP(link);
     SDL_SetColorKey(m_monsters_pics[h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[h][num_image][num_monster]->format, 0, 0, 255));
 
 }

@@ -18,6 +18,7 @@
 #define POSY 400
 #define LINES_NUMBER 3
 #define DISPLAY_SPEED 20
+class Pictures_container;
 
 
 struct cell_string {
@@ -46,7 +47,7 @@ private:
 public:
 	Talks();
 	~Talks();
-	void init_talks(Camera *camera);
+	void init_talks(Camera *camera, Pictures_container *pictures_container);
 	void display_text(std::string str);					/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 	void load_and_display_text(std::string filename);	/* Doit etre suivi d'un keyboard.disable_all_keys(); */
 

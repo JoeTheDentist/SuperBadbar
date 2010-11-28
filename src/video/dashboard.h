@@ -12,6 +12,7 @@
 
 class Camera;
 class Babar;
+class Pictures_container;
 
 class Dashboard {
 private:
@@ -22,7 +23,7 @@ private:
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
 public:
-	Dashboard();
+	Dashboard(Pictures_container *pictures_container);
 	~Dashboard();
 	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
 
