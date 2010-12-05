@@ -60,18 +60,18 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser, static_data->get_pictures_container());
 			m_monsters.add(curr_monster);
 
-			
+
 		}
 	}
 
 //~     analyser2.open(rep + "level" +str_lvl+".lvl");
 //~     analyser.fill_monsters(&analyser2, static_data, this);
 //~     analyser2.close();
-	
-	
+
+
 	/* Creation de babar */
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
-	
+
 
     /*** Stockage des monstres dans la listes ***/
 //~ 	Rect camera_frame, position_target = m_babar->position();
