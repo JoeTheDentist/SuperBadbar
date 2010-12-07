@@ -29,13 +29,15 @@ private:
 	Sound_manager *m_sound_manager;
 	Keyboard *m_keyboard;
 	Static_data *m_static_data;
-	uint32_t m_time;					/* temps actuel */
-	uint32_t m_previous_time;	/* temps depuis le dernier tour de jeu */
 	Dynamic_data *m_dynamic_data;
-	Camera *m_camera;				/* camera ciblant babar */
+	Camera *m_camera;				
 	Talks *m_talks;
 	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
 	Events_manager *m_events_manager;
+	unsigned int m_time;					/* temps actuel */
+	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
+
+
 	void update_camera();       /* MàJ cam */
 	void update_events_manager();
 	void update_pos();			/* mise à jour des positions des sprites */

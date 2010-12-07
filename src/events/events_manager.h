@@ -11,9 +11,10 @@ class Pictures_container;
 
 class Events_manager {
 private:
+	std::list<Event*> m_list_events;	
+	
 	Dynamic_data *m_dynamic_data;
 	Static_data *m_static_data;
-	std::list<Event*> m_list_events;	
 	Pictures_container *m_pictures_container;
 public:
 	Events_manager();
