@@ -21,16 +21,17 @@ class Camera;
 class Sound_manager;
 class Keyboard;
 class Babar;
+class Monsters_manager;
 
 class Game_engine {
 private:
 	List<Projectile*> m_projectiles_friend;    	/* Liste des projectiles de Babar à l'écran */
 	List<Projectile*> m_projectiles_ennemy;    	/* Liste des projectiles ennemis */
-	List<Monster*> m_monsters;    				/* Liste des monsters dans l'écran */
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
 	Sound_manager *m_sound_manager;
 	Babar *m_babar;
+	Monsters_manager *m_monsters_manager;
 
 public:
 	Game_engine();			/* Constructeur */
@@ -48,7 +49,7 @@ public:
 	void display_projectiles_friend(Camera *camera);				/* Affiche les projectiles amis */
 	void delete_old_projectiles_friend(Static_data *static_data);
 	void update_monsters_projectiles();
-    void fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed,  Static_data *static_data);
+//~     void fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed,  Static_data *static_data);
     void update(Camera *m_camera);   /* Met à jour la listes des monstres et le tableau de monstres, gére les collisions */
 	List<Projectile*> *projectiles_friend();						/* Accesseur sur la liste des projectiles amis */
 	Babar *babar();

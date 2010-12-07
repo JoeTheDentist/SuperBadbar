@@ -11,6 +11,7 @@
 #include "../sprites/sprites.h"
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
+#include "../sprites/monsters_manager.h"
 #include "../sprites/walking_monsters.h"
 #include "../sprites/projectiles.h"
 #include "../util/analyser.h"
@@ -22,7 +23,7 @@
 
 
 
-Game_engine::Game_engine()
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
 {
 	m_sound_manager = NULL;
 	m_babar = NULL;
@@ -39,7 +40,7 @@ void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sou
 {
     m_projectiles_ennemy.void_list();
     m_projectiles_friend.void_list();
-    m_monsters.void_list();
+    m_monsters_manager->void_list();
 
     std::string rac = RAC;
 	std::string rep;
@@ -58,7 +59,7 @@ void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sou
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		if (analyser.read_string() == "walking_monster") {
 			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser, static_data->get_pictures_container());
-			m_monsters.add(curr_monster);
+			m_monsters_manager->add(curr_monster);
 
 			
 		}
@@ -114,11 +115,7 @@ void Game_engine::babar_update_pos(Static_data *static_data)
 
 void Game_engine::monsters_update_pos(Static_data*static_data)
 {
-    m_monsters.init();
-	while(!m_monsters.end()) {
-		m_monsters.element()->update_pos(static_data);
-		m_monsters.next();
-	}
+	m_monsters_manager->monsters_update_pos(static_data);
 }
 
 void Game_engine::babar_update_speed()
@@ -133,33 +130,17 @@ void Game_engine::babar_update_state(Static_data *static_data)
 
 void Game_engine::babar_monsters_collision()
 {
-	Rect babar_pos = m_babar->position();
-
-	m_monsters.init();
-	while(!m_monsters.end()) {
-		if (check_collision(m_monsters.element()->position(), babar_pos)) {
-			m_babar->damage(1);
-		}
-	    m_monsters.next();
-	}
+	m_monsters_manager->babar_monsters_collision(m_babar);
 }
 
 void Game_engine::monsters_update_speed()
 {
-    m_monsters.init();
-	while ( !m_monsters.end() ) {
-	    m_monsters.element()->update_speed(m_babar);
-	    m_monsters.next();
-	}
+	m_monsters_manager->monsters_update_speed(m_babar);
 }
 
 void Game_engine::display_monsters(Camera *camera)
 {
-    m_monsters.init();
-	while(!m_monsters.end()) {
-	    camera->display_sprite(m_monsters.element());
-	    m_monsters.next();
-	}
+	m_monsters_manager->display_monsters(camera);
 }
 
 
@@ -186,46 +167,25 @@ void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
 
 void Game_engine::update_monsters_projectiles()
 {
-    m_monsters.init();
-    while ( !m_monsters.end() ) {
+	List<Monster*>  *monsters = m_monsters_manager->monsters();	
+    monsters->init();
+    while ( !monsters->end() ) {
         m_projectiles_friend.init();
         while ( !m_projectiles_friend.end() ) {
-            if ( check_collision(m_monsters.element()->position(),m_projectiles_friend.element()->position()) ) {
-                m_monsters.element()->damage(m_projectiles_friend.element()->damage());
+            if ( check_collision(monsters->element()->position(),m_projectiles_friend.element()->position()) ) {
+                monsters->element()->damage(m_projectiles_friend.element()->damage());
                 m_projectiles_friend.delete_element(1);
             } else {
                 m_projectiles_friend.next();
             }
         }
 
-        if ( m_monsters.element()->dead() ) {
-            m_monsters.delete_element(1);
+        if ( monsters->element()->dead() ) {
+            monsters->delete_element(1);
         } else {
-            m_monsters.next();
+            monsters->next();
         }
     }
-}
-
-void Game_engine::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
-{
-    Monster * curr_monster = new Walking_monster(m_sound_manager);
-    curr_monster->set_type(monster_type);
-    curr_monster->set_pos_x(j*BOX_SIZE);
-    curr_monster->set_pos_y(i*BOX_SIZE);
-    curr_monster->set_begin(begin);
-    curr_monster->set_end(end);
-    curr_monster->set_life(life);
-    curr_monster->set_fire(fire);
-    speed += rand()%4;
-    curr_monster->set_speed(speed);
-    for (int k=0;k<2;k++) {
-        for (int l=0;l<4;l++) {
-			SDL_Surface **monster_pics = static_data->monster_pic(k, l);
-            curr_monster->set_pic(monster_pics[monster_type],k,l);
-//~ 			curr_monster->set_pic(monster_pics[k][l][monster_type],k,l);
-        }
-    }
-    m_monsters.add(curr_monster);
 }
 
 
@@ -233,6 +193,7 @@ void Game_engine::update(Camera *camera)
 {
 
 }
+
 
 List<Projectile*> *Game_engine::projectiles_friend()
 {
