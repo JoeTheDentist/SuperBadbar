@@ -1,5 +1,5 @@
 /**
- * Classe Dynamic_data: classe singleton qui permet de modifier ou d'obtenir les données
+ * Classe Game_engine: classe singleton qui permet de modifier ou d'obtenir les données
  * de la partie susceptibles de changer à chaque cycle de jeu.
  * Elle contient les listes de projectiles amies et ennemies, la liste des monstres à l'écran,
  * et la matrix des monstres du niveau.
@@ -22,7 +22,7 @@ class Sound_manager;
 class Keyboard;
 class Babar;
 
-class Dynamic_data {
+class Game_engine {
 private:
 	List<Projectile*> m_projectiles_friend;    	/* Liste des projectiles de Babar à l'écran */
 	List<Projectile*> m_projectiles_ennemy;    	/* Liste des projectiles ennemis */
@@ -33,9 +33,9 @@ private:
 	Babar *m_babar;
 
 public:
-	Dynamic_data();			/* Constructeur */
-	~Dynamic_data();/* Destructeur */
-	void init_dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager, Keyboard *keyboard);
+	Game_engine();			/* Constructeur */
+	~Game_engine();/* Destructeur */
+	void init_game_engine(Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager, Keyboard *keyboard);
 	bool projectiles_friend_end();									/* Retourne vrai quand on arrive à la fin de la liste des projectiles amis */
 	void projectiles_friend_update_pos(Static_data *static_data);	/* MAJ la position des projectiles amis */
 	void babar_update_pos(Static_data *static_data);

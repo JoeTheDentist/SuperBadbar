@@ -14,7 +14,7 @@
 
 #define TIME_LOOP 50
 
-class Dynamic_data;
+class Game_engine;
 class Talks;
 class Static_data;
 class Sound_manager;
@@ -29,7 +29,7 @@ private:
 	Sound_manager *m_sound_manager;
 	Keyboard *m_keyboard;
 	Static_data *m_static_data;
-	Dynamic_data *m_dynamic_data;
+	Game_engine *m_game_engine;
 	Camera *m_camera;				
 	Talks *m_talks;
 	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */

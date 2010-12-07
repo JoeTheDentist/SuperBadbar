@@ -18,7 +18,7 @@
 #include "../sprites/babar.h"
 #include "../video/camera.h"
 #include "../video/talks.h"
-#include "../game/dynamic_data.h"
+#include "../game/game_engine.h"
 #include "../game/static_data.h"
 #include "../sound/sound.h"
 #include "../sound/sound_manager.h"
@@ -28,14 +28,14 @@
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_dynamic_data(new Dynamic_data()), m_camera(new Camera), m_talks(new Talks()),  m_events_manager(new Events_manager)
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_camera(new Camera), m_talks(new Talks()),  m_events_manager(new Events_manager)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_dynamic_data->init_dynamic_data(m_camera, m_static_data, m_sound_manager, m_keyboard);
-	m_camera->init_camera(m_dynamic_data->babar());
+	m_game_engine->init_game_engine(m_camera, m_static_data, m_sound_manager, m_keyboard);
+	m_camera->init_camera(m_game_engine->babar());
 	m_talks->init_talks(m_camera, m_static_data->get_pictures_container());
-	m_events_manager->init_events_manager(m_static_data, m_dynamic_data);
+	m_events_manager->init_events_manager(m_static_data, m_game_engine);
 	m_events_manager->load_events();
 	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
@@ -50,7 +50,7 @@ Game::~Game()
 	delete m_sound_manager;
 	delete m_keyboard;
 	delete m_static_data;
-	delete m_dynamic_data;
+	delete m_game_engine;
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;
@@ -63,11 +63,11 @@ Game::~Game()
 void Game::update_pos()
 {
 //~ 	m_babar.update_pos(m_static_data);
-		m_dynamic_data->babar_monsters_collision();
+		m_game_engine->babar_monsters_collision();
 
-	m_dynamic_data->babar_update_pos(m_static_data);
-	m_dynamic_data->projectiles_friend_update_pos(m_static_data);
-	m_dynamic_data->monsters_update_pos(m_static_data);
+	m_game_engine->babar_update_pos(m_static_data);
+	m_game_engine->projectiles_friend_update_pos(m_static_data);
+	m_game_engine->monsters_update_pos(m_static_data);
 
 	
 }
@@ -75,11 +75,11 @@ void Game::update_pos()
 void Game::update_speed()
 {
 //~ 	m_babar.update_speed();
-	m_dynamic_data->babar_update_speed();
-	m_dynamic_data->monsters_update_speed();
+	m_game_engine->babar_update_speed();
+	m_game_engine->monsters_update_speed();
 
 //~ 	m_babar.update_state(m_static_data);         /* A changer de place, en discuter */   
-	m_dynamic_data->babar_update_state(m_static_data);
+	m_game_engine->babar_update_state(m_static_data);
 	
 	
 }
@@ -108,22 +108,22 @@ void Game::refresh_screen()
 	m_events_manager->display_events(m_camera);
 
     /* affichage des monstres */
-	m_dynamic_data->display_monsters(m_camera);
+	m_game_engine->display_monsters(m_camera);
 
 
 	/* affichage des projectiles */
-	m_dynamic_data->display_projectiles_friend(m_camera);
+	m_game_engine->display_projectiles_friend(m_camera);
 	
 	
 	/* suppression de projectiles trop vieux */
-	m_dynamic_data->delete_old_projectiles_friend(m_static_data);
+	m_game_engine->delete_old_projectiles_friend(m_static_data);
 	
 	
 	/* affichage du sprite babar */
-	m_camera->display_sprite(m_dynamic_data->babar());
+	m_camera->display_sprite(m_game_engine->babar());
 	
 	/* affichage du tableau de board */
-	m_dashboard->draw_dashboard(m_dynamic_data->babar()->lifes(), m_camera, m_dynamic_data->babar());
+	m_dashboard->draw_dashboard(m_game_engine->babar()->lifes(), m_camera, m_game_engine->babar());
 
 	/* mise à jour */
 	m_camera->flip_camera();
@@ -148,7 +148,7 @@ void Game::game_loop()
 			update_events_manager();
 			if (m_keyboard->key_down(k_exit))
 				end = true;
-            m_dynamic_data->update(m_camera);
+            m_game_engine->update(m_camera);
 			update_speed();
 			update_pos();
 			check_monsters();
@@ -174,7 +174,7 @@ void Game::game_loop()
 
 void Game::check_monsters()
 {
-	m_dynamic_data->update_monsters_projectiles();
+	m_game_engine->update_monsters_projectiles();
 }
 
 

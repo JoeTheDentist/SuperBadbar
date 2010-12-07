@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <string>
 
-#include "dynamic_data.h"
+#include "game_engine.h"
 #include "../game/static_data.h"
 #include "../sound/sound_manager.h"
 #include "../control/keyboard.h"
@@ -22,7 +22,7 @@
 
 
 
-Dynamic_data::Dynamic_data()
+Game_engine::Game_engine()
 {
 	m_sound_manager = NULL;
 	m_babar = NULL;
@@ -30,12 +30,12 @@ Dynamic_data::Dynamic_data()
 
 
 
-Dynamic_data::~Dynamic_data()
+Game_engine::~Game_engine()
 {
     delete m_babar;
 }
 
-void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
+void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
     m_projectiles_ennemy.void_list();
     m_projectiles_friend.void_list();
@@ -43,7 +43,7 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 
     std::string rac = RAC;
 	std::string rep;
-	PRINT_CONSTR(1, "Construction de la classe Dynamic_data")
+	PRINT_CONSTR(1, "Construction de la classe Game_engine")
 	m_sound_manager = sound_manager;
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
@@ -60,18 +60,18 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser, static_data->get_pictures_container());
 			m_monsters.add(curr_monster);
 
-
+			
 		}
 	}
 
 //~     analyser2.open(rep + "level" +str_lvl+".lvl");
 //~     analyser.fill_monsters(&analyser2, static_data, this);
 //~     analyser2.close();
-
-
+	
+	
 	/* Creation de babar */
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
-
+	
 
     /*** Stockage des monstres dans la listes ***/
 //~ 	Rect camera_frame, position_target = m_babar->position();
@@ -91,13 +91,13 @@ void Dynamic_data::init_dynamic_data(Camera *camera, Static_data *static_data, S
 	analyser.close();
 }
 
-bool Dynamic_data::projectiles_friend_end()
+bool Game_engine::projectiles_friend_end()
 {
 	return 	m_projectiles_friend.end();
 }
 
 
-void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
+void Game_engine::projectiles_friend_update_pos(Static_data *static_data)
 {
     m_projectiles_friend.init();
 	while(!m_projectiles_friend.end()) {
@@ -106,13 +106,13 @@ void Dynamic_data::projectiles_friend_update_pos(Static_data *static_data)
 	}
 }
 
-void Dynamic_data::babar_update_pos(Static_data *static_data)
+void Game_engine::babar_update_pos(Static_data *static_data)
 {
 	m_babar->update_pos(static_data);
 }
 
 
-void Dynamic_data::monsters_update_pos(Static_data*static_data)
+void Game_engine::monsters_update_pos(Static_data*static_data)
 {
     m_monsters.init();
 	while(!m_monsters.end()) {
@@ -121,17 +121,17 @@ void Dynamic_data::monsters_update_pos(Static_data*static_data)
 	}
 }
 
-void Dynamic_data::babar_update_speed()
+void Game_engine::babar_update_speed()
 {
 	m_babar->update_speed();
 }
 
-void Dynamic_data::babar_update_state(Static_data *static_data)
+void Game_engine::babar_update_state(Static_data *static_data)
 {
 	m_babar->update_state(static_data);
 }
 
-void Dynamic_data::babar_monsters_collision()
+void Game_engine::babar_monsters_collision()
 {
 	Rect babar_pos = m_babar->position();
 
@@ -144,7 +144,7 @@ void Dynamic_data::babar_monsters_collision()
 	}
 }
 
-void Dynamic_data::monsters_update_speed()
+void Game_engine::monsters_update_speed()
 {
     m_monsters.init();
 	while ( !m_monsters.end() ) {
@@ -153,7 +153,7 @@ void Dynamic_data::monsters_update_speed()
 	}
 }
 
-void Dynamic_data::display_monsters(Camera *camera)
+void Game_engine::display_monsters(Camera *camera)
 {
     m_monsters.init();
 	while(!m_monsters.end()) {
@@ -163,7 +163,7 @@ void Dynamic_data::display_monsters(Camera *camera)
 }
 
 
-void Dynamic_data::display_projectiles_friend(Camera *camera)
+void Game_engine::display_projectiles_friend(Camera *camera)
 {
     m_projectiles_friend.init();
 	while(!projectiles_friend_end()) {
@@ -172,7 +172,7 @@ void Dynamic_data::display_projectiles_friend(Camera *camera)
 	}
 }
 
-void Dynamic_data::delete_old_projectiles_friend(Static_data *static_data)
+void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
 {
     m_projectiles_friend.init();
     while ( !m_projectiles_friend.end() ) {
@@ -184,7 +184,7 @@ void Dynamic_data::delete_old_projectiles_friend(Static_data *static_data)
     }
 }
 
-void Dynamic_data::update_monsters_projectiles()
+void Game_engine::update_monsters_projectiles()
 {
     m_monsters.init();
     while ( !m_monsters.end() ) {
@@ -206,7 +206,7 @@ void Dynamic_data::update_monsters_projectiles()
     }
 }
 
-void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
+void Game_engine::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_type, uint32_t begin, uint32_t end, uint32_t life, bool fire, uint32_t speed, Static_data *static_data)
 {
     Monster * curr_monster = new Walking_monster(m_sound_manager);
     curr_monster->set_type(monster_type);
@@ -229,18 +229,18 @@ void Dynamic_data::fill_monster_stats(uint32_t i, uint32_t j, uint32_t monster_t
 }
 
 
-void Dynamic_data::update(Camera *camera)
+void Game_engine::update(Camera *camera)
 {
 
 }
 
-List<Projectile*> *Dynamic_data::projectiles_friend()
+List<Projectile*> *Game_engine::projectiles_friend()
 {
 	return &m_projectiles_friend;
 }
 
 
-Babar *Dynamic_data::babar()
+Babar *Game_engine::babar()
 {
 	return m_babar;
 }

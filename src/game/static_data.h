@@ -15,7 +15,7 @@
 class Static;
 class Projectiles;
 class Monster;
-class Dynamic_data;
+class Game_engine;
 class Camera;
 class Pictures_container;
 

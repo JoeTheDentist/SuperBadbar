@@ -9,7 +9,6 @@
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
-#include "../game/dynamic_data.h"
 
 
 /*********************************
