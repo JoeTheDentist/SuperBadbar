@@ -34,14 +34,13 @@ Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
 Game_engine::~Game_engine()
 {
     delete m_babar;
+	delete m_monsters_manager;
 }
 
 void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
     m_projectiles_ennemy.void_list();
     m_projectiles_friend.void_list();
-    m_monsters_manager->void_list();
-
     std::string rac = RAC;
 	std::string rep;
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
@@ -49,46 +48,11 @@ void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sou
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
 	std::string str_lvl = "1";
-	Analyser analyser, analyser2;
 	rep = LEVELS_R;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
-
-    /* Allocation de la matrice de monstres */
-	analyser.find_string("#Monsters#");
-	int nombre_monstres = analyser.read_int();
-	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
-		if (analyser.read_string() == "walking_monster") {
-			Monster * curr_monster = new Walking_monster(m_sound_manager, &analyser, static_data->get_pictures_container());
-			m_monsters_manager->add(curr_monster);
-
-			
-		}
-	}
-
-//~     analyser2.open(rep + "level" +str_lvl+".lvl");
-//~     analyser.fill_monsters(&analyser2, static_data, this);
-//~     analyser2.close();
-	
-	
+	m_monsters_manager->init_monsters_manager(&analyser, sound_manager, static_data->get_pictures_container());
 	/* Creation de babar */
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
-	
-
-    /*** Stockage des monstres dans la listes ***/
-//~ 	Rect camera_frame, position_target = m_babar->position();
-//~ 	camera_frame.h = WINDOW_HEIGHT;
-//~ 	camera_frame.w = WINDOW_WEIGHT;
-//~ 	camera_frame.x = position_target.x + (position_target.w / 2) - (camera_frame.w / 2);
-//~ 	camera_frame.y = position_target.y + (position_target.h / 2) - (camera_frame.h / 2);
-//~ 	if (camera_frame.x < 0)
-//~ 		camera_frame.x = 0;
-//~ 	if (camera_frame.y < 0)
-//~ 		camera_frame.y = 0;
-//~ 	if ((uint32_t) (camera_frame.x + camera_frame.w) > static_data->static_data_weight())
-//~ 		camera_frame.x = static_data->static_data_weight() - camera_frame.w;
-//~ 	if ((uint32_t) (camera_frame.y + camera_frame.h) > static_data->static_data_height())
-//~ 		camera_frame.y = static_data->static_data_height() - camera_frame.h;
-
 	analyser.close();
 }
 
@@ -167,23 +131,24 @@ void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
 
 void Game_engine::update_monsters_projectiles()
 {
-	List<Monster*>  *monsters = m_monsters_manager->monsters();	
-    monsters->init();
-    while ( !monsters->end() ) {
+//~ 	List<Monster*>  *monsters = m_monsters_manager->monsters();	
+    m_monsters_manager->init();
+    while (!m_monsters_manager->end()) {
         m_projectiles_friend.init();
-        while ( !m_projectiles_friend.end() ) {
-            if ( check_collision(monsters->element()->position(),m_projectiles_friend.element()->position()) ) {
-                monsters->element()->damage(m_projectiles_friend.element()->damage());
+		Monster *monster = m_monsters_manager->element();
+        while (!m_projectiles_friend.end()) {
+            if ( check_collision(monster->position(),m_projectiles_friend.element()->position()) ) {
+                monster->damage(m_projectiles_friend.element()->damage());
                 m_projectiles_friend.delete_element(1);
             } else {
                 m_projectiles_friend.next();
             }
         }
 
-        if ( monsters->element()->dead() ) {
-            monsters->delete_element(1);
+        if ( monster->dead() ) {
+            m_monsters_manager->delete_element();
         } else {
-            monsters->next();
+            m_monsters_manager->next();
         }
     }
 }

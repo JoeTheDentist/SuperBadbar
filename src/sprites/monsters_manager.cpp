@@ -3,9 +3,13 @@
 #include "monsters_manager.h"
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
+#include "../sprites/walking_monsters.h"
 #include "../video/camera.h"
+#include "../video/pictures_container.h"
+#include "../sound/sound_manager.h"
 #include "../game/static_data.h"
 #include "../util/collisions.h"
+#include "../util/analyser.h"
 
 
 
@@ -16,6 +20,20 @@ Monsters_manager::Monsters_manager() {
 Monsters_manager::~Monsters_manager() {
 
 }
+           
+
+void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container) {
+    void_list();
+	analyser->find_string("#Monsters#");
+	int nombre_monstres = analyser->read_int();
+	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
+		if (analyser->read_string() == "walking_monster") {
+			Monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
+			add(curr_monster);
+		}
+	}
+}
+
 
 void Monsters_manager::add(Monster *monster) {
 	m_monsters.add(monster);
@@ -61,10 +79,25 @@ void Monsters_manager::babar_monsters_collision(Babar *babar)
 }
 
 
-List<Monster*> *Monsters_manager::monsters() {
-	return &m_monsters;
+void Monsters_manager::init() {
+	m_monsters.init();
+}
+	
+bool Monsters_manager::end() {
+	return m_monsters.end();
+}
+	
+void Monsters_manager::next() {
+	m_monsters.next();
+}
+	
+Monster *Monsters_manager::element() {
+	return m_monsters.element();
 }
 
+void Monsters_manager::delete_element() {
+	m_monsters.delete_element(true);
+}
 
 void Monsters_manager::void_list() {
 	m_monsters.void_list();

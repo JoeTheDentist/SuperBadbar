@@ -18,6 +18,9 @@ class Monster;
 class Camera;
 class Babar;
 class Static_data;
+class Analyser;
+class Sound_manager;
+class Pictures_container;
 
 class Monsters_manager {
 private:
@@ -37,7 +40,13 @@ public:
 	~Monsters_manager();
 
 	/*!
-	* 	@brief Ajout le monstre à monsters_manager
+	* 	@brief remplissage de monsters_manager au debut du niveau
+	*/
+	void init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container);
+
+
+	/*!
+	* 	@brief Ajoute le monstre à monsters_manager
 	*	@param monster le monstre à ajouter
 	*/
 	void add(Monster *monster);
@@ -66,11 +75,37 @@ public:
 	*/
 	void babar_monsters_collision(Babar *babar);
 	
+	
+	/********************************************************
+	*			Fonctions de Parcours
+	********************************************************/
 	/*!
-	* 	@brief accesseur à virer
-	*	@return la liste des monstres de monsters_manager
+	*	@brief initialise le "curseur" de monstre manager 
 	*/
-	List<Monster*> *monsters(); // ACCESSEUR TEMPORAIRE, A SUPPRIMER!!!!!!!!
+	void init();
+	
+	/*!
+	*	@brief retourne vrai si on a fini de parcourir l'ensembe des monstres
+	*	@return vrai si on a fini de parcourir l'ensemble des monstres
+	*/
+	bool end();
+	
+	/*!
+	*	@brief incremente le curseur
+	*/
+	void next();
+	
+	/*!
+	*	@brief supprime l'élément courant de monsters_manager
+	*/
+	void delete_element();
+	
+
+	/*!
+	*	@brief accesseur
+	*	@return l'élément courant de monsters_manager
+	*/
+	Monster *element();
 	
 	/*!
 	* 	@brief vide la liste des monstres
