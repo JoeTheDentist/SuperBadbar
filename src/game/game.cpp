@@ -28,15 +28,13 @@
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_camera(new Camera), m_talks(new Talks()),  m_events_manager(new Events_manager)
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_camera(new Camera), m_talks(new Talks())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
 	m_game_engine->init_game_engine(m_camera, m_static_data, m_sound_manager, m_keyboard);
 	m_camera->init_camera(m_game_engine->babar());
 	m_talks->init_talks(m_camera, m_static_data->get_pictures_container());
-	m_events_manager->init_events_manager(m_static_data, m_game_engine);
-	m_events_manager->load_events();
 	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
@@ -54,7 +52,6 @@ Game::~Game()
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;
-	delete m_events_manager;
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de la SDL")
 	SDL_Quit();
@@ -62,9 +59,7 @@ Game::~Game()
 
 void Game::update_pos()
 {
-//~ 	m_babar.update_pos(m_static_data);
-		m_game_engine->babar_monsters_collision();
-
+	m_game_engine->babar_monsters_collision();
 	m_game_engine->babar_update_pos(m_static_data);
 	m_game_engine->projectiles_friend_update_pos(m_static_data);
 	m_game_engine->monsters_update_pos(m_static_data);
@@ -74,14 +69,9 @@ void Game::update_pos()
 
 void Game::update_speed()
 {
-//~ 	m_babar.update_speed();
 	m_game_engine->babar_update_speed();
 	m_game_engine->monsters_update_speed();
-
-//~ 	m_babar.update_state(m_static_data);         /* A changer de place, en discuter */   
 	m_game_engine->babar_update_state(m_static_data);
-	
-	
 }
 
 void Game::update_camera()
@@ -91,7 +81,7 @@ void Game::update_camera()
 
 void Game::update_events_manager()
 {
-	m_events_manager->update();
+	m_game_engine->update_events_manager();
 }
 
 
@@ -105,7 +95,7 @@ void Game::refresh_screen()
 	m_static_data->display_statics(m_camera);
 	
 	/* affichage des événements */
-	m_events_manager->display_events(m_camera);
+	m_game_engine->display_events(m_camera);
 
     /* affichage des monstres */
 	m_game_engine->display_monsters(m_camera);

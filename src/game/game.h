@@ -33,7 +33,7 @@ private:
 	Camera *m_camera;				
 	Talks *m_talks;
 	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
-	Events_manager *m_events_manager;
+
 	unsigned int m_time;					/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 

@@ -22,6 +22,7 @@ class Sound_manager;
 class Keyboard;
 class Babar;
 class Monsters_manager;
+class Events_manager;
 
 class Game_engine {
 private:
@@ -32,6 +33,7 @@ private:
 	Sound_manager *m_sound_manager;
 	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
+	Events_manager *m_events_manager;
 
 public:
 	Game_engine();			/* Constructeur */
@@ -53,6 +55,8 @@ public:
     void update(Camera *m_camera);   /* Met à jour la listes des monstres et le tableau de monstres, gére les collisions */
 	List<Projectile*> *projectiles_friend();						/* Accesseur sur la liste des projectiles amis */
 	Babar *babar();
+	void update_events_manager();
+	void display_events(Camera *camera);
 
 };
 

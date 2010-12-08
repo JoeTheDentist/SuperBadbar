@@ -20,10 +20,10 @@
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../video/pictures_container.h"
+#include "../events/events_manager.h"
 
 
-
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager)
 {
 	m_sound_manager = NULL;
 	m_babar = NULL;
@@ -35,6 +35,8 @@ Game_engine::~Game_engine()
 {
     delete m_babar;
 	delete m_monsters_manager;
+	delete m_events_manager;
+
 }
 
 void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
@@ -49,10 +51,12 @@ void Game_engine::init_game_engine(Camera *camera, Static_data *static_data, Sou
 	m_matrix_height = static_data->static_data_height();
 	std::string str_lvl = "1";
 	rep = LEVELS_R;
+	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
 	m_monsters_manager->init_monsters_manager(&analyser, sound_manager, static_data->get_pictures_container());
-	/* Creation de babar */
+	m_events_manager->init_events_manager(static_data, this);
 	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
+	m_events_manager->load_events();
 	analyser.close();
 }
 
@@ -171,3 +175,11 @@ Babar *Game_engine::babar()
 	return m_babar;
 }
 
+
+void Game_engine::update_events_manager() {
+	m_events_manager->update();
+}
+
+void Game_engine::display_events(Camera *camera) {
+	m_events_manager->display_events(camera);
+}
