@@ -6,6 +6,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../util/collisions.h"
+#include "../game/collisions_manager.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
@@ -63,7 +64,7 @@ void Babar::update_speed()
         m_speed.x += BABAR_SPEED;
 }
 
-void Babar::update_state(Static_data *static_data)
+void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager)
 {
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -96,8 +97,8 @@ void Babar::update_state(Static_data *static_data)
 	if (can_double_jump())
 		double_jump();
 
-	if (can_go_down(static_data))
-		go_down(static_data);
+	if (can_go_down(collisions_manager))
+		go_down(collisions_manager);
 
     if ((uint32_t)(m_pos.y + m_pos.h) > static_data->static_data_height()) {                           /* On remet le bon état à la fin du saut */
         m_state = STATIC;
@@ -167,17 +168,17 @@ void Babar::jump()
 	m_sound_manager->play_babar_jump();
 }
 
-bool Babar::can_go_down(Static_data *static_data)
+bool Babar::can_go_down(Collisions_manager *collisions_manager)
 {
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
-				&& is_down_coll(static_data->down_collision_type(m_pos)));
+				&& is_down_coll(collisions_manager->down_collision_type(m_pos)));
 }
 
-void Babar::go_down(Static_data *static_data)
+void Babar::go_down(Collisions_manager *collisions_manager)
 {
 	m_pos.y += BOX_SIZE;
-	while (is_down_coll(static_data->down_collision_type(m_pos))){
-		if (static_data->double_collision(m_pos)) {
+	while (is_down_coll(collisions_manager->down_collision_type(m_pos))){
+		if (collisions_manager->double_collision(m_pos)) {
 			m_pos.y -= BOX_SIZE;
 			break;
 		}

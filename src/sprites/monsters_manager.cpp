@@ -8,6 +8,7 @@
 #include "../video/pictures_container.h"
 #include "../sound/sound_manager.h"
 #include "../game/static_data.h"
+#include "../game/collisions_manager.h"
 #include "../util/collisions.h"
 #include "../util/analyser.h"
 
@@ -48,11 +49,11 @@ void Monsters_manager::monsters_update_speed(Babar *babar){
 	}
 }
 
-void Monsters_manager::monsters_update_pos(Static_data*static_data)
+void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager)
 {
     m_monsters.init();
 	while(!m_monsters.end()) {
-		m_monsters.element()->update_pos(static_data);
+		m_monsters.element()->update_pos(static_data, collisions_manager);
 		m_monsters.next();
 	}
 }

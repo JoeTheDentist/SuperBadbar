@@ -26,6 +26,7 @@ class Sound_manager;
 class Keyboard;
 class Camera;
 class Anim_manager;
+class Collisions_manager;
 
 class Sprite{
 protected:
@@ -40,7 +41,7 @@ public:
 	Sprite();			        /* constructeur */
 	virtual ~Sprite();		    /* destructeur */
     virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
-    void update_pos(Static_data *static_data);		/* mise à jour de la position */
+    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);		/* mise à jour de la position */
 	Rect position();	/* accesseur */
 	uint32_t position_x(); 	/* accesseur */
 	uint32_t position_y(); 	/* accesseur */

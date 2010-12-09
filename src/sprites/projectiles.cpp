@@ -6,6 +6,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../game/static_data.h"
+#include "../game/collisions_manager.h"
 
 #include "../util/collisions.h"
 
@@ -39,13 +40,13 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
     m_speed.y = speedy;
 }
 
-void Projectile::update_pos(Static_data *static_data)
+void Projectile::update_pos(Static_data *static_data,  Collisions_manager *collisions_manager)
 {
 	m_phase++;
 	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = static_data->down_collision_type(m_pos);
+		coll = collisions_manager->down_collision_type(m_pos);
 		if (is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
@@ -59,7 +60,7 @@ void Projectile::update_pos(Static_data *static_data)
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (is_up_coll(static_data->up_collision_type(m_pos))){
+		if (is_up_coll(collisions_manager->up_collision_type(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
 			m_phase = PROJ_LIFE_SPAN;
@@ -74,7 +75,7 @@ void Projectile::update_pos(Static_data *static_data)
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(static_data->down_collision_type(m_pos))) {
+			if(!is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
 				m_phase = PROJ_LIFE_SPAN;
 			}
@@ -85,7 +86,7 @@ void Projectile::update_pos(Static_data *static_data)
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(static_data->down_collision_type(m_pos))) {
+			if(!is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
 				m_phase = PROJ_LIFE_SPAN;
 			}
@@ -124,19 +125,19 @@ Rect Projectile::speed()
 
 /*** Fonctions ***/
 
-bool too_old(Projectile * p, Static_data *static_data)
+bool too_old(Projectile * p, Collisions_manager *collisions_manager)
 {
     bool to_return = (p->phase()>PROJ_LIFE_SPAN);
     Rect speed = p->speed();
     if (speed.x>0)
-        to_return |= static_data->right_collision(p->position());
+        to_return |= collisions_manager->right_collision(p->position());
     else
-        to_return |= static_data->left_collision(p->position());
+        to_return |= collisions_manager->left_collision(p->position());
 
     if (speed.y>0)
-        to_return |= static_data->down_collision(p->position());
+        to_return |= collisions_manager->down_collision(p->position());
     else
-        to_return |= static_data->up_collision(p->position());
+        to_return |= collisions_manager->up_collision(p->position());
     return to_return;
 }
 

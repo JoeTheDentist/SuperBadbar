@@ -23,6 +23,7 @@ class Keyboard;
 class Babar;
 class Monsters_manager;
 class Events_manager;
+class Collisions_manager;
 
 class Game_engine {
 private:
@@ -34,11 +35,12 @@ private:
 	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
 	Events_manager *m_events_manager;
+	Collisions_manager *m_collisions_manager;
 
 public:
 	Game_engine();			/* Constructeur */
 	~Game_engine();/* Destructeur */
-	void init_game_engine(Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager, Keyboard *keyboard);
+	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *m_sound_manager, Keyboard *keyboard);
 	bool projectiles_friend_end();									/* Retourne vrai quand on arrive à la fin de la liste des projectiles amis */
 	void projectiles_friend_update_pos(Static_data *static_data);	/* MAJ la position des projectiles amis */
 	void babar_update_pos(Static_data *static_data);

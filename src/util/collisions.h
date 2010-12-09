@@ -12,9 +12,7 @@
 #include <SDL/SDL.h>
 #include "../util/globals.h"
 
-#define NO_COLL 0x0
-#define FULL_COLL 0xF
-#define DOWN_COLL 0x4
+
 
 bool check_collision(Rect A, Rect B);
 bool is_up_coll(uint32_t coll_number);		/* renvoie vrai si le bit de rang 4 vaut 1 */

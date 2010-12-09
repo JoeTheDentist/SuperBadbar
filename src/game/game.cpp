@@ -32,7 +32,7 @@ Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(m_camera, m_static_data, m_sound_manager, m_keyboard);
+	m_game_engine->init_game_engine(1, m_camera, m_static_data, m_sound_manager, m_keyboard);
 	m_camera->init_camera(m_game_engine->babar());
 	m_talks->init_talks(m_camera, m_static_data->get_pictures_container());
 	m_dashboard = new Dashboard(m_static_data->get_pictures_container());

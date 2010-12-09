@@ -21,6 +21,7 @@ class Static_data;
 class Analyser;
 class Sound_manager;
 class Pictures_container;
+class Collisions_manager;
 
 class Monsters_manager {
 private:
@@ -55,7 +56,7 @@ public:
 	* 	@brief Met à jour la position des monstres
 	*	@param static_data contient la matrice des collisions du niveau
 	*/
-	void monsters_update_pos(Static_data *static_data);	
+	void monsters_update_pos(Static_data *static_data, Collisions_manager *collisions_manager);	
 	
 	/*!
 	* 	@brief Met à jour la vitesse des monstres

@@ -6,6 +6,8 @@
 #include "../video/anim_manager.h"
 #define BABAR_SPEED 15
 
+class Collisions_manager;
+
 class Babar: public Sprite {
 protected:
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
@@ -24,7 +26,7 @@ public:
 	~Babar();							/* destructeur */
 	void load(char age);                 /* Fonction qui permet le chargement des images de babar voulues */
 	void update_speed();				/* mise à jour de la vitesse en fonction des touches enfoncées */
-	void update_state(Static_data *static_data);    /* mise à jour de l'état de babar et de sa direction */
+	void update_state(Static_data *static_data, Collisions_manager *collisions_manager);    /* mise à jour de l'état de babar et de sa direction */
 	void update_direction();			/* mise à jour de la direction de babar en fonction des touches enfoncées*/
 	bool can_fire();
 	void fire();	/* fait tirer Babar */
@@ -32,8 +34,8 @@ public:
 	void double_jump();					/* fait resauter Babar*/
 	bool can_jump();	/* retourne vrai si le joueur appuie sur saut et s'il peut sauter à ce moment */
 	void jump();						/* fait sauter babar */
-	bool can_go_down(Static_data *static_data);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
-	void go_down(Static_data *static_data);     /* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
+	bool can_go_down(Collisions_manager *collisions_manager);		/* retourne vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas */
+	void go_down(Collisions_manager *collisions_manager);     /* effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee */
 	bool can_fly();
 	void fly();
 	bool can_stop_fly();

@@ -18,8 +18,7 @@ void Camera::display_background(SDL_Surface *background){	SDL_Rect pos;	//~ p
         pos_sprite.x = pos_temp.x;
         pos_sprite.y = pos_temp.y;
         pos_sprite.h = pos_temp.h;
-        pos_sprite.w = pos_temp.w;		pos_sprite.x -= m_frame.x;		pos_sprite.y -= m_frame.y;		SDL_BlitSurface(picture, NULL, m_screen, &pos_sprite);	}}
-
+        pos_sprite.w = pos_temp.w;		pos_sprite.x -= m_frame.x;		pos_sprite.y -= m_frame.y;		SDL_BlitSurface(picture, NULL, m_screen, &pos_sprite);	}}
 void Camera::display_static(Static *sttc)
 {
     Rect pos_temp = sttc->position();
@@ -50,4 +49,4 @@ void Camera::display_event(Event *event){	SDL_Surface *picture = event->curren
     pos_sdl->y = (int)pos->y;
     pos_sdl->h = (unsigned int)pos->h;
     pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(pic, NULL, m_screen, pos_sdl);	delete pos_sdl;}
-void Camera::flip_camera(){	SDL_Flip(m_screen);}
+void Camera::flip_camera(){	SDL_Flip(m_screen);}
