@@ -54,6 +54,8 @@
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
 		<Unit filename="..\src\events\events_manager.h" />
+		<Unit filename="..\src\game\collisions_manager.cpp" />
+		<Unit filename="..\src\game\collisions_manager.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />
@@ -95,6 +97,8 @@
 		<Unit filename="..\src\video\camera.h" />
 		<Unit filename="..\src\video\dashboard.cpp" />
 		<Unit filename="..\src\video\dashboard.h" />
+		<Unit filename="..\src\video\graphic_engine.cpp" />
+		<Unit filename="..\src\video\graphic_engine.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />
 		<Unit filename="..\src\video\pictures_container.h" />
 		<Unit filename="..\src\video\statics.cpp" />
