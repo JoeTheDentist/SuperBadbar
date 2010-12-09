@@ -54,10 +54,10 @@
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
 		<Unit filename="..\src\events\events_manager.h" />
-		<Unit filename="..\src\game\dynamic_data.cpp" />
-		<Unit filename="..\src\game\dynamic_data.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
+		<Unit filename="..\src\game\game_engine.cpp" />
+		<Unit filename="..\src\game\game_engine.h" />
 		<Unit filename="..\src\game\static_data.cpp" />
 		<Unit filename="..\src\game\static_data.h" />
 		<Unit filename="..\src\items\weapons.cpp" />
@@ -71,6 +71,8 @@
 		<Unit filename="..\src\sprites\babar.h" />
 		<Unit filename="..\src\sprites\monsters.cpp" />
 		<Unit filename="..\src\sprites\monsters.h" />
+		<Unit filename="..\src\sprites\monsters_manager.cpp" />
+		<Unit filename="..\src\sprites\monsters_manager.h" />
 		<Unit filename="..\src\sprites\projectiles.cpp" />
 		<Unit filename="..\src\sprites\projectiles.h" />
 		<Unit filename="..\src\sprites\sprites.cpp" />
