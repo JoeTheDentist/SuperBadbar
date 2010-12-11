@@ -1,3 +1,12 @@
+/**
+ * 	@file collisions_manager.h
+ * 	@brief Implémentation de la classe Collisions_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #include "collisions_manager.h"
 #include "stdint.h"
 #include "../util/analyser.h"
@@ -74,12 +83,10 @@ bool Collisions_manager::check_collision(Rect A, Rect B) //Optimisable?
 	return A_in_B || B_in_A;
 }
 
-
 uint32_t Collisions_manager::collision(uint32_t x, uint32_t y)
 {
     return m_collisions_matrix[x/BOX_SIZE][y/BOX_SIZE];
 }
-
 
 uint32_t Collisions_manager::down_collision_type(Rect pos)
 {
@@ -98,7 +105,6 @@ uint32_t Collisions_manager::up_collision_type(Rect pos)
 			coll |= m_collisions_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
 }
-
 
 uint32_t Collisions_manager::right_collision_type(Rect pos)
 {
@@ -124,24 +130,20 @@ bool Collisions_manager::up_collision(Rect pos)
 	return is_up_coll(up_collision_type(pos));
 }
 
-
 bool Collisions_manager::down_collision(Rect pos)
 {
 	return is_down_coll(up_collision_type(pos));
 }
-
 
 bool Collisions_manager::left_collision(Rect pos)
 {
 	return is_left_coll(up_collision_type(pos));
 }
 
-
 bool Collisions_manager::right_collision(Rect pos)
 {
 	return is_right_coll(up_collision_type(pos));
 }
-
 
 bool Collisions_manager::double_collision(Rect pos)
 {
@@ -153,5 +155,3 @@ bool Collisions_manager::double_collision(Rect pos)
 	}
 	return false;
 }
-
-

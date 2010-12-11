@@ -1,4 +1,13 @@
 /**
+ * 	@file game.cpp
+ * 	@brief Implémentation de la classe Game
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+/**
  * Contient la boucle de Game et les paramètres de la partie
  * Sera accessible à partir de la touche "jouer" du menu
 **/

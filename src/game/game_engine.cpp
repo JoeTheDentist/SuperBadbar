@@ -1,3 +1,12 @@
+/**
+ * 	@file game_engine.cpp
+ * 	@brief implémentation de la classe Game_engine
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>

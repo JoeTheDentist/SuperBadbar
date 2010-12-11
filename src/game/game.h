@@ -1,11 +1,17 @@
-/**
- * Classe jeu: gestion de la boucle de jeu
- * contient les Game, la caméra, le personnage
- * et gère le temps
- **/
 
-#ifndef _JEU_
-#define _JEU_
+/**
+ * 	@file game.h
+ * 	@brief header de la classe Game
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+
+
+#ifndef _GAME_
+#define _GAME_
 #include <stdint.h>
 #include <iostream>
 
@@ -23,7 +29,14 @@ class Dashboard;
 class Keyboard;
 class Events_manager;
 
-
+/**
+ * 	@class Game
+ * 	@brief Classe gérant l'exécution d'un niveau complet
+ *
+ *	Contient la boucle de jeu principale ainsi que les principaux modules:
+ *	moteur de jeu, moteur graphique, moteur de son, récupération des entrées
+ *	clavier, données du niveau.
+ */
 class Game {
 private:
 	Sound_manager *m_sound_manager;
@@ -34,24 +47,57 @@ private:
 	Talks *m_talks;
 	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
 
-	unsigned int m_time;					/* temps actuel */
+	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
+	/*
+	 * Mise à jour de la camera
+	*/
+	void update_camera();
 
-	void update_camera();       /* MàJ cam */
+	/*
+	 * Mise à jour des évenements
+	*/
 	void update_events_manager();
-	void update_pos();			/* mise à jour des positions des sprites */
-	void update_speed();		/* mise à jour des vitesses des sprites */
-	void refresh_screen();		/* raffraichissement de l'écran */
+
+	/*
+	 *  Mise à jour de la position des sprites
+	*/
+	void update_pos();			
+	
+	/*
+	 * Mise à jour de la vitesse des sprites
+	*/
+	void update_speed();
+	
+	/*
+	 * Rafraichissement de l'affichage
+	*/
+	void refresh_screen();		
 
 
 
 public:
-	Game();						/* constructeur */
-	~Game();					/* destructeur */
-	void game_loop();			/* boucle de jeu */
-	void check_monsters();      /* Check collision monstres-projectiles */
-	
+
+	/**
+	 * @brief Constructeur
+	*/
+	Game();
+
+	/**
+	 * @brief Destructeur
+	*/
+	~Game();
+
+	/**
+	 * @brief La boucle de jeu
+	*/
+	void game_loop();			
+
+	/**
+	 * @brief check les collisions monstres/projectiles
+	*/
+	void check_monsters();	
 };
 
 
