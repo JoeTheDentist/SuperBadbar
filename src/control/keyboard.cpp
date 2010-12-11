@@ -1,4 +1,11 @@
-
+/**
+ * 	@file keyboard.cpp
+ * 	@brief implémentation de la Classe Keyboard
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>

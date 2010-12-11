@@ -6,7 +6,7 @@ export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod
 
 DIR = control events game items sound sprites util video
 EXEC_NAME = babar
-
+DOC_REP = ../doc/
 
 all:
 	@for i in $(DIR); do \
@@ -33,3 +33,9 @@ edit:
 	
 editTX:
 	#kate src/*.h src/*.c&
+
+doc:
+	doxygen ../doxy_conf
+	
+read: 
+	firefox $(DOC_REP)html/index.html &

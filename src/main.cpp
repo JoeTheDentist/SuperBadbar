@@ -9,7 +9,10 @@
 
 
 
-
+/*!
+	@file main.cpp
+	@author Guillaume Bérard & Benoit Morel
+*/
 
 int main(int argc, char *argv[])
 {
