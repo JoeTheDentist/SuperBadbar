@@ -1,4 +1,13 @@
-#include "events_manager.h"
+/**
+ * 	@file events_manager.cpp
+ * 	@brief implémentation de la classe Events_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
+ #include "events_manager.h"
 
 #include "../events/events.h"
 #include "../game/game_engine.h"

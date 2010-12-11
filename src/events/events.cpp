@@ -1,3 +1,12 @@
+/**
+ * 	@file event.cpp
+ * 	@brief implémentation de la classe Events
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #include <iostream>
 #include <stdint.h>
 
