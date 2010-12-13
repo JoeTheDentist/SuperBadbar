@@ -9,8 +9,8 @@
 
 
 
-#ifndef _DYNAMIC_DATA_
-#define _DYNAMIC_DATA_
+#ifndef _GAME_ENGINE
+#define GAME_ENGINE
 
 #include "../util/lists.h"
 #include <stdint.h>

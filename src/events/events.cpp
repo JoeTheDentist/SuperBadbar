@@ -30,7 +30,7 @@ void Event::update()
 
 }
 
-bool Event::can_start()
+bool Event::can_start() const
 {
 	return false;
 
@@ -40,7 +40,7 @@ void Event::start()
 {
 }
 
-bool Event::can_be_destroyed()
+bool Event::can_be_destroyed() const
 {
 	return m_can_be_destroyed;
 }
@@ -50,12 +50,12 @@ void Event::destroy()
 
 }
 
-SDL_Surface *Event::current_picture()
+SDL_Surface *Event::current_picture() const
 {
 	return NULL;
 }
 
-Rect Event::current_pos()
+Rect Event::current_pos() const
 {
 	Rect defaut;
 	defaut.x = 0;

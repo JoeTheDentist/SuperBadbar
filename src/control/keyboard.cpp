@@ -57,12 +57,12 @@ void Keyboard::update_events()
 	}
 }
 
-bool Keyboard::key_down(enum key k)
+bool Keyboard::key_down(enum key k) const
 {
 	return m_key_down[k];
 }
 
-bool Keyboard::key_dir_down()
+bool Keyboard::key_dir_down() const
 {
     return (m_key_down[k_left]||m_key_down[k_right]);
 }

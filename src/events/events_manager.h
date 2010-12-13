@@ -76,7 +76,7 @@ public:
 	 * 	@brief Affiche à l'écran les événements affichables
 	 *	@param camera La camera pour afficher les événements
 	*/
-	void display_events(Camera *camera);
+	void display_events(Camera *const camera);
 
 };
 

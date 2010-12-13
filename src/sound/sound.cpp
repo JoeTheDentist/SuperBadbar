@@ -1,14 +1,22 @@
+//~ /**
+//~  * 	@file sound.h
+//~  * 	@brief Implémentation de la classe Sound
+//~  *
+//~  * 	@author Guillaume Bérard & Benoit Morel
+//~  * 	@date decembre 2010
+//~  *
+//~  */
+ 
+//~ #include <iostream>
+//~ #include "sound.h"
+//~ #include "../sound/sound_manager.h"
 
-#include <iostream>
-#include "sound.h"
-#include "../sound/sound_manager.h"
+//~ Sound::Sound() 
+//~ {
+//~ 	
+//~ }
 
-Sound::Sound() 
-{
-	
-}
-
-Sound::~Sound()
-{
-	
-}
+//~ Sound::~Sound()
+//~ {
+//~ 	
+//~ }

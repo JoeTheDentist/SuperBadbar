@@ -64,13 +64,13 @@ public:
 	*	@param k la touche a controler
 	*	@return Vrai si la touche est enfoncée
 	*/
-	bool key_down (enum key k);
+	bool key_down (enum key k) const;
 
 	/*!
 	* 	@brief Accesseur 
 	*	@return Vrai si une touche gauche ou droite est enfoncée
 	*/
-	bool key_dir_down();
+	bool key_dir_down() const;
 
 	/*!
 	* 	@brief Force le relachement de la touche 

@@ -50,7 +50,7 @@ public:
 	 * 	@brief Indique si l'événement doit etre déclenché
 	 *	@return Vrai si l'événement doit etre déclenché
 	*/
-	virtual bool can_start();
+	virtual bool can_start() const;
 	
 	/**
 	 * 	@brief Déclenche l'événement
@@ -61,7 +61,7 @@ public:
 	 * 	@brief Indique si l'événement doit etre détruit
 	 *	@return Vrai si l'événement doit etre détruit
 	*/
-	virtual bool can_be_destroyed();
+	virtual bool can_be_destroyed() const;
 	
 	/**
 	 * 	@brief Détruit l'événement
@@ -72,13 +72,13 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de l'événement
 	*/
-	virtual SDL_Surface *current_picture();
+	virtual SDL_Surface *current_picture() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return La position actuelle de l'événement
 	*/
-	virtual Rect current_pos();
+	virtual Rect current_pos() const;
 };
 
 

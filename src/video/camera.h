@@ -66,7 +66,7 @@ public:
 	* 	@brief Affiche le fond d'écran passé en paramètre 
 	*	@param background l'image du fond d'écran
 	*/
-	void display_background(SDL_Surface *background); 
+	void display_background(SDL_Surface *background) ; 
 
 	/*!
 	* 	@brief Affiche le sprite passé en paramètre à l'écran
@@ -76,7 +76,7 @@ public:
 	*	relativement à la position de la caméra
 	*	Si le sprite vaut NULL, rien ne se passe
 	*/
-	void display_sprite(Sprite *sprite);
+	void display_sprite(Sprite *sprite) ;
 	
 	/*!
 	* 	@brief Affiche le Static passé en paramètre à l'écran
@@ -85,13 +85,13 @@ public:
 	*	relativement à la position de la caméra
 	*	Si le Static vaut NULL, rien ne se passe	
 	*/
-	void display_static(Static *sttc);
+	void display_static(Static *sttc) ;
 	
 	/*!
 	* 	@brief Affiche les événements affichables de l'event_manager
 	*	@param event_manager l'ensemble des événements à afficher
 	*/
-	void display_events(Events_manager *event_manager);
+	void display_events(Events_manager * const event_manager) const;
 	
 	/*!
 	* 	@brief Affiche l'événement s'il est affichable en fonction 
@@ -104,14 +104,14 @@ public:
 	* 	@brief Accesseur
 	*	@return La position et le cadre de la caméra
 	*/
-	Rect frame();
+	Rect frame() const;
 	
 	/*!
 	* 	@brief Affiche pic à la position pos par rapport au cadre de la camera
 	*	@param pic L'image à afficher
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
 	*/
-	void display_picture(SDL_Surface *pic, Rect *pos); 
+	void display_picture(SDL_Surface *pic, Rect *pos) ; 
 	
 	/*!
 	*	@brief Met à jour l'affichage de la caméra

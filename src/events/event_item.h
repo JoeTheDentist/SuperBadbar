@@ -62,7 +62,7 @@ public:
  *	L'événement doit etre déclenché si la cible entre en contact
  *	avec l'événement 
  */
-	virtual bool can_start();
+	virtual bool can_start() const;
 	
 /**
  * 	@brief Déclenche l'événement
@@ -77,13 +77,13 @@ public:
  *
  *	S'il n'y a pas d'image, retourne NULL
  */
-	virtual SDL_Surface *current_picture();
+	virtual SDL_Surface *current_picture() const;
 	
 /**
  * 	@brief Accesseur
  *	@return La position et le cadre de l'événement
  */
-	virtual Rect current_pos();
+	virtual Rect current_pos() const;
 };
 
 #endif

@@ -1,4 +1,11 @@
-
+/**
+ * 	@file sound_manager.cpp
+ * 	@brief Implémentation de la classe Sound_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 #include <iostream>
 #include <stdint.h>
 #include <stdio.h>

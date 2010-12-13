@@ -1,4 +1,13 @@
-#include <iostream>
+/**
+ * 	@file weapons.cpp
+ * 	@brief Implémentation de la classe Weapon
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
+ #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
 #include <time.h>

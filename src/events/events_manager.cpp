@@ -75,7 +75,7 @@ void Events_manager::update()
 	}
 }
 
-void Events_manager::display_events(Camera *camera)
+void Events_manager::display_events(Camera *const camera) 
 {
 	std::list<Event*>::iterator curs;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++) {

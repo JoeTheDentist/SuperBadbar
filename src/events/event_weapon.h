@@ -59,7 +59,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de l'événement
 	*/
-	SDL_Surface *current_picture();
+	SDL_Surface *current_picture() const;
 };
 
 

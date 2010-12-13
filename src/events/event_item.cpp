@@ -40,7 +40,7 @@ void Event_item::update()
 		m_pos.y -= 5;
 }
 
-bool Event_item::can_start()
+bool Event_item::can_start() const
 {
 	return check_collision(m_pos, m_target->position());
 }
@@ -50,12 +50,12 @@ void Event_item::start()
 	m_can_be_destroyed = true;
 }
 
-SDL_Surface *Event_item::current_picture()
+SDL_Surface *Event_item::current_picture() const
 {
 	return NULL;
 }
 
-Rect Event_item::current_pos()
+Rect Event_item::current_pos() const
 {
 	return m_pos;
 }
