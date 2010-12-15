@@ -12,7 +12,7 @@
 	position_target.y = pos_temp.y;
 	position_target.h = pos_temp.h;
 	position_target.w = pos_temp.w;	m_frame.x = position_target.x + (position_target.w / 2) - (m_frame.w / 2);	m_frame.x += m_decalage.x;	m_frame.y = position_target.y + (position_target.h / 2) - (m_frame.h / 2);	m_frame.y += m_decalage.y;	if (m_frame.x < 0)		m_frame.x = 0;	if (m_frame.y < 0)		m_frame.y = 0;	if ((uint32_t) (m_frame.x + m_frame.w) > static_data->static_data_weight())		m_frame.x = static_data->static_data_weight() - m_frame.w;	if ((uint32_t) (m_frame.y + m_frame.h) > static_data->static_data_height())		m_frame.y = static_data->static_data_height() - m_frame.h;}
-void Camera::display_background(SDL_Surface *background) {	SDL_Rect pos;	//~ pos = m_target->position();	//~ pos.x = -pos.x * BACKGROUND_SPEED;	//~ pos.y = -pos.y * BACKGROUND_SPEED;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	SDL_BlitSurface(background, NULL, m_screen, &pos);}void Camera::display_sprite(Sprite *sprite) {	SDL_Surface *picture = sprite->current_picture();	if (picture != NULL) {
+void Camera::display_background(SDL_Surface *background) {	SDL_Rect pos;	//~ pos = m_target->position();	//~ pos.x = -pos.x * BACKGROUND_SPEED;	//~ pos.y = -pos.y * BACKGROUND_SPEED;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	SDL_BlitSurface(background, NULL, m_screen, &pos);}void Camera::display_sprite(const Sprite *sprite) const{	SDL_Surface *picture = sprite->current_picture();	if (picture != NULL) {
 		Rect pos_temp = sprite->position();
         SDL_Rect pos_sprite;
         pos_sprite.x = pos_temp.x;

@@ -1,4 +1,11 @@
-
+/**
+ * 	@file walking_monsters.h
+ * 	@brief Header de la classe Walking_monster
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -10,10 +17,6 @@
 #include "../video/pictures_container.h"
 #include "babar.h"
 
-Walking_monster::Walking_monster(Sound_manager *sound_manager) : Monster(sound_manager)
-{
-
-}
 
 Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
 {
@@ -51,8 +54,6 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	m_pos.h = m_pics[0][0]->h;
 	m_can_fire = false;
 }
-
-
 
 Walking_monster::~Walking_monster()
 {

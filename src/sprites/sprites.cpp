@@ -1,4 +1,13 @@
-
+/**
+ * 	@file sprites.cpp
+ * 	@brief Implémentation de la classe Sprite
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
+ 
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -27,8 +36,7 @@ Sprite::~Sprite()
 
 }
 
-
-SDL_Surface *Sprite::current_picture()
+SDL_Surface *Sprite::current_picture()  const
 {
 	/*return m_animm->curr_pic();*/
 	return NULL;
@@ -88,27 +96,27 @@ void Sprite::update_pos(Static_data *static_data, Collisions_manager *collisions
 }
 
 
-Rect Sprite::position()
+Rect Sprite::position() const
 {
 	return m_pos;
 }
 
-uint32_t Sprite::position_x()
+uint32_t Sprite::position_x() const
 {
 	return m_pos.x;
 }
 
-uint32_t Sprite::position_y()
+uint32_t Sprite::position_y() const
 {
 	return m_pos.y;
 }
 
-uint32_t Sprite::phase()
+uint32_t Sprite::phase() const
 {
     return m_phase;
 }
 
-int Sprite::direction_h()
+int Sprite::direction_h() const
 {
 	if (m_horizontal == RIGHT)
 		return 1;

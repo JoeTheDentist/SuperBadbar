@@ -119,7 +119,7 @@ void Game_engine::monsters_update_speed()
 
 void Game_engine::display_monsters(Camera *camera)
 {
-	m_monsters_manager->display_monsters(camera);
+	m_monsters_manager->display_monsters(*camera);
 }
 
 

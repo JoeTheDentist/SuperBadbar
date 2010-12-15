@@ -88,7 +88,7 @@ public:
 	 *	On considère que "Babar peut tirer" si la touche
 	 *	tirer est enfoncée et s'il est autorisé à tirer
 	 */
-	bool can_fire();
+	bool can_fire() const;
 	
 	/**
 	 * 	@brief Fait tirer Babar
@@ -102,7 +102,7 @@ public:
 	 *	On considère que "Babar peut faire un double saut" si la touche
 	 *	sauter est enfoncée et s'il est autorisé à faire un double saut
 	 */
-	bool can_double_jump();
+	bool can_double_jump() const;
 	
 	/**
 	 * 	@brief Fait resauter Bababr
@@ -116,7 +116,7 @@ public:
 	 *	On considère que "Babar peut sauter" si la touche
 	 *	sauter est enfoncée et s'il est autorisé à sauter
 	 */	
-	bool can_jump();
+	bool can_jump() const;
 	
 	/**
 	 * 	@brief Fait sauter Babar
@@ -127,7 +127,7 @@ public:
 	 * 	@brief Indique si Babar peut traverser la plateforme sur laquelle il est
 	 *	@return vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas
 	 */
-	bool can_go_down(Collisions_manager *collisions_manager);
+	bool can_go_down(Collisions_manager *collisions_manager) const;
 	
 	/**
 	 * 	@brief Effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee 
@@ -139,7 +139,7 @@ public:
 	 * 	@brief Indique si Babar peut planer
 	 *	@return Vrai si Babar peut voler
 	 */
-	bool can_fly();
+	bool can_fly() const;
 	
 	/**
 	 * 	@brief Fait voler Babar
@@ -150,7 +150,7 @@ public:
 	 * 	@brief Indique si Babar doit arreter de planer
 	 *	@return Vrai si Babar doit arreter de planer
 	 */
-	bool can_stop_fly();
+	bool can_stop_fly() const;
 	
 	/**
 	 * 	@brief Fait arreter babar de planer
@@ -167,25 +167,25 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Vrai si Babar est invincible
 	 */
-	bool is_invincible();
+	bool is_invincible() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le nombre de vies de Babar
 	 */
-	int lifes();
+	int lifes() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le nombre de munitions de l'arme actuelle de Babar
 	 */
-	int munitions();
+	int munitions() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le type de l'arme actuelle de Babar
 	 */
-	weapon_type type_of_weapon();
+	weapon_type type_of_weapon() const;
 	
 	/**
 	 * 	@brief Mutateur: fait perdre des vies à Babar
@@ -197,7 +197,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de Babar
 	 */
-	SDL_Surface * current_picture(); 
+	SDL_Surface * current_picture() const; 
 
 };
 

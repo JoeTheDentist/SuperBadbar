@@ -1,7 +1,11 @@
 /**
- * Classe sprite et ses héritiers:
- * deplacements individuels des objets dynamiques
- **/
+ * 	@file sprites.h
+ * 	@brief Header de la classe Sprite
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 
 
 #ifndef _SPRITES_
@@ -12,7 +16,13 @@
 #include "SDL/SDL.h"
 #include "../items/weapons.h"
 
-enum state {    /* Etat, utile pour les animations, pour savoir quelle serie d'image afficher */
+	/*!
+	 *	@enum state
+	 *	@brief Etat, utile pour les animations, pour savoir quelle serie d'image afficher
+	 *
+	 *	Sert également à savoir ce que le sprite peut ou ne peut pas faire
+	*/
+enum state {
     STATIC, WALK, JUMP
 };
 
@@ -38,15 +48,60 @@ protected:
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
 public:
-	Sprite();			        /* constructeur */
-	virtual ~Sprite();		    /* destructeur */
-    virtual SDL_Surface * current_picture();    /* Returne le pointeur sur image */
-    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);		/* mise à jour de la position */
-	Rect position();	/* accesseur */
-	uint32_t position_x(); 	/* accesseur */
-	uint32_t position_y(); 	/* accesseur */
-	uint32_t phase();       /* accesseur */
-	int direction_h(); /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+	/*!
+	 *	@brief Constructeur
+	*/
+	Sprite();
+
+	/*!
+	 *	@brief Destructeur
+	*/
+	virtual ~Sprite();		   
+
+	/*!
+	 *	@brief Accesseur
+	 *	@return Un pointeur vers l'image actuelle du sprite
+	*/
+    virtual SDL_Surface * current_picture() const; 
+
+	/*!
+	 *	@brief Met à jour la position du sprite
+	 *	@param static_data Données du jeu
+	 *	@param collisions_manager Gestionnaire de collisions
+	*/
+    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return La position du sprite
+	*/
+	Rect position() const;
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return L'abscisse de la position du sprite
+	*/
+	uint32_t position_x() const; 	
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return L'ordonnée de la position du sprite
+	*/
+	uint32_t position_y() const;
+
+	/*!
+	 *	@brief Accesseur
+	 *	@return La phase du sprite
+	*/
+	uint32_t phase() const;
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return La direction horizontale du sprite
+	 *	
+	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
+	*/
+	int direction_h() const; /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
 };
 
 

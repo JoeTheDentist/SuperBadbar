@@ -118,7 +118,7 @@ void Weapon::fire(Rect pos, horizontal h)
 
 }
 
-uint32_t Weapon::reload_time()
+uint32_t Weapon::reload_time() const
 {
     return m_reload_time;
 }
@@ -142,12 +142,12 @@ void Weapon::change_weapon(weapon_type type)
     }
 }
 
-int Weapon::munitions()
+int Weapon::munitions() const
 {
 	return m_munitions;
 }
 
-weapon_type Weapon::type_of_weapon()
+weapon_type Weapon::type_of_weapon() const
 {
 	return m_weapon_type;
 }

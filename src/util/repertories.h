@@ -1,3 +1,18 @@
+/**
+ * 	@file repertories.h
+ * 	@brief Defines des chemins vers les données
+ *
+ *	On se repère par rapport à la racine du projet
+ *	Les chemins commencent tous par la racine
+ *	Chaque chemin est un std::string
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+
+
 #ifndef _REPERTORIES_
 #define _REPERTORIES_
 

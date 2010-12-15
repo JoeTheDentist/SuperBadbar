@@ -1,6 +1,12 @@
+
 /**
- * Contient les variables globales du projet
-**/
+ * 	@file globals.h
+ * 	@brief Constantes /types utilisés par plusieurs classes
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 
 #ifndef _GLOBALS_
 #define _GLOBALS_

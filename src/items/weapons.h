@@ -107,7 +107,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Le temps de rechargement (en cycles de jeu)
 	 */
-	uint32_t reload_time();
+	uint32_t reload_time() const;
 	
 	/**
 	 * 	@brief Changement d'arme
@@ -119,13 +119,13 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Le nombre de munitions restantes
 	 */
-	int munitions();
+	int munitions() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le type de l'arme
 	 */
-	weapon_type type_of_weapon();
+	weapon_type type_of_weapon() const;
 
 };
 

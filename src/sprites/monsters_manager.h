@@ -23,6 +23,14 @@ class Sound_manager;
 class Pictures_container;
 class Collisions_manager;
 
+
+/**
+ * 	@class Monsters_manager
+ * 	@brief Gestionnaire de monstres
+ *
+ *
+ */
+
 class Monsters_manager {
 private:
 	List<Monster*> m_monsters;    				/* Liste des monstres */
@@ -66,8 +74,9 @@ public:
 	/*!
 	* 	@brief Affiche les monstres à l'écran
 	*	@param camera Camera pour effectuer les affichage
+	*	@todo implémenter cette méthode avec un itérateur pour pouvoir la passer en const
 	*/
-	void display_monsters(Camera *camera);	
+	void display_monsters(const Camera &camera);	
 	
 	/*!
 	* 	@brief check les collisions entre babar et les monstres
@@ -105,6 +114,7 @@ public:
 	/*!
 	*	@brief accesseur
 	*	@return l'élément courant de monsters_manager
+	*	@todo passer la méthode en const?
 	*/
 	Monster *element();
 	

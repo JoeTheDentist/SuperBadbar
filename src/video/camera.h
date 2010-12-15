@@ -76,7 +76,7 @@ public:
 	*	relativement à la position de la caméra
 	*	Si le sprite vaut NULL, rien ne se passe
 	*/
-	void display_sprite(Sprite *sprite) ;
+	void display_sprite(const Sprite * sprite) const;
 	
 	/*!
 	* 	@brief Affiche le Static passé en paramètre à l'écran

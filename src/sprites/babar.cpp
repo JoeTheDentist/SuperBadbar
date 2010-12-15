@@ -132,7 +132,7 @@ void Babar::update_direction()
 	}
 }
 
-bool Babar::can_fire()
+bool Babar::can_fire() const
 {
 	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
 }
@@ -148,7 +148,7 @@ void Babar::fire()
 	}
 }
 
-bool Babar::can_double_jump()
+bool Babar::can_double_jump() const
 {
 	return m_state == JUMP && m_keyboard->key_down(k_jump) && (!m_double_jump);
 }
@@ -164,7 +164,7 @@ void Babar::double_jump()
 }
 
 
-bool Babar::can_jump()
+bool Babar::can_jump() const
 {
 	return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
 }
@@ -178,7 +178,7 @@ void Babar::jump()
 	m_sound_manager->play_babar_jump();
 }
 
-bool Babar::can_go_down(Collisions_manager *collisions_manager)
+bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 {
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
 				&& is_down_coll(collisions_manager->down_collision_type(m_pos)));
@@ -206,14 +206,14 @@ void Babar::fly()
 	m_plane = true;
 }
 
-bool Babar::can_fly()
+bool Babar::can_fly() const
 {
 	if (m_plane || !m_allowed_to_plane)
 		return false;
 	return m_double_jump && m_keyboard->key_down(k_jump);
 }
 
-bool Babar::can_stop_fly()
+bool Babar::can_stop_fly() const
 {
 	if (!m_plane)
 		return false;
@@ -228,7 +228,7 @@ void Babar::stop_fly()
 }
 
 
-void Babar::damage(int damages)
+void Babar::damage(int damages) 
 {
 	PRINT_TRACE(3, "Babar bobo")
 	if (!is_invincible()) {
@@ -244,27 +244,27 @@ void Babar::change_weapon(weapon_type weapon)
 	m_weapon.change_weapon(weapon);
 }
 
-bool Babar::is_invincible()
+bool Babar::is_invincible() const
 {
 	return m_invincible > 0;
 }
 
-int Babar::lifes()
+int Babar::lifes() const
 {
 	return m_lifes;
 }
 
-int Babar::munitions()
+int Babar::munitions()  const
 {
 	return m_weapon.munitions();
 }
 
-weapon_type Babar::type_of_weapon()
+weapon_type Babar::type_of_weapon()  const
 {
 	return m_weapon.type_of_weapon();
 }
 
-SDL_Surface *Babar::current_picture()
+SDL_Surface *Babar::current_picture() const
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
 		m_animm->change_anim(m_state, m_last_dir);

@@ -1,12 +1,15 @@
 /**
- * WARNING : classe à refaire
- * Description: La classe Analyser sert à lire des fichiers et à les interpréter
- * Utilisation: Utiliser open pour ouvrir un fichier.
- * 				L'interpréter avec les méthodes appropriées
- *				Le fermer avec close
- * Fonctionnement: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
- *				Il est lu à chaque fois lu à l'avance par convention
-**/
+ * 	@file analyser.h
+ * 	@brief Header de la classe Analyser
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+
+
+
 
 
 #ifndef _ANALYSER_
@@ -19,15 +22,22 @@
 #define COLL_EXT ".col"
 #define PICS_EXT ".bmp"
 
+/**
+ * 	@class Analyser
+ * 	@brief Lit les fichiers
+ *
+ * Utilisation: Utiliser open pour ouvrir un fichier.
+ * 				L'interpréter avec les méthodes appropriées
+ *				Le fermer avec close
+ * Fonctionnement: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
+ *				Il est lu à chaque fois lu à l'avance par convention
+**/
 
 class Analyser {
 
 private:
 	bool m_opened;
 	std::ifstream *m_file;
-
-
-
 
 public:
 	/*!
@@ -96,9 +106,12 @@ public:
 	*/
 	std::string read_string();
 	
+	/*!
+	* @brief Lit et renvoie le prochain char du fichier
+	*
+	* @return le char lu
+	*/	
 	char read_char();
-
-
 
 };
 

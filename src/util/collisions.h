@@ -1,4 +1,14 @@
 /**
+ * 	@file collisions.h
+ * 	@brief Fonctions de collisions
+ *	@todo deplacer dans collision_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+/**
  * Fonctions de tests de collisions
  * Un nombre de collision caractérise la collision: on regarde les
  * 4 derniers bits: 1 signifie collision et 0 absence de collision

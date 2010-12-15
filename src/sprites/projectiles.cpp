@@ -1,3 +1,12 @@
+/**
+ * 	@file projectiles.cpp
+ * 	@brief Implémentation de la classe Projectile
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -13,11 +22,6 @@
 /**************************
 **  Méthodes projectiles **
 **************************/
-
-Projectile::Projectile()
-{
-	PRINT_CONSTR(3, "Construction d'un projectile")
-}
 
 Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
 {
@@ -103,7 +107,7 @@ Projectile::~Projectile()
 	PRINT_CONSTR(3, "Destruction d'un projectile")
 }
 
-SDL_Surface *Projectile::current_picture()
+SDL_Surface *Projectile::current_picture() const
 {
     return m_pic;
 }
@@ -112,12 +116,12 @@ SDL_Surface *Projectile::current_picture()
 
 
 
-uint32_t Projectile::damage()
+uint32_t Projectile::damage() const
 {
     return m_damage;
 }
 
-Rect Projectile::speed()
+Rect Projectile::speed() const
 {
     return m_speed;
 }

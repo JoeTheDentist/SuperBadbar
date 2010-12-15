@@ -1,3 +1,12 @@
+/**
+ * 	@file analyser.cpp
+ * 	@brief Implémentation de la classe Analyser
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
 #include <iostream>
 #include <stdint.h>
 #include <string>

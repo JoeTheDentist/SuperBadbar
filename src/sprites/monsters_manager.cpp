@@ -22,7 +22,6 @@ Monsters_manager::~Monsters_manager() {
 
 }
            
-
 void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container) {
     void_list();
 	analyser->find_string("#Monsters#");
@@ -35,11 +34,9 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 	}
 }
 
-
 void Monsters_manager::add(Monster *monster) {
 	m_monsters.add(monster);
 }
-
 
 void Monsters_manager::monsters_update_speed(Babar *babar){
     m_monsters.init();
@@ -49,8 +46,7 @@ void Monsters_manager::monsters_update_speed(Babar *babar){
 	}
 }
 
-void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager)
-{
+void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) {
     m_monsters.init();
 	while(!m_monsters.end()) {
 		m_monsters.element()->update_pos(static_data, collisions_manager);
@@ -58,16 +54,15 @@ void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_m
 	}
 }
 
-void Monsters_manager::display_monsters(Camera *camera) {
+void Monsters_manager::display_monsters(const Camera &camera) {
     m_monsters.init();
 	while(!m_monsters.end()) {
-	    camera->display_sprite(m_monsters.element());
+	    camera.display_sprite(m_monsters.element());
 	    m_monsters.next();
 	}
 }
 
-void Monsters_manager::babar_monsters_collision(Babar *babar)
-{
+void Monsters_manager::babar_monsters_collision(Babar *babar) {
 	Rect babar_pos = babar->position();
 
 	m_monsters.init();
@@ -78,7 +73,6 @@ void Monsters_manager::babar_monsters_collision(Babar *babar)
 	    m_monsters.next();
 	}
 }
-
 
 void Monsters_manager::init() {
 	m_monsters.init();

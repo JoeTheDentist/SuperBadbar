@@ -1,4 +1,10 @@
 /**
+ * 	@file debug.h
+ * 	@brief Macros de debug / traces pour le développement
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
  * Trois macros de debug et une de performance:
  * PRINT_CONSTR pour tracer les constructeurs et destructeurs, 
  * PRINT_TRACE pour tracer le reste
