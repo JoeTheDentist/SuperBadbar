@@ -1,3 +1,11 @@
+/**
+ * 	@file monsters_manager.cpp
+ * 	@brief Implémentation de la classe Monsters_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 
 
 #include "monsters_manager.h"

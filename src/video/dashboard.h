@@ -1,3 +1,12 @@
+/**
+ * 	@file dashboard.h
+ * 	@brief Header de la classe Dashboard
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
 #ifndef _DASHBOARD_
 #define _DASHBOARD_
 
@@ -14,6 +23,13 @@ class Camera;
 class Babar;
 class Pictures_container;
 
+
+/**
+ * 	@class Dashboard
+ * 	@brief Tableau de bord du jeu
+ *
+ *	@todo A deplacer dans Graphic_engine
+ */
 class Dashboard {
 private:
 	TTF_Font *m_font;
@@ -23,8 +39,24 @@ private:
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
 public:
+	
+	/**
+	 * 	@brief Constructeur
+	 *	@param pictures_container Gestionnaire de chargement d'images
+	 */
 	Dashboard(Pictures_container *pictures_container);
+
+	/**
+	 * 	@brief Destructeur
+	 */
 	~Dashboard();
+
+	/**
+	 * 	@brief Affiche le tableau de board
+	 * 	@param lifes Le nombre de vies de Babar
+	 *	@param camera Le gestionnaire d'affichage
+	 *	@param babar Pointeur vers babar
+	 */
 	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
 
 };

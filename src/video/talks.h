@@ -1,3 +1,12 @@
+/**
+ * 	@file talks.h
+ * 	@brief Header de la classe Talks
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #ifndef _TALKS_
 #define _TALKS_
 
@@ -26,6 +35,14 @@ struct cell_string {
 	cell_string *next;
 };
 
+
+/**
+ * 	@class Talks
+ * 	@brief Gestionnaire graphique de dialogues
+ *
+ *	
+ *
+ */
 class Talks {
 private:
 	SDL_Surface *m_text_background;
@@ -45,11 +62,38 @@ private:
 	void display_line(int line);
 	void wait_space();
 public:
+	/**
+	 * 	@brief Constructeur
+	 */
 	Talks();
+
+	/**
+	 * 	@brief Destructeur
+	 */
 	~Talks();
+
+	/**
+	 * 	@brief Initialisation des paramètres de l'objet
+	 *	@param camera Le gestionnaire d'affichage
+	 *	@param pictures_container Le gestionnaire de chargement d'image
+	 */
 	void init_talks(Camera *camera, Pictures_container *pictures_container);
-	void display_text(std::string str);					/* Doit etre suivi d'un keyboard.disable_all_keys(); */
-	void load_and_display_text(std::string filename);	/* Doit etre suivi d'un keyboard.disable_all_keys(); */
+
+	/**
+	 * 	@brief Affiche sous forme de dialogue la chaine de caractères
+	 *	@param str Chaine à afficher
+	 *	@warning A faire suivre par un keyboard.disable_all_keys(); pour éviter des effets indésirables
+	 *	dus à la configuration du clavier avant l'appel
+	 */
+	void display_text(std::string str);
+
+	/**
+	 * 	@brief Affiche sous forme de dialogue le contenu du fichier
+	 *	@param filename Chemin du fichier à afficher
+	 *	@warning A faire suivre par un keyboard.disable_all_keys(); pour éviter des effets indésirables
+	 *	dus à la configuration du clavier avant l'appel
+	 */
+	void load_and_display_text(std::string filename);
 
 };
 

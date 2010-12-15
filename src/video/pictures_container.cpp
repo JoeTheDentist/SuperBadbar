@@ -1,4 +1,11 @@
-
+/**
+ * 	@file pictures_container.h
+ * 	@brief Implémentation de la classe Pictures_container
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 
 #include <iostream>
 #include <SDL/SDL.h>

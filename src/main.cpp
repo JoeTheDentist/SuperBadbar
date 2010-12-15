@@ -1,3 +1,12 @@
+/**
+ * 	@file main.cpp
+ * 	@brief main du jeu
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -9,10 +18,6 @@
 
 
 
-/*!
-	@file main.cpp
-	@author Guillaume Bérard & Benoit Morel
-*/
 
 int main(int argc, char *argv[])
 {

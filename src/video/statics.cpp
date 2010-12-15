@@ -1,3 +1,12 @@
+/**
+ * 	@file statics.cpp
+ * 	@brief Implémentation de la classe Static
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
 #include <iostream>
 #include <stdint.h>
 #include <string>
@@ -35,12 +44,12 @@ Static::~Static()
     SDL_FreeSurface(m_image);
 }
 
-SDL_Surface * Static::image()
+SDL_Surface * Static::image() const
 {
     return m_image;
 }
 
-Rect Static::position()
+Rect Static::position() const
 {
     return m_pos;
 }

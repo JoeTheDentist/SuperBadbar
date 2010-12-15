@@ -14,6 +14,11 @@
 
 class Projectile;
 
+
+/**
+ * 	@class Projectiles_manager
+ * 	@brief Gestionnaire de projectiles
+ */
 class Projectiles_manager {
 private:
 //~ 	std::List<Projectile*> m_projectiles_babar; 

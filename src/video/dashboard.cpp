@@ -1,3 +1,13 @@
+/**
+ * 	@file dashboard.cpp
+ * 	@brief Implémentation de la classe Dashboard
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
+ 
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>

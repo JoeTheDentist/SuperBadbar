@@ -64,9 +64,9 @@ public:
 	 * 	@brief Initialisation des données 
 	 * 	@param level Le numéro du niveau à charger
 	 * 	@param camera La camera qui servira à afficher les images
-	 * 	@param static_data données du niveau
-	 * 	@param sound_manager gestionnaire de son
-	 * 	@param keybord gestionnaire du clavier
+	 * 	@param static_data Données du niveau
+	 * 	@param sound_manager Gestionnaire de son
+	 * 	@param keyboard Gestionnaire du clavier
 	*/
 	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard);
 
@@ -171,7 +171,7 @@ public:
 	
 	/**
 	 * 	@brief Affiche les événements affichables
-	 *	@param La camera qui affichera les événéments
+	 *	@param camera La camera qui affichera les événéments
 	*/
 	void display_events(Camera *camera);
 

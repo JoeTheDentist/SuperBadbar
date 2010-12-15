@@ -18,6 +18,10 @@ class Collisions_manager;
 
 
 
+/**
+ * 	@class Projectile
+ * 	@brief Projectiles du jeu
+ */
 class Projectile: public Sprite {
 protected:
     SDL_Surface * m_pic;    /* Image du projectile */

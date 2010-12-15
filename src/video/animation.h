@@ -1,16 +1,30 @@
+/**
+ * 	@file animation.h
+ * 	@brief Header de la classe Animation
+ *
+ * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
 #ifndef ANIMATION_H_INCLUDED
 #define ANIMATION_H_INCLUDED
 
 #include <SDL/SDL.h>
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
+
+/**
+ * 	@class Animation
+ * 	@brief 
+ */
 class Animation {
 private:
     SDL_Surface ** m_images;
     int m_curr;                 /* image courante */
     int m_size;                 /* nombre d'images stockees */
     bool m_force;               /* attente de la terminaison de l'animation */
-    bool m_finished;            /* si l'animation peut être interrompue */
+    bool m_finished;            /* si l'animation peut etre interrompue */
     int m_phase;                /* nombre de cycle depuis lequel l'animation a ete cree */
 
 public:

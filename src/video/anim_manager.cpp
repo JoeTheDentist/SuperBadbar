@@ -1,3 +1,14 @@
+/**
+ * 	@file anim_manager.cpp
+ * 	@brief Implémentation de la classe Anim_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
+
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>

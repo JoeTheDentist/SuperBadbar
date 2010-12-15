@@ -83,6 +83,7 @@ public:
 
 	/**
 	 * 	@brief Constructeur
+	 *	@param type Le type de l'arme
 	 *	@param projectiles_list Liste de projectiles dans laquelle tire l'arme
 	 *	@param proj_pics Images des projectiles de l'armes
 	 *	@param sound_manager Le gestionnaire de son
@@ -98,8 +99,8 @@ public:
 	
 	/**
 	 * 	@brief Tire en fonction de l'arme
-	 *	@param La position du propriétaire de l'arme
-	 *	@param horizontal la direction de tir
+	 *	@param pos La position du propriétaire de l'arme
+	 *	@param h la direction de tir
 	 */
 	void fire(Rect pos, horizontal h);
 	

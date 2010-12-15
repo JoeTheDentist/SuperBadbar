@@ -1,12 +1,27 @@
 /**
- * Classe Camera: classe singleton qui gère toute la partie graphique du jeu.
- * Elle initialise la SDL, ouvre la fenetre et les ferme.
- * Elle pointe sur un sprite qu'elle suit dans ses déplacements avec update_pos(), appelé par la classe Game.
- * Elle permet d'afficher des sprites et le fond d'écran aux bons endroits en calculant leur position relative
- * à la fenetre à partir de leur position absolue.
- * Elle permet aussi d'afficher une Surface * quelconque à une position donnée dans la fenetre (indépendamment
- * de la position de la camera)
+ * 	@file camera.h
+ * 	@brief Header de la classe Camera
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+
+
+/**
+ * 	@class Camera
+ * 	@brief Gestionnaire d'affichage
+ *
+ *
+ * Initialise la SDL, ouvre la fenetre et les ferme.\n
+ * Pointe sur un sprite qu'elle suit dans ses déplacements avec update_pos().\n
+ * Permet d'afficher des sprites et le fond d'écran aux bons endroits en calculant leur position relative
+ * à la fenetre à partir de leur position absolue.\n
+ * Permet aussi d'afficher une Surface * quelconque à une position donnée dans la fenetre (indépendamment
+ * de la position de la camera)\n
  * La camera suit le sprite pointé sauf lorsqu'il arrive aux limites du niveau.
+ *
+ *	@todo En fait la camera suit le sprite meme lorsqu'il arrive aux limites du niveau..
  **/
 
 #ifndef _CAMERA_

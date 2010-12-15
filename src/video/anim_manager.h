@@ -1,3 +1,12 @@
+/**
+ * 	@file anim_manager.h
+ * 	@brief Header de la classe Anim_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
+ 
 #ifndef ANIM_MANAGER_H_INCLUDED
 #define ANIM_MANAGER_H_INCLUDED
 
@@ -10,10 +19,11 @@
 
 #define PICS_EXT ".bmp"
 
-/*!
- * Classe ayant pour but d'automatiser l'utilisation des animations.
- */
 
+/**
+ * 	@class Anim_manager
+ * 	@brief Automatise l'utilisation des animations
+ */
 class Anim_manager
 {
     private:

@@ -1,7 +1,11 @@
-/*!
-	ATTENTION IL FAUDRAIT ENLEVER L'ACCESSEUR
-*/
-
+/**
+ * 	@file monsters_manager.h
+ * 	@brief Header de la classe Monsters_manager
+ *
+ * 	@author Guillaume Bérard & Benoit Morel
+ * 	@date decembre 2010
+ *
+ */
 
 
 
@@ -28,7 +32,7 @@ class Collisions_manager;
  * 	@class Monsters_manager
  * 	@brief Gestionnaire de monstres
  *
- *
+ *	@todo Enlever un accesseur (identifier cet accesseur à enlever :p)
  */
 
 class Monsters_manager {
@@ -62,7 +66,8 @@ public:
 
 	/*!
 	* 	@brief Met à jour la position des monstres
-	*	@param static_data contient la matrice des collisions du niveau
+	*	@param static_data DOnnées du niveau
+	*	@param collisions_manager Gestionnaire de collisions
 	*/
 	void monsters_update_pos(Static_data *static_data, Collisions_manager *collisions_manager);	
 	

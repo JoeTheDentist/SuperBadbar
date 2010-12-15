@@ -38,6 +38,11 @@ class Camera;
 class Anim_manager;
 class Collisions_manager;
 
+
+/**
+ * 	@class Sprite
+ * 	@brief Entités 2D mobiles et afichables
+ */
 class Sprite{
 protected:
 	Rect m_pos; 		        /* position du sprite et sa taille */
