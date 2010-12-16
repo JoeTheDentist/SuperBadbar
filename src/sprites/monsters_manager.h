@@ -39,7 +39,6 @@ class Monsters_manager {
 private:
 	List<Monster*> m_monsters;    				/* Liste des monstres */
 
-
 public:
 
 	/*!
@@ -74,7 +73,7 @@ public:
 	/*!
 	* 	@brief Met à jour la vitesse des monstres
 	*/	
-	void monsters_update_speed(Babar *babar); // le faire passer au constructeur pour les walking monsters?
+	void monsters_update_speed(Babar *babar);
 	
 	/*!
 	* 	@brief Affiche les monstres à l'écran

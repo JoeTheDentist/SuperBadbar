@@ -83,12 +83,12 @@ SDL_Surface * Static_data::background()
 
 uint32_t Static_data::static_data_height()
 {
-    return m_background->h / BACKGROUND_SPEED;
+    return m_background->h / BACKGROUND_SPEED - WINDOW_HEIGHT ;
 }
 
 uint32_t Static_data::static_data_weight()
 {
-    return m_background->w / BACKGROUND_SPEED;
+    return m_background->w / BACKGROUND_SPEED - WINDOW_WEIGHT;
 }
 
 
