@@ -31,6 +31,11 @@ class Static;
  *	- bloquante par la droite
  *	- bloquante par la gauche
  *
+ * Un nombre de collision caractérise la collision: on regarde les
+ * 4 derniers bits: 1 signifie collision et 0 absence de collision
+ * le bit de poids fort représente haut, puis bas, puis gauche, puis droite pour
+ * le bit de poids faible
+ *
  *	La classe fournit donc des méthodes pour
  *	déterminer la nature de la collision (is_xxxx_collision())
  * 
@@ -145,6 +150,34 @@ public:
 	*/
 	bool double_collision(Rect pos);
 
+
+
+	/*!
+	 *	@brief Décode le nombre de collision
+	 *	@param coll_number Le nombre de collision
+	 *	@return Vrai si la collision codée bloque les déplacements vers le haut
+	*/
+	static bool is_up_coll(uint32_t coll_number);
+
+	/*!
+	 *	@brief Décode le nombre de collision
+	 *	@param coll_number Le nombre de collision
+	 *	@return Vrai si la collision codée bloque les déplacements vers le bas*/
+	static bool is_down_coll(uint32_t coll_number);
+
+	/*!
+	 *	@brief Décode le nombre de collision
+	 *	@param coll_number Le nombre de collision
+	 *	@return Vrai si la collision codée bloque les déplacements vers la gauche
+	*/
+	static bool is_left_coll(uint32_t coll_number);
+
+	/*!
+	 *	@brief Décode le nombre de collision
+	 *	@param coll_number Le nombre de collision
+	 *	@return Vrai si la collision codée bloque les déplacements vers la droite
+	*/
+	static bool is_right_coll(uint32_t coll_number);
 };
 
 

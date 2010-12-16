@@ -17,8 +17,6 @@
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 
-#include "../util/collisions.h"
-
 /**************************
 **  Méthodes projectiles **
 **************************/
@@ -51,7 +49,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		coll = collisions_manager->down_collision_type(m_pos);
-		if (is_down_coll(coll)){
+		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
 			m_phase = PROJ_LIFE_SPAN;
@@ -64,7 +62,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (is_up_coll(collisions_manager->up_collision_type(m_pos))){
+		if (Collisions_manager::is_up_coll(collisions_manager->up_collision_type(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
 			m_phase = PROJ_LIFE_SPAN;
@@ -79,7 +77,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(collisions_manager->down_collision_type(m_pos))) {
+			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
 				m_phase = PROJ_LIFE_SPAN;
 			}
@@ -90,7 +88,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			m_pos.y -= 	BOX_SIZE;
-			if(!is_down_coll(collisions_manager->down_collision_type(m_pos))) {
+			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
 				m_phase = PROJ_LIFE_SPAN;
 			}

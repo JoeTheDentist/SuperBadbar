@@ -6,7 +6,6 @@
 #include "static_data.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
-#include "../util/collisions.h"
 #include "../game/game.h"
 #include "../util/globals.h"
 #include "../sprites/sprites.h"

@@ -15,7 +15,6 @@
 #include "babar.h"
 #include "../util/debug.h"
 #include "../game/game.h"
-#include "../util/collisions.h"
 #include "../game/collisions_manager.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
@@ -52,7 +51,7 @@ Babar::~Babar()
 
 void Babar::load(char age)
 {
-    char age_c = '0', i_c = '0';
+    char age_c = '0';
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
 
@@ -181,13 +180,13 @@ void Babar::jump()
 bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 {
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
-				&& is_down_coll(collisions_manager->down_collision_type(m_pos)));
+				&& Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)));
 }
 
 void Babar::go_down(Collisions_manager *collisions_manager)
 {
 	m_pos.y += BOX_SIZE;
-	while (is_down_coll(collisions_manager->down_collision_type(m_pos))){
+	while (Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))){
 		if (collisions_manager->double_collision(m_pos)) {
 			m_pos.y -= BOX_SIZE;
 			break;

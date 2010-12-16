@@ -13,7 +13,6 @@
 
 #include "monsters.h"
 #include "../util/debug.h"
-#include "../util/collisions.h"
 #include "../game/game.h"
 
 

@@ -16,7 +16,6 @@
 #include "../sound/sound.h"
 #include "game.h"
 #include "../util/debug.h"
-#include "../util/collisions.h"
 #include "../control/keyboard.h"
 
 #include "../sprites/babar.h"

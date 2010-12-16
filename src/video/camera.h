@@ -20,9 +20,7 @@
  * Permet aussi d'afficher une Surface * quelconque à une position donnée dans la fenetre (indépendamment
  * de la position de la camera)\n
  * La camera suit le sprite pointé sauf lorsqu'il arrive aux limites du niveau.
- *
- *	@todo En fait la camera suit le sprite meme lorsqu'il arrive aux limites du niveau..
- **/
+**/
 
 #ifndef _CAMERA_
 #define _CAMERA_

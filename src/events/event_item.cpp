@@ -11,7 +11,7 @@
 
 #include "event_item.h"
 #include "../sprites/babar.h"
-#include "../util/collisions.h"
+#include "../game/collisions_manager.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
 
@@ -42,7 +42,7 @@ void Event_item::update()
 
 bool Event_item::can_start() const
 {
-	return check_collision(m_pos, m_target->position());
+	return Collisions_manager::check_collision(m_pos, m_target->position());
 }
 
 void Event_item::start()

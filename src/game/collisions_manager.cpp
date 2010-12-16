@@ -12,7 +12,6 @@
 #include "../util/analyser.h"
 #include "../util/globals.h"
 #include "../util/debug.h"
-#include "../util/collisions.h"
 
 Collisions_manager::Collisions_manager() {
 	PRINT_CONSTR(1, "Construction de Collisions_manager")
@@ -155,3 +154,24 @@ bool Collisions_manager::double_collision(Rect pos)
 	}
 	return false;
 }
+
+bool Collisions_manager::is_up_coll(uint32_t coll_number)
+{
+	return ((coll_number & 0x8) == 0x8);
+}
+
+bool Collisions_manager::is_down_coll(uint32_t coll_number)
+{
+	return ((coll_number & 0x4) == 0x4);
+}
+
+bool Collisions_manager::is_left_coll(uint32_t coll_number)
+{
+	return ((coll_number & 0x2) == 0x2);
+}
+
+bool Collisions_manager::is_right_coll(uint32_t coll_number)
+{
+	return ((coll_number & 0x1) == 0x1);
+}
+

@@ -17,7 +17,6 @@
 #include "../sound/sound_manager.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
-#include "../util/collisions.h"
 #include "../util/analyser.h"
 
 
@@ -75,7 +74,7 @@ void Monsters_manager::babar_monsters_collision(Babar *babar) {
 
 	m_monsters.init();
 	while(!m_monsters.end()) {
-		if (check_collision(m_monsters.element()->position(), babar_pos)) {
+		if (Collisions_manager::check_collision(m_monsters.element()->position(), babar_pos)) {
 			babar->damage(1);
 		}
 	    m_monsters.next();
