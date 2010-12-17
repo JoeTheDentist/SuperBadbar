@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -14,12 +14,6 @@
 
 #include "animation.h"
 
-Animation::Animation() {
-    m_images = NULL;
-    m_size = 0;
-    m_curr = 0;
-    m_phase = 0;
-}
 
 Animation::Animation(std::string * s, int size, bool force) {
     m_images = new SDL_Surface*[size];

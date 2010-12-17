@@ -16,7 +16,7 @@
 
 /**
  * 	@class Animation
- * 	@brief 
+ * 	@brief
  */
 class Animation {
 private:
@@ -28,7 +28,6 @@ private:
     int m_phase;                /* nombre de cycle depuis lequel l'animation a ete cree */
 
 public:
-    Animation();
 
     /*!
 	* @brief Constructeur

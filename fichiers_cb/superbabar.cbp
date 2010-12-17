@@ -77,14 +77,14 @@
 		<Unit filename="..\src\sprites\monsters_manager.h" />
 		<Unit filename="..\src\sprites\projectiles.cpp" />
 		<Unit filename="..\src\sprites\projectiles.h" />
+		<Unit filename="..\src\sprites\projectiles_manager.cpp" />
+		<Unit filename="..\src\sprites\projectiles_manager.h" />
 		<Unit filename="..\src\sprites\sprites.cpp" />
 		<Unit filename="..\src\sprites\sprites.h" />
 		<Unit filename="..\src\sprites\walking_monsters.cpp" />
 		<Unit filename="..\src\sprites\walking_monsters.h" />
 		<Unit filename="..\src\util\analyser.cpp" />
 		<Unit filename="..\src\util\analyser.h" />
-		<Unit filename="..\src\util\collisions.cpp" />
-		<Unit filename="..\src\util\collisions.h" />
 		<Unit filename="..\src\util\debug.h" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
