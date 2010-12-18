@@ -13,22 +13,20 @@
 #include <time.h>
 
 #include "weapons.h"
-#include "../util/lists.h"
 #include "../util/debug.h"
 #include "../sprites/projectiles.h"
 
 
 
-Weapon::Weapon(List<Projectile*> *projectiles_list, SDL_Surface **proj_pics)
+Weapon::Weapon(SDL_Surface **proj_pics)
 {
-	m_projectiles_list = projectiles_list;
 	m_proj_pics = proj_pics;
 	PRINT_CONSTR(2, "Construction d'une Weapon")
     m_weapon_type = GUN;
     m_reload_time = 2;
 }
 
-Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surface **proj_pics, Sound_manager *sound_manager)
+Weapon::Weapon(weapon_type type, SDL_Surface **proj_pics, Sound_manager *sound_manager)
 {
 
 	PRINT_CONSTR(2, "Construction d'une Weapon")
@@ -36,7 +34,6 @@ Weapon::Weapon(weapon_type type, List<Projectile*> *projectiles_list, SDL_Surfac
 	m_proj_pics = proj_pics;
 	m_sound_manager = sound_manager;
     m_weapon_type = type;
-	m_projectiles_list = projectiles_list;
     switch (m_weapon_type) {
         case GUN :
             m_reload_time = RELOAD_GUN;
@@ -58,21 +55,22 @@ Weapon::~Weapon()
 	PRINT_CONSTR(2, "Destruction d'une Weapon")
 }
 
-void Weapon::fire(Rect pos, horizontal h)
+std::list<Projectile*> *Weapon::fire(Rect pos, horizontal h)
 {
+	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
     Projectile * proj;
 	m_sound_manager->play_fire(m_weapon_type);
 	int dir_h =0;
     switch (m_weapon_type) {
         case GUN :
             proj = new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1, m_proj_pics);
-            m_projectiles_list->add(proj);
+            proj_list->push_back(proj);
 			m_munitions++;
 			break;
         case MACHINEGUN:
             dir_h = (2*h-1)*PROJ_SPEED;
 			proj = new Projectile(pos, h, dir_h, 0,1, m_proj_pics);
-            m_projectiles_list->add(proj);
+            proj_list->push_back(proj);
             break;
         case SHOTGUN:
             int x[5];
@@ -99,15 +97,15 @@ void Weapon::fire(Rect pos, horizontal h)
 
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-				m_projectiles_list->add(proj[i]);
+				proj_list->push_back(proj[i]);
             }
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-                m_projectiles_list->add(proj[i]);
+                proj_list->push_back(proj[i]);
             }
             for(int i = 0;i<5;i++) {
                 proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-                m_projectiles_list->add(proj[i]);
+                proj_list->push_back(proj[i]);
             }
 
             break;
@@ -115,7 +113,7 @@ void Weapon::fire(Rect pos, horizontal h)
 	m_munitions --;
 	if (m_munitions <= 0)
 		change_weapon(GUN);
-
+	return proj_list;
 }
 
 uint32_t Weapon::reload_time() const

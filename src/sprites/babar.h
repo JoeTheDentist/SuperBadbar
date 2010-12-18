@@ -13,9 +13,11 @@
 #include "sprites.h"
 #include "../video/animation.h"
 #include "../video/anim_manager.h"
+#include <list>
 #define BABAR_SPEED 15
 
 class Collisions_manager;
+class Projectiles_manager;
 
 /**
  * 	@class Babar
@@ -46,12 +48,11 @@ public:
 	
 	/**
 	 * 	@brief Constructeur
-	 *	@param projectiles_friend La liste de projectiles dans laquelle vont les projectiles tirés par Babar
 	 *	@param keyboard L'utilitaire qui récupère les entrées clavier du joueur
 	 *	@param static_data Les données du niveau
 	 *	@param sound_manager Le gestionnaire de son
 	 */
-	Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager);
+	Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager);
 
 	/**
 	 * 	@brief Destructeur
@@ -74,7 +75,7 @@ public:
 	 *	@param static_data Données du niveau
 	 *	@param collisions_manager Gestionnaire de collision
 	 */
-	void update_state(Static_data *static_data, Collisions_manager *collisions_manager);   
+	void update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectile_manager);   
 	
 	/**
 	 * 	@brief Mise à jour de la direction de Babar en fonction des touches enfoncées
@@ -92,8 +93,10 @@ public:
 	
 	/**
 	 * 	@brief Fait tirer Babar
+	 *	@return La liste de projectiles tirés
+	 *	@todo changer les types de retour et l'organisation de fire et tout ce qui touche au tir
 	 */
-	void fire();
+	std::list<Projectile*> *fire();
 	
 	/**
 	 * 	@brief  Indique si Babar peut faire un double saut

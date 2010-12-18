@@ -26,6 +26,7 @@ class Babar;
 class Monsters_manager;
 class Events_manager;
 class Collisions_manager;
+class Projectiles_manager;
 
 
 
@@ -39,8 +40,6 @@ class Collisions_manager;
  */
 class Game_engine {
 private:
-	List<Projectile*> m_projectiles_friend;    	/* Liste des projectiles de Babar à l'écran */
-	List<Projectile*> m_projectiles_ennemy;    	/* Liste des projectiles ennemis */
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
 	Sound_manager *m_sound_manager;
@@ -48,6 +47,7 @@ private:
 	Monsters_manager *m_monsters_manager;
 	Events_manager *m_events_manager;
 	Collisions_manager *m_collisions_manager;
+	Projectiles_manager *m_projectiles_manager;
 
 public:
 	/**
@@ -68,14 +68,7 @@ public:
 	 * 	@param sound_manager Gestionnaire de son
 	 * 	@param keyboard Gestionnaire du clavier
 	*/
-	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard);
-
-	/**
-	 * 	@brief Indique la fin de la liste des projectiles amis
-	 * 	@return Vrai quand on arrive à la fin de la liste des projectiles amis
-	 *	@todo deplacer
-	*/
-	bool projectiles_friend_end();									
+	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard);						
 	
 	/**
 	 * 	@brief Mise à jour des positions des projectiles amis
@@ -151,13 +144,7 @@ public:
 	 *	@todo voir pourquoi ça ne fait rien :p
 	*/
     void update(Camera *m_camera);  
-	
-	/**
-	 * 	@brief Accesseur
-	 *	@return projectiles_friend La liste des projectiles amis
-	*/
-	List<Projectile*> *projectiles_friend();	
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le sprite Babar

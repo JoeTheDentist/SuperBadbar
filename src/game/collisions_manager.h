@@ -44,7 +44,6 @@ class Static;
  *
  
  *	@warning Beaucoup de vérifications sont faites pour éviter les dépassements de tableaux. On peut donc optimiser ici
- *	@todo Ajouter les méthodes de collisions.h en static dans cette classe	
  */
 class Collisions_manager {
 private:

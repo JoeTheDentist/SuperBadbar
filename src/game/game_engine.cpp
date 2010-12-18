@@ -24,6 +24,7 @@
 #include "../sprites/monsters_manager.h"
 #include "../sprites/walking_monsters.h"
 #include "../sprites/projectiles.h"
+#include "../sprites/projectiles_manager.h"
 #include "../util/analyser.h"
 #include "../video/camera.h"
 #include "../util/globals.h"
@@ -32,7 +33,7 @@
 #include "../events/events_manager.h"
 
 
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_collisions_manager(new Collisions_manager)
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_collisions_manager(new Collisions_manager()), m_projectiles_manager(new Projectiles_manager())
 {
 	m_sound_manager = NULL;
 	m_babar = NULL;
@@ -51,8 +52,6 @@ Game_engine::~Game_engine()
 
 void Game_engine::init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard)
 {
-    m_projectiles_ennemy.void_list();
-    m_projectiles_friend.void_list();
     std::string rac = RAC;
 	std::string rep;
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
@@ -66,24 +65,16 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 	analyser.open(rep + "level" + str_lvl + ".lvl");
 	m_monsters_manager->init_monsters_manager(&analyser, sound_manager, static_data->get_pictures_container());
 	m_events_manager->init_events_manager(static_data, this);
-	m_babar = new Babar(&m_projectiles_friend, keyboard, static_data, sound_manager);
+	m_babar = new Babar(keyboard, static_data, sound_manager);
 	m_events_manager->load_events();
 	analyser.close();
-}
 
-bool Game_engine::projectiles_friend_end()
-{
-	return 	m_projectiles_friend.end();
-}
 
+}
 
 void Game_engine::projectiles_friend_update_pos(Static_data *static_data)
 {
-    m_projectiles_friend.init();
-	while(!m_projectiles_friend.end()) {
-	    m_projectiles_friend.element()->update_pos(static_data, m_collisions_manager);
-	    m_projectiles_friend.next();
-	}
+	m_projectiles_manager->update_pos(static_data, m_collisions_manager);
 }
 
 void Game_engine::babar_update_pos(Static_data *static_data)
@@ -104,7 +95,7 @@ void Game_engine::babar_update_speed()
 
 void Game_engine::babar_update_state(Static_data *static_data)
 {
-	m_babar->update_state(static_data, m_collisions_manager);
+	m_babar->update_state(static_data, m_collisions_manager, m_projectiles_manager);
 }
 
 void Game_engine::babar_monsters_collision()
@@ -125,47 +116,32 @@ void Game_engine::display_monsters(Camera *camera)
 
 void Game_engine::display_projectiles_friend(Camera *camera)
 {
-    m_projectiles_friend.init();
-	while(!projectiles_friend_end()) {
-	    camera->display_sprite(m_projectiles_friend.element());
-	    m_projectiles_friend.next();
-	}
+	m_projectiles_manager->display(camera);
 }
 
 void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
 {
-    m_projectiles_friend.init();
-    while ( !m_projectiles_friend.end() ) {
-        if ( too_old(m_projectiles_friend.element(), m_collisions_manager) ) {
-            m_projectiles_friend.delete_element(1);
-        } else {
-            m_projectiles_friend.next();
-        }
-    }
+	m_projectiles_manager->delete_old_projectiles(static_data);
 }
 
 void Game_engine::update_monsters_projectiles()
 {
-//~ 	List<Monster*>  *monsters = m_monsters_manager->monsters();	
     m_monsters_manager->init();
     while (!m_monsters_manager->end()) {
-        m_projectiles_friend.init();
 		Monster *monster = m_monsters_manager->element();
-        while (!m_projectiles_friend.end()) {
-            if ( Collisions_manager::check_collision(monster->position(),m_projectiles_friend.element()->position()) ) {
-                monster->damage(m_projectiles_friend.element()->damage());
-                m_projectiles_friend.delete_element(1);
-            } else {
-                m_projectiles_friend.next();
-            }
-        }
-
+        for (std::list<Projectile *>::iterator it = m_projectiles_manager->proj_friend_begin();
+				it != m_projectiles_manager->proj_friend_end(); it++){
+            if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
+                monster->damage((*it)->damage());
+                (*it)->kill();
+			}
+        }                 
         if ( monster->dead() ) {
             m_monsters_manager->delete_element();
         } else {
             m_monsters_manager->next();
         }
-    }
+    }	
 }
 
 
@@ -173,13 +149,6 @@ void Game_engine::update(Camera *camera)
 {
 
 }
-
-
-List<Projectile*> *Game_engine::projectiles_friend()
-{
-	return &m_projectiles_friend;
-}
-
 
 Babar *Game_engine::babar()
 {

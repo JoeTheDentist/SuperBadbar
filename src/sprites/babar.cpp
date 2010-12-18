@@ -19,12 +19,13 @@
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
+#include "../sprites/projectiles_manager.h"
 
 
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(List<Projectile*> *projectiles_friend, Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, projectiles_friend, static_data->proj_pics(), sound_manager)
+Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager) : m_keyboard(keyboard), m_weapon(MACHINEGUN, static_data->proj_pics(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	m_pos.x = 0;
@@ -73,7 +74,7 @@ void Babar::update_speed()
         m_speed.x += BABAR_SPEED;
 }
 
-void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager)
+void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager)
 {
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -93,7 +94,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 		stop_fly();
 	}
     if (can_fire()) {
-		fire();
+		projectiles_manager->add_friend_proj(fire());
         m_fire_phase = 0;
     }
     else {
@@ -136,14 +137,14 @@ bool Babar::can_fire() const
 	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
 }
 
-void Babar::fire()
+std::list<Projectile*> *Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
 	if(m_keyboard->key_down(k_up)||m_keyboard->key_down(k_down)) {
-		m_weapon.fire(m_pos,m_horizontal);
+		return m_weapon.fire(m_pos,m_horizontal);
 	}
 	else {
-		m_weapon.fire(m_pos,m_last_dir);
+		return m_weapon.fire(m_pos,m_last_dir);
 	}
 }
 

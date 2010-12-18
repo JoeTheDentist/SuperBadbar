@@ -40,6 +40,9 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
 
     m_speed.x = speedx;
     m_speed.y = speedy;
+	
+	m_dead = false;
+	m_phase = 0;
 }
 
 void Projectile::update_pos(Static_data *static_data,  Collisions_manager *collisions_manager)
@@ -52,7 +55,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
-			m_phase = PROJ_LIFE_SPAN;
+			m_dead = true;
 		}
 		else {
 			m_pos.y += BOX_SIZE;
@@ -65,8 +68,7 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 		if (Collisions_manager::is_up_coll(collisions_manager->up_collision_type(m_pos))){
 			speed_y = 0;
 			m_speed.y = 0;
-			m_phase = PROJ_LIFE_SPAN;
-
+			m_dead = true;
 		}
 		else {
 			if (m_pos.y < 0)
@@ -79,7 +81,8 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 			m_pos.y -= 	BOX_SIZE;
 			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
-				m_phase = PROJ_LIFE_SPAN;
+			} else {
+				m_dead = true;
 			}
 			m_pos.x += BOX_SIZE;
 			if (m_pos.x + m_pos.w > (int32_t)static_data->static_data_weight())
@@ -90,13 +93,15 @@ void Projectile::update_pos(Static_data *static_data,  Collisions_manager *colli
 			m_pos.y -= 	BOX_SIZE;
 			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
 				m_pos.y += BOX_SIZE;
-				m_phase = PROJ_LIFE_SPAN;
+			} else {
+				m_dead = true;
 			}
 			m_pos.x -= BOX_SIZE;
 			if (m_pos.x < 0)
 				m_pos.x = 0;
 	}
-
+	if (m_phase >= PROJ_LIFE_SPAN)
+		m_dead = true;
 }
 
 
@@ -110,10 +115,6 @@ SDL_Surface *Projectile::current_picture() const
     return m_pic;
 }
 
-
-
-
-
 uint32_t Projectile::damage() const
 {
     return m_damage;
@@ -122,6 +123,14 @@ uint32_t Projectile::damage() const
 Rect Projectile::speed() const
 {
     return m_speed;
+}
+
+bool Projectile::dead() const {
+	return m_dead;
+}
+
+void Projectile::kill() {
+	m_dead = true;
 }
 
 

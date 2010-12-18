@@ -26,6 +26,7 @@ class Projectile: public Sprite {
 protected:
     SDL_Surface * m_pic;    /* Image du projectile */
     uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
+	bool m_dead;				/* Indique si le projectile est à supprimer */
 public:
 	
 	/*!
@@ -62,6 +63,19 @@ public:
 	 *	@return La vitesse du projectile
 	*/
     Rect speed() const;   /* Accesseur */
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return Vrai si le Projectile doit etre supprimé
+	*/
+	bool dead() const;
+	
+	/*!
+	 *	@brief Mutateur: "tue" le projectile
+	*/
+	void kill();
+	
+	
 };
 
 
