@@ -31,7 +31,6 @@
 #include "../sound/sound.h"
 #include "../sound/sound_manager.h"
 #include "../video/statics.h"
-#include "../video/dashboard.h"
 #include "../events/events_manager.h"
 #include "../video/talks.h"
 
@@ -43,7 +42,6 @@ Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m
 	m_static_data->init_static_data(1);
 	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager, m_keyboard);
 	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
-	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 }
@@ -56,7 +54,6 @@ Game::~Game()
 	delete m_keyboard;
 	delete m_static_data;
 	delete m_game_engine;
-	delete m_dashboard;
 	delete m_graphic_engine;
 
 }
@@ -118,7 +115,7 @@ void Game::refresh_screen()
 	camera->display_sprite(m_game_engine->babar());
 	
 	/* affichage du tableau de board */
-	m_dashboard->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());
+	m_graphic_engine->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());
 
 	/* mise à jour */
 	camera->flip_camera();

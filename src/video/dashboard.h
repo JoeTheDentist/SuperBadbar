@@ -42,14 +42,19 @@ public:
 	
 	/**
 	 * 	@brief Constructeur
-	 *	@param pictures_container Gestionnaire de chargement d'images
 	 */
-	Dashboard(Pictures_container *pictures_container);
+	Dashboard();
 
 	/**
 	 * 	@brief Destructeur
 	 */
 	~Dashboard();
+
+	/**
+	 * 	@brief Initialise le tableau de board
+	 *	@param pictures_container Gestionnaire de chargement d'images
+	 */
+	void init_dashboard(Pictures_container *pictures_container);
 
 	/**
 	 * 	@brief Affiche le tableau de board

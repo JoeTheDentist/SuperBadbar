@@ -24,7 +24,19 @@
 
 
 
-Dashboard::Dashboard(Pictures_container *pictures_container)
+Dashboard::Dashboard()
+{
+	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
+}
+
+
+Dashboard::~Dashboard()
+{
+	PRINT_CONSTR(1, "Destruction de Dashboard")
+	TTF_CloseFont(m_font);
+}
+
+void Dashboard::init_dashboard(Pictures_container *pictures_container)
 {
     std::string rac = RAC;
 	std::string font_name = "font1.ttf";
@@ -45,15 +57,7 @@ Dashboard::Dashboard(Pictures_container *pictures_container)
 	for (int i = 0; i < SHOTGUN + 1; i++)
 		SDL_SetColorKey(m_weapons_pictures[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_weapons_pictures[i]->format, 0, 0, 255));
 	m_weapons_pos.x = POS_WEAPON_X;
-	m_weapons_pos.y = POS_WEAPON_Y;
-
-
-}
-
-
-Dashboard::~Dashboard()
-{
-	TTF_CloseFont(m_font);
+	m_weapons_pos.y = POS_WEAPON_Y;	
 }
 
 

@@ -15,7 +15,7 @@ class Camera;
 class Babar;
 class Static_data;
 class Talks;
-
+class Dashboard;
 
 /**
  * 	@class Graphic_engine
@@ -26,6 +26,7 @@ class Graphic_engine {
 private:
 	Camera *m_camera;
 	Talks *m_talks;
+	Dashboard *m_dashboard;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -52,6 +53,13 @@ public:
 	 */
 	void update(Static_data *static_data);
 
+	/**
+	 * 	@brief Affiche le tableau de board
+	 * 	@param lifes Le nombre de vies de Babar
+	 *	@param camera Le gestionnaire d'affichage
+	 *	@param babar Pointeur vers babar
+	 */
+	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
 
 	/**
 	 * 	@brief Accesseur

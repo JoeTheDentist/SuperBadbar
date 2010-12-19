@@ -15,7 +15,6 @@
 #include <stdint.h>
 #include <iostream>
 
-#include "../sound/sound.h"
 
 
 #define TIME_LOOP 50
@@ -23,10 +22,8 @@
 class Game_engine;
 class Static_data;
 class Sound_manager;
-class Camera;
 class Dashboard;
 class Keyboard;
-class Events_manager;
 class Graphic_engine;
 
 /**
@@ -44,8 +41,6 @@ private:
 	Static_data *m_static_data;
 	Game_engine *m_game_engine;
 	Graphic_engine *m_graphic_engine;
-	Camera *m_camera;				
-	Dashboard *m_dashboard;
 
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
