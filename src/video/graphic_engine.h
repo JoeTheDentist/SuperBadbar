@@ -16,6 +16,7 @@ class Babar;
 class Static_data;
 class Talks;
 class Dashboard;
+class Pictures_container;
 
 /**
  * 	@class Graphic_engine
@@ -27,6 +28,7 @@ private:
 	Camera *m_camera;
 	Talks *m_talks;
 	Dashboard *m_dashboard;
+	Pictures_container *m_pictures_container;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -77,8 +79,12 @@ public:
 	
 	
 	/**
-	 * 	@brief 
+	 * 	@brief Accesseur
+	 *	@return Un pointeur vers le gestionnaire d'images
 	 */
+	Pictures_container *get_pictures_container();
+
+
 
 	/**
 	 * 	@brief 

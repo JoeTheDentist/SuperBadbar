@@ -91,17 +91,6 @@ uint32_t Static_data::static_data_weight()
 }
 
 
-void Static_data::fill_monster_pic(int h, int num_image, int num_monster, const char *link)
-{
-    m_monsters_pics[h][num_image][num_monster] = m_pictures_container->load_BMP(link);
-    SDL_SetColorKey(m_monsters_pics[h][num_image][num_monster], SDL_SRCCOLORKEY, SDL_MapRGB(m_monsters_pics[h][num_image][num_monster]->format, 0, 0, 255));
-
-}
-
-SDL_Surface **Static_data::monster_pic(uint32_t i, uint32_t j)
-{
-	return m_monsters_pics[i][j];
-}
 
 SDL_Surface **Static_data::proj_pics()
 {

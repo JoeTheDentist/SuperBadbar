@@ -36,11 +36,12 @@
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine())
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager, m_keyboard);
+	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager,
+									m_keyboard, m_graphic_engine->get_pictures_container());
 	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
@@ -63,9 +64,7 @@ void Game::update_pos()
 	m_game_engine->babar_monsters_collision();
 	m_game_engine->babar_update_pos(m_static_data);
 	m_game_engine->projectiles_update_pos();
-	m_game_engine->monsters_update_pos(m_static_data);
-
-	
+	m_game_engine->monsters_update_pos(m_static_data);	
 }
 
 void Game::update_speed()

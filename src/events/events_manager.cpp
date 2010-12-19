@@ -35,12 +35,12 @@ Events_manager::~Events_manager()
 	}
 }
 
-void Events_manager::init_events_manager(Static_data *static_data, Game_engine *game_engine)
+void Events_manager::init_events_manager(Static_data *static_data, Game_engine *game_engine, Pictures_container *pictures_container)
 {
 	PRINT_TRACE(1, "Initilisation de Events_manager")
 	m_game_engine = game_engine;
 	m_static_data = static_data;
-	m_pictures_container = static_data->get_pictures_container();
+	m_pictures_container = pictures_container;
 }
 
 void Events_manager::load_events()

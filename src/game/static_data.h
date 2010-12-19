@@ -36,8 +36,7 @@ public:
 	uint32_t static_data_height();  									/* Hauteur du niveau */
 	uint32_t static_data_weight();   				 					/* Largeur du niveau */
 
-    void fill_monster_pic(int h, int num_image, int num_monster, const char *link); /* remplit une case de la matrice des images des monstres */
-	SDL_Surface **monster_pic(uint32_t i, uint32_t j); /* accesseur */
+
 	SDL_Surface **proj_pics();				/* accesseur */
 	Pictures_container *get_pictures_container(); /* accesseur */
 	void display_statics(Camera *camera);	/* fonction d'affichage des statics */

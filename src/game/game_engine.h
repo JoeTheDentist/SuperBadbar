@@ -27,7 +27,7 @@ class Monsters_manager;
 class Events_manager;
 class Collisions_manager;
 class Projectiles_manager;
-
+class Pictures_container;
 
 
  
@@ -67,8 +67,9 @@ public:
 	 * 	@param static_data Données du niveau
 	 * 	@param sound_manager Gestionnaire de son
 	 * 	@param keyboard Gestionnaire du clavier
+	 *	@param pictures_container Le gestionnaire d'images
 	*/
-	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard);						
+	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard, Pictures_container *pictures_container);						
 	
 	/**
 	 * 	@brief Mise à jour des positions des projectiles 

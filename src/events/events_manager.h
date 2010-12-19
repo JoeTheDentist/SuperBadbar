@@ -55,9 +55,10 @@ public:
 	 * 	@warning Ne charge pas les events!
 	 *	@param static_data les données du niveau
 	 *	@param game_engine le moteur de jeu
+	 *	@param pictures_container Le conteneur d'images
 	 *
 	*/
-	void init_events_manager(Static_data *static_data, Game_engine *game_engine);
+	void init_events_manager(Static_data *static_data, Game_engine *game_engine, Pictures_container *pictures_container);
 
 	/**
 	 * 	@brief charge les events du niveau
