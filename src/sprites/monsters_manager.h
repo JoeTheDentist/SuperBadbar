@@ -16,9 +16,11 @@
  
 
 #include "../util/lists.h"
+#include <list>
 #include <stdint.h>
 
 class Monster;
+class Following_walking_monster;
 class Camera;
 class Babar;
 class Static_data;
@@ -37,7 +39,10 @@ class Collisions_manager;
 
 class Monsters_manager {
 private:
-	List<Monster*> m_monsters;    				/* Liste des monstres */
+	List<Monster*> m_monsters;    				/* Liste de TOUS les monstres */
+	std::list<Following_walking_monster*> m_following_monsters;    	/* Liste des monstres qui suivent babar */
+	std::list<Monster*> m_not_following_monsters;    /* Liste des monstres qui ne suivent pas babar */
+
 
 public:
 

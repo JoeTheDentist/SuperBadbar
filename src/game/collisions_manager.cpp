@@ -18,7 +18,7 @@ Collisions_manager::Collisions_manager() {
 }
 
 Collisions_manager::~Collisions_manager() {
-	for(uint32_t i = 0; i < m_collisions_matrix_w + 1;i++) {
+	for(uint32_t i = 0; i < m_collisions_matrix_w;i++) {
         delete[] m_collisions_matrix[i];
     }
     delete[] m_collisions_matrix;
@@ -50,22 +50,23 @@ void Collisions_manager::init_collisions_manager(int level) {
     analyser.find_string("#Statics#");
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name = analyser.read_string();
-	Analyser *analyser_static = new Analyser();
+	Analyser analyser_static;
 	uint32_t static_weight, static_height;
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
-		analyser_static->open((static_pic_rep + static_name + COLL_EXT));
-		static_weight = analyser_static->read_int();
-		static_height = analyser_static->read_int();
+		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
+		static_weight = analyser_static.read_int();
+		static_height = analyser_static.read_int();
 		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++) {
 			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
-				m_collisions_matrix[i][j] |= analyser_static->read_uint32_t();
+				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 			}
-		}		analyser_static->close();
+		}		
+		analyser_static.close();
 		static_name = analyser.read_string();
 	}
-
+	
 
 	analyser.close();
 	

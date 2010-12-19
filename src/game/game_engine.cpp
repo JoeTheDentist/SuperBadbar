@@ -47,6 +47,7 @@ Game_engine::~Game_engine()
 	delete m_monsters_manager;
 	delete m_events_manager;
 	delete m_collisions_manager;
+	delete m_projectiles_manager;
 
 }
 

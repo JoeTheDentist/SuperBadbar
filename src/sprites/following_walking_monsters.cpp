@@ -1,6 +1,6 @@
 /**
- * 	@file walking_monsters.h
- * 	@brief Header de la classe Walking_monster
+ * 	@file following_walking_monsters.h
+ * 	@brief Header de la classe Following_walking_monster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
@@ -10,7 +10,7 @@
 #include <SDL/SDL.h>
 #include <stdint.h>
 
-#include "walking_monsters.h"
+#include "following_walking_monsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../sound/sound_manager.h"
@@ -18,7 +18,7 @@
 #include "babar.h"
 
 
-Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
+Following_walking_monster::Following_walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
 {
 	m_nom = analyserLevel->read_string();
 	Analyser analyserMonster;
@@ -55,23 +55,26 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	m_can_fire = false;
 }
 
-Walking_monster::~Walking_monster()
+Following_walking_monster::~Following_walking_monster()
 {
 
 }
 
-
-void Walking_monster::update_speed()
+void Following_walking_monster::update_speed(Babar *babar)
 {
+
 	m_speed.y += GRAVITE;
 
-	if (m_pos.x<m_area_begin) {
+	if ( (m_pos.x<babar->position().x)&&(m_horizontal != RIGHT) ) {
 	    m_horizontal = RIGHT;
-		m_speed.x = -m_speed.x;
+		m_speed.x = m_speed_def;
 	}
-	if (m_pos.x>m_area_end) {
+	if ( (m_pos.x>babar->position().x)&&(m_horizontal != LEFT) ) {
 	    m_horizontal = LEFT;
-	    m_speed.x = -m_speed.x;
+	    m_speed.x = -m_speed_def;
 	}
 }
+
+
+
 

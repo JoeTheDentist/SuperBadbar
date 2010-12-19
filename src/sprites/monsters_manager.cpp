@@ -12,6 +12,7 @@
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
 #include "../sprites/walking_monsters.h"
+#include "../sprites/following_walking_monsters.h"
 #include "../video/camera.h"
 #include "../video/pictures_container.h"
 #include "../sound/sound_manager.h"
@@ -34,10 +35,17 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
-		if (analyser->read_string() == "walking_monster") {
+		std::string monster_type = analyser->read_string();
+		if (monster_type == "following_walking_monster") {
+			Following_walking_monster * curr_monster = new Following_walking_monster(sound_manager, analyser, pictures_container);
+			add(curr_monster);
+			m_following_monsters.push_back(curr_monster);
+		} else if (monster_type == "walking_monster") {
 			Monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
-		}
+			m_not_following_monsters.push_back(curr_monster);
+		} 
+		
 	}
 }
 
@@ -46,11 +54,18 @@ void Monsters_manager::add(Monster *monster) {
 }
 
 void Monsters_manager::monsters_update_speed(Babar *babar){
-    m_monsters.init();
-	while (!m_monsters.end()) {
-	    m_monsters.element()->update_speed(babar);
-	    m_monsters.next();
+	for(std::list<Following_walking_monster *>::iterator it = m_following_monsters.begin();
+			it != m_following_monsters.end(); it++) {
+	    (*it)->update_speed(babar);
 	}
+
+	for(std::list<Monster *>::iterator it = m_not_following_monsters.begin();
+			it != m_not_following_monsters.end(); it++) {
+	    (*it)->update_speed(babar);
+	}
+
+	
+	
 }
 
 void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) {
