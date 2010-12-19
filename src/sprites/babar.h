@@ -31,7 +31,8 @@ class Analyser;
  *
  *	@todo réorganiser les update\n
  *	Faire un saut sensible à la longueur de l'appui de la touche\n
- *	Certaines méthodes doivent etre private
+ *	Certaines méthodes doivent etre private\n
+ *	Une méthode doit renvoyer le tir au projectiles manager, au lieu de prendre le projectiles_manager en parametre
  *
  */
 class Babar: public Sprite {
@@ -82,7 +83,9 @@ public:
 	 * 	@brief Met à jour l'état et la direction de Babar
 	 *	@param static_data Données du niveau
 	 *	@param collisions_manager Gestionnaire de collision
+	 *	@param projectiles_manager Gestionnaire des projectiles
 	 */
+
 	void update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectile_manager);
 
 	/**
@@ -102,7 +105,6 @@ public:
 	/**
 	 * 	@brief Fait tirer Babar
 	 *	@return La liste de projectiles tirés
-	 *	@todo changer les types de retour et l'organisation de fire et tout ce qui touche au tir
 	 */
 	std::list<Projectile*> *fire();
 

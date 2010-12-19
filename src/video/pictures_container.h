@@ -27,6 +27,8 @@
  *	Pictures_container utilise un map pour stocker et retrouver
  *	les images en fonction de leur chemin.
  *
+ *	@todo reorganiser la ou les localisations de pictures_container dans les autres classes
+ *
  */
 class Pictures_container {
 private:

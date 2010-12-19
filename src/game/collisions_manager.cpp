@@ -148,10 +148,13 @@ bool Collisions_manager::right_collision(Rect pos)
 bool Collisions_manager::double_collision(Rect pos)
 {
 	for (int32_t i = pos.x / BOX_SIZE ; i <= (pos.x + pos.w) / BOX_SIZE ; i += 1) {
-		if (!(m_collisions_matrix[i][pos.y + pos. h - 1] == NO_COLL || m_collisions_matrix[i][pos.y + pos. h- 1] == DOWN_COLL))
+		if (m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE] == FULL_COLL) {
 			return true;
-		if(m_collisions_matrix[i][pos.y + pos. h - 1] != NO_COLL && m_collisions_matrix[i][pos.y + pos. h] != NO_COLL)
-			return true;
+		}
+//~ 		if(m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE ] != NO_COLL 
+//~ 				&& m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE + 1] != NO_COLL) {
+//~ 			return true;
+//~ 		}
 	}
 	return false;
 }

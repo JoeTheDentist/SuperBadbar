@@ -145,7 +145,6 @@ public:
 	/*!
 	 * 	@brief Check les double_collision 
 	 * 	@return Vrai si deux cases de collisions ou une case de collision bas sont sous le rectangle 
-	 *	@todo verifier la fonction et ce qu'elle doit faire
 	*/
 	bool double_collision(Rect pos);
 

@@ -185,7 +185,8 @@ void Babar::jump()
 bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 {
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
-				&& Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)));
+				&& Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) 
+				&& !collisions_manager->double_collision(m_pos);
 }
 
 void Babar::go_down(Collisions_manager *collisions_manager)
