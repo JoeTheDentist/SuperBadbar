@@ -42,8 +42,8 @@ class Event;
 
 class Camera {
 private:
-	SDL_Rect m_frame;		/* cadre de la camera */
-	SDL_Rect m_direction; 	/* direction de la camera (les composantes sont à valeur dans {-1, 1}*/
+	Rect m_frame;		/* cadre de la camera */
+	Rect m_direction; 	/* direction de la camera (les composantes sont à valeur dans {-1, 1}*/
 	SDL_Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
 	Sprite *m_target;		/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;

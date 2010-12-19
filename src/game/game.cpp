@@ -133,6 +133,7 @@ void Game::game_loop()
 {
 	int compteur = 0;
 	float used_time = 0;
+	float used_time_refresh_screen = 0;
 	bool end = false;
 	int begining = SDL_GetTicks();
 	m_sound_manager->play_music();
@@ -150,19 +151,27 @@ void Game::game_loop()
 			update_speed();
 			update_pos();
 			check_monsters();
+			int begin_refresh = SDL_GetTicks();
 			refresh_screen();
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
+			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
 			if (compteur % PERF_CYCLES == 0) {
-				PRINT_PERF("pourcentage d'utilisation du temps: %d", (int)((used_time * 100) / PERF_CYCLES))
+				PRINT_PERF("pourcentage d'utilisation du temps: %f", ((used_time * 100) / PERF_CYCLES))
+				PRINT_PERF("pourcentage d'utilisation du temps pour le refresh: %f", ((used_time_refresh_screen * 100) / PERF_CYCLES))
+				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))
 				used_time = 0;
+				used_time_refresh_screen = 0;
+				
 			}
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
+	float temps_moyen = (SDL_GetTicks() - begining)/compteur;
+
 	PRINT_PERF("**************************************")
-	PRINT_PERF("* temps moyen d'un cycle en ms = %d *", ((SDL_GetTicks() - begining)/compteur))
+	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
 	PRINT_PERF("**************************************")
 
 }
