@@ -21,12 +21,9 @@ block3 1700 2950
 
 
 #Monsters#
-9
-walking_monster gailapin 105 1600 95 1000
-walking_monster gailapin 110 1600 95 1000
-walking_monster gailapin 115 1600 95 1000
-walking_monster gailapin 135 1600 95 1000
-walking_monster gailapin 125 1600 95 1000
+6
+following_walking_monster gailapin 120 1600 
+following_walking_monster gailapin 135 1600 
 walking_monster gailapin 155 1600 95 1000
 walking_monster gailapin 165 1600 95 1000
 walking_monster gailapin 205 1600 95 1000
