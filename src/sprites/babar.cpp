@@ -40,7 +40,6 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_
 	m_allowed_to_plane = true;
 
     /*** Stockage et chargement dans le tableau des images ***/
-
     load(1);
 }
 
@@ -59,6 +58,11 @@ void Babar::load(char age)
 	m_animm = new Anim_manager(babar_pic_dir+"babar");
 
     m_animm->setRect(m_pos);
+}
+
+void Babar::init_babar(Analyser a)
+{
+
 }
 
 void Babar::update_speed()
@@ -228,7 +232,7 @@ void Babar::stop_fly()
 }
 
 
-void Babar::damage(int damages) 
+void Babar::damage(int damages)
 {
 	PRINT_TRACE(3, "Babar bobo")
 	if (!is_invincible()) {

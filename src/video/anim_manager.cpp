@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 
 
 #include <iostream>
@@ -16,13 +16,6 @@
 #include <string>
 
 #include "anim_manager.h"
-
-Anim_manager::Anim_manager() {
-    m_nb_states = 0;
-    m_last_state = STATIC;
-    m_curr_anim = NULL;
-    m_anim = NULL;
-}
 
 Anim_manager::Anim_manager(std::string anim_name) {
     char state = '0', dir = '0', num_img = '0';

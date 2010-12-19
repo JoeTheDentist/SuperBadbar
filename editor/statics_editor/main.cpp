@@ -7,11 +7,11 @@
 
 int main(int argc, char *argv[])
 {
-    //~ /* Pour avoir la console sous windows */
+    #ifdef WIN32
     freopen("CON", "w", stdout);
     freopen("CON", "r", stdin);
     freopen("CON", "w", stderr);
-    //~ /* */
+    #endif
 
 
 	std::string static_name;
