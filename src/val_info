@@ -119,3 +119,14 @@
 ==6905==      possibly lost: 0 bytes in 0 blocks
 ==6905==    still reachable: 89,364 bytes in 1,329 blocks
 ==6905==         suppressed: 0 bytes in 0 blocks
+
+==25953==     in use at exit: 90,364 bytes in 1,344 blocks
+==25953==   total heap usage: 15,874 allocs, 14,530 frees, 22,728,727 bytes allocated
+==25953== 
+==25953== LEAK SUMMARY:
+==25953==    definitely lost: 888 bytes in 9 blocks
+==25953==    indirectly lost: 112 bytes in 6 blocks
+==25953==      possibly lost: 0 bytes in 0 blocks
+==25953==    still reachable: 89,364 bytes in 1,329 blocks
+==25953==         suppressed: 0 bytes in 0 blocks
+

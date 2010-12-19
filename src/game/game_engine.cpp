@@ -146,10 +146,6 @@ void Game_engine::update_monsters_projectiles()
 }
 
 
-void Game_engine::update(Camera *camera)
-{
-
-}
 
 Babar *Game_engine::babar()
 {

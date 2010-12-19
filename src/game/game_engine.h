@@ -139,12 +139,6 @@ public:
 
 
 	/**
-	 * 	@brief Ne fait rien pour le moment
-	 *	@todo voir pourquoi ça ne fait rien :p
-	*/
-    void update(Camera *m_camera);  
-
-	/**
 	 * 	@brief Accesseur
 	 *	@return Le sprite Babar
 	*/

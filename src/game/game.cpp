@@ -25,6 +25,7 @@
 #include "../sprites/sprites.h"
 #include "../sprites/babar.h"
 #include "../video/camera.h"
+#include "../video/graphic_engine.h"
 #include "../video/talks.h"
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
@@ -36,17 +37,16 @@
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_camera(new Camera), m_talks(new Talks())
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_talks(new Talks())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_camera, m_static_data, m_sound_manager, m_keyboard);
-	m_camera->init_camera(m_game_engine->babar());
-	m_talks->init_talks(m_camera, m_static_data->get_pictures_container());
+	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager, m_keyboard);
+	m_graphic_engine->init_graphic_engine(m_game_engine->babar());
+	m_talks->init_talks(m_graphic_engine->get_camera(), m_static_data->get_pictures_container());
 	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
-	update_camera();
 }
 
 Game::~Game()
@@ -57,12 +57,11 @@ Game::~Game()
 	delete m_keyboard;
 	delete m_static_data;
 	delete m_game_engine;
-	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;
-	TTF_Quit();
+	delete m_graphic_engine;
+
 	PRINT_TRACE(1, "Fermeture de la SDL")
-	SDL_Quit();
 }
 
 void Game::update_pos()
@@ -82,9 +81,9 @@ void Game::update_speed()
 	m_game_engine->babar_update_state(m_static_data);
 }
 
-void Game::update_camera()
+void Game::update_graphic_engine()
 {
-    m_camera->update_pos(m_static_data);
+	m_graphic_engine->update(m_static_data);
 }
 
 void Game::update_events_manager()
@@ -95,22 +94,23 @@ void Game::update_events_manager()
 
 void Game::refresh_screen()
 {
+	Camera *camera = m_graphic_engine->get_camera();
 	/* affichage du fond */
-	m_camera->update_pos(m_static_data);
-	m_camera->display_background(m_static_data->background());
+	camera->update_pos(m_static_data);
+	camera->display_background(m_static_data->background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
-	m_static_data->display_statics(m_camera);
+	m_static_data->display_statics(camera);
 	
 	/* affichage des événements */
-	m_game_engine->display_events(m_camera);
+	m_game_engine->display_events(camera);
 
     /* affichage des monstres */
-	m_game_engine->display_monsters(m_camera);
+	m_game_engine->display_monsters(camera);
 
 
 	/* affichage des projectiles */
-	m_game_engine->display_projectiles_friend(m_camera);
+	m_game_engine->display_projectiles_friend(camera);
 	
 	
 	/* suppression de projectiles trop vieux */
@@ -118,13 +118,13 @@ void Game::refresh_screen()
 	
 	
 	/* affichage du sprite babar */
-	m_camera->display_sprite(m_game_engine->babar());
+	camera->display_sprite(m_game_engine->babar());
 	
 	/* affichage du tableau de board */
-	m_dashboard->draw_dashboard(m_game_engine->babar()->lifes(), m_camera, m_game_engine->babar());
+	m_dashboard->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());
 
 	/* mise à jour */
-	m_camera->flip_camera();
+	camera->flip_camera();
 }
 
 
@@ -147,7 +147,6 @@ void Game::game_loop()
 			update_events_manager();
 			if (m_keyboard->key_down(k_exit))
 				end = true;
-            m_game_engine->update(m_camera);
 			update_speed();
 			update_pos();
 			check_monsters();

@@ -11,6 +11,9 @@
 #ifndef _GRAPHIC_ENGINE_
 #define _GRAPHIC_ENGINE_
 
+class Camera;
+class Babar;
+class Static_data;
 
 /**
  * 	@class Graphic_engine
@@ -19,7 +22,7 @@
  */
 class Graphic_engine {
 private:
-	
+	Camera *m_camera;
 
 public:
 	/**
@@ -31,7 +34,41 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Graphic_engine();
+
+
+	/**
+	 * 	@brief Initialise le moteur graphique
+	 */
+	void init_graphic_engine(Babar *babar);
+
+
+	/**
+	 * 	@brief Accesseur
+	 *	@return Un pointeur vers la camera
+	 */
+	Camera *get_camera();
+
+	/**
+	 * 	@brief Mise à jour du moteur graphique
+	 *	
+	 *	Met à jour la position de la camera
+	 */
+	void update(Static_data *static_data);
 	
+	
+	/**
+	 * 	@brief 
+	 */
+
+	/**
+	 * 	@brief 
+	 */
+
+	/**
+	 * 	@brief 
+	 */
+
+
 };
 
 

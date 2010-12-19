@@ -28,6 +28,7 @@ class Camera;
 class Dashboard;
 class Keyboard;
 class Events_manager;
+class Graphic_engine;
 
 /**
  * 	@class Game
@@ -43,17 +44,18 @@ private:
 	Keyboard *m_keyboard;
 	Static_data *m_static_data;
 	Game_engine *m_game_engine;
+	Graphic_engine *m_graphic_engine;
 	Camera *m_camera;				
 	Talks *m_talks;
-	Dashboard *m_dashboard;		/* attention: pour le moment doit etre construit apres talks pour beneficier de SDL_TTF */
+	Dashboard *m_dashboard;
 
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
 	/*
-	 * Mise à jour de la camera
+	 * Mise à jour du moteur graphique
 	*/
-	void update_camera();
+	void update_graphic_engine();
 
 	/*
 	 * Mise à jour des évenements
