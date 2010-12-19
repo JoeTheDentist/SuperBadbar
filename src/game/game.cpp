@@ -69,7 +69,7 @@ void Game::update_pos()
 {
 	m_game_engine->babar_monsters_collision();
 	m_game_engine->babar_update_pos(m_static_data);
-	m_game_engine->projectiles_friend_update_pos(m_static_data);
+	m_game_engine->projectiles_update_pos();
 	m_game_engine->monsters_update_pos(m_static_data);
 
 	

@@ -47,10 +47,9 @@ public:
 
 	/*!
 	 *	@brief Met à jour la position de l'ensemble des projectiles
-	 *	@param static_data Les données du niveau
 	 *	@param collisions_manager Le gestionnaire de collisions
 	*/
-	void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	void update_pos(Collisions_manager *collisions_manager);
 
 	/*!
 	 *	@brief Supprime les projectiles à supprimer

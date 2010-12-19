@@ -71,11 +71,10 @@ public:
 	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard);						
 	
 	/**
-	 * 	@brief Mise à jour des positions des projectiles amis
-	 *	@param static_data données du niveau
+	 * 	@brief Mise à jour des positions des projectiles 
 	 *	@todo à déplacer
 	*/
-	void projectiles_friend_update_pos(Static_data *static_data);
+	void projectiles_update_pos();
 	
 	/**
 	 * 	@brief Mise à jour de la position de babar

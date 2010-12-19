@@ -41,10 +41,9 @@ public:
 
 	/*!
 	 * 	@brief Met à jour la position du Projectile
-	 *	@param static_data Données du niveau
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
-	void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	void update_pos(Collisions_manager *collisions_manager);
 
 	/*!
 	 * 	@brief Accesseur

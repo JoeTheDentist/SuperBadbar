@@ -73,9 +73,9 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 
 }
 
-void Game_engine::projectiles_friend_update_pos(Static_data *static_data)
+void Game_engine::projectiles_update_pos()
 {
-	m_projectiles_manager->update_pos(static_data, m_collisions_manager);
+	m_projectiles_manager->update_pos(m_collisions_manager);
 }
 
 void Game_engine::babar_update_pos(Static_data *static_data)
