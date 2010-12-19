@@ -21,7 +21,6 @@
 #define TIME_LOOP 50
 
 class Game_engine;
-class Talks;
 class Static_data;
 class Sound_manager;
 class Camera;
@@ -46,34 +45,33 @@ private:
 	Game_engine *m_game_engine;
 	Graphic_engine *m_graphic_engine;
 	Camera *m_camera;				
-	Talks *m_talks;
 	Dashboard *m_dashboard;
 
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
-	/*
-	 * Mise à jour du moteur graphique
+	/*!
+	 * 	@brief Mise à jour du moteur graphique
 	*/
 	void update_graphic_engine();
 
-	/*
-	 * Mise à jour des évenements
+	/*!
+	 * 	@brief Mise à jour des évenements
 	*/
 	void update_events_manager();
 
-	/*
-	 *  Mise à jour de la position des sprites
+	/*!
+	 *  @brief Mise à jour de la position des sprites
 	*/
 	void update_pos();			
 	
-	/*
-	 * Mise à jour de la vitesse des sprites
+	/*!
+	 * 	@brief Mise à jour de la vitesse des sprites
 	*/
 	void update_speed();
 	
-	/*
-	 * Rafraichissement de l'affichage
+	/*!
+	 * 	@brief Rafraichissement de l'affichage
 	*/
 	void refresh_screen();		
 

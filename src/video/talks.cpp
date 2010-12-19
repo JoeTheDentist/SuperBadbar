@@ -24,13 +24,14 @@
 
 Talks::Talks()
 {
-
+	m_font = NULL;
 }
 
 Talks::~Talks()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Talks")
-	TTF_CloseFont(m_font);
+	if (m_font)
+		TTF_CloseFont(m_font);
 }
 
 void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)

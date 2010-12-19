@@ -14,6 +14,8 @@
 class Camera;
 class Babar;
 class Static_data;
+class Talks;
+
 
 /**
  * 	@class Graphic_engine
@@ -23,7 +25,7 @@ class Static_data;
 class Graphic_engine {
 private:
 	Camera *m_camera;
-
+	Talks *m_talks;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -38,8 +40,17 @@ public:
 
 	/**
 	 * 	@brief Initialise le moteur graphique
+	 *	@todo On a juste besoin du picture_container, qui doit faire partie de graphic_engine..
 	 */
-	void init_graphic_engine(Babar *babar);
+	void init_graphic_engine(Babar *babar, Static_data *static_data);
+
+
+	/**
+	 * 	@brief Mise à jour du moteur graphique
+	 *	
+	 *	Met à jour la position de la camera
+	 */
+	void update(Static_data *static_data);
 
 
 	/**
@@ -48,18 +59,15 @@ public:
 	 */
 	Camera *get_camera();
 
-	/**
-	 * 	@brief Mise à jour du moteur graphique
-	 *	
-	 *	Met à jour la position de la camera
-	 */
-	void update(Static_data *static_data);
-	
-	
-	/**
-	 * 	@brief 
-	 */
 
+	
+	/**
+	 * 	@brief Accesseur
+	 *	@return Un pointeur vers le gestionnaire de dialogues
+	 */
+	Talks *get_talks();
+	
+	
 	/**
 	 * 	@brief 
 	 */

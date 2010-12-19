@@ -26,7 +26,6 @@
 #include "../sprites/babar.h"
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
-#include "../video/talks.h"
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
 #include "../sound/sound.h"
@@ -34,16 +33,16 @@
 #include "../video/statics.h"
 #include "../video/dashboard.h"
 #include "../events/events_manager.h"
+#include "../video/talks.h"
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_talks(new Talks())
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()),   m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
 	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager, m_keyboard);
-	m_graphic_engine->init_graphic_engine(m_game_engine->babar());
-	m_talks->init_talks(m_graphic_engine->get_camera(), m_static_data->get_pictures_container());
+	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
 	m_dashboard = new Dashboard(m_static_data->get_pictures_container());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
@@ -57,11 +56,9 @@ Game::~Game()
 	delete m_keyboard;
 	delete m_static_data;
 	delete m_game_engine;
-	delete m_talks;
 	delete m_dashboard;
 	delete m_graphic_engine;
 
-	PRINT_TRACE(1, "Fermeture de la SDL")
 }
 
 void Game::update_pos()
@@ -172,6 +169,8 @@ void Game::game_loop()
 	PRINT_PERF("**************************************")
 	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
 	PRINT_PERF("**************************************")
+//~ 	Talks *talks = m_graphic_engine->get_talks();
+//~ 	talks->display_text("Hello! Tu pourras trouver un fond et une police plus sympas? :p \n Espace pour continuer");
 
 }
 

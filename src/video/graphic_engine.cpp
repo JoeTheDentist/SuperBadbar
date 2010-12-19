@@ -11,6 +11,7 @@
 #include "graphic_engine.h"
 #include "../sprites/babar.h"
 #include "../video/camera.h"
+#include "../video/talks.h"
 #include "../game/static_data.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL.h>
@@ -18,6 +19,7 @@
 
 Graphic_engine::Graphic_engine(): m_camera(new Camera())
 {
+	PRINT_CONSTR(1, "Construction de Graphic_engine")
 	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
@@ -28,18 +30,30 @@ Graphic_engine::Graphic_engine(): m_camera(new Camera())
 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
 		return;
 	}
+	m_camera = new Camera();
+	m_talks = new Talks();
 }
 
 Graphic_engine::~Graphic_engine()
 {
+	PRINT_CONSTR(1, "Destruction de Graphic_engine")
 	delete m_camera;
+	delete m_talks;
+	PRINT_TRACE(1, "Fermeture de TTF")
 	TTF_Quit();
+	PRINT_TRACE(1, "Fermeture de SDL")
 	SDL_Quit();
 }
 
-void Graphic_engine::init_graphic_engine(Babar *babar)
+void Graphic_engine::init_graphic_engine(Babar *babar, Static_data *static_data)
 {
 	m_camera->init_camera(babar);
+	m_talks->init_talks(m_camera, static_data->get_pictures_container());
+}
+
+void Graphic_engine::update(Static_data *static_data)
+{
+	m_camera->update_pos(static_data);
 }
 
 Camera *Graphic_engine::get_camera()
@@ -47,7 +61,8 @@ Camera *Graphic_engine::get_camera()
 	return m_camera;
 }
 
-void Graphic_engine::update(Static_data *static_data)
+Talks *Graphic_engine::get_talks()
 {
-	m_camera->update_pos(static_data);
+	return m_talks;
 }
+
