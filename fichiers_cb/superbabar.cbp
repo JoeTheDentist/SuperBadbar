@@ -46,6 +46,8 @@
 		</Linker>
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
+		<Unit filename="..\src\events\contact_event.cpp" />
+		<Unit filename="..\src\events\contact_event.h" />
 		<Unit filename="..\src\events\event_item.cpp" />
 		<Unit filename="..\src\events\event_item.h" />
 		<Unit filename="..\src\events\event_weapon.cpp" />

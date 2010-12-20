@@ -1,6 +1,6 @@
 /**
  * 	@file anim_manager.cpp
- * 	@brief Implémentation de la classe Anim_manager
+ * 	@brief Implémentation de la classe Anim_table
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
@@ -15,9 +15,9 @@
 #include <sys/stat.h>
 #include <string>
 
-#include "anim_manager.h"
+#include "anim_table.h"
 
-Anim_manager::Anim_manager(std::string anim_name) {
+Anim_table::Anim_table(std::string anim_name) {
     char state = '0', dir = '0', num_img = '0';
 
     if ( !FileExists(anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT) ) {
@@ -63,7 +63,7 @@ Anim_manager::Anim_manager(std::string anim_name) {
 }
 
 
-Anim_manager::~Anim_manager() {
+Anim_table::~Anim_table() {
     for (int i=0;i<m_nb_states;i++) {
         delete m_anim[i][0];
         delete m_anim[i][1];
@@ -72,17 +72,17 @@ Anim_manager::~Anim_manager() {
     delete[] m_anim;
 }
 
-void Anim_manager::change_anim(state s, horizontal dir) {
+void Anim_table::change_anim(state s, horizontal dir) {
     if ( m_curr_anim->interruptable() ) {
         m_curr_anim = m_anim[s][dir];
     }
 }
 
-SDL_Surface * Anim_manager::curr_pic() {
+SDL_Surface * Anim_table::curr_pic() {
     m_curr_anim->curr_pic();
 }
 
-void Anim_manager::setRect(Rect & pos) {
+void Anim_table::setRect(Rect & pos) {
     pos.w = curr_pic()->w;
     pos.h = curr_pic()->h;
 }

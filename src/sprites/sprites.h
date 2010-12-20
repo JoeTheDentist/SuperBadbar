@@ -27,7 +27,7 @@ enum state {
 };
 
 #include "../video/animation.h"
-#include "../video/anim_manager.h"
+#include "../video/anim_table.h"
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
@@ -35,7 +35,7 @@ class Static_data;
 class Sound_manager;
 class Keyboard;
 class Camera;
-class Anim_manager;
+class Anim_table;
 class Collisions_manager;
 class Pictures_manager;
 
@@ -50,7 +50,7 @@ protected:
 	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */
 	state m_state;              /* etat du sprite */
-	//Anim_manager * m_animm;     /* gestionnaire d'animations */
+	//Anim_table * m_animm;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
 public:
@@ -62,13 +62,13 @@ public:
 	/*!
 	 *	@brief Destructeur
 	*/
-	virtual ~Sprite();		   
+	virtual ~Sprite();
 
 	/*!
 	 *	@brief Accesseur
 	 *	@return Un pointeur vers l'image actuelle du sprite
 	*/
-    virtual SDL_Surface * current_picture() const; 
+    virtual SDL_Surface * current_picture() const;
 
 	/*!
 	 *	@brief Met à jour la position du sprite
@@ -76,19 +76,19 @@ public:
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
     void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
-	
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return La position du sprite
 	*/
 	Rect position() const;
-	
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return L'abscisse de la position du sprite
 	*/
-	uint32_t position_x() const; 	
-	
+	uint32_t position_x() const;
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return L'ordonnée de la position du sprite
@@ -100,11 +100,11 @@ public:
 	 *	@return La phase du sprite
 	*/
 	uint32_t phase() const;
-	
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return La direction horizontale du sprite
-	 *	
+	 *
 	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
 	*/
 	int direction_h() const; /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/

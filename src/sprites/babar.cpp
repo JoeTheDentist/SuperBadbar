@@ -29,12 +29,8 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_
     : m_keyboard(keyboard), m_weapon(MACHINEGUN, static_data->proj_pics(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
-	m_invincible = 0;
-	m_last_dir = LEFT;
-	m_double_jump = false;
+
 	m_sound_manager = sound_manager;
-	m_plane = false;
-	m_allowed_to_plane = true;
 
 	init_babar(analyser);
 }
@@ -51,7 +47,7 @@ void Babar::load_anim(char age)
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
 
-	m_animm = new Anim_manager(babar_pic_dir+age_c+"/"+"babar");
+	m_animm = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
 
     m_animm->setRect(m_pos);
 }
@@ -70,6 +66,12 @@ void Babar::init_babar(Analyser * a)
 
     /* Initisalisation de la phase de tir */
     m_fire_phase = 0;
+    /* Paramètres par défaut */
+    m_invincible = 0;
+	m_last_dir = LEFT;
+	m_double_jump = false;
+	m_plane = false;
+	m_allowed_to_plane = true;
 }
 
 void Babar::update_speed()

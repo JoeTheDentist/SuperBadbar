@@ -1,14 +1,14 @@
 /**
  * 	@file anim_manager.h
- * 	@brief Header de la classe Anim_manager
+ * 	@brief Header de la classe Anim_table
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
  *
  */
 
-#ifndef ANIM_MANAGER_H_INCLUDED
-#define ANIM_MANAGER_H_INCLUDED
+#ifndef ANIM_TABLE_H_INCLUDED
+#define ANIM_TABLE_H_INCLUDED
 
 #include <SDL/SDL.h>
 #include <string>
@@ -21,10 +21,10 @@
 
 
 /**
- * 	@class Anim_manager
+ * 	@class Anim_table
  * 	@brief Automatise l'utilisation des animations
  */
-class Anim_manager
+class Anim_table
 {
     private:
         char m_nb_states;           /* nombre d'etats de l'animation */
@@ -41,12 +41,12 @@ class Anim_manager
          *
          * @param string donnant l'adresse du paquet d'image a charger
          */
-        Anim_manager(std::string anim_name);
+        Anim_table(std::string anim_name);
 
         /**
          * @brief Destructeur, liberation du tableau des animations.
          */
-        ~Anim_manager();
+        ~Anim_table();
 
         /**
          * @brief change l'animation courrante.
