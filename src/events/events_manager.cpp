@@ -48,7 +48,7 @@ void Events_manager::load_events()
 	PRINT_TRACE(1, "Chargement des evenements");
 	Rect pos1;
 	pos1.x = m_game_engine->babar()->position_x() + 400;
-	pos1.y = 1500;
+	pos1.y = 2850;
 	pos1.h = 50;
 	pos1.w = 50;
 	Rect pos2 = pos1;

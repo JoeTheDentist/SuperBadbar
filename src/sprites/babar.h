@@ -86,7 +86,7 @@ public:
 	 *	@param projectiles_manager Gestionnaire des projectiles
 	 */
 
-	void update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectile_manager);
+	void update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager);
 
 	/**
 	 * 	@brief Mise à jour de la direction de Babar en fonction des touches enfoncées
