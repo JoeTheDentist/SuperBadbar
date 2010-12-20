@@ -71,7 +71,7 @@ public:
 	*	@param k la touche a controler
 	*	@return Le nombre de cycles depuis lequel la touche est enfoncée
 	*/
-	bool time_pressed(enum key k) const;
+	int time_pressed(enum key k) const;
 
 	/*!
 	* 	@brief Accesseur 

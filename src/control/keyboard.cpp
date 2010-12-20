@@ -62,7 +62,7 @@ bool Keyboard::key_down(enum key k) const
 	return m_key_down[k];
 }
 
-int Keyboard::time_pressed(enum keyk) const
+int Keyboard::time_pressed(enum key k) const
 {
 	return m_key_down[k];
 }
