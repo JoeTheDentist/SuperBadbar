@@ -45,7 +45,7 @@ Following_walking_monster::Following_walking_monster(Sound_manager *sound_manage
 	m_pics[1][2] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_3" +PICS_EXT).c_str());
 	m_pics[1][3] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
 	m_speed.x = m_speed_def;
-	m_horizontal = RIGHT;
+	m_dir = RIGHT;
 
 	m_pos.w = m_pics[0][0]->w;
 	m_pos.h = m_pics[0][0]->h;
@@ -62,12 +62,12 @@ void Following_walking_monster::update_speed(Babar *babar)
 
 	m_speed.y += GRAVITE;
 
-	if ( (m_pos.x<babar->position().x)&&(m_horizontal != RIGHT) ) {
-	    m_horizontal = RIGHT;
+	if ( (m_pos.x<babar->position().x)&&(m_dir != RIGHT) ) {
+	    m_dir = RIGHT;
 		m_speed.x = m_speed_def;
 	}
-	if ( (m_pos.x>babar->position().x)&&(m_horizontal != LEFT) ) {
-	    m_horizontal = LEFT;
+	if ( (m_pos.x>babar->position().x)&&(m_dir != LEFT) ) {
+	    m_dir = LEFT;
 	    m_speed.x = -m_speed_def;
 	}
 }

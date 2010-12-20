@@ -48,9 +48,9 @@ protected:
 	static Pictures_manager *m_pictures_manager;
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */
-	horizontal m_horizontal;    /* direction horizontale */
+	horizontal m_dir;    /* direction horizontale */
 	state m_state;              /* etat du sprite */
-	//Anim_table * m_animm;     /* gestionnaire d'animations */
+	//Anim_table * m_animt;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;
 public:

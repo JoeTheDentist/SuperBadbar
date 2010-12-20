@@ -6,8 +6,8 @@
  * 	@date decembre 2010
  *
  */
- 
- 
+
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -25,7 +25,7 @@ Sprite::Sprite()
 {
 	m_speed.x = 0;
 	m_speed.y = 0;
-	m_horizontal = LEFT;
+	m_dir = LEFT;
 	m_state = WALK;
 	m_phase = 0;
 }
@@ -37,7 +37,7 @@ Sprite::~Sprite()
 
 SDL_Surface *Sprite::current_picture()  const
 {
-	/*return m_animm->curr_pic();*/
+	/*return m_animt->curr_pic();*/
 	return NULL;
 }
 
@@ -117,7 +117,7 @@ uint32_t Sprite::phase() const
 
 int Sprite::direction_h() const
 {
-	if (m_horizontal == RIGHT)
+	if (m_dir == RIGHT)
 		return 1;
 	else
 		return -1;

@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -33,7 +33,7 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture() const
 {
-    return m_pics[m_horizontal][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
+    return m_pics[m_dir][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
 }
 
 void Monster::update_speed()
@@ -41,11 +41,11 @@ void Monster::update_speed()
 	m_speed.y += GRAVITE;
 
 	if (m_pos.x<m_area_begin) {
-	    m_horizontal = RIGHT;
+	    m_dir = RIGHT;
 		m_speed.x = -m_speed.x;
 	}
 	if (m_pos.x>m_area_end) {
-	    m_horizontal = LEFT;
+	    m_dir = LEFT;
 	    m_speed.x = -m_speed.x;
 	}
 }
@@ -55,11 +55,11 @@ void Monster::update_speed(Babar * babar)
 	m_speed.y += GRAVITE;
 
 	if (m_pos.x<m_area_begin) {
-	    m_horizontal = RIGHT;
+	    m_dir = RIGHT;
 		m_speed.x = -m_speed.x;
 	}
 	if (m_pos.x>m_area_end) {
-	    m_horizontal = LEFT;
+	    m_dir = LEFT;
 	    m_speed.x = -m_speed.x;
 	}
 }

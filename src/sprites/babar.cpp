@@ -38,7 +38,7 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_
 Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
-    delete m_animm;
+    delete m_animt;
 }
 
 void Babar::load_anim(char age)
@@ -47,9 +47,9 @@ void Babar::load_anim(char age)
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
 
-	m_animm = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
+	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
 
-    m_animm->setRect(m_pos);
+    m_animt->setRect(m_pos);
 }
 
 void Babar::init_babar(Analyser * a)
@@ -68,7 +68,6 @@ void Babar::init_babar(Analyser * a)
     m_fire_phase = 0;
     /* Paramètres par défaut */
     m_invincible = 0;
-	m_last_dir = LEFT;
 	m_double_jump = false;
 	m_plane = false;
 	m_allowed_to_plane = true;
@@ -136,12 +135,10 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 void Babar::update_direction()
 {
 	if (m_keyboard->key_down(k_left)) {
-		m_horizontal = LEFT;
-		m_last_dir = LEFT;
+		m_dir = LEFT;
 	}
 	if (m_keyboard->key_down(k_right)) {
-		m_horizontal = RIGHT;
-		m_last_dir = RIGHT;
+		m_dir = RIGHT;
 	}
 }
 
@@ -153,12 +150,7 @@ bool Babar::can_fire() const
 std::list<Projectile*> *Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
-	if(m_keyboard->key_down(k_up)||m_keyboard->key_down(k_down)) {
-		return m_weapon.fire(m_pos,m_horizontal);
-	}
-	else {
-		return m_weapon.fire(m_pos,m_last_dir);
-	}
+    return m_weapon.fire(m_pos,m_dir);
 }
 
 bool Babar::can_double_jump() const
@@ -281,8 +273,8 @@ weapon_type Babar::type_of_weapon()  const
 SDL_Surface *Babar::current_picture() const
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
-		m_animm->change_anim(m_state, m_last_dir);
-        return m_animm->curr_pic();
+		m_animt->change_anim(m_state, m_dir);
+        return m_animt->curr_pic();
 	} else
 		return NULL;
 }

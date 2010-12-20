@@ -93,8 +93,8 @@
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
 		<Unit filename="..\src\util\repertories.h" />
-		<Unit filename="..\src\video\anim_manager.cpp" />
-		<Unit filename="..\src\video\anim_manager.h" />
+		<Unit filename="..\src\video\anim_table.cpp" />
+		<Unit filename="..\src\video\anim_table.h" />
 		<Unit filename="..\src\video\animation.cpp" />
 		<Unit filename="..\src\video\animation.h" />
 		<Unit filename="..\src\video\camera.cpp" />

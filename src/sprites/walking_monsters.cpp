@@ -48,7 +48,7 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	m_pics[1][2] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_3" +PICS_EXT).c_str());
 	m_pics[1][3] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
 	m_speed.x = m_speed_def;
-	m_horizontal = RIGHT;
+	m_dir = RIGHT;
 
 	m_pos.w = m_pics[0][0]->w;
 	m_pos.h = m_pics[0][0]->h;
@@ -66,11 +66,11 @@ void Walking_monster::update_speed()
 	m_speed.y += GRAVITE;
 
 	if (m_pos.x<m_area_begin) {
-	    m_horizontal = RIGHT;
+	    m_dir = RIGHT;
 		m_speed.x = -m_speed.x;
 	}
 	if (m_pos.x>m_area_end) {
-	    m_horizontal = LEFT;
+	    m_dir = LEFT;
 	    m_speed.x = -m_speed.x;
 	}
 }

@@ -25,7 +25,7 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
-    m_horizontal = h;
+    m_dir = h;
     m_damage = damage;
 
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
@@ -40,7 +40,7 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
 
     m_speed.x = speedx;
     m_speed.y = speedy;
-	
+
 	m_dead = false;
 	m_phase = 0;
 }
