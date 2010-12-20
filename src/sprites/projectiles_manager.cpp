@@ -43,11 +43,11 @@ void Projectiles_manager::delete_old_projectiles(Static_data *static_data)
 {
 	// suppression de projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-			it != m_projectiles_friend.end(); it++) {
+			it != m_projectiles_friend.end(); ) {
 		if ((*it)->dead()) {
-			m_projectiles_friend.erase(it);
-			if (it != m_projectiles_friend.begin())
-				it--;
+			it = m_projectiles_friend.erase(it);
+		} else {
+			++it;
 		}
 	}
 	// suppression de projectiles ennemis
