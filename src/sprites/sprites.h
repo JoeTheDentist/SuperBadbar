@@ -37,7 +37,7 @@ class Keyboard;
 class Camera;
 class Anim_manager;
 class Collisions_manager;
-
+class Pictures_manager;
 
 /**
  * 	@class Sprite
@@ -45,6 +45,7 @@ class Collisions_manager;
  */
 class Sprite{
 protected:
+	static Pictures_manager *m_pictures_manager;
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_horizontal;    /* direction horizontale */

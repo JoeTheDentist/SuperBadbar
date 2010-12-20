@@ -43,7 +43,6 @@ private:
 	std::list<Following_walking_monster*> m_following_monsters;    	/* Liste des monstres qui suivent babar */
 	std::list<Monster*> m_not_following_monsters;    /* Liste des monstres qui ne suivent pas babar */
 
-
 public:
 
 	/*!
@@ -130,7 +129,7 @@ public:
 	/*!
 	* 	@brief vide la liste des monstres
 	*/
-	void void_list(); 
+	void void_list();
 };
  
  

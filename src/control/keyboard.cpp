@@ -43,7 +43,7 @@ void Keyboard::update_events()
 			m_key_down[k_exit] = 1;
 			break;
 		case SDL_KEYDOWN:
-			m_key_down[m_key_config[event.key.keysym.sym]]= 1;
+			m_key_down[m_key_config[event.key.keysym.sym]]++;
 			if (event.key.keysym.sym==SDLK_ESCAPE) {
 			    m_key_down[k_exit]=1;
 			}
@@ -58,6 +58,11 @@ void Keyboard::update_events()
 }
 
 bool Keyboard::key_down(enum key k) const
+{
+	return m_key_down[k];
+}
+
+int Keyboard::time_pressed(enum keyk) const
 {
 	return m_key_down[k];
 }

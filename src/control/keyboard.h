@@ -42,7 +42,7 @@ class Keyboard {
 	
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
-	bool m_key_down[k_fire + 1];		// tableau des touches enfoncées
+	int m_key_down[k_fire + 1];		// tableau des touches enfoncées
 public:
 	/*!
 	* 	@brief Constructeur 
@@ -65,6 +65,13 @@ public:
 	*	@return Vrai si la touche est enfoncée
 	*/
 	bool key_down (enum key k) const;
+
+	/*!
+	* 	@brief Accesseur 
+	*	@param k la touche a controler
+	*	@return Le nombre de cycles depuis lequel la touche est enfoncée
+	*/
+	bool time_pressed(enum key k) const;
 
 	/*!
 	* 	@brief Accesseur 
