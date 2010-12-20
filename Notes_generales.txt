@@ -1,4 +1,4 @@
 Notes générales sur le jeu
 
-Images :
-	-> Monstres : 3 images pour l'animation de marche, prise en compte qu'il y a deux fois l'image intermédiaire.
+Idées de monstres :
+	Un monstre qui se fond dans le décors, qui bouge rarement
