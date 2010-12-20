@@ -66,10 +66,9 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 	analyser.open(rep + "level" + str_lvl + ".lvl");
 	m_monsters_manager->init_monsters_manager(&analyser, sound_manager, pictures_container);
 	m_events_manager->init_events_manager(static_data, this, pictures_container);
-	m_babar = new Babar(keyboard, static_data, sound_manager);
+	m_babar = new Babar(keyboard, static_data, sound_manager, &analyser);
 	m_events_manager->load_events();
 	analyser.close();
-
 
 }
 
@@ -136,13 +135,13 @@ void Game_engine::update_monsters_projectiles()
                 monster->damage((*it)->damage());
                 (*it)->kill();
 			}
-        }                 
+        }
         if ( monster->dead() ) {
             m_monsters_manager->delete_element();
         } else {
             m_monsters_manager->next();
         }
-    }	
+    }
 }
 
 

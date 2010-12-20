@@ -1,9 +1,4 @@
-#PositionsMonstres#	//type, coor, debut zone, fin zone
-#StatMonstres#	//#type# vies, tir, vitesse
-
-Monstres : 	m1_left_1
-		m2_left_1
-		m3_left_1
-
-		m1_left_2
-		...
+#babar#
+x
+y
+age

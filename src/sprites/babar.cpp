@@ -25,23 +25,18 @@
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager)
+Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser)
     : m_keyboard(keyboard), m_weapon(MACHINEGUN, static_data->proj_pics(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
-	m_pos.x = 0;
-	m_pos.y = 1600;
 	m_invincible = 0;
-	m_lifes = 5;
 	m_last_dir = LEFT;
-	m_fire_phase = 0;
 	m_double_jump = false;
 	m_sound_manager = sound_manager;
 	m_plane = false;
 	m_allowed_to_plane = true;
 
-    /*** Stockage et chargement dans le tableau des images ***/
-    load(1);
+	init_babar(analyser);
 }
 
 Babar::~Babar()
@@ -50,20 +45,31 @@ Babar::~Babar()
     delete m_animm;
 }
 
-void Babar::load(char age)
+void Babar::load_anim(char age)
 {
     char age_c = '0';
     age_c += age;
 	std::string babar_pic_dir = PIC_BABAR_R;
 
-	m_animm = new Anim_manager(babar_pic_dir+"babar");
+	m_animm = new Anim_manager(babar_pic_dir+age_c+"/"+"babar");
 
     m_animm->setRect(m_pos);
 }
 
-void Babar::init_babar(Analyser a)
+void Babar::init_babar(Analyser * a)
 {
+    /* Initialisation de la position de Babar */
+    a->find_string("#Babar#");
+    m_pos.x = a->read_int();
+    m_pos.y = a->read_int();
+    /* Chargement des images en fonction de l'age */
+    load_anim(a->read_int());
 
+    /* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
+    m_lifes = 5;
+
+    /* Initisalisation de la phase de tir */
+    m_fire_phase = 0;
 }
 
 void Babar::update_speed()

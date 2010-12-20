@@ -71,6 +71,8 @@
 		<Unit filename="..\src\sound\sound_manager.h" />
 		<Unit filename="..\src\sprites\babar.cpp" />
 		<Unit filename="..\src\sprites\babar.h" />
+		<Unit filename="..\src\sprites\following_walking_monsters.cpp" />
+		<Unit filename="..\src\sprites\following_walking_monsters.h" />
 		<Unit filename="..\src\sprites\monsters.cpp" />
 		<Unit filename="..\src\sprites\monsters.h" />
 		<Unit filename="..\src\sprites\monsters_manager.cpp" />

@@ -47,6 +47,13 @@ protected:
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
+
+	/**
+	 * 	@brief Charge les images de babar
+	 *	@param age	L'age de Babar
+	 */
+	void load_anim(char age);
+
 public:
 
 	/**
@@ -55,7 +62,7 @@ public:
 	 *	@param static_data Les données du niveau
 	 *	@param sound_manager Le gestionnaire de son
 	 */
-	Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager);
+	Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser);
 
 	/**
 	 * 	@brief Destructeur
@@ -63,16 +70,10 @@ public:
 	~Babar();
 
 	/**
-	 * 	@brief Charge les images de babar
-	 *	@param age	L'age de Babar
-	 */
-	void load(char age);
-
-	/**
 	 *  @brief Charge les attributs de Babar propre au lvl
-	 *  @param a Analyser ouvert sur le fichier a lire
+	 *  @param a Analyser ouvert sur le fichier level contenant les coordonnées de Babar
 	 */
-	void init_babar(Analyser a);
+	void init_babar(Analyser * a);
 
 	/**
 	 * 	@brief Met à jour la vitesse de Babar
