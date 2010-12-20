@@ -18,44 +18,12 @@
 
 
 
-Event_item::Event_item(Babar *target, Rect pos) : m_pos(pos)
+Event_item::Event_item(Babar *target, Rect pos) : Contact_event(target, pos)
 {
-	PRINT_CONSTR(3, "CONSTRUCTION D'UN EVENT ITEM");
-	m_target = target;
-	m_can_be_destroyed = false;
-	m_phase = 0;
+
 }
 
 Event_item::~Event_item()
 {
 	PRINT_CONSTR(3, "DESTRUCTION D'UN EVENT ITEM");
-}
-
-void Event_item::update()
-{
-	m_phase++;
-	if ((m_phase/5)%2)
-		m_pos.y += 5;
-	else
-		m_pos.y -= 5;
-}
-
-bool Event_item::can_start() const
-{
-	return Collisions_manager::check_collision(m_pos, m_target->position());
-}
-
-void Event_item::start()
-{
-	m_can_be_destroyed = true;
-}
-
-SDL_Surface *Event_item::current_picture() const
-{
-	return NULL;
-}
-
-Rect Event_item::current_pos() const
-{
-	return m_pos;
 }

@@ -17,7 +17,7 @@
 
 /**
  * 	@class Contact_event
- * 	@brief Evenement correspondant à un objet ramassable
+ * 	@brief Evenement qui se déclenche au contact de Babar
  *
  *	Il se déclenche lorsque le Babar cible entre en contact
  *	avec sa surface. Il est alors déclenché et détruit.
@@ -37,7 +37,7 @@ public:
 
 /**
  * 	@brief Constructeur
- *	@param target Le babar susceptible de ramasser l'item
+ *	@param target Le babar cible
  *	@param pos La position de l'objet
  */
 	Contact_event(Babar *target, Rect pos);

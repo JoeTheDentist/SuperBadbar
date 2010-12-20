@@ -20,7 +20,7 @@
 
 Contact_event::Contact_event(Babar *target, Rect pos) : m_pos(pos)
 {
-	PRINT_CONSTR(3, "CONSTRUCTION D'UN EVENT ITEM");
+	PRINT_CONSTR(3, "CONSTRUCTION D'UN CONTACT EVENT");
 	m_target = target;
 	m_can_be_destroyed = false;
 	m_phase = 0;
@@ -28,7 +28,7 @@ Contact_event::Contact_event(Babar *target, Rect pos) : m_pos(pos)
 
 Contact_event::~Contact_event()
 {
-	PRINT_CONSTR(3, "DESTRUCTION D'UN EVENT ITEM");
+	PRINT_CONSTR(3, "DESTRUCTION D'UN CONTACT EVENT ");
 }
 
 void Contact_event::update()

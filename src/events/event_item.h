@@ -10,7 +10,7 @@
 #ifndef _EVENT_ITEM_
 #define _EVENT_ITEM_
 
-#include "../events/events.h"
+#include "../events/contact_event.h"
 #include "../util/globals.h"
 
 
@@ -27,12 +27,8 @@
  */
 class Babar;
 
-class Event_item: public Event{
+class Event_item: public Contact_event {
 protected:
-	Babar *m_target;
-	SDL_Surface *m_picture;
-	Rect m_pos;
-	int m_phase;
 public:
 
 /**
@@ -47,43 +43,7 @@ public:
  */
 	~Event_item();
 
-/**
- * 	@brief Mise à jour de l'événement
- *
- *	Modifie la position de l'événement pour le faire
- *	osciller de bas en haut
- */
-	virtual void update();
 
-/**
- * 	@brief Retourne vrai si l'événement doit etre déclenché
- *	@return Vrai si l'événement doit etre déclenché
- *
- *	L'événement doit etre déclenché si la cible entre en contact
- *	avec l'événement 
- */
-	virtual bool can_start() const;
-	
-/**
- * 	@brief Déclenche l'événement
- *
- *	Par défaut, rend l'événement déstruisible
- */
-	virtual void start();
-	
-/**
- * 	@brief Accesseur
- *	@return L'image actuelle de l'event
- *
- *	S'il n'y a pas d'image, retourne NULL
- */
-	virtual SDL_Surface *current_picture() const;
-	
-/**
- * 	@brief Accesseur
- *	@return La position et le cadre de l'événement
- */
-	virtual Rect current_pos() const;
 };
 
 #endif

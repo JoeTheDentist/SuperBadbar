@@ -46,7 +46,8 @@ void Projectiles_manager::delete_old_projectiles(Static_data *static_data)
 			it != m_projectiles_friend.end(); it++) {
 		if ((*it)->dead()) {
 			m_projectiles_friend.erase(it);
-			it--;
+			if (it != m_projectiles_friend.begin())
+				it--;
 		}
 	}
 	// suppression de projectiles ennemis
