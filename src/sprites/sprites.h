@@ -23,7 +23,7 @@
 	 *	Sert également à savoir ce que le sprite peut ou ne peut pas faire
 	*/
 enum state {
-    STATIC, WALK, JUMP
+    STATIC, WALK, JUMP, CROUCH
 };
 
 #include "../video/animation.h"

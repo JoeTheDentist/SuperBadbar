@@ -66,19 +66,18 @@ void Babar::init_babar(Analyser * a)
 
     /* Initisalisation de la phase de tir */
     m_fire_phase = 0;
+
     /* Paramètres par défaut */
     m_invincible = 0;
 	m_double_jump = false;
-	m_plane = false;
-	m_allowed_to_plane = true;
+	m_dir = RIGHT;
+	m_crouch_time = 0;
 }
 
 void Babar::update_speed()
 {
-	if (m_plane)
-		m_speed.y = GRAVITE/5;
-	else
-		m_speed.y += GRAVITE;
+    m_speed.y += GRAVITE;
+
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (m_keyboard->key_down(k_left))
         m_speed.x -= BABAR_SPEED;
@@ -99,12 +98,6 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
 	update_direction();
 
-	if(can_fly()) {
-		fly();
-	}
-	if (can_stop_fly()) {
-		stop_fly();
-	}
     if (can_fire()) {
 		projectiles_manager->add_friend_proj(fire());
         m_fire_phase = 0;
@@ -112,6 +105,9 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
     else {
         m_fire_phase++;
     }
+
+    if (can_crouch())
+        crouch();
 
     if (can_jump())
 		jump();
@@ -122,11 +118,8 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 	if (can_go_down(collisions_manager))
 		go_down(collisions_manager);
 
-    if ((uint32_t)(m_pos.y + m_pos.h) > static_data->static_data_height()) {                           /* On remet le bon état à la fin du saut */
-        m_state = STATIC;
-    }
-    if ((m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP)) {
-        m_state = WALK;
+    if (can_walk()) {
+        walk();
     }
 	if (m_invincible > 0)
 		m_invincible --;
@@ -153,6 +146,50 @@ std::list<Projectile*> *Babar::fire()
     return m_weapon.fire(m_pos,m_dir);
 }
 
+bool Babar::can_walk() const
+{
+    return (m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP && m_state!=CROUCH);
+}
+
+void Babar::walk()
+{
+    m_crouch_time = 0;
+    m_state = WALK;
+}
+
+bool Babar::can_crouch() const
+{
+    return m_keyboard->key_down(k_jump) && !m_keyboard->key_down(k_down) && (m_state!=JUMP);
+}
+
+void Babar::crouch()
+{
+    m_crouch_time++;
+    m_state = CROUCH;
+    /* faire que la vitesse horizontale dépende si on marchait avant */
+}
+
+bool Babar::can_jump() const
+{
+    if ( m_crouch_time > 0 && m_crouch_time < CROUCH_TIME ) {
+        if ( !m_keyboard->key_down(k_jump) && (m_state!=JUMP) ) {
+            return true;
+        }
+    }
+    return false;
+	/*return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);*/
+}
+
+void Babar::jump()
+{
+    m_crouch_time = 0;
+	m_state = JUMP;
+	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
+	PRINT_TRACE(2, "Saut de Babar")
+	m_keyboard->disable_key(k_jump);
+	m_sound_manager->play_babar_jump();
+}
+
 bool Babar::can_double_jump() const
 {
 	return m_state == JUMP && m_keyboard->key_down(k_jump) && (!m_double_jump);
@@ -168,21 +205,6 @@ void Babar::double_jump()
 
 }
 
-
-bool Babar::can_jump() const
-{
-	return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
-}
-
-void Babar::jump()
-{
-	m_state = JUMP;
-	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
-	PRINT_TRACE(2, "Saut de Babar")
-	m_keyboard->disable_key(k_jump);
-	m_sound_manager->play_babar_jump();
-}
-
 bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 {
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
@@ -192,6 +214,7 @@ bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 
 void Babar::go_down(Collisions_manager *collisions_manager)
 {
+    m_crouch_time = 0;
 	m_pos.y += BOX_SIZE;
 	while (Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))){
 		if (collisions_manager->double_collision(m_pos)) {
@@ -205,34 +228,6 @@ void Babar::go_down(Collisions_manager *collisions_manager)
 	m_keyboard->disable_key(k_jump);
 	PRINT_TRACE(2, "Descente d'une plateforme")
 }
-
-void Babar::fly()
-{
-	m_keyboard->disable_key(k_jump);
-	m_plane = true;
-}
-
-bool Babar::can_fly() const
-{
-	if (m_plane || !m_allowed_to_plane)
-		return false;
-	return m_double_jump && m_keyboard->key_down(k_jump);
-}
-
-bool Babar::can_stop_fly() const
-{
-	if (!m_plane)
-		return false;
-	return (m_plane && m_keyboard->key_down(k_jump)) || m_state == STATIC;
-
-}
-
-void Babar::stop_fly()
-{
-	m_keyboard->disable_key(k_jump);
-	m_plane = false;
-}
-
 
 void Babar::damage(int damages)
 {

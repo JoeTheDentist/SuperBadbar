@@ -16,6 +16,7 @@
 #include "../video/anim_table.h"
 #include <list>
 #define BABAR_SPEED 15
+#define CROUCH_TIME 30
 
 class Collisions_manager;
 class Projectiles_manager;
@@ -40,12 +41,11 @@ protected:
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
     Anim_table * m_animt;             /* gestionnaire des animations */
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
-	bool m_plane;						/* vaut vrai si Babar est en train de planer */
-	bool m_allowed_to_plane;
     Weapon m_weapon;		            /* arme actuelle de babar  */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
+	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
 
 	/**
 	 * 	@brief Charge les images de babar
@@ -60,6 +60,7 @@ public:
 	 *	@param keyboard L'utilitaire qui récupère les entrées clavier du joueur
 	 *	@param static_data Les données du niveau
 	 *	@param sound_manager Le gestionnaire de son
+	 *  @param analyser ouvert sur un fichier lvl, en l'occurence du premier level
 	 */
 	Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser);
 
@@ -70,7 +71,7 @@ public:
 
 	/**
 	 *  @brief Charge les attributs de Babar propre au lvl
-	 *  @param a Analyser ouvert sur le fichier level contenant les coordonnées de Babar
+	 *  @param a Analyser ouvert sur le fichier level contenant les coordonnées et l'age de Babar
 	 */
 	void init_babar(Analyser * a);
 
@@ -109,18 +110,24 @@ public:
 	std::list<Projectile*> *fire();
 
 	/**
-	 * 	@brief  Indique si Babar peut faire un double saut
-	 *	@return Vrai si Babar peut faire un double saut
-	 *
-	 *	On considère que "Babar peut faire un double saut" si la touche
-	 *	sauter est enfoncée et s'il est autorisé à faire un double saut
+	 *  @brief si le joueur demande a marcher et qu'il n'y a rien d'autre
 	 */
-	bool can_double_jump() const;
+	bool can_walk() const;
 
 	/**
-	 * 	@brief Fait resauter Bababr
+	 *  @brief faire marcher
 	 */
-	void double_jump();
+	void walk();
+
+    /**
+	 *  @brief si le joueur demande a s'accroupir
+	 */
+	bool can_crouch() const;
+
+	/**
+	 *  @brief fait s'accroupir
+	 */
+	void crouch();
 
 	/**
 	 * 	@brief Indique si Babar peut sauter
@@ -137,6 +144,20 @@ public:
 	void jump();
 
 	/**
+	 * 	@brief  Indique si Babar peut faire un double saut
+	 *	@return Vrai si Babar peut faire un double saut
+	 *
+	 *	On considère que "Babar peut faire un double saut" si la touche
+	 *	sauter est enfoncée et s'il est autorisé à faire un double saut
+	 */
+	bool can_double_jump() const;
+
+	/**
+	 * 	@brief Fait resauter Bababr
+	 */
+	void double_jump();
+
+	/**
 	 * 	@brief Indique si Babar peut traverser la plateforme sur laquelle il est
 	 *	@return vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas
 	 */
@@ -147,28 +168,6 @@ public:
 	 *	@param collisions_manager Le gestionnaire de collisions
 	 */
 	void go_down(Collisions_manager *collisions_manager);
-
-	/**
-	 * 	@brief Indique si Babar peut planer
-	 *	@return Vrai si Babar peut voler
-	 */
-	bool can_fly() const;
-
-	/**
-	 * 	@brief Fait voler Babar
-	 */
-	void fly();
-
-	/**
-	 * 	@brief Indique si Babar doit arreter de planer
-	 *	@return Vrai si Babar doit arreter de planer
-	 */
-	bool can_stop_fly() const;
-
-	/**
-	 * 	@brief Fait arreter babar de planer
-	 */
-	void stop_fly();
 
 	/**
 	 * 	@brief Changer l'arme actuelle de Babar
