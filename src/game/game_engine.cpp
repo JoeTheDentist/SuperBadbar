@@ -135,6 +135,8 @@ void Game_engine::update_monsters_projectiles()
                 monster->damage((*it)->damage());
                 (*it)->kill();
 			}
+			if (monster->dead())
+				break;
         }
         if ( monster->dead() ) {
             m_monsters_manager->delete_element();
