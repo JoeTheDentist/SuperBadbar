@@ -17,6 +17,7 @@ class Game_engine;
 class Static_data;
 class Camera;
 class Pictures_container;
+class Analyser;
 
 
 /**
@@ -24,12 +25,9 @@ class Pictures_container;
  * 	@brief Classe gérant l'ensemble des événements
  *
  *	- Contient l'ensembe des événements
- *	- Est chargé des les mettre à jour
+ *	- Est chargé de les mettre à jour
  *	- Est chargé de déclencher leur affichage
  *	- Est chargé de les déclencher, de les détruire quand il le faut
- *
- *	@todo permettre le chargement d'évents par rapport à un fichier
- *	
  */
 class Events_manager {
 private:
@@ -62,8 +60,9 @@ public:
 
 	/**
 	 * 	@brief charge les events du niveau
+	 *	@param analyser un Analyser ouvert sur le fichier level à charger
 	*/
-	void load_events();
+	void load_events(Analyser *analyser);
 	
 	/**
 	 * 	@brief Met à jour l'ensemble des événements

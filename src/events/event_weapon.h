@@ -18,7 +18,7 @@
 class Pictures_container;
 class Babar;
 class Weapon;
-
+class Analyser;
 
 /**
  * 	@class Event_weapon
@@ -37,10 +37,23 @@ public:
 	/**
 	 * 	@brief Constructeur
 	 *	@param target Le Babar cible
-	 *	@param pos La position de départ de l'arme dans le niveau
 	 *	@param pictures_container L'utilitaire pour charger les images
+	 *	@param pos La position de départ de l'arme dans le niveau
 	*/
-	Event_weapon(Babar *target, Rect pos, Pictures_container *pictures_container);
+	Event_weapon(Babar *target,Pictures_container *pictures_container, Rect pos);
+
+	/**
+	 * 	@brief Constructeur
+	 *	@param target Le Babar cible
+	 *	@param pictures_container L'utilitaire pour charger les images
+	 * 	@param analyser Un pointeur vers un analyser ouvert sur le fichier level en cours
+	 *
+	 * 	Le constructeur lit la chaine et les deux int suivant le curseur de l'analyser, et 
+	 *  s'arrete de parcourir le fichier. L'analyser est laissé ouvert et n'est pas parcouru 
+	 * 	plus que nécessaire
+	 *
+	*/
+	Event_weapon(Babar *target, Pictures_container *pictures_container, Analyser *analyser);
 
 	/**
 	 * 	@brief Destructeur

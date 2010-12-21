@@ -35,6 +35,12 @@ protected:
 	int m_phase;
 public:
 
+
+/**
+ * 	@brief Constructeur
+ */
+	Contact_event();
+
 /**
  * 	@brief Constructeur
  *	@param target Le babar cible

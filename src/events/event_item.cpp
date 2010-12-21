@@ -15,8 +15,9 @@
 #include "../util/debug.h"
 #include "../util/globals.h"
 
-
-
+Event_item::Event_item()
+{
+}
 
 Event_item::Event_item(Babar *target, Rect pos) : Contact_event(target, pos)
 {

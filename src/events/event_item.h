@@ -31,14 +31,19 @@ class Event_item: public Contact_event {
 protected:
 public:
 
-/**
+/*!
+ *	@brief Constructeur par défaut
+ */
+	Event_item();
+
+/*!
  * 	@brief Constructeur
  *	@param target Le babar susceptible de ramasser l'item
  *	@param pos La position de l'objet
  */
 	Event_item(Babar *target, Rect pos);
 
-/**
+/*!
  * 	@brief Destructeur
  */
 	~Event_item();

@@ -12,6 +12,7 @@
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
 #include "../sprites/walking_monsters.h"
+#include "../sprites/flying_monster.h"
 #include "../sprites/following_walking_monsters.h"
 #include "../video/camera.h"
 #include "../video/pictures_container.h"
@@ -41,7 +42,7 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 			add(curr_monster);
 			m_following_monsters.push_back(curr_monster);
 		} else if (monster_type == "walking_monster") {
-			Monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
+			Flying_monster * curr_monster = new Flying_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
 			m_not_following_monsters.push_back(curr_monster);
 		} 
@@ -61,7 +62,7 @@ void Monsters_manager::monsters_update_speed(Babar *babar){
 
 	for(std::list<Monster *>::iterator it = m_not_following_monsters.begin();
 			it != m_not_following_monsters.end(); it++) {
-	    (*it)->update_speed(babar);
+	    (*it)->update_speed();
 	}
 
 	

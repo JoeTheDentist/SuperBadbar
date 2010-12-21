@@ -61,7 +61,6 @@ void Following_walking_monster::update_speed(Babar *babar)
 {
 
 	m_speed.y += GRAVITE;
-
 	if ( (m_pos.x<babar->position().x)&&(m_dir != RIGHT) ) {
 	    m_dir = RIGHT;
 		m_speed.x = m_speed_def;

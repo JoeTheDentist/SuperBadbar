@@ -13,6 +13,7 @@
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
 #include "../util/debug.h"
+#include "../util/analyser.h"
 #include "../events/event_weapon.h"
 #include "../events/event_item.h"
 #include "../events/events.h"
@@ -43,20 +44,20 @@ void Events_manager::init_events_manager(Static_data *static_data, Game_engine *
 	m_pictures_container = pictures_container;
 }
 
-void Events_manager::load_events()
+void Events_manager::load_events(Analyser *analyser)
 {
 	PRINT_TRACE(1, "Chargement des evenements");
-	Rect pos1;
-	pos1.x = m_game_engine->babar()->position_x() + 400;
-	pos1.y = 2850;
-	pos1.h = 50;
-	pos1.w = 50;
-	Rect pos2 = pos1;
-	pos2.x += 150;
-	Event *event = new Event_weapon(m_game_engine->babar(), pos1, m_pictures_container);
-	m_list_events.push_back(event);
-	event = new Event_weapon(m_game_engine->babar(), pos2, m_pictures_container);
-	m_list_events.push_back(event);
+	analyser->find_string("#Events#");
+	int events_number = analyser->read_int();
+	for (int i = 0; i < events_number; i++) {
+		std::string event_class = analyser->read_string(); 
+		if (event_class == "event_weapon") {
+			Event_weapon *event = new Event_weapon(m_game_engine->babar(), m_pictures_container, analyser);
+			m_list_events.push_back(event);
+		} else {
+			PRINT_DEBUG(1, "Event %s non reconnu", event_class.c_str());
+		}
+	}
 }
 
 void Events_manager::update()

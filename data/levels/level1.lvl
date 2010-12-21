@@ -7,8 +7,13 @@ background.bmp
 
 #Babar#
 10
-1700
+2600
 1
+
+#Events#
+1
+event_weapon shotgun 400 2850
+
 
 
 #Statics#
@@ -22,11 +27,11 @@ block3 1700 2950
 
 
 #Monsters#
-6
+4
+walking_monster gailapin 155 2600 95 1000
+walking_monster gailapin 165 2600 95 1000
+walking_monster gailapin 205 2600 95 1000
+walking_monster gailapin 305 2600 95 1000
 following_walking_monster gailapin 120 1600 
 following_walking_monster gailapin 135 1600 
-walking_monster gailapin 155 1600 95 1000
-walking_monster gailapin 165 1600 95 1000
-walking_monster gailapin 205 1600 95 1000
-walking_monster gailapin 305 1600 95 1000
 !
