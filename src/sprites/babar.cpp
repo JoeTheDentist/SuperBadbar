@@ -110,6 +110,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
     if (can_crouch()) {
         crouch();
     } else {
+        /* si on se releve */
         if ( m_crouch_time ) {
             m_pos.y -= m_pos.h;
             m_crouch_time = 0;
