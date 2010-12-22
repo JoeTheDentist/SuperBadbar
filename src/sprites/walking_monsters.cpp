@@ -52,7 +52,7 @@ Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyse
 	m_speed.x = m_speed_def;
 	m_dir = RIGHT;
 
-    m_animt->setRect(m_pos);
+    m_animt->set_rect(m_pos);
 
 	/*m_pos.w = m_pics[0][0]->w;
 	m_pos.h = m_pics[0][0]->h;*/

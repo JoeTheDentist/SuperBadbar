@@ -83,9 +83,9 @@ Surface * Anim_table::curr_pic() {
     return m_curr_anim->curr_pic();
 }
 
-void Anim_table::setRect(Rect &pos)
+void Anim_table::set_rect(Rect &pos)
 {
-    m_curr_anim->setRect(pos);
+    m_curr_anim->set_rect(pos);
 }
 
 

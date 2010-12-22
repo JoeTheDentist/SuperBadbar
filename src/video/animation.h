@@ -70,7 +70,7 @@ public:
      *
      *  @param pos Rect à modifier
      */
-    void setRect(Rect &pos);
+    void set_rect(Rect &pos);
 };
 
 #endif // ANIMATION_H_INCLUDED

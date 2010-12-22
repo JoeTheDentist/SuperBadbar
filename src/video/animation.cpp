@@ -41,7 +41,7 @@ Animation::~Animation() {
     delete[] m_images;
 }
 
-Surface * Animation::curr_pic() 
+Surface * Animation::curr_pic()
 {
     Surface *image = m_images[m_curr];
     m_phase++;
@@ -63,12 +63,12 @@ Surface * Animation::curr_pic()
     return image;
 }
 
-bool Animation::interruptable() 
+bool Animation::interruptable()
 {
     return m_finished;
 }
 
-void Animation::setRect(Rect &pos)
+void Animation::set_rect(Rect &pos)
 {
     pos.h = m_images[m_curr]->h();
     pos.w = m_images[m_curr]->w();

@@ -64,7 +64,7 @@ class Anim_table
          *
          *  @param Rect à modifier
          */
-        void setRect(Rect &pos);
+        void set_rect(Rect &pos);
 };
 
 /**

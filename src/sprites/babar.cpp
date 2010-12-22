@@ -50,7 +50,7 @@ void Babar::load_anim(char age)
 	std::string babar_pic_dir = PIC_BABAR_R;
 
 	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
-	m_animt->setRect(m_pos);
+	m_animt->set_rect(m_pos);
 }
 
 void Babar::init_babar(Analyser * a)
@@ -145,8 +145,8 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 	if (m_keyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-
-    m_animt->setRect(m_pos);
+    /* remarque : cette methode a un tour de retard, du fait de la ou elle est placee */
+    m_animt->set_rect(m_pos);
 }
 
 
@@ -184,7 +184,7 @@ void Babar::walk()
 
 bool Babar::can_crouch() const
 {
-    return m_keyboard->key_down(k_down);
+    return m_keyboard->key_down(k_down)&&(m_state!=JUMP && m_state!=CROUCH);
 }
 
 void Babar::crouch()
@@ -196,7 +196,7 @@ void Babar::crouch()
 
 bool Babar::can_jump() const
 {
-    return m_keyboard->key_down(k_jump) && (m_state != JUMP || m_ready_jump)
+    return m_keyboard->key_down(k_jump) && m_ready_jump
      && !m_keyboard->key_down(k_down);
 }
 
@@ -204,14 +204,14 @@ void Babar::jump()
 {
     m_jump_time++;
 	m_state = JUMP;
-	m_speed.y = -(m_keyboard->time_pressed(k_jump)/5+3)*BABAR_SPEED; /* Vitesse de saut */
+	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
-	//m_keyboard->disable_key(k_jump);
 	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
         m_sound_manager->play_babar_jump();
         m_ready_double_jump = true;
         if ( m_keyboard->time_pressed(k_jump) > JUMP_TIME) {
             m_ready_jump = false;
+            m_keyboard->disable_key(k_jump);
         }
 	}
 

@@ -16,7 +16,7 @@
 #include "../video/anim_table.h"
 #include <list>
 #define BABAR_SPEED 15
-#define JUMP_TIME 10
+#define JUMP_TIME 7
 
 class Collisions_manager;
 class Projectiles_manager;
