@@ -132,6 +132,12 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
 	if (m_invincible > 0)
 		m_invincible --;
+	
+	if (m_keyboard->time_pressed(k_prev_weapon) == 1)
+		m_weapons_armory.previous_weapon();
+	if (m_keyboard->time_pressed(k_next_weapon) == 1)
+		m_weapons_armory.next_weapon();
+
 
     m_animt->setRect(m_pos);
 }

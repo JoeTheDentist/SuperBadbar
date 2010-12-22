@@ -27,6 +27,8 @@ Keyboard::Keyboard()
 	m_key_config[SDLK_q] = k_jump;
 	m_key_config[SDLK_d] = k_fire;
 	m_key_config[SDLK_SPACE] = k_action;
+	m_key_config[SDLK_a] = k_prev_weapon;
+	m_key_config[SDLK_z] = k_next_weapon;
 }
 
 Keyboard::~Keyboard()
@@ -36,6 +38,9 @@ Keyboard::~Keyboard()
 
 void Keyboard::update_events()
 {
+	for (int i = k_none; i < k_fire + 1 ; i++)
+		if (key_down((enum key)i))
+			m_key_down[i]++;
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
 		switch (event.type) {
@@ -43,7 +48,7 @@ void Keyboard::update_events()
 			m_key_down[k_exit] = 1;
 			break;
 		case SDL_KEYDOWN:
-			m_key_down[m_key_config[event.key.keysym.sym]]++;
+			m_key_down[m_key_config[event.key.keysym.sym]] = 1;
 			if (event.key.keysym.sym==SDLK_ESCAPE) {
 			    m_key_down[k_exit]=1;
 			}

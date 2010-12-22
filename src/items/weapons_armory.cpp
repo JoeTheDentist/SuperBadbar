@@ -81,14 +81,24 @@ void Weapons_armory::update()
 			m_current_weapon = it;
 		}
 	}
+	// Décommenter pour tester le contenu de la liste
+//~ 	for ( std::list<Weapon *>::iterator it = m_armory.begin(); it != m_armory.end(); it++)
+//~ 		std::cout << (*it)->type_of_weapon();
+//~ 	std::cout << std::endl;
 }
 
 void Weapons_armory::next_weapon()
 {
-	
+	PRINT_DEBUG(1, "NEXT WEAPON");
+	m_current_weapon++;
+	if (m_current_weapon == m_armory.end())
+		m_current_weapon = m_armory.begin();
 }
 
 void Weapons_armory::previous_weapon()
 {
-	
+	PRINT_DEBUG(1, "PREVIOUS WEAPON");
+	if (m_current_weapon == m_armory.begin()) 
+		m_current_weapon = m_armory.end();
+	m_current_weapon--;
 }
