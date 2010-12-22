@@ -17,6 +17,8 @@
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 #include "../video/pictures_container.h"
+#include "../video/surface.h"
+
 
 /**************************
 **  Méthodes projectiles **
@@ -113,7 +115,7 @@ Projectile::~Projectile()
 	PRINT_CONSTR(3, "Destruction d'un projectile")
 }
 
-SDL_Surface *Projectile::current_picture() const
+Surface *Projectile::current_picture() const
 {
     m_animt->change_anim(STATIC, m_dir);
     return m_animt->curr_pic();

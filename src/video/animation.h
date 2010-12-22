@@ -16,6 +16,7 @@
 
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
+class Surface;
 
 /**
  * 	@class Animation
@@ -23,7 +24,7 @@
  */
 class Animation {
 private:
-    SDL_Surface ** m_images;
+    Surface ** m_images;
     int m_curr;                 /* image courante */
     int m_size;                 /* nombre d'images stockees */
     bool m_force;               /* attente de la terminaison de l'animation */
@@ -55,7 +56,7 @@ public:
     *
     * @return l'image de l'animation a afficher.
     */
-    SDL_Surface * curr_pic();
+    Surface * curr_pic();
     /*!
     * @brief si on peut interrompre l'animation.
     *
@@ -67,7 +68,7 @@ public:
     /**
      *  @brief Set hauteur et largeur en fonction de l'image courante
      *
-     *  @param Rect à modifier
+     *  @param pos Rect à modifier
      */
     void setRect(Rect &pos);
 };

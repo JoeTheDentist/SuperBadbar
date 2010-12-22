@@ -13,18 +13,18 @@
 #include <stdint.h>
 
 #include "animation.h"
+#include "../video/surface.h"
 
 
 Animation::Animation(std::string * s, int size, bool force) {
-    m_images = new SDL_Surface*[size];
+    m_images = new Surface*[size];
     m_size = size;
     m_curr = 0;
     m_phase = 0;
     m_force = force;
 
     for (int i=0;i<size;i++) {
-        m_images[i] = SDL_LoadBMP((s[i]).c_str());
-        SDL_SetColorKey(m_images[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_images[i]->format, 0, 0, 255));
+        m_images[i] = new Surface(s[i]);
     }
 
     if ( m_force ) {
@@ -36,13 +36,14 @@ Animation::Animation(std::string * s, int size, bool force) {
 
 Animation::~Animation() {
     for (int i=0;i<m_size;i++) {
-        SDL_FreeSurface(m_images[i]);
+        delete m_images[i];
     }
     delete[] m_images;
 }
 
-SDL_Surface * Animation::curr_pic() {
-    SDL_Surface * image = m_images[m_curr];
+Surface * Animation::curr_pic() 
+{
+    Surface *image = m_images[m_curr];
     m_phase++;
     m_phase%=ANIMATION_SPEED;
 
@@ -62,12 +63,13 @@ SDL_Surface * Animation::curr_pic() {
     return image;
 }
 
-bool Animation::interruptable() {
+bool Animation::interruptable() 
+{
     return m_finished;
 }
 
 void Animation::setRect(Rect &pos)
 {
-    pos.h = m_images[m_curr]->h;
-    pos.w = m_images[m_curr]->w;
+    pos.h = m_images[m_curr]->h();
+    pos.w = m_images[m_curr]->w();
 }

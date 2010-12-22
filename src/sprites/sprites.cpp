@@ -17,6 +17,8 @@
 #include "../game/game.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
+#include "../video/surface.h"
+
 
 /*********************************
 **	Méthodes de Sprite 	**
@@ -35,7 +37,7 @@ Sprite::~Sprite()
     m_animt->~Anim_table();
 }
 
-SDL_Surface *Sprite::current_picture()  const
+Surface *Sprite::current_picture()  const
 {
 	return NULL;
 }

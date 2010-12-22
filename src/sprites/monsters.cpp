@@ -14,6 +14,7 @@
 #include "monsters.h"
 #include "../util/debug.h"
 #include "../game/game.h"
+#include "../video/surface.h"
 
 
 
@@ -31,7 +32,7 @@ Monster::~Monster()
 	PRINT_CONSTR(3, "destruction d'un monstre")
 }
 
-SDL_Surface *Monster::current_picture() const
+Surface *Monster::current_picture() const
 {
     /* pour le moment, un seul état... */
     m_animt->change_anim(STATIC, m_dir);

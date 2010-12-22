@@ -14,6 +14,7 @@
 #include "../video/animation.h"
 class Animation;
 class Babar;
+class Surface;
 
 
 /**
@@ -57,7 +58,7 @@ public:
 	/**
 	 * 	@brief Acesseur
 	 */
-	SDL_Surface * current_picture() const;    
+	Surface *current_picture() const;    
 	
 	/**
 	 * 	@brief Fait perdre des vies au monstre

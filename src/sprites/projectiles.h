@@ -54,7 +54,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers l'image actuelle
 	*/
-    SDL_Surface * current_picture() const;
+    Surface * current_picture() const;
 	
 	/*!
 	 * 	@brief Accesseur

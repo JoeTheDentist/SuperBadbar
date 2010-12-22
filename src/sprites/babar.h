@@ -215,7 +215,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de Babar
 	 */
-	SDL_Surface * current_picture() const;
+	Surface * current_picture() const;
 
 };
 

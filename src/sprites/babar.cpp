@@ -22,6 +22,7 @@
 #include "../sprites/projectiles_manager.h"
 #include "../items/gun.h"
 #include "../video/pictures_container.h"
+#include "../video/surface.h"
 
 /*********************************
 **	Méthodes de Babar 	**
@@ -290,7 +291,7 @@ weapon_type Babar::type_of_weapon()
 	return m_weapons_armory.get_current_weapon()->type_of_weapon();
 }
 
-SDL_Surface *Babar::current_picture() const
+Surface *Babar::current_picture() const
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
 		m_animt->change_anim(m_state, m_dir);

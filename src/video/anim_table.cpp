@@ -14,6 +14,7 @@
 #include <stdint.h>
 #include <sys/stat.h>
 #include <string>
+#include "../video/surface.h"
 
 #include "anim_table.h"
 
@@ -78,7 +79,7 @@ void Anim_table::change_anim(state s, horizontal dir) {
     }
 }
 
-SDL_Surface * Anim_table::curr_pic() {
+Surface * Anim_table::curr_pic() {
     return m_curr_anim->curr_pic();
 }
 

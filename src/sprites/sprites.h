@@ -38,6 +38,7 @@ class Camera;
 class Anim_table;
 class Collisions_manager;
 class Pictures_manager;
+class Surface;
 
 /**
  * 	@class Sprite
@@ -68,7 +69,7 @@ public:
 	 *	@brief Accesseur
 	 *	@return Un pointeur vers l'image actuelle du sprite
 	*/
-    virtual SDL_Surface * current_picture() const;
+    virtual Surface *current_picture() const;
 
 	/*!
 	 *	@brief Met à jour la position du sprite

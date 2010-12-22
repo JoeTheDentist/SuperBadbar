@@ -19,6 +19,7 @@
 
 #define PICS_EXT ".bmp"
 
+class Surface;
 
 /**
  * 	@class Anim_table
@@ -56,7 +57,7 @@ class Anim_table
         /**
          * @brief Accesseur a l'image courante de l'animation, l'image a afficher.
          */
-        SDL_Surface * curr_pic();
+        Surface * curr_pic();
 
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
