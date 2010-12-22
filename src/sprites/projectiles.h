@@ -24,7 +24,6 @@ class Pictures_container;
  */
 class Projectile: public Sprite {
 protected:
-    SDL_Surface * m_pic;    /* Image du projectile */
     uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 public:

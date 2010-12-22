@@ -31,7 +31,6 @@ protected:
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
 	bool m_can_fire;                /* si le monstre tire ou non */
-	SDL_Surface * m_pics[2][4];  /* Images du monstre : state, gauche droite, num image */
 public:
 	/**
 	 * 	@brief Constructeur

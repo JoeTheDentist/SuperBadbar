@@ -8,7 +8,6 @@
  */
 
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
 
 #include "monsters.h"
