@@ -40,7 +40,6 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_
 Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
-    delete m_animt;
 }
 
 void Babar::load_anim(char age)
@@ -132,7 +131,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
 	if (m_invincible > 0)
 		m_invincible --;
-	
+
 	if (m_keyboard->time_pressed(k_prev_weapon) == 1)
 		m_weapons_armory.previous_weapon();
 	if (m_keyboard->time_pressed(k_next_weapon) == 1)

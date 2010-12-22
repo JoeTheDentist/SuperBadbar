@@ -30,14 +30,19 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
     m_damage = damage;
 	std::string rep = PIC_PROJ_R;
 
+
+    m_animt = new Anim_table(rep+"simple/simple");
+
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
-    if((h == LEFT)||(h == RIGHT)) {
+    /*if((h == LEFT)||(h == RIGHT)) {
         m_pic = pictures_container->load_BMP((rep + "left-right.bmp").c_str());
     } else {
         m_pic = pictures_container->load_BMP((rep + "up-down.bmp").c_str());;
     }
     m_pos.h = m_pic->h;
-    m_pos.w = m_pic->w;
+    m_pos.w = m_pic->w;*/
+
+    m_animt->setRect(m_pos);
 
     m_speed.x = speedx;
     m_speed.y = speedy;
@@ -53,15 +58,21 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
     m_dir = h;
     m_damage = damage;
 
+    std::string rep = PIC_PROJ_R;
+
+    m_animt = new Anim_table(rep+"simple/simple");
+
     /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
-    if((h == LEFT)||(h == RIGHT)) {
+    /*if((h == LEFT)||(h == RIGHT)) {
         m_pic = pics[0];
     } else {
         m_pic = pics[1];
     }
 
     m_pos.h = m_pic->h;
-    m_pos.w = m_pic->w;
+    m_pos.w = m_pic->w;*/
+
+    m_animt->setRect(m_pos);
 
     m_speed.x = speedx;
     m_speed.y = speedy;
@@ -123,7 +134,8 @@ Projectile::~Projectile()
 
 SDL_Surface *Projectile::current_picture() const
 {
-    return m_pic;
+    m_animt->change_anim(STATIC, m_dir);
+    return m_animt->curr_pic();
 }
 
 uint32_t Projectile::damage() const
