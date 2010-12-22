@@ -11,6 +11,9 @@
 #define ANIMATION_H_INCLUDED
 
 #include <SDL/SDL.h>
+
+#include "../util/globals.h"
+
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
 
@@ -59,6 +62,14 @@ public:
     * @return booleen, true si on peut l'interrompre.
     */
     bool interruptable();
+
+
+    /**
+     *  @brief Set hauteur et largeur en fonction de l'image courante
+     *
+     *  @param Rect à modifier
+     */
+    void setRect(Rect &pos);
 };
 
 #endif // ANIMATION_H_INCLUDED

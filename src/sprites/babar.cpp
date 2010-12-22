@@ -27,7 +27,8 @@
 **	Méthodes de Babar 	**
 **********************************/
 Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser)
-    : m_keyboard(keyboard), m_weapon(static_data->get_pictures_container(), sound_manager), m_weapons_armory(static_data->get_pictures_container(), sound_manager)
+    : m_keyboard(keyboard), m_weapon(static_data->get_pictures_container(), sound_manager),
+    m_weapons_armory(static_data->get_pictures_container(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 
@@ -49,8 +50,6 @@ void Babar::load_anim(char age)
 	std::string babar_pic_dir = PIC_BABAR_R;
 
 	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
-
-    m_animt->setRect(m_pos);
 }
 
 void Babar::init_babar(Analyser * a)
@@ -108,8 +107,18 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
         m_fire_phase++;
     }
 
-    if (can_crouch())
+    if (can_crouch()) {
         crouch();
+    } else {
+        if ( m_crouch_time ) {
+            m_pos.y -= m_pos.h;
+            m_crouch_time = 0;
+        }
+    }
+
+    if ( can_walk() ) {
+        walk();
+    }
 
     if (can_jump())
 		jump();
@@ -120,12 +129,13 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 	if (can_go_down(collisions_manager))
 		go_down(collisions_manager);
 
-    if (can_walk()) {
-        walk();
-    }
 	if (m_invincible > 0)
 		m_invincible --;
+
+    m_animt->setRect(m_pos);
 }
+
+
 
 void Babar::update_direction()
 {
@@ -137,7 +147,7 @@ void Babar::update_direction()
 	}
 }
 
-bool Babar::can_fire() 
+bool Babar::can_fire()
 {
 	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
 }
@@ -155,36 +165,28 @@ bool Babar::can_walk() const
 
 void Babar::walk()
 {
-    m_crouch_time = 0;
     m_state = WALK;
 }
 
 bool Babar::can_crouch() const
 {
-    return m_keyboard->key_down(k_jump) && !m_keyboard->key_down(k_down) && (m_state!=JUMP);
+    return m_keyboard->key_down(k_down);
 }
 
 void Babar::crouch()
 {
     m_crouch_time++;
     m_state = CROUCH;
-    /* faire que la vitesse horizontale dépende si on marchait avant */
+    /* ralentissement depuis debut de crouch */
 }
 
 bool Babar::can_jump() const
 {
-    if ( m_crouch_time > 0 && m_crouch_time < CROUCH_TIME ) {
-        if ( !m_keyboard->key_down(k_jump) && (m_state!=JUMP) ) {
-            return true;
-        }
-    }
-    return false;
-	/*return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);*/
+    return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
 }
 
 void Babar::jump()
 {
-    m_crouch_time = 0;
 	m_state = JUMP;
 	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
@@ -216,7 +218,6 @@ bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 
 void Babar::go_down(Collisions_manager *collisions_manager)
 {
-    m_crouch_time = 0;
 	m_pos.y += BOX_SIZE;
 	while (Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))){
 		if (collisions_manager->double_collision(m_pos)) {
@@ -257,12 +258,12 @@ int Babar::lifes() const
 	return m_lifes;
 }
 
-int Babar::munitions()  
+int Babar::munitions()
 {
 	return m_weapons_armory.get_current_weapon()->munitions();
 }
 
-weapon_type Babar::type_of_weapon()  
+weapon_type Babar::type_of_weapon()
 {
 	return m_weapons_armory.get_current_weapon()->type_of_weapon();
 }

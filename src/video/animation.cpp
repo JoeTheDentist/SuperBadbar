@@ -65,3 +65,9 @@ SDL_Surface * Animation::curr_pic() {
 bool Animation::interruptable() {
     return m_finished;
 }
+
+void Animation::setRect(Rect &pos)
+{
+    pos.h = m_images[m_curr]->h;
+    pos.w = m_images[m_curr]->w;
+}

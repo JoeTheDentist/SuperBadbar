@@ -79,12 +79,12 @@ void Anim_table::change_anim(state s, horizontal dir) {
 }
 
 SDL_Surface * Anim_table::curr_pic() {
-    m_curr_anim->curr_pic();
+    return m_curr_anim->curr_pic();
 }
 
-void Anim_table::setRect(Rect & pos) {
-    pos.w = curr_pic()->w;
-    pos.h = curr_pic()->h;
+void Anim_table::setRect(Rect &pos)
+{
+    m_curr_anim->setRect(pos);
 }
 
 

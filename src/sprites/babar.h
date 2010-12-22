@@ -56,7 +56,6 @@ protected:
 	 *	@param age	L'age de Babar
 	 */
 	void load_anim(char age);
-
 public:
 
 	/**

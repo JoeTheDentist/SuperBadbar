@@ -39,7 +39,7 @@ class Anim_table
          * A partir de la chaine de caractere : lien de l'image sans l'extension ni etat/dir, il sait
          * charger toutes les bonnes images... Check des fichier peut-être un peu longs.
          *
-         * @param string donnant l'adresse du paquet d'image a charger
+         *  @param string donnant l'adresse du paquet d'image a charger
          */
         Anim_table(std::string anim_name);
 
@@ -59,9 +59,11 @@ class Anim_table
         SDL_Surface * curr_pic();
 
         /**
-         * @brief Permet de set hauteur et largeur d'un Rect par rapport a l'image courante.
+         *  @brief Set hauteur et largeur en fonction de l'image courante
+         *
+         *  @param Rect à modifier
          */
-        void setRect(Rect & pos);
+        void setRect(Rect &pos);
 };
 
 /**
