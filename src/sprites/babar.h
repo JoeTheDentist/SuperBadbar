@@ -16,7 +16,7 @@
 #include "../video/anim_table.h"
 #include <list>
 #define BABAR_SPEED 15
-#define JUMP_TIME 30
+#define JUMP_TIME 10
 
 class Collisions_manager;
 class Projectiles_manager;
@@ -49,6 +49,8 @@ protected:
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
+	bool m_ready_double_jump;
+	bool m_ready_jump;
 	int m_jump_time;                    /* temps d'appuie sur la touche de saut */
 	Weapons_armory m_weapons_armory;
 

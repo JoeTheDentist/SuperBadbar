@@ -72,6 +72,8 @@ void Babar::init_babar(Analyser * a)
 	m_dir = RIGHT;
 	m_crouch_time = 0;
 	m_jump_time = 0;
+	m_ready_double_jump = false;
+	m_ready_jump = true;
 }
 
 void Babar::update_speed()
@@ -192,27 +194,36 @@ void Babar::crouch()
 
 bool Babar::can_jump() const
 {
-    return m_keyboard->key_down(k_jump) && (m_state!=JUMP || m_jump_time < JUMP_TIME) && !m_keyboard->key_down(k_down);
+    return m_keyboard->key_down(k_jump) && (m_state != JUMP || m_ready_jump)
+     && !m_keyboard->key_down(k_down);
 }
 
 void Babar::jump()
 {
     m_jump_time++;
 	m_state = JUMP;
-	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
+	m_speed.y = -(m_keyboard->time_pressed(k_jump)/5+3)*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
-	m_keyboard->disable_key(k_jump);
-	m_sound_manager->play_babar_jump();
+	//m_keyboard->disable_key(k_jump);
+	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
+        m_sound_manager->play_babar_jump();
+        m_ready_double_jump = true;
+        if ( m_keyboard->time_pressed(k_jump) > JUMP_TIME) {
+            m_ready_jump = false;
+        }
+	}
+
 }
 
 bool Babar::can_double_jump() const
 {
-	return m_state == JUMP && m_keyboard->key_down(k_jump) && (!m_double_jump);
+	return (m_state == JUMP) && (m_keyboard->time_pressed(k_jump)==1) && (!m_double_jump) && m_ready_double_jump;
 }
 
 void Babar::double_jump()
 {
 	m_double_jump = true;
+	m_ready_double_jump = false;
 	PRINT_TRACE(2, "Double-saut de Babar")
 	m_speed.y = -5*BABAR_SPEED;
 	m_sound_manager->play_babar_jump();
