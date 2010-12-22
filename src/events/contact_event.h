@@ -26,11 +26,12 @@
  *	Rendre le code adaptable à une liste de personnages
  */
 class Babar;
+class Surface;
 
 class Contact_event: public Event{
 protected:
 	Babar *m_target;
-	SDL_Surface *m_picture;
+	Surface *m_picture;
 	Rect m_pos;
 	int m_phase;
 public:
@@ -83,7 +84,7 @@ public:
  *
  *	S'il n'y a pas d'image, retourne NULL
  */
-	virtual SDL_Surface *current_picture() const;
+	virtual Surface *current_picture() const;
 	
 /**
  * 	@brief Accesseur

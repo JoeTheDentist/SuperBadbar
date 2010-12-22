@@ -13,12 +13,12 @@
 #include "../events/events.h"
 #include "../events/event_item.h"
 #include "../items/weapons.h"
-#include <SDL/SDL.h>
 
 class Pictures_container;
 class Babar;
 class Weapon;
 class Analyser;
+class Surface;
 
 /**
  * 	@class Event_weapon
@@ -72,7 +72,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de l'événement
 	*/
-	SDL_Surface *current_picture() const;
+	Surface *current_picture() const;
 };
 
 

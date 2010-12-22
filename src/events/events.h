@@ -10,10 +10,9 @@
 #ifndef _EVENTS_
 #define _EVENTS_
 
-#include <SDL/SDL.h>
 
 struct Rect;
-
+class Surface;
 
 /**
  * 	@class Event
@@ -72,7 +71,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de l'événement
 	*/
-	virtual SDL_Surface *current_picture() const;
+	virtual Surface *current_picture() const;
 	
 	/**
 	 * 	@brief Accesseur

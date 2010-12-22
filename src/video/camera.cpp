@@ -25,13 +25,8 @@ void Camera::display_static(Static *sttc)
     display_picture(sttc->image(), &pos_static);
 }
 void Camera::display_events(Events_manager * const event_manager) const{	event_manager->display_events((Camera *const)this);}
-void Camera::display_event(Event *event){	SDL_Surface *picture = event->current_picture();	if (picture != NULL) {
-		Rect pos_temp = event->current_pos();
-        SDL_Rect pos_event;
-        pos_event.x = (int)pos_temp.x;
-        pos_event.y = (int)pos_temp.y;
-        pos_event.h = (unsigned int)pos_temp.h;
-        pos_event.w = (unsigned int)pos_temp.w;		pos_event.x -= m_frame.x;		pos_event.y -= m_frame.y;		SDL_BlitSurface(picture, NULL, m_screen, &pos_event);	}}Rect Camera::frame() const{
+void Camera::display_event(Event *event){	Surface *picture = event->current_picture();	if (picture != NULL) {
+		Rect pos_event = event->current_pos();		pos_event.x -= m_frame.x;		pos_event.y -= m_frame.y;		display_picture(picture, &pos_event);	}}Rect Camera::frame() const{
     Rect pos_temp;
     pos_temp.x = m_frame.x;
     pos_temp.y = m_frame.y;

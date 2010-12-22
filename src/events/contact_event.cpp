@@ -14,7 +14,7 @@
 #include "../game/collisions_manager.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
-
+#include "../video/surface.h"
 
 
 
@@ -58,7 +58,7 @@ void Contact_event::start()
 	m_can_be_destroyed = true;
 }
 
-SDL_Surface *Contact_event::current_picture() const
+Surface *Contact_event::current_picture() const
 {
 	return NULL;
 }

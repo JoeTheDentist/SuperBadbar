@@ -13,6 +13,7 @@
 #include "events.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
+#include "../video/surface.h"
 
 Event::Event()
 {
@@ -50,7 +51,7 @@ void Event::destroy()
 
 }
 
-SDL_Surface *Event::current_picture() const
+Surface *Event::current_picture() const
 {
 	return NULL;
 }
