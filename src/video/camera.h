@@ -81,7 +81,7 @@ public:
 	* 	@brief Affiche le fond d'écran passé en paramètre 
 	*	@param background l'image du fond d'écran
 	*/
-	void display_background(SDL_Surface *background) ; 
+	void display_background(Surface *background) ; 
 
 	/*!
 	* 	@brief Affiche le sprite passé en paramètre à l'écran

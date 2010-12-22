@@ -18,13 +18,14 @@ class Monster;
 class Game_engine;
 class Camera;
 class Pictures_container;
+class Surface;
 
 
 class Static_data {
 
 private:
 	SDL_Surface ** m_monsters_pics[2][4];	/* Tableau de toutes les images de monstre : [etat][gauche droite][numéro image][type de monstre]*/
-	SDL_Surface * m_background;             /* image de fond du niveau */
+	Surface * m_background;             /* image de fond du niveau */
 	SDL_Surface *m_proj_pics[4];			/* images des projetctiles */
 	List<Static*> m_statics;				/* liste des statics du niveau */
 	Pictures_container *m_pictures_container;
@@ -33,7 +34,7 @@ public:
 	Static_data();														/* Constructeur par défaut*/
 	~Static_data();														/* Destructeur */
 	void init_static_data(uint32_t lvl);
-	SDL_Surface * background();  										/* Accesseur */
+	Surface * background();  										/* Accesseur */
 	uint32_t static_data_height();  									/* Hauteur du niveau */
 	uint32_t static_data_weight();   				 					/* Largeur du niveau */
 

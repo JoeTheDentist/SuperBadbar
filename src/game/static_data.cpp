@@ -43,7 +43,7 @@ void Static_data::init_static_data(uint32_t lvl)
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = m_pictures_container->load_BMP((PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp").c_str());
+    m_background = new Surface(PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp");
 
 	/*** Images des projectiles ***/
 	rep = PIC_PROJ_R;
@@ -76,19 +76,19 @@ void Static_data::init_static_data(uint32_t lvl)
 }
 
 
-SDL_Surface * Static_data::background()
+Surface * Static_data::background()
 {
     return m_background;
 }
 
 uint32_t Static_data::static_data_height()
 {
-    return m_background->h / BACKGROUND_SPEED - WINDOW_HEIGHT ;
+    return m_background->h() / BACKGROUND_SPEED - WINDOW_HEIGHT ;
 }
 
 uint32_t Static_data::static_data_weight()
 {
-    return m_background->w / BACKGROUND_SPEED - WINDOW_WEIGHT;
+    return m_background->w() / BACKGROUND_SPEED - WINDOW_WEIGHT;
 }
 
 
