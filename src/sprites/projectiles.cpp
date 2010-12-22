@@ -16,10 +16,35 @@
 #include "../game/game.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
+#include "../video/pictures_container.h"
 
 /**************************
 **  Méthodes projectiles **
 **************************/
+
+Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, Pictures_container *pictures_container)
+{
+	PRINT_CONSTR(3, "Construction d'un projectile")
+    m_pos = pos;
+    m_dir = h;
+    m_damage = damage;
+	std::string rep = PIC_PROJ_R;
+
+    /*** Remplissage des images des projectiles (voir static_data.ccp) ***/
+    if((h == LEFT)||(h == RIGHT)) {
+        m_pic = pictures_container->load_BMP((rep + "left-right.bmp").c_str());
+    } else {
+        m_pic = pictures_container->load_BMP((rep + "up-down.bmp").c_str());;
+    }
+    m_pos.h = m_pic->h;
+    m_pos.w = m_pic->w;
+
+    m_speed.x = speedx;
+    m_speed.y = speedy;
+
+	m_dead = false;
+	m_phase = 0;
+}
 
 Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
 {

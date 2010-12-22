@@ -38,7 +38,7 @@ Events_manager::~Events_manager()
 
 void Events_manager::init_events_manager(Static_data *static_data, Game_engine *game_engine, Pictures_container *pictures_container)
 {
-	PRINT_TRACE(1, "Initilisation de Events_manager")
+	PRINT_TRACE(1, "Initialisation de Events_manager")
 	m_game_engine = game_engine;
 	m_static_data = static_data;
 	m_pictures_container = pictures_container;

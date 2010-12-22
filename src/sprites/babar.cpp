@@ -20,13 +20,14 @@
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
 #include "../sprites/projectiles_manager.h"
-
+#include "../items/gun.h"
+#include "../video/pictures_container.h"
 
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
 Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser)
-    : m_keyboard(keyboard), m_weapon(MACHINEGUN, static_data->proj_pics(), sound_manager)
+    : m_keyboard(keyboard), m_weapon(static_data->get_pictures_container(), sound_manager), m_weapons_armory(static_data->get_pictures_container(), sound_manager)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 
@@ -87,6 +88,7 @@ void Babar::update_speed()
 
 void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager)
 {
+	m_weapons_armory.update();
     if(m_state != JUMP) {
         m_state = STATIC;
 		m_double_jump = false;
@@ -135,15 +137,15 @@ void Babar::update_direction()
 	}
 }
 
-bool Babar::can_fire() const
+bool Babar::can_fire() 
 {
-	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapon.reload_time());
+	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
 }
 
 std::list<Projectile*> *Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
-    return m_weapon.fire(m_pos,m_dir);
+    return m_weapons_armory.get_current_weapon()->fire(m_pos,m_dir);
 }
 
 bool Babar::can_walk() const
@@ -240,9 +242,9 @@ void Babar::damage(int damages)
 	}
 }
 
-void Babar::change_weapon(weapon_type weapon)
+void Babar::add_weapon(weapon_type weapon)
 {
-	m_weapon.change_weapon(weapon);
+	m_weapons_armory.add_weapon(weapon);
 }
 
 bool Babar::is_invincible() const
@@ -255,14 +257,14 @@ int Babar::lifes() const
 	return m_lifes;
 }
 
-int Babar::munitions()  const
+int Babar::munitions()  
 {
-	return m_weapon.munitions();
+	return m_weapons_armory.get_current_weapon()->munitions();
 }
 
-weapon_type Babar::type_of_weapon()  const
+weapon_type Babar::type_of_weapon()  
 {
-	return m_weapon.type_of_weapon();
+	return m_weapons_armory.get_current_weapon()->type_of_weapon();
 }
 
 SDL_Surface *Babar::current_picture() const

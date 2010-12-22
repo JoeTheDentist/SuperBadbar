@@ -11,8 +11,9 @@ background.bmp
 1
 
 #Events#
-1
-event_weapon shotgun 400 2850
+2
+event_weapon gun 400 2850
+event_weapon shotgun 600 2850
 
 
 

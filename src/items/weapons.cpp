@@ -18,6 +18,16 @@
 
 
 
+Weapon::Weapon()
+{
+}
+
+Weapon::Weapon(Pictures_container *pictures_container, Sound_manager *sound_manager) : 
+m_sound_manager(sound_manager), m_pictures_container(pictures_container)
+{
+	PRINT_CONSTR(1, "construction d'une weapon");
+}
+
 Weapon::Weapon(SDL_Surface **proj_pics)
 {
 	m_proj_pics = proj_pics;
@@ -148,4 +158,8 @@ int Weapon::munitions() const
 weapon_type Weapon::type_of_weapon() const
 {
 	return m_weapon_type;
+}
+
+void Weapon::add_munitions() 
+{
 }

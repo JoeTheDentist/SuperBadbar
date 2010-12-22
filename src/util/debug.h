@@ -26,6 +26,8 @@
 #ifndef _DEBUG_
 #define _DEBUG_
 
+#include <stdio.h>
+
 #define DEBUG 2
 #define TRACE 2
 #define TRACE_CONSTR 2 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */

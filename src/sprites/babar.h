@@ -21,6 +21,10 @@
 class Collisions_manager;
 class Projectiles_manager;
 class Analyser;
+class Gun;
+class Weapons_armory;
+#include "../items/weapons_armory.h"
+#include "../items/gun.h"
 
 /**
  * 	@class Babar
@@ -41,12 +45,12 @@ protected:
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
     Anim_table * m_animt;             /* gestionnaire des animations */
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
-    Weapon m_weapon;		            /* arme actuelle de babar  */
+    Gun m_weapon;		            /* arme actuelle de babar  */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
-
+	Weapons_armory m_weapons_armory;
 	/**
 	 * 	@brief Charge les images de babar
 	 *	@param age	L'age de Babar
@@ -101,7 +105,7 @@ public:
 	 *	On considère que "Babar peut tirer" si la touche
 	 *	tirer est enfoncée et s'il est autorisé à tirer
 	 */
-	bool can_fire() const;
+	bool can_fire();
 
 	/**
 	 * 	@brief Fait tirer Babar
@@ -170,10 +174,10 @@ public:
 	void go_down(Collisions_manager *collisions_manager);
 
 	/**
-	 * 	@brief Changer l'arme actuelle de Babar
+	 * 	@brief Donne une nouvelle arme à Babar
 	 *	@param weapon La nouvelle arme
 	 */
-	void change_weapon(weapon_type weapon);
+	void add_weapon(weapon_type weapon);
 
 	/**
 	 * 	@brief Accesseur
@@ -191,13 +195,13 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Le nombre de munitions de l'arme actuelle de Babar
 	 */
-	int munitions() const;
+	int munitions() ;
 
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le type de l'arme actuelle de Babar
 	 */
-	weapon_type type_of_weapon() const;
+	weapon_type type_of_weapon();
 
 	/**
 	 * 	@brief Mutateur: fait perdre des vies à Babar

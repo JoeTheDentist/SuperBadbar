@@ -13,7 +13,7 @@
 #include "sprites.h"
 #include "../video/animation.h"
 class Animation;
-
+class Babar;
 
 
 /**
