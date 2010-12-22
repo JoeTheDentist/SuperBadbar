@@ -11,9 +11,10 @@ background.bmp
 1
 
 #Events#
-2
+3
 event_weapon gun 400 2850
 event_weapon shotgun 600 2850
+event_weapon machinegun 800 2850
 
 
 
@@ -28,7 +29,7 @@ block3 1700 2950
 
 
 #Monsters#
-4
+0
 walking_monster gailapin 155 2600 95 1000
 walking_monster gailapin 165 2600 95 1000
 walking_monster gailapin 205 2600 95 1000
