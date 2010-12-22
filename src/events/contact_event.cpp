@@ -50,6 +50,7 @@ void Contact_event::update()
 
 bool Contact_event::can_start() const
 {
+	PRINT_DEBUG(1, "%d, %d, %d, %d", m_pos.x, m_pos.y, m_pos.h, m_pos.w)
 	return Collisions_manager::check_collision(m_pos, m_target->position());
 }
 

@@ -20,13 +20,13 @@ Pictures_container *Surface::m_pictures_container = NULL;
 
 Surface::Surface(std::string filename)
 {
-	PRINT_CONSTR(1, "Construction d'une classe Surface");
+	PRINT_CONSTR(3, "Construction d'une classe Surface");
 	m_surface = m_pictures_container->load_BMP(filename);
 }
 
 Surface::~Surface()
 {
-	PRINT_CONSTR(1, "Destruction d'une classe Surface");
+	PRINT_CONSTR(3, "Destruction d'une classe Surface");
 }
 
 SDL_Surface * Surface::get_surface()

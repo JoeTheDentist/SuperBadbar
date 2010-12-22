@@ -50,6 +50,7 @@ void Babar::load_anim(char age)
 	std::string babar_pic_dir = PIC_BABAR_R;
 
 	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
+	m_animt->setRect(m_pos);
 }
 
 void Babar::init_babar(Analyser * a)
