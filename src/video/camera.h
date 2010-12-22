@@ -27,6 +27,7 @@
 
 #include "../util/globals.h"
 
+
 #define VITESSE_DECALAGE_CAMERA 25
 #define VITESSE_DECALAGE_RETOUR_CAMERA 10
 #define MAX_DECALAGE_CAMERA 0.15
@@ -39,6 +40,7 @@ class Static;
 class Static_data;
 class Events_manager;
 class Event;
+class Surface;
 
 class Camera {
 private:
@@ -121,10 +123,12 @@ public:
 	
 	/*!
 	* 	@brief Affiche pic à la position pos par rapport au cadre de la camera
-	*	@param pic L'image à afficher
+	*	@param surf L'image à afficher
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
+	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
-	void display_picture(SDL_Surface *pic, Rect *pos) ; 
+	void display_picture(Surface *surf, Rect *pos) ; 
+	void display_picture(SDL_Surface *surf, Rect *pos) ; 
 	
 	/*!
 	*	@brief Met à jour l'affichage de la caméra

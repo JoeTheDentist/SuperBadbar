@@ -28,7 +28,6 @@ private:
 	SDL_Surface *m_proj_pics[4];			/* images des projetctiles */
 	List<Static*> m_statics;				/* liste des statics du niveau */
 	Pictures_container *m_pictures_container;
-	Surface surface;
 
 public:
 	Static_data();														/* Constructeur par défaut*/

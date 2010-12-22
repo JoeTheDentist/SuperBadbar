@@ -75,4 +75,7 @@ weapon_type Machinegun::type_of_weapon() const
 void Machinegun::add_munitions() 
 {
 	m_munitions += MUN_MACHINEGUN;
+	if (m_munitions += MUN_MACHINEGUN * 2)
+		m_munitions = MUN_MACHINEGUN * 2;
+	
 }

@@ -68,4 +68,6 @@ weapon_type Gun::type_of_weapon() const
 void Gun::add_munitions() 
 {
 	m_munitions += MUN_GUN;
+	if (m_munitions > MUN_GUN)
+		m_munitions = MUN_GUN;
 }

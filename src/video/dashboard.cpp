@@ -19,6 +19,7 @@
 #include "../util/debug.h"
 #include "../sprites/babar.h"
 #include "../video/talks.h"
+#include "../video/surface.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
 
@@ -45,17 +46,14 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	m_font_color.g = 255;
 	m_font_color.b = 255;
 
-	m_heart = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
-	SDL_SetColorKey(m_heart, SDL_SRCCOLORKEY, SDL_MapRGB(m_heart->format, 0, 0, 255));
+	m_heart = new Surface(rac+"/pic/dashboard/heart.bmp");
 	m_lifes_pos.x = POS_HEART_X;
 	m_lifes_pos.y = POS_HEART_Y;
 
-	m_weapons_pictures = new SDL_Surface*[SHOTGUN + 1];
-	m_weapons_pictures[MACHINEGUN] = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
-	m_weapons_pictures[GUN] = pictures_container->load_BMP((rac+"/pic/statics/black_board.bmp").c_str());
-	m_weapons_pictures[SHOTGUN] = pictures_container->load_BMP((rac+"/pic/dashboard/heart.bmp").c_str());
-	for (int i = 0; i < SHOTGUN + 1; i++)
-		SDL_SetColorKey(m_weapons_pictures[i], SDL_SRCCOLORKEY, SDL_MapRGB(m_weapons_pictures[i]->format, 0, 0, 255));
+	m_weapons_pictures = new Surface*[SHOTGUN + 1];
+	m_weapons_pictures[MACHINEGUN] = new Surface(rac+"/pic/dashboard/heart.bmp");
+	m_weapons_pictures[GUN] = new Surface(rac+"/pic/statics/black_board.bmp");
+	m_weapons_pictures[SHOTGUN] = new Surface(rac+"/pic/dashboard/heart.bmp");
 	m_weapons_pos.x = POS_WEAPON_X;
 	m_weapons_pos.y = POS_WEAPON_Y;	
 }
@@ -77,8 +75,8 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera, Babar *babar)
 	char munitions[5];
 	sprintf(munitions, "x %d", babar->munitions());
 	munitions_pictures = TTF_RenderText_Blended(m_font, munitions, m_font_color);
-	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[babar->type_of_weapon()]->w + 10;
-	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[babar->type_of_weapon()]->h - munitions_pictures->h)/2;
+	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[babar->type_of_weapon()]->w() + 10;
+	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[babar->type_of_weapon()]->h() - munitions_pictures->h)/2;
 	camera->display_picture(munitions_pictures, &pos_munitions);
 	SDL_FreeSurface(munitions_pictures);
 

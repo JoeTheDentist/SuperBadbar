@@ -15,6 +15,7 @@
 #include "../video/dashboard.h"
 #include "../video/pictures_container.h"
 #include "../game/static_data.h"
+#include "../video/surface.h"
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL.h>
 
@@ -36,6 +37,7 @@ Graphic_engine::Graphic_engine()
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
 	m_pictures_container = new Pictures_container();
+	Surface::set_pictures_container(m_pictures_container);
 }
 
 Graphic_engine::~Graphic_engine()

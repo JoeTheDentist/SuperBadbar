@@ -109,5 +109,7 @@ weapon_type Shotgun::type_of_weapon() const
 void Shotgun::add_munitions() 
 {
 	m_munitions += MUN_SHOTGUN;
+	if (m_munitions > MUN_SHOTGUN * 2)
+		m_munitions = MUN_SHOTGUN * 2;
 }
 

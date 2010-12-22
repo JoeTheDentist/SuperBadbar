@@ -16,7 +16,7 @@
 #include "../video/surface.h"
 
 
-Static_data::Static_data() : m_pictures_container(new Pictures_container()), surface("yo")
+Static_data::Static_data() : m_pictures_container(new Pictures_container())
 {
 	PRINT_CONSTR(1, "Construction d'un Static_data")
 

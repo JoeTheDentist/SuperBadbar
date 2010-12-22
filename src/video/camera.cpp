@@ -1,4 +1,4 @@
-/** * 	@file camera.cpp * 	@brief Implémentation de la classe Camera * * 	@author Guillaume Bérard & Benoit Morel * 	@date decembre 2010 * */ #include <iostream>#include <SDL/SDL.h>#include <stdint.h>#include "camera.h"#include "../util/debug.h"#include "../sprites/sprites.h"#include "../sprites/babar.h"#include "../sprites/monsters.h"#include "../sprites/projectiles.h"#include "../video/statics.h"#include "../game/static_data.h"#include "../util/globals.h"#include "../events/events_manager.h"#include "../events/events.h"#include "../game/collisions_manager.h"Camera::Camera(){	m_target = NULL;	m_screen = NULL;	m_decalage.x = 0;	m_decalage.y = 0;	m_direction.x = 0;	m_direction.y = 0;}Camera::~Camera(){	PRINT_CONSTR(1, "Destruction de la camera")	PRINT_TRACE(1, "Fermeture de la fenetre")	SDL_FreeSurface(m_screen);}void Camera::init_camera(Sprite *target){
+/** * 	@file camera.cpp * 	@brief Implémentation de la classe Camera * * 	@author Guillaume Bérard & Benoit Morel * 	@date decembre 2010 * */ #include <iostream>#include <SDL/SDL.h>#include <stdint.h>#include "camera.h"#include "../util/debug.h"#include "../sprites/sprites.h"#include "../sprites/babar.h"#include "../sprites/monsters.h"#include "../sprites/projectiles.h"#include "../video/statics.h"#include "../video/surface.h"#include "../game/static_data.h"#include "../util/globals.h"#include "../events/events_manager.h"#include "../events/events.h"#include "../game/collisions_manager.h"Camera::Camera(){	m_target = NULL;	m_screen = NULL;	m_decalage.x = 0;	m_decalage.y = 0;	m_direction.x = 0;	m_direction.y = 0;}Camera::~Camera(){	PRINT_CONSTR(1, "Destruction de la camera")	PRINT_TRACE(1, "Fermeture de la fenetre")	SDL_FreeSurface(m_screen);}void Camera::init_camera(Sprite *target){
     Rect pos_temp = target->position();	SDL_Rect position_target;
 	position_target.x = pos_temp.x;
 	position_target.y = pos_temp.y;
@@ -19,15 +19,10 @@ void Camera::display_background(SDL_Surface *background) {	SDL_Rect pos;	//~ 
 		pos_sprite.w = pos_temp.w;		pos_sprite.x -= m_frame.x;		pos_sprite.y -= m_frame.y;		SDL_BlitSurface(picture, NULL, m_screen, &pos_sprite);	}}
 void Camera::display_static(Static *sttc) 
 {
-    Rect pos_temp = sttc->position();
-	SDL_Rect pos_static;
-	pos_static.x = pos_temp.x;
-	pos_static.y = pos_temp.y;
-	pos_static.h = pos_temp.h;
-	pos_static.w = pos_temp.w;
+    Rect pos_static = sttc->position();
     pos_static.x -= m_frame.x;
 	pos_static.y -= m_frame.y;
-    SDL_BlitSurface(sttc->image(), NULL, m_screen, &pos_static);
+    display_picture(sttc->image(), &pos_static);
 }
 void Camera::display_events(Events_manager * const event_manager) const{	event_manager->display_events((Camera *const)this);}
 void Camera::display_event(Event *event){	SDL_Surface *picture = event->current_picture();	if (picture != NULL) {
@@ -41,10 +36,16 @@ void Camera::display_event(Event *event){	SDL_Surface *picture = event->curren
     pos_temp.x = m_frame.x;
     pos_temp.y = m_frame.y;
     pos_temp.h = m_frame.h;
-    pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(SDL_Surface *pic, Rect *pos){
+    pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(Surface *surf, Rect *pos){
     SDL_Rect * pos_sdl = new SDL_Rect;
     pos_sdl->x = (int)pos->x;
     pos_sdl->y = (int)pos->y;
     pos_sdl->h = (unsigned int)pos->h;
-    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(pic, NULL, m_screen, pos_sdl);	delete pos_sdl;}
+    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);	delete pos_sdl;}
+void Camera::display_picture(SDL_Surface *surf, Rect *pos){
+    SDL_Rect * pos_sdl = new SDL_Rect;
+    pos_sdl->x = (int)pos->x;
+    pos_sdl->y = (int)pos->y;
+    pos_sdl->h = (unsigned int)pos->h;
+    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf, NULL, m_screen, pos_sdl);	delete pos_sdl;}
 void Camera::flip_camera(){	SDL_Flip(m_screen);}

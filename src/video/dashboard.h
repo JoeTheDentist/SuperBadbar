@@ -22,7 +22,7 @@
 class Camera;
 class Babar;
 class Pictures_container;
-
+class Surface;
 
 /**
  * 	@class Dashboard
@@ -34,8 +34,8 @@ class Dashboard {
 private:
 	TTF_Font *m_font;
 	SDL_Color m_font_color;
-	SDL_Surface *m_heart;
-	SDL_Surface **m_weapons_pictures;
+	Surface *m_heart;
+	Surface **m_weapons_pictures;
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
 public:
