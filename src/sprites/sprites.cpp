@@ -32,7 +32,7 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
-
+    m_animt->~Anim_table();
 }
 
 SDL_Surface *Sprite::current_picture()  const
