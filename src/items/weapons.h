@@ -22,7 +22,7 @@
 
 /* nombre maximal de munitions par armes */
 #define MUN_GUN 999
-#define MUN_MACHINEGUN 300
+#define MUN_MACHINEGUN 100
 #define MUN_SHOTGUN 10
 
 /* temps de recharge des armes */
@@ -44,7 +44,7 @@ enum vertical {
 
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN // ATTENTION: SHOTGUN doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
+    GUN, MACHINEGUN, SHOTGUN, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
 
