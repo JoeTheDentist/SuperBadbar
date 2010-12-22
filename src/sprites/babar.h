@@ -43,7 +43,6 @@ class Weapons_armory;
 class Babar: public Sprite {
 protected:
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
-    Anim_table * m_animt;             /* gestionnaire des animations */
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
     Gun m_weapon;		            /* arme actuelle de babar  */
     uint32_t m_fire_phase;	            /* phase du tir */

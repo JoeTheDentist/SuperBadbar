@@ -37,7 +37,6 @@ Sprite::~Sprite()
 
 SDL_Surface *Sprite::current_picture()  const
 {
-	/*return m_animt->curr_pic();*/
 	return NULL;
 }
 

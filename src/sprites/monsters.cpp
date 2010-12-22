@@ -33,7 +33,9 @@ Monster::~Monster()
 
 SDL_Surface *Monster::current_picture() const
 {
-    return m_pics[m_dir][(m_phase/ANIMATION_SPEED)%3]; /* Temp */
+    /* pour le moment, un seul état... */
+    m_animt->change_anim(STATIC, m_dir);
+    return m_animt->curr_pic();
 }
 
 void Monster::update_speed()

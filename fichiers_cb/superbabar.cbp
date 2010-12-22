@@ -64,8 +64,16 @@
 		<Unit filename="..\src\game\game_engine.h" />
 		<Unit filename="..\src\game\static_data.cpp" />
 		<Unit filename="..\src\game\static_data.h" />
+		<Unit filename="..\src\items\gun.cpp" />
+		<Unit filename="..\src\items\gun.h" />
+		<Unit filename="..\src\items\machinegun.cpp" />
+		<Unit filename="..\src\items\machinegun.h" />
+		<Unit filename="..\src\items\shotgun.cpp" />
+		<Unit filename="..\src\items\shotgun.h" />
 		<Unit filename="..\src\items\weapons.cpp" />
 		<Unit filename="..\src\items\weapons.h" />
+		<Unit filename="..\src\items\weapons_armory.cpp" />
+		<Unit filename="..\src\items\weapons_armory.h" />
 		<Unit filename="..\src\main.cpp" />
 		<Unit filename="..\src\sound\sound.cpp" />
 		<Unit filename="..\src\sound\sound.h" />
@@ -73,6 +81,8 @@
 		<Unit filename="..\src\sound\sound_manager.h" />
 		<Unit filename="..\src\sprites\babar.cpp" />
 		<Unit filename="..\src\sprites\babar.h" />
+		<Unit filename="..\src\sprites\flying_monster.cpp" />
+		<Unit filename="..\src\sprites\flying_monster.h" />
 		<Unit filename="..\src\sprites\following_walking_monsters.cpp" />
 		<Unit filename="..\src\sprites\following_walking_monsters.h" />
 		<Unit filename="..\src\sprites\monsters.cpp" />
@@ -107,6 +117,8 @@
 		<Unit filename="..\src\video\pictures_container.h" />
 		<Unit filename="..\src\video\statics.cpp" />
 		<Unit filename="..\src\video\statics.h" />
+		<Unit filename="..\src\video\surface.cpp" />
+		<Unit filename="..\src\video\surface.h" />
 		<Unit filename="..\src\video\talks.cpp" />
 		<Unit filename="..\src\video\talks.h" />
 		<Extensions>
