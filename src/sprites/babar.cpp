@@ -71,6 +71,7 @@ void Babar::init_babar(Analyser * a)
 	m_double_jump = false;
 	m_dir = RIGHT;
 	m_crouch_time = 0;
+	m_jump_time = 0;
 }
 
 void Babar::update_speed()
@@ -120,8 +121,11 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
         walk();
     }
 
-    if (can_jump())
+    if (can_jump()) {
 		jump();
+    } else {
+        m_jump_time = 0;
+    }
 
 	if (can_double_jump())
 		double_jump();
@@ -188,11 +192,12 @@ void Babar::crouch()
 
 bool Babar::can_jump() const
 {
-    return m_keyboard->key_down(k_jump) && (m_state!=JUMP) && !m_keyboard->key_down(k_down);
+    return m_keyboard->key_down(k_jump) && (m_state!=JUMP || m_jump_time < JUMP_TIME) && !m_keyboard->key_down(k_down);
 }
 
 void Babar::jump()
 {
+    m_jump_time++;
 	m_state = JUMP;
 	m_speed.y = -5*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(2, "Saut de Babar")
@@ -217,7 +222,7 @@ void Babar::double_jump()
 
 bool Babar::can_go_down(Collisions_manager *collisions_manager) const
 {
-	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK)
+	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down) && (m_state == STATIC || m_state == WALK || m_state == CROUCH)
 				&& Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)))
 				&& !collisions_manager->double_collision(m_pos);
 }

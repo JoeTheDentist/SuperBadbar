@@ -30,6 +30,7 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
     m_damage = damage;
 	std::string rep = PIC_PROJ_R;
 
+    /* Rajouter le nom... */
     m_animt = new Anim_table(rep+"simple/simple");
 
     m_animt->setRect(m_pos);
@@ -50,6 +51,7 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
 
     std::string rep = PIC_PROJ_R;
 
+    /* Rajouter le nom... */
     m_animt = new Anim_table(rep+"simple/simple");
 
     m_animt->setRect(m_pos);
@@ -80,7 +82,6 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 		if (Collisions_manager::is_up_coll(collisions_manager->up_collision_type(m_pos))){
 			m_dead = true;
 		}
-
 	}
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){

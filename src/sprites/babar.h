@@ -16,7 +16,7 @@
 #include "../video/anim_table.h"
 #include <list>
 #define BABAR_SPEED 15
-#define CROUCH_TIME 30
+#define JUMP_TIME 30
 
 class Collisions_manager;
 class Projectiles_manager;
@@ -49,7 +49,9 @@ protected:
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
+	int m_jump_time;                    /* temps d'appuie sur la touche de saut */
 	Weapons_armory m_weapons_armory;
+
 	/**
 	 * 	@brief Charge les images de babar
 	 *	@param age	L'age de Babar
