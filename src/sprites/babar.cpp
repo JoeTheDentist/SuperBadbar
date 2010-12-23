@@ -206,7 +206,7 @@ void Babar::jump()
 {
 	m_state = JUMP;
 	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
-	PRINT_TRACE(2, "Saut de Babar")
+	PRINT_TRACE(3, "Saut de Babar")
 	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
         m_sound_manager->play_babar_jump();
         m_ready_double_jump = true;

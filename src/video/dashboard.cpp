@@ -51,9 +51,9 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	m_lifes_pos.y = POS_HEART_Y;
 
 	m_weapons_pictures = new Surface*[SHOTGUN + 1];
-	m_weapons_pictures[MACHINEGUN] = new Surface(rac+"/pic/dashboard/heart.bmp");
-	m_weapons_pictures[GUN] = new Surface(rac+"/pic/statics/black_board.bmp");
-	m_weapons_pictures[SHOTGUN] = new Surface(rac+"/pic/dashboard/heart.bmp");
+	m_weapons_pictures[MACHINEGUN] = new Surface(rac+"/pic/dashboard/weapon/machinegun.bmp");
+	m_weapons_pictures[GUN] = new Surface(rac+"/pic/dashboard/weapon/gun.bmp");
+	m_weapons_pictures[SHOTGUN] = new Surface(rac+"/pic/dashboard/weapon/shotgun.bmp");
 	m_weapons_pos.x = POS_WEAPON_X;
 	m_weapons_pos.y = POS_WEAPON_Y;	
 }
