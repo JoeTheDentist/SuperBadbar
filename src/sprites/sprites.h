@@ -16,15 +16,12 @@
 #include "SDL/SDL.h"
 #include "../items/weapons.h"
 
+
 	/*!
-	 *	@enum state
 	 *	@brief Etat, utile pour les animations, pour savoir quelle serie d'image afficher
 	 *
 	 *	Sert également à savoir ce que le sprite peut ou ne peut pas faire
 	*/
-enum state {
-    STATIC, WALK, JUMP, CROUCH
-};
 
 #include "../video/animation.h"
 #include "../video/anim_table.h"
@@ -50,7 +47,6 @@ protected:
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_dir;    /* direction horizontale */
-	state m_state;              /* etat du sprite */
 	Anim_table * m_animt;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 	Sound_manager *m_sound_manager;

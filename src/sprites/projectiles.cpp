@@ -116,7 +116,7 @@ Projectile::~Projectile()
 
 Surface *Projectile::current_picture() const
 {
-    m_animt->change_anim(STATIC, m_dir);
+    m_animt->change_anim(NONE, m_dir);
     return m_animt->curr_pic();
 }
 

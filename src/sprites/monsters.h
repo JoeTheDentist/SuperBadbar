@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
  #ifndef _MONSTERS_
 #define _MONSTERS_
 
@@ -17,6 +17,11 @@ class Babar;
 class Surface;
 
 
+enum state_m {
+    WALKING, FIRE
+};
+
+
 /**
  * 	@class Monster
  * 	@brief Entité hostile à Babar
@@ -25,6 +30,7 @@ class Surface;
 
 class Monster: public Sprite {
 protected:
+    state_m m_state;
 	std::string m_nom;				/* sa nature (peut-etre à enlever) */
 	int m_area_begin; 			 	/* début de la zone d'allez-retour */
 	int m_area_end;                	/* fin de la zone d'aller-retrou */
@@ -39,9 +45,9 @@ public:
 	Monster(Sound_manager *sound_manager);
 
 	/**
-	 * 	@brief Destructeur 
+	 * 	@brief Destructeur
 	 */
-	~Monster();	
+	~Monster();
 
 	/**
 	 * 	@brief Mise à jour de la vitesse du monstre
@@ -53,24 +59,24 @@ public:
 	 * 	@todo réorganiser cette paramétrisation
 	 */
 	void virtual update_speed(Babar * babar);
-	
+
 	/**
 	 * 	@brief Acesseur
 	 */
-	Surface *current_picture() const;    
-	
+	Surface *current_picture() const;
+
 	/**
 	 * 	@brief Fait perdre des vies au monstre
 	 *	@param damage Le nombre de viesà faire perdre
 	 */
-	void damage(uint32_t damage);  
-	
+	void damage(uint32_t damage);
+
 	/**
 	 * 	@brief Accesseur: Indique si le monstre est mort
 	 *	@return Vrai si les points de vies sont <= 0
 	 */
-	bool dead() const; 
-	
+	bool dead() const;
+
 
 };
 

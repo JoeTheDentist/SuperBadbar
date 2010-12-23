@@ -102,6 +102,12 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
 	update_direction();
 
+    if ( Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)) ) {
+        m_ready_jump = true;
+        m_ready_double_jump = false;
+        m_state = STATIC;
+    }
+
     if (can_fire()) {
 		projectiles_manager->add_friend_proj(fire());
         m_fire_phase = 0;
@@ -126,12 +132,6 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
     if (can_jump())
 		jump();
-
-
-    if ( Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)) ) {
-        m_ready_jump = true;
-        m_ready_double_jump = false;
-    }
 
 	if (can_double_jump())
 		double_jump();

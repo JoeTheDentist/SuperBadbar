@@ -73,7 +73,7 @@ Anim_table::~Anim_table() {
     delete[] m_anim;
 }
 
-void Anim_table::change_anim(state s, horizontal dir) {
+void Anim_table::change_anim(int s, horizontal dir) {
     if ( m_curr_anim->interruptable() ) {
         m_curr_anim = m_anim[s][dir];
     }

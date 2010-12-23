@@ -26,6 +26,11 @@ class Weapons_armory;
 #include "../items/weapons_armory.h"
 #include "../items/gun.h"
 
+
+enum state_player {
+    STATIC, WALK, JUMP, CROUCH
+};
+
 /**
  * 	@class Babar
  * 	@brief Personnage controlé par un joueur
@@ -35,13 +40,13 @@ class Weapons_armory;
  *	de mise à jour d'état et de vitesse
  *
  *	@todo réorganiser les update\n
- *	Faire un saut sensible à la longueur de l'appui de la touche\n
  *	Certaines méthodes doivent etre private\n
  *	Une méthode doit renvoyer le tir au projectiles manager, au lieu de prendre le projectiles_manager en parametre
  *
  */
 class Babar: public Sprite {
 protected:
+    state_player m_state;
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
     Gun m_weapon;		            /* arme actuelle de babar  */

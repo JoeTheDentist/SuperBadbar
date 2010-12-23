@@ -28,7 +28,6 @@ Sprite::Sprite()
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_dir = LEFT;
-	m_state = WALK;
 	m_phase = 0;
 }
 
@@ -52,8 +51,8 @@ void Sprite::update_pos(Static_data *static_data, Collisions_manager *collisions
 		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
-			if (m_state == JUMP)
-				m_state = STATIC;
+			/*if (m_state == JUMP)
+				m_state = STATIC;*/
 		}
 		else {
 			m_pos.y += BOX_SIZE;

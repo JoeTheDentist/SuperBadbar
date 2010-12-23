@@ -29,7 +29,7 @@ class Anim_table
 {
     private:
         char m_nb_states;           /* nombre d'etats de l'animation */
-        state m_last_state;         /* dernier etat affiche, pour les changements d'animation */
+        int m_last_state;         /* dernier etat affiche, pour les changements d'animation */
         Animation * m_curr_anim;    /* pointeur sur l'animation courante */
         Animation *** m_anim;       /* tableau de pointeur vers les animations ; etat et gauche/droite */
 
@@ -52,7 +52,7 @@ class Anim_table
         /**
          * @brief change l'animation courrante.
          */
-        void change_anim(state s, horizontal dir);
+        void change_anim(int s, horizontal dir);
 
         /**
          * @brief Accesseur a l'image courante de l'animation, l'image a afficher.

@@ -42,21 +42,11 @@ Flying_monster::Flying_monster(Sound_manager *sound_manager, Analyser *analyserL
 
     m_animt = new Anim_table(pic_monsters_rep+m_nom+"/"+m_nom);
 
-	/*m_pics[0][0] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_left_1" +PICS_EXT).c_str());
-	m_pics[0][1] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
-	m_pics[0][2] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_left_3" +PICS_EXT).c_str());
-	m_pics[0][3] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_left_2" +PICS_EXT).c_str());
-	m_pics[1][0] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_1" +PICS_EXT).c_str());
-	m_pics[1][1] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());
-	m_pics[1][2] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_3" +PICS_EXT).c_str());
-	m_pics[1][3] = pictures_container->load_BMP((pic_monsters_rep+ m_nom + "_right_2" +PICS_EXT).c_str());*/
 	m_speed.x = m_speed_def;
 	m_dir = RIGHT;
 
     m_animt->set_rect(m_pos);
 
-	/*m_pos.w = m_pics[0][0]->w;
-	m_pos.h = m_pics[0][0]->h;*/
 	m_can_fire = false;
 
 }
