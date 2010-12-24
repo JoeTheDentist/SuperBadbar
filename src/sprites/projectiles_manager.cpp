@@ -22,7 +22,19 @@ Projectiles_manager::Projectiles_manager() {
 }
 
 Projectiles_manager::~Projectiles_manager() {
-	
+	// suppression de projectiles amis
+	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
+		it != m_projectiles_friend.end(); ) {
+		delete (*it);
+		it = m_projectiles_friend.erase(it);
+
+	}
+	// suppression de projectiles ennemis
+	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
+		it != m_projectiles_ennemy.end(); it++) {
+		m_projectiles_ennemy.erase(it);
+		it--;
+	}	
 }
 
 
@@ -45,6 +57,7 @@ void Projectiles_manager::delete_old_projectiles(Static_data *static_data)
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); ) {
 		if ((*it)->dead()) {
+			delete (*it);
 			it = m_projectiles_friend.erase(it);
 		} else {
 			++it;

@@ -33,7 +33,6 @@ Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy,
 
     /* Rajouter le nom... */
     m_animt = new Anim_table(rep+"simple/simple");
-
     m_animt->set_rect(m_pos);
 
     m_speed.x = speedx;

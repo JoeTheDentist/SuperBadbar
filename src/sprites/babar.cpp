@@ -75,6 +75,7 @@ void Babar::init_babar(Analyser * a)
 	m_crouch_time = 0;
 	m_ready_double_jump = false;
 	m_ready_jump = true;
+	m_state = STATIC;
 }
 
 void Babar::update_speed()
