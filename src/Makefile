@@ -28,6 +28,9 @@ val:
 valfull: 
 	valgrind --leak-check=full --show-reachable=yes ./$(EXEC_NAME) 
 
+profile:
+	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar yopi
+
 edit:
 	#codeblocks cbShell/Shell.cbp&
 	
