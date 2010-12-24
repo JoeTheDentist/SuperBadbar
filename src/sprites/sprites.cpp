@@ -25,7 +25,7 @@
 **********************************/
 Sprite::Sprite()
 {
-	m_anim = NULL;
+	m_animt = NULL;
 	m_speed.x = 0;
 	m_speed.y = 0;
 	m_dir = LEFT;
@@ -35,8 +35,8 @@ Sprite::Sprite()
 Sprite::~Sprite()
 {
 	PRINT_DEBUG(1, "destruction de sprite")
-	if (m_anim)
-		delete m_anim;
+	if (m_animt)
+		delete m_animt;
 }
 
 Surface *Sprite::current_picture()  const

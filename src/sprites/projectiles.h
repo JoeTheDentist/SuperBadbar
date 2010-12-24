@@ -47,7 +47,7 @@ public:
 	/*!
 	 * 	@brief Destructeur
 	*/
-    ~Projectile();
+     ~Projectile();
 
 	/*!
 	 * 	@brief Met à jour la position du Projectile

@@ -10,6 +10,7 @@
 #ifndef _SOUND_
 #define _SOUND_
 
+#include <string>
 
 class Sound_manager;
 
