@@ -29,7 +29,10 @@ Weapons_armory::Weapons_armory(Pictures_container *pictures_container, Sound_man
 
 Weapons_armory::~Weapons_armory()
 {
-	
+	PRINT_CONSTR(2, "Destruction de Weapons_armory");	
+	for (std::list<Weapon *>::iterator it = m_armory.begin();
+			it != m_armory.end(); it++)
+		delete (*it);
 }
 
 Weapon *Weapons_armory::get_current_weapon()

@@ -26,7 +26,7 @@ val:
 	valgrind ./$(EXEC_NAME)
 
 valfull: 
-	valgrind --leak-check=full --show-reachable=yes ./$(EXEC_NAME) 
+	valgrind --leak-check=full --show-reachable=yes --suppressions=../utils/valgrind_suppress/SDL.supp  ./$(EXEC_NAME) 
 
 profile:
 	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar yopi

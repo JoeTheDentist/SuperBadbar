@@ -23,16 +23,16 @@
 Graphic_engine::Graphic_engine()
 {
 	PRINT_CONSTR(1, "Construction de Graphic_engine")
-	PRINT_TRACE(1, "Initialisation de SDL")
-	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
-		return;
-	}
-	PRINT_TRACE(1, "Initialisation de TTF")
-	if (TTF_Init() == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
-		return;
-	}
+//~ 	PRINT_TRACE(1, "Initialisation de SDL")
+//~ 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
+//~ 		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
+//~ 		return;
+//~ 	}
+//~ 	PRINT_TRACE(1, "Initialisation de TTF")
+//~ 	if (TTF_Init() == -1) {
+//~ 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
+//~ 		return;
+//~ 	}
 	m_camera = new Camera();
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
