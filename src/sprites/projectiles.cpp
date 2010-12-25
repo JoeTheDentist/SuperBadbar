@@ -23,26 +23,9 @@
 **  Méthodes projectiles **
 **************************/
 
-Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, Pictures_container *pictures_container)
-{
-	PRINT_CONSTR(3, "Construction d'un projectile")
-    m_pos = pos;
-    m_dir = h;
-    m_damage = damage;
-	std::string rep = PIC_PROJ_R;
 
-    /* Rajouter le nom... */
-    m_animt = new Anim_table(rep+"simple/simple");
-    m_animt->set_rect(m_pos);
 
-    m_speed.x = speedx;
-    m_speed.y = speedy;
-
-	m_dead = false;
-	m_phase = 0;
-}
-
-Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics)
+Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
@@ -107,7 +90,6 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 		m_dead = true;
 }
 
-
 Projectile::~Projectile()
 {
 	PRINT_CONSTR(3, "Destruction d'un projectile")
@@ -129,11 +111,13 @@ Rect Projectile::speed() const
     return m_speed;
 }
 
-bool Projectile::dead() const {
+bool Projectile::dead() const 
+{
 	return m_dead;
 }
 
-void Projectile::kill() {
+void Projectile::kill() 
+{
 	m_dead = true;
 }
 

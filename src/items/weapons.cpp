@@ -25,7 +25,7 @@ Weapon::Weapon()
 Weapon::Weapon(Pictures_container *pictures_container, Sound_manager *sound_manager) : 
 m_sound_manager(sound_manager), m_pictures_container(pictures_container)
 {
-	PRINT_CONSTR(1, "construction d'une weapon");
+	PRINT_CONSTR(1, "construction d'une vraie weapon");
 }
 
 Weapon::Weapon(SDL_Surface **proj_pics)
@@ -68,61 +68,6 @@ Weapon::~Weapon()
 std::list<Projectile*> *Weapon::fire(Rect pos, horizontal h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
-    Projectile * proj;
-	m_sound_manager->play_fire(m_weapon_type);
-	int dir_h =0;
-    switch (m_weapon_type) {
-        case GUN :
-            proj = new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1, m_proj_pics);
-            proj_list->push_back(proj);
-			m_munitions++;
-			break;
-        case MACHINEGUN:
-            dir_h = (2*h-1)*PROJ_SPEED;
-			proj = new Projectile(pos, h, dir_h, 0,1, m_proj_pics);
-            proj_list->push_back(proj);
-            break;
-        case SHOTGUN:
-            int x[5];
-            int y[5];
-            Rect pos2;
-            Rect pos3;
-
-            Projectile * proj[5];
-            for(int i = 0;i<5;i++) {
-                x[i] = PROJ_SPEED;
-            }
-            y[0] = 4;
-            y[1] = 2;
-            y[2] = 0;
-            y[3] = 2;
-            y[4] = 4;
-
-            pos2.x = pos.x + 5*h;
-            pos2.y = pos.y + 5;
-
-            pos3.x = pos.x + 10*h;
-            pos3.y = pos.y + 10;
-
-
-            for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-				proj_list->push_back(proj[i]);
-            }
-            for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-                proj_list->push_back(proj[i]);
-            }
-            for(int i = 0;i<5;i++) {
-                proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_proj_pics);
-                proj_list->push_back(proj[i]);
-            }
-
-            break;
-    }
-	m_munitions --;
-	if (m_munitions <= 0)
-		change_weapon(GUN);
 	return proj_list;
 }
 

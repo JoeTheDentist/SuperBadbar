@@ -12,7 +12,6 @@
 #ifndef _GAME_ENGINE
 #define GAME_ENGINE
 
-#include "../util/lists.h"
 #include <stdint.h>
 
 class Static_data;

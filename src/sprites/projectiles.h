@@ -34,15 +34,11 @@ protected:
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 public:
 
-	/*!
-	 *	@brief Constructeur
-	*/
-    Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, Pictures_container *pictures_container);
 
 	/*!
 	 *	@brief Constructeur
 	*/
-    Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage, SDL_Surface **pics);
+    Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage);
 
 	/*!
 	 * 	@brief Destructeur

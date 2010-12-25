@@ -54,7 +54,7 @@ Gun::~Gun()
 std::list<Projectile*> *Gun::fire(Rect pos, horizontal h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
-	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1, m_pictures_container));
+	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1));
 	return proj_list;
 }
 

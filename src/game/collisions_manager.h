@@ -13,7 +13,6 @@
 
 #include <stdint.h>
 #include "../util/globals.h"
-#include "../util/lists.h"
 
 class Static;
 

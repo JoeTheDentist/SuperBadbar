@@ -26,7 +26,7 @@
 #define _CAMERA_
 
 #include "../util/globals.h"
-
+#include <SDL/SDL.h>
 
 #define VITESSE_DECALAGE_CAMERA 25
 #define VITESSE_DECALAGE_RETOUR_CAMERA 10

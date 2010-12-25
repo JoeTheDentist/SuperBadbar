@@ -14,7 +14,6 @@
 
 #include "analyser.h"
 #include "../util/debug.h"
-#include "../util/lists.h"
 #include "../util/globals.h"
 
 

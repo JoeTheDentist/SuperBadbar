@@ -37,7 +37,7 @@ SDL_Surface * Surface::get_surface()
 void Surface::set_pictures_container(Pictures_container *pictures_container)
 {
 	m_pictures_container = pictures_container;
-	PRINT_DEBUG(1,"SEEEEEEEEET");
+	PRINT_TRACE(1,"Ajout du Pictures_container aux surfaces");
 }
 
 int Surface::w()

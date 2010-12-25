@@ -34,7 +34,7 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
-	PRINT_DEBUG(1, "destruction de sprite")
+	PRINT_CONSTR(3, "destruction de sprite")
 	if (m_animt)
 		delete m_animt;
 }

@@ -10,12 +10,11 @@
 #ifndef WEAPONS_H_INCLUDED
 #define WEAPONS_H_INCLUDED
 
-#include "SDL/SDL.h"
-#include "../util/lists.h"
 #include "../sound/sound_manager.h"
 #include "../util/globals.h"
+#include <stdint.h>
 #include <list>
-
+#include <SDL/SDL.h>
 
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 40       /* Vitesse des projectiles */

@@ -15,7 +15,6 @@
 #define _MONSTERS_MANAGER_
  
 
-#include "../util/lists.h"
 #include <list>
 #include <stdint.h>
 
@@ -114,6 +113,7 @@ public:
 	
 	/*!
 	*	@brief supprime l'élément courant de monsters_manager
+	*	@warning la suppression fait passerle curseur à l'élément suivant
 	*/
 	void delete_element();
 	

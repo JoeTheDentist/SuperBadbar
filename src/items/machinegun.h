@@ -10,8 +10,6 @@
 #ifndef _MACHINEGUN_
 #define _MACHINEGUN_
 
-#include "SDL/SDL.h"
-#include "../util/lists.h"
 #include "../sound/sound_manager.h"
 #include "../util/globals.h"
 #include "../items/weapons.h"

@@ -83,15 +83,15 @@ std::list<Projectile*> *Shotgun::fire(Rect pos, horizontal h)
 
 
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_pictures_container);
+			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_pictures_container);
+			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, m_pictures_container);
+			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
 			proj_list->push_back(proj[i]);
 		}
 		m_munitions --;

@@ -10,6 +10,8 @@
 #ifndef _SURFACE_
 #define _SURFACE_
 
+#include <string>
+
 class Pictures_container;
 struct SDL_Surface;
 

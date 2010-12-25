@@ -59,7 +59,7 @@ std::list<Projectile*> *Machinegun::fire(Rect pos, horizontal h)
 	if (m_munitions >= 0) {
 		m_sound_manager->play_fire(MACHINEGUN);
 		int dir_h = (2*h-1)*PROJ_SPEED;
-		proj_list->push_back(new Projectile(pos, h, dir_h, 0,1, m_pictures_container));
+		proj_list->push_back(new Projectile(pos, h, dir_h, 0,1));
 		m_munitions --;
 	}
 	return proj_list;
