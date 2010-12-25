@@ -18,7 +18,7 @@
 #include "babar.h"
 
 
-Walking_monster::Walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
+Walking_monster::Walking_monster(Analyser *analyserLevel)
 {
 	m_nom = analyserLevel->read_string();
 	Analyser analyserMonster;

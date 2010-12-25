@@ -20,18 +20,15 @@
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
 #include "../sprites/projectiles_manager.h"
-#include "../video/pictures_container.h"
-#include "../sound/sound_manager.h"
 #include "../video/surface.h"
 
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser)
+Babar::Babar(Keyboard *keyboard, Static_data *static_data, Analyser *analyser)
     : m_keyboard(keyboard)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
-	m_sound_manager = sound_manager;
 	init_babar(analyser);
 }
 
@@ -206,7 +203,6 @@ void Babar::jump()
 	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(3, "Saut de Babar")
 	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
-        m_sound_manager->play_babar_jump();
         m_ready_double_jump = true;
         if ( m_keyboard->time_pressed(k_jump) > JUMP_TIME) {
             m_ready_jump = false;
@@ -227,7 +223,6 @@ void Babar::double_jump()
 	m_ready_double_jump = false;
 	PRINT_TRACE(2, "Double-saut de Babar")
 	m_speed.y = -4*BABAR_SPEED;
-	m_sound_manager->play_babar_jump();
 	m_keyboard->disable_key(k_jump);
 
 }
@@ -259,7 +254,6 @@ void Babar::damage(int damages)
 {
 	PRINT_TRACE(3, "Babar bobo")
 	if (!is_invincible()) {
-		m_sound_manager->play_babar_rugissement();
 		m_lifes -= damages;
 		m_invincible = 20;
 

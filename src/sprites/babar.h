@@ -24,7 +24,6 @@ class Analyser;
 class Gun;
 class Weapons_armory;
 #include "../items/weapons_armory.h"
-#include "../items/gun.h"
 
 
 enum state_player {
@@ -71,7 +70,7 @@ public:
 	 *	@param sound_manager Le gestionnaire de son
 	 *  @param analyser ouvert sur un fichier lvl, en l'occurence du premier level
 	 */
-	Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser);
+	Babar(Keyboard *keyboard, Static_data *static_data, Analyser *analyser);
 
 	/**
 	 * 	@brief Destructeur

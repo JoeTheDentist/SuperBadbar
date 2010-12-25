@@ -13,12 +13,10 @@
 #include "flying_monster.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
-#include "../sound/sound_manager.h"
-#include "../video/pictures_container.h"
 #include "babar.h"
 
 
-Flying_monster::Flying_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
+Flying_monster::Flying_monster(Analyser *analyserLevel) : Monster()
 {
 	m_nom = analyserLevel->read_string();
 	Analyser analyserMonster;

@@ -40,9 +40,8 @@ protected:
 public:
 	/**
 	 * 	@brief Constructeur
-	 *	@param sound_manager Le gestionnaire de son
 	 */
-	Monster(Sound_manager *sound_manager);
+	Monster();
 
 	/**
 	 * 	@brief Destructeur

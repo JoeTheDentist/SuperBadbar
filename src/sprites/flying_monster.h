@@ -12,8 +12,6 @@
 
 #include "../sprites/monsters.h"
 
-class Pictures_container;
-class Sound_manager;
 class Analyser;
 
 
@@ -29,11 +27,9 @@ private:
 public:
 	/**
 	 * 	@brief Constructeur
-	 *	@param sound_manager Gestionnaire de son
 	 *	@param analyserLevel Analyseur se fichier
-	 *	@param pictures_container Gestionnaire de chargement d'images
 	*/          
-	Flying_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container);
+	Flying_monster(Analyser *analyserLevel);
 
 	/**
 	 * 	@brief Destructeur

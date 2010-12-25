@@ -13,12 +13,10 @@
 #include "following_walking_monsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
-#include "../sound/sound_manager.h"
-#include "../video/pictures_container.h"
 #include "babar.h"
 
 
-Following_walking_monster::Following_walking_monster(Sound_manager *sound_manager, Analyser *analyserLevel, Pictures_container *pictures_container) : Monster(sound_manager)
+Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
 {
 	m_nom = analyserLevel->read_string();
 	Analyser analyserMonster;

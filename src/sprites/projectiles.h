@@ -14,8 +14,6 @@
 #include "sprites.h"
 
 class Static_data;
-class Collisions_manager;
-class Pictures_container;
 
 
 enum state_p {

@@ -19,13 +19,10 @@
 #include <stdint.h>
 
 class Monster;
-class Following_walking_monster;
 class Camera;
 class Babar;
 class Static_data;
 class Analyser;
-class Sound_manager;
-class Pictures_container;
 class Collisions_manager;
 
 
@@ -56,7 +53,7 @@ public:
 	/*!
 	* 	@brief remplissage de monsters_manager au debut du niveau
 	*/
-	void init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container);
+	void init_monsters_manager(Analyser *analyser);
 
 
 	/*!

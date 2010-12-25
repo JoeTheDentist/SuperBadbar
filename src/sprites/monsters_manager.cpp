@@ -15,8 +15,6 @@
 #include "../sprites/flying_monster.h"
 #include "../sprites/following_walking_monsters.h"
 #include "../video/camera.h"
-#include "../video/pictures_container.h"
-#include "../sound/sound_manager.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 #include "../util/analyser.h"
@@ -34,19 +32,19 @@ Monsters_manager::~Monsters_manager() {
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container) {
+void Monsters_manager::init_monsters_manager(Analyser *analyser) {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		std::string monster_type = analyser->read_string();
 		if (monster_type == "following_walking_monster") {
-			Following_walking_monster * curr_monster = new Following_walking_monster(sound_manager, analyser, pictures_container);
+			Following_walking_monster * curr_monster = new Following_walking_monster(analyser);
 			add(curr_monster);
 		} else if (monster_type == "walking_monster") {
-			Walking_monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
+			Walking_monster * curr_monster = new Walking_monster(analyser);
 			add(curr_monster);
 		} else if (monster_type == "flying_monster") {
-			Flying_monster * curr_monster = new Flying_monster(sound_manager, analyser, pictures_container);
+			Flying_monster * curr_monster = new Flying_monster(analyser);
 			add(curr_monster);
 		}
 	}

@@ -29,12 +29,10 @@
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
 class Static_data;
-class Sound_manager;
 class Keyboard;
 class Camera;
 class Anim_table;
 class Collisions_manager;
-class Pictures_manager;
 class Surface;
 
 /**
@@ -43,13 +41,11 @@ class Surface;
  */
 class Sprite{
 protected:
-	static Pictures_manager *m_pictures_manager;
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */
 	horizontal m_dir;    /* direction horizontale */
 	Anim_table * m_animt;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
-	Sound_manager *m_sound_manager;
 public:
 	/*!
 	 *	@brief Constructeur

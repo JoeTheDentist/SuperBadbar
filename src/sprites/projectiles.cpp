@@ -15,7 +15,6 @@
 #include "../game/game.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
-#include "../video/pictures_container.h"
 #include "../video/surface.h"
 
 

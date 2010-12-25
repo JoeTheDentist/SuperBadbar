@@ -9,7 +9,6 @@
  
 #include <iostream>
 #include "projectiles_manager.h"
-
 #include "../sprites/projectiles.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"

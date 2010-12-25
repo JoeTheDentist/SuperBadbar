@@ -23,9 +23,8 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster(Sound_manager *sound_manager) 
+Monster::Monster() 
 {
-	m_sound_manager = sound_manager;
 }
 
 Monster::~Monster()
@@ -70,7 +69,6 @@ void Monster::update_speed(Babar * babar)
 
 void Monster::damage(uint32_t damage)
 {
-	m_sound_manager->play_monster_damage();
     m_life -= damage;
 }
 

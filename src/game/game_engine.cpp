@@ -64,9 +64,9 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 	rep = LEVELS_R;
 	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
-	m_monsters_manager->init_monsters_manager(&analyser, sound_manager, pictures_container);
+	m_monsters_manager->init_monsters_manager(&analyser);
 	m_events_manager->init_events_manager(static_data, this, pictures_container);
-	m_babar = new Babar(keyboard, static_data, sound_manager, &analyser);
+	m_babar = new Babar(keyboard, static_data, &analyser);
 	m_events_manager->load_events(&analyser);
 	analyser.close();
 
