@@ -116,6 +116,9 @@ Monster *Monsters_manager::element() {
 }
 
 void Monsters_manager::delete_element() {
+//~ 	delete (*m_it_monsters);
+	m_following_monsters.remove((Following_walking_monster*)(*m_it_monsters));
+	m_not_following_monsters.remove(((Monster*)(*m_it_monsters)));
 	m_it_monsters = m_monsters.erase(m_it_monsters);
 }
 
