@@ -32,7 +32,7 @@ Events_manager::~Events_manager()
 	PRINT_CONSTR(1, "Destruction de Events_manager")
 	std::list<Event*>::iterator curs;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++ ) {
-		delete (Event*)(*curs);
+		delete (*curs);
 	}
 }
 
@@ -69,9 +69,10 @@ void Events_manager::update()
 			(*curs)->start();
 		if((*curs)->can_be_destroyed()) {
 			(*curs)->destroy();
-			m_list_events.erase(curs++);
+			delete (*curs);
+			curs = m_list_events.erase(curs);
 		} else {
-			curs++;
+			++curs;
 		}
 	}
 }

@@ -52,7 +52,7 @@ public:
 /**
  * 	@brief Destructeur
  */
-	~Contact_event();
+	virtual ~Contact_event();
 
 /**
  * 	@brief Mise à jour de l'événement

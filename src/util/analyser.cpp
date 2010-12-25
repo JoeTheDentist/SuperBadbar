@@ -26,7 +26,6 @@ Analyser::Analyser()
 }
 Analyser::~Analyser()
 {
-	delete m_file;
    	PRINT_CONSTR(2, "Destruction d'un Analyser")
 }
 
@@ -44,6 +43,7 @@ uint32_t Analyser::open(std::string file)
 void Analyser::close()
 {
 	m_file->close();
+	delete m_file;
 	m_opened = false;
 }
 

@@ -38,7 +38,7 @@ public:
 	/**
 	 * 	@brief Destructeur
 	*/
-	~Event();
+	virtual ~Event();
 
 	/**
 	 * 	@brief Mise à jour des données de l'Event

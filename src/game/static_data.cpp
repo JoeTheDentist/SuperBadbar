@@ -25,7 +25,6 @@ Static_data::Static_data() : m_pictures_container(new Pictures_container())
 Static_data::~Static_data()
 {
 	PRINT_CONSTR(1, "Destruction d'un Static_data")
-    m_statics.~List();
 	delete m_pictures_container;
 
 }

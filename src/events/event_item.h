@@ -46,7 +46,7 @@ public:
 /*!
  * 	@brief Destructeur
  */
-	~Event_item();
+	virtual ~Event_item();
 
 
 };

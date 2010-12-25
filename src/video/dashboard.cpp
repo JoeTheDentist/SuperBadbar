@@ -33,6 +33,10 @@ Dashboard::Dashboard()
 
 Dashboard::~Dashboard()
 {
+	for (int i = 0; i < SHOTGUN + 1; i++)
+		delete m_weapons_pictures[i];
+	delete[] m_weapons_pictures;
+	delete m_heart;
 	PRINT_CONSTR(1, "Destruction de Dashboard")
 	TTF_CloseFont(m_font);
 }
