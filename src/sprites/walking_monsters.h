@@ -42,10 +42,10 @@ public:
 
 	/**
 	 * 	@brief Met à jour la vitesse du monstre
+	 *	@param babar Parametre inutilisé dans cette sous classe
 	 *	
-	 *	Le monstre avance par défaut en direction de Babar
 	 */
-	void update_speed();
+	void update_speed(Babar *babar);
 };
 
 

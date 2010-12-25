@@ -42,15 +42,12 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 		if (monster_type == "following_walking_monster") {
 			Following_walking_monster * curr_monster = new Following_walking_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
-			m_following_monsters.push_back(curr_monster);
 		} else if (monster_type == "walking_monster") {
 			Walking_monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
-			m_not_following_monsters.push_back(curr_monster);
 		} else if (monster_type == "flying_monster") {
 			Flying_monster * curr_monster = new Flying_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
-			m_not_following_monsters.push_back(curr_monster);
 		}
 	}
 }
@@ -60,18 +57,10 @@ void Monsters_manager::add(Monster *monster) {
 }
 
 void Monsters_manager::monsters_update_speed(Babar *babar){
-	for(std::list<Following_walking_monster *>::iterator it = m_following_monsters.begin();
-			it != m_following_monsters.end(); it++) {
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++) {
 	    (*it)->update_speed(babar);
 	}
-
-	for(std::list<Monster *>::iterator it = m_not_following_monsters.begin();
-			it != m_not_following_monsters.end(); it++) {
-	    (*it)->update_speed();
-	}
-
-
-
 }
 
 void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) {
@@ -117,11 +106,6 @@ Monster *Monsters_manager::element() {
 
 void Monsters_manager::delete_element() {
 	delete (*m_it_monsters);
-	m_following_monsters.remove((Following_walking_monster*)(*m_it_monsters));
-	m_not_following_monsters.remove(((Monster*)(*m_it_monsters)));
 	m_it_monsters = m_monsters.erase(m_it_monsters);
 }
 
-//~ void Monsters_manager::void_list() {
-//~ 	m_monsters.void_list();
-//~ }

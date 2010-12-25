@@ -41,8 +41,6 @@ class Monsters_manager {
 private:
 	std::list<Monster*> m_monsters;    				/* Liste de TOUS les monstres */
 	std::list<Monster *>::iterator m_it_monsters;
-	std::list<Following_walking_monster*> m_following_monsters;    	/* Liste des monstres qui suivent babar */
-	std::list<Monster*> m_not_following_monsters;    /* Liste des monstres qui ne suivent pas babar */
 
 public:
 
