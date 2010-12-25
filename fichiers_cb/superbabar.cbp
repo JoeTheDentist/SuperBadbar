@@ -75,6 +75,8 @@
 		<Unit filename="..\src\items\weapons_armory.cpp" />
 		<Unit filename="..\src\items\weapons_armory.h" />
 		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\sound\sonorisable.cpp" />
+		<Unit filename="..\src\sound\sonorisable.h" />
 		<Unit filename="..\src\sound\sound.cpp" />
 		<Unit filename="..\src\sound\sound.h" />
 		<Unit filename="..\src\sound\sound_manager.cpp" />
