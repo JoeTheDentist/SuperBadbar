@@ -28,11 +28,13 @@ Monsters_manager::Monsters_manager() {
 }
 
 Monsters_manager::~Monsters_manager() {
-
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++){
+		delete (*it);
+	}
 }
 
 void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container) {
-    void_list();
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
@@ -54,7 +56,7 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 }
 
 void Monsters_manager::add(Monster *monster) {
-	m_monsters.add(monster);
+	m_monsters.push_back(monster);
 }
 
 void Monsters_manager::monsters_update_speed(Babar *babar){
@@ -73,53 +75,50 @@ void Monsters_manager::monsters_update_speed(Babar *babar){
 }
 
 void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) {
-    m_monsters.init();
-	while(!m_monsters.end()) {
-		m_monsters.element()->update_pos(static_data, collisions_manager);
-		m_monsters.next();
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++) {
+		(*it)->update_pos(static_data, collisions_manager);
 	}
 }
 
 void Monsters_manager::display_monsters(const Camera &camera) {
-    m_monsters.init();
-	while(!m_monsters.end()) {
-	    camera.display_sprite(m_monsters.element());
-	    m_monsters.next();
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++){
+		camera.display_sprite((*it));
 	}
 }
 
 void Monsters_manager::babar_monsters_collision(Babar *babar) {
 	Rect babar_pos = babar->position();
 
-	m_monsters.init();
-	while(!m_monsters.end()) {
-		if (Collisions_manager::check_collision(m_monsters.element()->position(), babar_pos)) {
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++){
+		if (Collisions_manager::check_collision((*it)->position(), babar_pos)) {
 			babar->damage(1);
 		}
-	    m_monsters.next();
 	}
 }
 
 void Monsters_manager::init() {
-	m_monsters.init();
+	m_it_monsters = m_monsters.begin();
 }
 
 bool Monsters_manager::end() {
-	return m_monsters.end();
+	return m_it_monsters == m_monsters.end();
 }
 
 void Monsters_manager::next() {
-	m_monsters.next();
+	m_it_monsters++;
 }
 
 Monster *Monsters_manager::element() {
-	return m_monsters.element();
+	return (*m_it_monsters);
 }
 
 void Monsters_manager::delete_element() {
-	m_monsters.delete_element(true);
+	m_it_monsters = m_monsters.erase(m_it_monsters);
 }
 
-void Monsters_manager::void_list() {
-	m_monsters.void_list();
-}
+//~ void Monsters_manager::void_list() {
+//~ 	m_monsters.void_list();
+//~ }

@@ -26,12 +26,16 @@ Static_data::~Static_data()
 {
 	PRINT_CONSTR(1, "Destruction d'un Static_data")
 	delete m_pictures_container;
+	for(std::list<Static *>::iterator it = m_statics.begin();
+			it != m_statics.end(); it++) {
+	    delete (*it);
+	}	
+	delete m_background;
 
 }
 
 void Static_data::init_static_data(uint32_t lvl)
 {
-    m_statics.void_list();
 	std::string rep;
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
@@ -46,11 +50,6 @@ void Static_data::init_static_data(uint32_t lvl)
 
 	/*** Images des projectiles ***/
 	rep = PIC_PROJ_R;
-    m_proj_pics[0] = m_pictures_container->load_BMP((rep + "left-right.bmp").c_str());
-    m_proj_pics[1] = m_pictures_container->load_BMP((rep + "up-down.bmp").c_str());
-    m_proj_pics[2] = m_pictures_container->load_BMP((rep + "top-left.bmp").c_str());
-    m_proj_pics[3] = m_pictures_container->load_BMP((rep + "top-right.bmp").c_str());
-
     /*** Remplissage des statics  ***/
 	rep = LEVELS_R;
     analyser.open(rep + "level" + str_lvl + ".lvl");
@@ -92,10 +91,7 @@ uint32_t Static_data::static_data_weight()
 
 
 
-SDL_Surface **Static_data::proj_pics()
-{
-	return m_proj_pics;
-}
+
 
 Pictures_container *Static_data::get_pictures_container()
 {
@@ -104,18 +100,14 @@ Pictures_container *Static_data::get_pictures_container()
 
 void Static_data::display_statics(Camera *camera)
 {
-	while(!m_statics.end()) {
-	    camera->display_static(m_statics.element());
-	    m_statics.next();
+	for(std::list<Static *>::iterator it = m_statics.begin();
+			it != m_statics.end(); it++) {
+	    camera->display_static((*it));
 	}
-	m_statics.init();
 }
 
 void Static_data::add_static(Static *stat)
 {
-	m_statics.add(stat);
+	m_statics.push_back(stat);
 }
 
-List<Static*> *Static_data::static_list() {
-	return &m_statics;
-}

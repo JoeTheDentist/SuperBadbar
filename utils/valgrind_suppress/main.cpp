@@ -2,6 +2,9 @@
 #include <string>
 #include <fstream>
  
+#define INPUT "other_SDL.errors" 
+#define OUTPUT "other_SDL.supp"
+
 using namespace std;
 
 /**
@@ -77,12 +80,12 @@ bool nouvelle_erreur(ifstream &input, ofstream &output)
 int main()
 {
 
-	ifstream input("../yop", ios::in);
+	ifstream input(INPUT, ios::in);
 	if (!input) {
 		cout << "FICHIER INTROUVABLE" << endl;
 		return 0;
 	}
-	ofstream output("SDL.supp", ios::out);
+	ofstream output(OUTPUT, ios::out);
 	while(nouvelle_erreur(input, output)) {}
 
 	

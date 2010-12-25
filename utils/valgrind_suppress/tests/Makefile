@@ -4,10 +4,9 @@ export CC = g++
 export CFLAGS=-g -Wall
 export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod
 
-DIR = control events game items sound sprites util video
+DIR = 
 EXEC_NAME = babar
 DOC_REP = ../doc/
-VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/SDL.supp --suppressions=../utils/valgrind_suppress/other_SDL.supp 
 
 all:
 	@for i in $(DIR); do \
@@ -24,10 +23,10 @@ test:
 	./$(EXEC_NAME)
 	
 val: 
-	valgrind $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME)
+	valgrind ./$(EXEC_NAME)
 
 valfull: 
-	valgrind --leak-check=full --show-reachable=yes $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME) 
+	valgrind --leak-check=full --show-reachable=yes --suppressions=../SDL.supp  ./$(EXEC_NAME) 
 
 profile:
 	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar yopi
