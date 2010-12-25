@@ -53,6 +53,7 @@ void Event::destroy()
 
 Surface *Event::current_picture() const
 {
+	PRINT_DEBUG(1, "EVENTS");
 	return NULL;
 }
 

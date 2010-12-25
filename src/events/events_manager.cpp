@@ -81,7 +81,6 @@ void Events_manager::display_events(Camera *const camera)
 {
 	std::list<Event*>::iterator curs;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++) {
-		PRINT_DEBUG(1, "grosse truie violette");
 		camera->display_event(*curs);
 	}
 }

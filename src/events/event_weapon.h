@@ -72,7 +72,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de l'événement
 	*/
-	Surface *current_picture() const;
+	virtual Surface *current_picture() const;
 };
 
 

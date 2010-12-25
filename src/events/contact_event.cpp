@@ -60,6 +60,7 @@ void Contact_event::start()
 
 Surface *Contact_event::current_picture() const
 {
+	PRINT_DEBUG(1, "CONTACT");
 	return NULL;
 }
 
