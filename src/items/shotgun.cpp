@@ -17,35 +17,13 @@
 
 
 
-Shotgun::Shotgun(SDL_Surface **proj_pics)
-{
-	m_proj_pics = proj_pics;
-	PRINT_CONSTR(2, "Construction d'une Shotgun")
-    m_weapon_type = SHOTGUN;
-    m_reload_time = RELOAD_SHOTGUN;
-}
-
-Shotgun::Shotgun(Pictures_container *pictures_container, Sound_manager *sound_manager) : Weapon(pictures_container, sound_manager)
-{
+Shotgun::Shotgun()
+{	
 	PRINT_CONSTR(2, "Construction d'un Shotgun")
 	m_last_dir_h = 3;
     m_weapon_type = SHOTGUN;
 	m_reload_time = RELOAD_SHOTGUN;
 	m_munitions = MUN_SHOTGUN;
-}
-
-
-Shotgun::Shotgun(weapon_type type, SDL_Surface **proj_pics, Sound_manager *sound_manager)
-{
-
-	PRINT_CONSTR(2, "Construction d'une Shotgun")
-	m_last_dir_h = 3;
-	m_proj_pics = proj_pics;
-	m_sound_manager = sound_manager;
-    m_weapon_type = type;
-	m_reload_time = RELOAD_SHOTGUN;
-	m_munitions = MUN_SHOTGUN;
-
 }
 
 Shotgun::~Shotgun()
@@ -57,9 +35,6 @@ std::list<Projectile*> *Shotgun::fire(Rect pos, horizontal h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {
-		m_sound_manager->play_fire(SHOTGUN);
-			PRINT_DEBUG(1, "yop");
-
 		int x[5];
 		int y[5];
 		Rect pos2;

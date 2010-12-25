@@ -20,21 +20,18 @@
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
 #include "../sprites/projectiles_manager.h"
-#include "../items/gun.h"
 #include "../video/pictures_container.h"
+#include "../sound/sound_manager.h"
 #include "../video/surface.h"
 
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
 Babar::Babar(Keyboard *keyboard, Static_data *static_data, Sound_manager *sound_manager, Analyser *analyser)
-    : m_keyboard(keyboard), m_weapon(static_data->get_pictures_container(), sound_manager),
-    m_weapons_armory(static_data->get_pictures_container(), sound_manager)
+    : m_keyboard(keyboard)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
-
 	m_sound_manager = sound_manager;
-
 	init_babar(analyser);
 }
 

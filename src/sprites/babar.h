@@ -49,7 +49,6 @@ protected:
     state_player m_state;
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
-    Gun m_weapon;		            /* arme actuelle de babar  */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */

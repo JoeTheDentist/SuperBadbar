@@ -17,12 +17,10 @@
 #include "../sound/sound_manager.h"
 
 
-Weapons_armory::Weapons_armory(Pictures_container *pictures_container, Sound_manager *sound_manager)
+Weapons_armory::Weapons_armory()
 {
 	PRINT_CONSTR(2, "Construction de Weapons_armory");
-	m_pictures_container = pictures_container;
-	m_sound_manager = sound_manager;
-	Gun *gun = new Gun(m_pictures_container, sound_manager);
+	Gun *gun = new Gun();
 	m_armory.push_back(gun);
 	m_current_weapon = m_armory.begin();
 }
@@ -56,13 +54,13 @@ void Weapons_armory::add_weapon(weapon_type type)
 	// Cas où l'arme doit etre ajoutée
 	switch (type) {
 		case GUN:
-			m_armory.insert(it,new Gun(m_pictures_container, m_sound_manager));
+			m_armory.insert(it,new Gun());
 			break;
 		case SHOTGUN:
-			m_armory.insert(it,new Shotgun(m_pictures_container, m_sound_manager));
+			m_armory.insert(it,new Shotgun());
 			break;
 		case MACHINEGUN:
-			m_armory.insert(it,new Machinegun(m_pictures_container, m_sound_manager));
+			m_armory.insert(it,new Machinegun());
 			break;
 		default:
 			PRINT_DEBUG(1, "type d'arme inconnu dans add_weapon de weapon_armory");

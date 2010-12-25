@@ -13,16 +13,13 @@
 #include <list>
 #include "../items/weapons.h"
 class Weapon;
-class Pictures_container;
-class Sound_manager;
+
 /**
  * 	@class Weapons_armory
  * 	@brief Contient et gère les armes possédées par un personnage
  */
 class Weapons_armory {
 private:
-	Pictures_container *m_pictures_container;
-	Sound_manager *m_sound_manager;
 	std::list<Weapon*> m_armory; 
 	std::list<Weapon *>::iterator m_current_weapon;
 public:
@@ -31,7 +28,7 @@ public:
 	 *	@param pictures_container Le gestionnaire d'images
 	 *	@param sound_manager Le gestionnaire de son
 	*/
-	Weapons_armory(Pictures_container *pictures_container, Sound_manager *sound_manager);
+	Weapons_armory();
 
 	/*!
 	 *	@brief Destructeur

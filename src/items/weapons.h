@@ -10,11 +10,9 @@
 #ifndef WEAPONS_H_INCLUDED
 #define WEAPONS_H_INCLUDED
 
-#include "../sound/sound_manager.h"
 #include "../util/globals.h"
 #include <stdint.h>
 #include <list>
-#include <SDL/SDL.h>
 
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
@@ -48,10 +46,7 @@ enum weapon_type {
 
 
 class Sprites;
-class Sound_manager;
 class Projectile;
-class Sound_manager;
-class Pictures_container;
 
 /**
  * 	@class Weapon
@@ -67,43 +62,14 @@ class Weapon
 protected:
 	weapon_type m_weapon_type;              /* type de l'arme */
 	uint32_t m_reload_time;                 /* temps entre deux tirs */
-	SDL_Surface **m_proj_pics;
-	Sound_manager *m_sound_manager;
 	int m_munitions;
 	float m_last_dir_h;
-	Pictures_container *m_pictures_container;
 public:
 	
 	/**
 	 * 	@brief Constructeur
 	*/	
 	Weapon();
-
-	/**
-	 * 	@brief Constructeur
-	 *	@param pictures_container Le gestionnaire d'images
-	 *	@param sound_manager Le gestionnaire de son
-	*/
-	Weapon(Pictures_container *pictures_container, Sound_manager *sound_manager);
-
-
-	/**
-	 * 	@brief Constructeur
-	 *	@param proj_pics images des projectiles de l'armes
-	 *	@todo changer le chargement des images des projectiles\n
-	 *	(éventuellement le déléguer à projectiles)
-	*/
-	Weapon(SDL_Surface **proj_pics);
-
-	/**
-	 * 	@brief Constructeur
-	 *	@param type Le type de l'arme
-	 *	@param proj_pics Images des projectiles de l'armes
-	 *	@param sound_manager Le gestionnaire de son
-	 *	@todo changer le chargement des images des projectiles\n
-	 *	(éventuellement le déléguer à projectiles)
-	*/
-	Weapon(weapon_type type, SDL_Surface **proj_pics, Sound_manager *sound_manager);
 
 	/**
 	 * 	@brief Destructeur
@@ -124,12 +90,7 @@ public:
 	 */
 	virtual uint32_t reload_time() const;
 	
-	/**
-	 * 	@brief Changement d'arme
-	 *	@param type Le type de la nouvelle arme
-	 */
-	virtual void change_weapon(weapon_type type);
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le nombre de munitions restantes

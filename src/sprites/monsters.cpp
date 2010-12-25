@@ -14,6 +14,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../video/surface.h"
+#include "../sound/sound_manager.h"
 
 
 
@@ -22,7 +23,8 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster(Sound_manager *sound_manager) {
+Monster::Monster(Sound_manager *sound_manager) 
+{
 	m_sound_manager = sound_manager;
 }
 
