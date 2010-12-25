@@ -41,7 +41,7 @@
 			<Add library="winmm" />
 			<Add library="dxguid" />
 			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libfmodex.a" />
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libfmod.a" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="..\src\control\keyboard.cpp" />

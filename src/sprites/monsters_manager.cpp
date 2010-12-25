@@ -30,7 +30,7 @@ Monsters_manager::Monsters_manager() {
 Monsters_manager::~Monsters_manager() {
 
 }
-           
+
 void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *sound_manager, Pictures_container *pictures_container) {
     void_list();
 	analyser->find_string("#Monsters#");
@@ -42,11 +42,14 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser, Sound_manager *
 			add(curr_monster);
 			m_following_monsters.push_back(curr_monster);
 		} else if (monster_type == "walking_monster") {
+			Walking_monster * curr_monster = new Walking_monster(sound_manager, analyser, pictures_container);
+			add(curr_monster);
+			m_not_following_monsters.push_back(curr_monster);
+		} else if (monster_type == "flying_monster") {
 			Flying_monster * curr_monster = new Flying_monster(sound_manager, analyser, pictures_container);
 			add(curr_monster);
 			m_not_following_monsters.push_back(curr_monster);
-		} 
-		
+		}
 	}
 }
 
@@ -65,8 +68,8 @@ void Monsters_manager::monsters_update_speed(Babar *babar){
 	    (*it)->update_speed();
 	}
 
-	
-	
+
+
 }
 
 void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) {
@@ -100,15 +103,15 @@ void Monsters_manager::babar_monsters_collision(Babar *babar) {
 void Monsters_manager::init() {
 	m_monsters.init();
 }
-	
+
 bool Monsters_manager::end() {
 	return m_monsters.end();
 }
-	
+
 void Monsters_manager::next() {
 	m_monsters.next();
 }
-	
+
 Monster *Monsters_manager::element() {
 	return m_monsters.element();
 }
