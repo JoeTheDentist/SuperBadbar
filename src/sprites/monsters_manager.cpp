@@ -18,6 +18,7 @@
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 #include "../util/analyser.h"
+#include "../sound/sound_engine.h"
 
 
 
@@ -84,6 +85,14 @@ void Monsters_manager::babar_monsters_collision(Babar *babar) {
 			babar->damage(1);
 		}
 	}
+}
+
+void Monsters_manager::play_sounds(Sound_engine *sound_engine)
+{
+	for(std::list<Monster *>::iterator it = m_monsters.begin();
+			it != m_monsters.end(); it++){
+		sound_engine->play_sound((*it));
+	}	
 }
 
 void Monsters_manager::init() {

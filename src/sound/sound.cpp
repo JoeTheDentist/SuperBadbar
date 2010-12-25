@@ -20,3 +20,8 @@ Sound::~Sound()
 {
 	
 }
+
+std::string Sound::get_string()
+{
+	return m_sound;
+}

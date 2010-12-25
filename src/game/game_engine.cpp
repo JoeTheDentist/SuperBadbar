@@ -16,6 +16,7 @@
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 #include "../sound/sound_manager.h"
+#include "../sound/sound_engine.h"
 #include "../control/keyboard.h"
 #include "../util/debug.h"
 #include "../sprites/sprites.h"
@@ -160,4 +161,10 @@ void Game_engine::update_events_manager() {
 
 void Game_engine::display_events(Camera *camera) {
 	m_events_manager->display_events(camera);
+}
+
+
+void Game_engine::play_sounds(Sound_engine *sound_engine)
+{
+	m_monsters_manager->play_sounds(sound_engine);
 }

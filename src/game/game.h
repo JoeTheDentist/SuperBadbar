@@ -21,6 +21,7 @@
 
 class Game_engine;
 class Static_data;
+class Sound_engine;
 class Sound_manager;
 class Dashboard;
 class Keyboard;
@@ -41,7 +42,7 @@ private:
 	Static_data *m_static_data;
 	Game_engine *m_game_engine;
 	Graphic_engine *m_graphic_engine;
-
+	Sound_engine *m_sound_engine;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
@@ -69,6 +70,11 @@ private:
 	 * 	@brief Rafraichissement de l'affichage
 	*/
 	void refresh_screen();		
+
+	/*!
+	 * 	@brief Joue les sons à jouer ce cycle
+	*/
+	void play_sounds();		
 
 
 

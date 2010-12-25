@@ -14,7 +14,6 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../video/surface.h"
-#include "../sound/sound_manager.h"
 
 
 
@@ -70,6 +69,7 @@ void Monster::update_speed(Babar * babar)
 void Monster::damage(uint32_t damage)
 {
     m_life -= damage;
+	prepare_sound(MONSTERS_SOUNDS_R + "kickass" + SOUNDS_EXT);
 }
 
 bool Monster::dead() const

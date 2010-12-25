@@ -27,7 +27,7 @@ class Events_manager;
 class Collisions_manager;
 class Projectiles_manager;
 class Pictures_container;
-
+class Sound_engine;
 
  
 /**
@@ -155,6 +155,13 @@ public:
 	*/
 	void display_events(Camera *camera);
 
+
+	
+	/*!
+	 * 	@brief Joue les sons à jouer ce cycle
+	 *	@param sound_engine Gestionnaire de son
+	*/
+	void play_sounds(Sound_engine *sound_engine);		
 };
 
 

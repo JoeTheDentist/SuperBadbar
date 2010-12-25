@@ -33,10 +33,11 @@
 #include "../video/statics.h"
 #include "../events/events_manager.h"
 #include "../video/talks.h"
+#include "../sound/sound_engine.h"
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine())
+Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
@@ -56,6 +57,7 @@ Game::~Game()
 	delete m_static_data;
 	delete m_game_engine;
 	delete m_graphic_engine;
+	delete m_sound_engine;
 
 }
 
@@ -145,6 +147,7 @@ void Game::game_loop()
 			check_monsters();
 			int begin_refresh = SDL_GetTicks();
 			refresh_screen();
+			play_sounds();
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
@@ -178,4 +181,7 @@ void Game::check_monsters()
 	m_game_engine->update_monsters_projectiles();
 }
 
-
+void Game::play_sounds()
+{
+	m_game_engine->play_sounds(m_sound_engine);
+}

@@ -24,7 +24,7 @@ class Babar;
 class Static_data;
 class Analyser;
 class Collisions_manager;
-
+class Sound_engine;
 
 /**
  * 	@class Monsters_manager
@@ -88,6 +88,11 @@ public:
 	*/
 	void babar_monsters_collision(Babar *babar);
 	
+	/*!
+	 * 	@brief Joue les sons à jouer ce cycle
+	 *	@param sound_engine Gestionnaire de son
+	*/
+	void play_sounds(Sound_engine *sound_engine);		
 	
 	/********************************************************
 	*			Fonctions de Parcours
