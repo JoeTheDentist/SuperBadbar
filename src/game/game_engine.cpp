@@ -167,4 +167,5 @@ void Game_engine::display_events(Camera *camera) {
 void Game_engine::play_sounds(Sound_engine *sound_engine)
 {
 	m_monsters_manager->play_sounds(sound_engine);
+	sound_engine->play_sound(m_babar);
 }

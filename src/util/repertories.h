@@ -37,7 +37,7 @@
 #define MONSTERS_STATS_R RACINE_R + "data/monsters/"
 #define SOUNDS_R RACINE_R + "sound/"
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"
-
+	#define BABAR_SOUNDS_R SOUNDS_R + "babar/"
 
 
 

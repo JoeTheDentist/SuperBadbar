@@ -209,7 +209,8 @@ void Babar::jump()
             m_keyboard->disable_key(k_jump);
         }
 	}
-
+	if (m_keyboard->time_pressed(k_jump) == 1)
+		prepare_sound(BABAR_SOUNDS_R + "jump" + SOUNDS_EXT);
 }
 
 bool Babar::can_double_jump() const

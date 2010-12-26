@@ -11,6 +11,7 @@
 #define _BABAR_
 
 #include "sprites.h"
+#include "../sound/sonorisable.h"
 #include "../util/analyser.h"
 #include "../video/animation.h"
 #include "../video/anim_table.h"
@@ -43,7 +44,7 @@ enum state_player {
  *	Une méthode doit renvoyer le tir au projectiles manager, au lieu de prendre le projectiles_manager en parametre
  *
  */
-class Babar: public Sprite {
+class Babar: public Sprite, public Sonorisable {
 protected:
     state_player m_state;
 	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
