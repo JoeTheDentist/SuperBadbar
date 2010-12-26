@@ -39,12 +39,12 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
 	std::string rac = RAC;
-	std::string background_name = "talks_background.bmp";
+	std::string background_name = "talks_background.png";
 	std::string font_name = "font1.ttf"; //
 	m_font_color.r = 0;
 	m_font_color.g = 0;
 	m_font_color.b = 0;
-	m_text_background = pictures_container->load_BMP((rac + PIC_TALKS_DIR + background_name).c_str());
+	m_text_background = pictures_container->load_IMG((rac + PIC_TALKS_DIR + background_name).c_str());
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
 	for (int i = 0; i < LINES_NUMBER; i++){
@@ -52,7 +52,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 		m_pos_text[i].x = POSX;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
-	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);	
+	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);
 }
 void Talks::display_background()
 {

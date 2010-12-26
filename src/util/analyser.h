@@ -20,7 +20,7 @@
 
 
 #define COLL_EXT ".col"
-#define PICS_EXT ".bmp"
+#define PICS_EXT ".png"
 
 /**
  * 	@class Analyser
@@ -66,7 +66,7 @@ public:
 	* @brief Saute les séparateurs dans le fichier ouvert
 	*
 	* Un séparateur est un espace, un retour à la ligne ou une ligne suivant //
-	* @warning non fonctionnelle sous windows 
+	* @warning non fonctionnelle sous windows
 	*/
 	void jump_separators();
 
@@ -84,7 +84,7 @@ public:
 	* @warning non fonctionnelle sur windows (à cause de jump_separators)
 	*/
 	bool end_of_section();
-	
+
 	/*!
 	* @brief Lit et renvoie le prochain int du fichier, en sautant les séparateurs
 	*
@@ -105,12 +105,12 @@ public:
 	* @return le string lu
 	*/
 	std::string read_string();
-	
+
 	/*!
 	* @brief Lit et renvoie le prochain char du fichier
 	*
 	* @return le char lu
-	*/	
+	*/
 	char read_char();
 
 };

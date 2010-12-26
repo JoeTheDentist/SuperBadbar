@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include <stdint.h>
 
 
@@ -32,12 +33,12 @@ Pictures_container::~Pictures_container()
 	PRINT_CONSTR(1, "Destruction d'un pictures_container");
 }
 
-SDL_Surface *Pictures_container::load_BMP(std::string key)
+SDL_Surface *Pictures_container::load_IMG(std::string key)
 {
 	std::map<std::string, SDL_Surface*>::iterator it = m_container.find(key);
 	SDL_Surface *surf = NULL;
 	if (it == m_container.end()) {
-		surf = SDL_LoadBMP((key).c_str());
+        surf = IMG_Load((key).c_str());
 		if (surf == NULL) {
 			PRINT_DEBUG(1, "impossible de charger l'image %s", key.c_str());
 			return NULL;

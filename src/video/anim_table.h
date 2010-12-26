@@ -17,7 +17,7 @@
 #include "../sprites/sprites.h"
 #include "../util/debug.h"
 
-#define PICS_EXT ".bmp"
+#define PICS_EXT ".png"
 
 class Surface;
 

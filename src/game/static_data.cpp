@@ -29,7 +29,7 @@ Static_data::~Static_data()
 	for(std::list<Static *>::iterator it = m_statics.begin();
 			it != m_statics.end(); it++) {
 	    delete (*it);
-	}	
+	}
 	delete m_background;
 
 }
@@ -46,15 +46,15 @@ void Static_data::init_static_data(uint32_t lvl)
 	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = new Surface(PIC_BACKGROUNDS_R + "level"+str_lvl+".bmp");
+    m_background = new Surface(PIC_BACKGROUNDS_R + "level"+str_lvl+".png");
 
 	/*** Images des projectiles ***/
 	rep = PIC_PROJ_R;
     /*** Remplissage des statics  ***/
 	rep = LEVELS_R;
     analyser.open(rep + "level" + str_lvl + ".lvl");
-	
-	
+
+
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name;
     analyser.find_string("#Statics#");

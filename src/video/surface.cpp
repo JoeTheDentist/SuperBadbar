@@ -6,8 +6,8 @@
  * 	@date decembre 2010
  *
  */
- 
- 
+
+
 #include <iostream>
 #include <SDL/SDL.h>
 #include "surface.h"
@@ -21,7 +21,7 @@ Pictures_container *Surface::m_pictures_container = NULL;
 Surface::Surface(std::string filename)
 {
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
-	m_surface = m_pictures_container->load_BMP(filename);
+	m_surface = m_pictures_container->load_IMG(filename);
 }
 
 Surface::~Surface()

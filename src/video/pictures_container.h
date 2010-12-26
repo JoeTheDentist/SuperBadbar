@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _PICTURES_CONTAINER_
 #define _PICTURES_CONTAINER_
 
@@ -19,7 +19,7 @@
  * 	@class Pictures_container
  * 	@brief Charge les images de façon à optimiser la mémoire
  *
- *	Fournit une méthode load_BMP qui charge une image en fonction
+ *	Fournit une méthode load_IMG qui charge une image en fonction
  *	de son chemin, stocke cette image et en renvoie un pointeur.
  *	Si cette image a déjà été chargé une fois, la méthode renvoie
  *	un pointeur vers l'image déjà chargée.
@@ -49,8 +49,7 @@ public:
 	 *	@param key Le chemin vers l'image
 	 *	@return Un pointeur vers l'image voulue
 	 */
-	SDL_Surface *load_BMP(std::string key);
-	
+	SDL_Surface *load_IMG(std::string key);
 };
 
 
