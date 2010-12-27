@@ -28,13 +28,10 @@ class Sonorisable;
  */
 class Sound_engine {
 private:
-	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
+//~ 	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
 
-	/*FSOUND_STREAM *m_music;
-	FSOUND_SAMPLE *m_babar_jump;
-	FSOUND_SAMPLE *m_babar_rugissement;
-	FSOUND_SAMPLE **m_fire;
-	FSOUND_SAMPLE *m_monster_damage;*/
+	/*FSOUND_STREAM *m_music;*/
+
 
 
 public:

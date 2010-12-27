@@ -145,10 +145,11 @@ void Game::game_loop()
 			update_speed();
 			update_pos();
 			check_monsters();
-			m_game_engine->delete_dead_monsters();
 			int begin_refresh = SDL_GetTicks();
 			refresh_screen();
 			play_sounds();
+			m_game_engine->delete_dead_monsters();
+
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
