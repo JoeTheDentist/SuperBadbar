@@ -8,7 +8,7 @@
 
 Window::Window(std::string static_name)
 {
-	m_background = SDL_LoadBMP((STATICS_DIR + static_name + PICS_EXT).c_str());
+	m_background = IMG_Load((STATICS_DIR + static_name + PICS_EXT).c_str());
 	if (m_background == NULL) {
 		std::cout << "Erreur: impossible de trouver le fichier " << STATICS_DIR + static_name + PICS_EXT << std::endl;
 		return;
@@ -22,10 +22,10 @@ Window::Window(std::string static_name)
 	SDL_BlitSurface(m_background, NULL, m_screen, NULL);
 	/* chargement des images de collision: vert pour downcollision et rouge pour un block de collision */
 	m_square_block = SDL_CreateRGBSurface(SDL_SWSURFACE, SQUARE_SIZE, SQUARE_SIZE, 32, 0, 0,  0, 0);
-	SDL_FillRect(m_square_block, NULL,  SDL_MapRGB(m_screen->format, 255, 0, 0));	
+	SDL_FillRect(m_square_block, NULL,  SDL_MapRGB(m_screen->format, 255, 0, 0));
 	m_square_down_coll = SDL_CreateRGBSurface(SDL_SWSURFACE, SQUARE_SIZE, SQUARE_SIZE, 32, 0, 0,  0, 0);
 	SDL_FillRect(m_square_down_coll, NULL,  SDL_MapRGB(m_screen->format, 0, 255, 0));
-	m_square_climb_coll = SDL_LoadBMP((EDITOR_PIC_DIR + std::string("climb_coll.bmp")).c_str());
+	m_square_climb_coll = IMG_Load((EDITOR_PIC_DIR + std::string("climb_coll.bmp")).c_str());
 	/* flip */
 	SDL_Flip(m_screen);
 }
@@ -56,7 +56,7 @@ void Window::blit_square(uint32_t weight, uint32_t height, uint32_t coll_type)
 		square = SDL_CreateRGBSurface(SDL_SWSURFACE, SQUARE_SIZE, SQUARE_SIZE, 32, 0, 0,  0, 0);
 		pos2.x = -weight;
 		pos2.y = -height;
-		SDL_BlitSurface(m_background, NULL, square, &pos2);                              
+		SDL_BlitSurface(m_background, NULL, square, &pos2);
 		SDL_BlitSurface(square, NULL, m_screen, &pos);
 	break;
 	case DOWN_COLL:
@@ -82,8 +82,8 @@ void Window::flip_screen()
 
 uint32_t static_weight(std::string static_name)
 {
-	SDL_Surface *pic =SDL_LoadBMP((STATICS_DIR + static_name + PICS_EXT).c_str());
-	if (pic == NULL) 
+	SDL_Surface *pic =IMG_Load((STATICS_DIR + static_name + PICS_EXT).c_str());
+	if (pic == NULL)
 		return 0;
 	SDL_FreeSurface(pic);
 	return (pic->w / SQUARE_SIZE) + 1;
@@ -91,8 +91,8 @@ uint32_t static_weight(std::string static_name)
 
 uint32_t static_height(std::string static_name)
 {
-	SDL_Surface *pic =SDL_LoadBMP((STATICS_DIR + static_name + PICS_EXT).c_str());
-	if (pic == NULL) 
+	SDL_Surface *pic =IMG_Load((STATICS_DIR + static_name + PICS_EXT).c_str());
+	if (pic == NULL)
 		return 0;
 	SDL_FreeSurface(pic);
 	return (pic->h / SQUARE_SIZE) + 1;

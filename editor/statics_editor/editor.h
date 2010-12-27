@@ -10,7 +10,7 @@
 
 #define STATICS_DIR "../../pic/statics/"
 #define COLL_EXT ".col"
-#define PICS_EXT ".bmp"
+#define PICS_EXT ".png"
 #define EDITOR_PIC_DIR "../../../pic/editor/"
 
 #include "statics.h"

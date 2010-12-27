@@ -3,6 +3,7 @@
 
 #include <string>
 #include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 
 
 class Window {
@@ -13,7 +14,7 @@ private:
 	SDL_Surface *m_square_down_coll;	/* surface d'un carré de collision inférieure */
 	SDL_Surface *m_square_climb_coll; 	/* surface d'un carré de collision climb */
 public:
-	Window(std::string static_name);/* constructeur à partir du fichier correspondant au static_name */		
+	Window(std::string static_name);/* constructeur à partir du fichier correspondant au static_name */
 	~Window();						/* destructeur */
 	void blit_background();			/* blit le fond d'écran */
 	void blit_square(uint32_t weight, uint32_t height, uint32_t coll_type); /* blit un carré de type coll_type
