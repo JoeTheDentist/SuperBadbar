@@ -198,7 +198,7 @@ void Babar::crouch()
 {
     m_crouch_time++;
     m_state = CROUCH;
-    if ( m_keyboard->key_down(k_right) || m_keyboard->key_down(k_right) )
+    if ( m_keyboard->key_down(k_right) || m_keyboard->key_down(k_left) )
         m_state = CROUCH_WALKING;
 }
 
