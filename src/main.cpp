@@ -7,6 +7,7 @@
  *
  */
 
+//~ #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_ttf.h>
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 	#endif
 
 	PRINT_TRACE(1,"Lancement du jeu")
+//~ 	sf::RenderWindow my_window;
 
 	Game game;
 
