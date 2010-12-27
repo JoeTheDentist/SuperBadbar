@@ -77,10 +77,20 @@ void Babar::update_speed()
     m_speed.y += GRAVITE;
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
-    if (m_keyboard->key_down(k_left))
-        m_speed.x -= BABAR_SPEED;
-    if (m_keyboard->key_down(k_right))
-        m_speed.x += BABAR_SPEED;
+    if (m_keyboard->key_down(k_left)) {
+        if ( m_state == CROUCH ) {
+            m_speed.x -= BABAR_SPEED/2;
+        } else {
+            m_speed.x -= BABAR_SPEED;
+        }
+    }
+    if (m_keyboard->key_down(k_right)) {
+        if ( m_state == CROUCH ) {
+            m_speed.x += BABAR_SPEED/2;
+        } else {
+            m_speed.x += BABAR_SPEED;
+        }
+    }
 }
 
 void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager)
