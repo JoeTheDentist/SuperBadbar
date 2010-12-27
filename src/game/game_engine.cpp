@@ -83,7 +83,6 @@ void Game_engine::babar_update_pos(Static_data *static_data)
 	m_babar->update_pos(static_data, m_collisions_manager);
 }
 
-
 void Game_engine::monsters_update_pos(Static_data*static_data)
 {
 	m_monsters_manager->monsters_update_pos(static_data, m_collisions_manager);
@@ -125,6 +124,11 @@ void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
 	m_projectiles_manager->delete_old_projectiles(static_data);
 }
 
+void Game_engine::delete_dead_monsters()
+{
+	m_monsters_manager->delete_dead_monsters();
+}
+
 void Game_engine::update_monsters_projectiles()
 {
     m_monsters_manager->init();
@@ -132,18 +136,14 @@ void Game_engine::update_monsters_projectiles()
 		Monster *monster = m_monsters_manager->element();
         for (std::list<Projectile *>::iterator it = m_projectiles_manager->proj_friend_begin();
 				it != m_projectiles_manager->proj_friend_end(); it++){
+			if (monster->dead())
+				break;
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
                 monster->damage((*it)->damage());
                 (*it)->kill();
 			}
-			if (monster->dead())
-				break;
         }
-        if ( monster->dead() ) {
-            m_monsters_manager->delete_element();
-        } else {
-            m_monsters_manager->next();
-        }
+		m_monsters_manager->next();
     }
 }
 

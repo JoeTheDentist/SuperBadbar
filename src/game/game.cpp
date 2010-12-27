@@ -145,6 +145,7 @@ void Game::game_loop()
 			update_speed();
 			update_pos();
 			check_monsters();
+			m_game_engine->delete_dead_monsters();
 			int begin_refresh = SDL_GetTicks();
 			refresh_screen();
 			play_sounds();

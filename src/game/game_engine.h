@@ -131,6 +131,11 @@ public:
 	*/
 	void delete_old_projectiles_friend(Static_data *static_data);
 	
+	/*!
+	* 	@brief Supprime les monstres qui n'ont plus de vies
+	*/
+	void delete_dead_monsters();
+	
 	/**
 	 * 	@brief Check les collisions monstres/projectiles
 	 *	@todo à revoir / changer
@@ -160,6 +165,8 @@ public:
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle
 	 *	@param sound_engine Gestionnaire de son
+	 *
+	 * Gère pour l'instant les sons de babar et des monstres
 	*/
 	void play_sounds(Sound_engine *sound_engine);		
 };

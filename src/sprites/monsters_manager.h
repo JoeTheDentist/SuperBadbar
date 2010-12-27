@@ -128,9 +128,10 @@ public:
 	Monster *element();
 	
 	/*!
-	* 	@brief vide la liste des monstres
+	* 	@brief Supprime les monstres qui n'ont plus de vies
 	*/
-//~ 	void void_list();
+	void delete_dead_monsters();
+
 };
  
  
