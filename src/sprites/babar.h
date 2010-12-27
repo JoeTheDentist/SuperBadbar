@@ -28,7 +28,7 @@ class Weapons_armory;
 
 
 enum state_player {
-    STATIC, WALK, JUMP, CROUCH
+    STATIC, WALK, JUMP, CROUCH, CROUCH_WALKING
 };
 
 /**

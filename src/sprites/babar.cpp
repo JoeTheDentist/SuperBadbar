@@ -78,15 +78,15 @@ void Babar::update_speed()
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
     if (m_keyboard->key_down(k_left)) {
-        if ( m_state == CROUCH ) {
-            m_speed.x -= BABAR_SPEED/2;
+        if ( m_state == CROUCH_WALKING ) {
+            m_speed.x -= BABAR_SPEED/3;
         } else {
             m_speed.x -= BABAR_SPEED;
         }
     }
     if (m_keyboard->key_down(k_right)) {
-        if ( m_state == CROUCH ) {
-            m_speed.x += BABAR_SPEED/2;
+        if ( m_state == CROUCH_WALKING ) {
+            m_speed.x += BABAR_SPEED/3;
         } else {
             m_speed.x += BABAR_SPEED;
         }
@@ -181,7 +181,7 @@ std::list<Projectile*> *Babar::fire()
 
 bool Babar::can_walk() const
 {
-    return (m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP && m_state!=CROUCH);
+    return (m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP && m_state!=CROUCH && m_state!=CROUCH_WALKING );
 }
 
 void Babar::walk()
@@ -198,7 +198,8 @@ void Babar::crouch()
 {
     m_crouch_time++;
     m_state = CROUCH;
-    /* ralentissement depuis debut de crouch */
+    if ( m_keyboard->key_down(k_right) || m_keyboard->key_down(k_right) )
+        m_state = CROUCH_WALKING;
 }
 
 bool Babar::can_jump() const
