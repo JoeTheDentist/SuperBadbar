@@ -31,14 +31,7 @@ int main(int argc, char *argv[])
 	#endif
 
 	PRINT_TRACE(1,"Lancement du jeu")
-	PRINT_TRACE(1, "Initialisation de SDL")
-	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
-	}
-	PRINT_TRACE(1, "Initialisation de TTF")
-	if (TTF_Init() == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
-	}
+
 	Game game;
 
 

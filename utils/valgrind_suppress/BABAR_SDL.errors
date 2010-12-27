@@ -1,0 +1,74 @@
+==5454== 1 bytes in 1 blocks are still reachable in loss record 1 of 54
+==5454==    at 0x4026FDE: malloc (vg_replace_malloc.c:207)
+==5454==    by 0x4B1002A: _XlcDefaultMapModifiers (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B100AE: XSetLocaleModifiers (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x44356AD: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x443F27D: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44400E1: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x442DBE2: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4400987: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44009E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x8056DF3: Graphic_engine::Graphic_engine() (graphic_engine.cpp:27)
+==5454==    by 0x8055831: Game::Game() (game.cpp:40)
+==5454==    by 0x80583D7: main (main.cpp:35)
+==5454== 
+==5454== 
+==5454== 4 bytes in 1 blocks are still reachable in loss record 3 of 54
+==5454==    at 0x4026FDE: malloc (vg_replace_malloc.c:207)
+==5454==    by 0x4B1C37C: _XimOpenIM (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B00089: XOpenIM (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4435652: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x443F2AA: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44400E1: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x442DBE2: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4400987: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44009E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x8056DF3: Graphic_engine::Graphic_engine() (graphic_engine.cpp:27)
+==5454==    by 0x8055831: Game::Game() (game.cpp:40)
+==5454==    by 0x80583D7: main (main.cpp:35)
+==5454== 
+==5454== 
+==5454== 20 bytes in 1 blocks are still reachable in loss record 8 of 54
+==5454==    at 0x4025092: calloc (vg_replace_malloc.c:397)
+==5454==    by 0x455D085: (within /lib/tls/i686/cmov/libdl-2.9.so)
+==5454==    by 0x455CB20: dlopen (in /lib/tls/i686/cmov/libdl-2.9.so)
+==5454==    by 0x443203C: SDL_LoadObject (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4435FC9: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x443E86B: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x442DCB0: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4400987: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44009E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x8056DF3: Graphic_engine::Graphic_engine() (graphic_engine.cpp:27)
+==5454==    by 0x8055831: Game::Game() (game.cpp:40)
+==5454==    by 0x80583D7: main (main.cpp:35)
+==5454== 
+==5454== 
+==5454== 12 bytes in 2 blocks are definitely lost in loss record 12 of 54
+==5454==    at 0x4026FDE: malloc (vg_replace_malloc.c:207)
+==5454==    by 0x4B23D72: (within /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B22D11: _XimEncodeLocalICAttr (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B24058: _XimSetICValueData (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B1CB7E: _XimLocalCreateIC (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4AFFDF8: XCreateIC (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x443EE46: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44400E1: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x442DBE2: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4400987: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44009E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x8056DF3: Graphic_engine::Graphic_engine() (graphic_engine.cpp:27)
+==5454== 
+==5454== 
+==5454== 24 bytes in 2 blocks are still reachable in loss record 17 of 54
+==5454==    at 0x4026FDE: malloc (vg_replace_malloc.c:207)
+==5454==    by 0x4B0FAA3: _XOpenLC (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B0FBD2: _XlcCurrentLC (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x4B10080: XSetLocaleModifiers (in /usr/lib/libX11.so.6.2.0)
+==5454==    by 0x44356AD: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x443F27D: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44400E1: (within /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x442DBE2: SDL_VideoInit (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x4400987: SDL_InitSubSystem (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x44009E6: SDL_Init (in /usr/lib/libSDL-1.2.so.0.11.2)
+==5454==    by 0x8056DF3: Graphic_engine::Graphic_engine() (graphic_engine.cpp:27)
+==5454==    by 0x8055831: Game::Game() (game.cpp:40)
+!!!

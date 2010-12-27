@@ -2,8 +2,8 @@
 #include <string>
 #include <fstream>
  
-#define INPUT "other_SDL.errors" 
-#define OUTPUT "other_SDL.supp"
+#define INPUT "BABAR_SDL.errors" 
+#define OUTPUT "BABAR_SDL.supp"
 
 using namespace std;
 
