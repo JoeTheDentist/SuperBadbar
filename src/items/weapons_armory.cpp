@@ -46,7 +46,6 @@ void Weapons_armory::add_weapon(weapon_type type)
 	// Cas où l'arme est déjà présente
 	if (it != m_armory.end()) {
 		if ((*it)->type_of_weapon() == type) {
-			PRINT_DEBUG(1, "MEME TYPE!") 
 			(*it)->add_munitions();
 			return;
 		}
@@ -90,7 +89,6 @@ void Weapons_armory::update()
 
 void Weapons_armory::next_weapon()
 {
-	PRINT_DEBUG(1, "NEXT WEAPON");
 	m_current_weapon++;
 	if (m_current_weapon == m_armory.end())
 		m_current_weapon = m_armory.begin();
@@ -98,7 +96,6 @@ void Weapons_armory::next_weapon()
 
 void Weapons_armory::previous_weapon()
 {
-	PRINT_DEBUG(1, "PREVIOUS WEAPON");
 	if (m_current_weapon == m_armory.begin()) 
 		m_current_weapon = m_armory.end();
 	m_current_weapon--;

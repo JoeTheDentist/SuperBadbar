@@ -36,7 +36,6 @@
 
 Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_collisions_manager(new Collisions_manager()), m_projectiles_manager(new Projectiles_manager())
 {
-	m_sound_manager = NULL;
 	m_babar = NULL;
 }
 
@@ -52,12 +51,11 @@ Game_engine::~Game_engine()
 
 }
 
-void Game_engine::init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard, Pictures_container *pictures_container)
+void Game_engine::init_game_engine(int level, Camera *camera, Static_data *static_data, Keyboard *keyboard, Pictures_container *pictures_container)
 {
     std::string rac = RAC;
 	std::string rep;
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
-	m_sound_manager = sound_manager;
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
 	m_collisions_manager->init_collisions_manager(level);
@@ -73,24 +71,19 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 
 }
 
-void Game_engine::projectiles_update_pos()
+void Game_engine::update_pos(Static_data *static_data)
 {
 	m_projectiles_manager->update_pos(m_collisions_manager);
-}
-
-void Game_engine::babar_update_pos(Static_data *static_data)
-{
 	m_babar->update_pos(static_data, m_collisions_manager);
-}
-
-void Game_engine::monsters_update_pos(Static_data*static_data)
-{
 	m_monsters_manager->monsters_update_pos(static_data, m_collisions_manager);
 }
 
-void Game_engine::babar_update_speed()
+
+void Game_engine::update_speed()
 {
 	m_babar->update_speed();
+	m_monsters_manager->monsters_update_speed(m_babar);
+	
 }
 
 void Game_engine::babar_update_state(Static_data *static_data)
@@ -101,11 +94,6 @@ void Game_engine::babar_update_state(Static_data *static_data)
 void Game_engine::babar_monsters_collision()
 {
 	m_monsters_manager->babar_monsters_collision(m_babar);
-}
-
-void Game_engine::monsters_update_speed()
-{
-	m_monsters_manager->monsters_update_speed(m_babar);
 }
 
 void Game_engine::display_monsters(Camera *camera)

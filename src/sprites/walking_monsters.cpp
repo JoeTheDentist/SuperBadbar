@@ -28,7 +28,6 @@ Walking_monster::Walking_monster(Analyser *analyserLevel)
 	m_pos.y = analyserLevel->read_int();
 	m_area_begin = analyserLevel->read_uint32_t();
 	m_area_end = analyserLevel->read_uint32_t();
-	PRINT_DEBUG(1, "%d %d \n", m_area_begin, m_area_end);
 
 	// donnees propres a la nature du monstre (a chercher dans le bestiaire)
 	analyserMonster.open((MONSTERS_STATS_R + m_nom + MONSTERS_EXT).c_str());

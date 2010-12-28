@@ -19,29 +19,20 @@
 #include "../control/keyboard.h"
 
 #include "../sprites/babar.h"
-#include "../sprites/monsters.h"
-#include "../sprites/projectiles.h"
-#include "../util/lists.h"
-#include "../sprites/sprites.h"
-#include "../sprites/babar.h"
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
-#include "../sound/sound.h"
-#include "../sound/sound_manager.h"
-#include "../video/statics.h"
 #include "../events/events_manager.h"
-#include "../video/talks.h"
 #include "../sound/sound_engine.h"
 
 
 
-Game::Game(): m_sound_manager(new Sound_manager()), m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
+Game::Game(): m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, m_sound_manager,
+	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, 
 									m_keyboard, m_graphic_engine->get_pictures_container());
 	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
 	m_time = SDL_GetTicks();
@@ -52,7 +43,6 @@ Game::~Game()
 {
 	
 	PRINT_CONSTR(1, "Destruction de la classe Game")
-	delete m_sound_manager;
 	delete m_keyboard;
 	delete m_static_data;
 	delete m_game_engine;
@@ -68,17 +58,12 @@ void Game::update_keyboard()
 
 void Game::update_game()
 {
-	m_game_engine->babar_monsters_collision();
-	m_game_engine->babar_update_pos(m_static_data);
-	m_game_engine->projectiles_update_pos();
-	m_game_engine->monsters_update_pos(m_static_data);	
-
-	m_game_engine->babar_update_speed();
-	m_game_engine->monsters_update_speed();
-	m_game_engine->babar_update_state(m_static_data);
-
-	m_game_engine->update_monsters_projectiles();
 	
+	m_game_engine->update_pos(m_static_data);	
+	m_game_engine->update_speed();	
+	m_game_engine->babar_update_state(m_static_data);	
+	m_game_engine->update_monsters_projectiles();
+	m_game_engine->babar_monsters_collision();
 	m_game_engine->update_events_manager();
 }
 
@@ -115,9 +100,6 @@ void Game::update_graphic()
 	/* affichage des projectiles */
 	m_game_engine->display_projectiles_friend(camera);
 	
-	
-
-	
 	/* affichage du sprite babar */
 	camera->display_sprite(m_game_engine->babar());
 	
@@ -135,7 +117,6 @@ void Game::game_loop()
 	float used_time_refresh_screen = 0;
 	bool end = false;
 	int begining = SDL_GetTicks();
-	m_sound_manager->play_music();
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {

@@ -22,8 +22,6 @@
 class Game_engine;
 class Static_data;
 class Sound_engine;
-class Sound_manager;
-class Dashboard;
 class Keyboard;
 class Graphic_engine;
 
@@ -37,7 +35,6 @@ class Graphic_engine;
  */
 class Game {
 private:
-	Sound_manager *m_sound_manager;
 	Keyboard *m_keyboard;
 	Static_data *m_static_data;
 	Game_engine *m_game_engine;

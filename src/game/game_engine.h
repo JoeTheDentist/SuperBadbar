@@ -16,10 +16,7 @@
 
 class Static_data;
 class Game;
-class Projectile;
-class Monster;
 class Camera;
-class Sound_manager;
 class Keyboard;
 class Babar;
 class Monsters_manager;
@@ -41,7 +38,6 @@ class Game_engine {
 private:
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
-	Sound_manager *m_sound_manager;
 	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
 	Events_manager *m_events_manager;
@@ -64,34 +60,21 @@ public:
 	 * 	@param level Le numéro du niveau à charger
 	 * 	@param camera La camera qui servira à afficher les images
 	 * 	@param static_data Données du niveau
-	 * 	@param sound_manager Gestionnaire de son
 	 * 	@param keyboard Gestionnaire du clavier
 	 *	@param pictures_container Le gestionnaire d'images
 	*/
-	void init_game_engine(int level, Camera *camera, Static_data *static_data, Sound_manager *sound_manager, Keyboard *keyboard, Pictures_container *pictures_container);						
+	void init_game_engine(int level, Camera *camera, Static_data *static_data, Keyboard *keyboard, Pictures_container *pictures_container);						
 	
 	/**
-	 * 	@brief Mise à jour des positions des projectiles 
+	 * 	@brief Mise à jour des positions des éléments du jeu 
 	 *	@todo à déplacer
 	*/
-	void projectiles_update_pos();
-	
-	/**
-	 * 	@brief Mise à jour de la position de babar
-	 *	@param static_data données du niveau
-	*/
-	void babar_update_pos(Static_data *static_data);
-	
-	/**
-	 * 	@brief Mise à jour de la position des monstres
-	 *	@param static_data données du niveau
-	*/
-	void monsters_update_pos(Static_data *static_data);
+	void update_pos(Static_data *static_data);
 
 	/**
-	 * 	@brief Mise à jour de la vitesse de babar
+	 * 	@brief Mise à jour des vitesses des éléments du jeu
 	*/
-	void babar_update_speed();
+	void update_speed();
 	
 	/**
 	 * 	@brief Mise à jour de l'état de babar
@@ -105,11 +88,6 @@ public:
 	*/
 	void babar_monsters_collision();
 	
-	/**
-	 * 	@brief Mise à jour de la vitesse des monstres
-	*/
-	void monsters_update_speed();	
-
 	/**
 	 * 	@brief Affichage des monstres
 	 *	@param camera La camera d'affichage
