@@ -42,6 +42,7 @@ class Events_manager;
 class Event;
 class Surface;
 class Moving_platform;
+class Displayable;
 
 class Camera {
 private:
@@ -103,7 +104,15 @@ public:
 	*/
 	void display_static(Static *sttc) ;
 	
-	void display_platform(Moving_platform *platform);
+	/*!
+	* 	@brief Affiche le Displayable passé en paramètre à l'écran
+	*	@param entity le Displayable à afficher
+	*	Le Displayable est affiché en fonction de sa position 
+	*	relativement à la position de la caméra
+	*	Si le Displayable vaut NULL, rien ne se passe	
+	*	@todo N'utiliser que cette méthode 
+	*/	
+	void display(Displayable * const entity) const;
 	
 	/*!
 	* 	@brief Affiche les événements affichables de l'event_manager

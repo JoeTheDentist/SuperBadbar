@@ -83,7 +83,7 @@ public:
 	 *	@brief Affiche les plateformes mobiles
 	 *	@param camera Le gestionnaire d'affichage
 	*/
-	void display_platforms(Camera *camera);
+	void display_platforms(Camera * const camera) const;
 
 		
 	/*!
@@ -94,15 +94,18 @@ public:
 	 *	@brief 
 	*/	
 	void update_platforms_speed();
+	
 	/*!
 	 *	@brief 
 	*/
+	void update_babar_platforms(Babar *babar);
 
 
 
 
-
-
+	/*!
+	 *	@brief 
+	*/
 
 
 

@@ -92,7 +92,7 @@ public:
 	 * 	@brief Affichage des monstres
 	 *	@param camera La camera d'affichage
 	*/
-	void display_monsters(Camera *camera);	
+	void display_monsters(Camera * const camera) const;	
 
  	/**
 	 * 	@brief Affichage des projectiles amis

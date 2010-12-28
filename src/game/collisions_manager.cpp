@@ -89,9 +89,9 @@ bool Collisions_manager::check_collision(Rect A, Rect B) //Optimisable?
 	return A_in_B || B_in_A;
 }
 
-void Collisions_manager::display_platforms(Camera *camera)
+void Collisions_manager::display_platforms(Camera * const camera) const
 {
-	camera->display_platform(m_moving_platform);
+	camera->display(m_moving_platform);
 }
 
 void Collisions_manager::update_platforms_pos(Babar *babar)
@@ -103,6 +103,22 @@ void Collisions_manager::update_platforms_speed()
 {
 	m_moving_platform->update_speed();
 }
+
+
+void Collisions_manager::update_babar_platforms(Babar *babar)
+{
+	if(m_moving_platform->check_babar(babar)) {
+		m_moving_platform->bind(babar);
+		babar->bind(m_moving_platform);
+	}
+}
+
+
+
+
+
+
+
 
 uint32_t Collisions_manager::collision(uint32_t x, uint32_t y)
 {

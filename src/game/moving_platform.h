@@ -11,7 +11,9 @@
 #define _MOVING_PLATFORM_
 
 #include <string>
+#include <stdint.h>
 #include "../util/globals.h"
+#include "../video/displayable.h"
 
 class Surface;
 class Babar;
@@ -31,13 +33,13 @@ class Babar;
  *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
  *	il faudra remplacer Babar par une liste de Babar
  */
-class Moving_platform {
+class Moving_platform : public Displayable {
 private:
 	Surface *m_surface;
 	Babar *m_babar;
 	Rect m_pos;
 	Rect m_speed;
-	unsigned int ** m_collisions_matrix;
+	uint32_t ** m_collisions_matrix;
 	int coll_size_w;
 	int coll_size_h;
 	int m_phase;
@@ -82,15 +84,27 @@ public:
 	 * 	@brief Accesseur
 	 *	@return L'image actuelle de la plateforme
 	 */
-	Surface *current_picture();
+	Surface *current_picture() const;
 	
 	/**
 	 * 	@brief Accesseur
 	 *	@return La position actuelle de la plateforme
 	 */
-	Rect position();
+	Rect position() const;
+	
+		/**
+	 * 	@brief Accesseur
+	 *	@return La vitesse actuelle de la plateforme
+	 */
+	Rect speed() const;
 	
 	
+	 
+	/**
+	 * 	@brief 
+	 */
+	bool check_babar(Babar *babar);
+	 
 	 
 	/**
 	 * 	@brief 

@@ -16,6 +16,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../game/collisions_manager.h"
+#include "../game/moving_platform.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
@@ -30,6 +31,7 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Analyser *analyser)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	init_babar(analyser);
+	m_bind = NULL;
 }
 
 Babar::~Babar()
@@ -70,6 +72,71 @@ void Babar::init_babar(Analyser * a)
 	m_ready_double_jump = false;
 	m_ready_jump = true;
 	m_state = STATIC;
+}
+
+void Babar::update_pos(Static_data *static_data, Collisions_manager *collisions_manager)
+{
+	m_phase++;
+	uint32_t coll;
+	/* cas où le sprite descend */
+	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+		coll = collisions_manager->down_collision_type(m_pos);
+		if(binded())
+			break;
+		collisions_manager->update_babar_platforms(this);
+		if (Collisions_manager::is_down_coll(coll)){
+			speed_y = 0;
+			m_speed.y = 0;
+			/*if (m_state == JUMP)
+				m_state = STATIC;*/
+		}
+		else {
+			m_pos.y += BOX_SIZE;
+			if (m_pos.y + m_pos.h > (int32_t)static_data->static_data_height())
+				m_pos.y = static_data->static_data_height() - m_pos.h;
+		}
+	}
+	/* cas où le sprite monte */
+	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+		collisions_manager->update_babar_platforms(this);
+		if(binded())
+			break;
+		if (Collisions_manager::is_up_coll(collisions_manager->up_collision_type(m_pos))){
+			speed_y = 0;
+			m_speed.y = 0;
+		}
+		else {
+			if (m_pos.y < 0)
+				m_pos.y = 0;
+			m_pos.y -= BOX_SIZE;
+		}
+	}
+	/* cas où le sprite va à droite */
+	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+		collisions_manager->update_babar_platforms(this);
+		if(binded())
+			break;
+		m_pos.y -= 	BOX_SIZE;
+		if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)))
+			m_pos.y += BOX_SIZE;
+		m_pos.x += BOX_SIZE;
+		if (m_pos.x + m_pos.w > (int32_t)static_data->static_data_weight())
+			m_pos.x = static_data->static_data_weight() - m_pos.w;
+	}
+	/* cas où le sprite va à gauche */
+	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+		collisions_manager->update_babar_platforms(this);
+		if(binded())
+			break;
+		m_pos.y -= 	BOX_SIZE;
+		if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)))
+			m_pos.y += BOX_SIZE;
+		m_pos.x -= BOX_SIZE;
+		if (m_pos.x < 0)
+			m_pos.x = 0;
+	}
+
+
 }
 
 void Babar::update_speed()
@@ -155,8 +222,6 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
     /* remarque : cette methode a un tour de retard, du fait de la ou elle est placee */
     m_animt->set_rect(m_pos);
 }
-
-
 
 void Babar::update_direction()
 {
@@ -307,3 +372,20 @@ Surface *Babar::current_picture() const
 		return NULL;
 }
 
+Rect Babar::speed() const
+{
+	return m_speed;
+}
+
+bool Babar::binded() const
+{
+	return m_bind != NULL;
+}
+
+void Babar::bind(Moving_platform *platform)
+{
+	m_bind = platform;
+	Rect plat_speed = platform->speed();
+	m_speed.x = plat_speed.x;
+	m_speed.y = plat_speed.y;
+}

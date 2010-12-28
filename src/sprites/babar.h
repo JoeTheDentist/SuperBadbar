@@ -24,6 +24,7 @@ class Projectiles_manager;
 class Analyser;
 class Gun;
 class Weapons_armory;
+class Moving_platform;
 #include "../items/weapons_armory.h"
 
 
@@ -56,6 +57,7 @@ protected:
 	bool m_ready_double_jump;
 	bool m_ready_jump;
 	Weapons_armory m_weapons_armory;
+	Moving_platform *m_bind;
 
 	/**
 	 * 	@brief Charge les images de babar
@@ -83,6 +85,17 @@ public:
 	 *  @param a Analyser ouvert sur le fichier level contenant les coordonnées et l'age de Babar
 	 */
 	void init_babar(Analyser * a);
+
+
+	/*!
+	 *	@brief Met à jour la position du sprite
+	 *	@param static_data Données du jeu
+	 *	@param collisions_manager Gestionnaire de collisions
+	*/
+    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	
+	
+
 
 	/**
 	 * 	@brief Met à jour la vitesse de Babar
@@ -219,7 +232,28 @@ public:
 	 *	@return L'image actuelle de Babar
 	 */
 	Surface * current_picture() const;
-
+	
+	/**
+	 * 	@brief Accesseur
+	 *	@return La vitesse actuelle de Babar
+	 */	
+	Rect speed() const;
+	
+	/**
+	 * 	@brief Accesseur
+	 *	@return Return vrai si babar est lié à une plateforme
+	 */	
+	bool binded() const;
+	
+	/**
+	 * 	@brief Lie babar à la plateforme
+	 *	@param platform plateforme à lier
+	 */		
+	void bind(Moving_platform *platform);
+	
+	
+	
+	
 };
 
 #endif

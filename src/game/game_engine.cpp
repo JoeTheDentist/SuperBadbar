@@ -97,7 +97,7 @@ void Game_engine::babar_monsters_collision()
 	m_monsters_manager->babar_monsters_collision(m_babar);
 }
 
-void Game_engine::display_monsters(Camera *camera)
+void Game_engine::display_monsters(Camera * const camera) const
 {
 	m_monsters_manager->display_monsters(*camera);
 	m_collisions_manager->display_platforms(camera);
