@@ -61,34 +61,42 @@ Game::~Game()
 
 }
 
-void Game::update_pos()
+void Game::update_keyboard()
+{
+	m_keyboard->update_events();
+}
+
+void Game::update_game()
 {
 	m_game_engine->babar_monsters_collision();
 	m_game_engine->babar_update_pos(m_static_data);
 	m_game_engine->projectiles_update_pos();
 	m_game_engine->monsters_update_pos(m_static_data);	
-}
 
-void Game::update_speed()
-{
 	m_game_engine->babar_update_speed();
 	m_game_engine->monsters_update_speed();
 	m_game_engine->babar_update_state(m_static_data);
-}
 
-void Game::update_graphic_engine()
-{
-	m_graphic_engine->update(m_static_data);
-}
-
-void Game::update_events_manager()
-{
+	m_game_engine->update_monsters_projectiles();
+	
 	m_game_engine->update_events_manager();
 }
 
-
-void Game::refresh_screen()
+void Game::play_sounds()
 {
+	m_game_engine->play_sounds(m_sound_engine);
+}
+
+void Game::delete_dead_things()
+{
+	m_game_engine->delete_dead_things(m_static_data);
+}
+
+void Game::update_graphic()
+{
+	
+	m_graphic_engine->update(m_static_data);
+
 	Camera *camera = m_graphic_engine->get_camera();
 	/* affichage du fond */
 	camera->update_pos(m_static_data);
@@ -108,9 +116,7 @@ void Game::refresh_screen()
 	m_game_engine->display_projectiles_friend(camera);
 	
 	
-	/* suppression de projectiles trop vieux */
-	m_game_engine->delete_old_projectiles_friend(m_static_data);
-	
+
 	
 	/* affichage du sprite babar */
 	camera->display_sprite(m_game_engine->babar());
@@ -121,8 +127,6 @@ void Game::refresh_screen()
 	/* mise à jour */
 	camera->flip_camera();
 }
-
-
 
 void Game::game_loop()
 {
@@ -138,18 +142,14 @@ void Game::game_loop()
 			PRINT_TRACE(3,"Cycle de jeu n°%d", compteur)
 			compteur++;
 			m_previous_time = m_time;
-			m_keyboard->update_events();
-			update_events_manager();
+			delete_dead_things();
+			update_keyboard();
 			if (m_keyboard->key_down(k_exit))
 				end = true;
-			update_speed();
-			update_pos();
-			check_monsters();
+			update_game();
 			int begin_refresh = SDL_GetTicks();
-			refresh_screen();
+			update_graphic();
 			play_sounds();
-			m_game_engine->delete_dead_monsters();
-
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
@@ -170,20 +170,5 @@ void Game::game_loop()
 	PRINT_PERF("**************************************")
 	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
 	PRINT_PERF("**************************************")
-//~ 	Talks *talks = m_graphic_engine->get_talks();
-//~ 	talks->display_text("Hello! Tu pourras trouver un fond et une police plus sympas? :p \n Espace pour continuer");
-
 }
 
-
-
-
-void Game::check_monsters()
-{
-	m_game_engine->update_monsters_projectiles();
-}
-
-void Game::play_sounds()
-{
-	m_game_engine->play_sounds(m_sound_engine);
-}

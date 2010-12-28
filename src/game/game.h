@@ -47,29 +47,25 @@ private:
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
 	/*!
-	 * 	@brief Mise à jour du moteur graphique
+	 * 	@brief Mise à jour du moteur graphique et rafraichissement de l'écran
 	*/
-	void update_graphic_engine();
+	void update_graphic();
 
 	/*!
-	 * 	@brief Mise à jour des évenements
+	 *  @brief Mise à jour des données du jeu
 	*/
-	void update_events_manager();
+	void update_game();	
+
+	void update_keyboard();
+
 
 	/*!
-	 *  @brief Mise à jour de la position des sprites
+	 *  @brief Supprime objets morts (monstres, projectiles)
 	*/
-	void update_pos();			
-	
-	/*!
-	 * 	@brief Mise à jour de la vitesse des sprites
-	*/
-	void update_speed();
-	
-	/*!
-	 * 	@brief Rafraichissement de l'affichage
-	*/
-	void refresh_screen();		
+	void delete_dead_things();	
+
+
+
 
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle

@@ -1,8 +1,8 @@
 
 export OBJ_DIR=obj/
 export CC = g++
-export CFLAGS=-g -Wall $(LIB_INC) 
-export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod  $(LIB_DYN)
+export CFLAGS=-g -Wall #$(LIB_INC) 
+export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod # $(LIB_DYN)
 
 DIR = control events game items sound sprites util video
 EXEC_NAME = babar

@@ -125,16 +125,10 @@ public:
 
 
 	/**
-	 * 	@brief Supprimer les projectiles amis à supprimer
+	 * 	@brief Supprimer les projectiles et monstres "morts"
 	 *	@param static_data données du niveau
-	 *	@todo à revoir / changer
 	*/
-	void delete_old_projectiles_friend(Static_data *static_data);
-	
-	/*!
-	* 	@brief Supprime les monstres qui n'ont plus de vies
-	*/
-	void delete_dead_monsters();
+	void delete_dead_things(Static_data *static_data);
 	
 	/**
 	 * 	@brief Check les collisions monstres/projectiles

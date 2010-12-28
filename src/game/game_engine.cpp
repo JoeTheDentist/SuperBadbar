@@ -119,13 +119,9 @@ void Game_engine::display_projectiles_friend(Camera *camera)
 	m_projectiles_manager->display(camera);
 }
 
-void Game_engine::delete_old_projectiles_friend(Static_data *static_data)
+void Game_engine::delete_dead_things(Static_data *static_data)
 {
 	m_projectiles_manager->delete_old_projectiles(static_data);
-}
-
-void Game_engine::delete_dead_monsters()
-{
 	m_monsters_manager->delete_dead_monsters();
 }
 

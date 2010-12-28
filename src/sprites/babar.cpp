@@ -259,7 +259,7 @@ void Babar::go_down(Collisions_manager *collisions_manager)
 			m_pos.y += BOX_SIZE;
 		}
 	}
-	m_keyboard->disable_key(k_jump);
+//~ 	m_keyboard->disable_key(k_jump);
 	PRINT_TRACE(2, "Descente d'une plateforme")
 }
 
