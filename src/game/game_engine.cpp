@@ -76,6 +76,7 @@ void Game_engine::update_pos(Static_data *static_data)
 	m_projectiles_manager->update_pos(m_collisions_manager);
 	m_babar->update_pos(static_data, m_collisions_manager);
 	m_monsters_manager->monsters_update_pos(static_data, m_collisions_manager);
+	m_collisions_manager->update_platforms_pos(m_babar);
 }
 
 
@@ -83,7 +84,7 @@ void Game_engine::update_speed()
 {
 	m_babar->update_speed();
 	m_monsters_manager->monsters_update_speed(m_babar);
-	
+	m_collisions_manager->update_platforms_speed();
 }
 
 void Game_engine::babar_update_state(Static_data *static_data)
@@ -99,6 +100,7 @@ void Game_engine::babar_monsters_collision()
 void Game_engine::display_monsters(Camera *camera)
 {
 	m_monsters_manager->display_monsters(*camera);
+	m_collisions_manager->display_platforms(camera);
 }
 
 

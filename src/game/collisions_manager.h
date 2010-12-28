@@ -15,7 +15,9 @@
 #include "../util/globals.h"
 
 class Static;
-
+class Moving_platform;
+class Camera;
+class Babar;
 
 /**
  * 	@class Collisions_manager
@@ -49,7 +51,7 @@ private:
 	uint32_t ** m_collisions_matrix;      	/* matrice des statics */
 	uint32_t m_collisions_matrix_w;
 	uint32_t m_collisions_matrix_h;
-
+	Moving_platform *m_moving_platform;
 public:
 	
 	/*!
@@ -75,6 +77,39 @@ public:
 	 *	@return Vrai si les deux rectangles sont en collision
 	*/
 	static bool check_collision(Rect A, Rect B);
+
+
+	/*!
+	 *	@brief Affiche les plateformes mobiles
+	 *	@param camera Le gestionnaire d'affichage
+	*/
+	void display_platforms(Camera *camera);
+
+		
+	/*!
+	 *	@brief 
+	*/
+	void update_platforms_pos(Babar *babar);
+	/*!
+	 *	@brief 
+	*/	
+	void update_platforms_speed();
+	/*!
+	 *	@brief 
+	*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/*!
 	 *	@brief Retourne le type de collision du niveau en un point

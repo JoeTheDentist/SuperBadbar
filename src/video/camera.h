@@ -41,6 +41,7 @@ class Static_data;
 class Events_manager;
 class Event;
 class Surface;
+class Moving_platform;
 
 class Camera {
 private:
@@ -101,6 +102,8 @@ public:
 	*	Si le Static vaut NULL, rien ne se passe	
 	*/
 	void display_static(Static *sttc) ;
+	
+	void display_platform(Moving_platform *platform);
 	
 	/*!
 	* 	@brief Affiche les événements affichables de l'event_manager

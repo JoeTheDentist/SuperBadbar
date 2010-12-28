@@ -12,6 +12,10 @@
 #include "../util/analyser.h"
 #include "../util/globals.h"
 #include "../util/debug.h"
+#include "../util/repertories.h"
+#include "../game/moving_platform.h"
+#include "../video/camera.h"
+#include "../sprites/babar.h"
 
 Collisions_manager::Collisions_manager() {
 	PRINT_CONSTR(1, "Construction de Collisions_manager")
@@ -22,6 +26,7 @@ Collisions_manager::~Collisions_manager() {
         delete[] m_collisions_matrix[i];
     }
     delete[] m_collisions_matrix;
+	delete m_moving_platform;
 }
 
 
@@ -69,6 +74,7 @@ void Collisions_manager::init_collisions_manager(int level) {
 	
 
 	analyser.close();
+	m_moving_platform = new Moving_platform(PIC_STATICS_R + "block1");
 	
 }
 
@@ -81,6 +87,21 @@ bool Collisions_manager::check_collision(Rect A, Rect B) //Optimisable?
 	bool A_in_B = ((B.x < A.x && A.x < B_right) || (B.x < A_right && A_right < B_right )) && ((B.y < A.y && A.y < B_bottom) || (B.y < A_bottom && A_bottom < B_bottom ));
 	bool B_in_A = ((A.x < B.x && B.x < A_right) || (A.x < B_right && B_right < A_right )) && ((A.y < B.y && B.y < A_bottom) || (A.y < B_bottom && B_bottom < A_bottom ));
 	return A_in_B || B_in_A;
+}
+
+void Collisions_manager::display_platforms(Camera *camera)
+{
+	camera->display_platform(m_moving_platform);
+}
+
+void Collisions_manager::update_platforms_pos(Babar *babar)
+{
+	m_moving_platform->update_pos(babar);
+}
+
+void Collisions_manager::update_platforms_speed()
+{
+	m_moving_platform->update_speed();
 }
 
 uint32_t Collisions_manager::collision(uint32_t x, uint32_t y)
