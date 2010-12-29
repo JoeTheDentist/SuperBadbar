@@ -125,8 +125,10 @@ void Game::game_loop()
 			m_previous_time = m_time;
 			delete_dead_things();
 			update_keyboard();
-			if (m_keyboard->key_down(k_exit))
+			if (m_keyboard->key_down(k_exit)) {
 				end = true;
+				break;
+			}
 			update_game();
 			int begin_refresh = SDL_GetTicks();
 			update_graphic();

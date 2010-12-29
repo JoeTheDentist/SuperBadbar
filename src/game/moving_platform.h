@@ -14,6 +14,7 @@
 #include <stdint.h>
 #include "../util/globals.h"
 #include "../video/displayable.h"
+#include "../game/collisions_matrix.h"
 
 class Surface;
 class Babar;
@@ -33,15 +34,14 @@ class Babar;
  *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
  *	il faudra remplacer Babar par une liste de Babar
  */
-class Moving_platform : public Displayable {
+class Moving_platform : public Displayable, public Collisions_matrix {
 private:
 	Surface *m_surface;
 	Babar *m_babar;
 	Rect m_pos;
 	Rect m_speed;
-	uint32_t ** m_collisions_matrix;
-	int coll_size_w;
-	int coll_size_h;
+//~ 	int coll_size_w;
+//~ 	int coll_size_h;
 	int m_phase;
 public:
 	/**

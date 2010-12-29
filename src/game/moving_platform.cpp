@@ -15,7 +15,7 @@
 #include "../util/debug.h"
 #include "../game/collisions_manager.h"
 
-Moving_platform::Moving_platform(std::string file_name)
+Moving_platform::Moving_platform(std::string file_name) 
 {
 	m_surface = new Surface(file_name + ".png");
 	m_babar = NULL;
@@ -28,14 +28,14 @@ Moving_platform::Moving_platform(std::string file_name)
 	m_pos.w = m_surface->w();
 	m_speed.x = 5;
 	m_speed.y = 5;
-	coll_size_w = analyser.read_int();
-	coll_size_h = analyser.read_int();
-	m_collisions_matrix = new unsigned int*[coll_size_w];
-	for (int i = 0; i < coll_size_w; i++) {
-		m_collisions_matrix[i] = new unsigned int[coll_size_h];
+	m_collisions_matrix_w = analyser.read_int();
+	m_collisions_matrix_h = analyser.read_int();
+	m_collisions_matrix = new unsigned int*[m_collisions_matrix_w];
+	for (int i = 0; i < m_collisions_matrix_w; i++) {
+		m_collisions_matrix[i] = new unsigned int[m_collisions_matrix_h];
 	}
-	for (int j = 0; j < coll_size_h; j++) {
-		for (int i = 0; i < coll_size_w; i++) {
+	for (int j = 0; j < m_collisions_matrix_h; j++) {
+		for (int i = 0; i < m_collisions_matrix_w; i++) {
 			m_collisions_matrix[i][j] = analyser.read_int();
 		}
 	}
@@ -44,10 +44,6 @@ Moving_platform::Moving_platform(std::string file_name)
 
 Moving_platform::~Moving_platform()
 {
-	for (int i = 0; i < coll_size_w; i++) {
-		delete[] m_collisions_matrix[i];
-	}	
-	delete[] m_collisions_matrix;
 	delete m_surface;
 }
 
@@ -121,14 +117,14 @@ bool Moving_platform::check_babar(Babar *babar)
 	if (babar_speed.y < m_speed.y) 
 		return false;
 	int j = (babar_pos.y + babar_pos.h - m_pos.y) / BOX_SIZE + 1;
-	if (j < 0 || j > coll_size_h)
+	if (j < 0 || j > m_collisions_matrix_h)
 		return false;
 	int i_deb = (babar_pos.x - m_pos.x) / BOX_SIZE;
 	int i_max = (babar_pos.x + babar_pos.w - m_pos.x) / BOX_SIZE;
 	if (i_deb < 0)
 		i_deb = 0;
-	if (i_max > coll_size_w)
-		i_max = coll_size_w;
+	if (i_max > m_collisions_matrix_w)
+		i_max = m_collisions_matrix_w;
 	for (int i = i_deb; i < i_max; i++)
 		if (Collisions_manager::is_down_coll(m_collisions_matrix[i][j])) {
 			PRINT_DEBUG(1, "LIAISON %d %d", i, j);

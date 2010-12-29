@@ -149,7 +149,58 @@ void Babar::binded_update_pos(Static_data *static_data, Moving_platform *platfor
 	Rect plat_pos = platform->position();
 	m_pos.x = plat_pos.x;
 	m_pos.y = plat_pos.y;
-	/* ici, updater m_bind_pos */
+	/* update de  m_binded_pos */
+	uint32_t coll;
+	/* cas où le sprite descend */
+	PRINT_DEBUG(1, "z");
+	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+		coll = platform->down_collision_type(m_binded_pos);
+		PRINT_DEBUG(1, "a");
+		if (Collisions_manager::is_down_coll(coll)){
+			PRINT_DEBUG(1, "b");
+			speed_y = 0;
+			m_speed.y = 0;
+		}
+		else {
+			PRINT_DEBUG(1, "c");
+			m_binded_pos.y += BOX_SIZE;
+			if (m_pos.y + m_pos.h > (int32_t)static_data->static_data_height())
+				m_pos.y = static_data->static_data_height() - m_pos.h;
+		}
+	}
+	/* cas où le sprite monte */
+	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+		if (Collisions_manager::is_up_coll(platform->up_collision_type(m_binded_pos))){
+			speed_y = 0;
+			m_speed.y = 0;
+		}
+		else {
+			if (m_pos.y < 0)
+				m_pos.y = 0;
+			m_binded_pos.y -= BOX_SIZE;
+		}
+	}
+	/* cas où le sprite va à droite */
+	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+		m_binded_pos.y -= 	BOX_SIZE;
+		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)))
+			m_binded_pos.y += BOX_SIZE;
+		m_binded_pos.x += BOX_SIZE;
+		if (m_pos.x + m_pos.w > (int32_t)static_data->static_data_weight())
+			m_pos.x = static_data->static_data_weight() - m_pos.w;
+	}
+	/* cas où le sprite va à gauche */
+	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+		m_binded_pos.y -= 	BOX_SIZE;
+		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)))
+			m_binded_pos.y += BOX_SIZE;
+		m_binded_pos.x -= BOX_SIZE;
+		if (m_pos.x < 0)
+			m_pos.x = 0;
+	}
+
+
+
 	
 	m_pos.x += m_binded_pos.x;
 	m_pos.y += m_binded_pos.y;
@@ -178,6 +229,7 @@ void Babar::update_speed()
 
 void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager)
 {
+		
 	m_weapons_armory.update();
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -410,5 +462,7 @@ void Babar::bind(Moving_platform *platform)
 	m_speed.y = plat_speed.y;
 	m_binded_pos.x = m_pos.x - plat_pos.x;
 	m_binded_pos.y = m_pos.y - plat_pos.y;
+	m_binded_pos.w = m_pos.w;
+	m_binded_pos.h = m_pos.h;
 	m_state = STATIC;
 }

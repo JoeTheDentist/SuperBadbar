@@ -22,10 +22,6 @@ Collisions_manager::Collisions_manager() {
 }
 
 Collisions_manager::~Collisions_manager() {
-	for(uint32_t i = 0; i < m_collisions_matrix_w;i++) {
-        delete[] m_collisions_matrix[i];
-    }
-    delete[] m_collisions_matrix;
 	delete m_moving_platform;
 }
 
@@ -78,7 +74,7 @@ void Collisions_manager::init_collisions_manager(int level) {
 	
 }
 
-bool Collisions_manager::check_collision(Rect A, Rect B) //Optimisable?
+bool Collisions_manager::check_collision(Rect A, Rect B) 
 {
 	uint16_t A_right = A.x + A.w;
 	uint16_t B_right = B.x + B.w;
@@ -117,84 +113,6 @@ void Collisions_manager::update_babar_platforms(Babar *babar)
 
 
 
-
-
-
-uint32_t Collisions_manager::collision(uint32_t x, uint32_t y)
-{
-    return m_collisions_matrix[x/BOX_SIZE][y/BOX_SIZE];
-}
-
-uint32_t Collisions_manager::down_collision_type(Rect pos)
-{
-	uint32_t coll = 0;
-	for (int32_t i = pos.x ; i <= (pos.x + pos.w) ; i += BOX_SIZE)
-		if (i / BOX_SIZE < m_collisions_matrix_w)
-			coll |= m_collisions_matrix[i / BOX_SIZE][(pos.y + pos. h) / BOX_SIZE + 1] ;
-	return coll;
-}
-
-uint32_t Collisions_manager::up_collision_type(Rect pos)
-{
-	uint32_t coll = 0;
-	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE)
-		if (i / BOX_SIZE < m_collisions_matrix_w)
-			coll |= m_collisions_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
-	return coll;
-}
-
-uint32_t Collisions_manager::right_collision_type(Rect pos)
-{
-	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
-		if (j / BOX_SIZE < m_collisions_matrix_h)
-			coll |= m_collisions_matrix[(pos.x + pos.w)/ BOX_SIZE + 1][j / BOX_SIZE];
-	return coll;
-}
-
-uint32_t Collisions_manager::left_collision_type(Rect pos)
-{
-	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
-		if (j / BOX_SIZE < m_collisions_matrix_h)
-			coll |= m_collisions_matrix[pos.x / BOX_SIZE - 1][j / BOX_SIZE];
-		
-	return coll;
-}
-
-bool Collisions_manager::up_collision(Rect pos)
-{
-	return is_up_coll(up_collision_type(pos));
-}
-
-bool Collisions_manager::down_collision(Rect pos)
-{
-	return is_down_coll(up_collision_type(pos));
-}
-
-bool Collisions_manager::left_collision(Rect pos)
-{
-	return is_left_coll(up_collision_type(pos));
-}
-
-bool Collisions_manager::right_collision(Rect pos)
-{
-	return is_right_coll(up_collision_type(pos));
-}
-
-bool Collisions_manager::double_collision(Rect pos)
-{
-	for (int32_t i = pos.x / BOX_SIZE ; i <= (pos.x + pos.w) / BOX_SIZE ; i += 1) {
-		if (m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE] == FULL_COLL) {
-			return true;
-		}
-//~ 		if(m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE ] != NO_COLL 
-//~ 				&& m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE + 1] != NO_COLL) {
-//~ 			return true;
-//~ 		}
-	}
-	return false;
-}
 
 bool Collisions_manager::is_up_coll(uint32_t coll_number)
 {
