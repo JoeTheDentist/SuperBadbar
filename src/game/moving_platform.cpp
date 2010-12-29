@@ -114,6 +114,8 @@ Rect Moving_platform::speed() const
 
 bool Moving_platform::check_babar(Babar *babar)
 {
+	if (m_babar != NULL)
+		return false;
 	Rect babar_speed = babar->speed();
 	Rect babar_pos = babar->position();
 	if (babar_speed.y < m_speed.y) 

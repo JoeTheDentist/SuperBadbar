@@ -77,6 +77,11 @@ void Babar::init_babar(Analyser * a)
 void Babar::update_pos(Static_data *static_data, Collisions_manager *collisions_manager)
 {
 	m_phase++;
+	/* Si Babar est lié à une plateforme, on gère autrement sa position */
+	if (binded()) {
+		binded_update_pos(static_data, m_bind);
+		return;
+	}
 	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
@@ -139,6 +144,17 @@ void Babar::update_pos(Static_data *static_data, Collisions_manager *collisions_
 
 }
 
+void Babar::binded_update_pos(Static_data *static_data, Moving_platform *platform)
+{
+	Rect plat_pos = platform->position();
+	m_pos.x = plat_pos.x;
+	m_pos.y = plat_pos.y;
+	/* ici, updater m_bind_pos */
+	
+	m_pos.x += m_binded_pos.x;
+	m_pos.y += m_binded_pos.y;
+}
+
 void Babar::update_speed()
 {
     m_speed.y += GRAVITE;
@@ -167,10 +183,6 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
         m_state = STATIC;
 		m_double_jump = false;
     }
-
-   	//~ if (m_keyboard->key_down(k_action)) {
-		//~ talks.load_and_display_text("test.dial");
-	//~ }
 
 	update_direction();
 
@@ -202,8 +214,15 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
         walk();
     }
 
+/* A REFAIRE */
+	if (binded() && m_keyboard->key_down(k_jump)) {
+		m_bind->unbind();
+		m_bind = NULL;
+		jump();
+	}
     if (can_jump())
 		jump();
+
 
 	if (can_double_jump())
 		double_jump();
@@ -386,6 +405,10 @@ void Babar::bind(Moving_platform *platform)
 {
 	m_bind = platform;
 	Rect plat_speed = platform->speed();
+	Rect plat_pos = platform->position();
 	m_speed.x = plat_speed.x;
 	m_speed.y = plat_speed.y;
+	m_binded_pos.x = m_pos.x - plat_pos.x;
+	m_binded_pos.y = m_pos.y - plat_pos.y;
+	m_state = STATIC;
 }

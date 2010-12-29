@@ -58,6 +58,7 @@ protected:
 	bool m_ready_jump;
 	Weapons_armory m_weapons_armory;
 	Moving_platform *m_bind;
+	Rect m_binded_pos;
 
 	/**
 	 * 	@brief Charge les images de babar
@@ -93,6 +94,13 @@ public:
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
     void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	
+	/*!
+	 *	@brief Met à jour la position du sprite s'il est lié à une plateforme
+	 *	@param static_data Données du jeu
+	 *	@param platform La plateforme liée
+	*/
+    void binded_update_pos(Static_data *static_data, Moving_platform *platform);
 	
 	
 
