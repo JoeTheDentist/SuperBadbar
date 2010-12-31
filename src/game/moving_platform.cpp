@@ -127,7 +127,6 @@ bool Moving_platform::check_babar(Babar *babar)
 		i_max = m_collisions_matrix_w;
 	for (int i = i_deb; i < i_max; i++)
 		if (Collisions_manager::is_down_coll(m_collisions_matrix[i][j])) {
-			PRINT_DEBUG(1, "LIAISON %d %d", i, j);
 			return true;
 		}
 	return false;

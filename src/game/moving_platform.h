@@ -31,6 +31,8 @@ class Babar;
  *	Dans ce cas, il suit ses déplacements jusqu'à son prochain son
  * 	ou sa chute de la plateforme. La plateforme "sait" si elle est liée
  *	ou pas à Babar.
+ *	Une plateforme mobile est construite à partir du meme type de fichier qu'un
+ *	static: un .col pour la matrice de collisions et une image
  *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
  *	il faudra remplacer Babar par une liste de Babar
  */
@@ -101,7 +103,9 @@ public:
 	
 	 
 	/**
-	 * 	@brief 
+	 * 	@brief Indique si Babar doit etre lié à la plateforme
+	 *	@param babar Le Babar à lier
+	 *	@return Vrai si Babar doit etre lié à la plateforme courante
 	 */
 	bool check_babar(Babar *babar);
 	 
