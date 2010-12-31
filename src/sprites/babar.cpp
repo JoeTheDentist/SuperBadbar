@@ -152,17 +152,13 @@ void Babar::binded_update_pos(Static_data *static_data, Moving_platform *platfor
 	/* update de  m_binded_pos */
 	uint32_t coll;
 	/* cas où le sprite descend */
-	PRINT_DEBUG(1, "z");
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		coll = platform->down_collision_type(m_binded_pos);
-		PRINT_DEBUG(1, "a");
 		if (Collisions_manager::is_down_coll(coll)){
-			PRINT_DEBUG(1, "b");
 			speed_y = 0;
 			m_speed.y = 0;
 		}
 		else {
-			PRINT_DEBUG(1, "c");
 			m_binded_pos.y += BOX_SIZE;
 			if (m_pos.y + m_pos.h > (int32_t)static_data->static_data_height())
 				m_pos.y = static_data->static_data_height() - m_pos.h;
@@ -229,7 +225,22 @@ void Babar::update_speed()
 
 void Babar::update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager)
 {
-		
+	// ATTENTION: "arnaque" pour la sortie de plateforme mobile:
+	// les pentes introduisent des sorties non voulues, donc
+	// on considère qu'on sort de la plateforme après 3 cycles de chute
+	static int unbind_phase = 0;
+	if (m_bind) {
+		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))) {
+			unbind_phase++;
+			if (unbind_phase == 3) {
+				unbind();
+				unbind_phase = 0;
+			}
+		} else {
+			unbind_phase = 0;
+		}
+	}
+	
 	m_weapons_armory.update();
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -268,9 +279,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 
 /* A REFAIRE */
 	if (binded() && m_keyboard->key_down(k_jump)) {
-		m_bind->unbind();
-		m_bind = NULL;
-		jump();
+		unbind();
 	}
     if (can_jump())
 		jump();
@@ -348,7 +357,7 @@ void Babar::jump()
 {
 	m_state = JUMP;
 	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
-	PRINT_TRACE(3, "Saut de Babar")
+	PRINT_TRACE(1, "Saut de Babar")
 	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
         m_ready_double_jump = true;
         if ( m_keyboard->time_pressed(k_jump) > JUMP_TIME) {
@@ -465,4 +474,12 @@ void Babar::bind(Moving_platform *platform)
 	m_binded_pos.w = m_pos.w;
 	m_binded_pos.h = m_pos.h;
 	m_state = STATIC;
+	m_ready_jump = true;
+}
+
+void Babar::unbind()
+{
+	m_bind->unbind();
+	m_bind = NULL;
+	
 }

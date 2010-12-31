@@ -259,7 +259,10 @@ public:
 	 */		
 	void bind(Moving_platform *platform);
 	
-	
+	/**
+	 * 	@brief Délie babar de sa plateforme
+	 */		
+	void unbind();
 	
 	
 };

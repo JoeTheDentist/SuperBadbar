@@ -73,10 +73,10 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 
 void Game_engine::update_pos(Static_data *static_data)
 {
+	m_collisions_manager->update_platforms_pos(m_babar);
 	m_projectiles_manager->update_pos(m_collisions_manager);
 	m_babar->update_pos(static_data, m_collisions_manager);
 	m_monsters_manager->monsters_update_pos(static_data, m_collisions_manager);
-	m_collisions_manager->update_platforms_pos(m_babar);
 }
 
 

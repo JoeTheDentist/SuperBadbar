@@ -75,6 +75,8 @@ public:
 	 *	@brief Calcule le type de collision des cases sous le rectangle
 	 *	@param pos Rectangle à checker
 	 *	@return Le type des collisions accumulées
+	 *
+	 * Dans la direction down, on vérifie qu'il n'y ait pas de dépassement de tableaux
 	*/
 	uint32_t down_collision_type(Rect pos);	
 	
