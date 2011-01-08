@@ -38,6 +38,7 @@ class Analyser {
 private:
 	bool m_opened;
 	std::ifstream *m_file;
+	std::string m_filename;
 
 public:
 	/*!
