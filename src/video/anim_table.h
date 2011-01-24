@@ -31,7 +31,7 @@ class Anim_table
         char m_nb_states;           /* nombre d'etats de l'animation */
         int m_last_state;         /* dernier etat affiche, pour les changements d'animation */
         Animation * m_curr_anim;    /* pointeur sur l'animation courante */
-        Animation *** m_anim;       /* tableau de pointeur vers les animations ; etat et gauche/droite */
+        Animation ***m_anim;       /* tableau de pointeur vers les animations ; etat et gauche/droite */
 
     public:
         /**
@@ -62,7 +62,7 @@ class Anim_table
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
          *
-         *  @param Rect à modifier
+         *  @param Rect a modifier
          */
         void set_rect(Rect &pos);
 };

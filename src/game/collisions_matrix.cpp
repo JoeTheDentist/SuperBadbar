@@ -29,7 +29,7 @@ Collisions_matrix::Collisions_matrix(std::string filename)
 
 Collisions_matrix::~Collisions_matrix() 
 {
-	for(uint32_t i = 0; i < m_collisions_matrix_w;i++) {
+	for(int i = 0; i < m_collisions_matrix_w;i++) {
         delete[] m_collisions_matrix[i];
     }
     delete[] m_collisions_matrix;

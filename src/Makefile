@@ -67,3 +67,23 @@ doc:
 	
 read: 
 	firefox $(DOC_REP)html/index.html &
+	
+########################
+## Affichage des warnings de compilation
+########################
+warn: clean
+	@echo
+	@echo "##########################"
+	@echo "##### WARNINGS ONLY ######"
+	@echo "##########################"
+	@$(MAKE) 2>&1 >/dev/null | grep --color=auto "warning\|\(style\)" || echo
+	
+	
+########################
+## Affichage des taches restantes de compilation
+########################
+todo:
+	@echo "##########################"
+	@echo "#### 'TODO' restants #####"
+	@echo "##########################"
+	@grep --color=auto -rn TODO */* || echo

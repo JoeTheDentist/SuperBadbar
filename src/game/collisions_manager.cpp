@@ -39,12 +39,12 @@ void Collisions_manager::init_collisions_manager(int level) {
 	m_collisions_matrix_h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
     /*** Allocation du tableau pour les collisions ***/
     m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];     
-    for(uint32_t i = 0; i<m_collisions_matrix_w ;i++) {
+    for(int i = 0; i<m_collisions_matrix_w ;i++) {
         m_collisions_matrix[i] = new uint32_t[m_collisions_matrix_h + 1];
     }
     /*** Remplissage de la matrice pour les collisions ***/
-    for(uint32_t i = 0;i<m_collisions_matrix_w;i++) {
-        for(uint32_t j = 0;j<m_collisions_matrix_h;j++) {
+    for(int i = 0;i<m_collisions_matrix_w;i++) {
+        for(int j = 0;j<m_collisions_matrix_h;j++) {
             m_collisions_matrix[i][j] = NO_COLL;
         }
     }

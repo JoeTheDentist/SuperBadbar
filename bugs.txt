@@ -1,0 +1,5 @@
+############################
+## Liste des bugs actuels ##
+############################
+
+- Segfault lorsque des balles du shotgun sortent du niveau

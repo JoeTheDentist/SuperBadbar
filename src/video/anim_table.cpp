@@ -37,7 +37,7 @@ Anim_table::Anim_table(std::string anim_name) {
 
     /* allocation du tableau d'animation */
     m_anim = new Animation**[m_nb_states];
-    for (char i=0;i<m_nb_states;i++) {
+    for (int i=0;i<m_nb_states;i++) {
         m_anim[i] = new Animation*[2];
     }
 
