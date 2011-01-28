@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _FLYING_MONSTER_
 #define _FLYING_MONSTER_
 
@@ -25,10 +25,15 @@ private:
 	int m_high_min;
 
 public:
+    /**
+	 * 	@brief Constructeur vide
+	*/
+	Flying_monster();
+
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Analyseur se fichier
-	*/          
+	*/
 	Flying_monster(Analyser *analyserLevel);
 
 	/**
@@ -39,7 +44,7 @@ public:
 	/**
 	 * 	@brief Met à jour la vitesse du monstre
 	 *	@param babar Parametre inutilisé dans cette sous classe
-	 *	
+	 *
 	**/
 	void update_speed(Babar *babar);
 };

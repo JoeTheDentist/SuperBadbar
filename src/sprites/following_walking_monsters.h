@@ -6,11 +6,12 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _FOLLOWING_WALKING_MONSTERS_
 #define _FOLLOWING_WALKING_MONSTERS_
 
 #include "../sprites/monsters.h"
+#include "../sprites/walking_monsters.h"
 
 class Analyser;
 
@@ -20,7 +21,7 @@ class Analyser;
  * 	@brief Monstre qui suit babar en marchant
  *
  */
-class Following_walking_monster : public Monster {
+class Following_walking_monster : public Walking_monster {
 private:
 
 
@@ -28,7 +29,7 @@ public:
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Analyseur se fichier
-	*/          
+	*/
 	Following_walking_monster(Analyser *analyserLevel);
 
 	/**
@@ -38,7 +39,7 @@ public:
 
 	/**
 	 * 	@brief Met à jour la vitesse du monstre
-	 *	
+	 *
 	 *	Le monstre avance par défaut en direction de Babar
 	 */
 	void update_speed(Babar *babar);

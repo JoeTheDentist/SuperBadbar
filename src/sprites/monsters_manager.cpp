@@ -14,6 +14,7 @@
 #include "../sprites/walking_monsters.h"
 #include "../sprites/flying_monster.h"
 #include "../sprites/following_walking_monsters.h"
+#include "../sprites/following_flying_monsters.h"
 #include "../video/camera.h"
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
@@ -22,12 +23,12 @@
 
 
 
-Monsters_manager::Monsters_manager() 
+Monsters_manager::Monsters_manager()
 {
 
 }
 
-Monsters_manager::~Monsters_manager() 
+Monsters_manager::~Monsters_manager()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
@@ -35,7 +36,7 @@ Monsters_manager::~Monsters_manager()
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser) 
+void Monsters_manager::init_monsters_manager(Analyser *analyser)
 {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
@@ -50,11 +51,16 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser)
 		} else if (monster_type == "flying_monster") {
 			Flying_monster * curr_monster = new Flying_monster(analyser);
 			add(curr_monster);
+		} else if (monster_type == "following_flying_monster") {
+			Following_flying_monster * curr_monster = new Following_flying_monster(analyser);
+			add(curr_monster);
+		} else {
+            PRINT_CONSTR(1, "                               Erreur dans monstre manager, chargement monstre loupe")
 		}
 	}
 }
 
-void Monsters_manager::add(Monster *monster) 
+void Monsters_manager::add(Monster *monster)
 {
 	m_monsters.push_back(monster);
 }
@@ -67,7 +73,7 @@ void Monsters_manager::monsters_update_speed(Babar *babar)
 	}
 }
 
-void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager) 
+void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager)
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
@@ -75,7 +81,7 @@ void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_m
 	}
 }
 
-void Monsters_manager::display_monsters(const Camera &camera) 
+void Monsters_manager::display_monsters(const Camera &camera)
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
@@ -84,7 +90,7 @@ void Monsters_manager::display_monsters(const Camera &camera)
 	}
 }
 
-void Monsters_manager::babar_monsters_collision(Babar *babar) 
+void Monsters_manager::babar_monsters_collision(Babar *babar)
 {
 	Rect babar_pos = babar->position();
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
@@ -102,10 +108,10 @@ void Monsters_manager::play_sounds(Sound_engine *sound_engine)
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
 		sound_engine->play_sound((*it));
-	}	
+	}
 }
 
-void Monsters_manager::init() 
+void Monsters_manager::init()
 {
 	m_it_monsters = m_monsters.begin();
 }
@@ -115,17 +121,17 @@ bool Monsters_manager::end()
 	return m_it_monsters == m_monsters.end();
 }
 
-void Monsters_manager::next() 
+void Monsters_manager::next()
 {
 	m_it_monsters++;
 }
 
-Monster *Monsters_manager::element() 
+Monster *Monsters_manager::element()
 {
 	return (*m_it_monsters);
 }
 
-void Monsters_manager::delete_element() 
+void Monsters_manager::delete_element()
 {
 	delete (*m_it_monsters);
 	m_it_monsters = m_monsters.erase(m_it_monsters);
@@ -141,5 +147,5 @@ void Monsters_manager::delete_dead_monsters()
 		} else {
 			++it;
 		}
-	}	
+	}
 }

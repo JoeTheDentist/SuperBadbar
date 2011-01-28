@@ -1,6 +1,6 @@
 /**
- * 	@file following_walking_monsters.h
- * 	@brief Header de la classe Following_walking_monster
+ * 	@file following_walking_monsters.cpp
+ * 	@brief Source de la classe Following_walking_monster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010

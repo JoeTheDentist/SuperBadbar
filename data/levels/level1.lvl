@@ -32,11 +32,12 @@ soil 0 3200
 
 
 #Monsters#
-6
+7
 flying_monster fubob 155 2600 95 1000
 flying_monster fubob 165 2600 95 1000
 flying_monster fubob 205 2600 95 1000
 walking_monster maphyar 505 2600 95 1000
 following_walking_monster gailapin 120 1600 
 following_walking_monster gailapin 135 1600 
+following_flying_monster fubob 700 900
 !

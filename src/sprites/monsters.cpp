@@ -1,5 +1,5 @@
 /**
- * 	@file monsters.h
+ * 	@file monsters.cpp
  * 	@brief Implémentation de la classe Monster
  *
  * 	@author Guillaume Bérard & Benoit Morel
@@ -22,7 +22,7 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster() 
+Monster::Monster()
 {
 }
 

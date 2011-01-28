@@ -59,10 +59,14 @@
 		<Unit filename="..\src\events\events_manager.h" />
 		<Unit filename="..\src\game\collisions_manager.cpp" />
 		<Unit filename="..\src\game\collisions_manager.h" />
+		<Unit filename="..\src\game\collisions_matrix.cpp" />
+		<Unit filename="..\src\game\collisions_matrix.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />
 		<Unit filename="..\src\game\game_engine.h" />
+		<Unit filename="..\src\game\moving_platform.cpp" />
+		<Unit filename="..\src\game\moving_platform.h" />
 		<Unit filename="..\src\game\static_data.cpp" />
 		<Unit filename="..\src\game\static_data.h" />
 		<Unit filename="..\src\items\gun.cpp" />
@@ -88,6 +92,8 @@
 		<Unit filename="..\src\sprites\babar.h" />
 		<Unit filename="..\src\sprites\flying_monster.cpp" />
 		<Unit filename="..\src\sprites\flying_monster.h" />
+		<Unit filename="..\src\sprites\following_flying_monsters.cpp" />
+		<Unit filename="..\src\sprites\following_flying_monsters.h" />
 		<Unit filename="..\src\sprites\following_walking_monsters.cpp" />
 		<Unit filename="..\src\sprites\following_walking_monsters.h" />
 		<Unit filename="..\src\sprites\monsters.cpp" />
@@ -104,7 +110,12 @@
 		<Unit filename="..\src\sprites\walking_monsters.h" />
 		<Unit filename="..\src\util\analyser.cpp" />
 		<Unit filename="..\src\util\analyser.h" />
+		<Unit filename="..\src\util\arg_analyser.cpp" />
+		<Unit filename="..\src\util\arg_analyser.h" />
+		<Unit filename="..\src\util\constantes_debug.h" />
 		<Unit filename="..\src\util\debug.h" />
+		<Unit filename="..\src\util\debug_param.cpp" />
+		<Unit filename="..\src\util\debug_param.h" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
 		<Unit filename="..\src\util\repertories.h" />
@@ -116,6 +127,8 @@
 		<Unit filename="..\src\video\camera.h" />
 		<Unit filename="..\src\video\dashboard.cpp" />
 		<Unit filename="..\src\video\dashboard.h" />
+		<Unit filename="..\src\video\displayable.cpp" />
+		<Unit filename="..\src\video\displayable.h" />
 		<Unit filename="..\src\video\graphic_engine.cpp" />
 		<Unit filename="..\src\video\graphic_engine.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />

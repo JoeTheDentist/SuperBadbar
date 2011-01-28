@@ -1,6 +1,6 @@
 /**
- * 	@file walking_monsters.h
- * 	@brief Header de la classe Walking_monster
+ * 	@file walking_monsters.cpp
+ * 	@brief Source de la classe Walking_monster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
@@ -17,6 +17,8 @@
 #include "../video/pictures_container.h"
 #include "babar.h"
 
+
+Walking_monster::Walking_monster() {}
 
 Walking_monster::Walking_monster(Analyser *analyserLevel)
 {

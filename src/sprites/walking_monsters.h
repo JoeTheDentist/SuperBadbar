@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _WALKING_MONSTERS_
 #define _WALKING_MONSTERS_
 
@@ -25,10 +25,15 @@ private:
 
 
 public:
+    /**
+	 * 	@brief Constructeur vide
+	*/
+    Walking_monster();
+
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Analyseur se fichier
-	*/          
+	*/
 	Walking_monster(Analyser *analyserLevel);
 
 	/**
@@ -39,7 +44,7 @@ public:
 	/**
 	 * 	@brief Met à jour la vitesse du monstre
 	 *	@param babar Parametre inutilisé dans cette sous classe
-	 *	
+	 *
 	 */
 	void update_speed(Babar *babar);
 };
