@@ -136,7 +136,7 @@ void Game::game_loop()
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
-			if (compteur % PERF_CYCLES == 0) {
+			if (PERF_CYCLES != 0 && compteur % PERF_CYCLES == 0) {
 				PRINT_PERF("pourcentage d'utilisation du temps: %f", ((used_time * 100) / PERF_CYCLES))
 				PRINT_PERF("pourcentage d'utilisation du temps pour le refresh: %f", ((used_time_refresh_screen * 100) / PERF_CYCLES))
 				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))

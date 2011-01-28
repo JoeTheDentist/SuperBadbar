@@ -22,7 +22,7 @@
    #define RACINE_R std::string("../")
 #endif
 
-
+#define RECORDS_R RACINE_R + "records/"
 #define PIC_R RACINE_R + "pic/"
 	#define PIC_BABAR_R 			PIC_R + "babar/"
 	#define PIC_BACKGROUNDS_R		PIC_R + "backgrounds/"

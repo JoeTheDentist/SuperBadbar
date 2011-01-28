@@ -17,7 +17,7 @@
 #include "util/debug.h"
 #include "sprites/sprites.h"
 #include "game/game.h"
-
+#include "util/arg_analyser.h"
 
 
 int main(int argc, char *argv[])
@@ -30,6 +30,12 @@ int main(int argc, char *argv[])
     freopen("CON", "w", stderr);
 	#endif
 
+	
+	if (!Arg_Analyser::analyse(argc, argv)) {
+		PRINT_DEBUG(3, "Erreur lors de l'analyse des arguments");
+		return 0;
+	}
+	
 	PRINT_TRACE(1,"Lancement du jeu")
 //~ 	sf::RenderWindow my_window;
 

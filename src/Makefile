@@ -31,7 +31,8 @@ SFML_LIB_REP:= ../lib/
 SFML_INC_REP:= ../include/
 LIB_INC		:= -I$(SFML_INC_REP)
 LIB_DYN		:= $(wildcard $(SFML_LIB_REP)$(REP_ARCH)*.so.1.6)
-
+SCRIPT_PATH	:= ../scripts/
+RECORD_SCRIPT:= record.sh
 
 all:
 	@for i in $(DIR); do \
@@ -87,3 +88,9 @@ todo:
 	@echo "#### 'TODO' restants #####"
 	@echo "##########################"
 	@grep --color=auto -rn TODO */* || echo
+	
+record:
+	./$(SCRIPT_PATH)$(RECORD_SCRIPT)
+	
+replay:
+	./

@@ -50,7 +50,7 @@ void Sound_engine::play_music()
 
 void Sound_engine::play_sound(std::string key)
 {
-	PRINT_DEBUG(1, "jeu du son %s", key.c_str())
+	PRINT_TRACE(1, "jeu du son %s", key.c_str())
 //~ 	std::map<std::string, FSOUND_SAMPLE*>::iterator it = m_sound_samples.find(key);
 //~ 	FSOUND_SAMPLE *to_play = NULL;
 //~ 	if (it == m_sound_samples.end()) {

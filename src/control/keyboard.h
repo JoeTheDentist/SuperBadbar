@@ -18,7 +18,7 @@ enum key {
 	k_none = 0, k_exit, k_up, k_down, k_right, k_left, k_next_weapon, k_prev_weapon, k_action, k_jump, k_fire //k_fire doit etre le dernier
 };
 
-
+class Analyser;
 
 /**
  * 	@class Keyboard
@@ -43,6 +43,7 @@ class Keyboard {
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncées
+	Analyser *m_analyser;
 public:
 	/*!
 	* 	@brief Constructeur 
