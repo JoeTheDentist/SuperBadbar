@@ -15,7 +15,7 @@
 #include "../util/repertories.h"
 #include "../util/analyser.h"
 
-Keyboard::Keyboard()
+Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
@@ -31,9 +31,14 @@ Keyboard::Keyboard()
 	m_key_config[SDLK_SPACE] = k_action;
 	m_key_config[SDLK_a] = k_prev_weapon;
 	m_key_config[SDLK_z] = k_next_weapon;
-	if (_babar_replay_) {
+	m_record_on = record_on;
+	m_replay_on = replay_on;
+	if (m_replay_on) {
 		m_analyser = new Analyser();
-		m_analyser->open(RECORDS_R + _babar_replay_file_);
+		PRINT_DEBUG(1, "input_name");
+		m_analyser->open(input_name);
+	} else if (m_record_on) {
+		//TODO 
 	} else {
 		m_analyser = NULL;
 	}
@@ -46,7 +51,7 @@ Keyboard::~Keyboard()
 
 void Keyboard::update_events()
 {
-	if (!_babar_replay_) {
+	if (!m_babar_record) {
 		RECORD("\n")
 		for (int i = k_none; i < k_fire + 1 ; i++)
 			if (key_down((enum key)i))
@@ -86,6 +91,7 @@ void Keyboard::update_events()
 		}
 	}
 }
+
 
 bool Keyboard::key_down(enum key k) const
 {

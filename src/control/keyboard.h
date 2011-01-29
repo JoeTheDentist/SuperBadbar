@@ -13,6 +13,8 @@
 
 #include "SDL/SDL.h"
 
+#include <string>
+
 
 enum key { 
 	k_none = 0, k_exit, k_up, k_down, k_right, k_left, k_next_weapon, k_prev_weapon, k_action, k_jump, k_fire //k_fire doit etre le dernier
@@ -42,13 +44,17 @@ class Keyboard {
 	
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
-	int m_key_down[k_fire + 1];		// tableau des touches enfoncÃ©es
-	Analyser *m_analyser;
+	int m_key_down[k_fire + 1];		// tableau des touches enfoncÃ©es	
+	bool m_record_on, m_replay_on; 	// indique si les entrées doivent etre enregistrées (resp lues)
+	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
 public:
 	/*!
 	* 	@brief Constructeur 
+	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
+	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
+	*	@param file_name Chemin du fichier d'input ou output à partir du répertoire courant
 	*/
-	Keyboard();
+	Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name);
 
 	/*!
 	* 	@brief Destructeur 

@@ -28,7 +28,10 @@
 
 
 
-Game::Game(): m_keyboard(new Keyboard()),m_static_data(new Static_data()), m_game_engine(new Game_engine()), m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
+Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name): 
+	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)),
+	m_static_data(new Static_data()), m_game_engine(new Game_engine()), 
+	m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);

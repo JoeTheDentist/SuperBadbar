@@ -14,6 +14,7 @@
 #define _GAME_
 #include <stdint.h>
 #include <iostream>
+#include <string>
 
 
 
@@ -75,8 +76,9 @@ public:
 
 	/**
 	 * @brief Constructeur
+	 * TODO 
 	*/
-	Game();
+	Game(bool record_on, bool replay_on, std::string output_name, std::string input_name);
 
 	/**
 	 * @brief Destructeur
