@@ -43,7 +43,7 @@ SDL_Surface *Pictures_container::load_IMG(std::string key)
 			PRINT_DEBUG(1, "impossible de charger l'image %s", key.c_str());
 			return NULL;
 		}
-		SDL_SetColorKey(surf, SDL_SRCCOLORKEY, SDL_MapRGB(surf->format, 255, 0, 255));
+		//SDL_SetColorKey(surf, SDL_SRCCOLORKEY, SDL_MapRGB(surf->format, 255, 0, 255));
 		m_container.insert(std::pair<std::string, SDL_Surface*>(key, surf));
 	} else {
 		surf = (*it).second;

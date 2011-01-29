@@ -6,8 +6,8 @@ background.bmp
 2000
 
 #Babar#
-700
-900
+0
+0
 1
 
 #Events#
@@ -19,13 +19,14 @@ event_weapon machinegun 800 2850
 
 
 #Statics#
-block1 100 2900
-block2 800	2650
-block3 1700 2900
+block1 70 2950
+block2 800	2700
+block3 1700 2950
 block4_1 700 500
 block4_2 700 1200
 block4_3 700 1780
-soil 0 3200
+block5 2200 2650
+soil 0 3300
 !
 
 
