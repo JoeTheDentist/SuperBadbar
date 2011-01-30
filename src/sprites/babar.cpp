@@ -197,7 +197,7 @@ void Babar::binded_update_pos(Static_data *static_data, Moving_platform *platfor
 
 
 
-	
+
 	m_pos.x += m_binded_pos.x;
 	m_pos.y += m_binded_pos.y;
 }
@@ -240,7 +240,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
 			unbind_phase = 0;
 		}
 	}
-	
+
 	m_weapons_armory.update();
     if(m_state != JUMP) {
         m_state = STATIC;
@@ -268,7 +268,7 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
     } else {
         /* si on se releve */
         if ( m_crouch_time ) {
-            m_pos.y -= m_pos.h;
+            m_pos.y -= m_pos.h/2;
             m_crouch_time = 0;
         }
     }
@@ -481,5 +481,5 @@ void Babar::unbind()
 {
 	m_bind->unbind();
 	m_bind = NULL;
-	
+
 }
