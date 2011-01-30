@@ -67,9 +67,9 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	}
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-			m_pos.y -= 	BOX_SIZE;
+//~ 			m_pos.y -= 	BOX_SIZE;
 			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
-				m_pos.y += BOX_SIZE;
+//~ 				m_pos.y += BOX_SIZE;
 			} else {
 				m_dead = true;
 			}
@@ -77,9 +77,9 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	}
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			m_pos.y -= 	BOX_SIZE;
+//~ 			m_pos.y -= 	BOX_SIZE;
 			if(!Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
-				m_pos.y += BOX_SIZE;
+//~ 				m_pos.y += BOX_SIZE;
 			} else {
 				m_dead = true;
 			}

@@ -20,24 +20,17 @@
 	std::string str;
 	for (int i = 1; i < argc; i++) {
 		str = argv[i];
-		if (str == "-no_trace") { // TODO supprimer ou changer
-			_babar_trace_ = 0;
-			_babar_constr_ = 0;
-			_babar_perf_ = 0;
-		} else if (str == "-record") {
-			_babar_record_ = 1; // TODO supprimer
+		if (str == "-record") {
 			m_record_on = true;
 			m_output_file = "record.rcd";
 			
-		} else if (str == "-replay") { // TODO supprimer
-			_babar_replay_ = true;
+		} else if (str == "-replay") {
 			m_replay_on = true;
 			if (i + 1 == argc) {
 				PRINT_DEBUG(1, "Erreur: argument manquant")
 				m_arg_error = true;
 			} else {
 				i = i + 1;
-				_babar_replay_file_ = argv[i];
 				m_input_file = argv[i];
 			}
 		}

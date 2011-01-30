@@ -12,7 +12,7 @@
 #define _KEYBOARD_
 
 #include "SDL/SDL.h"
-
+#include <iostream>
 #include <string>
 
 
@@ -45,14 +45,15 @@ class Keyboard {
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncÃ©es	
-	bool m_record_on, m_replay_on; 	// indique si les entrées doivent etre enregistrées (resp lues)
-	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
+	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
+	Analyser *m_analyser;			// analyser si m_replay_on vaut vra
+	std::ofstream *m_record_file;
 public:
 	/*!
 	* 	@brief Constructeur 
 	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
 	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
-	*	@param file_name Chemin du fichier d'input ou output à partir du répertoire courant
+	*	@param file_name Chemin du fichier d'input ou output a partir du repertoire courant
 	*/
 	Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name);
 

@@ -27,19 +27,14 @@
 #define _DEBUG_
 
 #include <stdio.h>
-#include "../util/debug_param.h"
 
-#define DEBUG _babar_debug_
-#define TRACE _babar_trace_
-#define TRACE_CONSTR _babar_constr_ 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
-#define PERF_CYCLES _babar_perf_
-#define TRACE_RECORD _babar_record_
+#define DEBUG 2
+#define TRACE 2
+#define TRACE_CONSTR 2 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
+#define PERF_CYCLES 2
 
 
-#define RECORD(format, args...) \
-	if (TRACE_RECORD > 0) { \
-		fprintf(stderr, format, ##args);\
-	}
+
 
 	
 

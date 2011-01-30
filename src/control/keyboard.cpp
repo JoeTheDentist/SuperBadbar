@@ -15,7 +15,7 @@
 #include "../util/repertories.h"
 #include "../util/analyser.h"
 
-Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
+Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name) 
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
@@ -35,24 +35,31 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_replay_on = replay_on;
 	if (m_replay_on) {
 		m_analyser = new Analyser();
-		PRINT_DEBUG(1, "input_name");
 		m_analyser->open(input_name);
-	} else if (m_record_on) {
-		//TODO
 	} else {
 		m_analyser = NULL;
+	}
+	if (m_record_on) {
+		m_record_file = new std::ofstream(output_name.c_str(), std::ios::out | std::ios::trunc);
+	} else {
+		m_record_file = NULL;
 	}
 }
 
 Keyboard::~Keyboard()
 {
 	PRINT_CONSTR(1, "Destruction d'Keyboard")
+	if (m_record_file) 
+		delete m_record_file;
+	if (m_analyser)
+		delete m_analyser;
 }
 
 void Keyboard::update_events()
 {
-	if (!m_record_on) {
-		RECORD("\n")
+	if (!m_replay_on) {
+		if (m_record_on)
+			*m_record_file << std::endl;
 		for (int i = k_none; i < k_fire + 1 ; i++)
 			if (key_down((enum key)i))
 				m_key_down[i]++;
@@ -61,25 +68,32 @@ void Keyboard::update_events()
 			switch (event.type) {
 			case SDL_QUIT :
 				m_key_down[k_exit] = 1;
-				RECORD("%d %d ", k_exit, m_key_down[k_exit]);
+				if (m_record_on)
+					*m_record_file << k_exit << " " << m_key_down[k_exit] << " ";
 				break;
 			case SDL_KEYDOWN:
 				m_key_down[m_key_config[event.key.keysym.sym]] = 1;
-				RECORD("%d %d ", m_key_config[event.key.keysym.sym], m_key_down[m_key_config[event.key.keysym.sym]]);
+				if (m_record_on)
+					*m_record_file << m_key_config[event.key.keysym.sym] << 
+						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
 				if (event.key.keysym.sym==SDLK_ESCAPE) {
 					m_key_down[k_exit]=1;
-					RECORD("%d %d ", k_exit, m_key_down[k_exit]);
+					if (m_record_on)
+						*m_record_file << k_exit << " " << m_key_down[k_exit] << " ";
 				}
 				break;
 			case SDL_KEYUP:
 				m_key_down[m_key_config[event.key.keysym.sym]] = 0;
-				RECORD("%d %d ", m_key_config[event.key.keysym.sym], m_key_down[m_key_config[event.key.keysym.sym]]);
+				if (m_record_on)
+					 *m_record_file <<  m_key_config[event.key.keysym.sym] << 
+						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
 				break;
 			default:
 				break;
 			}
 		}
-		RECORD("666 666");
+		if (m_record_on)
+			*m_record_file << "666 666";
 	} else {
 		int x = m_analyser->read_int();
 		int y = m_analyser->read_int();

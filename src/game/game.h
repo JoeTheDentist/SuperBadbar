@@ -75,8 +75,13 @@ private:
 public:
 
 	/**
-	 * @brief Constructeur
-	 * TODO 
+	 * 	@brief Constructeur
+	 * 	@param record_on Indique si on doit sauvegarder la sequence de touches
+	 *	@param replay_on Indique si on doit charger une sequence de touches
+	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
+	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
+	 * 
+	 *	Pour une execution normale, appeler game avec false, false, "", ""
 	*/
 	Game(bool record_on, bool replay_on, std::string output_name, std::string input_name);
 
