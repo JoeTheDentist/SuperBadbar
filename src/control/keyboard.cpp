@@ -38,7 +38,7 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 		PRINT_DEBUG(1, "input_name");
 		m_analyser->open(input_name);
 	} else if (m_record_on) {
-		//TODO 
+		//TODO
 	} else {
 		m_analyser = NULL;
 	}
@@ -51,7 +51,7 @@ Keyboard::~Keyboard()
 
 void Keyboard::update_events()
 {
-	if (!m_babar_record) {
+	if (!m_record_on) {
 		RECORD("\n")
 		for (int i = k_none; i < k_fire + 1 ; i++)
 			if (key_down((enum key)i))
