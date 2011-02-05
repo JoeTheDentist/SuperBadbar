@@ -37,7 +37,8 @@ Projectiles_manager::~Projectiles_manager() {
 }
 
 
-void Projectiles_manager::update_pos(Collisions_manager *collisions_manager) {
+void Projectiles_manager::update_pos(Collisions_manager *collisions_manager) 
+{
 	// position des projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {

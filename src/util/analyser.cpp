@@ -55,7 +55,7 @@ void Analyser::find_string(std::string str)
 	uint32_t size = str.size();
 	char current = '*';
 	m_file->seekg(0);
-	while (current != EOF && char_found < size){
+	while (!m_file->eof() && char_found < size){
 		m_file->get(current);
 		if (current == str[char_found])
 			char_found++;

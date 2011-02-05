@@ -55,7 +55,7 @@ uint32_t Collisions_matrix::down_collision_type(Rect pos)
 uint32_t Collisions_matrix::up_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t i = pos.x ; i < (pos.x + pos.w) ; i += BOX_SIZE)
+	for (int32_t i = std::max(pos.x, 0) ; i < (pos.x + pos.w) ; i += BOX_SIZE)
 		if (i / BOX_SIZE < m_collisions_matrix_w)
 			coll |= m_collisions_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
