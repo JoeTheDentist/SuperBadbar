@@ -1,23 +1,21 @@
 #include "mainwindow.h"
 #include "mygraphicsview.h"
+#include <iostream>
 #include <QGraphicsScene>
-#include <QPixmap>
-#include <QGraphicsItem>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
+#include <QIcon>
 
 MainWindow::MainWindow()
 {
 	m_graphic_scene = new QGraphicsScene();
 	m_graphic_view = new MyGraphicsView(m_graphic_scene, this);
 	setCentralWidget(m_graphic_view);
-	/* Temporaire */
-	QGraphicsItem *item;
-	QPixmap image;
-	image.load("plop.png", 0, Qt::AutoColor);
-	item = m_graphic_scene->addPixmap(image);
-	/* ---------- */
+
 	
-//~ 	createActions();
-//~ 	createMenus();
+	createActions();
+	createMenus();
 //~ 	createToolBars();
 //~ 	createStatusBar();
 
@@ -27,5 +25,47 @@ MainWindow::MainWindow()
 //~ 		this, SLOT(documentWasModified()));
 
 //~ 	setCurrentFile("");
-//~ 	setUnifiedTitleAndToolBarOnMac(true);
+	setUnifiedTitleAndToolBarOnMac(true);
+}
+
+
+void MainWindow::createActions()
+{
+	m_exitAct = new QAction(tr("E&xit"), this);
+	m_exitAct->setShortcuts(QKeySequence::Quit);
+	m_exitAct->setStatusTip(tr("Exit the application"));
+	connect(m_exitAct, SIGNAL(triggered()), this, SLOT(close()));	
+	
+	m_aboutBabarStaticEditor = new QAction(QIcon(":/images/new.png"), tr("&New"), this);
+	m_aboutBabarStaticEditor->setShortcuts(QKeySequence::New);
+	m_aboutBabarStaticEditor->setStatusTip(tr("About Babar Static Editor"));
+	connect(m_aboutBabarStaticEditor, SIGNAL(triggered()), this, SLOT(aboutBabarStaticEditor()));
+}
+
+ void MainWindow::createMenus()
+ {
+	m_fileMenu = menuBar()->addMenu(tr("&File"));
+//~      fileMenu->addAction(newAct);
+//~      fileMenu->addAction(openAct);
+//~      fileMenu->addAction(saveAct);
+//~      fileMenu->addAction(saveAsAct);
+//~      fileMenu->addSeparator();
+	m_fileMenu->addAction(m_exitAct);
+
+	m_editMenu = menuBar()->addMenu(tr("&Edit"));
+//~      editMenu->addAction(cutAct);
+//~      editMenu->addAction(copyAct);
+//~      editMenu->addAction(pasteAct);
+
+	menuBar()->addSeparator();
+
+	m_helpMenu = menuBar()->addMenu(tr("&Help"));
+	m_helpMenu->addAction(m_aboutBabarStaticEditor);
+//~      helpMenu->addAction(aboutQtAct);
+}
+
+
+void MainWindow::aboutBabarStaticEditor()
+{
+	std::cout << "ABOUT" << std::endl;
 }
