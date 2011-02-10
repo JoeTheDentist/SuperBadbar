@@ -6,6 +6,8 @@
 #include <QMenuBar>
 #include <QAction>
 #include <QIcon>
+#include <QLabel>
+#include <QMessageBox>
 
 MainWindow::MainWindow()
 {
@@ -36,8 +38,7 @@ void MainWindow::createActions()
 	m_exitAct->setStatusTip(tr("Exit the application"));
 	connect(m_exitAct, SIGNAL(triggered()), this, SLOT(close()));	
 	
-	m_aboutBabarStaticEditor = new QAction(QIcon(":/images/new.png"), tr("&New"), this);
-	m_aboutBabarStaticEditor->setShortcuts(QKeySequence::New);
+	m_aboutBabarStaticEditor = new QAction(tr("About"), this);
 	m_aboutBabarStaticEditor->setStatusTip(tr("About Babar Static Editor"));
 	connect(m_aboutBabarStaticEditor, SIGNAL(triggered()), this, SLOT(aboutBabarStaticEditor()));
 }
@@ -68,4 +69,8 @@ void MainWindow::createActions()
 void MainWindow::aboutBabarStaticEditor()
 {
 	std::cout << "ABOUT" << std::endl;
+	QMessageBox::information(this, "About us", "Babar Static Editor is a Qt tool for editing SuperBabar static objects. Read the manual for more informations. You can also visit our website: <a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
+
+
+
 }
