@@ -24,6 +24,21 @@ void MyGraphicsView::loadFile(QString fileName)
 	m_background = this->scene()->addPixmap(image);
 	m_xsize = image.width();
 	m_ysize = image.height();
+	m_coll_width = m_xsize / BOX_SIZE + 1;
+	m_coll_height = m_ysize / BOX_SIZE + 1;
+	loadCol("");
+}
+
+void MyGraphicsView::loadCol(QString fileName)
+{
+	if (fileName.isEmpty()) {
+		m_collision_matrix = new int*[m_coll_width];
+		for (int i = 0; i < m_coll_width; i++) {
+			m_collision_matrix[i] = new int[m_coll_height];
+			for (int j = 0; j < m_coll_height; j++)
+				m_collision_matrix[i][j] = 0;
+		}
+	}
 }
 
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)

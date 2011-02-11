@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QToolBar>
+#include <QScrollBar>
 
 MainWindow::MainWindow()
 {
@@ -138,8 +139,9 @@ void MainWindow::loadFile(QString str)
 {
 	m_file_name = str;
 	m_graphic_view->loadFile(str);
-	setMaximumSize(	m_graphic_view->xsize() + m_fileMenu-> width(), 
-					m_graphic_view->ysize() + m_fileMenu->height());
+	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->horizontalScrollBar()->width(), 
+		m_graphic_view->ysize() + m_graphic_view->verticalScrollBar()->width() +
+		m_fileMenu->height() + m_fileToolBar->height());
 }
 
 void MainWindow::aboutBabarStaticEditor()
