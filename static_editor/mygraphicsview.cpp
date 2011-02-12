@@ -14,6 +14,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent): QGraphic
 {
 	m_opened = false;
 	m_background = NULL;
+	m_mouse_pressed = false;
 }
 
 void MyGraphicsView::loadFile(QString fileName)
@@ -38,12 +39,12 @@ void MyGraphicsView::loadFile(QString fileName)
 
 void MyGraphicsView::loadCol(QString fileName)
 {
-	if (fileName.isEmpty()) {
-		std::cout << "yop " << m_coll_width << " " << m_coll_height << std::endl;
+//~ 	if (fileName.isEmpty()) {
+//~ 		std::cout << "yop " << m_coll_width << " " << m_coll_height << std::endl;
 		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
-	} else {
-		m_collisions_matrix = new QCollisionsMatrix(fileName);
-	}
+//~ 	} else {
+//~ 		m_collisions_matrix = new QCollisionsMatrix(fileName);
+//~ 	}
 }
 
 int MyGraphicsView::posClicX(QMouseEvent *event)
@@ -59,14 +60,29 @@ int MyGraphicsView::posClicY(QMouseEvent *event)
 
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
-	std::cout << event->x() + this->horizontalScrollBar()->value() 
-		<< " " << event->y() + this->verticalScrollBar()->value()  << std::endl;
+	std::cout << posClicX(event) << " " << posClicY(event) << std::endl;
 	if (m_opened) {
+			m_collisions_matrix->setColl(m_coll_curs, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
+			QGraphicsItem *item = this->scene()->addPixmap(m_down_pic);
+			item->setPos((posClicX(event)/(BOX_SIZE)*BOX_SIZE), (posClicY(event)/BOX_SIZE)*BOX_SIZE);
+			m_collisions_matrix->setItem(item, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
+			m_mouse_pressed = true;
+	}
+}
+
+void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
+{
+	m_mouse_pressed = false;
+}
+
+void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
+{
+	if (m_opened && m_mouse_pressed) {
 		m_collisions_matrix->setColl(m_coll_curs, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
 		QGraphicsItem *item = this->scene()->addPixmap(m_down_pic);
-		item->setPos((posClicX(event)*BOX_SIZE)/BOX_SIZE, (posClicY(event)*BOX_SIZE)/BOX_SIZE);
+		item->setPos((posClicX(event)/(BOX_SIZE)*BOX_SIZE), (posClicY(event)/BOX_SIZE)*BOX_SIZE);
 		m_collisions_matrix->setItem(item, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
-	}
+	}	
 }
 
 qreal MyGraphicsView::xsize()

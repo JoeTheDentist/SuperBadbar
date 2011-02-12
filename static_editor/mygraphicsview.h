@@ -29,7 +29,14 @@ class MyGraphicsView : public QGraphicsView {
 	*	@brief Methode appelee quand l'utilisateur clique
 	*	@param event L'event en question
 	*/
-	void mousePressEvent(QMouseEvent * event);
+	virtual void mousePressEvent(QMouseEvent * event);
+	
+	//TODO
+	virtual void mouseReleaseEvent(QMouseEvent * event);
+	
+	
+	//TODO
+	virtual void mouseMoveEvent(QMouseEvent *event);
 	
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
@@ -61,6 +68,7 @@ class MyGraphicsView : public QGraphicsView {
 	
 	private:
 	bool m_opened;
+	bool m_mouse_pressed;
 	QGraphicsItem *m_background; // image du static
 	qreal m_xsize; // largeur en pixel de l'image du static
 	qreal m_ysize; // hauteur en pixel de l'image du static
