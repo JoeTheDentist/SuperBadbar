@@ -1,12 +1,15 @@
 #ifndef _MY_GRAPHICS_VIEW_
 #define _MY_GRAPHICS_VIEW_
 #include <QGraphicsView>
+#include "qcollisions_matrix.h"
 
 #define BOX_SIZE 5
 
 class QWidget;
 class QGraphicsScene;
 class QGraphicsItem;
+
+
 
 class MyGraphicsView : public QGraphicsView {
 	public:
@@ -16,6 +19,11 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param parent Le widget contenant le MyGraphicsView
 	*/
 	MyGraphicsView(QGraphicsScene *scene, QWidget *parent = NULL);
+
+	//TODO
+	int posClicX(QMouseEvent *event);	
+	//TODO
+	int posClicY(QMouseEvent *event);	
 	
 	/*!
 	*	@brief Methode appelee quand l'utilisateur clique
@@ -47,14 +55,22 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	qreal ysize();
 
+
+
+	void refreshScene();
 	
 	private:
+	bool m_opened;
 	QGraphicsItem *m_background; // image du static
 	qreal m_xsize; // largeur en pixel de l'image du static
 	qreal m_ysize; // hauteur en pixel de l'image du static
 	int m_coll_width; // largeur en blocs de la matrice de collision
 	int m_coll_height; // hauteur en blocs de la matrice de collision
-	int **m_collision_matrix; // matrice de collision
+	QCollisionsMatrix *m_collisions_matrix; // matrice de collision
+	QPixmap m_full_pic;
+	QPixmap m_down_pic;
+	int m_coll_curs;
+
 	
 	
 };

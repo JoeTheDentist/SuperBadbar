@@ -101,7 +101,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
 	if (m_opened_file) {
-		QMessageBox mb(	"plop", "Saving the file will overwrite the original file on the disk.\n",
+		QMessageBox mb(	"Static Editor", "Saving the file will overwrite the original file on the disk.\n",
 		QMessageBox::Information,
 		QMessageBox::Cancel | QMessageBox::Escape,
 		QMessageBox::No,
@@ -139,8 +139,8 @@ void MainWindow::loadFile(QString str)
 {
 	m_file_name = str;
 	m_graphic_view->loadFile(str);
-	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->horizontalScrollBar()->width(), 
-		m_graphic_view->ysize() + m_graphic_view->verticalScrollBar()->width() +
+	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
+		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
 		m_fileMenu->height() + m_fileToolBar->height());
 }
 
