@@ -102,7 +102,7 @@ void Static_data::display_statics(Camera *camera)
 {
 	for(std::list<Static *>::iterator it = m_statics.begin();
 			it != m_statics.end(); it++) {
-	    camera->display_static((*it));
+	    camera->display((*it));
 	}
 }
 

@@ -11,6 +11,7 @@
 #define STATICS_H_INCLUDED
 
 #include "../util/globals.h"
+#include "displayable.h"
 
 class Surface;
 
@@ -18,39 +19,39 @@ class Surface;
  * 	@class Static
  * 	@brief Donnée d'une image et de sa position
  */
-class Static
+class Static: public Displayable
 {
-    private :
+    protected :
         Surface *m_image;
         Rect m_pos;
 
     public :
-		
+
 	/**
 	 * 	@brief Constructeur
 	 */
-        Static(); 
-	
+        Static();
+
 	/**
 	 * 	@brief Constructeur
 	 *	@param dir_image Le chemin vers l'image
 	 *	@param pos La position du static
 	 *	@todo Utiliser le gestionnaire d'image!
-	 */	
+	 */
         Static(std::string dir_image, Rect pos);
 
-		
+
 	/**
-	 * 	@brief 
+	 * 	@brief
 	 */
-        ~Static(); 
-		
+        ~Static();
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers l'image du static
 	 */
-		Surface * image() const;  
-	
+		Surface * current_picture() const;
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return La position du static

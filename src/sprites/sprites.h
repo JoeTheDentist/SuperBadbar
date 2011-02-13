@@ -25,6 +25,7 @@
 
 #include "../video/animation.h"
 #include "../video/anim_table.h"
+#include "../video/displayable.h"
 
 /* /!\ Les enums horizontal et vertical sont dans weapon... */
 
@@ -39,7 +40,7 @@ class Surface;
  * 	@class Sprite
  * 	@brief Entités 2D mobiles et afichables
  */
-class Sprite{
+class Sprite: public Displayable {
 protected:
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */

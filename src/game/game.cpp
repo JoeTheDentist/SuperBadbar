@@ -28,14 +28,14 @@
 
 
 
-Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name): 
+Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
 	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)),
-	m_static_data(new Static_data()), m_game_engine(new Game_engine()), 
+	m_static_data(new Static_data()), m_game_engine(new Game_engine()),
 	m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data, 
+	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data,
 									m_keyboard, m_graphic_engine->get_pictures_container());
 	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
 	m_time = SDL_GetTicks();
@@ -44,7 +44,7 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 
 Game::~Game()
 {
-	
+
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
 	delete m_static_data;
@@ -61,10 +61,10 @@ void Game::update_keyboard()
 
 void Game::update_game()
 {
-	
-	m_game_engine->update_pos(m_static_data);	
-	m_game_engine->update_speed();	
-	m_game_engine->babar_update_state(m_static_data);	
+
+	m_game_engine->update_pos(m_static_data);
+	m_game_engine->update_speed();
+	m_game_engine->babar_update_state(m_static_data);
 	m_game_engine->update_monsters_projectiles();
 	m_game_engine->babar_monsters_collision();
 	m_game_engine->update_events_manager();
@@ -82,7 +82,7 @@ void Game::delete_dead_things()
 
 void Game::update_graphic()
 {
-	
+
 	m_graphic_engine->update(m_static_data);
 
 	Camera *camera = m_graphic_engine->get_camera();
@@ -92,7 +92,7 @@ void Game::update_graphic()
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	m_static_data->display_statics(camera);
-	
+
 	/* affichage des événements */
 	m_game_engine->display_events(camera);
 
@@ -102,10 +102,10 @@ void Game::update_graphic()
 
 	/* affichage des projectiles */
 	m_game_engine->display_projectiles_friend(camera);
-	
+
 	/* affichage du sprite babar */
-	camera->display_sprite(m_game_engine->babar());
-	
+	camera->display(m_game_engine->babar());
+
 	/* affichage du tableau de board */
 	m_graphic_engine->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());
 
@@ -145,7 +145,7 @@ void Game::game_loop()
 				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))
 				used_time = 0;
 				used_time_refresh_screen = 0;
-				
+
 			}
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));

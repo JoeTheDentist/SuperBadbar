@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
 #include <stdint.h>
 #include <string>
@@ -34,7 +34,7 @@ Static::~Static()
 	delete m_image;
 }
 
-Surface * Static::image() const
+Surface * Static::current_picture() const
 {
     return m_image;
 }

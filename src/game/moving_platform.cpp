@@ -6,8 +6,9 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
+#include <math.h>
 #include "moving_platform.h"
 #include "../video/surface.h"
 #include "../sprites/babar.h"
@@ -15,19 +16,29 @@
 #include "../util/debug.h"
 #include "../game/collisions_manager.h"
 
-Moving_platform::Moving_platform(std::string file_name) 
+Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, int endx, int endy)
 {
-	m_surface = new Surface(file_name + ".png");
+	m_image = new Surface(file_name + ".png");
 	m_babar = NULL;
 	Analyser analyser;
 	analyser.open(file_name + ".col");
-	m_pos.x = 900;
-	m_pos.y = 1000;
+	m_pos.x = beginx;
+	m_pos.y = beginy;
+	m_begin.x = beginx;
+	m_begin.y = beginy;
+	m_end.x = endx;
+	m_end.y = endy;
 	m_phase = 0;
-	m_pos.h = m_surface->h();
-	m_pos.w = m_surface->w();
-	m_speed.x = 5;
-	m_speed.y = 5;
+	m_pos.h = m_image->h();
+	m_pos.w = m_image->w();
+	m_speed.x = beginx-endx;
+	m_speed.y = beginy-endy;
+
+	/*Normalisation du vecteur vitesse*/
+	double norme = sqrt(m_speed.x*m_speed.x+m_speed.y*m_speed.y);
+	m_speed.x = m_speed.x*5/norme;
+	m_speed.y = m_speed.y*5/norme;
+
 	m_collisions_matrix_w = analyser.read_int();
 	m_collisions_matrix_h = analyser.read_int();
 	m_collisions_matrix = new unsigned int*[m_collisions_matrix_w];
@@ -44,7 +55,7 @@ Moving_platform::Moving_platform(std::string file_name)
 
 Moving_platform::~Moving_platform()
 {
-	delete m_surface;
+	delete m_image;
 }
 
 void Moving_platform::update_pos(Babar *babar)
@@ -71,15 +82,17 @@ void Moving_platform::update_pos(Babar *babar)
 		m_pos.x -= BOX_SIZE;
 	}
 
-	
+
 }
 
 void Moving_platform::update_speed()
 {
-	if (m_phase % 30 == 0) {
-		m_speed.x = -m_speed.x;
-		m_speed.y = -m_speed.y;
-	}
+    if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
+        m_speed.x *= -1;
+    }
+    if (m_pos.y > m_begin.y || m_pos.y < m_end.y ) {
+        m_speed.y *= -1;
+    }
 }
 
 void Moving_platform::bind(Babar *babar)
@@ -92,15 +105,15 @@ void Moving_platform::unbind()
 	m_babar = NULL;
 }
 
-Surface *Moving_platform::current_picture() const
+/*Surface *Moving_platform::current_picture() const
 {
-	return m_surface;
-}
+	return m_image;
+}*/
 
-Rect Moving_platform::position() const
+/*Rect Moving_platform::position() const
 {
 	return m_pos;
-}
+}*/
 
 Rect Moving_platform::speed() const
 {
@@ -114,7 +127,7 @@ bool Moving_platform::check_babar(Babar *babar)
 		return false;
 	Rect babar_speed = babar->speed();
 	Rect babar_pos = babar->position();
-	if (babar_speed.y < m_speed.y) 
+	if (babar_speed.y < m_speed.y)
 		return false;
 	int j = (babar_pos.y + babar_pos.h - m_pos.y) / BOX_SIZE + 1;
 	if (j < 0 || j > m_collisions_matrix_h)

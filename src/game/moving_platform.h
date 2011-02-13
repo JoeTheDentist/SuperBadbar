@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _MOVING_PLATFORM_
 #define _MOVING_PLATFORM_
 
@@ -15,6 +15,7 @@
 #include "../util/globals.h"
 #include "../video/displayable.h"
 #include "../game/collisions_matrix.h"
+#include "../video/statics.h"
 
 class Surface;
 class Babar;
@@ -36,12 +37,12 @@ class Babar;
  *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
  *	il faudra remplacer Babar par une liste de Babar
  */
-class Moving_platform : public Displayable, public Collisions_matrix {
+class Moving_platform : public Static, public Collisions_matrix {
 private:
-	Surface *m_surface;
 	Babar *m_babar;
-	Rect m_pos;
 	Rect m_speed;
+	Rect m_begin;
+	Rect m_end;
 //~ 	int coll_size_w;
 //~ 	int coll_size_h;
 	int m_phase;
@@ -50,7 +51,7 @@ public:
 	 * 	@brief Constructeur
 	 *	@param filename	Le nom des fichiers images et col sans extension
 	 */
-	Moving_platform(std::string filename);
+	Moving_platform(std::string file_name, int beginx, int beginy, int endx, int endy);
 
 	/**
 	 * 	@brief Destructeur
@@ -76,46 +77,35 @@ public:
 	 * 	@brief lie Babar à la plateforme
 	 */
 	void bind(Babar *babar);
-	 
+
 	/**
 	 * 	@brief delie Babar de la plateforme
 	 */
 	void unbind();
-	 
-	/**
-	 * 	@brief Accesseur
-	 *	@return L'image actuelle de la plateforme
-	 */
-	Surface *current_picture() const;
-	
-	/**
-	 * 	@brief Accesseur
-	 *	@return La position actuelle de la plateforme
-	 */
-	Rect position() const;
-	
-		/**
+
+
+    /**
 	 * 	@brief Accesseur
 	 *	@return La vitesse actuelle de la plateforme
 	 */
 	Rect speed() const;
-	
-	
-	 
+
+
+
 	/**
 	 * 	@brief Indique si Babar doit etre lié à la plateforme
 	 *	@param babar Le Babar à lier
 	 *	@return Vrai si Babar doit etre lié à la plateforme courante
 	 */
 	bool check_babar(Babar *babar);
-	 
-	 
+
+
 	/**
-	 * 	@brief 
+	 * 	@brief
 	 */
-	 
-	 
-	 
+
+
+
 };
 
 

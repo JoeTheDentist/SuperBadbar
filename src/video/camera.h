@@ -54,14 +54,14 @@ private:
 public:
 
 	/*!
-	*	@brief Constructeur par défaut 
+	*	@brief Constructeur par défaut
 	*/
-	Camera();			
-	
+	Camera();
+
 	/*!
-	* 	@brief Destructeur 
+	* 	@brief Destructeur
 	*/
-	~Camera();			
+	~Camera();
 
 	/*!
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
@@ -70,78 +70,59 @@ public:
 	void init_camera(Sprite *target);
 
 	/*!
-	* 	@brief Met à jour la position de la camera 
+	* 	@brief Met à jour la position de la camera
 	*	@param static_data fournit la taille de l'écran
 	* 	@warning Il va falloir virer ce fucking static_data
 	*
 	*	Suit la position de babar, sans acoups, en s'arretant aux bords du niveau
 	*	et en étant décalé dans la direction du regard de babar.
 	*/
-	void update_pos(Static_data *static_data);						
+	void update_pos(Static_data *static_data);
 
 	/*!
-	* 	@brief Affiche le fond d'écran passé en paramètre 
+	* 	@brief Affiche le fond d'écran passé en paramètre
 	*	@param background l'image du fond d'écran
 	*/
-	void display_background(Surface *background) ; 
+	void display_background(Surface *background) ;
 
-	/*!
-	* 	@brief Affiche le sprite passé en paramètre à l'écran
-	*	@param sprite le sprite à afficher
-	*
-	*	Le sprite est affiché en fonction de sa position 
-	*	relativement à la position de la caméra
-	*	Si le sprite vaut NULL, rien ne se passe
-	*/
-	void display_sprite(const Sprite * sprite) const;
-	
-	/*!
-	* 	@brief Affiche le Static passé en paramètre à l'écran
-	*	@param sttc le Static à afficher
-	*	Le Static est affiché en fonction de sa position 
-	*	relativement à la position de la caméra
-	*	Si le Static vaut NULL, rien ne se passe	
-	*/
-	void display_static(Static *sttc) ;
-	
 	/*!
 	* 	@brief Affiche le Displayable passé en paramètre à l'écran
 	*	@param entity le Displayable à afficher
-	*	Le Displayable est affiché en fonction de sa position 
+	*	Le Displayable est affiché en fonction de sa position
 	*	relativement à la position de la caméra
-	*	Si le Displayable vaut NULL, rien ne se passe	
-	*	@todo N'utiliser que cette méthode 
-	*/	
+	*	Si le Displayable vaut NULL, rien ne se passe
+	*	@todo N'utiliser que cette méthode
+	*/
 	void display(Displayable * const entity) const;
-	
+
 	/*!
 	* 	@brief Affiche les événements affichables de l'event_manager
 	*	@param event_manager l'ensemble des événements à afficher
 	*/
 	void display_events(Events_manager * const event_manager) const;
-	
+
 	/*!
-	* 	@brief Affiche l'événement s'il est affichable en fonction 
+	* 	@brief Affiche l'événement s'il est affichable en fonction
 	*	de sa position et de son image
 	*	@param event l'événement à afficher
 	*/
-	void display_event(Event *event);
+	void display_event(Event *event) const;
 
 	/*!
 	* 	@brief Accesseur
 	*	@return La position et le cadre de la caméra
 	*/
 	Rect frame() const;
-	
+
 	/*!
 	* 	@brief Affiche pic à la position pos par rapport au cadre de la camera
 	*	@param surf L'image à afficher
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
 	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
-	void display_picture(Surface *surf, Rect *pos) const; 
-	void display_picture(SDL_Surface *surf, Rect *pos) ; 
-	
+	void display_picture(Surface *surf, Rect *pos) const;
+	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé à la rendre const...*/
+
 	/*!
 	*	@brief Met à jour l'affichage de la caméra
 	*

@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
  #include "events_manager.h"
 
 #include "../events/events.h"
@@ -50,7 +50,7 @@ void Events_manager::load_events(Analyser *analyser)
 	analyser->find_string("#Events#");
 	int events_number = analyser->read_int();
 	for (int i = 0; i < events_number; i++) {
-		std::string event_class = analyser->read_string(); 
+		std::string event_class = analyser->read_string();
 		if (event_class == "event_weapon") {
 			Event_weapon *event = new Event_weapon(m_game_engine->babar(), m_pictures_container, analyser);
 			m_list_events.push_back(event);
@@ -77,7 +77,7 @@ void Events_manager::update()
 	}
 }
 
-void Events_manager::display_events(Camera *const camera) 
+void Events_manager::display_events(Camera const * camera)
 {
 	std::list<Event*>::iterator curs;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++) {

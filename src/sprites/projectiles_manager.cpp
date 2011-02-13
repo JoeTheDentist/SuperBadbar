@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
 #include "projectiles_manager.h"
 #include "../sprites/projectiles.h"
@@ -17,7 +17,7 @@
 
 
 Projectiles_manager::Projectiles_manager() {
-	
+
 }
 
 Projectiles_manager::~Projectiles_manager() {
@@ -33,22 +33,22 @@ Projectiles_manager::~Projectiles_manager() {
 		it != m_projectiles_ennemy.end(); it++) {
 		m_projectiles_ennemy.erase(it);
 		it--;
-	}	
+	}
 }
 
 
-void Projectiles_manager::update_pos(Collisions_manager *collisions_manager) 
+void Projectiles_manager::update_pos(Collisions_manager *collisions_manager)
 {
 	// position des projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {
 	    (*it)->update_pos(collisions_manager);
-	}	
+	}
 	// position des projectiles ennemis
 	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
 			it != m_projectiles_ennemy.end(); it++) {
 	    (*it)->update_pos(collisions_manager);
-	}	
+	}
 }
 
 void Projectiles_manager::delete_old_projectiles(Static_data *static_data)
@@ -79,9 +79,9 @@ void Projectiles_manager::add_friend_proj(Projectile *proj) {
 
 void Projectiles_manager::add_friend_proj(std::list<Projectile*> *proj) {
 	for (std::list<Projectile *>::iterator it = proj->begin();
-			it != proj->end(); it++) {	
+			it != proj->end(); it++) {
 		add_friend_proj(*it);
-	}				
+	}
 	delete proj;
 }
 
@@ -91,9 +91,9 @@ void Projectiles_manager::add_ennemy_proj(Projectile *proj) {
 
 void Projectiles_manager::add_ennemy_proj(std::list<Projectile*> *proj) {
 	for (std::list<Projectile *>::iterator it = proj->begin();
-			it != proj->end(); it++) {	
+			it != proj->end(); it++) {
 		add_ennemy_proj(*it);
-	}				
+	}
 	delete proj;
 }
 
@@ -101,12 +101,12 @@ void Projectiles_manager::display(Camera *camera) {
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {
 		if (!(*it)->dead())
-			camera->display_sprite(*it);		
+			camera->display(*it);
 	}
 	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
 			it != m_projectiles_ennemy.end(); it++) {
 		if (!(*it)->dead())
-			camera->display_sprite(*it);		
+			camera->display(*it);
 	}
 }
 

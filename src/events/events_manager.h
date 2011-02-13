@@ -31,15 +31,15 @@ class Analyser;
  */
 class Events_manager {
 private:
-	std::list<Event*> m_list_events;	
-	
+	std::list<Event*> m_list_events;
+
 	Game_engine *m_game_engine;
 	Static_data *m_static_data;
 	Pictures_container *m_pictures_container;
 public:
 
 	/**
-	 * 	@brief Constructeur 
+	 * 	@brief Constructeur
 	*/
 	Events_manager();
 
@@ -63,7 +63,7 @@ public:
 	 *	@param analyser un Analyser ouvert sur le fichier level à charger
 	*/
 	void load_events(Analyser *analyser);
-	
+
 	/**
 	 * 	@brief Met à jour l'ensemble des événements
 	 *
@@ -71,12 +71,12 @@ public:
 	 *	à détruire
 	*/
 	void update();
-	
+
 	/**
 	 * 	@brief Affiche à l'écran les événements affichables
 	 *	@param camera La camera pour afficher les événements
 	*/
-	void display_events(Camera *const camera);
+	void display_events(Camera const * camera);
 
 };
 

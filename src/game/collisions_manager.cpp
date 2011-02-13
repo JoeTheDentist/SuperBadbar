@@ -31,14 +31,14 @@ void Collisions_manager::init_collisions_manager(int level) {
 	Analyser analyser;
 	std::string str_lvl;
     char str[3];
-    sprintf(str, "%d", level);	 
+    sprintf(str, "%d", level);
 	str_lvl = str;
 	analyser.open(LEVELS_R + "level" + str_lvl + ".lvl");
 	analyser.find_string("#Level_dimensions#");
 	m_collisions_matrix_w = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
 	m_collisions_matrix_h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
     /*** Allocation du tableau pour les collisions ***/
-    m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];     
+    m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];
     for(int i = 0; i<m_collisions_matrix_w ;i++) {
         m_collisions_matrix[i] = new uint32_t[m_collisions_matrix_h + 1];
     }
@@ -63,18 +63,18 @@ void Collisions_manager::init_collisions_manager(int level) {
 			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
 				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 			}
-		}		
+		}
 		analyser_static.close();
 		static_name = analyser.read_string();
 	}
-	
+
 
 	analyser.close();
-	m_moving_platform = new Moving_platform(PIC_STATICS_R + "block1");
-	
+	m_moving_platform = new Moving_platform(PIC_STATICS_R + "block8", 1600, 2200, 1600, 1600);
+
 }
 
-bool Collisions_manager::check_collision(Rect A, Rect B) 
+bool Collisions_manager::check_collision(Rect A, Rect B)
 {
 	uint16_t A_right = A.x + A.w;
 	uint16_t B_right = B.x + B.w;

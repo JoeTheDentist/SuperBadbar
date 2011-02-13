@@ -1,27 +1,20 @@
-/** * 	@file camera.cpp * 	@brief Implémentation de la classe Camera * * 	@author Guillaume Bérard & Benoit Morel * 	@date decembre 2010 * */ #include <iostream>#include <SDL/SDL.h>#include <stdint.h>#include "camera.h"#include "../util/debug.h"#include "../sprites/sprites.h"#include "../sprites/babar.h"#include "../sprites/monsters.h"#include "../sprites/projectiles.h"#include "../video/statics.h"#include "../video/surface.h"#include "../video/displayable.h"#include "../game/static_data.h"#include "../util/globals.h"#include "../events/events_manager.h"#include "../events/events.h"#include "../game/collisions_manager.h"#include "../game/moving_platform.h"Camera::Camera(){	m_target = NULL;	m_screen = NULL;	m_decalage.x = 0;	m_decalage.y = 0;	m_direction.x = 0;	m_direction.y = 0;}Camera::~Camera(){	PRINT_CONSTR(1, "Destruction de la camera")	PRINT_TRACE(1, "Fermeture de la fenetre")	SDL_FreeSurface(m_screen);}void Camera::init_camera(Sprite *target){
+/** * 	@file camera.cpp * 	@brief Implémentation de la classe Camera * * 	@author Guillaume Bérard & Benoit Morel * 	@date decembre 2010 * */#include <iostream>#include <SDL/SDL.h>#include <stdint.h>#include "camera.h"#include "../util/debug.h"#include "../sprites/sprites.h"#include "../sprites/babar.h"#include "../sprites/monsters.h"#include "../sprites/projectiles.h"#include "../video/statics.h"#include "../video/surface.h"#include "../video/displayable.h"#include "../game/static_data.h"#include "../util/globals.h"#include "../events/events_manager.h"#include "../events/events.h"#include "../game/collisions_manager.h"#include "../game/moving_platform.h"Camera::Camera(){	m_target = NULL;	m_screen = NULL;	m_decalage.x = 0;	m_decalage.y = 0;	m_direction.x = 0;	m_direction.y = 0;}Camera::~Camera(){	PRINT_CONSTR(1, "Destruction de la camera")	PRINT_TRACE(1, "Fermeture de la fenetre")	SDL_FreeSurface(m_screen);}void Camera::init_camera(Sprite *target){
     Rect pos_temp = target->position();	SDL_Rect position_target;
 	position_target.x = pos_temp.x;
 	position_target.y = pos_temp.y;
 	position_target.h = pos_temp.h;
 	position_target.w = pos_temp.w;	PRINT_CONSTR(1, "Construction de la camera")	m_frame.h = WINDOW_HEIGHT;	m_frame.w = WINDOW_WEIGHT;	m_frame.x = position_target.x + (position_target.w / 2) - (m_frame.w / 2);	m_frame.y = position_target.y + (position_target.h / 2) - (m_frame.h / 2);	PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.h, m_frame.w)	m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32, SDL_HWSURFACE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);	SDL_WM_SetCaption("SuperBabar", NULL);	m_target = target;}void Camera::update_decalage(){	//mise à jour de la direction du decalage	if (m_target->direction_h() != 0) {		m_direction.x = m_target->direction_h();	}	/* del vertical
 	if (m_target->direction_v() != 0) {		m_direction.y = m_target->direction_v();	}*/	// gestion du decalage horizontal	m_decalage.x += m_direction.x* VITESSE_DECALAGE_CAMERA;	if (m_decalage.x < -m_frame.w *MAX_DECALAGE_CAMERA)		m_decalage.x = -m_frame.w * MAX_DECALAGE_CAMERA;	if (m_decalage.x > m_frame.w * MAX_DECALAGE_CAMERA)		m_decalage.x = m_frame.w * MAX_DECALAGE_CAMERA;	// gestion du decalage vertical	/* del vertical
-	if(m_target->direction_v() == 0) {		if (m_decalage.y > 0) {			if (m_decalage.y < VITESSE_DECALAGE_RETOUR_CAMERA)				m_decalage.y = 0;			else				m_decalage.y -= VITESSE_DECALAGE_RETOUR_CAMERA;		} else {			if (m_decalage.y > -VITESSE_DECALAGE_RETOUR_CAMERA)				m_decalage.y = 0;			else				m_decalage.y += VITESSE_DECALAGE_RETOUR_CAMERA;		}	} else {		m_decalage.y += (m_target)->direction_v()* VITESSE_DECALAGE_CAMERA;		if (m_decalage.y < -m_frame.h *MAX_DECALAGE_CAMERA)			m_decalage.y = -m_frame.h * MAX_DECALAGE_CAMERA;		if (m_decalage.y > m_frame.h * MAX_DECALAGE_CAMERA)			m_decalage.y = m_frame.h * MAX_DECALAGE_CAMERA;	}*/}                                     void Camera::update_pos(Static_data *static_data){	update_decalage();
+	if(m_target->direction_v() == 0) {		if (m_decalage.y > 0) {			if (m_decalage.y < VITESSE_DECALAGE_RETOUR_CAMERA)				m_decalage.y = 0;			else				m_decalage.y -= VITESSE_DECALAGE_RETOUR_CAMERA;		} else {			if (m_decalage.y > -VITESSE_DECALAGE_RETOUR_CAMERA)				m_decalage.y = 0;			else				m_decalage.y += VITESSE_DECALAGE_RETOUR_CAMERA;		}	} else {		m_decalage.y += (m_target)->direction_v()* VITESSE_DECALAGE_CAMERA;		if (m_decalage.y < -m_frame.h *MAX_DECALAGE_CAMERA)			m_decalage.y = -m_frame.h * MAX_DECALAGE_CAMERA;		if (m_decalage.y > m_frame.h * MAX_DECALAGE_CAMERA)			m_decalage.y = m_frame.h * MAX_DECALAGE_CAMERA;	}*/}void Camera::update_pos(Static_data *static_data){	update_decalage();
 	Rect pos_temp = m_target->position();
 	SDL_Rect position_target;
 	position_target.x = pos_temp.x;
 	position_target.y = pos_temp.y;
 	position_target.h = pos_temp.h;
 	position_target.w = pos_temp.w;	m_frame.x = position_target.x + (position_target.w / 2) - (m_frame.w / 2);	m_frame.x += m_decalage.x;	m_frame.y = position_target.y + (position_target.h / 2) - (m_frame.h / 2);	m_frame.y += m_decalage.y;	if (m_frame.x < 0)		m_frame.x = 0;	if (m_frame.y < 0)		m_frame.y = 0;	if ((uint32_t) (m_frame.x + m_frame.w) > static_data->static_data_weight())		m_frame.x = static_data->static_data_weight() - m_frame.w;	if ((uint32_t) (m_frame.y + m_frame.h) > static_data->static_data_height())		m_frame.y = static_data->static_data_height() - m_frame.h;}
-void Camera::display_background(Surface *background) {	Rect pos;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	display_picture(background, &pos);}void Camera::display_sprite(const Sprite *sprite) const{	Surface *picture = sprite->current_picture();	if (picture != NULL) {		Rect pos_sprite = sprite->position();		pos_sprite.x -= m_frame.x;		pos_sprite.y -= m_frame.y;		display_picture(picture, &pos_sprite);	}}void Camera::display(Displayable * const entity) const {	Surface *picture = entity->current_picture();	if (picture != NULL) {		Rect pos = entity->position();		pos.x -= m_frame.x;		pos.y -= m_frame.y;		display_picture(picture, &pos);	}}
-void Camera::display_static(Static *sttc) 
-{
-    Rect pos_static = sttc->position();
-    pos_static.x -= m_frame.x;
-	pos_static.y -= m_frame.y;
-    display_picture(sttc->image(), &pos_static);
-}
-void Camera::display_events(Events_manager * const event_manager) const{	event_manager->display_events((Camera *const)this);}
-void Camera::display_event(Event *event){	Surface *picture = event->current_picture();	if (picture != NULL) {
+void Camera::display_background(Surface *background){	Rect pos;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	display_picture(background, &pos);}void Camera::display(Displayable * const entity) const{	Surface *picture = entity->current_picture();	if (picture != NULL) {		Rect pos = entity->position();		pos.x -= m_frame.x;		pos.y -= m_frame.y;		display_picture(picture, &pos);	}}
+void Camera::display_events(Events_manager * const event_manager) const{	event_manager->display_events(/*(Camera *const)*/this);}
+void Camera::display_event(Event *event) const{	Surface *picture = event->current_picture();	if (picture != NULL) {
 		Rect pos_event = event->current_pos();		pos_event.x -= m_frame.x;		pos_event.y -= m_frame.y;		display_picture(picture, &pos_event);	}}Rect Camera::frame() const{
     Rect pos_temp;
     pos_temp.x = m_frame.x;
@@ -33,7 +26,7 @@ void Camera::display_event(Event *event){	Surface *picture = event->current_pi
     pos_sdl->y = (int)pos->y;
     pos_sdl->h = (unsigned int)pos->h;
     pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);	delete pos_sdl;}
-void Camera::display_picture(SDL_Surface *surf, Rect *pos) {
+void Camera::display_picture(SDL_Surface *surf, Rect *pos){
     SDL_Rect * pos_sdl = new SDL_Rect;
     pos_sdl->x = (int)pos->x;
     pos_sdl->y = (int)pos->y;

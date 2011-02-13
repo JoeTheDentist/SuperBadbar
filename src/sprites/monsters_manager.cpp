@@ -86,7 +86,7 @@ void Monsters_manager::display_monsters(const Camera &camera)
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
 		if (!(*it)->dead())
-			camera.display_sprite((*it));
+			camera.display((*it));
 	}
 }
 
