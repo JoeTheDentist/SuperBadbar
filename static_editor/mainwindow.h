@@ -9,19 +9,51 @@ class QMenu;
 class QAction;
 class QToolBar;
 
+/*!
+*	@class MainWindow
+*	@brief Gestion de la fenetre principale de l'editeur
+*/
 class MainWindow : public QMainWindow {
 	Q_OBJECT
 	
 	public:
+	/*!
+	*	@brief Constructeur
+	*/
 	MainWindow();
 	
 	private:
+	/*!
+	*	@brief Initialisation des actions
+	*/
 	void createActions();
+	
+	/*!
+	*	@brief Initialisation des menus
+	*/
 	void createMenus();
+	
+	/*!
+	*	@brief Initialisation de la toolbar
+	*/
 	void createToolBars();
+	
+	/*!
+	*	@brief Charge un fichier .png
+	*	@param str Nom du fichier (doit terminer par .png)
+	*/
 	void loadFile(QString str);
+	
+	/*!
+	*	@brief Enregistre le .col en fonction des modifications faites
+	*	@param str Nom au format .png du fichier à sauvegarder
+	*/
 	void saveFile(QString str);
 
+	/*!
+	*	@brief Demande a l'utilisateur s'il veut sauvegarder son travail
+	*/
+	void warningSave();
 	
 	
 	public slots:
@@ -32,7 +64,8 @@ class MainWindow : public QMainWindow {
 	
 	
 	private:
-	MyGraphicsView *m_graphic_view;
+	MyGraphicsView *m_graphic_view; // objet gérant 
+	
 	QGraphicsScene *m_graphic_scene;
 	bool m_opened_file;
 	QString m_file_name;

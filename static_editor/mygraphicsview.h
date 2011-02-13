@@ -9,8 +9,6 @@ class QWidget;
 class QGraphicsScene;
 class QGraphicsItem;
 
-
-
 class MyGraphicsView : public QGraphicsView {
 	public:
 	/*!
@@ -20,32 +18,54 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	MyGraphicsView(QGraphicsScene *scene, QWidget *parent = NULL);
 
-	//TODO
-	int posClicX(QMouseEvent *event);	
-	//TODO
+	/*!
+	*	@brief Calcule l'abscisse du clic par rapport a la scene
+	*	@param event L'evenement de la souris
+	*	@return L'abscisse entiere
+	*/
+	int posClicX(QMouseEvent *event);
+	
+
+	/*!
+	*	@brief Calcule l'abscisse du clic par rapport a la scene
+	*	@param event L'evenement de la souris
+	*	@return L'abscisse entiere
+	*/
 	int posClicY(QMouseEvent *event);	
 	
 	/*!
-	*	@brief Methode appelee quand l'utilisateur clique
-	*	@param event L'event en question
+	*	@brief Traite le clic de la souris
+	*	@param event L'event de la souris
 	*/
 	virtual void mousePressEvent(QMouseEvent * event);
 	
-	//TODO
+	/*!
+	*	@brief Traite le relachement de la souris
+	*	@param event L'event de la souris
+	*/
 	virtual void mouseReleaseEvent(QMouseEvent * event);
 	
 	
-	//TODO
+	/*!
+	*	@brief Traite le deplacement de la souris
+	*	@param event L'event de la souris
+	*/
 	virtual void mouseMoveEvent(QMouseEvent *event);
 	
-	//TODO
+	/*!
+	*	@brief Met à jour un carré la matrice de collision
+	*	@param coll La nouvelle collision
+	*	@param x La position x du clic en pixels
+	*	@param y La position y du clic en pixels
+	*/
 	void setBox(int coll, int x, int y);
 	
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
 	*	@param fileName Le nom du fichier (avec l'extension png)
+	*	@param newFile Si vrai, un nouveau fichier col est crée, sinon un fichier .col est chargé
 	*/
-	void loadFile(QString fileName);
+	void loadFile(QString fileName, bool newFile);
 	
 	/*!
 	*	@brief 	Charge les donnees de collision a partir du nom de fichier
@@ -65,28 +85,35 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	qreal ysize();
 	
-	//TODO
+	/*!
+	*	@brief Modifie la collision ("couleur") active du curseur
+	*	@param coll La nouvelle collision
+	*/
 	void setCurrentColl(int coll);
 
+	/*!
+	*	@brief Sauvegarde de la matrice de collision dans le fichier str
+	*	@param str Le chemin du fichier a sauvegarder (doit se terminer par .col)
+	*/
 	void save(QString str);
 
+	/*!
+	*	TODO
+	*/
 	void refreshScene();
 	
 	private:
-	bool m_opened;
-	bool m_mouse_pressed;
+	bool m_opened; // vaut vrai si un fichier est ouvert
+	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé
 	QGraphicsItem *m_background; // image du static
 	qreal m_xsize; // largeur en pixel de l'image du static
 	qreal m_ysize; // hauteur en pixel de l'image du static
 	int m_coll_width; // largeur en blocs de la matrice de collision
 	int m_coll_height; // hauteur en blocs de la matrice de collision
 	QCollisionsMatrix *m_collisions_matrix; // matrice de collision
-	QPixmap m_full_pic;
-	QPixmap m_down_pic;
-	int m_coll_curs;
-
-	
-	
+	QPixmap m_full_pic; // image d'une collision pleine (carre rouge)
+	QPixmap m_down_pic; // image d'une collision par le bas (carre vert)
+	int m_coll_curs; // collision courante (celle qui sera ajoute a chaque clic)
 };
 
 #endif

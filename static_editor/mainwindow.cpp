@@ -101,30 +101,31 @@ void MainWindow::createToolBars()
 
 void MainWindow::newFile()
 {
-	
+	if (m_opened_file) {
+		warningSave();
+	}
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png");
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!fileName.endsWith(".png")) {
+		QMessageBox::critical(this, "File opening", "filename must ends with \".pgn\"");
+		return;
+	}
+	m_opened_file = true;
+	m_file_name = fileName;
+	m_graphic_view->loadFile(fileName, true);
+	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
+		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
+		m_fileMenu->height() + m_fileToolBar->height());
 }
 
 void MainWindow::open()
 {
 	if (m_opened_file) {
-		QMessageBox mb(	"Static Editor", "Saving the file will overwrite the original file on the disk.\n",
-		QMessageBox::Information,
-		QMessageBox::Cancel | QMessageBox::Escape,
-		QMessageBox::No,
-		QMessageBox::Yes | QMessageBox::Default);
-		mb.setButtonText(QMessageBox::Yes, "Save");
-		mb.setButtonText(QMessageBox::No, "Discard");
-		switch(mb.exec()) {
-		case QMessageBox::Yes:
-			saveFile(m_file_name);
-			break;
-		case QMessageBox::No:
-			break;
-		case QMessageBox::Cancel:
-			return;
-		}
+		warningSave();
 	}
-	QString fileName = QFileDialog::getOpenFileName(this);
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png");
 	if (fileName.isEmpty()) {
 		return;
 	}
@@ -133,12 +134,17 @@ void MainWindow::open()
 		return;
 	}
 	m_opened_file = true;
-	loadFile(fileName);
+	m_file_name = fileName;
+	m_graphic_view->loadFile(fileName, false);
+	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
+		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
+		m_fileMenu->height() + m_fileToolBar->height());
 }
 
 void MainWindow::save()
 {
-	this->saveFile(m_file_name);
+	if (m_opened_file)
+		this->saveFile(m_file_name);
 }
 
 void MainWindow::saveFile(QString str)
@@ -152,7 +158,7 @@ void MainWindow::saveFile(QString str)
 void MainWindow::loadFile(QString str)
 {
 	m_file_name = str;
-	m_graphic_view->loadFile(str);
+	m_graphic_view->loadFile(str, false);
 	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
 		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
 		m_fileMenu->height() + m_fileToolBar->height());
@@ -162,4 +168,24 @@ void MainWindow::aboutBabarStaticEditor()
 {
 	QMessageBox::information(this, "About us", "Babar Static Editor is a Qt tool for editing SuperBabar static objects. Read the manual for more informations. You can also visit our website: <a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
 
+}
+
+void MainWindow::warningSave()
+{
+	QMessageBox mb(	"Static Editor", "Saving the file will overwrite the original file on the disk.\n",
+	QMessageBox::Information,
+	QMessageBox::Cancel | QMessageBox::Escape,
+	QMessageBox::No,
+	QMessageBox::Yes | QMessageBox::Default);
+	mb.setButtonText(QMessageBox::Yes, "Save");
+	mb.setButtonText(QMessageBox::No, "Discard");
+	switch(mb.exec()) {
+	case QMessageBox::Yes:
+		saveFile(m_file_name);
+		break;
+	case QMessageBox::No:
+		break;
+	case QMessageBox::Cancel:
+		return;
+	}
 }
