@@ -35,6 +35,7 @@ Pictures_container::~Pictures_container()
 
 SDL_Surface *Pictures_container::load_IMG(std::string key)
 {
+    const char * test = key.c_str();
 	std::map<std::string, SDL_Surface*>::iterator it = m_container.find(key);
 	SDL_Surface *surf = NULL;
 	if (it == m_container.end()) {

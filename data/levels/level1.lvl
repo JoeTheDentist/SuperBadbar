@@ -19,16 +19,16 @@ event_weapon machinegun 800 2850
 
 
 #Statics#
-block7 1800 2200
-block1 70 2950
-block2 800	2700
-block3 1700 2950
-block4_1 700 500
-block4_2 700 1200
-block4_3 700 1780
-block5 2200 2650
-block6 2750 2000
-soil 0 3300
+block7 1800 2200 0
+block1 70 2950 1
+block2 800	2700 1
+block3 1700 2950 1
+block4_1 700 500 1
+block4_2 700 1200 1
+block4_3 700 1780 1
+block5 2200 2650 1
+block6 2750 2000 1
+soil 0 3300 1
 !
 
 

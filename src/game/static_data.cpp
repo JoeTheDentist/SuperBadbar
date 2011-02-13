@@ -26,8 +26,12 @@ Static_data::~Static_data()
 {
 	PRINT_CONSTR(1, "Destruction d'un Static_data")
 	delete m_pictures_container;
-	for(std::list<Static *>::iterator it = m_statics.begin();
-			it != m_statics.end(); it++) {
+	for(std::list<Static *>::iterator it = m_statics_first.begin();
+			it != m_statics_first.end(); it++) {
+	    delete (*it);
+	}
+	for(std::list<Static *>::iterator it = m_statics_back.begin();
+			it != m_statics_back.end(); it++) {
 	    delete (*it);
 	}
 	delete m_background;
@@ -36,6 +40,7 @@ Static_data::~Static_data()
 
 void Static_data::init_static_data(uint32_t lvl)
 {
+    int level = 0;
 	std::string rep;
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
@@ -65,8 +70,15 @@ void Static_data::init_static_data(uint32_t lvl)
 		pos.x = analyser.read_int();
 		pos.y = analyser.read_int();
         curr_static = new Static(static_pic_rep + static_name + PICS_EXT,pos);
+
+        level = analyser.read_int();
+		if ( level == 0 ) {
+            add_static_back(curr_static);
+        } else {
+            add_static_first(curr_static);
+        }
+
 		static_name = analyser.read_string();
-		add_static(curr_static);
     }
 
 
@@ -98,16 +110,29 @@ Pictures_container *Static_data::get_pictures_container()
 	return m_pictures_container;
 }
 
-void Static_data::display_statics(Camera *camera)
+void Static_data::display_statics_first(Camera *camera)
 {
-	for(std::list<Static *>::iterator it = m_statics.begin();
-			it != m_statics.end(); it++) {
+	for(std::list<Static *>::iterator it = m_statics_first.begin();
+			it != m_statics_first.end(); it++) {
 	    camera->display((*it));
 	}
 }
 
-void Static_data::add_static(Static *stat)
+void Static_data::display_statics_back(Camera *camera)
 {
-	m_statics.push_back(stat);
+	for(std::list<Static *>::iterator it = m_statics_back.begin();
+			it != m_statics_back.end(); it++) {
+	    camera->display((*it));
+	}
+}
+
+void Static_data::add_static_first(Static *stat)
+{
+	m_statics_first.push_back(stat);
+}
+
+void Static_data::add_static_back(Static *stat)
+{
+	m_statics_back.push_back(stat);
 }
 

@@ -91,7 +91,7 @@ void Game::update_graphic()
 	camera->display_background(m_static_data->background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
-	m_static_data->display_statics(camera);
+	m_static_data->display_statics_back(camera);
 
 	/* affichage des événements */
 	m_game_engine->display_events(camera);
@@ -105,6 +105,8 @@ void Game::update_graphic()
 
 	/* affichage du sprite babar */
 	camera->display(m_game_engine->babar());
+
+	m_static_data->display_statics_first(camera);
 
 	/* affichage du tableau de board */
 	m_graphic_engine->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());

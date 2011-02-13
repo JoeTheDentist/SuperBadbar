@@ -56,6 +56,7 @@ void Collisions_manager::init_collisions_manager(int level) {
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
+		int level = analyser.read_int();
 		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
 		static_weight = analyser_static.read_int();
 		static_height = analyser_static.read_int();

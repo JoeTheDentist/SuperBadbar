@@ -53,10 +53,7 @@ Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, 
 	analyser.close();
 }
 
-Moving_platform::~Moving_platform()
-{
-	delete m_image;
-}
+Moving_platform::~Moving_platform() {}
 
 void Moving_platform::update_pos(Babar *babar)
 {
