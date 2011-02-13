@@ -38,6 +38,9 @@ class MyGraphicsView : public QGraphicsView {
 	//TODO
 	virtual void mouseMoveEvent(QMouseEvent *event);
 	
+	//TODO
+	void setBox(int coll, int x, int y);
+	
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
 	*	@param fileName Le nom du fichier (avec l'extension png)
@@ -61,8 +64,11 @@ class MyGraphicsView : public QGraphicsView {
 	*	@return La hauteur en pixel de l'image du static
 	*/
 	qreal ysize();
+	
+	//TODO
+	void setCurrentColl(int coll);
 
-
+	void save(QString str);
 
 	void refreshScene();
 	

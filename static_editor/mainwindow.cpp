@@ -55,6 +55,12 @@ void MainWindow::createActions()
 	m_aboutBabarStaticEditor = new QAction(tr("About"), this);
 	m_aboutBabarStaticEditor->setStatusTip(tr("About Babar Static Editor"));
 	connect(m_aboutBabarStaticEditor, SIGNAL(triggered()), this, SLOT(aboutBabarStaticEditor()));
+	
+	m_saveAct = new QAction(tr("Save"), this);
+	m_saveAct->setStatusTip(tr("Save the .col file"));
+	connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));
+	
+	
 }
 
  void MainWindow::createMenus()
@@ -62,7 +68,7 @@ void MainWindow::createActions()
 	m_fileMenu = menuBar()->addMenu(tr("&File"));
 	m_fileMenu->addAction(m_newAct);
 	m_fileMenu->addAction(m_openAct);
-//~      fileMenu->addAction(saveAct);
+	m_fileMenu->addAction(m_saveAct);
 //~      fileMenu->addAction(saveAsAct);
 //~      fileMenu->addSeparator();
 	m_fileMenu->addAction(m_exitAct);
@@ -84,7 +90,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar = addToolBar(tr("File"));
 	m_fileToolBar->addAction(m_newAct);
 	m_fileToolBar->addAction(m_openAct);
-//~ 	m_fileToolBar->addAction(m_saveAct);
+	m_fileToolBar->addAction(m_saveAct);
 
 //~ 	editToolBar = addToolBar(tr("Edit"));
 //~ 	editToolBar->addAction(cutAct);
@@ -130,9 +136,17 @@ void MainWindow::open()
 	loadFile(fileName);
 }
 
+void MainWindow::save()
+{
+	this->saveFile(m_file_name);
+}
+
 void MainWindow::saveFile(QString str)
 {
-	std::cout << "sauvegarde" << std::endl;	
+	std::cout << "sauvegarde" << std::endl;
+	str.chop(3);
+	str.append("col");
+	m_graphic_view->save(str);
 }
 
 void MainWindow::loadFile(QString str)

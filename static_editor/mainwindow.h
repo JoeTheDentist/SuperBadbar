@@ -27,6 +27,7 @@ class MainWindow : public QMainWindow {
 	public slots:
 	void newFile();
 	void open();
+	void save();
 	void aboutBabarStaticEditor();
 	
 	
@@ -40,6 +41,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_newAct;
 	QAction *m_openAct;
 	QAction *m_exitAct;
+	QAction *m_saveAct;
 	
 	QMenu *m_editMenu;
 	

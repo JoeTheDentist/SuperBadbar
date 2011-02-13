@@ -33,7 +33,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	m_coll_width = m_xsize / BOX_SIZE + 1;
 	m_coll_height = m_ysize / BOX_SIZE + 1;
 	loadCol(fileName);
-	m_coll_curs = 1;
+	m_coll_curs = DOWN_COLL;
 	m_opened = true;
 }
 
@@ -62,11 +62,8 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
 	std::cout << posClicX(event) << " " << posClicY(event) << std::endl;
 	if (m_opened) {
-			m_collisions_matrix->setColl(m_coll_curs, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
-			QGraphicsItem *item = this->scene()->addPixmap(m_down_pic);
-			item->setPos((posClicX(event)/(BOX_SIZE)*BOX_SIZE), (posClicY(event)/BOX_SIZE)*BOX_SIZE);
-			m_collisions_matrix->setItem(item, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
-			m_mouse_pressed = true;
+		setBox(m_coll_curs, posClicX(event), posClicY(event));
+		m_mouse_pressed = true;
 	}
 }
 
@@ -78,11 +75,16 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
 {
 	if (m_opened && m_mouse_pressed) {
-		m_collisions_matrix->setColl(m_coll_curs, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
-		QGraphicsItem *item = this->scene()->addPixmap(m_down_pic);
-		item->setPos((posClicX(event)/(BOX_SIZE)*BOX_SIZE), (posClicY(event)/BOX_SIZE)*BOX_SIZE);
-		m_collisions_matrix->setItem(item, posClicX(event) % BOX_SIZE, posClicY(event) % BOX_SIZE);
+		setBox(m_coll_curs, posClicX(event), posClicY(event));
 	}	
+}
+
+void MyGraphicsView::setBox(int coll, int x, int y)
+{
+	m_collisions_matrix->setColl(coll, x / BOX_SIZE, y / BOX_SIZE);
+	QGraphicsItem *item = this->scene()->addPixmap(m_down_pic);
+	item->setPos((x / (BOX_SIZE) * BOX_SIZE), (y / BOX_SIZE) * BOX_SIZE);
+	m_collisions_matrix->setItem(item, x / BOX_SIZE, y / BOX_SIZE);	
 }
 
 qreal MyGraphicsView::xsize()
@@ -104,4 +106,9 @@ void MyGraphicsView::refreshScene()
 			}
 		}
 	}
+}
+
+void MyGraphicsView::save(QString str)
+{
+	m_collisions_matrix->save(str);
 }
