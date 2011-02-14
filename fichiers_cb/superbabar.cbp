@@ -114,7 +114,6 @@
 		<Unit filename="..\src\util\arg_analyser.h" />
 		<Unit filename="..\src\util\constantes_debug.h" />
 		<Unit filename="..\src\util\debug.h" />
-		<Unit filename="..\src\util\debug_param.cpp" />
 		<Unit filename="..\src\util\debug_param.h" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
