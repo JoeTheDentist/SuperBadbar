@@ -321,7 +321,12 @@ bool Babar::can_fire()
 std::list<Projectile*> *Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
-    return m_weapons_armory.get_current_weapon()->fire(m_pos,m_dir);
+	Rect fire_pos = m_pos;
+	fire_pos.y += SOURCE_Y;
+	if ( m_dir == RIGHT ) {
+	    fire_pos.x += m_pos.w;
+	}
+    return m_weapons_armory.get_current_weapon()->fire(fire_pos,m_dir);
 }
 
 bool Babar::can_walk() const

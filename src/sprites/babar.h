@@ -18,6 +18,7 @@
 #include <list>
 #define BABAR_SPEED 15
 #define JUMP_TIME 6
+#define SOURCE_Y 30  /* décalage en y de la source, par rapport au haut */
 
 class Collisions_manager;
 class Projectiles_manager;
@@ -94,15 +95,15 @@ public:
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
     void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
-	
+
 	/*!
 	 *	@brief Met à jour la position du sprite s'il est lié à une plateforme
 	 *	@param static_data Données du jeu
 	 *	@param platform La plateforme liée
 	*/
     void binded_update_pos(Static_data *static_data, Moving_platform *platform);
-	
-	
+
+
 
 
 	/**
@@ -240,31 +241,31 @@ public:
 	 *	@return L'image actuelle de Babar
 	 */
 	Surface * current_picture() const;
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return La vitesse actuelle de Babar
-	 */	
+	 */
 	Rect speed() const;
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Return vrai si babar est lié à une plateforme
-	 */	
+	 */
 	bool binded() const;
-	
+
 	/**
 	 * 	@brief Lie babar à la plateforme
 	 *	@param platform plateforme à lier
-	 */		
+	 */
 	void bind(Moving_platform *platform);
-	
+
 	/**
 	 * 	@brief Délie babar de sa plateforme
-	 */		
+	 */
 	void unbind();
-	
-	
+
+
 };
 
 #endif

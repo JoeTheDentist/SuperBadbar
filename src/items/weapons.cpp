@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
 #include <stdint.h>
 
@@ -24,12 +24,6 @@ Weapon::~Weapon()
 	PRINT_CONSTR(2, "Destruction d'une Weapon")
 }
 
-std::list<Projectile*> *Weapon::fire(Rect pos, horizontal h)
-{
-	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
-	return proj_list;
-}
-
 uint32_t Weapon::reload_time() const
 {
     return m_reload_time;
@@ -43,8 +37,4 @@ int Weapon::munitions() const
 weapon_type Weapon::type_of_weapon() const
 {
 	return m_weapon_type;
-}
-
-void Weapon::add_munitions() 
-{
 }

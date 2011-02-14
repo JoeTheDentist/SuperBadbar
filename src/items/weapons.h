@@ -51,7 +51,7 @@ class Projectile;
 /**
  * 	@class Weapon
  * 	@brief Instance d'une arme
- *	
+ *
  *	@todo changer le fonctionnement: l'arme doit contenir
  *	un pointeur vers son propriétaire pour savoir à quelle
  * 	"alliance" elle appartient, ainsi qu'un pointeur vers le gestionnaire
@@ -65,49 +65,49 @@ protected:
 	int m_munitions;
 	float m_last_dir_h;
 public:
-	
+
 	/**
 	 * 	@brief Constructeur
-	*/	
+	*/
 	Weapon();
 
 	/**
 	 * 	@brief Destructeur
 	 */
 	virtual ~Weapon();
-	
+
 	/**
 	 * 	@brief Tire en fonction de l'arme
 	 *	@param pos La position du propriétaire de l'arme
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	virtual std::list<Projectile*> *fire(Rect pos, horizontal h);
-	
+	virtual std::list<Projectile*> *fire(Rect pos, horizontal h) = 0;
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le temps de rechargement (en cycles de jeu)
 	 */
 	virtual uint32_t reload_time() const;
-	
+
 
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le nombre de munitions restantes
 	 */
 	virtual int munitions() const;
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le type de l'arme
 	 */
 	virtual weapon_type type_of_weapon() const;
-	
-	
+
+
 	/**
 	 * 	@brief Mutateur: ajoute des munitions
-	 */	
-	virtual void add_munitions();
+	 */
+	virtual void add_munitions() = 0;
 
 };
 
