@@ -61,6 +61,8 @@ class MainWindow : public QMainWindow {
 	void open();
 	void save();
 	void aboutBabarStaticEditor();
+	void setCursBox();
+	void setCursLine();
 	
 	
 	private:
@@ -71,16 +73,15 @@ class MainWindow : public QMainWindow {
 	QString m_file_name;
 	
 	QMenu *m_fileMenu;
+	QMenu *m_editMenu;
+	QMenu *m_helpMenu;
 	QAction *m_newAct;
 	QAction *m_openAct;
 	QAction *m_exitAct;
 	QAction *m_saveAct;
-	
-	QMenu *m_editMenu;
-	
-	QMenu *m_helpMenu;
 	QAction *m_aboutBabarStaticEditor;
-	
+	QAction *m_curs_box;
+	QAction *m_curs_line;
 	QToolBar *m_fileToolBar;
 
 

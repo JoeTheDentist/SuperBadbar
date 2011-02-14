@@ -3,11 +3,15 @@
 #include <QGraphicsView>
 #include "qcollisions_matrix.h"
 
+#define CURS_BOX 0
+#define CURS_LINE 1
+
 #define BOX_SIZE 5
 
 class QWidget;
 class QGraphicsScene;
 class QGraphicsItem;
+
 
 class MyGraphicsView : public QGraphicsView {
 	public:
@@ -66,13 +70,7 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param newFile Si vrai, un nouveau fichier col est crée, sinon un fichier .col est chargé
 	*/
 	void loadFile(QString fileName, bool newFile);
-	
-	/*!
-	*	@brief 	Charge les donnees de collision a partir du nom de fichier
-	*	Si le fichier est vide, une nouvelle matrice de collision est cree
-	*/
-	void loadCol(QString fileName);
-	
+
 	/*!
 	*	@brief 	Accesseur
 	*	@return La largeur en pixel de l'image du static
@@ -96,11 +94,18 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param str Le chemin du fichier a sauvegarder (doit se terminer par .col)
 	*/
 	void save(QString str);
+	
+	//TODO
+	void draw_line(int coll, float x, float y, float X, float Y);
+
 
 	/*!
 	*	TODO
 	*/
 	void refreshScene();
+	
+	//TODO
+	void setCursorShape(int shape);
 	
 	private:
 	bool m_opened; // vaut vrai si un fichier est ouvert
@@ -114,6 +119,9 @@ class MyGraphicsView : public QGraphicsView {
 	QPixmap m_full_pic; // image d'une collision pleine (carre rouge)
 	QPixmap m_down_pic; // image d'une collision par le bas (carre vert)
 	int m_coll_curs; // collision courante (celle qui sera ajoute a chaque clic)
+	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
+	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
+	int m_curs_shape;
 };
 
 #endif

@@ -4,13 +4,11 @@
 #include <QGraphicsItem>           
 #include <QString>
 
-
 #define NO_COLL 0x0
 #define FULL_COLL 0xF
 #define DOWN_COLL 0x4
 
 class QGraphicsScene;
-class MyGraphicsView;
 
 struct CollItem {
 	QGraphicsItem *item;
@@ -31,7 +29,7 @@ class QCollisionsMatrix {
 	*	@brief Constructeur: charge la matrice dans un fichier
 	*	@param fileName Le nom du fichier a ouvrir
 	*/
-	QCollisionsMatrix(QString fileName, MyGraphicsView *view);
+//~ 	QCollisionsMatrix(QString fileName, MyGraphicsView *view);
 	
 	/*!
 	*	@brief Destructeur

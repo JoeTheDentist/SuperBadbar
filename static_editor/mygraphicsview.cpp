@@ -16,6 +16,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent): QGraphic
 	m_opened = false;
 	m_background = NULL;
 	m_mouse_pressed = false;
+	m_curs_shape = CURS_BOX;
 }
 
 void MyGraphicsView::loadFile(QString fileName, bool newFile)
@@ -35,7 +36,7 @@ void MyGraphicsView::loadFile(QString fileName, bool newFile)
 	m_coll_width = m_xsize / BOX_SIZE + 1;
 	m_coll_height = m_ysize / BOX_SIZE + 1;
 	if (newFile) {
-		loadCol("");
+		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
 	} else {
 		fileName.chop(3);
 		fileName.append("col");
@@ -46,8 +47,8 @@ void MyGraphicsView::loadFile(QString fileName, bool newFile)
 		flux >> m_coll_height;
 		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
 		int coll;
-		for (int i = 0; i < m_coll_width; i++) {
-			for (int j = 0; j < m_coll_height; j++) {
+		for (int i = 0; i < m_coll_height; i++) {
+			for (int j = 0; j < m_coll_width; j++) {
 				flux >> coll;
 				setBox(coll, j * BOX_SIZE, i * BOX_SIZE);
 				std::cout << coll << std::endl;
@@ -58,14 +59,6 @@ void MyGraphicsView::loadFile(QString fileName, bool newFile)
 	m_opened = true;
 }
 
-void MyGraphicsView::loadCol(QString fileName)
-{
-	if (fileName.isEmpty()) {
-		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
-	} else {
-		m_collisions_matrix = new QCollisionsMatrix(fileName, this);
-	}
-}
 
 int MyGraphicsView::posClicX(QMouseEvent *event)
 {
@@ -80,21 +73,54 @@ int MyGraphicsView::posClicY(QMouseEvent *event)
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
 	std::cout << posClicX(event) << " " << posClicY(event) << std::endl;
+	m_mouse_pressed = true;
 	if (m_opened) {
-		setBox(m_coll_curs, posClicX(event), posClicY(event));
-		m_mouse_pressed = true;
+		switch(m_curs_shape) {
+		case CURS_BOX:
+			m_xprec = posClicX(event);
+			m_yprec = posClicY(event);		
+			draw_line(m_coll_curs, posClicX(event), posClicY(event), posClicX(event), posClicY(event));
+			break;
+		case CURS_LINE:
+			m_xprec = posClicX(event);
+			m_yprec = posClicY(event);
+			break;
+		default:
+			break;
+		}
 	}
 }
 
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	m_mouse_pressed = false;
+	if (m_opened) {
+		switch(m_curs_shape) {
+		case CURS_BOX:
+			break;
+		case CURS_LINE:
+			draw_line(m_coll_curs, m_xprec, m_yprec, posClicX(event), posClicY(event));
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
 {
 	if (m_opened && m_mouse_pressed) {
-		setBox(m_coll_curs, posClicX(event), posClicY(event));
+		switch(m_curs_shape) {
+		case CURS_BOX:
+			draw_line(m_coll_curs, m_xprec, m_yprec, posClicX(event), posClicY(event));
+			m_xprec = posClicX(event);
+			m_yprec = posClicY(event);
+			break;
+		case CURS_LINE:
+			break;
+		default:
+			break;
+		}
 	}	
 }
 
@@ -107,7 +133,7 @@ void MyGraphicsView::setBox(int coll, int x, int y)
 		item->setZValue(5);
 		item->setPos((x / (BOX_SIZE) * BOX_SIZE), (y / BOX_SIZE) * BOX_SIZE);
 		m_collisions_matrix->setItem(item, x / BOX_SIZE, y / BOX_SIZE);
-	}		
+	}	
 }
 
 qreal MyGraphicsView::xsize()
@@ -134,4 +160,43 @@ void MyGraphicsView::refreshScene()
 void MyGraphicsView::save(QString str)
 {
 	m_collisions_matrix->save(str);
+}
+
+
+void MyGraphicsView::draw_line(int coll, float x, float y, float X, float Y)
+{
+	float i = x , j = y, a = (Y-y)/(X-x);
+	if (a < 0)
+		a = -a;
+	if (a < 1) {
+		if (x < X){
+			i = x; j = y;
+		}
+		else {
+			i = X; j = Y; X = x; Y = y;
+		}
+		a = (Y-j)/(X-i);
+		for (; i < X; i += BOX_SIZE) {
+			j+= a * BOX_SIZE;
+			setBox(coll, i, j);
+		}
+	}
+	else {
+		if (y < Y){
+			i = x; j = y;
+		}
+		else {
+			i = X; j = Y; X = x; Y = y;
+		}
+		a = (X-i)/(Y-j);
+		for (; j < Y; j += BOX_SIZE) {
+			i+= a * BOX_SIZE;
+			setBox(coll, i, j);
+		}	
+	}
+}
+
+void MyGraphicsView::setCursorShape(int shape)
+{
+	m_curs_shape = shape;
 }

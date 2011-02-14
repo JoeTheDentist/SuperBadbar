@@ -56,9 +56,20 @@ void MainWindow::createActions()
 	m_aboutBabarStaticEditor->setStatusTip(tr("About Babar Static Editor"));
 	connect(m_aboutBabarStaticEditor, SIGNAL(triggered()), this, SLOT(aboutBabarStaticEditor()));
 	
-	m_saveAct = new QAction(tr("Save"), this);
+	m_saveAct = new QAction(QIcon("images/save.png"),tr("Save"), this);
+	m_saveAct->setShortcuts(QKeySequence::Save);
 	m_saveAct->setStatusTip(tr("Save the .col file"));
 	connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));
+	
+	m_curs_box = new QAction(QIcon("images/box.png"), tr("Box curs"), this);
+	m_curs_box->setStatusTip("Simple cursor");
+	connect(m_curs_box, SIGNAL(triggered()), this, SLOT(setCursBox()));
+	
+	m_curs_line = new QAction(QIcon("images/line.png"), tr("Line curs"), this);
+	m_curs_line->setStatusTip("Trace lines");
+	connect(m_curs_line, SIGNAL(triggered()), this, SLOT(setCursLine()));
+	
+	
 	
 	
 }
@@ -91,6 +102,11 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_newAct);
 	m_fileToolBar->addAction(m_openAct);
 	m_fileToolBar->addAction(m_saveAct);
+	m_fileToolBar->addSeparator();
+	m_fileToolBar->addAction(m_curs_box);
+	m_fileToolBar->addAction(m_curs_line);
+	m_fileToolBar->addSeparator();
+	
 
 //~ 	editToolBar = addToolBar(tr("Edit"));
 //~ 	editToolBar->addAction(cutAct);
@@ -168,6 +184,16 @@ void MainWindow::aboutBabarStaticEditor()
 {
 	QMessageBox::information(this, "About us", "Babar Static Editor is a Qt tool for editing SuperBabar static objects. Read the manual for more informations. You can also visit our website: <a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
 
+}
+
+void MainWindow::setCursBox()
+{
+	m_graphic_view->setCursorShape(CURS_BOX);
+}
+
+void MainWindow::setCursLine()
+{
+	m_graphic_view->setCursorShape(CURS_LINE);
 }
 
 void MainWindow::warningSave()
