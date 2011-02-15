@@ -32,6 +32,7 @@ Babar::Babar(Keyboard *keyboard, Static_data *static_data, Analyser *analyser)
 	PRINT_CONSTR(1, "Construction de Babar")
 	init_babar(analyser);
 	m_bind = NULL;
+	m_fire = false;
 }
 
 Babar::~Babar()
@@ -256,10 +257,12 @@ void Babar::update_state(Static_data *static_data, Collisions_manager *collision
     }
 
     if (can_fire()) {
+        m_fire = true;
 		projectiles_manager->add_friend_proj(fire());
         m_fire_phase = 0;
     }
     else {
+        m_fire = false;
         m_fire_phase++;
     }
 
@@ -321,6 +324,7 @@ bool Babar::can_fire()
 std::list<Projectile*> *Babar::fire()
 {
 	PRINT_TRACE(2, "Tir de Babar")
+	/* Calcul de la position de la source du tir */
 	Rect fire_pos = m_pos;
 	fire_pos.y += SOURCE_Y;
 	if ( m_dir == RIGHT ) {
@@ -452,6 +456,7 @@ Surface *Babar::current_picture() const
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
 		m_animt->change_anim(m_state, m_dir);
+
         return m_animt->curr_pic();
 	} else
 		return NULL;

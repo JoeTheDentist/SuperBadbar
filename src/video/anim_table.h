@@ -2,7 +2,7 @@
  * 	@file anim_manager.h
  * 	@brief Header de la classe Anim_table
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -29,9 +29,20 @@ class Anim_table
 {
     private:
         char m_nb_states;           /* nombre d'etats de l'animation */
-        int m_last_state;         /* dernier etat affiche, pour les changements d'animation */
+        int m_last_state;           /* dernier etat affiche, pour les changements d'animation */
         Animation * m_curr_anim;    /* pointeur sur l'animation courante */
-        Animation ***m_anim;       /* tableau de pointeur vers les animations ; etat et gauche/droite */
+        Animation ***m_anim;        /* tableau de pointeur vers les animations ; etat et gauche/droite */
+        bool m_fire;                /* si il y a un état de tir dans les animations */
+
+        /*!
+         * @brief Construction de l'animation pour un monstre ayant un état de tir (2x plus d'images)
+         */
+        void init_fire(std::string anim_name);
+
+        /*!
+         * @brief Construction de l'animation pour un monstre sans état de tir
+         */
+        void init_nfire(std::string anim_name);
 
     public:
         /**
@@ -39,6 +50,7 @@ class Anim_table
          *
          * A partir de la chaine de caractere : lien de l'image sans l'extension ni etat/dir, il sait
          * charger toutes les bonnes images... Check des fichier peut-être un peu longs.
+         * /!\\ Les num des images doivent correspondrent à l'enum de l'état correspondant...
          *
          *  @param string donnant l'adresse du paquet d'image a charger
          */
@@ -50,12 +62,12 @@ class Anim_table
         ~Anim_table();
 
         /**
-         * @brief change l'animation courrante.
+         * @brief change l'animation courrante, en prenant en compte si l'animation est stoppable.
          */
         void change_anim(int s, horizontal dir);
 
         /**
-         * @brief Accesseur a l'image courante de l'animation, l'image a afficher.
+         * @brief Accesseur a l'image courante de l'animation, l'image a afficher (à appeler une fois par cycle).
          */
         Surface * curr_pic();
 

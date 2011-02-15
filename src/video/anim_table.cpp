@@ -19,12 +19,42 @@
 #include "anim_table.h"
 
 Anim_table::Anim_table(std::string anim_name) {
-    char state = '0', dir = '0', num_img = '0';
-
-    if ( !FileExists(anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT) ) {
+    /* On détermine si il y a un état en plus ou non (animation de tir) */
+    if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
+        m_fire = false;
+    } else if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
+        m_fire = true;
+    } else {
         /* si aucun fichier de ce nom n'existe */
-        PRINT_DEBUG(1, "Fichier inexistant %s", (anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT).c_str());
+        PRINT_DEBUG(1, "Fichier inexistant %s", (anim_name+"_0_0_0"+PICS_EXT).c_str());
     }
+
+    /* on choisit la fonction d'initialisation en fonction du fait si il y a une animation de tir */
+    if ( m_fire ) {
+        init_fire(anim_name);
+    } else {
+        init_nfire(anim_name);
+    }
+}
+
+
+Anim_table::~Anim_table() {
+    for (int i=0;i<m_nb_states;i++) {
+        delete m_anim[i][0];
+        delete m_anim[i][1];
+        delete[] m_anim[i];
+    }
+    delete[] m_anim;
+}
+
+void Anim_table::init_fire(std::string anim_name)
+{
+
+}
+
+void Anim_table::init_nfire(std::string anim_name)
+{
+    char state = '0', dir = '0', num_img = '0';
 
     /* calcul du nombre d'etat */
     m_nb_states = 0;
@@ -61,16 +91,6 @@ Anim_table::Anim_table(std::string anim_name) {
     }
 
     m_curr_anim = m_anim[0][0];
-}
-
-
-Anim_table::~Anim_table() {
-    for (int i=0;i<m_nb_states;i++) {
-        delete m_anim[i][0];
-        delete m_anim[i][1];
-        delete[] m_anim[i];
-    }
-    delete[] m_anim;
 }
 
 void Anim_table::change_anim(int s, horizontal dir) {

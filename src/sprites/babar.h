@@ -55,11 +55,12 @@ protected:
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
-	bool m_ready_double_jump;
-	bool m_ready_jump;
+	bool m_ready_double_jump;           /* booléen indiquant si on peut effectuer un double saut */
+	bool m_ready_jump;                  /* idem pour le saut */
 	Weapons_armory m_weapons_armory;
 	Moving_platform *m_bind;
 	Rect m_binded_pos;
+	bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
 
 	/**
 	 * 	@brief Charge les images de babar
