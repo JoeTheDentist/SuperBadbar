@@ -71,7 +71,7 @@ void MainWindow::createActions()
 	
 	m_curs_green = new QAction(QIcon("images/green_curs.png"), tr("Down coll curs"), this);
 	m_curs_green->setStatusTip("To print down collisions (green)");
-	connect(m_curs_line, SIGNAL(triggered()), this, SLOT(setCursGreen()));
+	connect(m_curs_green, SIGNAL(triggered()), this, SLOT(setCursGreen()));
 	
 	m_curs_red = new QAction(QIcon("images/red_curs.png"), tr("Full coll curs"), this);
 	m_curs_red->setStatusTip("To print full collisions (red)");
