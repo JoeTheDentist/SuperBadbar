@@ -1,9 +1,12 @@
 #include "qcollisions_matrix.h"
+#include "collitem.h"
 #include <iostream>
 #include <math.h>
 #include <QFile>
 #include <QTextStream>
 #include <QGraphicsScene>
+#include <QGraphicsItem>           
+
 
 QCollisionsMatrix::QCollisionsMatrix(int width, int height)
 {

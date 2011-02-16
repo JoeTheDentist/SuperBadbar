@@ -11,7 +11,9 @@
 #include <QTextStream>
 
 
-MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent): QGraphicsView(scene, parent)
+MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
+	QGraphicsView(scene, parent),
+	m_histo()
 {
 	m_opened = false;
 	m_background = NULL;
@@ -50,7 +52,7 @@ void MyGraphicsView::loadFile(QString fileName, bool newFile)
 		for (int i = 0; i < m_coll_height; i++) {
 			for (int j = 0; j < m_coll_width; j++) {
 				flux >> coll;
-				setBox(coll, j * BOX_SIZE, i * BOX_SIZE);
+				setBox(coll, j * BOX_SIZE, i * BOX_SIZE, false);
 				std::cout << coll << std::endl;
 			}
 		}	
@@ -76,17 +78,19 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 	if (m_opened) {
 		switch(m_curs_shape) {
 		case CURS_BOX:
+			m_histo.newSequence();
 			m_xprec = posClicX(event);
 			m_yprec = posClicY(event);		
 			draw_line(m_coll_curs, posClicX(event), posClicY(event), posClicX(event), posClicY(event));
 			break;
 		case CURS_LINE:
+			m_histo.newSequence();
 			m_xprec = posClicX(event);
 			m_yprec = posClicY(event);
 			break;
 		default:
 			break;
-		}
+		}                                                     
 	}
 }
 
@@ -123,11 +127,15 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 	}	
 }
 
-void MyGraphicsView::setBox(int coll, int x, int y)
+void MyGraphicsView::setBox(int coll, int x, int y, bool save)
 {
-	m_collisions_matrix->setColl(coll, x / BOX_SIZE, y / BOX_SIZE);
+	int i = x / BOX_SIZE;
+	int j = y / BOX_SIZE;
+	if (save)
+		m_histo.saveColl(m_collisions_matrix->coll(i, j),i, j);
+	m_collisions_matrix->setColl(coll, i, j);
 	QGraphicsItem *item;
-	item = m_collisions_matrix->item(x / BOX_SIZE, y / BOX_SIZE);
+	item = m_collisions_matrix->item(i, j);
 	if (item) {
 		// TODO supprimer l'item
 		this->scene()->removeItem(item);
@@ -138,12 +146,11 @@ void MyGraphicsView::setBox(int coll, int x, int y)
 		else if (coll == FULL_COLL)
 			item = this->scene()->addPixmap(m_full_pic); 
 		item->setZValue(5);
-		item->setPos((x / (BOX_SIZE) * BOX_SIZE), (y / BOX_SIZE) * BOX_SIZE);
-		m_collisions_matrix->setItem(item, x / BOX_SIZE, y / BOX_SIZE);
+		item->setPos(i * BOX_SIZE, j * BOX_SIZE);
+		m_collisions_matrix->setItem(item, i, j);
 	} else {
-		m_collisions_matrix->setColl(NO_COLL, x / BOX_SIZE, y / BOX_SIZE);
-		m_collisions_matrix->setItem(NULL, x / BOX_SIZE, y / BOX_SIZE);
-		
+		m_collisions_matrix->setColl(NO_COLL, i, j);
+		m_collisions_matrix->setItem(NULL, i, j);
 	}
 }
 
@@ -214,4 +221,15 @@ void MyGraphicsView::setCursorShape(int shape)
 void MyGraphicsView::setCursorCol(int col) 
 {
 	m_coll_curs = col;
+}
+
+void MyGraphicsView::undo()
+{
+	if (m_histo.canUndo()) {
+		std::list<collAndPos>::iterator it;
+		for (it = m_histo.lastSequence()->begin(); it != m_histo.lastSequence()->end(); it++) {
+			setBox((*it).coll, (*it).i*BOX_SIZE, (*it).j*BOX_SIZE, false);
+		}
+		m_histo.popLastSequence();
+	}
 }

@@ -1,19 +1,16 @@
 #ifndef _QCOLLISIONS_MATRIX_H
 #define _QCOLLISIONS_MATRIX_H
 
-#include <QGraphicsItem>           
 #include <QString>
 
 #define NO_COLL 0x0
 #define FULL_COLL 0xF
 #define DOWN_COLL 0x4
 
+class QGraphicsItem;
 class QGraphicsScene;
 
-struct CollItem {
-	QGraphicsItem *item;
-	int coll;
-};
+struct CollItem;
 
 class QCollisionsMatrix {
 	

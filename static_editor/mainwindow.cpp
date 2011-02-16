@@ -60,6 +60,11 @@ void MainWindow::createActions()
 	m_saveAct->setShortcuts(QKeySequence::Save);
 	m_saveAct->setStatusTip(tr("Save the .col file"));
 	connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));
+		
+	m_undoAct = new QAction(QIcon("images/undo.png"),tr("Undo"), this);
+	m_undoAct->setShortcuts(QKeySequence::Undo);
+	m_undoAct->setStatusTip(tr("Undo"));
+	connect(m_undoAct, SIGNAL(triggered()), this, SLOT(undo()));
 	
 	m_curs_box = new QAction(QIcon("images/box.png"), tr("Box curs"), this);
 	m_curs_box->setStatusTip("Simple cursor");
@@ -112,6 +117,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_newAct);
 	m_fileToolBar->addAction(m_openAct);
 	m_fileToolBar->addAction(m_saveAct);
+	m_fileToolBar->addAction(m_undoAct);
 	m_fileToolBar->addSeparator();
 	m_fileToolBar->addAction(m_curs_box);
 	m_fileToolBar->addAction(m_curs_line);
@@ -192,6 +198,12 @@ void MainWindow::loadFile(QString str)
 		m_fileMenu->height() + m_fileToolBar->height());
 }
 
+void MainWindow::undo()
+{
+	std::cout << "undo" << std::endl;
+	m_graphic_view->undo();
+}
+
 void MainWindow::aboutBabarStaticEditor()
 {
 	QMessageBox::information(this, "About us", "Babar Static Editor is a Qt tool for editing SuperBabar static objects. Read the manual for more informations. You can also visit our website: <a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
@@ -222,7 +234,6 @@ void MainWindow::setCursErase()
 {
 	m_graphic_view->setCursorCol(NO_COLL);
 }
-
 
 void MainWindow::warningSave()
 {

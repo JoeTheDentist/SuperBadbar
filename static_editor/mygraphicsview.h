@@ -2,6 +2,7 @@
 #define _MY_GRAPHICS_VIEW_
 #include <QGraphicsView>
 #include "qcollisions_matrix.h"
+#include "histo.h"
 
 #define CURS_BOX 0
 #define CURS_LINE 1
@@ -62,7 +63,7 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param x La position x du clic en pixels
 	*	@param y La position y du clic en pixels
 	*/
-	void setBox(int coll, int x, int y);
+	void setBox(int coll, int x, int y, bool save = true);
 	
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
@@ -109,6 +110,8 @@ class MyGraphicsView : public QGraphicsView {
 	
 	void setCursorCol(int col);
 	
+	void undo();
+	
 	private:
 	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé
@@ -123,7 +126,8 @@ class MyGraphicsView : public QGraphicsView {
 	int m_coll_curs; // collision courante (celle qui sera ajoute a chaque clic)
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
-	int m_curs_shape;
+	int m_curs_shape; // forme du curseur (point, ligne...)
+	Histo m_histo; // historique pour le undo
 };
 
 #endif

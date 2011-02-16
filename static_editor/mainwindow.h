@@ -60,6 +60,7 @@ class MainWindow : public QMainWindow {
 	void newFile();
 	void open();
 	void save();
+	void undo();
 	void aboutBabarStaticEditor();
 	void setCursBox();
 	void setCursLine();
@@ -82,6 +83,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_openAct;
 	QAction *m_exitAct;
 	QAction *m_saveAct;
+	QAction *m_undoAct;
 	QAction *m_aboutBabarStaticEditor;
 	QAction *m_curs_box;
 	QAction *m_curs_line;
