@@ -22,6 +22,11 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param parent Le widget contenant le MyGraphicsView
 	*/
 	MyGraphicsView(QGraphicsScene *scene, QWidget *parent = NULL);
+	
+	/*!
+	*	@brief Destructeur
+	*/
+	~MyGraphicsView();
 
 	/*!
 	*	@brief Calcule l'abscisse du clic par rapport a la scene
@@ -96,20 +101,33 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void save(QString str);
 	
-	//TODO
-	void draw_line(int coll, float x, float y, float X, float Y);
-
-
 	/*!
-	*	TODO
+	*	@brief Affiche une ligne de collisions
+	*	@param coll Le type de collision a tracer
+	*	@param x l'abscisse du premier point du segment
+	*	@param y l'ordonnee du premier point du segment
+	*	@param X l'abscisse du second point du segment
+	*	@param Y l'ordonnee du second point du segment
 	*/
-	void refreshScene();
+	void draw_line(int coll, float x, float y, float X, float Y);
 	
-	//TODO
-	void setCursorShape(int shape);
 	
+	/*!
+	*	@brief Change la forme de collision a tracer (point, ligne...)
+	*	@param col La forme de collision a tracer
+	*/	void setCursorShape(int shape);
+	
+	
+	/*!
+	*	@brief Change le type de collision a tracer
+	*	@param col Le type de collision a tracer
+	*/
 	void setCursorCol(int col);
 	
+	
+	/*!
+	*	@brief Annule les modifications du dernier clic (ctrl z)
+	*/
 	void undo();
 	
 	private:

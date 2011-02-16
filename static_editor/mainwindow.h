@@ -22,6 +22,11 @@ class MainWindow : public QMainWindow {
 	*/
 	MainWindow();
 	
+	/*!
+	*	@brief Destructeur
+	*/
+	~MainWindow();
+	
 	private:
 	/*!
 	*	@brief Initialisation des actions
@@ -70,15 +75,17 @@ class MainWindow : public QMainWindow {
 	
 	
 	private:
-	MyGraphicsView *m_graphic_view; // objet gérant 
+	MyGraphicsView *m_graphic_view; // objet principal de l'éditeur
 	
-	QGraphicsScene *m_graphic_scene;
-	bool m_opened_file;
-	QString m_file_name;
+	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
+	bool m_opened_file; // vaut vrai si un fichier est ouvert, faux sinon
+	QString m_file_name; // le nom du fichier en cours (si un fichier est ouvert)
 	
+	// variables du menu
 	QMenu *m_fileMenu;
 	QMenu *m_editMenu;
 	QMenu *m_helpMenu;
+	// actions possibles
 	QAction *m_newAct;
 	QAction *m_openAct;
 	QAction *m_exitAct;
@@ -90,6 +97,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_curs_green;
 	QAction *m_curs_red;
 	QAction *m_curs_erase;
+	//barre d'outils
 	QToolBar *m_fileToolBar;
 
 

@@ -21,6 +21,11 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_curs_shape = CURS_BOX;
 }
 
+MyGraphicsView::~MyGraphicsView()
+{
+	delete m_collisions_matrix;
+}
+
 void MyGraphicsView::loadFile(QString fileName, bool newFile)
 {
 	QPixmap image;
@@ -137,8 +142,8 @@ void MyGraphicsView::setBox(int coll, int x, int y, bool save)
 	QGraphicsItem *item;
 	item = m_collisions_matrix->item(i, j);
 	if (item) {
-		// TODO supprimer l'item
 		this->scene()->removeItem(item);
+		delete item;
 	}
 	if (coll) {
 		if (coll == DOWN_COLL)
@@ -164,16 +169,6 @@ qreal MyGraphicsView::ysize()
 	return m_ysize;
 }
 
-void MyGraphicsView::refreshScene()
-{
-	for (int i = 0; i < m_coll_width; i++) {
-		for (int j = 0; j < m_coll_height; j++) {
-			if (m_collisions_matrix->item(i,j)) {
-				
-			}
-		}
-	}
-}
 
 void MyGraphicsView::save(QString str)
 {
@@ -183,6 +178,7 @@ void MyGraphicsView::save(QString str)
 void MyGraphicsView::draw_line(int coll, float x, float y, float X, float Y)
 {
 	float i = x , j = y, a = (Y-y)/(X-x);
+	setBox(coll, x, y);
 	if (a < 0)
 		a = -a;
 	if (a < 1) {

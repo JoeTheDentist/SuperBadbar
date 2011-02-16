@@ -33,6 +33,29 @@ MainWindow::MainWindow()
 	setUnifiedTitleAndToolBarOnMac(true);
 }
 
+MainWindow::~MainWindow()
+{
+
+	delete m_newAct;
+	delete m_openAct;
+	delete m_exitAct;
+	delete m_saveAct;
+	delete m_undoAct;
+	delete m_aboutBabarStaticEditor;
+	delete m_curs_box;
+	delete m_curs_line;
+	delete m_curs_green;
+	delete m_curs_red;
+	delete m_curs_erase;
+	delete m_fileMenu;
+	delete m_editMenu;
+	delete m_helpMenu;
+	delete m_fileToolBar;
+	delete m_graphic_scene;
+	delete m_graphic_view;
+
+}
+
 
 void MainWindow::createActions()
 {
