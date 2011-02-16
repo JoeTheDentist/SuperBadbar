@@ -107,6 +107,8 @@ class MyGraphicsView : public QGraphicsView {
 	//TODO
 	void setCursorShape(int shape);
 	
+	void setCursorCol(int col);
+	
 	private:
 	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé

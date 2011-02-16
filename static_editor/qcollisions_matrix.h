@@ -25,11 +25,6 @@ class QCollisionsMatrix {
 	*/
 	QCollisionsMatrix(int width, int height);
 	
-	/*!
-	*	@brief Constructeur: charge la matrice dans un fichier
-	*	@param fileName Le nom du fichier a ouvrir
-	*/
-//~ 	QCollisionsMatrix(QString fileName, MyGraphicsView *view);
 	
 	/*!
 	*	@brief Destructeur
@@ -63,21 +58,34 @@ class QCollisionsMatrix {
 	QGraphicsItem *item(int i, int j);
 	
 	/*!
-	*	@brief 
+	*	@brief Mutateur d'une case de collision
+	*	@param coll La nouvelle collision
+	*	@param i L'abscisse (en BOX) de la case à changer
+	*	@param j L'ordonnee (en BOX) de la case à changer
 	*/
-	//TODO
 	void setColl(int coll, int i, int j);
+
+ 	/*!
+	*	@brief Mutateur d'une case d'item
+	*	@param item Le nouvel item
+	*	@param i L'abscisse (en BOX) de la case à changer
+	*	@param j L'ordonnee (en BOX) de la case à changer
+	*/
 	void setItem(QGraphicsItem *item, int i, int j);
 	bool constraintError(int i, int j);	
 	
-	//filename: *.coll
+	
+	/*!
+	*	@brief Sauvegarde la matrice dans un fichier
+	*	@param fileName Le nom du fichier terminant par .coll
+	*/
 	void save(QString fileName);
 
 	
 	private:
-	int m_width;
-	int m_height;
-	CollItem **m_coll_item;
+	int m_width; // largeur en BOX (pixels/BOX_SIZE) de la matrice
+	int m_height; // hauteur en BOX (pixels/BOX_SIZE) de la matrice
+	CollItem **m_coll_item; // Matrice des collisions et des items
 	
 };
 

@@ -69,7 +69,17 @@ void MainWindow::createActions()
 	m_curs_line->setStatusTip("Trace lines");
 	connect(m_curs_line, SIGNAL(triggered()), this, SLOT(setCursLine()));
 	
+	m_curs_green = new QAction(QIcon("images/green_curs.png"), tr("Down coll curs"), this);
+	m_curs_green->setStatusTip("To print down collisions (green)");
+	connect(m_curs_line, SIGNAL(triggered()), this, SLOT(setCursGreen()));
 	
+	m_curs_red = new QAction(QIcon("images/red_curs.png"), tr("Full coll curs"), this);
+	m_curs_red->setStatusTip("To print full collisions (red)");
+	connect(m_curs_red, SIGNAL(triggered()), this, SLOT(setCursRed()));
+	
+	m_curs_erase = new QAction(QIcon("images/erase_curs.png"), tr("No coll curs"), this);
+	m_curs_erase->setStatusTip("To print no_collisions (no color)");
+	connect(m_curs_erase, SIGNAL(triggered()), this, SLOT(setCursErase()));
 	
 	
 }
@@ -106,7 +116,9 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_curs_box);
 	m_fileToolBar->addAction(m_curs_line);
 	m_fileToolBar->addSeparator();
-	
+	m_fileToolBar->addAction(m_curs_green);
+	m_fileToolBar->addAction(m_curs_red);
+	m_fileToolBar->addAction(m_curs_erase);
 
 //~ 	editToolBar = addToolBar(tr("Edit"));
 //~ 	editToolBar->addAction(cutAct);
@@ -195,6 +207,22 @@ void MainWindow::setCursLine()
 {
 	m_graphic_view->setCursorShape(CURS_LINE);
 }
+
+void MainWindow::setCursGreen()
+{
+	m_graphic_view->setCursorCol(DOWN_COLL);
+}
+
+void MainWindow::setCursRed()
+{
+	m_graphic_view->setCursorCol(FULL_COLL);	
+}
+
+void MainWindow::setCursErase()
+{
+	m_graphic_view->setCursorCol(NO_COLL);
+}
+
 
 void MainWindow::warningSave()
 {

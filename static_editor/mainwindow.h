@@ -63,6 +63,9 @@ class MainWindow : public QMainWindow {
 	void aboutBabarStaticEditor();
 	void setCursBox();
 	void setCursLine();
+	void setCursGreen();
+	void setCursRed();
+	void setCursErase();
 	
 	
 	private:
@@ -82,6 +85,9 @@ class MainWindow : public QMainWindow {
 	QAction *m_aboutBabarStaticEditor;
 	QAction *m_curs_box;
 	QAction *m_curs_line;
+	QAction *m_curs_green;
+	QAction *m_curs_red;
+	QAction *m_curs_erase;
 	QToolBar *m_fileToolBar;
 
 

@@ -59,7 +59,6 @@ void MyGraphicsView::loadFile(QString fileName, bool newFile)
 	m_opened = true;
 }
 
-
 int MyGraphicsView::posClicX(QMouseEvent *event)
 {
 	return event->x() + this->horizontalScrollBar()->value() ;
@@ -128,12 +127,24 @@ void MyGraphicsView::setBox(int coll, int x, int y)
 {
 	m_collisions_matrix->setColl(coll, x / BOX_SIZE, y / BOX_SIZE);
 	QGraphicsItem *item;
+	item = m_collisions_matrix->item(x / BOX_SIZE, y / BOX_SIZE);
+	if (item) {
+		// TODO supprimer l'item
+		this->scene()->removeItem(item);
+	}
 	if (coll) {
-		item = this->scene()->addPixmap(m_down_pic);
+		if (coll == DOWN_COLL)
+			item = this->scene()->addPixmap(m_down_pic);
+		else if (coll == FULL_COLL)
+			item = this->scene()->addPixmap(m_full_pic); 
 		item->setZValue(5);
 		item->setPos((x / (BOX_SIZE) * BOX_SIZE), (y / BOX_SIZE) * BOX_SIZE);
 		m_collisions_matrix->setItem(item, x / BOX_SIZE, y / BOX_SIZE);
-	}	
+	} else {
+		m_collisions_matrix->setColl(NO_COLL, x / BOX_SIZE, y / BOX_SIZE);
+		m_collisions_matrix->setItem(NULL, x / BOX_SIZE, y / BOX_SIZE);
+		
+	}
 }
 
 qreal MyGraphicsView::xsize()
@@ -161,7 +172,6 @@ void MyGraphicsView::save(QString str)
 {
 	m_collisions_matrix->save(str);
 }
-
 
 void MyGraphicsView::draw_line(int coll, float x, float y, float X, float Y)
 {
@@ -199,4 +209,9 @@ void MyGraphicsView::draw_line(int coll, float x, float y, float X, float Y)
 void MyGraphicsView::setCursorShape(int shape)
 {
 	m_curs_shape = shape;
+}
+
+void MyGraphicsView::setCursorCol(int col) 
+{
+	m_coll_curs = col;
 }
