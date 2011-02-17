@@ -92,6 +92,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 			m_histo.newSequence();
 			m_xprec = posClicX(event);
 			m_yprec = posClicY(event);
+			draw_line(m_coll_curs, posClicX(event), posClicY(event), posClicX(event), posClicY(event));			
 			break;
 		default:
 			break;
@@ -125,6 +126,9 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 			m_yprec = posClicY(event);
 			break;
 		case CURS_LINE:
+			undo();
+			m_histo.newSequence();
+			draw_line(m_coll_curs, m_xprec, m_yprec, posClicX(event), posClicY(event));			
 			break;
 		default:
 			break;
