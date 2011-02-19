@@ -1,0 +1,2 @@
+
+- si un static est ouvert, puis qu'un static plus petit est ouvert, le scroll est trop grand
