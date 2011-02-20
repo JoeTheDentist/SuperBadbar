@@ -30,14 +30,9 @@
 
 
 
-enum horizontal {
-    LEFT, RIGHT
+enum direction {
+    LEFT, RIGHT, UP, DOWN
 };
-
-enum vertical {
-    UP, DOWN
-};
-
 
 
 enum weapon_type {
@@ -82,7 +77,7 @@ public:
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	virtual std::list<Projectile*> *fire(Rect pos, horizontal h) = 0;
+	virtual std::list<Projectile*> *fire(Rect pos, direction h) = 0;
 
 	/**
 	 * 	@brief Accesseur

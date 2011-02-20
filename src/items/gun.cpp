@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
  #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -32,7 +32,7 @@ Gun::~Gun()
 	PRINT_CONSTR(2, "Destruction d'un Gun")
 }
 
-std::list<Projectile*> *Gun::fire(Rect pos, horizontal h)
+std::list<Projectile*> *Gun::fire(Rect pos, direction h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1));
@@ -46,7 +46,7 @@ weapon_type Gun::type_of_weapon() const
 }
 
 
-void Gun::add_munitions() 
+void Gun::add_munitions()
 {
 	m_munitions += MUN_GUN;
 	if (m_munitions > MUN_GUN)

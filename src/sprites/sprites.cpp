@@ -103,6 +103,11 @@ Rect Sprite::position() const
 	return m_pos;
 }
 
+Rect * Sprite::pposition()
+{
+	return &m_pos;
+}
+
 uint32_t Sprite::position_x() const
 {
 	return m_pos.x;

@@ -12,8 +12,10 @@
 
 #include "../sprites/monsters.h"
 #include "../sprites/walking_monsters.h"
+#include "../AI/AI.h"
 
 class Analyser;
+class AI;
 
 
 /**
@@ -23,7 +25,7 @@ class Analyser;
  */
 class Following_walking_monster : public Walking_monster {
 private:
-
+    AI * m_ai;
 
 public:
 	/**
@@ -31,6 +33,9 @@ public:
 	 *	@param analyserLevel Analyseur se fichier
 	*/
 	Following_walking_monster(Analyser *analyserLevel);
+
+
+	Following_walking_monster(Analyser *analyserLevel, Collisions_manager * cm, Projectiles_manager * pm, Babar *babar);
 
 	/**
 	 * 	@brief Destructeur

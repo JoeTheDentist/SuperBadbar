@@ -45,6 +45,16 @@
 			<Add library="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib\SDL_image.lib" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
+		<Unit filename="..\src\AI\AI.cpp" />
+		<Unit filename="..\src\AI\AI.h" />
+		<Unit filename="..\src\AI\AI_node.cpp" />
+		<Unit filename="..\src\AI\AI_node.h" />
+		<Unit filename="..\src\AI\active_nodes.h" />
+		<Unit filename="..\src\AI\branch_and_bound.cpp" />
+		<Unit filename="..\src\AI\branch_and_bound.h" />
+		<Unit filename="..\src\AI\depth_active_nodes.cpp" />
+		<Unit filename="..\src\AI\depth_active_nodes.h" />
+		<Unit filename="..\src\AI\node.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
 		<Unit filename="..\src\events\contact_event.cpp" />
@@ -112,9 +122,7 @@
 		<Unit filename="..\src\util\analyser.h" />
 		<Unit filename="..\src\util\arg_analyser.cpp" />
 		<Unit filename="..\src\util\arg_analyser.h" />
-		<Unit filename="..\src\util\constantes_debug.h" />
 		<Unit filename="..\src\util\debug.h" />
-		<Unit filename="..\src\util\debug_param.h" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
 		<Unit filename="..\src\util\repertories.h" />

@@ -27,7 +27,7 @@
 #include "../video/anim_table.h"
 #include "../video/displayable.h"
 
-/* /!\ Les enums horizontal et vertical sont dans weapon... */
+/* /!\ Les enums direction et vertical sont dans weapon... */
 
 class Static_data;
 class Keyboard;
@@ -44,7 +44,7 @@ class Sprite: public Displayable {
 protected:
 	Rect m_pos; 		        /* position du sprite et sa taille */
 	Rect m_speed;		        /* vitesse du sprite */
-	horizontal m_dir;    /* direction horizontale */
+	direction m_dir;    /* direction directione */
 	Anim_table * m_animt;     /* gestionnaire d'animations */
 	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
 public:
@@ -77,6 +77,8 @@ public:
 	*/
 	Rect position() const;
 
+	Rect * pposition();
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return L'abscisse de la position du sprite
@@ -97,11 +99,11 @@ public:
 
 	/*!
 	 *	@brief Accesseur
-	 *	@return La direction horizontale du sprite
+	 *	@return La direction directione du sprite
 	 *
 	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
 	*/
-	int direction_h() const; /* retourne la direction horizontale du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
 };
 
 

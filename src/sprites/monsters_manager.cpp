@@ -36,14 +36,14 @@ Monsters_manager::~Monsters_manager()
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser)
+void Monsters_manager::init_monsters_manager(Analyser *analyser, Collisions_manager* cm, Projectiles_manager * pm, Babar *babar)
 {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		std::string monster_type = analyser->read_string();
 		if (monster_type == "following_walking_monster") {
-			Following_walking_monster * curr_monster = new Following_walking_monster(analyser);
+			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, cm, pm, babar);
 			add(curr_monster);
 		} else if (monster_type == "walking_monster") {
 			Walking_monster * curr_monster = new Walking_monster(analyser);

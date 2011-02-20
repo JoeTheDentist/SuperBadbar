@@ -36,15 +36,15 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Gun();
-	
+
 	/**
 	 * 	@brief Tire plusieurs balles de fusil à pompe
 	 *	@param pos La position du propriétaire de l'arme
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	std::list<Projectile*> *fire(Rect pos, horizontal h);
-	
+	std::list<Projectile*> *fire(Rect pos, direction h);
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Le type de l'arme
@@ -53,9 +53,9 @@ public:
 
 	/**
 	 * 	@brief Mutateur: ajoute des munitions
-	 */	
+	 */
 	virtual void add_munitions();
 
 };
 
-#endif 
+#endif

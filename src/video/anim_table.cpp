@@ -22,7 +22,7 @@ Anim_table::Anim_table(std::string anim_name) {
     /* On détermine si il y a un état en plus ou non (animation de tir) */
     if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
         m_fire = false;
-    } else if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
+    } else if ( FileExists(anim_name+"_0_0_0_0"+PICS_EXT) ) {
         m_fire = true;
     } else {
         /* si aucun fichier de ce nom n'existe */
@@ -49,7 +49,54 @@ Anim_table::~Anim_table() {
 
 void Anim_table::init_fire(std::string anim_name)
 {
+    char state = '0', dir = '0', num_img = '0';
+    char k1;
+    char k2;
 
+    /* calcul du nombre d'etat */
+    m_nb_states = 0;
+    while ( FileExists(anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT) ) {
+        state++;
+    }
+    m_nb_states = state-'0'+1;
+
+    /* --> ici si m_nb_state = 1 on peut dire que c'est juste une animation => force = 1 ? */
+
+    /* allocation du tableau d'animation 2x pour les états de tir */
+    m_anim = new Animation**[2*m_nb_states];
+    for (int i=0;i<m_nb_states;i++) {
+        m_anim[i] = new Animation*[2];
+    }
+
+    /* creation des animations */
+    for (char i='0';i<'0'+m_nb_states;i++) {
+        for (char j='0';j<'0'+2;j++) {
+            /* calcul du nombre d'images */
+            for (k1='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT); k1++) {}
+            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT); k2++) {}
+
+            /* récurépration des noms */
+            std::string * link1;
+            std::string * link2;
+            link1 = new std::string[k1-'0'];
+            link2 = new std::string[k2-'0'];
+            for (k1='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT); k1++) {
+                link1[k1-'0'] = anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT;
+            }
+            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_0"+PICS_EXT); k2++) {
+                link1[k2-'0'] = anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT;
+            }
+
+            /* creation de l'animation */
+            m_anim[i-'0'][j-'0'] = new Animation(link1,k1-'0',false);
+            m_anim[i-'0'+m_nb_states][j-'0'] = new Animation(link2,k2-'0',true);
+			delete[] link1;
+			delete[] link2;
+        }
+    }
+
+    m_nb_states *= 2;
+    m_curr_anim = m_anim[0][0];
 }
 
 void Anim_table::init_nfire(std::string anim_name)
@@ -93,7 +140,17 @@ void Anim_table::init_nfire(std::string anim_name)
     m_curr_anim = m_anim[0][0];
 }
 
-void Anim_table::change_anim(int s, horizontal dir) {
+void Anim_table::change_anim(int s, direction dir) {
+    if ( m_curr_anim->interruptable() ) {
+        m_curr_anim = m_anim[s][dir];
+    }
+}
+
+void Anim_table::change_anim(int s, direction dir, bool fire) {
+    if ( fire ) {
+        s += m_nb_states/2;
+    }
+
     if ( m_curr_anim->interruptable() ) {
         m_curr_anim = m_anim[s][dir];
     }

@@ -6,7 +6,7 @@ background.bmp
 2000
 
 #Babar#
-2700
+400
 2000
 1
 
@@ -20,14 +20,14 @@ event_weapon machinegun 800 2850
 
 #Statics#
 block7 1800 2200 0
-block1 70 2950 1
-block2 800	2700 1
-block3 1700 2950 1
-block4_1 700 500 1
-block4_2 700 1200 1
-block4_3 700 1780 1
-block5 2200 2650 1
-block6 2750 2000 1
+block1 70 2950 0
+block2 800	2700 0
+block3 1700 2950 0
+block4_1 700 500 0
+block4_2 700 1200 0
+block4_3 700 1780 0
+block5 2200 2650 0
+block6 2750 2000 0
 soil 0 3300 1
 !
 
@@ -35,13 +35,7 @@ soil 0 3300 1
 
 
 #Monsters#
-8
-flying_monster fubob 155 2600 95 1000
-flying_monster fubob 165 2600 95 1000
-flying_monster fubob 205 2600 95 1000
-walking_monster maphyar 505 2600 95 1000
-following_walking_monster gailapin 120 1600 
-following_walking_monster gailapin 135 1600 
+2
+following_walking_monster gailapin 500 2000
 following_flying_monster fubob 700 900
-walking_monster maphyar 2750 2000 2700 3000
 !

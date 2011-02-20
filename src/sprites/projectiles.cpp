@@ -24,7 +24,7 @@
 
 
 
-Projectile::Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage)
+Projectile::Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, uint32_t damage)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;

@@ -36,7 +36,7 @@ public:
 	/*!
 	 *	@brief Constructeur
 	*/
-    Projectile(Rect pos, horizontal h, uint32_t speedx, uint32_t speedy, uint32_t damage);
+    Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, uint32_t damage);
 
 	/*!
 	 * 	@brief Destructeur

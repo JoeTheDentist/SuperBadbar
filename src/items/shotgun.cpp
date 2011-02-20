@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
  #include <iostream>
 #include <SDL/SDL.h>
 #include <stdint.h>
@@ -18,7 +18,7 @@
 
 
 Shotgun::Shotgun()
-{	
+{
 	PRINT_CONSTR(2, "Construction d'un Shotgun")
 	m_last_dir_h = 3;
     m_weapon_type = SHOTGUN;
@@ -31,7 +31,7 @@ Shotgun::~Shotgun()
 	PRINT_CONSTR(2, "Destruction d'une Shotgun")
 }
 
-std::list<Projectile*> *Shotgun::fire(Rect pos, horizontal h)
+std::list<Projectile*> *Shotgun::fire(Rect pos, direction h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {
@@ -81,7 +81,7 @@ weapon_type Shotgun::type_of_weapon() const
 }
 
 
-void Shotgun::add_munitions() 
+void Shotgun::add_munitions()
 {
 	m_munitions += MUN_SHOTGUN;
 	if (m_munitions > MUN_SHOTGUN * 2)
