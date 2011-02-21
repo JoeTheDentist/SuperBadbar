@@ -1,16 +1,17 @@
 #ifndef _EDITOR_MY_GRAPHICS_VIEW_
 #define _EDITOR_MY_GRAPHICS_VIEW_
 #include <QGraphicsView>
+#include "paths.h"
 
 #define CURS_BOX 0
 #define CURS_LINE 1
-
 #define BOX_SIZE 5
 
 class QWidget;
 class QGraphicsScene;
 class QGraphicsItem;
 class Data;
+class MyItem;
 
 
 class MyGraphicsView : public QGraphicsView {
@@ -64,9 +65,12 @@ class MyGraphicsView : public QGraphicsView {
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
 	*	@param fileName Le nom du fichier (avec l'extension png)
-	*	@param newFile Si vrai, un nouveau fichier col est crée, sinon un fichier .col est chargé
+	*	@param backgroundName Un chemin absolu vers le fichier du fond d'écran
 	*/
-	void loadFile(QString fileName, bool newFile);
+	void newFile(QString fileName, QString backgroundName);
+	void loadFile(QString fileName);
+	
+	
 
 	/*!
 	*	@brief 	Accesseur
@@ -86,7 +90,8 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param str Le chemin du fichier a sauvegarder (doit se terminer par .col)
 	*/
 	void save(QString str);
-
+	
+	void addStatic();
 
 	private:
 	Data *m_data;
@@ -96,6 +101,7 @@ class MyGraphicsView : public QGraphicsView {
 	qreal m_ysize; // hauteur en pixel du niveau
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
+	MyItem *m_curr_item;
 };
 
 #endif

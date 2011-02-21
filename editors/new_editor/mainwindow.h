@@ -43,12 +43,7 @@ class MainWindow : public QMainWindow {
 	*/
 	void createToolBars();
 	
-	/*!
-	*	@brief Charge un fichier .lvl
-	*	@param str Nom du fichier (doit terminer par .lvl)
-	*/
-	void loadFile(QString str);
-	
+
 	/*!
 	*	@brief Enregistre le niveau en fonction des modifications faites
 	*	@param str Nom (terminant par .lvl) du fichier à sauvegarder
@@ -65,13 +60,16 @@ class MainWindow : public QMainWindow {
 	void newFile();
 	void open();
 	void save();
+	void saveAs();
 	void aboutBabarEditor();
+	void addStatic();
 	
 	
 	private:
+	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
+
 	MyGraphicsView *m_graphic_view; // objet principal de l'éditeur
 	
-	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
 	bool m_opened_file; // vaut vrai si un fichier est ouvert, faux sinon
 	QString m_file_name; // le nom du fichier en cours (si un fichier est ouvert)
 	
@@ -84,7 +82,9 @@ class MainWindow : public QMainWindow {
 	QAction *m_openAct;
 	QAction *m_exitAct;
 	QAction *m_saveAct;
+	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
+	QAction *m_addStatic;
 	//barre d'outils
 	QToolBar *m_fileToolBar;
 

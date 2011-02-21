@@ -1,5 +1,10 @@
 
 #include "mygraphicsview.h"
+#include "myitem.h"
+#include "data.h"
+#include "staticitem.h"
+#include "analyser.h"
+
 #include <iostream>
 #include <QScrollBar>
 #include <QGraphicsScene>
@@ -9,15 +14,19 @@
 #include <QMouseEvent>
 #include <QFile>
 #include <QTextStream>
-#include "data.h"
+#include <QString>
+#include <QFileDialog>
+#include <QMessageBox>
 
 
 MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
-	m_data(NULL),
-	QGraphicsView(scene, parent)
+	QGraphicsView(scene, parent),
+	m_data(new Data()),
+	m_opened(false),
+	m_mouse_pressed(false),
+	m_curr_item(NULL)
 {
-	m_opened = false;
-	m_mouse_pressed = false;
+	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
 }
 
 MyGraphicsView::~MyGraphicsView()
@@ -25,48 +34,44 @@ MyGraphicsView::~MyGraphicsView()
 	delete m_data;
 }
 
-void MyGraphicsView::loadFile(QString fileName, bool newFile)
+void MyGraphicsView::newFile(QString fileName, QString backgroundName)
 {
 	// TODO
 	QPixmap image;
 	QGraphicsItem *item = NULL;
-	image.load(fileName, 0, Qt::AutoColor);
+	image.load(backgroundName, 0, Qt::AutoColor);
 	item = this->scene()->addPixmap(image);
-//~ 	m_down_pic.load("images/down_coll.png");
-//~ 	m_full_pic.load("images/full_coll.png");
-//~ 	if (m_background) 
-//~ 		this->scene()->removeItem(m_background);
-//~ 	m_background = this->scene()->addPixmap(image);
-//~ 	m_background->setZValue(0);
-//~ 	m_xsize = image.width();
-//~ 	m_ysize = image.height();
-//~ 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
-//~ 	this->resize(m_xsize, m_ysize);
-//~ 	m_coll_width = m_xsize / BOX_SIZE + 1;
-//~ 	m_coll_height = m_ysize / BOX_SIZE + 1;
-//~ 	if (newFile) {
-//~ 		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
-//~ 	} else {
-//~ 		fileName.chop(3);
-//~ 		fileName.append("col");
-//~ 		QFile file(fileName);
-//~ 		file.open( QIODevice::ReadOnly | QIODevice::Text );
-//~ 		QTextStream flux(&file);
-//~ 		flux >> m_coll_width;
-//~ 		flux >> m_coll_height;
-//~ 		m_collisions_matrix = new QCollisionsMatrix(m_coll_width, m_coll_height);
-//~ 		int coll;
-//~ 		for (int i = 0; i < m_coll_height; i++) {
-//~ 			for (int j = 0; j < m_coll_width; j++) {
-//~ 				flux >> coll;
-//~ 				setBox(coll, j * BOX_SIZE, i * BOX_SIZE, false);
-//~ 				std::cout << coll << std::endl;
-//~ 			}
-//~ 		}	
-//~ 	}
-//~ 	m_coll_curs = DOWN_COLL;
-//~ 	m_opened = true;
+	m_data->setBackground(item, backgroundName);
+	m_xsize = image.width();
+	m_ysize = image.height();
+	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
+	this->resize(m_xsize, m_ysize);
+	m_opened = true;
 }
+
+void MyGraphicsView::loadFile(QString fileName)
+{
+	Analyser analyser;
+	QPixmap image;
+	QGraphicsItem *item = NULL;
+	m_opened = true;
+	analyser.open(fileName.toStdString());
+	analyser.find_string("#Background#");
+	newFile(fileName, QString::fromStdString(analyser.read_string()));
+	analyser.find_string("#Statics#");
+	int nbStatics = analyser.read_int();
+	QString nameStatic;
+	for (int i = 0; i < nbStatics; i ++) {
+		nameStatic = QString::fromStdString(analyser.read_string());
+		image.load(StaticItem::editorRelativePath(nameStatic));
+		item = this->scene()->addPixmap(image);
+		item->setPos(analyser.read_int(), analyser.read_int());
+		m_data->addItem(new StaticItem(item, nameStatic));
+		analyser.read_int(); // TODO: champ a revoir
+	}
+	analyser.close();
+}
+
 
 int MyGraphicsView::posClicX(QMouseEvent *event)
 {
@@ -82,7 +87,17 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
 	m_mouse_pressed = true;
 	if (m_opened) {
-		//TODO                                                 
+		if (m_curr_item) {
+			if (event->button() == Qt::LeftButton) {
+				m_data->addItem(m_curr_item);
+				m_curr_item = NULL;
+			} else if (event->button() == Qt::RightButton) {
+				this->scene()->removeItem(m_curr_item->getItem());
+				delete m_curr_item->getItem();
+				delete m_curr_item;
+				m_curr_item = NULL;				
+			}
+		}			
 	}
 }
 
@@ -90,14 +105,15 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	m_mouse_pressed = false;
 	if (m_opened) {
-		//TODO 
 	}
 }
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
 {
-	if (m_opened && m_mouse_pressed) {
-		//TODO
+	if (m_opened) {
+		if (m_curr_item) {
+			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
+		}
 	}	
 }
 
@@ -116,4 +132,24 @@ void MyGraphicsView::save(QString str)
 	m_data->saveData(str);
 }
 
+
+void MyGraphicsView::addStatic()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de static", STATIC_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(".col") || fileName.endsWith(".png"))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
+		return;
+	}
+	QPixmap image;
+	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
+	fileName.append("png");
+	image.load(fileName);
+	QGraphicsItem *item = this->scene()->addPixmap(image);
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
+	fileName.chop(4);
+	m_curr_item = new StaticItem(item, fileName);
 	
+}
