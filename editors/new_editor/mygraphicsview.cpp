@@ -24,7 +24,10 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_data(new Data()),
 	m_opened(false),
 	m_mouse_pressed(false),
-	m_curr_item(NULL)
+	m_ctrl_pressed(false),
+	m_curr_item(NULL),
+	m_selected_item(NULL),
+	m_zoom(1)
 {
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
 }
@@ -75,12 +78,12 @@ void MyGraphicsView::loadFile(QString fileName)
 
 int MyGraphicsView::posClicX(QMouseEvent *event)
 {
-	return event->x() + this->horizontalScrollBar()->value() ;
+	return (event->x() + this->horizontalScrollBar()->value()) / m_zoom ;
 }
 
 int MyGraphicsView::posClicY(QMouseEvent *event)
 {
-	return event->y() + this->verticalScrollBar()->value() ;
+	return (event->y() + this->verticalScrollBar()->value()) / m_zoom ;
 }
 
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
@@ -97,6 +100,8 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 				delete m_curr_item;
 				m_curr_item = NULL;				
 			}
+		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
+			m_selected_item = m_data->selectItem(posClicX(event), posClicY(event));
 		}			
 	}
 }
@@ -105,17 +110,54 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	m_mouse_pressed = false;
 	if (m_opened) {
+		if (m_selected_item) {
+			m_selected_item = NULL;
+		}
 	}
 }
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
 {
 	if (m_opened) {
-		if (m_curr_item) {
+		if (m_selected_item) {
+			QGraphicsItem *item = m_selected_item->getItem();
+			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
+		} else if (m_curr_item) {
 			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
+		} 
+	}	
+	
+	m_xprec = posClicX(event);
+	m_yprec = posClicY(event);
+}
+
+void MyGraphicsView::wheelEvent(QWheelEvent *event)
+{
+	if (m_ctrl_pressed) {
+		if (event->delta() > 0) {
+			for (int i = 0; i < event->delta(); i ++)
+				zoom(0.995);
+		} else {
+			for (int i = 0; i < -event->delta(); i ++)
+				zoom(1/0.995);
 		}
+	}
+}
+
+void MyGraphicsView::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Control) {
+		m_ctrl_pressed = true;
+	}
+}
+
+void MyGraphicsView::keyReleaseEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Control) {
+		m_ctrl_pressed = false;
 	}	
 }
+
 
 qreal MyGraphicsView::xsize()
 {
@@ -131,6 +173,7 @@ void MyGraphicsView::save(QString str)
 {
 	m_data->saveData(str);
 }
+
 
 
 void MyGraphicsView::addStatic()
@@ -151,5 +194,10 @@ void MyGraphicsView::addStatic()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(item, fileName);
-	
+}
+
+void MyGraphicsView::zoom(qreal z)
+{
+	m_zoom *= z;
+	this->scale(z, z);
 }

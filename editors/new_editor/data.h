@@ -23,6 +23,7 @@ class Data {
 	void addItem(MyItem *item);
 	void addStaticItem(MyItem *item);
 	void saveData(QString fileName);
+	MyItem *selectItem(int x, int y);
 	
 };
 

@@ -81,7 +81,7 @@ void MainWindow::createActions()
 	m_saveAct->setStatusTip(tr("Save the .col file"));
 	connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));	
 	
-	m_addStatic = new QAction(QIcon("images/save.png"),tr("AddStatic"), this); // TODO changer image
+	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); // TODO changer image
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
 	

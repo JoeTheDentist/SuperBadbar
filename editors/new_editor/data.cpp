@@ -85,3 +85,18 @@ void Data::saveData(QString fileName)
 	
 	file.close();
 }
+
+MyItem *Data::selectItem(int x, int y)
+{
+	std::list<MyItem *>::iterator it;
+	QGraphicsItem *item;
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
+		item = (*it)->getItem();
+		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+			&& item->x() <= x && x <= item->x() + item->boundingRect().width()) {
+			return (*it);	
+		}
+	}
+	return NULL;
+	
+}
