@@ -22,6 +22,8 @@ class AI_node: public Node {
          */
         double dist(Rect A, Rect B);
 
+        bool check_collision(Rect A, Rect B);
+
     public:
         AI_node * m_daddy;
 

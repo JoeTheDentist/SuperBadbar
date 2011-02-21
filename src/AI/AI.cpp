@@ -1,47 +1,88 @@
 
+#include <cmath>
+
 #include "AI.h"
-#include "depth_active_nodes.h"
 #include "../sprites/projectiles.h"
 
 AI::AI(Sprite * target, Collisions_manager * context, Projectiles_manager * pm, Rect * pos)
 {
-    /* création du problème, et de la stratégie de résolution */
-    m_l = new std::list<Rect*>;
-
-    for (std::list<Projectile *>::iterator it = pm->proj_friend_begin();
-				it != pm->proj_friend_end(); it++) {
-        m_l->push_front(&((*it)->position()));
-    }
-
-    m_bb = new Branch_and_bound(new AI_node(target, context, m_l, 0, 4, pos, NULL),
-                                new Depth_active_nodes());
+    m_target = target;
+    m_context = context;
+    m_proj = pm;
     m_pos = pos;
 }
 
 AI::~AI()
 {
-    delete m_bb;
-    delete m_l;
+
 }
 
+/* algo naif mais bien plus efficace */
 direction AI::dir()
 {
-    AI_node * sol = (AI_node*)m_bb->solve();
+    direction best_dir = LEFT;
+    double max = eval(best_dir);
+    for (int i = 1; i < 4; i++) {
+        double cur = eval((direction)i);
+        if ( cur > max ) {
+            best_dir = (direction)i;
+            max = cur;
+        }
+    }
+    return best_dir;
+}
 
-    /* récupération du premier élément de la meilleure solution */
-    while ( sol->daddy()->daddy() != NULL ) {
-        sol = sol->daddy();
+double AI::eval(direction d) {
+    Rect zone = *m_pos;
+    // ici faire en fonction de la vitesse des projectiles TODO
+
+    double weight = 0;
+    switch ( d ) {
+        case LEFT :
+            zone.x -= m_pos->w;
+            break;
+        case RIGHT :
+            zone.x += m_pos->w;
+            break;
+        case UP :
+            // moche TODO + verif que la zone est bien dans la map
+            if ( !Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos)) ) {
+                return -1000000;
+            }
+            zone.y -= m_pos->h;
+            break;
+        case DOWN :
+            // idem TODO
+            if ( m_context->double_collision(*m_pos) ) {
+                return -1000000;
+            }
+            zone.y += m_pos->h;
+            break;
     }
 
-    /* on regarde de quelle côté elle était */
-    if ( m_pos->x < sol->dim().x ) {
-        /*  */
-        return LEFT;
-    } else if ( m_pos->x > sol->dim().x ) {
-        return RIGHT;
-    } else if ( m_pos->y < sol->dim().y ) {
-        return UP;
-    } else {
-        return DOWN;
+    weight += 1000/dist(m_target->position(), zone);
+
+    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
+				it != m_proj->proj_friend_end(); it++) {
+        if ( check_collision( (*it)->position(),zone ) ) {
+            weight -= 100;
+        }
     }
+    return weight;
+}
+
+double AI::dist(Rect A, Rect B)
+{
+    return sqrt( (A.x-B.x)*(A.x-B.x) + (A.y-B.y)*(A.y-B.y) );
+}
+
+bool AI::check_collision(Rect A, Rect B)
+{
+	uint16_t A_right = A.x + A.w;
+	uint16_t B_right = B.x + B.w;
+	uint16_t A_bottom = A.y + A.h;
+	uint16_t B_bottom = B.y + B.h;
+	bool A_in_B = ((B.x < A.x && A.x < B_right) || (B.x < A_right && A_right < B_right )) && ((B.y < A.y && A.y < B_bottom) || (B.y < A_bottom && A_bottom < B_bottom ));
+	bool B_in_A = ((A.x < B.x && B.x < A_right) || (A.x < B_right && B_right < A_right )) && ((A.y < B.y && B.y < A_bottom) || (A.y < B_bottom && B_bottom < A_bottom ));
+	return A_in_B || B_in_A;
 }

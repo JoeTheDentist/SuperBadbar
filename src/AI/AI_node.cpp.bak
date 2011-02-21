@@ -17,7 +17,21 @@ AI_node::AI_node(Sprite * target, Collisions_manager * context,
 
 bool AI_node::is_solution()
 {
-    return m_depth==m_precision;
+    if ( m_daddy == NULL ) {
+        return false;
+    }
+
+    if (m_depth==m_precision) {
+        return true;
+    }
+
+    bool sol = false;
+    for (std::list<Rect *>::iterator it = m_proj->begin();
+				it != m_proj->end() && !sol; it++) {
+        sol = sol||check_collision(*m_dim,**it);
+    }
+
+    return sol;
 }
 
 int AI_node::depth()
@@ -37,14 +51,11 @@ AI_node * AI_node::daddy()
 
 bool AI_node::maybe_best(Node * n)
 {
-    /* attention, ne gère pas si ce n'est pas downcastable */
-    //AI_node * na = (AI_node*)n;
-
     if ( n == NULL ) {
         return true;
     }
 
-    return evaluation()>n->evaluation();
+    return evaluation() <= n->evaluation();
 }
 
 std::list<Node*> * AI_node::divide()
@@ -122,21 +133,38 @@ void AI_node::add_node(std::list<Node*> * l, Rect * z) {
 double AI_node::evaluation()
 {
     /* pondération /r à la profondeur */
-    double disp_weight = dist(*m_dim,m_target->position())/m_depth;
+    double dist_weight = 1/dist(*m_dim,m_target->position())/m_depth;
 
     double proj_weight = 0;
 
     /* si on a des projectiles dans la case... */
     for (std::list<Rect *>::iterator it = m_proj->begin();
 				it != m_proj->end(); it++) {
-        proj_weight -= 100/dist(*m_dim,**it); /* coef à changer'TODO, il faut qu'il compense dist*/
+        proj_weight -= 20000/dist(*m_dim,**it); /* coef à changer TODO, il faut qu'il compense dist*/
     }
 
-    return disp_weight-proj_weight;
+    /* favoriser le fait d'être au dessus du joueur */
+    double jump_weight = 0;
+    if ( m_dim->y < m_target->position().y ) {
+        jump_weight += 10;
+    }
+
+    return dist_weight+proj_weight+jump_weight;
 }
 
 double AI_node::dist(Rect A, Rect B)
 {
     return sqrt( (A.x-B.x)*(A.x-B.x) + (A.y-B.y)*(A.y-B.y) );
+}
+
+bool AI_node::check_collision(Rect A, Rect B)
+{
+	uint16_t A_right = A.x + A.w;
+	uint16_t B_right = B.x + B.w;
+	uint16_t A_bottom = A.y + A.h;
+	uint16_t B_bottom = B.y + B.h;
+	bool A_in_B = ((B.x < A.x && A.x < B_right) || (B.x < A_right && A_right < B_right )) && ((B.y < A.y && A.y < B_bottom) || (B.y < A_bottom && A_bottom < B_bottom ));
+	bool B_in_A = ((A.x < B.x && B.x < A_right) || (A.x < B_right && B_right < A_right )) && ((A.y < B.y && B.y < A_bottom) || (A.y < B_bottom && B_bottom < A_bottom ));
+	return A_in_B || B_in_A;
 }
 

@@ -24,7 +24,6 @@ class Branch_and_bound {
          * @brief Constructeur
          * @param root : racine
          * @param strat : stratégie de parcours
-         * /!\\ Attention, arg passés doit être alloués et non utilisés à l'extérieur
          */
         Branch_and_bound(Node * root, Active_nodes * strat);
 

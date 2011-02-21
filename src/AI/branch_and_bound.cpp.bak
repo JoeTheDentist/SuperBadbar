@@ -16,9 +16,7 @@ Branch_and_bound::Branch_and_bound(Node * root, Active_nodes * strat) {
 
 Branch_and_bound::~Branch_and_bound()
 {
-    /* Attention cela impose que les param du construteur soit passé en les allouant */
-    delete m_root;
-    delete m_act_nodes;
+
 }
 
 Node * Branch_and_bound::solve() {

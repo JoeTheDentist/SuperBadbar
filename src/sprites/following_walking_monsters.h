@@ -26,6 +26,7 @@ class AI;
 class Following_walking_monster : public Walking_monster {
 private:
     AI * m_ai;
+    int m_last_phase;
 
 public:
 	/**

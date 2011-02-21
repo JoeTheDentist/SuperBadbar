@@ -1,20 +1,23 @@
 #ifndef AI_H_INCLUDED
 #define AI_H_INCLUDED
 
-#include "branch_and_bound.h"
-#include "AI_node.h"
-
 #include "../sprites/sprites.h"
 #include "../sprites/projectiles_manager.h"
-#include "../game/collisions_matrix.h"
+#include "../game/collisions_manager.h"
 #include "../items/weapons.h" /* pour enum */
 
 
 class AI {
     private:
-        Branch_and_bound * m_bb;
         Rect * m_pos;
-        std::list<Rect*> * m_l;
+        Projectiles_manager * m_proj;
+        Collisions_manager * m_context;
+        Sprite * m_target;
+
+
+        double eval(direction d);
+        double dist(Rect A, Rect B);
+        bool check_collision(Rect A, Rect B);
 
     public:
         AI(Sprite * target, Collisions_manager * context, Projectiles_manager * pm, Rect * pos);
