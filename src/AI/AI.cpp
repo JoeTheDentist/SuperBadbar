@@ -39,41 +39,126 @@ double AI::eval(direction d) {
     double weight = 0;
     switch ( d ) {
         case LEFT :
-            zone.x -= m_pos->w;
+            weight += eval_left();
             break;
         case RIGHT :
-            zone.x += m_pos->w;
+            weight += eval_right();
             break;
         case UP :
-            // moche TODO + verif que la zone est bien dans la map
-            if ( !Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos)) ) {
-                return -1000000;
-            }
-            zone.y -= m_pos->h;
+            weight += eval_up();
             break;
         case DOWN :
-            // idem TODO
-            if ( m_context->double_collision(*m_pos) ) {
-                return -1000000;
-            }
-            zone.y += m_pos->h;
+            weight += eval_down();
             break;
     }
 
-    weight += 1000/dist(m_target->position(), zone);
+    return weight;
+}
+
+double AI::eval_up()
+{
+    if ( !Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos)) ) {
+        return -1000000;
+    }
+
+    double weight = 0;
+    Rect zone = *m_pos;
+    zone.y -= m_pos->h;
+
 
     for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
 				it != m_proj->proj_friend_end(); it++) {
         if ( check_collision( (*it)->position(),zone ) ) {
-            weight -= 100;
+            weight -= WEIGHT_PROJ;
+        }
+    }
+
+    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+
+    return weight;
+}
+
+double AI::eval_down()
+{
+    if ( m_context->double_collision(*m_pos) ) {
+        return -1000000;
+    }
+
+    double weight = 0;
+    Rect zone = *m_pos;
+    zone.y += m_pos->h;
+
+    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
+				it != m_proj->proj_friend_end(); it++) {
+        if ( check_collision( (*it)->position(),zone ) ) {
+            weight -= WEIGHT_PROJ;
+        }
+    }
+
+    weight += 2*DIST_WEIGHT/(3*dist(m_target->position(), zone)) ;
+
+    return weight;
+}
+
+double AI::eval_left()
+{
+    double weight = 0;
+
+    Rect zone=*m_pos;
+    zone.x-=m_pos->w;
+    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+
+    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
+				it != m_proj->proj_friend_end(); it++) {
+        Rect zone = *m_pos;
+		double dimx = (m_pos->h/ESTIM_SPEED)*((*it)->speed().x);
+		zone.x -= dimx;
+		zone.w = dimx;
+
+
+        if ( check_collision( (*it)->position(),zone ) ) {
+            weight -= WEIGHT_PROJ;
         }
     }
     return weight;
 }
 
+double AI::eval_right()
+{
+    double weight = 0;
+
+    Rect zone=*m_pos;
+    zone.x+=m_pos->w;
+    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+
+    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
+				it != m_proj->proj_friend_end(); it++) {
+        Rect zone = *m_pos;
+		double dimx = (-m_pos->h/ESTIM_SPEED)*((*it)->speed().x);
+		zone.x += m_pos->w;
+		zone.w = dimx;
+
+
+        if ( check_collision( (*it)->position(),zone ) ) {
+            weight -= WEIGHT_PROJ;
+        }
+    }
+    return weight;
+}
+
+
 double AI::dist(Rect A, Rect B)
 {
-    return sqrt( (A.x-B.x)*(A.x-B.x) + (A.y-B.y)*(A.y-B.y) );
+    Rect mA = A;
+    Rect mB = B;
+
+    mA.x = mA.x+mA.w/2;
+    mA.y = mA.y+mA.h/2;
+
+    mB.x = mB.x+mB.w/2;
+    mB.y = mB.y+mB.h/2;
+
+    return sqrt( (mA.x-mB.x)*(mA.x-mB.x) + (mA.y-mB.y)*(mA.y-mB.y) );
 }
 
 bool AI::check_collision(Rect A, Rect B)

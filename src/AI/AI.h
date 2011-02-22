@@ -6,6 +6,10 @@
 #include "../game/collisions_manager.h"
 #include "../items/weapons.h" /* pour enum */
 
+#define ESTIM_SPEED 10
+#define WEIGHT_PROJ 100
+#define DIST_WEIGHT 100
+
 
 class AI {
     private:
@@ -14,10 +18,13 @@ class AI {
         Collisions_manager * m_context;
         Sprite * m_target;
 
-
         double eval(direction d);
         double dist(Rect A, Rect B);
         bool check_collision(Rect A, Rect B);
+        double eval_up();
+        double eval_down();
+        double eval_left();
+        double eval_right();
 
     public:
         AI(Sprite * target, Collisions_manager * context, Projectiles_manager * pm, Rect * pos);
