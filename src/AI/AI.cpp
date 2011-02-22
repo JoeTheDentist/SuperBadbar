@@ -80,7 +80,8 @@ double AI::eval_up()
 
 double AI::eval_down()
 {
-    if ( m_context->double_collision(*m_pos) ) {
+    if ( Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos))
+				&& !m_context->double_collision(*m_pos) ) {
         return -1000000;
     }
 
@@ -95,6 +96,7 @@ double AI::eval_down()
         }
     }
 
+    // 2/3 pour favoriser sauter /r descendre
     weight += 2*DIST_WEIGHT/(3*dist(m_target->position(), zone)) ;
 
     return weight;
@@ -114,7 +116,6 @@ double AI::eval_left()
 		double dimx = (m_pos->h/ESTIM_SPEED)*((*it)->speed().x);
 		zone.x -= dimx;
 		zone.w = dimx;
-
 
         if ( check_collision( (*it)->position(),zone ) ) {
             weight -= WEIGHT_PROJ;

@@ -19,15 +19,15 @@
 #include "../video/camera.h"
 #include "../sprites/babar.h"
 
-Collisions_matrix::Collisions_matrix() 
+Collisions_matrix::Collisions_matrix()
 {
 }
 
-Collisions_matrix::Collisions_matrix(std::string filename) 
+Collisions_matrix::Collisions_matrix(std::string filename)
 {
 }
 
-Collisions_matrix::~Collisions_matrix() 
+Collisions_matrix::~Collisions_matrix()
 {
 	for(int i = 0; i < m_collisions_matrix_w;i++) {
         delete[] m_collisions_matrix[i];
@@ -48,8 +48,8 @@ uint32_t Collisions_matrix::down_collision_type(Rect pos)
 		return coll;
 	for (int32_t i = i_min ; i <= i_max; i += BOX_SIZE) {
 		coll |= m_collisions_matrix[i / BOX_SIZE][(pos.y + pos.h) / BOX_SIZE + 1] ;
-	}          
-	return coll;             
+	}
+	return coll;
 }
 
 uint32_t Collisions_matrix::up_collision_type(Rect pos)
@@ -76,7 +76,7 @@ uint32_t Collisions_matrix::left_collision_type(Rect pos)
 	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
 			coll |= m_collisions_matrix[pos.x / BOX_SIZE - 1][j / BOX_SIZE];
-		
+
 	return coll;
 }
 
@@ -108,4 +108,12 @@ bool Collisions_matrix::double_collision(Rect pos)
 		}
 	}
 	return false;
+}
+
+int Collisions_matrix::dim_w() {
+    return m_collisions_matrix_w;
+}
+
+int Collisions_matrix::dim_h() {
+    return m_collisions_matrix_h;
 }
