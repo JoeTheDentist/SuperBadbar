@@ -4,10 +4,11 @@ export CC = g++
 export CFLAGS=-g -Wall #$(LIB_INC) 
 export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod # $(LIB_DYN)
 
-DIR = control events game items sound sprites util video
+DIR = control events game items sound sprites util video AI
 EXEC_NAME = babar
 DOC_REP = ../doc/
-VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/BABAR_SDL.supp  --suppressions=../utils/valgrind_suppress/SDL.supp   --suppressions=../utils/valgrind_suppress/other_SDL.supp 
+VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/BABAR_SDL.supp  --suppressions=../utils/valgrind_suppress/SDL.supp   --suppressions=../utils/valgrind_suppress/other_SDL.supp --suppressions=../utils/valgrind_suppress/fmod.supp  --workaround-gcc296-bugs=yes
+
 
 
 

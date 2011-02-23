@@ -101,6 +101,7 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_saveAsAct);
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
+	m_editMenu->addAction(m_addStatic);
 	menuBar()->addSeparator();
 	m_helpMenu = menuBar()->addMenu(tr("&Help"));
 	m_helpMenu->addAction(m_aboutBabarEditor);

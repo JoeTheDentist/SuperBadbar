@@ -2,8 +2,8 @@
 #include <string>
 #include <fstream>
  
-#define INPUT "code_prof.err" 
-#define OUTPUT "code_prof.supp"
+#define INPUT "plop.err" 
+#define OUTPUT "plop.supp"
 
 using namespace std;
 

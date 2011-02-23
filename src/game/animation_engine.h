@@ -14,6 +14,6 @@ class animation_engine {
 	private:
 		
 	public:
-}
+};
 
-#enif
+#endif

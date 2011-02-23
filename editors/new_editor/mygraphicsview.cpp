@@ -126,7 +126,6 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
 		} 
 	}	
-	
 	m_xprec = posClicX(event);
 	m_yprec = posClicY(event);
 }
@@ -141,6 +140,8 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 			for (int i = 0; i < -event->delta(); i ++)
 				zoom(1/0.995);
 		}
+	} else {
+		QGraphicsView::wheelEvent(event); // scroll normal dans la fenetre
 	}
 }
 
