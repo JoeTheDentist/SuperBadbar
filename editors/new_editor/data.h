@@ -22,6 +22,7 @@ class Data {
 	void setLevelSize(int x, int y);
 	void addItem(MyItem *item);
 	void addStaticItem(MyItem *item);
+	void removeItem(MyItem *item);
 	void saveData(QString fileName);
 	MyItem *selectItem(int x, int y);
 	

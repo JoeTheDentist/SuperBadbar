@@ -27,6 +27,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_ctrl_pressed(false),
 	m_curr_item(NULL),
 	m_selected_item(NULL),
+	m_del_curs(NULL),
 	m_zoom(1)
 {
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
@@ -37,7 +38,7 @@ MyGraphicsView::~MyGraphicsView()
 	delete m_data;
 }
 
-void MyGraphicsView::newFile(QString fileName, QString backgroundName)
+void MyGraphicsView::newFile(QString backgroundName)
 {
 	// TODO
 	QPixmap image;
@@ -60,7 +61,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
-	newFile(fileName, QString::fromStdString(analyser.read_string()));
+	newFile(QString::fromStdString(analyser.read_string()));
 	analyser.find_string("#Statics#");
 	int nbStatics = analyser.read_int();
 	QString nameStatic;
@@ -89,7 +90,7 @@ int MyGraphicsView::posClicY(QMouseEvent *event)
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
 	m_mouse_pressed = true;
-	if (m_opened) {
+	if (m_opened && !m_del_curs) {
 		if (m_curr_item) {
 			if (event->button() == Qt::LeftButton) {
 				m_data->addItem(m_curr_item);
@@ -108,8 +109,21 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
+	(void)event; // ne sert à rien..
 	m_mouse_pressed = false;
 	if (m_opened) {
+		if (m_del_curs) {
+			MyItem *item = NULL;
+			item = m_data->selectItem(posClicX(event), posClicY(event));
+			if (item) {
+				m_data->removeItem(item);
+				this->scene()->removeItem(item->getItem());
+//~ 				delete item;
+				this->scene()->removeItem(m_del_curs);
+				delete m_del_curs;
+				m_del_curs = NULL;
+			}
+		}
 		if (m_selected_item) {
 			m_selected_item = NULL;
 		}
@@ -119,7 +133,9 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
 {
 	if (m_opened) {
-		if (m_selected_item) {
+		if (m_del_curs) {
+			m_del_curs->setPos(posClicX(event), posClicY(event));
+		} else if (m_selected_item) {
 			QGraphicsItem *item = m_selected_item->getItem();
 			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
 		} else if (m_curr_item) {
@@ -195,6 +211,13 @@ void MyGraphicsView::addStatic()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(item, fileName);
+}
+
+void MyGraphicsView::activeDeleteItem()
+{
+	QPixmap image;
+	image.load("images/deleteitem.png");
+	m_del_curs = this->scene()->addPixmap(image);
 }
 
 void MyGraphicsView::zoom(qreal z)

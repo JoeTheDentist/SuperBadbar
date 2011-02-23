@@ -63,6 +63,7 @@ class MainWindow : public QMainWindow {
 	void saveAs();
 	void aboutBabarEditor();
 	void addStatic();
+	void deleteItem();
 	
 	
 	private:
@@ -85,6 +86,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
 	QAction *m_addStatic;
+	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;
 

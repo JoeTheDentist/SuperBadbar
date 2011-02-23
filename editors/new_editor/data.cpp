@@ -86,6 +86,17 @@ void Data::saveData(QString fileName)
 	file.close();
 }
 
+void Data::removeItem(MyItem *item)
+{
+	std::list<MyItem *>::iterator it;
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {	
+		if (item == (*it)) {
+			m_static_items.erase(it);
+			return;
+		}
+	}
+}
+
 MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;

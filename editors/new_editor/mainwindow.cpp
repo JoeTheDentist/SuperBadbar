@@ -81,14 +81,19 @@ void MainWindow::createActions()
 	m_saveAct->setStatusTip(tr("Save the .col file"));
 	connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));	
 	
-	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); // TODO changer image
+	m_saveAsAct = new QAction(QIcon("images/saveas.png"),tr("Save as"), this); 
+	m_saveAsAct->setStatusTip(tr("Save as"));
+	connect(m_saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));	
+		
+	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
 	
-	m_saveAsAct = new QAction(QIcon("images/saveas.png"),tr("Save as"), this); // TODO changer image
-	m_saveAsAct->setStatusTip(tr("Save as"));
-	connect(m_saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));	
+	m_deleteItem = new QAction(QIcon("images/deleteitem.png"),tr("Delete item"), this); // TODO changer image
+	m_deleteItem->setStatusTip(tr("Delete an item from the level"));
+	connect(m_deleteItem, SIGNAL(triggered()), this, SLOT(deleteItem()));	
 	
+
 	
 }
 
@@ -102,6 +107,7 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
 	m_editMenu->addAction(m_addStatic);
+	m_editMenu->addAction(m_deleteItem);
 	menuBar()->addSeparator();
 	m_helpMenu = menuBar()->addMenu(tr("&Help"));
 	m_helpMenu->addAction(m_aboutBabarEditor);
@@ -115,6 +121,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
 	m_fileToolBar->addAction(m_addStatic);
+	m_fileToolBar->addAction(m_deleteItem);
 }
 
 void MainWindow::newFile()
@@ -130,7 +137,7 @@ void MainWindow::newFile()
 	}	
 	m_file_name = "";                                                                 
 	m_opened_file = true;
-	m_graphic_view->newFile(m_file_name, backgroundName);
+	m_graphic_view->newFile(backgroundName);
 	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
 		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
 		m_fileMenu->height() + m_fileToolBar->height());
@@ -209,6 +216,11 @@ void MainWindow::addStatic()
 {
 	if (m_opened_file)
 		m_graphic_view->addStatic();
+}
+
+void MainWindow::deleteItem()
+{
+	m_graphic_view->activeDeleteItem();
 }
 
 void MainWindow::warningSave()

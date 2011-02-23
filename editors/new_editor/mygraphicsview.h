@@ -70,10 +70,9 @@ class MyGraphicsView : public QGraphicsView {
 	
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
-	*	@param fileName Le nom du fichier (avec l'extension png)
 	*	@param backgroundName Un chemin absolu vers le fichier du fond d'écran
 	*/
-	void newFile(QString fileName, QString backgroundName);
+	void newFile( QString backgroundName);
 	void loadFile(QString fileName);
 	
 	
@@ -99,6 +98,8 @@ class MyGraphicsView : public QGraphicsView {
 	
 	void addStatic();
 	
+	void activeDeleteItem();
+	
 	void zoom(qreal z);
 
 	private:
@@ -112,6 +113,7 @@ class MyGraphicsView : public QGraphicsView {
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	MyItem *m_curr_item;
 	MyItem *m_selected_item;
+	QGraphicsItem *m_del_curs;
 	qreal m_zoom;
 };
 
