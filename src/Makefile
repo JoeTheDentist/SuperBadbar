@@ -70,7 +70,7 @@ todo:
 	@grep --color=auto -rn TODO */* || echo
 	
 record:
-	./$(SCRIPT_PATH)$(RECORD_SCRIPT)
+	./babar -record record.rcd
 	
 replay:
-	./
+	./babar -replay record.rcd

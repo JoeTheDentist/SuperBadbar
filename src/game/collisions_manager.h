@@ -84,18 +84,18 @@ public:
 	*/
 	void display_platforms(Camera * const camera) const;
 
-
 	/*!
-	 *	@brief
+	 *	@brief Mise à jour de la position des plateformes
 	*/
 	void update_platforms_pos(Babar *babar);
 	/*!
-	 *	@brief
+	 *	@brief Mise à jour de la vitesse des plateformes
 	*/
 	void update_platforms_speed();
 
 	/*!
-	 *	@brief
+	 *	@brief Lie Babar aux plateformes auxquelles il doit etre lié
+	 *	@param babar Babar!
 	*/
 	void update_babar_platforms(Babar *babar);
 

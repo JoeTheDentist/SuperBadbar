@@ -63,7 +63,8 @@ void Moving_platform::update_pos(Babar *babar)
 	m_phase++;
 	/* descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		check_babar(babar);
+		if (check_babar(babar))
+			babar->bind(this);
 		m_pos.y += BOX_SIZE;
 	}
 	/* cas monte */
