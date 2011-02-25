@@ -234,7 +234,7 @@ void Babar::update_state()
 		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))) {
 			unbind_phase++;
 			if (unbind_phase == 3) {
-				unbind();
+//~ 				unbind();
 				unbind_phase = 0;
 			}
 		} else {
@@ -403,7 +403,8 @@ bool Babar::can_go_down() const
 
 void Babar::go_down()
 {
-	m_pos.y += BOX_SIZE;
+	m_pos.y += 2*BOX_SIZE;
+	m_speed.y += BOX_SIZE;
 	while (Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos))){
 		if (gCollision->double_collision(m_pos)) {
 			m_pos.y -= BOX_SIZE;
@@ -489,6 +490,7 @@ void Babar::bind(Moving_platform *platform)
 
 void Babar::unbind()
 {
+	PRINT_DEBUG(1, "ooooo");
 	m_bind->unbind();
 	m_bind = NULL;
 

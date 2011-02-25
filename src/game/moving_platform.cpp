@@ -97,11 +97,13 @@ void Moving_platform::update_speed()
 
 void Moving_platform::bind(Babar *babar)
 {
+	PRINT_DEBUG(1, "bind");
 	m_babar = babar;
 }
 
 void Moving_platform::unbind()
 {
+	PRINT_DEBUG(1, "bind");
 	m_babar = NULL;
 }
 
