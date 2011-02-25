@@ -79,7 +79,7 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel, Ba
 
 Following_walking_monster::~Following_walking_monster()
 {
-//~     delete m_ai;
+    delete m_ai;
 }
 
 void Following_walking_monster::update_speed(Babar *babar)

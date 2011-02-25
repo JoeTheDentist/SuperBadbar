@@ -40,7 +40,6 @@ private:
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
 	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
-	Events_manager *m_events_manager;
 
 public:
 	/**

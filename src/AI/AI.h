@@ -14,8 +14,6 @@
 class AI {
     private:
         Rect * m_pos;
-        Projectiles_manager * m_proj;
-        Collisions_manager * m_context;
         Sprite * m_target;
 
         double eval(direction d);

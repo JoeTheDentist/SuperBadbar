@@ -7,8 +7,6 @@
 AI::AI(Sprite * target, Rect * pos)
 {
     m_target = target;
-    m_context = gCollision;
-    m_proj = gProj;
     m_pos = pos;
 }
 
@@ -56,7 +54,7 @@ double AI::eval(direction d) {
 
 double AI::eval_up()
 {
-    if ( !Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos)) ) {
+    if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(*m_pos)) ) {
         return -1000000;
     }
 
@@ -65,8 +63,8 @@ double AI::eval_up()
     zone.y -= m_pos->h;
 
 
-    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
-				it != m_proj->proj_friend_end(); it++) {
+    for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
+				it != gProj->proj_friend_end(); it++) {
         if ( check_collision( (*it)->position(),zone ) ) {
             weight -= WEIGHT_PROJ;
         }
@@ -79,8 +77,8 @@ double AI::eval_up()
 
 double AI::eval_down()
 {
-    if ( Collisions_manager::is_down_coll(m_context->down_collision_type(*m_pos))
-				&& !m_context->double_collision(*m_pos) ) {
+    if ( Collisions_manager::is_down_coll(gCollision->down_collision_type(*m_pos))
+				&& !gCollision->double_collision(*m_pos) ) {
         return -1000000;
     }
 
@@ -88,8 +86,8 @@ double AI::eval_down()
     Rect zone = *m_pos;
     zone.y += m_pos->h;
 
-    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
-				it != m_proj->proj_friend_end(); it++) {
+    for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
+				it != gProj->proj_friend_end(); it++) {
         if ( check_collision( (*it)->position(),zone ) ) {
             weight -= WEIGHT_PROJ;
         }
@@ -109,8 +107,8 @@ double AI::eval_left()
     zone.x-=m_pos->w;
     weight += DIST_WEIGHT/dist(m_target->position(), zone);
 
-    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
-				it != m_proj->proj_friend_end(); it++) {
+    for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
+				it != gProj->proj_friend_end(); it++) {
         Rect zone = *m_pos;
 		double dimx = (m_pos->h/ESTIM_SPEED)*((*it)->speed().x);
 		zone.x -= dimx;
@@ -131,8 +129,8 @@ double AI::eval_right()
     zone.x+=m_pos->w;
     weight += DIST_WEIGHT/dist(m_target->position(), zone);
 
-    for (std::list<Projectile *>::iterator it = m_proj->proj_friend_begin();
-				it != m_proj->proj_friend_end(); it++) {
+    for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
+				it != gProj->proj_friend_end(); it++) {
         Rect zone = *m_pos;
 		double dimx = (-m_pos->h/ESTIM_SPEED)*((*it)->speed().x);
 		zone.x += m_pos->w;

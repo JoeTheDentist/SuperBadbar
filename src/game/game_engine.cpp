@@ -34,10 +34,11 @@
 #include "../util/globals.h"
 
 
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager)
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
 {
     gCollision = new Collisions_manager();
-    gProj = new Projectiles_manager;
+    gProj = new Projectiles_manager();
+    gEvent = new Events_manager();
 	m_babar = NULL;
 }
 
@@ -47,10 +48,9 @@ Game_engine::~Game_engine()
 {
     delete m_babar;
 	delete m_monsters_manager;
-	delete m_events_manager;
 	delete gCollision;
 	delete gProj;
-
+	delete gEvent;
 }
 
 void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container)
@@ -67,8 +67,8 @@ void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard
 	analyser.open(rep + "level" + str_lvl + ".lvl");
     m_babar = new Babar(keyboard, &analyser);
 	m_monsters_manager->init_monsters_manager(&analyser, m_babar);
-	m_events_manager->init_events_manager(gStatic, this, pictures_container);
-	m_events_manager->load_events(&analyser);
+	gEvent->init_events_manager(gStatic, this, pictures_container);
+	gEvent->load_events(&analyser);
 	analyser.close();
 
 }
@@ -144,11 +144,11 @@ Babar *Game_engine::babar()
 
 
 void Game_engine::update_events_manager() {
-	m_events_manager->update();
+	gEvent->update();
 }
 
 void Game_engine::display_events(Camera *camera) {
-	m_events_manager->display_events(camera);
+	gEvent->display_events(camera);
 }
 
 
