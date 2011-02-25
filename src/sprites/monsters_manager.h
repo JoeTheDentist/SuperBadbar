@@ -55,7 +55,7 @@ public:
 	/*!
 	* 	@brief remplissage de monsters_manager au debut du niveau
 	*/
-	void init_monsters_manager(Analyser *analyser, Projectiles_manager * pm, Babar *babar);
+	void init_monsters_manager(Analyser *analyser, Babar *babar);
 
 
 	/*!
@@ -69,7 +69,7 @@ public:
 	*	@param static_data DOnnées du niveau
 	*	@param collisions_manager Gestionnaire de collisions
 	*/
-	void monsters_update_pos(Static_data *static_data);
+	void monsters_update_pos();
 
 	/*!
 	* 	@brief Met à jour la vitesse des monstres

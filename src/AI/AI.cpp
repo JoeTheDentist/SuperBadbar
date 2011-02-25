@@ -4,11 +4,11 @@
 #include "AI.h"
 #include "../sprites/projectiles.h"
 
-AI::AI(Sprite * target, Projectiles_manager * pm, Rect * pos)
+AI::AI(Sprite * target, Rect * pos)
 {
     m_target = target;
     m_context = gCollision;
-    m_proj = pm;
+    m_proj = gProj;
     m_pos = pos;
 }
 

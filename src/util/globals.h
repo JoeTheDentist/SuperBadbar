@@ -35,10 +35,12 @@
 class Sound_engine;
 class Collisions_manager;
 class Static_data;
+class Projectiles_manager;
 
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
 extern Static_data * gStatic;
+extern Projectiles_manager * gProj;
 
 
 #endif

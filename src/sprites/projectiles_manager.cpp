@@ -37,21 +37,21 @@ Projectiles_manager::~Projectiles_manager() {
 }
 
 
-void Projectiles_manager::update_pos(Collisions_manager *collisions_manager)
+void Projectiles_manager::update_pos()
 {
 	// position des projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {
-	    (*it)->update_pos(collisions_manager);
+	    (*it)->update_pos(gCollision);
 	}
 	// position des projectiles ennemis
 	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
 			it != m_projectiles_ennemy.end(); it++) {
-	    (*it)->update_pos(collisions_manager);
+	    (*it)->update_pos(gCollision);
 	}
 }
 
-void Projectiles_manager::delete_old_projectiles(Static_data *static_data)
+void Projectiles_manager::delete_old_projectiles()
 {
 	// suppression de projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();

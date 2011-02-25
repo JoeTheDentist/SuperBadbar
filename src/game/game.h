@@ -37,7 +37,6 @@ class Graphic_engine;
 class Game {
 private:
 	Keyboard *m_keyboard;
-	Static_data *m_static_data;
 	Game_engine *m_game_engine;
 	Graphic_engine *m_graphic_engine;
 	unsigned int m_time;			/* temps actuel */

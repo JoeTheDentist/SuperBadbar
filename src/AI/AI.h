@@ -27,7 +27,7 @@ class AI {
         double eval_right();
 
     public:
-        AI(Sprite * target, Projectiles_manager * pm, Rect * pos);
+        AI(Sprite * target, Rect * pos);
         ~AI();
 
         /**

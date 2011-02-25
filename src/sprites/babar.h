@@ -76,7 +76,7 @@ public:
 	 *	@param sound_manager Le gestionnaire de son
 	 *  @param analyser ouvert sur un fichier lvl, en l'occurence du premier level
 	 */
-	Babar(Keyboard *keyboard, Static_data *static_data, Analyser *analyser);
+	Babar(Keyboard *keyboard, Analyser *analyser);
 
 	/**
 	 * 	@brief Destructeur
@@ -95,14 +95,14 @@ public:
 	 *	@param static_data Données du jeu
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
-    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+    void update_pos();
 
 	/*!
 	 *	@brief Met à jour la position du sprite s'il est lié à une plateforme
 	 *	@param static_data Données du jeu
 	 *	@param platform La plateforme liée
 	*/
-    void binded_update_pos(Static_data *static_data, Moving_platform *platform);
+    void binded_update_pos(Moving_platform *platform);
 
 
 
@@ -119,7 +119,7 @@ public:
 	 *	@param projectiles_manager Gestionnaire des projectiles
 	 */
 
-	void update_state(Static_data *static_data, Collisions_manager *collisions_manager, Projectiles_manager *projectiles_manager);
+	void update_state();
 
 	/**
 	 * 	@brief Mise à jour de la direction de Babar en fonction des touches enfoncées
@@ -193,13 +193,13 @@ public:
 	 * 	@brief Indique si Babar peut traverser la plateforme sur laquelle il est
 	 *	@return vrai si bas et espace sont appuyes, si l'état de babar permet de descendre et si babar est sur un objet de collision bas
 	 */
-	bool can_go_down(Collisions_manager *collisions_manager) const;
+	bool can_go_down() const;
 
 	/**
 	 * 	@brief Effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee
 	 *	@param collisions_manager Le gestionnaire de collisions
 	 */
-	void go_down(Collisions_manager *collisions_manager);
+	void go_down();
 
 	/**
 	 * 	@brief Donne une nouvelle arme à Babar

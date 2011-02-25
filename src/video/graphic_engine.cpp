@@ -6,8 +6,8 @@
  * 	@date decembre 2010
  *
  */
- 
- 
+
+
 #include "graphic_engine.h"
 #include "../sprites/babar.h"
 #include "../video/camera.h"
@@ -51,16 +51,16 @@ Graphic_engine::~Graphic_engine()
 	SDL_Quit();
 }
 
-void Graphic_engine::init_graphic_engine(Babar *babar, Static_data *static_data)
+void Graphic_engine::init_graphic_engine(Babar *babar)
 {
 	m_camera->init_camera(babar);
 	m_talks->init_talks(m_camera, m_pictures_container);
 	m_dashboard->init_dashboard(m_pictures_container);
 }
 
-void Graphic_engine::update(Static_data *static_data)
+void Graphic_engine::update()
 {
-	m_camera->update_pos(static_data);
+	m_camera->update_pos();
 }
 
 void Graphic_engine::draw_dashboard(int lifes, Camera *camera, Babar *babar)

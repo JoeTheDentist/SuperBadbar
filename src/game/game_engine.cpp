@@ -34,9 +34,10 @@
 #include "../util/globals.h"
 
 
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_projectiles_manager(new Projectiles_manager())
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager)
 {
     gCollision = new Collisions_manager();
+    gProj = new Projectiles_manager;
 	m_babar = NULL;
 }
 
@@ -48,36 +49,36 @@ Game_engine::~Game_engine()
 	delete m_monsters_manager;
 	delete m_events_manager;
 	delete gCollision;
-	delete m_projectiles_manager;
+	delete gProj;
 
 }
 
-void Game_engine::init_game_engine(int level, Camera *camera, Static_data *static_data, Keyboard *keyboard, Pictures_container *pictures_container)
+void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container)
 {
     std::string rac = RAC;
 	std::string rep;
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
-	m_matrix_weight = static_data->static_data_weight();
-	m_matrix_height = static_data->static_data_height();
+	m_matrix_weight = gStatic->static_data_weight();
+	m_matrix_height = gStatic->static_data_height();
 	gCollision->init_collisions_manager(level);
 	std::string str_lvl = "1";
 	rep = LEVELS_R;
 	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
-    m_babar = new Babar(keyboard, static_data, &analyser);
-	m_monsters_manager->init_monsters_manager(&analyser, m_projectiles_manager, m_babar);
-	m_events_manager->init_events_manager(static_data, this, pictures_container);
+    m_babar = new Babar(keyboard, &analyser);
+	m_monsters_manager->init_monsters_manager(&analyser, m_babar);
+	m_events_manager->init_events_manager(gStatic, this, pictures_container);
 	m_events_manager->load_events(&analyser);
 	analyser.close();
 
 }
 
-void Game_engine::update_pos(Static_data *static_data)
+void Game_engine::update_pos()
 {
 	gCollision->update_platforms_pos(m_babar);
-	m_projectiles_manager->update_pos(gCollision);
-	m_babar->update_pos(static_data, gCollision);
-	m_monsters_manager->monsters_update_pos(static_data);
+	gProj->update_pos();
+	m_babar->update_pos();
+	m_monsters_manager->monsters_update_pos();
 }
 
 
@@ -88,9 +89,9 @@ void Game_engine::update_speed()
 	gCollision->update_platforms_speed();
 }
 
-void Game_engine::babar_update_state(Static_data *static_data)
+void Game_engine::babar_update_state()
 {
-	m_babar->update_state(static_data, gCollision, m_projectiles_manager);
+	m_babar->update_state();
 }
 
 void Game_engine::babar_monsters_collision()
@@ -107,12 +108,12 @@ void Game_engine::display_monsters(Camera * const camera) const
 
 void Game_engine::display_projectiles_friend(Camera *camera)
 {
-	m_projectiles_manager->display(camera);
+	gProj->display(camera);
 }
 
-void Game_engine::delete_dead_things(Static_data *static_data)
+void Game_engine::delete_dead_things()
 {
-	m_projectiles_manager->delete_old_projectiles(static_data);
+	gProj->delete_old_projectiles();
 	m_monsters_manager->delete_dead_monsters();
 }
 
@@ -121,8 +122,8 @@ void Game_engine::update_monsters_projectiles()
     m_monsters_manager->init();
     while (!m_monsters_manager->end()) {
 		Monster *monster = m_monsters_manager->element();
-        for (std::list<Projectile *>::iterator it = m_projectiles_manager->proj_friend_begin();
-				it != m_projectiles_manager->proj_friend_end(); it++){
+        for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
+				it != gProj->proj_friend_end(); it++){
 			if (monster->dead())
 				break;
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {

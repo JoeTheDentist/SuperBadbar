@@ -45,7 +45,7 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
 	m_can_fire = false;
 }
 
-Following_walking_monster::Following_walking_monster(Analyser *analyserLevel, Projectiles_manager * pm, Babar *babar)
+Following_walking_monster::Following_walking_monster(Analyser *analyserLevel, Babar *babar)
 {
     m_nom = analyserLevel->read_string();
 	Analyser analyserMonster;
@@ -72,7 +72,7 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel, Pr
 
 	m_can_fire = false;
 
-    m_ai = new AI(babar, pm, &m_pos);
+    m_ai = new AI(babar, &m_pos);
 
     m_last_phase = 0;
 }

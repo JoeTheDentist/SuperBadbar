@@ -29,15 +29,15 @@
 
 
 Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
-	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)),
-	m_static_data(new Static_data()), m_game_engine(new Game_engine()),
+	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), m_game_engine(new Game_engine()),
 	m_graphic_engine(new Graphic_engine())
 {
+    gStatic = new Static_data;
 	PRINT_CONSTR(1, "Construction de la classe Game")
-	m_static_data->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(), m_static_data,
+	gStatic->init_static_data(1);
+	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(),
 									m_keyboard, m_graphic_engine->get_pictures_container());
-	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
+	m_graphic_engine->init_graphic_engine(m_game_engine->babar());
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 
@@ -49,11 +49,10 @@ Game::~Game()
 
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
-	delete m_static_data;
 	delete m_game_engine;
 	delete m_graphic_engine;
 	delete gSound;
-
+    delete gStatic;
 }
 
 void Game::update_keyboard()
@@ -64,9 +63,9 @@ void Game::update_keyboard()
 void Game::update_game()
 {
 
-	m_game_engine->update_pos(m_static_data);
+	m_game_engine->update_pos();
 	m_game_engine->update_speed();
-	m_game_engine->babar_update_state(m_static_data);
+	m_game_engine->babar_update_state();
 	m_game_engine->update_monsters_projectiles();
 	m_game_engine->babar_monsters_collision();
 	m_game_engine->update_events_manager();
@@ -79,21 +78,21 @@ void Game::play_sounds()
 
 void Game::delete_dead_things()
 {
-	m_game_engine->delete_dead_things(m_static_data);
+	m_game_engine->delete_dead_things();
 }
 
 void Game::update_graphic()
 {
 
-	m_graphic_engine->update(m_static_data);
+	m_graphic_engine->update();
 
 	Camera *camera = m_graphic_engine->get_camera();
 	/* affichage du fond */
-	camera->update_pos(m_static_data);
-	camera->display_background(m_static_data->background());
+	camera->update_pos();
+	camera->display_background(gStatic->background());
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
-	m_static_data->display_statics_back(camera);
+	gStatic->display_statics_back(camera);
 
 	/* affichage des événements */
 	m_game_engine->display_events(camera);
@@ -108,7 +107,7 @@ void Game::update_graphic()
 	/* affichage du sprite babar */
 	camera->display(m_game_engine->babar());
 
-	m_static_data->display_statics_first(camera);
+	gStatic->display_statics_first(camera);
 
 	/* affichage du tableau de board */
 	m_graphic_engine->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());

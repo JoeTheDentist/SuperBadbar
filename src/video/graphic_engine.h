@@ -6,8 +6,8 @@
  * 	@date decembre 2010
  *
  */
- 
- 
+
+
 #ifndef _GRAPHIC_ENGINE_
 #define _GRAPHIC_ENGINE_
 
@@ -45,15 +45,15 @@ public:
 	 * 	@brief Initialise le moteur graphique
 	 *	@todo On a juste besoin du picture_container, qui doit faire partie de graphic_engine..
 	 */
-	void init_graphic_engine(Babar *babar, Static_data *static_data);
+	void init_graphic_engine(Babar *babar);
 
 
 	/**
 	 * 	@brief Mise à jour du moteur graphique
-	 *	
+	 *
 	 *	Met à jour la position de la camera
 	 */
-	void update(Static_data *static_data);
+	void update();
 
 	/**
 	 * 	@brief Affiche le tableau de board
@@ -70,14 +70,14 @@ public:
 	Camera *get_camera();
 
 
-	
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers le gestionnaire de dialogues
 	 */
 	Talks *get_talks();
-	
-	
+
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers le gestionnaire d'images
@@ -87,7 +87,7 @@ public:
 
 
 	/**
-	 * 	@brief 
+	 * 	@brief
 	 */
 
 

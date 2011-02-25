@@ -41,7 +41,6 @@ private:
 	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
 	Events_manager *m_events_manager;
-	Projectiles_manager *m_projectiles_manager;
 
 public:
 	/**
@@ -62,13 +61,13 @@ public:
 	 * 	@param keyboard Gestionnaire du clavier
 	 *	@param pictures_container Le gestionnaire d'images
 	*/
-	void init_game_engine(int level, Camera *camera, Static_data *static_data, Keyboard *keyboard, Pictures_container *pictures_container);
+	void init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container);
 
 	/**
 	 * 	@brief Mise à jour des positions des éléments du jeu
 	 *	@todo à déplacer
 	*/
-	void update_pos(Static_data *static_data);
+	void update_pos();
 
 	/**
 	 * 	@brief Mise à jour des vitesses des éléments du jeu
@@ -79,7 +78,7 @@ public:
 	 * 	@brief Mise à jour de l'état de babar
 	 *	@brief static_data données du niveau
 	*/
-	void babar_update_state(Static_data *static_data);
+	void babar_update_state();
 
 	/*!
 	* 	@brief check les collisions entre babar et les monstres
@@ -105,7 +104,7 @@ public:
 	 * 	@brief Supprimer les projectiles et monstres "morts"
 	 *	@param static_data données du niveau
 	*/
-	void delete_dead_things(Static_data *static_data);
+	void delete_dead_things();
 
 	/**
 	 * 	@brief Check les collisions monstres/projectiles

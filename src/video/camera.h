@@ -77,7 +77,7 @@ public:
 	*	Suit la position de babar, sans acoups, en s'arretant aux bords du niveau
 	*	et en étant décalé dans la direction du regard de babar.
 	*/
-	void update_pos(Static_data *static_data);
+	void update_pos();
 
 	/*!
 	* 	@brief Affiche le fond d'écran passé en paramètre

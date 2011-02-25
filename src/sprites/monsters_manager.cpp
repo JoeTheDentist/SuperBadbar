@@ -36,14 +36,14 @@ Monsters_manager::~Monsters_manager()
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser, Projectiles_manager * pm, Babar *babar)
+void Monsters_manager::init_monsters_manager(Analyser *analyser, Babar *babar)
 {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		std::string monster_type = analyser->read_string();
 		if (monster_type == "following_walking_monster") {
-			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, pm, babar);
+			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, babar);
 			add(curr_monster);
 		} else if (monster_type == "walking_monster") {
 			Walking_monster * curr_monster = new Walking_monster(analyser);
@@ -73,11 +73,11 @@ void Monsters_manager::monsters_update_speed(Babar *babar)
 	}
 }
 
-void Monsters_manager::monsters_update_pos(Static_data*static_data)
+void Monsters_manager::monsters_update_pos()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
-		(*it)->update_pos(static_data, gCollision);
+		(*it)->update_pos(gStatic, gCollision);
 	}
 }
 
