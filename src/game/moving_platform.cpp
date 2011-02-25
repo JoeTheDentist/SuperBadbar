@@ -133,7 +133,7 @@ bool Moving_platform::check_babar(Babar *babar)
 	if (babar_speed.y < m_speed.y)
 		return false;
 	int j = (babar_pos.y + babar_pos.h - m_pos.y) / BOX_SIZE + 1;
-	if (j < 0 || j > m_collisions_matrix_h)
+	if (j < 0 || j >= m_collisions_matrix_h)
 		return false;
 	int i_deb = (babar_pos.x - m_pos.x) / BOX_SIZE;
 	int i_max = (babar_pos.x + babar_pos.w - m_pos.x) / BOX_SIZE;
