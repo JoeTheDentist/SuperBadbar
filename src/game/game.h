@@ -40,7 +40,6 @@ private:
 	Static_data *m_static_data;
 	Game_engine *m_game_engine;
 	Graphic_engine *m_graphic_engine;
-	Sound_engine *m_sound_engine;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
@@ -52,7 +51,7 @@ private:
 	/*!
 	 *  @brief Mise à jour des données du jeu
 	*/
-	void update_game();	
+	void update_game();
 
 	void update_keyboard();
 
@@ -60,7 +59,7 @@ private:
 	/*!
 	 *  @brief Supprime objets morts (monstres, projectiles)
 	*/
-	void delete_dead_things();	
+	void delete_dead_things();
 
 
 
@@ -68,7 +67,7 @@ private:
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle
 	*/
-	void play_sounds();		
+	void play_sounds();
 
 
 
@@ -80,7 +79,7 @@ public:
 	 *	@param replay_on Indique si on doit charger une sequence de touches
 	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
 	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
-	 * 
+	 *
 	 *	Pour une execution normale, appeler game avec false, false, "", ""
 	*/
 	Game(bool record_on, bool replay_on, std::string output_name, std::string input_name);
@@ -93,12 +92,12 @@ public:
 	/**
 	 * @brief La boucle de jeu
 	*/
-	void game_loop();			
+	void game_loop();
 
 	/**
 	 * @brief check les collisions monstres/projectiles
 	*/
-	void check_monsters();	
+	void check_monsters();
 };
 
 

@@ -31,7 +31,7 @@
 Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
 	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)),
 	m_static_data(new Static_data()), m_game_engine(new Game_engine()),
-	m_graphic_engine(new Graphic_engine()), m_sound_engine(new Sound_engine())
+	m_graphic_engine(new Graphic_engine())
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	m_static_data->init_static_data(1);
@@ -40,6 +40,8 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 	m_graphic_engine->init_graphic_engine(m_game_engine->babar(), m_static_data);
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
+
+	gSound = new Sound_engine;
 }
 
 Game::~Game()
@@ -50,7 +52,7 @@ Game::~Game()
 	delete m_static_data;
 	delete m_game_engine;
 	delete m_graphic_engine;
-	delete m_sound_engine;
+	delete gSound;
 
 }
 
