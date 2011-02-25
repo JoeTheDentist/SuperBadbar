@@ -55,7 +55,7 @@ public:
 	/*!
 	* 	@brief remplissage de monsters_manager au debut du niveau
 	*/
-	void init_monsters_manager(Analyser *analyser, Collisions_manager* cm, Projectiles_manager * pm, Babar *babar);
+	void init_monsters_manager(Analyser *analyser, Projectiles_manager * pm, Babar *babar);
 
 
 	/*!
@@ -69,7 +69,7 @@ public:
 	*	@param static_data DOnnées du niveau
 	*	@param collisions_manager Gestionnaire de collisions
 	*/
-	void monsters_update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+	void monsters_update_pos(Static_data *static_data);
 
 	/*!
 	* 	@brief Met à jour la vitesse des monstres
@@ -94,7 +94,7 @@ public:
 	 * 	@brief Joue les sons à jouer ce cycle
 	 *	@param sound_engine Gestionnaire de son
 	*/
-	void play_sounds(Sound_engine *sound_engine);
+	void play_sounds();
 
 	/********************************************************
 	*			Fonctions de Parcours

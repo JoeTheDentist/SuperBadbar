@@ -12,7 +12,8 @@
 #define _COLLISIONS_MANAGER_
 
 #include <stdint.h>
-#include "../game/collisions_matrix.h"
+#include "collisions_matrix.h"
+#include "moving_platform.h"
 #include "../util/globals.h"
 
 class Static;
@@ -40,23 +41,23 @@ class Babar;
  *
  *	La classe fournit donc des méthodes pour
  *	déterminer la nature de la collision (is_xxxx_collision())
- * 
+ *
  *	Pour savoir si un sprite peut avancer, on a besoin de connaitre la nature
  *	des cases de collision qui bordent ses extrémités (xxx_collision())
  *
- 
+
  *	@warning Beaucoup de vérifications sont faites pour éviter les dépassements de tableaux. On peut donc optimiser ici
  */
 class Collisions_manager: public Collisions_matrix {
 private:
 	Moving_platform *m_moving_platform;
 public:
-	
+
 	/*!
 	 *	@brief Constructeur
 	*/
 	Collisions_manager();
-	
+
 	/*!
 	 *	@brief Destructeur
 	*/
@@ -83,18 +84,18 @@ public:
 	*/
 	void display_platforms(Camera * const camera) const;
 
-		
+
 	/*!
-	 *	@brief 
+	 *	@brief
 	*/
 	void update_platforms_pos(Babar *babar);
 	/*!
-	 *	@brief 
-	*/	
+	 *	@brief
+	*/
 	void update_platforms_speed();
-	
+
 	/*!
-	 *	@brief 
+	 *	@brief
 	*/
 	void update_babar_platforms(Babar *babar);
 
@@ -102,7 +103,7 @@ public:
 
 
 	/*!
-	 *	@brief 
+	 *	@brief
 	*/
 
 

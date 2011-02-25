@@ -10,9 +10,9 @@
 #ifndef _GUN_
 #define _GUN_
 
-#include "../util/globals.h"
 #include "../items/weapons.h"
 #include <list>
+#include "../util/globals.h"
 
 
 

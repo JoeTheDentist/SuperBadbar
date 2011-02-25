@@ -10,12 +10,11 @@
 #include "collisions_manager.h"
 #include "stdint.h"
 #include "../util/analyser.h"
-#include "../util/globals.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
-#include "../game/moving_platform.h"
 #include "../video/camera.h"
 #include "../sprites/babar.h"
+#include "../util/globals.h"
 
 Collisions_manager::Collisions_manager() {
 	PRINT_CONSTR(1, "Construction de Collisions_manager")

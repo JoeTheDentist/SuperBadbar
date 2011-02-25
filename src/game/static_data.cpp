@@ -7,13 +7,13 @@
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../game/game.h"
-#include "../util/globals.h"
 #include "../sprites/sprites.h"
 #include "../sprites/monsters.h"
 #include "../video/camera.h"
 #include "../video/statics.h"
 #include "../video/pictures_container.h"
 #include "../video/surface.h"
+#include "../util/globals.h"
 
 
 Static_data::Static_data() : m_pictures_container(new Pictures_container())

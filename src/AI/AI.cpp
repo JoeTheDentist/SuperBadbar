@@ -4,10 +4,10 @@
 #include "AI.h"
 #include "../sprites/projectiles.h"
 
-AI::AI(Sprite * target, Collisions_manager * context, Projectiles_manager * pm, Rect * pos)
+AI::AI(Sprite * target, Projectiles_manager * pm, Rect * pos)
 {
     m_target = target;
-    m_context = context;
+    m_context = gCollision;
     m_proj = pm;
     m_pos = pos;
 }
@@ -17,7 +17,6 @@ AI::~AI()
 
 }
 
-/* algo naif mais bien plus efficace */
 direction AI::dir()
 {
     direction best_dir = LEFT;
@@ -97,7 +96,7 @@ double AI::eval_down()
     }
 
     // 2/3 pour favoriser sauter /r descendre
-    weight += 2*DIST_WEIGHT/(3*dist(m_target->position(), zone)) ;
+    weight += DIST_WEIGHT/dist(m_target->position(), zone) ;
 
     return weight;
 }

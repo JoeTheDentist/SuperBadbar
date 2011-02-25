@@ -10,9 +10,9 @@
 #ifndef _ANIMATION_ENGINE_
 #define _ANIMATION_ENGINE_
 
-class animation_engine {
+class Animation_engine {
 	private:
-		
+
 	public:
 };
 

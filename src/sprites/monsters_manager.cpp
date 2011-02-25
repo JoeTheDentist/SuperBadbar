@@ -36,14 +36,14 @@ Monsters_manager::~Monsters_manager()
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser, Collisions_manager* cm, Projectiles_manager * pm, Babar *babar)
+void Monsters_manager::init_monsters_manager(Analyser *analyser, Projectiles_manager * pm, Babar *babar)
 {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		std::string monster_type = analyser->read_string();
 		if (monster_type == "following_walking_monster") {
-			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, cm, pm, babar);
+			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, pm, babar);
 			add(curr_monster);
 		} else if (monster_type == "walking_monster") {
 			Walking_monster * curr_monster = new Walking_monster(analyser);
@@ -73,11 +73,11 @@ void Monsters_manager::monsters_update_speed(Babar *babar)
 	}
 }
 
-void Monsters_manager::monsters_update_pos(Static_data*static_data, Collisions_manager *collisions_manager)
+void Monsters_manager::monsters_update_pos(Static_data*static_data)
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
-		(*it)->update_pos(static_data, collisions_manager);
+		(*it)->update_pos(static_data, gCollision);
 	}
 }
 
@@ -103,11 +103,11 @@ void Monsters_manager::babar_monsters_collision(Babar *babar)
 	}
 }
 
-void Monsters_manager::play_sounds(Sound_engine *sound_engine)
+void Monsters_manager::play_sounds()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
-		sound_engine->play_sound((*it));
+		gSound->play_sound((*it));
 	}
 }
 

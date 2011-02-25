@@ -13,8 +13,8 @@
 #include "../sprites/babar.h"
 #include "../game/collisions_manager.h"
 #include "../util/debug.h"
-#include "../util/globals.h"
 #include "../video/surface.h"
+#include "../util/globals.h"
 
 Event_item::Event_item()
 {

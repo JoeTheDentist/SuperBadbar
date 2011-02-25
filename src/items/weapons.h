@@ -10,9 +10,9 @@
 #ifndef WEAPONS_H_INCLUDED
 #define WEAPONS_H_INCLUDED
 
-#include "../util/globals.h"
 #include <stdint.h>
 #include <list>
+#include "../util/globals.h"
 
 #define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
@@ -28,8 +28,6 @@
 #define RELOAD_SHOTGUN 10
 
 
-
-
 enum direction {
     LEFT, RIGHT, UP, DOWN
 };
@@ -42,6 +40,7 @@ enum weapon_type {
 
 class Sprites;
 class Projectile;
+struct Rect;
 
 /**
  * 	@class Weapon
@@ -77,7 +76,7 @@ public:
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	virtual std::list<Projectile*> *fire(Rect pos, direction h) = 0;
+	virtual std::list<Projectile*> * fire(Rect pos, direction h) = 0;
 
 	/**
 	 * 	@brief Accesseur

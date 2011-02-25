@@ -8,8 +8,8 @@
 #define _STATIC_DATA_
 
 #include <list>
-#include "../util/globals.h"
 #include "../video/surface.h"
+#include "../util/globals.h"
 
 class Static;
 class Projectiles;

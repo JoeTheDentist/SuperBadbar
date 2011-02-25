@@ -70,6 +70,7 @@ void Monster::damage(uint32_t damage)
 {
     m_life -= damage;
 	prepare_sound(MONSTERS_SOUNDS_R + "kickass" + SOUNDS_EXT);
+
 }
 
 bool Monster::dead() const

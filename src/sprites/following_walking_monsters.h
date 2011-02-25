@@ -36,7 +36,7 @@ public:
 	Following_walking_monster(Analyser *analyserLevel);
 
 
-	Following_walking_monster(Analyser *analyserLevel, Collisions_manager * cm, Projectiles_manager * pm, Babar *babar);
+	Following_walking_monster(Analyser *analyserLevel, Projectiles_manager * pm, Babar *babar);
 
 	/**
 	 * 	@brief Destructeur

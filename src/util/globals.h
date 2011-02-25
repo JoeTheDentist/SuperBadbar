@@ -12,8 +12,11 @@
 #define _GLOBALS_
 
 #include "../util/repertories.h"
+#include "../sound/sound_engine.h"
+#include "../game/collisions_manager.h"
+#include "../game/static_data.h"
 
-#define BOX_SIZE 5 
+#define BOX_SIZE 5
 
 #define NO_COLL 0x0
 #define FULL_COLL 0xF
@@ -29,11 +32,13 @@
     #define RAC ".."
 #endif
 
-struct Rect {
-    int x;
-    int y;
-    int w;
-    int h;
-};
+class Sound_engine;
+class Collisions_manager;
+class Static_data;
+
+extern Sound_engine * gSound;
+extern Collisions_manager * gCollision;
+extern Static_data * gStatic;
+
 
 #endif

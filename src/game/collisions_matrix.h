@@ -13,7 +13,6 @@
 
 #include <stdint.h>
 #include <string>
-#include "../util/globals.h"
 
 
 /**
@@ -43,6 +42,9 @@
 //~
 //~  *	@warning Beaucoup de vérifications sont faites pour éviter les dépassements de tableaux. On peut donc optimiser ici
  */
+
+ struct Rect;
+
 class Collisions_matrix {
 protected:
 	uint32_t ** m_collisions_matrix;      	/* matrice des statics */

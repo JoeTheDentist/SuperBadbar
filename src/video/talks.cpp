@@ -17,8 +17,8 @@
 #include "talks.h"
 #include "../util/debug.h"
 #include "../control/keyboard.h"
-#include "../util/globals.h"
 #include "../video/pictures_container.h"
+#include "../util/globals.h"
 
 
 

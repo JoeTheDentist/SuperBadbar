@@ -12,8 +12,8 @@
 
 #include "events.h"
 #include "../util/debug.h"
-#include "../util/globals.h"
 #include "../video/surface.h"
+#include "../util/globals.h"
 
 Event::Event()
 {

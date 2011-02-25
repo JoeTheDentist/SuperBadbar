@@ -11,9 +11,7 @@
 #define _CONTACT_EVENT_
 
 #include "../events/events.h"
-#include "../util/globals.h"
-
-
+#include "../video/surface.h"
 
 /**
  * 	@class Contact_event
@@ -27,6 +25,7 @@
  */
 class Babar;
 class Surface;
+struct Rect;
 
 class Contact_event: public Event{
 protected:
@@ -67,17 +66,17 @@ public:
  *	@return Vrai si l'événement doit etre déclenché
  *
  *	L'événement doit etre déclenché si la cible entre en contact
- *	avec l'événement 
+ *	avec l'événement
  */
 	virtual bool can_start() const;
-	
+
 /**
  * 	@brief Déclenche l'événement
  *
  *	Par défaut, rend l'événement déstruisible
  */
 	virtual void start();
-	
+
 /**
  * 	@brief Accesseur
  *	@return L'image actuelle de l'event
@@ -85,7 +84,7 @@ public:
  *	S'il n'y a pas d'image, retourne NULL
  */
 	virtual Surface *current_picture() const;
-	
+
 /**
  * 	@brief Accesseur
  *	@return La position et le cadre de l'événement

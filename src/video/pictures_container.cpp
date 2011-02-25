@@ -15,8 +15,8 @@
 
 #include "pictures_container.h"
 #include "../util/debug.h"
-#include "../util/globals.h"
 #include "../util/repertories.h"
+#include "../util/globals.h"
 
 
 Pictures_container::Pictures_container()

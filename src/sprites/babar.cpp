@@ -17,11 +17,11 @@
 #include "../game/game.h"
 #include "../game/collisions_manager.h"
 #include "../game/moving_platform.h"
-#include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
 #include "../sprites/projectiles_manager.h"
 #include "../video/surface.h"
+#include "../util/globals.h"
 
 /*********************************
 **	Méthodes de Babar 	**

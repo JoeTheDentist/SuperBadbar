@@ -28,14 +28,15 @@
 #include "../sprites/projectiles_manager.h"
 #include "../util/analyser.h"
 #include "../video/camera.h"
-#include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../video/pictures_container.h"
 #include "../events/events_manager.h"
+#include "../util/globals.h"
 
 
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_collisions_manager(new Collisions_manager()), m_projectiles_manager(new Projectiles_manager())
+Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager()),  m_events_manager(new Events_manager), m_projectiles_manager(new Projectiles_manager())
 {
+    gCollision = new Collisions_manager();
 	m_babar = NULL;
 }
 
@@ -46,7 +47,7 @@ Game_engine::~Game_engine()
     delete m_babar;
 	delete m_monsters_manager;
 	delete m_events_manager;
-	delete m_collisions_manager;
+	delete gCollision;
 	delete m_projectiles_manager;
 
 }
@@ -58,13 +59,13 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
 	m_matrix_weight = static_data->static_data_weight();
 	m_matrix_height = static_data->static_data_height();
-	m_collisions_manager->init_collisions_manager(level);
+	gCollision->init_collisions_manager(level);
 	std::string str_lvl = "1";
 	rep = LEVELS_R;
 	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
     m_babar = new Babar(keyboard, static_data, &analyser);
-	m_monsters_manager->init_monsters_manager(&analyser, m_collisions_manager, m_projectiles_manager, m_babar);
+	m_monsters_manager->init_monsters_manager(&analyser, m_projectiles_manager, m_babar);
 	m_events_manager->init_events_manager(static_data, this, pictures_container);
 	m_events_manager->load_events(&analyser);
 	analyser.close();
@@ -73,10 +74,10 @@ void Game_engine::init_game_engine(int level, Camera *camera, Static_data *stati
 
 void Game_engine::update_pos(Static_data *static_data)
 {
-	m_collisions_manager->update_platforms_pos(m_babar);
-	m_projectiles_manager->update_pos(m_collisions_manager);
-	m_babar->update_pos(static_data, m_collisions_manager);
-	m_monsters_manager->monsters_update_pos(static_data, m_collisions_manager);
+	gCollision->update_platforms_pos(m_babar);
+	m_projectiles_manager->update_pos(gCollision);
+	m_babar->update_pos(static_data, gCollision);
+	m_monsters_manager->monsters_update_pos(static_data);
 }
 
 
@@ -84,12 +85,12 @@ void Game_engine::update_speed()
 {
 	m_babar->update_speed();
 	m_monsters_manager->monsters_update_speed(m_babar);
-	m_collisions_manager->update_platforms_speed();
+	gCollision->update_platforms_speed();
 }
 
 void Game_engine::babar_update_state(Static_data *static_data)
 {
-	m_babar->update_state(static_data, m_collisions_manager, m_projectiles_manager);
+	m_babar->update_state(static_data, gCollision, m_projectiles_manager);
 }
 
 void Game_engine::babar_monsters_collision()
@@ -100,7 +101,7 @@ void Game_engine::babar_monsters_collision()
 void Game_engine::display_monsters(Camera * const camera) const
 {
 	m_monsters_manager->display_monsters(*camera);
-	m_collisions_manager->display_platforms(camera);
+	gCollision->display_platforms(camera);
 }
 
 
@@ -150,8 +151,8 @@ void Game_engine::display_events(Camera *camera) {
 }
 
 
-void Game_engine::play_sounds(Sound_engine *sound_engine)
+void Game_engine::play_sounds()
 {
-	m_monsters_manager->play_sounds(sound_engine);
-	sound_engine->play_sound(m_babar);
+	m_monsters_manager->play_sounds();
+	gSound->play_sound(m_babar);
 }

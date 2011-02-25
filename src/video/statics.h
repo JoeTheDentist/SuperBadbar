@@ -10,10 +10,11 @@
 #ifndef STATICS_H_INCLUDED
 #define STATICS_H_INCLUDED
 
-#include "../util/globals.h"
+#include "surface.h"
 #include "displayable.h"
 
 class Surface;
+struct Rect;
 
 /**
  * 	@class Static

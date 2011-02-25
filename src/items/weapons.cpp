@@ -14,6 +14,7 @@
 #include "../util/debug.h"
 #include "../sprites/projectiles.h"
 
+
 Weapon::Weapon()
 {
 	PRINT_CONSTR(2, "construction d'une weapon");

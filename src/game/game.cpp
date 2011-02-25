@@ -72,7 +72,7 @@ void Game::update_game()
 
 void Game::play_sounds()
 {
-	m_game_engine->play_sounds(m_sound_engine);
+	m_game_engine->play_sounds();
 }
 
 void Game::delete_dead_things()

@@ -20,7 +20,7 @@ class Surface;
 
 
 enum state_m {
-    WALKING, FIRE
+    WALKING, FIRE, DEATH
 };
 
 

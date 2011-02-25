@@ -12,12 +12,12 @@
 #include "collisions_matrix.h"
 #include "collisions_manager.h"
 #include "../util/analyser.h"
-#include "../util/globals.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
 #include "../game/moving_platform.h"
 #include "../video/camera.h"
 #include "../sprites/babar.h"
+#include "../util/globals.h"
 
 Collisions_matrix::Collisions_matrix()
 {

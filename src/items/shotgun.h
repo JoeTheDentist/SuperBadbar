@@ -11,9 +11,9 @@
 #define _SHOTGUN_
 
 
-#include "../util/globals.h"
 #include "../items/weapons.h"
 #include <list>
+#include "../util/globals.h"
 
 
 

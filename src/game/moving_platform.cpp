@@ -15,6 +15,9 @@
 #include "../util/analyser.h"
 #include "../util/debug.h"
 #include "../game/collisions_manager.h"
+#include "../game/collisions_matrix.h"
+#include "../video/displayable.h"
+
 
 Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, int endx, int endy)
 {
