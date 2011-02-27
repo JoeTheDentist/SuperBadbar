@@ -1,0 +1,1011 @@
+# depslib dependency file v1.0
+1298733295 source:c:\documents and settings\administrateur\bureau\superbabar\src\ai\ai.cpp
+	<cmath>
+	"AI.h"
+	"../sprites/projectiles.h"
+
+1298733294 c:\documents and settings\administrateur\bureau\superbabar\src\ai\ai.h
+	"../sprites/sprites.h"
+	"../sprites/projectiles_manager.h"
+	"../game/collisions_manager.h"
+	"../items/weapons.h"
+
+1298833547 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\sprites.h
+	"../items/weapons.h"
+	"../video/animation.h"
+	"../video/anim_table.h"
+	"../video/displayable.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1255800464 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_platform.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\begin_code.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\close_code.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_keysym.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl-1.2.14\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1298733287 c:\documents and settings\administrateur\bureau\superbabar\src\items\weapons.h
+	<stdint.h>
+	<list>
+	"../util/globals.h"
+
+1298733297 c:\documents and settings\administrateur\bureau\superbabar\src\util\globals.h
+	"../util/repertories.h"
+	"../sound/sound_engine.h"
+	"../game/collisions_manager.h"
+	"../game/static_data.h"
+
+1298733297 c:\documents and settings\administrateur\bureau\superbabar\src\util\repertories.h
+
+1298818731 c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound_engine.h
+	"../../lib/fmodapi375win/api/inc/fmod.h"
+	<fmod/fmod.h>
+	<string>
+	<map>
+	"../items/weapons.h"
+
+1130500730 c:\documents and settings\administrateur\bureau\superbabar\lib\fmodapi375win\api\inc\fmod.h
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\game\collisions_manager.h
+	<stdint.h>
+	"collisions_matrix.h"
+	"moving_platform.h"
+	"../util/globals.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\game\collisions_matrix.h
+	<stdint.h>
+	<string>
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\game\moving_platform.h
+	<string>
+	<stdint.h>
+	"../video/statics.h"
+	"../game/collisions_matrix.h"
+
+1298733291 c:\documents and settings\administrateur\bureau\superbabar\src\video\statics.h
+	"surface.h"
+	"displayable.h"
+
+1298733291 c:\documents and settings\administrateur\bureau\superbabar\src\video\surface.h
+	<string>
+
+1298733290 c:\documents and settings\administrateur\bureau\superbabar\src\video\displayable.h
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\game\static_data.h
+	<list>
+	"../video/surface.h"
+	"../util/globals.h"
+
+1298833547 c:\documents and settings\administrateur\bureau\superbabar\src\video\animation.h
+	<string>
+	"../util/globals.h"
+
+1298833547 c:\documents and settings\administrateur\bureau\superbabar\src\video\anim_table.h
+	<string>
+	"animation.h"
+	"../sprites/sprites.h"
+	"../util/debug.h"
+
+1298733297 c:\documents and settings\administrateur\bureau\superbabar\src\util\debug.h
+	<stdio.h>
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\projectiles_manager.h
+	<list>
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\projectiles.h
+	"sprites.h"
+
+1298826095 source:c:\documents and settings\administrateur\bureau\superbabar\src\control\keyboard.cpp
+	<iostream>
+	"../../lib/SDL/include/SDL/SDL.h"
+	<SDL/SDL.h>
+	<stdint.h>
+	"keyboard.h"
+	"../util/debug.h"
+	"../util/repertories.h"
+	"../util/analyser.h"
+
+1298826037 c:\documents and settings\administrateur\bureau\superbabar\src\control\keyboard.h
+	"../../lib/SDL/include/SDL/SDL.h"
+	<SDL/SDL.h>
+	<iostream>
+	<string>
+
+1298733297 c:\documents and settings\administrateur\bureau\superbabar\src\util\analyser.h
+	<string>
+	<fstream>
+
+1298733289 source:c:\documents and settings\administrateur\bureau\superbabar\src\events\contact_event.cpp
+	<iostream>
+	"contact_event.h"
+	"../sprites/babar.h"
+	"../game/collisions_manager.h"
+	"../util/debug.h"
+
+1298733288 c:\documents and settings\administrateur\bureau\superbabar\src\events\contact_event.h
+	"../events/events.h"
+	"../video/surface.h"
+
+1298733289 c:\documents and settings\administrateur\bureau\superbabar\src\events\events.h
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\babar.h
+	"sprites.h"
+	"../sound/sonorisable.h"
+	"../util/analyser.h"
+	"../video/animation.h"
+	"../video/anim_table.h"
+	<list>
+	"../items/weapons_armory.h"
+
+1298733294 c:\documents and settings\administrateur\bureau\superbabar\src\sound\sonorisable.h
+	<stack>
+	<string>
+
+1298733287 c:\documents and settings\administrateur\bureau\superbabar\src\items\weapons_armory.h
+	<list>
+	"../items/weapons.h"
+
+1298733288 source:c:\documents and settings\administrateur\bureau\superbabar\src\events\event_item.cpp
+	<iostream>
+	"event_item.h"
+	"../sprites/babar.h"
+	"../game/collisions_manager.h"
+	"../util/debug.h"
+	"../video/surface.h"
+	"../util/globals.h"
+
+1298733288 c:\documents and settings\administrateur\bureau\superbabar\src\events\event_item.h
+	"../events/contact_event.h"
+	"../util/globals.h"
+
+1298733289 source:c:\documents and settings\administrateur\bureau\superbabar\src\events\event_weapon.cpp
+
+1298733289 source:c:\documents and settings\administrateur\bureau\superbabar\src\events\events.cpp
+	<iostream>
+	<stdint.h>
+	"events.h"
+	"../util/debug.h"
+	"../video/surface.h"
+	"../util/globals.h"
+
+1298733288 source:c:\documents and settings\administrateur\bureau\superbabar\src\events\events_manager.cpp
+	"events_manager.h"
+	"../events/events.h"
+	"../game/game_engine.h"
+	"../game/static_data.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"../events/event_weapon.h"
+	"../events/event_item.h"
+	"../events/events.h"
+	"../video/camera.h"
+	"../sprites/babar.h"
+	"../video/pictures_container.h"
+
+1298733288 c:\documents and settings\administrateur\bureau\superbabar\src\events\events_manager.h
+	<list>
+
+1298733295 c:\documents and settings\administrateur\bureau\superbabar\src\game\game_engine.h
+	<stdint.h>
+
+1298733288 c:\documents and settings\administrateur\bureau\superbabar\src\events\event_weapon.h
+	"../events/events.h"
+	"../events/event_item.h"
+	"../items/weapons.h"
+
+1298841798 c:\documents and settings\administrateur\bureau\superbabar\src\video\camera.h
+	"../util/globals.h"
+	"../../lib/SDL/include/SDL/SDL.h"
+	<SDL/SDL.h>
+
+1298825997 c:\documents and settings\administrateur\bureau\superbabar\src\video\pictures_container.h
+	<map>
+	<string>
+	<iostream>
+	"../../lib/SDL/include/SDL/SDL.h"
+	<SDL/SDL.h>
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\collisions_manager.cpp
+	"collisions_manager.h"
+	"stdint.h"
+	"../util/analyser.h"
+	"../util/debug.h"
+	"../util/repertories.h"
+	"../video/camera.h"
+	"../sprites/babar.h"
+	"../util/globals.h"
+
+1298733295 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\collisions_matrix.cpp
+	<iostream>
+	<algorithm>
+	"collisions_matrix.h"
+	"collisions_manager.h"
+	"../util/analyser.h"
+	"../util/debug.h"
+	"../util/repertories.h"
+	"../game/moving_platform.h"
+	"../video/camera.h"
+	"../sprites/babar.h"
+	"../util/globals.h"
+
+1298753383 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\game.cpp
+	"../sound/sound.h"
+	"game.h"
+	"../util/debug.h"
+	"../control/keyboard.h"
+	"../sprites/babar.h"
+	"../video/camera.h"
+	"../video/graphic_engine.h"
+	"../sound/sound_engine.h"
+	"../game/game_engine.h"
+	"../game/static_data.h"
+	"../events/events_manager.h"
+
+1298733294 c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound.h
+	<string>
+
+1298733295 c:\documents and settings\administrateur\bureau\superbabar\src\game\game.h
+	<stdint.h>
+	<iostream>
+	<string>
+
+1298733291 c:\documents and settings\administrateur\bureau\superbabar\src\video\graphic_engine.h
+
+1298833154 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\game_engine.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"game_engine.h"
+	"../game/static_data.h"
+	"../game/collisions_manager.h"
+	"../sound/sound_manager.h"
+	"../control/keyboard.h"
+	"../util/debug.h"
+	"../sprites/sprites.h"
+	"../sprites/babar.h"
+	"../sprites/monsters.h"
+	"../sound/sound_engine.h"
+	"../sprites/monsters_manager.h"
+	"../sprites/walking_monsters.h"
+	"../sprites/projectiles.h"
+	"../sprites/projectiles_manager.h"
+	"../util/analyser.h"
+	"../video/camera.h"
+	"../control/keyboard.h"
+	"../video/pictures_container.h"
+	"../events/events_manager.h"
+	"../util/globals.h"
+
+1298818792 c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound_manager.h
+	"../../lib/fmodapi375win/api/inc/fmod.h"
+	<fmod/fmod.h>
+	"../items/weapons.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\monsters.h
+	"sprites.h"
+	"../video/animation.h"
+	"../sound/sonorisable.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\monsters_manager.h
+	<list>
+	<stdint.h>
+	"../sprites/projectiles_manager.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\walking_monsters.h
+	"../sprites/monsters.h"
+
+1298733295 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\moving_platform.cpp
+	<iostream>
+	<math.h>
+	"moving_platform.h"
+	"../video/surface.h"
+	"../sprites/babar.h"
+	"../util/analyser.h"
+	"../util/debug.h"
+	"../game/collisions_manager.h"
+	"../game/collisions_matrix.h"
+	"../video/displayable.h"
+
+1298733295 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\static_data.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"static_data.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"../game/game.h"
+	"../sprites/sprites.h"
+	"../sprites/monsters.h"
+	"../video/camera.h"
+	"../video/statics.h"
+	"../video/pictures_container.h"
+	"../video/surface.h"
+	"../util/globals.h"
+
+1298833322 source:c:\documents and settings\administrateur\bureau\superbabar\src\items\gun.cpp
+	<iostream>
+	<stdint.h>
+	"gun.h"
+	"../util/debug.h"
+	"../sprites/projectiles.h"
+
+1298733287 c:\documents and settings\administrateur\bureau\superbabar\src\items\gun.h
+	"../items/weapons.h"
+	<list>
+	"../util/globals.h"
+
+1298826286 source:c:\documents and settings\administrateur\bureau\superbabar\src\items\machinegun.cpp
+	<iostream>
+	<stdint.h>
+	"machinegun.h"
+	"../util/debug.h"
+	"../sprites/projectiles.h"
+
+1298733287 c:\documents and settings\administrateur\bureau\superbabar\src\items\machinegun.h
+	"../items/weapons.h"
+	<list>
+	"../util/globals.h"
+
+1298826300 source:c:\documents and settings\administrateur\bureau\superbabar\src\items\shotgun.cpp
+	<iostream>
+	<stdint.h>
+	"shotgun.h"
+	"../util/debug.h"
+	"../sprites/projectiles.h"
+
+1298733287 c:\documents and settings\administrateur\bureau\superbabar\src\items\shotgun.h
+	"../items/weapons.h"
+	<list>
+	"../util/globals.h"
+
+1298733287 source:c:\documents and settings\administrateur\bureau\superbabar\src\items\weapons.cpp
+	<iostream>
+	<stdint.h>
+	"weapons.h"
+	"../util/debug.h"
+	"../sprites/projectiles.h"
+
+1298733287 source:c:\documents and settings\administrateur\bureau\superbabar\src\items\weapons_armory.cpp
+	"weapons_armory.h"
+	"../util/debug.h"
+	"../items/weapons.h"
+	"../items/gun.h"
+	"../items/shotgun.h"
+	"../items/machinegun.h"
+	"../video/pictures_container.h"
+	"../sound/sound_manager.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1255800464 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_platform.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\begin_code.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\close_code.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_keysym.h
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1255800450 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1298833547 source:c:\documents and settings\administrateur\bureau\superbabar\src\main.cpp
+	<iostream>
+	<stdint.h>
+	<time.h>
+	"util/debug.h"
+	"sprites/sprites.h"
+	"game/game.h"
+	"util/arg_analyser.h"
+	"AI/AI.h"
+
+1255915694 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1298733297 c:\documents and settings\administrateur\bureau\superbabar\src\util\arg_analyser.h
+	<string>
+
+1298733294 source:c:\documents and settings\administrateur\bureau\superbabar\src\sound\sonorisable.cpp
+	"sonorisable.h"
+
+1298733294 source:c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound.cpp
+	<iostream>
+	"sound.h"
+	"../sound/sound_manager.h"
+
+1298733294 source:c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound_engine.cpp
+	<iostream>
+	<stdint.h>
+	<stdio.h>
+	"sound_engine.h"
+	"../sound/sound_engine.h"
+	"../sound/sound.h"
+	"../sound/sonorisable.h"
+	"../util/debug.h"
+	"../util/globals.h"
+
+1298733294 source:c:\documents and settings\administrateur\bureau\superbabar\src\sound\sound_manager.cpp
+	<iostream>
+	<stdint.h>
+	<stdio.h>
+	"sound_manager.h"
+	"../util/debug.h"
+	"../util/globals.h"
+
+1298826322 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\babar.cpp
+	<iostream>
+	<stdint.h>
+	"babar.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../game/collisions_manager.h"
+	"../game/moving_platform.h"
+	"../control/keyboard.h"
+	"../game/static_data.h"
+	"../sprites/projectiles_manager.h"
+	"../video/surface.h"
+	"../util/globals.h"
+
+1298826333 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\flying_monster.cpp
+	<iostream>
+	<stdint.h>
+	"flying_monster.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"babar.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\flying_monster.h
+	"../sprites/monsters.h"
+
+1298826340 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\following_flying_monsters.cpp
+	<iostream>
+	<stdint.h>
+	"following_flying_monsters.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"babar.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\following_flying_monsters.h
+	"../sprites/monsters.h"
+	"flying_monster.h"
+
+1298826379 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\following_walking_monsters.cpp
+	<iostream>
+	<stdint.h>
+	"following_walking_monsters.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"babar.h"
+	"../AI/AI.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\sprites\following_walking_monsters.h
+	"../sprites/monsters.h"
+	"../sprites/walking_monsters.h"
+	"../AI/AI.h"
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\monsters.cpp
+	<iostream>
+	<stdint.h>
+	"monsters.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../video/surface.h"
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\monsters_manager.cpp
+	"monsters_manager.h"
+	"../sprites/babar.h"
+	"../sprites/monsters.h"
+	"../sprites/walking_monsters.h"
+	"../sprites/flying_monster.h"
+	"../sprites/following_walking_monsters.h"
+	"../sprites/following_flying_monsters.h"
+	"../video/camera.h"
+	"../game/static_data.h"
+	"../game/collisions_manager.h"
+	"../util/analyser.h"
+	"../sound/sound_engine.h"
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\projectiles.cpp
+	<iostream>
+	<stdint.h>
+	"projectiles.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../game/static_data.h"
+	"../game/collisions_manager.h"
+	"../video/surface.h"
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\projectiles_manager.cpp
+	<iostream>
+	"projectiles_manager.h"
+	"../sprites/projectiles.h"
+	"../game/static_data.h"
+	"../game/collisions_manager.h"
+	"../video/camera.h"
+	"../util/debug.h"
+
+1298826405 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\sprites.cpp
+	<iostream>
+	<stdint.h>
+	"sprites.h"
+	"../util/debug.h"
+	"../game/game.h"
+	"../game/static_data.h"
+	"../game/collisions_manager.h"
+	"../video/surface.h"
+
+1298826415 source:c:\documents and settings\administrateur\bureau\superbabar\src\sprites\walking_monsters.cpp
+	<iostream>
+	<stdint.h>
+	"walking_monsters.h"
+	"../util/debug.h"
+	"../util/analyser.h"
+	"../sound/sound_manager.h"
+	"../video/pictures_container.h"
+	"babar.h"
+
+1298733297 source:c:\documents and settings\administrateur\bureau\superbabar\src\util\analyser.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	<fstream>
+	"analyser.h"
+	"../util/debug.h"
+	"../util/globals.h"
+
+1298733297 source:c:\documents and settings\administrateur\bureau\superbabar\src\util\arg_analyser.cpp
+	<iostream>
+	"arg_analyser.h"
+	"debug.h"
+	<string>
+
+1298826504 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\anim_table.cpp
+	<iostream>
+	<stdint.h>
+	<sys/stat.h>
+	<string>
+	"../video/surface.h"
+	"anim_table.h"
+
+1298826511 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\animation.cpp
+	<iostream>
+	<stdint.h>
+	"animation.h"
+	"../video/surface.h"
+
+1298841798 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\camera.cpp
+
+1298826692 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\dashboard.cpp
+	<iostream>
+	<stdint.h>
+	"../../lib/SDL/include/SDL/SDL_ttf.h"
+	<SDL/SDL_ttf.h>
+	"dashboard.h"
+	"../video/camera.h"
+	"../util/debug.h"
+	"../sprites/babar.h"
+	"../video/talks.h"
+	"../video/surface.h"
+	"../video/pictures_container.h"
+	"../util/globals.h"
+
+1298826706 c:\documents and settings\administrateur\bureau\superbabar\src\video\dashboard.h
+	"../../lib/SDL/include/SDL/SDL_ttf.h"
+	<SDL/SDL_ttf.h>
+	"../items/weapons.h"
+
+1298826714 c:\documents and settings\administrateur\bureau\superbabar\src\video\talks.h
+	<string>
+	"../../lib/SDL/include/SDL/SDL_ttf.h"
+	<SDL/SDL_ttf.h>
+	"../video/camera.h"
+
+1298733291 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\displayable.cpp
+	"displayable.h"
+
+1298826740 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\graphic_engine.cpp
+	"graphic_engine.h"
+	"../sprites/babar.h"
+	"../video/camera.h"
+	"../video/talks.h"
+	"../video/dashboard.h"
+	"../video/pictures_container.h"
+	"../game/static_data.h"
+	"../video/surface.h"
+	<SDL/SDL.h>
+
+1298827464 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\pictures_container.cpp
+	<iostream>
+	"../../lib/SDL/include/SDL/SDL.h"
+	"../../lib/SDL/include/SDL/SDL_image.h"
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<stdint.h>
+	"pictures_container.h"
+	"../util/debug.h"
+	"../util/repertories.h"
+	"../util/globals.h"
+
+1258249878 c:\documents and settings\administrateur\bureau\superbabar\lib\sdl\include\sdl\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1298733291 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\statics.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	"statics.h"
+	"surface.h"
+	"../util/debug.h"
+
+1298827526 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\surface.cpp
+	<iostream>
+	"../../lib/SDL/include/SDL/SDL.h"
+	<SDL/SDL.h>
+	"surface.h"
+	"../video/pictures_container.h"
+	"../util/debug.h"
+
+1298827568 source:c:\documents and settings\administrateur\bureau\superbabar\src\video\talks.cpp
+	<iostream>
+	<stdint.h>
+	<string>
+	<fstream>
+	"../../lib/SDL/include/SDL/SDL_ttf.h"
+	<SDL/SDL_ttf.h>
+	"talks.h"
+	"../util/debug.h"
+	"../control/keyboard.h"
+	"../video/pictures_container.h"
+	"../util/globals.h"
+
+1298733296 source:c:\documents and settings\administrateur\bureau\superbabar\src\game\animation_engine.cpp
+	"animation_engine.h"
+
+1298733296 c:\documents and settings\administrateur\bureau\superbabar\src\game\animation_engine.h
+
+1298733297 source:c:\documents and settings\administrateur\bureau\superbabar\src\util\globals.cpp
+	"globals.h"
+
