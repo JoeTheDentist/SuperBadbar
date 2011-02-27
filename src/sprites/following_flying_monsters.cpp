@@ -27,8 +27,10 @@ Following_flying_monster::Following_flying_monster(Analyser *analyserLevel)
 
 	// donnees propres a la nature du monstre (a chercher dans le bestiaire)
 	analyserMonster.open((MONSTERS_STATS_R + m_nom + MONSTERS_EXT).c_str());
+	std::cout << analyserMonster.read_string() << std::endl; // on saute la premiere ligne inutile ici
 	m_life = analyserMonster.read_int();
 	m_speed_def = analyserMonster.read_int();
+	std::cout << m_life << " " << m_speed_def << std::endl;
 	analyserMonster.close();
 
 	// images
