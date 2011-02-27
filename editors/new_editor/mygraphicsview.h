@@ -48,6 +48,8 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	virtual void mousePressEvent(QMouseEvent * event);
 	
+	virtual void mouseDoubleClickEvent(QMouseEvent *event);
+	
 	/*!
 	*	@brief Traite le relachement de la souris
 	*	@param event L'event de la souris
@@ -76,6 +78,7 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	virtual void keyReleaseEvent(QKeyEvent *event);
 	
+
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
 	*	@param backgroundName Un chemin absolu vers le fichier du fond d'écran
@@ -131,6 +134,13 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param z Le rapport de zoom
 	*/
 	void zoom(qreal z);
+	
+	void selectItem(MyItem *item);
+	void deSelectItem();
+	void deleteFromEditor(MyItem *item);
+	void copyItem(MyItem *item);
+	void pastItem();
+
 
 	private:
 	Data *m_data;
@@ -142,9 +152,12 @@ class MyGraphicsView : public QGraphicsView {
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	MyItem *m_curr_item; // l'item en cours d'ajout
-	MyItem *m_selected_item; // l'item selectionne (pour un deplacement)
+	MyItem *m_selected_item; // l'item selectionne
+	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)
+	MyItem *m_copied_item;
 	QGraphicsItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel
+	QGraphicsItem *m_background;
 };
 
 #endif

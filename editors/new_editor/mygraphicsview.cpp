@@ -17,6 +17,7 @@
 #include <QString>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QGraphicsColorizeEffect>
 
 
 MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
@@ -27,10 +28,14 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_ctrl_pressed(false),
 	m_curr_item(NULL),
 	m_selected_item(NULL),
+	m_moved_item(NULL),
+	m_copied_item(NULL),
 	m_del_curs(NULL),
-	m_zoom(1)
+	m_zoom(1),
+	m_background(NULL)
 {
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
+
 }
 
 MyGraphicsView::~MyGraphicsView()
@@ -45,6 +50,7 @@ void MyGraphicsView::newFile(QString backgroundName)
 	m_ysize = m_data->levelHeight();
 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
 	this->resize(m_xsize, m_ysize);
+	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
 	m_opened = true;
 }
 
@@ -104,6 +110,7 @@ int MyGraphicsView::posClicY(QMouseEvent *event)
 
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
+	deSelectItem();
 	m_mouse_pressed = true;
 	if (m_opened && !m_del_curs) {
 		if (m_curr_item) {
@@ -117,10 +124,17 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 				m_curr_item = NULL;				
 			}
 		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
-			m_selected_item = m_data->selectItem(posClicX(event), posClicY(event));
-		}			
+			m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
+			selectItem(m_moved_item);
+		}
 	}
 }
+
+void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
+{
+	mousePressEvent(event);
+}
+
 
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
@@ -130,17 +144,13 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 		if (m_del_curs) {
 			MyItem *item = NULL;
 			item = m_data->selectItem(posClicX(event), posClicY(event));
-			if (item) {
-				m_data->removeItem(item);
-				this->scene()->removeItem(item->getItem());
-//~ 				delete item;
-				this->scene()->removeItem(m_del_curs);
-				delete m_del_curs;
-				m_del_curs = NULL;
-			}
+			deleteFromEditor(item);
+			this->scene()->removeItem(m_del_curs);
+			delete m_del_curs;
+			m_del_curs = NULL;
 		}
-		if (m_selected_item) {
-			m_selected_item = NULL;
+		if (m_moved_item) {
+			m_moved_item = NULL;
 		}
 	}
 }
@@ -150,8 +160,8 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 	if (m_opened) {
 		if (m_del_curs) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
-		} else if (m_selected_item) {
-			QGraphicsItem *item = m_selected_item->getItem();
+		} else if (m_moved_item) {
+			QGraphicsItem *item = m_moved_item->getItem();
 			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
 		} else if (m_curr_item) {
 			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
@@ -178,8 +188,25 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 
 void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 {
-	if (event->key() == Qt::Key_Control) {
-		m_ctrl_pressed = true;
+	switch (event->key()) {
+		case Qt::Key_Control:
+			m_ctrl_pressed = true;
+			break;
+		case Qt::Key_Delete:
+			if (m_selected_item) {
+				deleteFromEditor(m_selected_item);
+				m_selected_item = NULL;
+				m_moved_item = NULL;
+				m_curr_item = NULL;
+		case Qt::Key_C:
+			
+			break;
+		case Qt::Key_V:
+			
+			break;
+			}
+		default:
+			break;
 	}
 }
 
@@ -257,4 +284,40 @@ void MyGraphicsView::zoom(qreal z)
 {
 	m_zoom *= z;
 	this->scale(z, z);
+}
+
+void MyGraphicsView::selectItem(MyItem *item)
+{
+	deSelectItem();
+	m_selected_item = item;
+	m_selected_item->getItem()->setGraphicsEffect(new QGraphicsColorizeEffect());
+}
+
+void MyGraphicsView::deSelectItem()
+{
+	if (m_selected_item) {
+		m_selected_item->getItem()->setGraphicsEffect(NULL);	
+	}
+	m_selected_item = NULL;
+}
+
+void MyGraphicsView::deleteFromEditor(MyItem *item)
+{
+	if (item) {
+		this->scene()->removeItem(item->getItem());
+		m_data->removeItem(item);
+	}	
+}
+
+void MyGraphicsView::copyItem(MyItem *item) 
+{
+	if (m_copied_item) {
+		delete m_copied_item;
+	}
+//~ 	m_copied_item = new MyItem(item);
+}
+
+void MyGraphicsView::pastItem()
+{
+	
 }

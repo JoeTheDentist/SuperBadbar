@@ -3,6 +3,7 @@
 
 #include <QTextStream>
 #include <QString>
+ #include <QGraphicsPixmapItem>
 
 class Data;
 class QGraphicsItem;
@@ -13,6 +14,7 @@ class MyItem {
 	QString m_file_name;
 	public:
 	MyItem(QGraphicsItem *item, QString);
+	MyItem(const MyItem &item);
 	~MyItem();
 	QGraphicsItem *getItem();
 	virtual void saveItem(QTextStream &out);

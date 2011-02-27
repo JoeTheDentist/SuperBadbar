@@ -116,7 +116,7 @@ void Data::saveData(QString fileName)
 	out << "#Events#" << endl;
 	out << 0 << endl;
 	out << "!" << endl;
-	file.close();
+	file.close();	
 }
 
 void Data::removeItem(MyItem *item)
