@@ -3,6 +3,7 @@
 #include "myitem.h"
 #include "data.h"
 #include "staticitem.h"
+#include "monsteritem.h"
 #include "analyser.h"
 
 #include <iostream>
@@ -12,7 +13,6 @@
 #include <QPixmap>
 #include <QGraphicsItem>
 #include <QMouseEvent>
-#include <QFile>
 #include <QTextStream>
 #include <QString>
 #include <QFileDialog>
@@ -52,6 +52,7 @@ void MyGraphicsView::loadFile(QString fileName)
 {
 	Analyser analyser;
 	QPixmap image;
+	int x, y;
 	QGraphicsItem *item = NULL;
 	m_opened = true;
 	analyser.open(fileName.toStdString());
@@ -62,12 +63,31 @@ void MyGraphicsView::loadFile(QString fileName)
 	QString nameStatic;
 	for (int i = 0; i < nbStatics; i ++) {
 		nameStatic = QString::fromStdString(analyser.read_string());
-		image.load(StaticItem::editorRelativePath(nameStatic));
+		image.load(StaticItem::picPathFromEditor(nameStatic));
 		item = this->scene()->addPixmap(image);
-		item->setPos(analyser.read_int(), analyser.read_int());
+		std::cout << nameStatic.toStdString() << std::endl;
+		x = analyser.read_int();
+		y = analyser.read_int();
+		item->setPos(x, y);
 		m_data->addItem(new StaticItem(item, nameStatic));
 		analyser.read_int(); // TODO: champ a revoir
 	}
+	analyser.find_string("#Monsters#");
+	int nbMonsters = analyser.read_int();
+	QString nameMonster;	
+	QString classMonster;
+	for (int i = 0; i < nbMonsters; i ++) {
+		classMonster = QString::fromStdString(analyser.read_string());
+		nameMonster = QString::fromStdString(analyser.read_string());
+		image.load(MonsterItem::picPathFromEditor(nameMonster));
+		item = this->scene()->addPixmap(image);
+		x = analyser.read_int();
+		y = analyser.read_int();
+		item->setPos(x, y);
+		m_data->addItem(new MonsterItem(item, nameMonster));
+	}
+	
+	
 	analyser.close();
 }
 
@@ -206,6 +226,24 @@ void MyGraphicsView::addStatic()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(item, fileName);
+}
+
+void MyGraphicsView::addMonster()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", MONSTERS_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(".mstr"))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".mstr\"");
+		return;
+	}
+	QPixmap image;
+
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
+	fileName.chop(5);	
+	image.load(MonsterItem::picPathFromEditor(fileName));
+	QGraphicsItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
 }
 
 void MyGraphicsView::activeDeleteItem()

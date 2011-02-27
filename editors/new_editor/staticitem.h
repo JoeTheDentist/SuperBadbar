@@ -32,10 +32,10 @@ class StaticItem: public MyItem {
 
 	/*!
 	*	@brief transforme le nom du fichier ecrit dans un .lvl
-	*	en le chemin relatif vers le fichier depuis l'editeur
+	*	en le chemin relatif vers l'image de l'objet depuis l'editeur
 	*	@return Ce chemin
 	*/
-	static QString editorRelativePath(QString fileName);
+	static QString picPathFromEditor(QString fileName);
 
 };
 

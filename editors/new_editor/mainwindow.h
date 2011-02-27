@@ -63,6 +63,7 @@ class MainWindow : public QMainWindow {
 	void saveAs();
 	void aboutBabarEditor();
 	void addStatic();
+	void addMonster();
 	void deleteItem();
 	
 	
@@ -86,6 +87,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
 	QAction *m_addStatic;
+	QAction *m_addMonster;
 	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;

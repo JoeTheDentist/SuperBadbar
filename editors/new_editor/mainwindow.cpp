@@ -28,6 +28,7 @@ MainWindow::MainWindow():
 	m_saveAct(NULL),
 	m_aboutBabarEditor(NULL),
 	m_addStatic(NULL),
+	m_addMonster(NULL),
 	m_fileToolBar(NULL)
 {
 	setCentralWidget(m_graphic_view);
@@ -88,6 +89,10 @@ void MainWindow::createActions()
 	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
+
+	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
+	m_addMonster->setStatusTip(tr("Add a monster to the level"));
+	connect(m_addMonster, SIGNAL(triggered()), this, SLOT(addMonster()));	
 	
 	m_deleteItem = new QAction(QIcon("images/deleteitem.png"),tr("Delete item"), this); // TODO changer image
 	m_deleteItem->setStatusTip(tr("Delete an item from the level"));
@@ -98,7 +103,7 @@ void MainWindow::createActions()
 }
 
  void MainWindow::createMenus()
- {
+{
 	m_fileMenu = menuBar()->addMenu(tr("&File"));
 	m_fileMenu->addAction(m_newAct);
 	m_fileMenu->addAction(m_openAct);
@@ -107,6 +112,7 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
 	m_editMenu->addAction(m_addStatic);
+	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_deleteItem);
 	menuBar()->addSeparator();
 	m_helpMenu = menuBar()->addMenu(tr("&Help"));
@@ -121,6 +127,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
 	m_fileToolBar->addAction(m_addStatic);
+	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_deleteItem);
 }
 
@@ -216,6 +223,11 @@ void MainWindow::addStatic()
 {
 	if (m_opened_file)
 		m_graphic_view->addStatic();
+}
+void MainWindow::addMonster()
+{
+	if (m_opened_file)
+		m_graphic_view->addMonster();
 }
 
 void MainWindow::deleteItem()

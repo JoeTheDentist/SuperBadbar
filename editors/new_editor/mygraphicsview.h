@@ -115,6 +115,11 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void addStatic();
 	
+	/*!
+	*	@brief Fonction d'ajout de monstre au niveau
+	*/
+	void addMonster();
+	
 	
 	/*!
 	*	@brief Lance la possibilité de détruire un item au prochain clic

@@ -6,6 +6,7 @@
 StaticItem::StaticItem(QGraphicsItem *item, QString fileName):
 	MyItem(item, fileName)
 {
+	
 }
 
 StaticItem::~StaticItem()
@@ -23,7 +24,7 @@ void StaticItem::addToData(Data *data)
 	data->addStaticItem(this);
 }
 
-QString StaticItem::editorRelativePath(QString fileName)
+QString StaticItem::picPathFromEditor(QString fileName)
 {
 	return STATIC_DIR + fileName + ".png";
 }

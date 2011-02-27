@@ -10,6 +10,7 @@ class MyItem;
 class Data {
 	private:
 	std::list<MyItem *> m_static_items;
+	std::list<MyItem *> m_monsters_items;
 	QString m_background_name;
 	QGraphicsItem *m_background;
 	int m_xpix;
@@ -65,6 +66,15 @@ class Data {
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
 	*/
 	void addStaticItem(MyItem *item);
+		
+	/*!
+	*	@brief Ajoute un item a la liste des monstersItem
+	*	@param item L'item a ajouter
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addMonsterItem
+	*/
+	void addMonsterItem(MyItem *item);
 	
 	
 	/*!
