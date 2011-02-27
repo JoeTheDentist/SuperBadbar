@@ -10,12 +10,6 @@
 #ifndef ANIMATION_H_INCLUDED
 #define ANIMATION_H_INCLUDED
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-#else
-    #include <SDL/SDL.h>
-#endif
-
 #include <string>
 #include "../util/globals.h"
 

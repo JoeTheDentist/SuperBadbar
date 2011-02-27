@@ -42,7 +42,7 @@
 			<Add library="..\..\fmodapi375win\api\lib\libfmod.a" />
 			<Add library="..\lib\SDL\lib\SDL_image.lib" />
 			<Add library="..\lib\SDL\lib\libSDLmain.a" />
-			<Add library="SDL.dll" />
+			<Add library="..\lib\SDL\lib\libSDL.dll.a" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="..\src\AI\AI.cpp" />

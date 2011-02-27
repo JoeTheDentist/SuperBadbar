@@ -7,17 +7,7 @@
  *
  */
 
-//~ #include <SFML/Graphics.hpp>
 #include <iostream>
-#ifdef WIN32
-    #include "../lib/SDL/include/SDL/SDL_ttf.h"
-    #include "../lib/SDL/include/SDL/SDL.h"
-#else
-    #include <SDL/SDL_ttf.h>
-    #include <SDL/SDL.h>
-#endif
-
-
 #include <stdint.h>
 #include <time.h>
 
