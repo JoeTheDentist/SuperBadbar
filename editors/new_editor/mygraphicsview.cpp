@@ -40,14 +40,9 @@ MyGraphicsView::~MyGraphicsView()
 
 void MyGraphicsView::newFile(QString backgroundName)
 {
-	// TODO
-	QPixmap image;
-	QGraphicsItem *item = NULL;
-	image.load(backgroundName, 0, Qt::AutoColor);
-	item = this->scene()->addPixmap(image);
-	m_data->setBackground(item, backgroundName);
-	m_xsize = image.width();
-	m_ysize = image.height();
+	m_data->initData(backgroundName);
+	m_xsize = m_data->levelWidth();
+	m_ysize = m_data->levelHeight();
 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
 	this->resize(m_xsize, m_ysize);
 	m_opened = true;

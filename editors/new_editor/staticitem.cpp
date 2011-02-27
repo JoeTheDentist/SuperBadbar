@@ -6,7 +6,6 @@
 StaticItem::StaticItem(QGraphicsItem *item, QString fileName):
 	MyItem(item, fileName)
 {
-	
 }
 
 StaticItem::~StaticItem()

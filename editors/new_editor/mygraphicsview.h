@@ -35,7 +35,6 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	int posClicX(QMouseEvent *event);
 	
-
 	/*!
 	*	@brief Calcule l'abscisse du clic par rapport a la scene
 	*	@param event L'evenement de la souris
@@ -55,17 +54,26 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	virtual void mouseReleaseEvent(QMouseEvent * event);
 	
-	
 	/*!
 	*	@brief Traite le deplacement de la souris
 	*	@param event L'event de la souris
 	*/
 	virtual void mouseMoveEvent(QMouseEvent *event);
 	
+	/*!
+	*	@brief Traite l'événement wheel de la souris
+	*	@param event L'event de la souris
+	*/	
 	virtual void wheelEvent(QWheelEvent *event);
-
+	/*!
+	*	@brief Traite l'appui sur une touche du clavier
+	*	@param event L'event de la souris
+	*/
 	virtual void keyPressEvent(QKeyEvent *event);
-
+ 	/*!
+	*	@brief Traite le relachement de la souris
+	*	@param event L'event de la souris
+	*/
 	virtual void keyReleaseEvent(QKeyEvent *event);
 	
 	/*!
@@ -73,10 +81,15 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param backgroundName Un chemin absolu vers le fichier du fond d'écran
 	*/
 	void newFile( QString backgroundName);
-	void loadFile(QString fileName);
-	
 	
 
+	/*!
+	*	@brief 	Charge les donnees a partir du nom de fichier
+	*	@param fileName Le chemin relatif vers le fichier .lvl a ouvrir
+	*/
+	
+	void loadFile(QString fileName);
+	
 	/*!
 	*	@brief 	Accesseur
 	*	@return La largeur en pixels du niveau
@@ -96,25 +109,37 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void save(QString str);
 	
+	
+	/*!
+	*	@brief Fonction d'ajout de static au niveau
+	*/
 	void addStatic();
 	
+	
+	/*!
+	*	@brief Lance la possibilité de détruire un item au prochain clic
+	*/
 	void activeDeleteItem();
 	
+	/*!
+	*	@brief Effectue un zoom sur le niveau de rapport z
+	*	@param z Le rapport de zoom
+	*/
 	void zoom(qreal z);
 
 	private:
 	Data *m_data;
 	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé
-	bool m_ctrl_pressed;
+	bool m_ctrl_pressed; // vaut vrai quand la touche controle est pressee
 	qreal m_xsize; // largeur en pixel du niveau
 	qreal m_ysize; // hauteur en pixel du niveau
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
-	MyItem *m_curr_item;
-	MyItem *m_selected_item;
-	QGraphicsItem *m_del_curs;
-	qreal m_zoom;
+	MyItem *m_curr_item; // l'item en cours d'ajout
+	MyItem *m_selected_item; // l'item selectionne (pour un deplacement)
+	QGraphicsItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
+	qreal m_zoom; // le niveau de zoom actuel
 };
 
 #endif

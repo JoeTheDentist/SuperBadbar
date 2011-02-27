@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QFile>
 #include <QGraphicsItem>
+#include "paths.h"
 
 Data::Data():
 	m_static_items(),
@@ -20,20 +21,24 @@ Data::~Data()
 	// Ne pas détruire les items!! MyGraphicsView le fera automatiquement
 }
 
-void Data::setBackground(QGraphicsItem *item, QString filename)
+void Data::initData(QString backgroundName)
 {
-	m_background = item;
-	m_background_name = filename.right(filename.size() - (filename.lastIndexOf("backgrounds/") + 12));
-	m_xpix = item->boundingRect().width();
-	m_ypix = item->boundingRect().height();
-	//TODO il faudra faire d'autres traitements
+	
+	QPixmap image;
+	image.load(backgroundName, 0, Qt::AutoColor);
+	m_background_name = backgroundName.right(backgroundName.size() - (backgroundName.lastIndexOf("backgrounds/") + 12));
+	m_xpix = image.width() * 2 - CAMERA_WIDTH;
+	m_ypix = image.height() * 2 - CAMERA_HEIGHT;
 }
 
-void Data::setLevelSize(int x, int y)
+int Data::levelWidth()
 {
-	m_xpix = x;
-	m_ypix = y;
-	// TODO il faudra faire d'autres traitements
+	return m_xpix;
+}
+
+int Data::levelHeight()
+{
+	return m_ypix;
 }
 
 void Data::addItem(MyItem *item)
@@ -47,6 +52,21 @@ void Data::addStaticItem(MyItem *item)
 	// cet ordre ne sera que partiellement garde apres sauvegarde et rechargement
 	// du .lvl: les items de meme type resteront triés entre eux
 	m_static_items.push_front(item);
+	
+}
+
+MyItem *Data::selectItem(int x, int y)
+{
+	std::list<MyItem *>::iterator it;
+	QGraphicsItem *item;
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
+		item = (*it)->getItem();
+		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
+			return (*it);	
+		}
+	}
+	return NULL;
 	
 }
 
@@ -97,17 +117,4 @@ void Data::removeItem(MyItem *item)
 	}
 }
 
-MyItem *Data::selectItem(int x, int y)
-{
-	std::list<MyItem *>::iterator it;
-	QGraphicsItem *item;
-	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
-		item = (*it)->getItem();
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->x() <= x && x <= item->x() + item->boundingRect().width()) {
-			return (*it);	
-		}
-	}
-	return NULL;
-	
-}
+
