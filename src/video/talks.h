@@ -11,7 +11,12 @@
 #define _TALKS_
 
 #include <string>
-#include <SDL/SDL_ttf.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#else
+    #include <SDL/SDL_ttf.h>
+#endif
 
 #include "../video/camera.h"
 
@@ -40,7 +45,7 @@ struct cell_string {
  * 	@class Talks
  * 	@brief Gestionnaire graphique de dialogues
  *
- *	
+ *
  *
  */
 class Talks {

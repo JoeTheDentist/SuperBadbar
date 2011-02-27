@@ -7,7 +7,6 @@
  *
  */
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
 
 #include "flying_monster.h"

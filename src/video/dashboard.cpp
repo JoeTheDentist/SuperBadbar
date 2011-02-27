@@ -9,9 +9,13 @@
 
 
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
-#include <SDL/SDL_ttf.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#else
+    #include <SDL/SDL_ttf.h>
+#endif
 
 
 #include "dashboard.h"

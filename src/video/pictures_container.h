@@ -13,7 +13,12 @@
 #include <map>
 #include <string>
 #include <iostream>
-#include <SDL/SDL.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
 
 /**
  * 	@class Pictures_container

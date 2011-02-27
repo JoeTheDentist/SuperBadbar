@@ -7,7 +7,13 @@
  *
  */
 #include <iostream>
-#include <SDL/SDL.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
+
 #include <stdint.h>
 
 #include "keyboard.h"
@@ -15,7 +21,7 @@
 #include "../util/repertories.h"
 #include "../util/analyser.h"
 
-Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name) 
+Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
@@ -49,7 +55,7 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 Keyboard::~Keyboard()
 {
 	PRINT_CONSTR(1, "Destruction d'Keyboard")
-	if (m_record_file) 
+	if (m_record_file)
 		delete m_record_file;
 	if (m_analyser)
 		delete m_analyser;
@@ -74,7 +80,7 @@ void Keyboard::update_events()
 			case SDL_KEYDOWN:
 				m_key_down[m_key_config[event.key.keysym.sym]] = 1;
 				if (m_record_on)
-					*m_record_file << m_key_config[event.key.keysym.sym] << 
+					*m_record_file << m_key_config[event.key.keysym.sym] <<
 						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
 				if (event.key.keysym.sym==SDLK_ESCAPE) {
 					m_key_down[k_exit]=1;
@@ -85,7 +91,7 @@ void Keyboard::update_events()
 			case SDL_KEYUP:
 				m_key_down[m_key_config[event.key.keysym.sym]] = 0;
 				if (m_record_on)
-					 *m_record_file <<  m_key_config[event.key.keysym.sym] << 
+					 *m_record_file <<  m_key_config[event.key.keysym.sym] <<
 						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
 				break;
 			default:

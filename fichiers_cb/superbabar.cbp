@@ -34,27 +34,19 @@
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
-			<Add library="SDLmain" />
-			<Add library="SDL.dll" />
 			<Add library="user32" />
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\SDL_ttf.lib" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\libfmod.a" />
-			<Add library="C:\Program Files (x86)\CodeBlocks\SDL-1.2.14\lib\SDL_image.lib" />
+			<Add library="..\lib\SDL\lib\SDL_ttf.lib" />
+			<Add library="..\..\fmodapi375win\api\lib\libfmod.a" />
+			<Add library="..\lib\SDL\lib\SDL_image.lib" />
+			<Add library="..\lib\SDL\lib\libSDLmain.a" />
+			<Add library="SDL.dll" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="..\src\AI\AI.cpp" />
 		<Unit filename="..\src\AI\AI.h" />
-		<Unit filename="..\src\AI\AI_node.cpp" />
-		<Unit filename="..\src\AI\AI_node.h" />
-		<Unit filename="..\src\AI\active_nodes.h" />
-		<Unit filename="..\src\AI\branch_and_bound.cpp" />
-		<Unit filename="..\src\AI\branch_and_bound.h" />
-		<Unit filename="..\src\AI\depth_active_nodes.cpp" />
-		<Unit filename="..\src\AI\depth_active_nodes.h" />
-		<Unit filename="..\src\AI\node.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
 		<Unit filename="..\src\events\contact_event.cpp" />
@@ -67,6 +59,8 @@
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
 		<Unit filename="..\src\events\events_manager.h" />
+		<Unit filename="..\src\game\animation_engine.cpp" />
+		<Unit filename="..\src\game\animation_engine.h" />
 		<Unit filename="..\src\game\collisions_manager.cpp" />
 		<Unit filename="..\src\game\collisions_manager.h" />
 		<Unit filename="..\src\game\collisions_matrix.cpp" />
@@ -123,6 +117,7 @@
 		<Unit filename="..\src\util\arg_analyser.cpp" />
 		<Unit filename="..\src\util\arg_analyser.h" />
 		<Unit filename="..\src\util\debug.h" />
+		<Unit filename="..\src\util\globals.cpp" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
 		<Unit filename="..\src\util\repertories.h" />

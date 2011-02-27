@@ -9,7 +9,12 @@
 
 
 #include <iostream>
-#include <SDL/SDL.h>
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
+
 #include "surface.h"
 #include "../video/pictures_container.h"
 #include "../util/debug.h"

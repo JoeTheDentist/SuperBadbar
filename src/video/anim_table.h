@@ -10,7 +10,12 @@
 #ifndef ANIM_TABLE_H_INCLUDED
 #define ANIM_TABLE_H_INCLUDED
 
-#include <SDL/SDL.h>
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
+
 #include <string>
 
 #include "animation.h"

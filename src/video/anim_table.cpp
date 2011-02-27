@@ -10,7 +10,6 @@
 
 
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
 #include <sys/stat.h>
 #include <string>

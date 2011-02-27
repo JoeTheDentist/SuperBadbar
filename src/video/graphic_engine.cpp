@@ -16,8 +16,8 @@
 #include "../video/pictures_container.h"
 #include "../game/static_data.h"
 #include "../video/surface.h"
-#include <SDL/SDL_ttf.h>
-#include <SDL/SDL.h>
+/*#include <SDL/SDL_ttf.h>
+#include <SDL/SDL.h>*/
 
 
 Graphic_engine::Graphic_engine()

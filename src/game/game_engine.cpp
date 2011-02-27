@@ -8,7 +8,13 @@
  */
 
 #include <iostream>
-#include <SDL/SDL.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
+
 #include <stdint.h>
 #include <string>
 
@@ -16,12 +22,12 @@
 #include "../game/static_data.h"
 #include "../game/collisions_manager.h"
 #include "../sound/sound_manager.h"
-#include "../sound/sound_engine.h"
 #include "../control/keyboard.h"
 #include "../util/debug.h"
 #include "../sprites/sprites.h"
 #include "../sprites/babar.h"
 #include "../sprites/monsters.h"
+#include "../sound/sound_engine.h"
 #include "../sprites/monsters_manager.h"
 #include "../sprites/walking_monsters.h"
 #include "../sprites/projectiles.h"

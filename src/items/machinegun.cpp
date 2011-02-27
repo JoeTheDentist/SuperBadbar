@@ -7,8 +7,7 @@
  *
  */
 
- #include <iostream>
-#include <SDL/SDL.h>
+#include <iostream>
 #include <stdint.h>
 
 #include "machinegun.h"

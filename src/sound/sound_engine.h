@@ -10,7 +10,12 @@
 #ifndef _SOUND_ENGINE_
 #define _SOUND_ENGINE_
 
-#include <fmod/fmod.h>
+#ifdef WIN32
+    #include "../../lib/fmodapi375win/api/inc/fmod.h"
+#else
+    #include <fmod/fmod.h>
+#endif
+
 #include <string>
 #include <map>
 #include "../items/weapons.h"
@@ -35,7 +40,7 @@ private:
 
 
 public:
-	
+
 	/**
 	 * @brief Constructeur
 	*/
@@ -47,12 +52,12 @@ public:
 	~Sound_engine();
 
 	/**
-	 * @brief Joue la musique 
+	 * @brief Joue la musique
 	*/
 	void play_music();
 
 	/**
-	 * @brief Joue la musique 
+	 * @brief Joue la musique
 	*/
 	void play_sound(std::string key);
 

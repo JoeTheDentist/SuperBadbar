@@ -8,11 +8,16 @@
  */
 
 #include <iostream>
-#include <SDL/SDL.h>
+/*#include <SDL/SDL.h>*/
 #include <stdint.h>
 #include <string>
 #include <fstream>
-#include <SDL/SDL_ttf.h>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#else
+    #include <SDL/SDL_ttf.h>
+#endif
 
 #include "talks.h"
 #include "../util/debug.h"

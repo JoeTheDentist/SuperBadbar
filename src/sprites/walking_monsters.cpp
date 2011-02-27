@@ -7,7 +7,6 @@
  *
  */
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
 
 #include "walking_monsters.h"

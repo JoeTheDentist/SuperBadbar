@@ -6,7 +6,7 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #ifndef _DASHBOARD_
 #define _DASHBOARD_
 
@@ -15,7 +15,11 @@
 #define POS_WEAPON_X 50
 #define POS_WEAPON_Y 60
 
-#include <SDL/SDL_ttf.h>
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#else
+    #include <SDL/SDL_ttf.h>
+#endif
 
 #include "../items/weapons.h"
 
@@ -39,7 +43,7 @@ private:
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
 public:
-	
+
 	/**
 	 * 	@brief Constructeur
 	 */

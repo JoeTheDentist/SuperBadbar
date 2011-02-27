@@ -10,9 +10,11 @@
 #ifndef _SOUND_MANAGER
 #define _SOUND_MANAGER
 
-//~ #ifndef WIN32
-	#include <fmod/fmod.h>
-//~ #endif
+#ifdef WIN32
+    #include "../../lib/fmodapi375win/api/inc/fmod.h"
+#else
+    #include <fmod/fmod.h>
+#endif
 
 #include "../items/weapons.h"
 
@@ -38,7 +40,7 @@ private:
 
 
 public:
-	
+
 	/**
 	 * @brief Constructeur
 	*/
@@ -50,7 +52,7 @@ public:
 	~Sound_manager();
 
 	/**
-	 * @brief Joue la musique 
+	 * @brief Joue la musique
 	*/
 	void play_music();
 
@@ -59,17 +61,17 @@ public:
 	 *	@param weapon le type d'arme
 	*/
 	void play_fire(int weapon);
-	
+
 	/**
 	 * @brief Joue le son de saut de babar
 	*/
 	void play_babar_jump();
-	
+
 	/**
 	 * @brief Joue le barrissement (ça se dit?) de babar
 	*/
 	void play_babar_rugissement();
-	
+
 	/**
 	 * @brief Joue le son d'un monstre qui prend un coup
 	*/

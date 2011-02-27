@@ -9,7 +9,6 @@
 
 
 #include <iostream>
-#include <SDL/SDL.h>
 #include <stdint.h>
 
 #include "sprites.h"

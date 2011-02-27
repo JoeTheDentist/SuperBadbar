@@ -7,8 +7,13 @@
  *
  */
 
- #include <iostream>
-#include <SDL/SDL.h>
+#include <iostream>
+
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include <SDL/SDL.h>
+#endif
 #include <stdint.h>
 
 #include "gun.h"

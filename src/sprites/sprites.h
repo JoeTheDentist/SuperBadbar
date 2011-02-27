@@ -13,7 +13,11 @@
 
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 
-#include "SDL/SDL.h"
+#ifdef WIN32
+    #include "../../lib/SDL/include/SDL/SDL.h"
+#else
+    #include "SDL/SDL.h"
+#endif
 #include "../items/weapons.h"
 
 
