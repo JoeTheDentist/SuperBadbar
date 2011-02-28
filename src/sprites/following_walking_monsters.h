@@ -34,9 +34,6 @@ public:
 	*/
 	Following_walking_monster(Analyser *analyserLevel);
 
-
-	Following_walking_monster(Analyser *analyserLevel, Babar *babar);
-
 	/**
 	 * 	@brief Destructeur
 	 */
@@ -47,7 +44,7 @@ public:
 	 *
 	 *	Le monstre avance par défaut en direction de Babar
 	 */
-	void update_speed(Babar *babar);
+	void update_speed();
 };
 
 

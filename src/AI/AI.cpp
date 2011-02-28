@@ -145,7 +145,7 @@ double AI::eval_right()
 }
 
 
-double AI::dist(Rect A, Rect B)
+/*double AI::dist(Rect A, Rect B)
 {
     Rect mA = A;
     Rect mB = B;
@@ -157,7 +157,7 @@ double AI::dist(Rect A, Rect B)
     mB.y = mB.y+mB.h/2;
 
     return sqrt( (mA.x-mB.x)*(mA.x-mB.x) + (mA.y-mB.y)*(mA.y-mB.y) );
-}
+}*/
 
 bool AI::check_collision(Rect A, Rect B)
 {

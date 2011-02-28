@@ -52,21 +52,21 @@ Following_flying_monster::~Following_flying_monster()
 }
 
 
-void Following_flying_monster::update_speed(Babar *babar)
+void Following_flying_monster::update_speed()
 {
-	if ( (m_pos.x<babar->position().x)&&(m_dir != RIGHT) ) {
+	if ( (m_pos.x<gBabar->position().x)&&(m_dir != RIGHT) ) {
 	    m_dir = RIGHT;
 		m_speed.x = m_speed_def;
 	}
-	if ( (m_pos.x>babar->position().x)&&(m_dir != LEFT) ) {
+	if ( (m_pos.x>gBabar->position().x)&&(m_dir != LEFT) ) {
 	    m_dir = LEFT;
 	    m_speed.x = -m_speed_def;
 	}
 
-	if ( (m_pos.y<babar->position().y) ) {
+	if ( (m_pos.y<gBabar->position().y) ) {
 		m_speed.y = m_speed_def;
 	}
-	if ( (m_pos.y>babar->position().y) ) {
+	if ( (m_pos.y>gBabar->position().y) ) {
 	    m_speed.y = -m_speed_def;
 	}
 }

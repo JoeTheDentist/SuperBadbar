@@ -66,7 +66,7 @@ public:
 	 *	@param camera Le gestionnaire d'affichage
 	 *	@param babar Pointeur vers babar
 	 */
-	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
+	void draw_dashboard(int lifes, Camera *camera);
 
 };
 

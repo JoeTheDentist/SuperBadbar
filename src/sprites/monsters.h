@@ -7,8 +7,10 @@
  *
  */
 
- #ifndef _MONSTERS_
+#ifndef _MONSTERS_
 #define _MONSTERS_
+
+#define SWITCH_DIST 100
 
 #include "sprites.h"
 #include "../video/animation.h"
@@ -20,7 +22,7 @@ class Surface;
 
 
 enum state_m {
-    WALKING, FIRE, WAIT, DEATH
+    WALKING, WAIT, DEATH
 };
 
 
@@ -38,7 +40,8 @@ protected:
 	int m_area_end;                	/* fin de la zone d'aller-retour */
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
-	bool m_can_fire;                /* si le monstre tire ou non */
+	bool m_can_fire;                /* si le monstre à le droit de tirer ou non */
+	bool m_fire;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -54,12 +57,6 @@ public:
 	 * 	@brief Mise à jour de la vitesse du monstre
 	 */
 	void virtual update_speed();
-
-	/**
-	 * 	@brief Mise à jour de la vitesse en fonction de Babar
-	 * 	@todo réorganiser cette paramétrisation
-	 */
-	void virtual update_speed(Babar * babar);
 
 	/**
 	 * 	@brief Acesseur

@@ -90,9 +90,9 @@ void Collisions_manager::display_platforms(Camera * const camera) const
 	camera->display(m_moving_platform);
 }
 
-void Collisions_manager::update_platforms_pos(Babar *babar)
+void Collisions_manager::update_platforms_pos()
 {
-	m_moving_platform->update_pos(babar);
+	m_moving_platform->update_pos();
 }
 
 void Collisions_manager::update_platforms_speed()
@@ -101,11 +101,11 @@ void Collisions_manager::update_platforms_speed()
 }
 
 
-void Collisions_manager::update_babar_platforms(Babar *babar)
+void Collisions_manager::update_babar_platforms()
 {
-	if(m_moving_platform->check_babar(babar)) {
-		m_moving_platform->bind(babar);
-		babar->bind(m_moving_platform);
+	if(m_moving_platform->check_babar()) {
+		m_moving_platform->bind();
+		gBabar->bind(m_moving_platform);
 	}
 }
 

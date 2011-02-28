@@ -38,7 +38,6 @@ class Game_engine {
 private:
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
-	Babar *m_babar;
 	Monsters_manager *m_monsters_manager;
 
 public:
@@ -110,13 +109,6 @@ public:
 	 *	@todo à revoir / changer
 	*/
 	void update_monsters_projectiles();
-
-
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le sprite Babar
-	*/
-	Babar *babar();
 
 	/**
 	 * 	@brief Met à jour les événements

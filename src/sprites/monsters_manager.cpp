@@ -36,14 +36,14 @@ Monsters_manager::~Monsters_manager()
 	}
 }
 
-void Monsters_manager::init_monsters_manager(Analyser *analyser, Babar *babar)
+void Monsters_manager::init_monsters_manager(Analyser *analyser)
 {
 	analyser->find_string("#Monsters#");
 	int nombre_monstres = analyser->read_int();
 	for (int compteur = 0; compteur < nombre_monstres; compteur++) {
 		std::string monster_type = analyser->read_string();
 		if (monster_type == "following_walking_monster") {
-			Following_walking_monster * curr_monster = new Following_walking_monster(analyser, babar);
+			Following_walking_monster * curr_monster = new Following_walking_monster(analyser);
 			add(curr_monster);
 		} else if (monster_type == "walking_monster") {
 			Walking_monster * curr_monster = new Walking_monster(analyser);
@@ -65,11 +65,11 @@ void Monsters_manager::add(Monster *monster)
 	m_monsters.push_back(monster);
 }
 
-void Monsters_manager::monsters_update_speed(Babar *babar)
+void Monsters_manager::monsters_update_speed()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
-	    (*it)->update_speed(babar);
+	    (*it)->update_speed();
 	}
 }
 
@@ -90,14 +90,14 @@ void Monsters_manager::display_monsters(const Camera &camera)
 	}
 }
 
-void Monsters_manager::babar_monsters_collision(Babar *babar)
+void Monsters_manager::babar_monsters_collision()
 {
-	Rect babar_pos = babar->position();
+	Rect babar_pos = gBabar->position();
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
 		if (!(*it)->dead()) {
 			if (Collisions_manager::check_collision((*it)->position(), babar_pos)) {
-				babar->damage(1);
+				gBabar->damage(1);
 			}
 		}
 	}

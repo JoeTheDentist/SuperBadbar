@@ -42,7 +42,7 @@ public:
 	 *	@param babar Parametre inutilisé dans cette sous classe
 	 *
 	**/
-	void update_speed(Babar *babar);
+	void update_speed();
 };
 
 

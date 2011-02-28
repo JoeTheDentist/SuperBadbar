@@ -55,7 +55,7 @@ public:
 	/*!
 	* 	@brief remplissage de monsters_manager au debut du niveau
 	*/
-	void init_monsters_manager(Analyser *analyser, Babar *babar);
+	void init_monsters_manager(Analyser *analyser);
 
 
 	/*!
@@ -74,7 +74,7 @@ public:
 	/*!
 	* 	@brief Met à jour la vitesse des monstres
 	*/
-	void monsters_update_speed(Babar *babar);
+	void monsters_update_speed();
 
 	/*!
 	* 	@brief Affiche les monstres à l'écran
@@ -88,7 +88,7 @@ public:
 	*	et fait perdre des vies à babar si c'est le cas
 	*	@param babar le personnage
 	*/
-	void babar_monsters_collision(Babar *babar);
+	void babar_monsters_collision();
 
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle

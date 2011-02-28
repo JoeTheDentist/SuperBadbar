@@ -38,7 +38,7 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 	gStatic->init_static_data(1);
 	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(),
 									m_keyboard, m_graphic_engine->get_pictures_container());
-	m_graphic_engine->init_graphic_engine(m_game_engine->babar());
+	m_graphic_engine->init_graphic_engine();
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 
@@ -106,12 +106,12 @@ void Game::update_graphic()
 	m_game_engine->display_projectiles_friend(camera);
 
 	/* affichage du sprite babar */
-	camera->display(m_game_engine->babar());
+	camera->display(gBabar);
 
 	gStatic->display_statics_first(camera);
 
 	/* affichage du tableau de board */
-	m_graphic_engine->draw_dashboard(m_game_engine->babar()->lifes(), camera, m_game_engine->babar());
+	m_graphic_engine->draw_dashboard(gBabar->lifes(), camera);
 
 	/* mise à jour */
 	camera->flip_camera();

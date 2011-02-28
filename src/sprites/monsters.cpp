@@ -24,6 +24,8 @@
 
 Monster::Monster()
 {
+    m_state = WALKING;
+    m_fire = false;
 }
 
 Monster::~Monster()
@@ -33,26 +35,11 @@ Monster::~Monster()
 
 Surface *Monster::current_picture() const
 {
-    /* pour le moment, un seul état... */
-    m_animt->change_anim(WALKING, m_dir, false, true);
+    m_animt->change_anim(m_state, m_dir, m_fire, true);
     return m_animt->curr_pic();
 }
 
 void Monster::update_speed()
-{
-	m_speed.y += GRAVITE;
-
-	if (m_pos.x<m_area_begin) {
-	    m_dir = RIGHT;
-		m_speed.x = -m_speed.x;
-	}
-	if (m_pos.x>m_area_end) {
-	    m_dir = LEFT;
-	    m_speed.x = -m_speed.x;
-	}
-}
-
-void Monster::update_speed(Babar * babar)
 {
 	m_speed.y += GRAVITE;
 

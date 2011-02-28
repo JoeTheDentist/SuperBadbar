@@ -56,7 +56,7 @@ Flying_monster::~Flying_monster()
 }
 
 
-void Flying_monster::update_speed(Babar *babar)
+void Flying_monster::update_speed()
 {
 	m_speed.y += GRAVITE/2;
 	if (m_pos.y > m_high_min) {

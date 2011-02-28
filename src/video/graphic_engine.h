@@ -45,7 +45,7 @@ public:
 	 * 	@brief Initialise le moteur graphique
 	 *	@todo On a juste besoin du picture_container, qui doit faire partie de graphic_engine..
 	 */
-	void init_graphic_engine(Babar *babar);
+	void init_graphic_engine();
 
 
 	/**
@@ -61,7 +61,7 @@ public:
 	 *	@param camera Le gestionnaire d'affichage
 	 *	@param babar Pointeur vers babar
 	 */
-	void draw_dashboard(int lifes, Camera *camera, Babar *babar);
+	void draw_dashboard(int lifes, Camera *camera);
 
 	/**
 	 * 	@brief Accesseur

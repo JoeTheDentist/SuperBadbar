@@ -17,7 +17,6 @@ class AI {
         Sprite * m_target;
 
         double eval(direction d);
-        double dist(Rect A, Rect B);
         bool check_collision(Rect A, Rect B);
         double eval_up();
         double eval_down();

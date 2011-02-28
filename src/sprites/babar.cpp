@@ -88,7 +88,7 @@ void Babar::update_pos()
 		coll = gCollision->down_collision_type(m_pos);
 		if(binded())
 			break;
-		gCollision->update_babar_platforms(this);
+		gCollision->update_babar_platforms();
 		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
@@ -103,7 +103,7 @@ void Babar::update_pos()
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		gCollision->update_babar_platforms(this);
+		gCollision->update_babar_platforms();
 		if(binded())
 			break;
 		if (Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos))){
@@ -118,7 +118,7 @@ void Babar::update_pos()
 	}
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-		gCollision->update_babar_platforms(this);
+		gCollision->update_babar_platforms();
 		if(binded())
 			break;
 		m_pos.y -= 	BOX_SIZE;
@@ -130,7 +130,7 @@ void Babar::update_pos()
 	}
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-		gCollision->update_babar_platforms(this);
+		gCollision->update_babar_platforms();
 		if(binded())
 			break;
 		m_pos.y -= 	BOX_SIZE;

@@ -67,7 +67,7 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 }
 
 
-void Dashboard::draw_dashboard(int lifes, Camera *camera, Babar *babar)
+void Dashboard::draw_dashboard(int lifes, Camera *camera)
 {
 	if (lifes < 0)
 		return;
@@ -77,14 +77,14 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera, Babar *babar)
 	}
 	m_lifes_pos.x -= lifes * 30;
 
-	camera->display_picture(m_weapons_pictures[babar->type_of_weapon()], &m_weapons_pos);
+	camera->display_picture(m_weapons_pictures[gBabar->type_of_weapon()], &m_weapons_pos);
 	Rect pos_munitions;
 	SDL_Surface *munitions_pictures = NULL;
 	char munitions[5];
-	sprintf(munitions, "x %d", babar->munitions());
+	sprintf(munitions, "x %d", gBabar->munitions());
 	munitions_pictures = TTF_RenderText_Blended(m_font, munitions, m_font_color);
-	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[babar->type_of_weapon()]->w() + 10;
-	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[babar->type_of_weapon()]->h() - munitions_pictures->h)/2;
+	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gBabar->type_of_weapon()]->w() + 10;
+	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gBabar->type_of_weapon()]->h() - munitions_pictures->h)/2;
 	camera->display_picture(munitions_pictures, &pos_munitions);
 	SDL_FreeSurface(munitions_pictures);
 

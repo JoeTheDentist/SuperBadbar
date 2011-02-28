@@ -58,28 +58,28 @@ Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, 
 
 Moving_platform::~Moving_platform() {}
 
-void Moving_platform::update_pos(Babar *babar)
+void Moving_platform::update_pos()
 {
 	m_phase++;
 	/* descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		if (check_babar(babar))
-			babar->bind(this);
+		if (check_babar())
+			gBabar->bind(this);
 		m_pos.y += BOX_SIZE;
 	}
 	/* cas monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		check_babar(babar);
+		check_babar();
 		m_pos.y -= BOX_SIZE;
 	}
 	/* droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-		check_babar(babar);
+		check_babar();
 		m_pos.x += 	BOX_SIZE;
 	}
 	/* gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-		check_babar(babar);
+		check_babar();
 		m_pos.x -= BOX_SIZE;
 	}
 
@@ -96,10 +96,10 @@ void Moving_platform::update_speed()
     }
 }
 
-void Moving_platform::bind(Babar *babar)
+void Moving_platform::bind()
 {
 	PRINT_DEBUG(1, "bind");
-	m_babar = babar;
+	m_babar = gBabar;
 }
 
 void Moving_platform::unbind()
@@ -124,12 +124,12 @@ Rect Moving_platform::speed() const
 }
 
 
-bool Moving_platform::check_babar(Babar *babar)
+bool Moving_platform::check_babar()
 {
 	if (m_babar != NULL)
 		return false;
-	Rect babar_speed = babar->speed();
-	Rect babar_pos = babar->position();
+	Rect babar_speed = gBabar->speed();
+	Rect babar_pos = gBabar->position();
 	if (babar_speed.y < m_speed.y)
 		return false;
 	int j = (babar_pos.y + babar_pos.h - m_pos.y) / BOX_SIZE + 1;

@@ -39,14 +39,14 @@ Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
     gCollision = new Collisions_manager();
     gProj = new Projectiles_manager();
     gEvent = new Events_manager();
-	m_babar = NULL;
+	gBabar = NULL;
 }
 
 
 
 Game_engine::~Game_engine()
 {
-    delete m_babar;
+    delete gBabar;
 	delete m_monsters_manager;
 	delete gCollision;
 	delete gProj;
@@ -65,8 +65,8 @@ void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard
 	rep = LEVELS_R;
 	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
-    m_babar = new Babar(keyboard, &analyser);
-	m_monsters_manager->init_monsters_manager(&analyser, m_babar);
+    gBabar = new Babar(keyboard, &analyser);
+	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
 	analyser.close();
@@ -75,28 +75,28 @@ void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard
 
 void Game_engine::update_pos()
 {
-	gCollision->update_platforms_pos(m_babar);
+	gCollision->update_platforms_pos();
 	gProj->update_pos();
-	m_babar->update_pos();
+	gBabar->update_pos();
 	m_monsters_manager->monsters_update_pos();
 }
 
 
 void Game_engine::update_speed()
 {
-	m_babar->update_speed();
-	m_monsters_manager->monsters_update_speed(m_babar);
+	gBabar->update_speed();
+	m_monsters_manager->monsters_update_speed();
 	gCollision->update_platforms_speed();
 }
 
 void Game_engine::babar_update_state()
 {
-	m_babar->update_state();
+	gBabar->update_state();
 }
 
 void Game_engine::babar_monsters_collision()
 {
-	m_monsters_manager->babar_monsters_collision(m_babar);
+	m_monsters_manager->babar_monsters_collision();
 }
 
 void Game_engine::display_monsters(Camera * const camera) const
@@ -135,14 +135,6 @@ void Game_engine::update_monsters_projectiles()
     }
 }
 
-
-
-Babar *Game_engine::babar()
-{
-	return m_babar;
-}
-
-
 void Game_engine::update_events_manager() {
 	gEvent->update();
 }
@@ -155,5 +147,5 @@ void Game_engine::display_events(Camera *camera) {
 void Game_engine::play_sounds()
 {
 	m_monsters_manager->play_sounds();
-	gSound->play_sound(m_babar);
+	gSound->play_sound(gBabar);
 }

@@ -48,9 +48,9 @@ Graphic_engine::~Graphic_engine()
 	SDL_Quit();
 }
 
-void Graphic_engine::init_graphic_engine(Babar *babar)
+void Graphic_engine::init_graphic_engine()
 {
-	m_camera->init_camera(babar);
+	m_camera->init_camera(gBabar);
 	m_talks->init_talks(m_camera, m_pictures_container);
 	m_dashboard->init_dashboard(m_pictures_container);
 }
@@ -60,9 +60,9 @@ void Graphic_engine::update()
 	m_camera->update_pos();
 }
 
-void Graphic_engine::draw_dashboard(int lifes, Camera *camera, Babar *babar)
+void Graphic_engine::draw_dashboard(int lifes, Camera *camera)
 {
-	m_dashboard->draw_dashboard(lifes, camera, babar);
+	m_dashboard->draw_dashboard(lifes, camera);
 }
 
 

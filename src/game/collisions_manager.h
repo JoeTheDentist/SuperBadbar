@@ -87,7 +87,7 @@ public:
 	/*!
 	 *	@brief Mise à jour de la position des plateformes
 	*/
-	void update_platforms_pos(Babar *babar);
+	void update_platforms_pos();
 	/*!
 	 *	@brief Mise à jour de la vitesse des plateformes
 	*/
@@ -97,7 +97,7 @@ public:
 	 *	@brief Lie Babar aux plateformes auxquelles il doit etre lié
 	 *	@param babar Babar!
 	*/
-	void update_babar_platforms(Babar *babar);
+	void update_babar_platforms();
 
 
 

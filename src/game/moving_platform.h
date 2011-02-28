@@ -65,7 +65,7 @@ public:
 	 *
 	 *	Detecte la collision avec babar par le bas pour éventuellement le lier
 	 */
-	void update_pos(Babar *babar);
+	void update_pos();
 
 	/**
 	 * 	@brief Mise à jour de la vitesse
@@ -76,7 +76,7 @@ public:
 	/**
 	 * 	@brief lie Babar à la plateforme
 	 */
-	void bind(Babar *babar);
+	void bind();
 
 	/**
 	 * 	@brief delie Babar de la plateforme
@@ -97,7 +97,7 @@ public:
 	 *	@param babar Le Babar à lier
 	 *	@return Vrai si Babar doit etre lié à la plateforme courante
 	 */
-	bool check_babar(Babar *babar);
+	bool check_babar();
 
 
 	/**

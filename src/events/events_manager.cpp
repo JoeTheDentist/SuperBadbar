@@ -52,7 +52,7 @@ void Events_manager::load_events(Analyser *analyser)
 	for (int i = 0; i < events_number; i++) {
 		std::string event_class = analyser->read_string();
 		if (event_class == "event_weapon") {
-			Event_weapon *event = new Event_weapon(m_game_engine->babar(), m_pictures_container, analyser);
+			Event_weapon *event = new Event_weapon(gBabar, m_pictures_container, analyser);
 			m_list_events.push_back(event);
 		} else {
 			PRINT_DEBUG(1, "Event %s non reconnu", event_class.c_str());
