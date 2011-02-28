@@ -10,7 +10,8 @@
 #ifndef _MONSTERS_
 #define _MONSTERS_
 
-#define SWITCH_DIST 10
+/* distance à partir de laquelle le monstre se déplace suivant l'ai */
+#define SWITCH_DIST 400
 
 #include "sprites.h"
 #include "../video/animation.h"
@@ -36,8 +37,6 @@ class Monster: public Sprite, public Sonorisable {
 protected:
     state_m m_state;
 	std::string m_nom;				/* sa nature (peut-etre à enlever) */
-	int m_area_begin; 			 	/* début de la zone d'allez-retour */
-	int m_area_end;                	/* fin de la zone d'aller-retour */
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
 	bool m_can_fire;                /* si le monstre à le droit de tirer ou non */

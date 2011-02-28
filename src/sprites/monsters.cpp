@@ -51,13 +51,14 @@ void Monster::update_speed()
 
 void Monster::update_speed_simple()
 {
-    if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)) ) {
+    if ( gCollision->can_fall(m_pos) ) {
         m_speed.x *= -1;
         if ( m_dir == LEFT ) {
             m_dir = RIGHT;
         } else {
             m_dir = LEFT;
         }
+        m_pos.y -= 3*BOX_SIZE;
     }
     m_speed.y += GRAVITE;
 }

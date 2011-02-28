@@ -117,3 +117,13 @@ int Collisions_matrix::dim_w() {
 int Collisions_matrix::dim_h() {
     return m_collisions_matrix_h;
 }
+
+bool Collisions_matrix::can_fall(Rect pos) {
+    bool ret = true;
+    for (int i = -3; i<4 && ret; i++) {
+        Rect p = pos;
+        p.y += i*BOX_SIZE;
+        ret &= !Collisions_manager::is_down_coll(down_collision_type(p));
+    }
+    return ret;
+}

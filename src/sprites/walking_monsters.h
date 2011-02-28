@@ -40,13 +40,6 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Walking_monster();
-
-	/**
-	 * 	@brief Met à jour la vitesse du monstre
-	 *	@param babar Parametre inutilisé dans cette sous classe
-	 *
-	 *
-	void update_speed();*/
 };
 
 

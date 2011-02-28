@@ -52,7 +52,7 @@ Following_flying_monster::~Following_flying_monster()
 }
 
 
-void Following_flying_monster::update_speed()
+void Following_flying_monster::update_speed_simple()
 {
 	if ( (m_pos.x<gBabar->position().x)&&(m_dir != RIGHT) ) {
 	    m_dir = RIGHT;

@@ -150,6 +150,12 @@ public:
 	 * 	@return Dimension hauteur
 	*/
 	int dim_h();
+
+	/*!
+	 * 	@brief Regarde si la position est succeptible de tomber
+	 * 	@return l'assertion
+	*/
+	bool can_fall(Rect pos);
 };
 
 
