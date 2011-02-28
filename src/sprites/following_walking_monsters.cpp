@@ -52,7 +52,7 @@ Following_walking_monster::~Following_walking_monster()
     delete m_ai;
 }
 
-void Following_walking_monster::update_speed()
+void Following_walking_monster::update_speed_ai()
 {
     direction d = m_ai->dir();
     m_state = WALKING;

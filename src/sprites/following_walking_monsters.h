@@ -44,7 +44,7 @@ public:
 	 *
 	 *	Le monstre avance par défaut en direction de Babar
 	 */
-	void update_speed();
+	void update_speed_ai();
 };
 
 

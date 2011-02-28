@@ -10,7 +10,7 @@
 #ifndef _MONSTERS_
 #define _MONSTERS_
 
-#define SWITCH_DIST 100
+#define SWITCH_DIST 10
 
 #include "sprites.h"
 #include "../video/animation.h"
@@ -56,7 +56,18 @@ public:
 	/**
 	 * 	@brief Mise à jour de la vitesse du monstre
 	 */
-	void virtual update_speed();
+	void update_speed();
+
+	/**
+	 * 	@brief Mise à jour de la vitesse du monstre (non ai)
+	 */
+	void virtual update_speed_simple();
+
+	/**
+	 * 	@brief Mise à jour de la vitesse du monstre (ai)
+	 *  Si non redéfinie = à simple
+	 */
+	void virtual update_speed_ai();
 
 	/**
 	 * 	@brief Acesseur

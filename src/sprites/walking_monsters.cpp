@@ -56,7 +56,7 @@ Walking_monster::~Walking_monster()
 }
 
 
-void Walking_monster::update_speed()
+/*void Walking_monster::update_speed()
 {
 	m_speed.y += GRAVITE;
 	if (m_pos.x<m_area_begin) {
@@ -67,5 +67,5 @@ void Walking_monster::update_speed()
 	    m_dir = RIGHT;
 	    m_speed.x = -m_speed.x;
 	}
-}
+}*/
 

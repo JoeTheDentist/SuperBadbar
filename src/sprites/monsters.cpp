@@ -14,6 +14,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../video/surface.h"
+#include "babar.h"
 
 
 
@@ -41,16 +42,29 @@ Surface *Monster::current_picture() const
 
 void Monster::update_speed()
 {
-	m_speed.y += GRAVITE;
+	if ( dist(m_pos, gBabar->position()) > SWITCH_DIST ) {
+	    update_speed_simple();
+	} else {
+	    update_speed_ai();
+	}
+}
 
-	if (m_pos.x<m_area_begin) {
-	    m_dir = RIGHT;
-		m_speed.x = -m_speed.x;
-	}
-	if (m_pos.x>m_area_end) {
-	    m_dir = LEFT;
-	    m_speed.x = -m_speed.x;
-	}
+void Monster::update_speed_simple()
+{
+    if ( !gCollision->down_collision(m_pos) ) {
+        m_speed.x *= -1;
+        if ( m_dir == LEFT ) {
+            m_dir = RIGHT;
+        } else {
+            m_dir = LEFT;
+        }
+    }
+    m_speed.y += GRAVITE;
+}
+
+void Monster::update_speed_ai()
+{
+    update_speed_simple();
 }
 
 void Monster::damage(uint32_t damage)
