@@ -80,7 +80,7 @@ void Anim_table::init_fire(std::string anim_name)
             for (k1='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT); k1++) {
                 link1[k1-'0'] = anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT;
             }
-            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_0"+PICS_EXT); k2++) {
+            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT); k2++) {
                 link1[k2-'0'] = anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT;
             }
 
