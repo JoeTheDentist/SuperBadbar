@@ -124,6 +124,7 @@ void Game::game_loop()
 	float used_time_refresh_screen = 0;
 	bool end = false;
 	int begining = SDL_GetTicks();
+	gSound->play_music();
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {

@@ -24,15 +24,14 @@ Sound_engine::Sound_engine()
 	PRINT_CONSTR(1, "Construction du Sound_engine")
 	FSOUND_Init(44100, 32, 0);
 //~ 	m_fire = new FSOUND_SAMPLE*[SHOTGUN + 1];
-//~ 	m_music = FSOUND_Stream_Open((RACINE_R+"/sound/music/level1.mp3").c_str(), 0, 0, 0);
-//~ 	play_music();
+	m_music = FSOUND_Stream_Open((RACINE_R+"/sound/music/level1.mp3").c_str(), 0, 0, 0);
+	play_music();
 //~ 	if (m_music == NULL) {
 //~ 		PRINT_DEBUG(1, "Impossible de charger la musique")
 //~ 	}
 
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
-	PRINT_DEBUG(1, "PLOP");
 	
 }
 

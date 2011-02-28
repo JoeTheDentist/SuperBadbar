@@ -14,7 +14,7 @@
 #include <sys/stat.h>
 #include <string>
 #include "../video/surface.h"
-
+#include <stdlib.h>
 #include "anim_table.h"
 
 Anim_table::Anim_table(std::string anim_name) {
