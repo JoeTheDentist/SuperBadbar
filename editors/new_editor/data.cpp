@@ -3,7 +3,7 @@
 #include <iostream>
 #include <QTextStream>
 #include <QFile>
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include "paths.h"
 
 Data::Data():
@@ -50,23 +50,18 @@ void Data::addItem(MyItem *item)
 void Data::addStaticItem(MyItem *item)
 {
 	m_static_items.push_front(item);
+	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
 void Data::addMonsterItem(MyItem *item)
 {
 	m_monsters_items.push_front(item);
+	item->getItem()->setZValue(MONSTERS_ZBUFFER);	
 }
 
 MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;
-	QGraphicsItem *item;
-	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
-		item = (*it)->getItem();
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
-			return (*it);	
-		}
-	}
+	QGraphicsPixmapItem *item;
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
 		item = (*it)->getItem();
 		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
@@ -74,8 +69,25 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it);	
 		}
 	}
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
+		item = (*it)->getItem();
+		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
+			return (*it);	
+		}
+	}
 	return NULL;
-	
+}
+
+void Data::upInStack(MyItem *item) 
+{
+	std::list<MyItem *>::iterator it;
+	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
+		(*it)->getItem()->stackBefore(item->getItem());
+	}
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}	
 }
 
 void Data::saveData(QString fileName)
@@ -102,7 +114,6 @@ void Data::saveData(QString fileName)
 	out << endl;
 	// sauvegarde des statics  
 	out << "#Statics#" << endl;
-	out << m_static_items.size() << endl;
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++)
 		(*it)->saveItem(out);
 	out << "!" << endl;

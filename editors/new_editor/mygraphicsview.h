@@ -9,7 +9,7 @@
 
 class QWidget;
 class QGraphicsScene;
-class QGraphicsItem;
+class QGraphicsPixmapItem;
 class Data;
 class MyItem;
 
@@ -155,7 +155,7 @@ class MyGraphicsView : public QGraphicsView {
 	MyItem *m_selected_item; // l'item selectionne
 	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)
 	MyItem *m_copied_item;
-	QGraphicsItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
+	QGraphicsPixmapItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel
 	QGraphicsItem *m_background;
 };

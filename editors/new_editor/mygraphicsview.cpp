@@ -11,7 +11,7 @@
 #include <QGraphicsScene>
 #include <QWidget>
 #include <QPixmap>
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <QMouseEvent>
 #include <QTextStream>
 #include <QString>
@@ -59,7 +59,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	Analyser analyser;
 	QPixmap image;
 	int x, y;
-	QGraphicsItem *item = NULL;
+	QGraphicsPixmapItem *item = NULL;
 	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
@@ -110,29 +110,36 @@ int MyGraphicsView::posClicY(QMouseEvent *event)
 
 void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 {
-	deSelectItem();
-	m_mouse_pressed = true;
-	if (m_opened && !m_del_curs) {
-		if (m_curr_item) {
-			if (event->button() == Qt::LeftButton) {
+	if (event->button() == Qt::LeftButton) {
+		deSelectItem();
+		m_mouse_pressed = true;
+		if (m_opened && !m_del_curs) {
+			if (m_curr_item) {
 				m_data->addItem(m_curr_item);
 				m_curr_item = NULL;
-			} else if (event->button() == Qt::RightButton) {
-				this->scene()->removeItem(m_curr_item->getItem());
-				delete m_curr_item->getItem();
-				delete m_curr_item;
-				m_curr_item = NULL;				
+			} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
+				m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
+				selectItem(m_moved_item);
 			}
-		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
-			m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
-			selectItem(m_moved_item);
+		}
+	} else if (event->button() == Qt::LeftButton) {
+		if (m_opened && !m_del_curs && m_curr_item) {
+			this->scene()->removeItem(m_curr_item->getItem());
+			delete m_curr_item->getItem();
+			delete m_curr_item;
+			m_curr_item = NULL;				
 		}
 	}
 }
 
 void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 {
-	mousePressEvent(event);
+	MyItem *item = m_data->selectItem(posClicX(event), posClicY(event));
+	if (item) {
+		item->edit();
+	} else {
+		mousePressEvent(event);
+	}
 }
 
 
@@ -161,7 +168,7 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 		if (m_del_curs) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
 		} else if (m_moved_item) {
-			QGraphicsItem *item = m_moved_item->getItem();
+			QGraphicsPixmapItem *item = m_moved_item->getItem();
 			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
 		} else if (m_curr_item) {
 			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
@@ -198,11 +205,12 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 				m_selected_item = NULL;
 				m_moved_item = NULL;
 				m_curr_item = NULL;
+				break;
 		case Qt::Key_C:
-			
+			copyItem(m_selected_item);
 			break;
 		case Qt::Key_V:
-			
+			pastItem();
 			break;
 			}
 		default:
@@ -249,7 +257,7 @@ void MyGraphicsView::addStatic()
 	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
 	fileName.append("png");
 	image.load(fileName);
-	QGraphicsItem *item = this->scene()->addPixmap(image);
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(item, fileName);
@@ -270,7 +278,7 @@ void MyGraphicsView::addMonster()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
 	fileName.chop(5);	
 	image.load(MonsterItem::picPathFromEditor(fileName));
-	QGraphicsItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
 }
 
 void MyGraphicsView::activeDeleteItem()
@@ -289,8 +297,9 @@ void MyGraphicsView::zoom(qreal z)
 void MyGraphicsView::selectItem(MyItem *item)
 {
 	deSelectItem();
-	m_selected_item = item;
+	m_selected_item = item;	
 	m_selected_item->getItem()->setGraphicsEffect(new QGraphicsColorizeEffect());
+	m_data->upInStack(item);
 }
 
 void MyGraphicsView::deSelectItem()
@@ -311,13 +320,21 @@ void MyGraphicsView::deleteFromEditor(MyItem *item)
 
 void MyGraphicsView::copyItem(MyItem *item) 
 {
-	if (m_copied_item) {
-		delete m_copied_item;
+	if (item) {
+		if (m_copied_item) {
+			// remove m_copied_item de la scene
+			delete m_copied_item;
+		}
+		m_copied_item = item->duplicate();
 	}
-//~ 	m_copied_item = new MyItem(item);
 }
 
 void MyGraphicsView::pastItem()
 {
-	
+	if (m_copied_item) {
+		MyItem *item = m_copied_item->duplicate();
+		item->getItem()->setVisible(true);
+		item->getItem()->setPos(this->horizontalScrollBar()->value(), this->verticalScrollBar()->value());
+		m_data->addItem(item);
+	}
 }

@@ -14,12 +14,16 @@ class MonsterItem: public MyItem {
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "monsters/chemindufichier"
 	*/
-	MonsterItem(QGraphicsItem *item, QString fileName);
+	MonsterItem(QGraphicsPixmapItem *item, QString fileName);
 	
 	/*!
 	*	@brief Destructeur
 	*/
 	~MonsterItem();
+	
+	
+	virtual MyItem *duplicate();
+	
 	
 	/*!
 	*	@brief Sauvegarde l'objet dans out

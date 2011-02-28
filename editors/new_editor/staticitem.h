@@ -5,19 +5,24 @@
 #include "data.h"
 
 class StaticItem: public MyItem {
+	private:
+	int m_zbuffer; // 0 ou 1
 	public:
 	/*!
 	*	@brief Constructeur
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-	StaticItem(QGraphicsItem *item, QString fileName);
+	StaticItem(QGraphicsPixmapItem *item, QString fileName);
 	
 	/*!
 	*	@brief Destructeur
 	*/
 	~StaticItem();
 	
+	
+	virtual MyItem *duplicate();
+
 	/*!
 	*	@brief Sauvegarde l'objet dans out
 	*	@param out Le flux dans lequel on doit sauvegarder
@@ -29,6 +34,8 @@ class StaticItem: public MyItem {
 	*	@param data Le conteneur d'objets
 	*/
 	virtual void addToData(Data *data);
+	
+	virtual void edit();
 
 	/*!
 	*	@brief transforme le nom du fichier ecrit dans un .lvl
@@ -36,6 +43,10 @@ class StaticItem: public MyItem {
 	*	@return Ce chemin
 	*/
 	static QString picPathFromEditor(QString fileName);
+	
+	private:
+		
+	void setStaticZBuffer(int buffer);
 
 };
 

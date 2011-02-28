@@ -1,11 +1,12 @@
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <iostream>
 #include "monsteritem.h"
 #include "paths.h"
 #include <QFile>
 #include "analyser.h"
+#include <QGraphicsScene>
 
-MonsterItem::MonsterItem(QGraphicsItem *item, QString fileName):
+MonsterItem::MonsterItem(QGraphicsPixmapItem *item, QString fileName):
 	MyItem(item, fileName),
 	m_class_name("")
 {
@@ -18,6 +19,16 @@ MonsterItem::~MonsterItem()
 {
 	
 }
+
+MyItem *MonsterItem::duplicate()
+{
+	QPixmap image(m_item->pixmap());
+	MyItem *item = new MonsterItem(m_item->scene()->addPixmap(image), m_file_name);
+	item->getItem()->setVisible(false);
+	return item;
+}
+
+
 
 void MonsterItem::saveItem(QTextStream &out)
 {

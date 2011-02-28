@@ -6,19 +6,20 @@
  #include <QGraphicsPixmapItem>
 
 class Data;
-class QGraphicsItem;
+class QGraphicsPixmapItem;
 
 class MyItem {
 	protected:
-	QGraphicsItem *m_item;
+	QGraphicsPixmapItem *m_item;
 	QString m_file_name;
 	public:
-	MyItem(QGraphicsItem *item, QString);
-	MyItem(const MyItem &item);
+	MyItem(QGraphicsPixmapItem *item, QString);
 	~MyItem();
-	QGraphicsItem *getItem();
-	virtual void saveItem(QTextStream &out);
+	virtual MyItem *duplicate() = 0;
+	QGraphicsPixmapItem *getItem();
+	virtual void saveItem(QTextStream &out) = 0;
 	virtual void addToData(Data *data) = 0;
+	virtual void edit();
 	
 };
 

@@ -1,19 +1,15 @@
 #include "myitem.h"
 #include "data.h"
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QPixmap>
 
-
-MyItem::MyItem(QGraphicsItem *item, QString fileName):
+MyItem::MyItem(QGraphicsPixmapItem *item, QString fileName):
 	m_item(item),
 	m_file_name(fileName)
 {
 	
-}
-
-MyItem::MyItem(const MyItem &item) 
-{
-//~ 	m_item = item.m_item->scene()->addI
 }
 
 MyItem::~MyItem()
@@ -21,13 +17,13 @@ MyItem::~MyItem()
 	// TODO liberer??
 }
 
-QGraphicsItem *MyItem::getItem()
+
+QGraphicsPixmapItem *MyItem::getItem()
 {
 	return m_item;
 }
 
-void MyItem::saveItem(QTextStream &out)
+void MyItem::edit()
 {
-	out << "plop" << endl;
+	
 }
-

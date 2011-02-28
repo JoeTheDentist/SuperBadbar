@@ -4,7 +4,7 @@
 #include <list>
 #include <QString>
 
-class QGraphicsItem;
+class QGraphicsPixmapItem;
 class MyItem;
 
 class Data {
@@ -12,7 +12,7 @@ class Data {
 	std::list<MyItem *> m_static_items;
 	std::list<MyItem *> m_monsters_items;
 	QString m_background_name;
-	QGraphicsItem *m_background;
+	QGraphicsPixmapItem *m_background;
 	int m_xpix;
 	int m_ypix;
 	
@@ -83,9 +83,11 @@ class Data {
 	*	@param y L'ordonnée du pixel
 	*	@return L'item sélectionné
 	*
-	*	L'ordre des items (quand plusieurs correspondent) n'est pas garanti
+	*	Les monstres sont prioritaires sur les statics si plusieurs items se superposent
 	*/
 	MyItem *selectItem(int x, int y);
+	
+	void upInStack(MyItem *item);
 	
 	/*!
 	*	@brief Retire l'item de data (attention, data est indépendant de l'affichage)
