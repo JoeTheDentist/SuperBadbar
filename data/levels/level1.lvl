@@ -35,7 +35,8 @@ soil 0 3300 1
 
 
 #Monsters#
-2
-following_walking_monster gailapin 500 2000
+3
+following_walking_monster maphyar 200 1300
+following_walking_monster gailapin 328 2000
 following_flying_monster fubob 700 900
 !

@@ -1,0 +1,39 @@
+#Background#
+level1.png
+
+#Level_dimensions#
+3200
+3400
+
+#Babar#
+300
+300
+1
+
+#Statics#
+block8 217 3093 0
+block8 213 2893 0
+block8 197 2675 0
+block8 191 2445 0
+block8 216 2230 0
+block8 234 1986 0
+block8 243 1741 1
+block8 244 1506 0
+block8 234 1259 1
+block8 196 970 1
+block8 221 734 1
+block8 245 493 0
+soil 56 3307 0
+soil 261 222 0
+!
+#Monsters#
+5
+following_walking_monster maphyar 508 162
+following_walking_monster gailapin 819 120
+following_walking_monster gailapin 1223 130
+following_walking_monster gailapin 1046 139
+following_walking_monster gailapin 1634 106
+!
+#Events#
+0
+!
