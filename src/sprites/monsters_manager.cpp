@@ -77,7 +77,7 @@ void Monsters_manager::monsters_update_pos()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
-		(*it)->update_pos(gStatic, gCollision);
+		(*it)->update_pos();
 	}
 }
 

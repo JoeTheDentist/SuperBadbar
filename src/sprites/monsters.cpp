@@ -51,7 +51,7 @@ void Monster::update_speed()
 
 void Monster::update_speed_simple()
 {
-    if ( !gCollision->down_collision(m_pos) ) {
+    if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)) ) {
         m_speed.x *= -1;
         if ( m_dir == LEFT ) {
             m_dir = RIGHT;

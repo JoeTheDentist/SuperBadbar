@@ -68,7 +68,7 @@ public:
 	 *	@param static_data Données du jeu
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
-    void update_pos(Static_data *static_data, Collisions_manager *collisions_manager);
+    void update_pos();
 
 	/*!
 	 *	@brief Accesseur
