@@ -29,7 +29,7 @@
 
 
 enum direction {
-    LEFT, RIGHT, UP, DOWN
+    LEFT, RIGHT, UP, DOWN, NOPE
 };
 
 

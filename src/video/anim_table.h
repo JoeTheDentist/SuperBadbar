@@ -29,6 +29,7 @@ class Anim_table
     private:
         char m_nb_states;           /* nombre d'etats de l'animation */
         int m_last_state;           /* dernier etat affiche, pour les changements d'animation */
+        direction m_last_dir;         /* dernier etat directionnelle */
         Animation * m_curr_anim;    /* pointeur sur l'animation courante */
         Animation ***m_anim;        /* tableau de pointeur vers les animations ; etat et gauche/droite */
         bool m_fire;                /* si il y a un état de tir dans les animations */
@@ -63,12 +64,7 @@ class Anim_table
         /**
          * @brief change l'animation courrante, en prenant en compte si l'animation est stoppable.
          */
-        void change_anim(int s, direction dir);
-
-        /**
-         * @brief change l'animation courrante, si fire, affiche l'animation de tir.
-         */
-        void change_anim(int s, direction dir, bool fire);
+        void change_anim(int s, direction dir, bool fire=false ,bool phase_rand=false);
 
         /**
          * @brief Accesseur a l'image courante de l'animation, l'image a afficher (à appeler une fois par cycle).

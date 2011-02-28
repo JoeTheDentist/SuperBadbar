@@ -96,6 +96,7 @@ void Following_walking_monster::update_speed(Babar *babar)
             m_speed.x = m_speed_def;
             break;
         case UP:
+            /* pour ne pas avoir de vitesse trop rapides */
             if ( m_speed.y >= 0 ) {
                 m_speed.y -= 70;
             }
@@ -103,10 +104,13 @@ void Following_walking_monster::update_speed(Babar *babar)
         case DOWN:
             m_pos.y += 10;
             break;
+        case NOPE:
+            /* où le monstre ne doit rien faire => state = WAIT */
+            break;
     }
-
-
 	m_speed.y += GRAVITE;
+
+
 }
 
 

@@ -34,7 +34,7 @@ Monster::~Monster()
 Surface *Monster::current_picture() const
 {
     /* pour le moment, un seul état... */
-    m_animt->change_anim(WALKING, m_dir);
+    m_animt->change_anim(WALKING, m_dir, false, true);
     return m_animt->curr_pic();
 }
 

@@ -135,19 +135,20 @@ void Anim_table::init_nfire(std::string anim_name)
     m_curr_anim = m_anim[0][0];
 }
 
-void Anim_table::change_anim(int s, direction dir) {
-    if ( m_curr_anim->interruptable() ) {
-        m_curr_anim = m_anim[s][dir];
-    }
-}
-
-void Anim_table::change_anim(int s, direction dir, bool fire) {
+void Anim_table::change_anim(int s, direction dir, bool fire, bool phase_rand) {
     if ( fire ) {
         s += m_nb_states/2;
     }
 
-    if ( m_curr_anim->interruptable() ) {
-        m_curr_anim = m_anim[s][dir];
+    if ( s != m_last_state || dir != m_last_dir ) {
+        if ( m_curr_anim->interruptable() ) {
+            m_curr_anim = m_anim[s][dir];
+            if ( phase_rand ) {
+                m_curr_anim->set_phase( rand()%3 );
+            }
+        }
+        m_last_state = s;
+        m_last_dir = dir;
     }
 }
 

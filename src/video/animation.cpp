@@ -58,7 +58,6 @@ Surface * Animation::curr_pic()
             m_finished = true;
         }
     }
-
     return image;
 }
 
@@ -71,4 +70,9 @@ void Animation::set_rect(Rect &pos)
 {
     pos.h = m_images[m_curr]->h();
     pos.w = m_images[m_curr]->w();
+}
+
+void Animation::set_phase(int p)
+{
+    m_phase = p;
 }

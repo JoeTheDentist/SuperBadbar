@@ -70,6 +70,12 @@ public:
      *  @param pos Rect à modifier
      */
     void set_rect(Rect &pos);
+
+    /**
+     * @brief Set phase
+     * @param Nouvelle phase
+     */
+    void set_phase(int p);
 };
 
 #endif // ANIMATION_H_INCLUDED
