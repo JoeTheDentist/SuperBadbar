@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stdint.h>
 #include <time.h>
+#include <stdlib.h>
 
 #include "util/debug.h"
 #include "sprites/sprites.h"

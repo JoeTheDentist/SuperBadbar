@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include "shotgun.h"
 #include "../util/debug.h"
