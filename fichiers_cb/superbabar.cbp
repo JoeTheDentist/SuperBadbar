@@ -39,7 +39,7 @@
 			<Add library="winmm" />
 			<Add library="dxguid" />
 			<Add library="..\lib\SDL\lib\SDL_ttf.lib" />
-			<Add library="..\..\fmodapi375win\api\lib\libfmod.a" />
+			<Add library="..\lib\fmodapi375win\api\lib\libfmod.a" />
 			<Add library="..\lib\SDL\lib\SDL_image.lib" />
 			<Add library="..\lib\SDL\lib\libSDLmain.a" />
 			<Add library="..\lib\SDL\lib\libSDL.dll.a" />
