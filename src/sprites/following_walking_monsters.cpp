@@ -75,8 +75,6 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel, Ba
 	m_can_fire = false;
 
     m_ai = new AI(babar, &m_pos);
-
-    m_last_phase = 0;
 }
 
 Following_walking_monster::~Following_walking_monster()
@@ -98,8 +96,7 @@ void Following_walking_monster::update_speed(Babar *babar)
             m_speed.x = m_speed_def;
             break;
         case UP:
-            if ( (m_phase-m_last_phase) % 20 ) {
-                m_last_phase=m_phase-1;
+            if ( m_speed.y >= 0 ) {
                 m_speed.y -= 70;
             }
             break;
@@ -110,14 +107,6 @@ void Following_walking_monster::update_speed(Babar *babar)
 
 
 	m_speed.y += GRAVITE;
-	/*if ( (m_pos.x<babar->position().x)&&(m_dir != RIGHT) ) {
-	    m_dir = RIGHT;
-		m_speed.x = m_speed_def;
-	}
-	if ( (m_pos.x>babar->position().x)&&(m_dir != LEFT) ) {
-	    m_dir = LEFT;
-	    m_speed.x = -m_speed_def;
-	}*/
 }
 
 

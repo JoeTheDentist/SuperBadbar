@@ -59,8 +59,6 @@ void Anim_table::init_fire(std::string anim_name)
     }
     m_nb_states = state-'0'+1;
 
-    /* --> ici si m_nb_state = 1 on peut dire que c'est juste une animation => force = 1 ? */
-
     /* allocation du tableau d'animation 2x pour les états de tir */
     m_anim = new Animation**[2*m_nb_states];
     for (int i=0;i<m_nb_states;i++) {
@@ -108,8 +106,6 @@ void Anim_table::init_nfire(std::string anim_name)
         state++;
     }
     m_nb_states = state-'0'+1;
-
-    /* --> ici si m_nb_state = 1 on peut dire que c'est juste une animation => force = 1 ? */
 
     /* allocation du tableau d'animation */
     m_anim = new Animation**[m_nb_states];
