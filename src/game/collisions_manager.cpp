@@ -48,6 +48,7 @@ void Collisions_manager::init_collisions_manager(int level) {
         }
     }
     analyser.find_string("#Statics#");
+	analyser.read_int();
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name = analyser.read_string();
 	Analyser analyser_static;

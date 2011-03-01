@@ -63,10 +63,11 @@ void Static_data::init_static_data(uint32_t lvl)
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name;
     analyser.find_string("#Statics#");
+	analyser.read_int();
+
 	static_name = analyser.read_string();
 	Rect pos;
 	Static *curr_static;
-	analyser.read_int();
 	while(static_name[0]!='!') {
 		pos.x = analyser.read_int();
 		pos.y = analyser.read_int();
