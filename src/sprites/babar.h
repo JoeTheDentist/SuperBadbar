@@ -58,8 +58,8 @@ protected:
 	bool m_ready_double_jump;           /* booléen indiquant si on peut effectuer un double saut */
 	bool m_ready_jump;                  /* idem pour le saut */
 	Weapons_armory m_weapons_armory;
-	Moving_platform *m_bind;
-	Rect m_binded_pos;
+	Moving_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
+	Rect m_binded_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
 	bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
 
 	/**

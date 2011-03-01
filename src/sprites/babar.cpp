@@ -150,7 +150,7 @@ void Babar::binded_update_pos(Moving_platform *platform)
 	m_pos.x = plat_pos.x;
 	m_pos.y = plat_pos.y;
 	/* update de  m_binded_pos */
-	uint32_t coll;
+	uint32_t coll, coll2;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		coll = platform->down_collision_type(m_binded_pos);
@@ -233,7 +233,7 @@ void Babar::update_state()
 		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))) {
 			unbind_phase++;
 			if (unbind_phase == 3) {
-//~ 				unbind();
+				unbind();
 				unbind_phase = 0;
 			}
 		} else {
@@ -280,9 +280,6 @@ void Babar::update_state()
     }
 
 /* A REFAIRE */
-	if (binded() && m_keyboard->key_down(k_jump)) {
-		unbind();
-	}
     if (can_jump())
 		jump();
 
@@ -375,6 +372,7 @@ void Babar::jump()
 	}
 	if (m_keyboard->time_pressed(k_jump) == 1)
 		prepare_sound(BABAR_SOUNDS_R + "jump" + SOUNDS_EXT);
+	unbind();
 }
 
 bool Babar::can_double_jump() const
@@ -394,27 +392,48 @@ void Babar::double_jump()
 
 bool Babar::can_go_down() const
 {
+	Collisions_matrix *plop;
+	Rect pos;
+	if (m_bind) {
+		plop = m_bind;
+		pos = m_binded_pos;
+	} else {
+		plop = gCollision;
+		pos = m_pos;
+	}
 	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down)
                 && (m_state == STATIC || m_state == WALK || m_state == CROUCH)
-				&& Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)))
-				&& !gCollision->double_collision(m_pos);
+				&& Collisions_manager::is_down_coll(plop->down_collision_type(pos)))
+				&& !plop->double_collision(pos);
 }
 
 void Babar::go_down()
 {
 	m_pos.y += 2*BOX_SIZE;
 	m_speed.y += BOX_SIZE;
-	while (Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos))){
-		if (gCollision->double_collision(m_pos)) {
-			m_pos.y -= BOX_SIZE;
-			break;
+	if (m_bind) {
+		while (Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))){
+			if (m_bind->double_collision(m_binded_pos)) {
+				m_binded_pos.y -= BOX_SIZE;
+				break;
+			}
+			else {
+				m_binded_pos.y += BOX_SIZE;
+			}
 		}
-		else {
-			m_pos.y += BOX_SIZE;
+	} else {
+		while (Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos))){
+			if (gCollision->double_collision(m_pos)) {
+				m_pos.y -= BOX_SIZE;
+				break;
+			}
+			else {
+				m_pos.y += BOX_SIZE;
+			}
 		}
-	}
+	}		
 //~ 	m_keyboard->disable_key(k_jump);
-	PRINT_TRACE(2, "Descente d'une plateforme")
+	PRINT_TRACE(1, "Descente d'une plateforme")
 }
 
 void Babar::damage(int damages)
@@ -490,7 +509,9 @@ void Babar::bind(Moving_platform *platform)
 void Babar::unbind()
 {
 	PRINT_DEBUG(1, "ooooo");
-	m_bind->unbind();
-	m_bind = NULL;
+	if (m_bind) {
+		m_bind->unbind();
+		m_bind = NULL;
+	}
 
 }
