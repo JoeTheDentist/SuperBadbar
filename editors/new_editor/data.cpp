@@ -130,6 +130,7 @@ void Data::saveData(QString fileName)
 	out << endl;
 	// sauvegarde des statics  
 	out << "#Statics#" << endl;
+	out << m_static_items.size() << endl;	
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++)
 		(*it)->saveItem(out);
 	out << "!" << endl;

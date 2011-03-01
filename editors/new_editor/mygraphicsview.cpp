@@ -71,12 +71,12 @@ void MyGraphicsView::loadFile(QString fileName)
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
 	newFile(QString::fromStdString(analyser.read_string()));
-//~ 	analyser.find_string("#Babar#");
-//~ 	x = analyser.read_int();
-//~ 	y = analyser.read_int();
-//~ 	age = analyser.read_int();
-//~ 	m_babar_item->getItem()->setPos(x, y);
-//~ 	m_babar_item->setBabarAge(age);
+	analyser.find_string("#Babar#");
+	x = analyser.read_int();
+	y = analyser.read_int();
+	age = analyser.read_int();
+	m_babar_item->getItem()->setPos(x, y);
+	m_babar_item->setBabarAge(age);
 	analyser.find_string("#Statics#");
 	int nbStatics = analyser.read_int();
 	QString nameStatic;
