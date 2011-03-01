@@ -86,6 +86,10 @@ void MainWindow::createActions()
 	m_saveAsAct->setStatusTip(tr("Save as"));
 	connect(m_saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));	
 		
+	m_addBabar = new QAction(QIcon("images/addbabar.png"),tr("addBabar"), this); 
+	m_addBabar->setStatusTip(tr("Change the Babar's start position"));
+	connect(m_addBabar, SIGNAL(triggered()), this, SLOT(addBabar()));	
+		
 	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
@@ -111,6 +115,7 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_saveAsAct);
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
+	m_editMenu->addAction(m_addBabar);
 	m_editMenu->addAction(m_addStatic);
 	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_deleteItem);
@@ -126,6 +131,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_openAct);
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
+	m_fileToolBar->addAction(m_addBabar);
 	m_fileToolBar->addAction(m_addStatic);
 	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_deleteItem);
@@ -219,11 +225,17 @@ void MainWindow::aboutBabarEditor()
 		<a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
 }
 
+void MainWindow::addBabar()
+{
+	m_graphic_view->addBabar();
+}
+
 void MainWindow::addStatic()
 {
 	if (m_opened_file)
 		m_graphic_view->addStatic();
 }
+
 void MainWindow::addMonster()
 {
 	if (m_opened_file)

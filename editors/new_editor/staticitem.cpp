@@ -5,9 +5,9 @@
 #include <QGraphicsScene>
 #include <QInputDialog>
 
-StaticItem::StaticItem(QGraphicsPixmapItem *item, QString fileName):
+StaticItem::StaticItem(QGraphicsPixmapItem *item, QString fileName, int buffer):
 	MyItem(item, fileName),
-	m_zbuffer(0)
+	m_zbuffer(buffer)
 {
 	
 }
@@ -20,15 +20,16 @@ StaticItem::~StaticItem()
 MyItem *StaticItem::duplicate()
 {
 	QPixmap image(m_item->pixmap());
-	MyItem *item = new StaticItem(m_item->scene()->addPixmap(image), m_file_name);
+	StaticItem *item = new StaticItem(m_item->scene()->addPixmap(image), m_file_name);
 	item->getItem()->setVisible(false);
+	item->m_zbuffer = m_zbuffer;
 	return item;	
 }
 
 
 void StaticItem::saveItem(QTextStream &out)
 {
-	out << m_file_name << " " << m_item->x() << " " << m_item->y() << " " << 0 << endl;
+	out << m_file_name << " " << m_item->x() << " " << m_item->y() << " " << m_zbuffer << endl;
 }
 
 void StaticItem::addToData(Data *data)

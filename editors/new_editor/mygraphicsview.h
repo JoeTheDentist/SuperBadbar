@@ -2,6 +2,7 @@
 #define _EDITOR_MY_GRAPHICS_VIEW_
 #include <QGraphicsView>
 #include "paths.h"
+#include "babaritem.h"
 
 #define CURS_BOX 0
 #define CURS_LINE 1
@@ -113,6 +114,14 @@ class MyGraphicsView : public QGraphicsView {
 	void save(QString str);
 	
 	
+	
+	/*!
+	*	@brief Fonction d'ajout de la position de babar
+	*/
+	void addBabar();
+
+	
+	
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
@@ -151,6 +160,7 @@ class MyGraphicsView : public QGraphicsView {
 	qreal m_ysize; // hauteur en pixel du niveau
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
+	BabarItem *m_babar_item; // l'item correspondant à la position actuelle de babar
 	MyItem *m_curr_item; // l'item en cours d'ajout
 	MyItem *m_selected_item; // l'item selectionne
 	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)

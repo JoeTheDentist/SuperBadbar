@@ -9,6 +9,7 @@ class MyItem;
 
 class Data {
 	private:
+	MyItem *m_babar_item;
 	std::list<MyItem *> m_static_items;
 	std::list<MyItem *> m_monsters_items;
 	QString m_background_name;
@@ -65,6 +66,15 @@ class Data {
 	*	Cette méthode ne sera a priori appelée que par les items
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
 	*/
+	void addBabarItem(MyItem *item);
+	
+	/*!
+	*	@brief Ajoute un item a la liste des staticItem
+	*	@param item L'item a ajouter
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
+	*/
 	void addStaticItem(MyItem *item);
 		
 	/*!
@@ -76,7 +86,6 @@ class Data {
 	*/
 	void addMonsterItem(MyItem *item);
 	
-	
 	/*!
 	*	@brief Cherche le premier item contenant le pixel (x,y) et le retourne
 	*	@param x L'abscisse du pixel
@@ -86,6 +95,8 @@ class Data {
 	*	Les monstres sont prioritaires sur les statics si plusieurs items se superposent
 	*/
 	MyItem *selectItem(int x, int y);
+	
+	MyItem *selectBabar();
 	
 	void upInStack(MyItem *item);
 	

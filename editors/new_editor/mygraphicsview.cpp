@@ -2,6 +2,7 @@
 #include "mygraphicsview.h"
 #include "myitem.h"
 #include "data.h"
+#include "babaritem.h"
 #include "staticitem.h"
 #include "monsteritem.h"
 #include "analyser.h"
@@ -26,6 +27,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_opened(false),
 	m_mouse_pressed(false),
 	m_ctrl_pressed(false),
+	m_babar_item(NULL),
 	m_curr_item(NULL),
 	m_selected_item(NULL),
 	m_moved_item(NULL),
@@ -52,18 +54,29 @@ void MyGraphicsView::newFile(QString backgroundName)
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
 	m_opened = true;
+	QPixmap babarpix;
+	babarpix.load(QString(BABAR_PIC_DIR) + "1/babar_0_0_0.png");
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(babarpix);
+	m_babar_item = new BabarItem(item);
+	m_data->addItem(m_babar_item);
 }
 
 void MyGraphicsView::loadFile(QString fileName)
 {
 	Analyser analyser;
 	QPixmap image;
-	int x, y;
+	int x, y, zbuffer, age;
 	QGraphicsPixmapItem *item = NULL;
 	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
 	newFile(QString::fromStdString(analyser.read_string()));
+//~ 	analyser.find_string("#Babar#");
+//~ 	x = analyser.read_int();
+//~ 	y = analyser.read_int();
+//~ 	age = analyser.read_int();
+//~ 	m_babar_item->getItem()->setPos(x, y);
+//~ 	m_babar_item->setBabarAge(age);
 	analyser.find_string("#Statics#");
 	int nbStatics = analyser.read_int();
 	QString nameStatic;
@@ -74,9 +87,9 @@ void MyGraphicsView::loadFile(QString fileName)
 		std::cout << nameStatic.toStdString() << std::endl;
 		x = analyser.read_int();
 		y = analyser.read_int();
+		zbuffer = analyser.read_int();
 		item->setPos(x, y);
-		m_data->addItem(new StaticItem(item, nameStatic));
-		analyser.read_int(); // TODO: champ a revoir
+		m_data->addItem(new StaticItem(item, nameStatic, zbuffer));
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
@@ -241,7 +254,10 @@ void MyGraphicsView::save(QString str)
 	m_data->saveData(str);
 }
 
-
+void MyGraphicsView::addBabar()
+{
+	m_curr_item = m_data->selectBabar();
+}
 
 void MyGraphicsView::addStatic()
 {
@@ -312,7 +328,7 @@ void MyGraphicsView::deSelectItem()
 
 void MyGraphicsView::deleteFromEditor(MyItem *item)
 {
-	if (item) {
+	if (item && item != m_babar_item) {
 		this->scene()->removeItem(item->getItem());
 		m_data->removeItem(item);
 	}	

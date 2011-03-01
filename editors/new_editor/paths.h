@@ -6,7 +6,7 @@
 #define BACKGROUND_DIR "../../pic/backgrounds/"
 #define MONSTERS_DIR "../../data/monsters/"
 #define MONSTERS_PIC_DIR "../../pic/monsters/"
-
+#define BABAR_PIC_DIR "../../pic/babar/"
 
 // dimensions de la camera du jeu (utiles pour calculer 
 // du niveau en fonction de la taille du background)

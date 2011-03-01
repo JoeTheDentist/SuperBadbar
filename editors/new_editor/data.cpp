@@ -7,6 +7,7 @@
 #include "paths.h"
 
 Data::Data():
+	m_babar_item(NULL),
 	m_static_items(),
 	m_monsters_items(),
 	m_background_name(""),
@@ -47,11 +48,18 @@ void Data::addItem(MyItem *item)
 	item->addToData(this);
 }
 
+void Data::addBabarItem(MyItem *item)
+{
+	m_babar_item = item;
+	item->getItem()->setZValue(BABAR_ZBUFFER);	
+}
+
 void Data::addStaticItem(MyItem *item)
 {
 	m_static_items.push_front(item);
 	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
+
 void Data::addMonsterItem(MyItem *item)
 {
 	m_monsters_items.push_front(item);
@@ -62,6 +70,11 @@ MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;
 	QGraphicsPixmapItem *item;
+	item = m_babar_item->getItem();
+	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
+		return m_babar_item;	
+	}
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
 		item = (*it)->getItem();
 		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
@@ -77,6 +90,11 @@ MyItem *Data::selectItem(int x, int y)
 		}
 	}
 	return NULL;
+}
+
+MyItem *Data::selectBabar()
+{
+	return m_babar_item;
 }
 
 void Data::upInStack(MyItem *item) 
@@ -108,9 +126,7 @@ void Data::saveData(QString fileName)
 	out << endl;
 	// sauvegarde de la position de départ de babar 
 	out << "#Babar#" << endl;
-	out << 300 << endl; // 
-	out << 300 << endl;
-	out << 1 << endl;
+	m_babar_item->saveItem(out);
 	out << endl;
 	// sauvegarde des statics  
 	out << "#Statics#" << endl;
@@ -136,6 +152,13 @@ void Data::removeItem(MyItem *item)
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {	
 		if (item == (*it)) {
 			m_static_items.erase(it);
+			return;
+		}
+	}
+	
+	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {	
+		if (item == (*it)) {
+			m_monsters_items.erase(it);
 			return;
 		}
 	}

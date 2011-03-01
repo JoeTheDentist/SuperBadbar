@@ -13,7 +13,7 @@ class StaticItem: public MyItem {
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-	StaticItem(QGraphicsPixmapItem *item, QString fileName);
+	StaticItem(QGraphicsPixmapItem *item, QString fileName, int buffer = 0);
 	
 	/*!
 	*	@brief Destructeur
