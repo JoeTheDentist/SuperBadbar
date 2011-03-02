@@ -125,7 +125,7 @@ public:
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
 	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
-	void display_picture(Surface *surf, Rect *pos) const;
+	void display_picture(Surface *surf, Rect *pos, bool fixe=false) const;
 	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé à la rendre const...*/
 
 	/*!

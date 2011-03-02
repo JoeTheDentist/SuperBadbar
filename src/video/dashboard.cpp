@@ -72,12 +72,12 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	if (lifes < 0)
 		return;
 	for (int i = 0; i < lifes; i++) {
-		camera->display_picture(m_heart, &m_lifes_pos);
+		camera->display_picture(m_heart, &m_lifes_pos, true);
 		m_lifes_pos.x += 30;
 	}
 	m_lifes_pos.x -= lifes * 30;
 
-	camera->display_picture(m_weapons_pictures[gBabar->type_of_weapon()], &m_weapons_pos);
+	camera->display_picture(m_weapons_pictures[gBabar->type_of_weapon()], &m_weapons_pos, true);
 	Rect pos_munitions;
 	SDL_Surface *munitions_pictures = NULL;
 	char munitions[5];

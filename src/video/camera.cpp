@@ -13,24 +13,31 @@
 	position_target.y = pos_temp.y;
 	position_target.h = pos_temp.h;
 	position_target.w = pos_temp.w;	m_frame.x = position_target.x + (position_target.w / 2) - (m_frame.w / 2);	m_frame.x += m_decalage.x;	m_frame.y = position_target.y + (position_target.h / 2) - (m_frame.h / 2);	m_frame.y += m_decalage.y;	if (m_frame.x < 0)		m_frame.x = 0;	if (m_frame.y < 0)		m_frame.y = 0;	if ((uint32_t) (m_frame.x + m_frame.w) > gStatic->static_data_weight())		m_frame.x = gStatic->static_data_weight() - m_frame.w;	if ((uint32_t) (m_frame.y + m_frame.h) > gStatic->static_data_height())		m_frame.y = gStatic->static_data_height() - m_frame.h;}
-void Camera::display_background(Surface *background){	Rect pos;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	display_picture(background, &pos);}void Camera::display(Displayable * const entity) const{	Surface *picture = entity->current_picture();	if (picture != NULL) {		Rect pos = entity->position();		pos.x -= m_frame.x;		pos.y -= m_frame.y;		display_picture(picture, &pos);	}}
+void Camera::display_background(Surface *background){	Rect pos;	pos.x = - m_frame.x  * BACKGROUND_SPEED;	pos.y = - m_frame.y * BACKGROUND_SPEED;	display_picture(background, &pos, true);}void Camera::display(Displayable * const entity) const{	Surface *picture = entity->current_picture();	if (picture != NULL) {		Rect pos = entity->position();		display_picture(picture, &pos);	}}
 void Camera::display_events(Events_manager * const event_manager) const{	event_manager->display_events(this);}
 void Camera::display_event(Event *event) const{	Surface *picture = event->current_picture();	if (picture != NULL) {
-		Rect pos_event = event->current_pos();		pos_event.x -= m_frame.x;		pos_event.y -= m_frame.y;		display_picture(picture, &pos_event);	}}Rect Camera::frame() const{
+		Rect pos_event = event->current_pos();		display_picture(picture, &pos_event);	}}Rect Camera::frame() const{
     Rect pos_temp;
     pos_temp.x = m_frame.x;
     pos_temp.y = m_frame.y;
     pos_temp.h = m_frame.h;
-    pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(Surface *surf, Rect *pos) const{
-    SDL_Rect * pos_sdl = new SDL_Rect;
-    pos_sdl->x = (int)pos->x;
-    pos_sdl->y = (int)pos->y;
-    pos_sdl->h = (unsigned int)pos->h;
-    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);	delete pos_sdl;}
+    pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const{
+    if ( fixe ) {
+        SDL_Rect * pos_sdl = new SDL_Rect;
+        pos_sdl->x = (int)pos->x;
+        pos_sdl->y = (int)pos->y;
+        pos_sdl->h = (unsigned int)pos->h;
+        pos_sdl->w = (unsigned int)pos->w;        SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);        delete pos_sdl;
+    } else {
+        Rect curr = *pos;
+        curr.x -= m_frame.x;
+		curr.y -= m_frame.y;
+		display_picture(surf, &curr, true);
+    }}
 void Camera::display_picture(SDL_Surface *surf, Rect *pos){
     SDL_Rect * pos_sdl = new SDL_Rect;
     pos_sdl->x = (int)pos->x;
     pos_sdl->y = (int)pos->y;
     pos_sdl->h = (unsigned int)pos->h;
-    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf, NULL, m_screen, pos_sdl);	delete pos_sdl;}
+    pos_sdl->w = (unsigned int)pos->w;	SDL_BlitSurface(surf, NULL, m_screen, pos_sdl);	delete pos_sdl;}
 void Camera::flip_camera(){	SDL_Flip(m_screen);}

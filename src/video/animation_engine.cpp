@@ -56,11 +56,7 @@ void Animation_engine::display_anims(Camera * camera)
 {
     std::list<anim_pos>::iterator it;
 	for (it = m_anims.begin(); it != m_anims.end(); it++) {
-	    Static * s = new Static((*it).anim->curr_pic(),*(*it).pos);
-	    /* serait mieux... mais marche pas */
-	    /*camera->display_picture( (*it).anim->curr_pic(), (*it).pos);*/
-	    camera->display(s);
-	    delete s;
+	    camera->display_picture( (*it).anim->curr_pic(), (*it).pos);
 	}
 }
 
