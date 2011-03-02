@@ -34,6 +34,8 @@ public:
 	*/
 	Surface(std::string filename);
 
+	Surface(Surface * s);
+
 	/*!
 	*	@brief Destructeur
 	*/
