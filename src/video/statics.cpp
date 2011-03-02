@@ -27,6 +27,13 @@ Static::Static(std::string dir_image, Rect pos): m_image(new Surface(dir_image))
     m_pos = pos;
 }
 
+Static::Static(Surface * img, Rect pos)
+{
+	PRINT_CONSTR(3, "Construction d'un Static")
+	m_image = img;
+    m_pos = pos;
+}
+
 
 Static::~Static()
 {

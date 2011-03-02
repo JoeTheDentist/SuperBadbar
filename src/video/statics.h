@@ -31,7 +31,7 @@ class Static: public Displayable
 	/**
 	 * 	@brief Constructeur
 	 */
-        Static();
+    Static();
 
 	/**
 	 * 	@brief Constructeur
@@ -39,25 +39,26 @@ class Static: public Displayable
 	 *	@param pos La position du static
 	 *	@todo Utiliser le gestionnaire d'image!
 	 */
-        Static(std::string dir_image, Rect pos);
+    Static(std::string dir_image, Rect pos);
 
+    Static(Surface * img, Rect pos);
 
 	/**
 	 * 	@brief
 	 */
-        ~Static();
+    ~Static();
 
 	/**
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers l'image du static
 	 */
-		Surface * current_picture() const;
+    Surface * current_picture() const;
 
 	/**
 	 * 	@brief Accesseur
 	 *	@return La position du static
 	 */
-        Rect position() const;
+    Rect position() const;
 };
 
 #endif // STATICS_H_INCLUDED

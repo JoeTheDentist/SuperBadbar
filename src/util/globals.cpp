@@ -8,6 +8,7 @@ Static_data * gStatic;
 Projectiles_manager * gProj;
 Events_manager * gEvent;
 Babar * gBabar;
+Animation_engine * gAnims;
 
 
 double dist(Rect A, Rect B)

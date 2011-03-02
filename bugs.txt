@@ -2,6 +2,5 @@
 ## Liste des bugs actuels ##
 ############################
 
-- Maphyar n'est pas affiché... ???
 - Segfault lorsque des balles du shotgun sortent du niveau
 - Si on tombe de la plateforme sans sauter

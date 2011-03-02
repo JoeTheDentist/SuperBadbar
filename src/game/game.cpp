@@ -26,6 +26,7 @@
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
 #include "../events/events_manager.h"
+#include "../video/animation_engine.h"
 
 
 
@@ -43,6 +44,10 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 	m_previous_time = SDL_GetTicks();
 
 	gSound = new Sound_engine();
+
+	gAnims = new Animation_engine();
+	Rect pos;
+	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000);
 }
 
 Game::~Game()
@@ -54,6 +59,7 @@ Game::~Game()
 	delete m_graphic_engine;
 	delete gSound;
     delete gStatic;
+    delete gAnims;
 }
 
 void Game::update_keyboard()
@@ -94,6 +100,9 @@ void Game::update_graphic()
 
 	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
 	gStatic->display_statics_back(camera);
+
+	/* affichage des animations */
+	gAnims->display_anims(camera);
 
 	/* affichage des événements */
 	m_game_engine->display_events(camera);

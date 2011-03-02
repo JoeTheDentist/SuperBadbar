@@ -38,6 +38,7 @@ class Static_data;
 class Projectiles_manager;
 class Events_manager;
 class Babar;
+class Animation_engine;
 
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
@@ -45,6 +46,7 @@ extern Static_data * gStatic;
 extern Projectiles_manager * gProj;
 extern Events_manager * gEvent;
 extern Babar * gBabar;
+extern Animation_engine * gAnims;
 
 double dist(Rect A, Rect B);
 
