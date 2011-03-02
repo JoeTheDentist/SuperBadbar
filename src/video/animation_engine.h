@@ -11,7 +11,6 @@
 #define _ANIMATION_ENGINE_
 
 #include <map>
-#include <list>
 
 #include "../video/surface.h"
 #include "../video/animation.h"
@@ -19,7 +18,7 @@
 
 
 struct anim_pos {
-    Rect pos;
+    Rect * pos;
     Animation * anim;
 };
 

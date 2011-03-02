@@ -15,13 +15,16 @@ Animation_engine::~Animation_engine()
     std::list<anim_pos>::iterator it;
 	for (it = m_anims.begin(); it != m_anims.end(); it++) {
         delete (*it).anim;
+        delete (*it).pos;
 	}
 }
 
 void Animation_engine::add(std::string pic, Rect pos)
 {
     anim_pos a;
-    a.pos = pos;
+    a.pos = new Rect;
+    a.pos->x = pos.x;
+    a.pos->y = pos.y;
 
     /* création de l'animation */
     char k;
@@ -35,6 +38,7 @@ void Animation_engine::add(std::string pic, Rect pos)
 
     /* creation de l'animation */
     a.anim = new Animation(link,k-'0',false);
+    a.anim->set_rect(*a.pos);
     delete[] link;
 
     m_anims.push_front(a);
@@ -52,8 +56,7 @@ void Animation_engine::display_anims(Camera * camera)
 {
     std::list<anim_pos>::iterator it;
 	for (it = m_anims.begin(); it != m_anims.end(); it++) {
-	    Surface * s = ((*it).anim)->curr_pic();
-	    camera->display_picture(s, &((*it).pos));
+	    camera->display_picture( (*it).anim->curr_pic(), (*it).pos);
 	}
 }
 

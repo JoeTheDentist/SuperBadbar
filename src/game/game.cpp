@@ -46,7 +46,6 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 	gSound = new Sound_engine();
 
 	gAnims = new Animation_engine();
-	Rect pos;
 	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000);
 }
 

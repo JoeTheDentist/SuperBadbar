@@ -20,8 +20,8 @@
 #include "AI/AI.h"
 
 #ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+    #include "../lib/SDL/include/SDL/SDL.h"
+    #include "../lib/SDL/include/SDL/SDL_ttf.h"
 
 #else
     #include <SDL/SDL.h>
@@ -37,16 +37,16 @@ void init_libraries()
 	freopen("CON", "w", stderr);
 	#endif
 	srand(time(NULL));
-	PRINT_TRACE(1, "Initialisation de FMOD")		
+	PRINT_TRACE(1, "Initialisation de FMOD")
 	FSOUND_Init(44100, 32, 0);
-	PRINT_TRACE(1, "Initialisation de SDL")	
+	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
 	}
 	PRINT_TRACE(1, "Initialisation de TTF")
 	if (TTF_Init() == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
-	}	
+	}
 }
 
 void close_libraries()
@@ -56,7 +56,7 @@ void close_libraries()
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de SDL")
 	SDL_Quit();
-	PRINT_TRACE(1, "Fermeture de FMOD")	
+	PRINT_TRACE(1, "Fermeture de FMOD")
 	FSOUND_Close();
 }
 
