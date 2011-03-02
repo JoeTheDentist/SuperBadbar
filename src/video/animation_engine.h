@@ -10,8 +10,8 @@
 #ifndef _ANIMATION_ENGINE_
 #define _ANIMATION_ENGINE_
 
-#include <map.h>
-#include <list.h>
+#include <map>
+#include <list>
 
 #include "../video/surface.h"
 #include "../video/animation.h"

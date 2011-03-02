@@ -21,13 +21,6 @@ Graphic_engine::Graphic_engine()
 {
 	PRINT_CONSTR(1, "Construction de Graphic_engine")
 	PRINT_TRACE(1, "Initialisation de SDL")
-	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
-	}
-	PRINT_TRACE(1, "Initialisation de TTF")
-	if (TTF_Init() == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
-	}
 	m_camera = new Camera();
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
@@ -42,10 +35,6 @@ Graphic_engine::~Graphic_engine()
 	delete m_talks;
 	delete m_dashboard;
 	delete m_pictures_container;
-	PRINT_TRACE(1, "Fermeture de TTF")
-	TTF_Quit();
-	PRINT_TRACE(1, "Fermeture de SDL")
-	SDL_Quit();
 }
 
 void Graphic_engine::init_graphic_engine()
