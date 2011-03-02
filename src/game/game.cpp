@@ -43,7 +43,6 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 
-	gSound = new Sound_engine();
 
 	gAnims = new Animation_engine();
 	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000);
@@ -56,7 +55,6 @@ Game::~Game()
 	delete m_keyboard;
 	delete m_game_engine;
 	delete m_graphic_engine;
-	delete gSound;
     delete gStatic;
     delete gAnims;
 }

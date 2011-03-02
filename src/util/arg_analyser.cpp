@@ -17,6 +17,7 @@
 	m_arg_error = false;
 	m_record_on = false;
 	m_replay_on = false;
+	m_menu = false;
 	std::string str;
 	for (int i = 1; i < argc; i++) {
 		str = argv[i];
@@ -33,6 +34,8 @@
 				i = i + 1;
 				m_input_file = argv[i];
 			}
+		} else if (str == "-menu") {
+			m_menu = true;
 		}
 	}
 }
@@ -53,6 +56,10 @@ bool Arg_Analyser::record_on()
 bool Arg_Analyser::replay_on()
 {
 	return m_replay_on;
+}
+bool Arg_Analyser::menu_on()
+{
+	return m_menu;
 }
 std::string Arg_Analyser::input_file()
 {

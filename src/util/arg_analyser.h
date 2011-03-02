@@ -26,12 +26,14 @@ public:
 	bool arg_error();
 	bool record_on();
 	bool replay_on();
+	bool menu_on();
 	std::string input_file();
 	std::string output_file();
 private:
 	bool m_arg_error;
 	bool m_record_on;
 	bool m_replay_on;
+	bool m_menu;
 	std::string m_input_file;
 	std::string m_output_file;
 	
