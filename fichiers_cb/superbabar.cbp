@@ -67,6 +67,8 @@
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />
 		<Unit filename="..\src\game\game_engine.h" />
+		<Unit filename="..\src\game\game_initializer.cpp" />
+		<Unit filename="..\src\game\game_initializer.h" />
 		<Unit filename="..\src\game\moving_platform.cpp" />
 		<Unit filename="..\src\game\moving_platform.h" />
 		<Unit filename="..\src\game\static_data.cpp" />
@@ -82,6 +84,8 @@
 		<Unit filename="..\src\items\weapons_armory.cpp" />
 		<Unit filename="..\src\items\weapons_armory.h" />
 		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\menus\main_menu.cpp" />
+		<Unit filename="..\src\menus\main_menu.h" />
 		<Unit filename="..\src\sound\sonorisable.cpp" />
 		<Unit filename="..\src\sound\sonorisable.h" />
 		<Unit filename="..\src\sound\sound.cpp" />

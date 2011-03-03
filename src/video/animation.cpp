@@ -55,7 +55,7 @@ Surface * Animation::curr_pic()
             m_curr%=m_size;
         }
 
-        if ( m_type == ENDED && ( m_curr == 0 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
+        if ( m_type != CYCLE && ( m_curr == 0 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
             m_finished = true;
         }
     }
@@ -64,7 +64,12 @@ Surface * Animation::curr_pic()
 
 bool Animation::interruptable()
 {
-    return m_finished;
+    return (m_type != NOEND) && m_finished;
+}
+
+bool Animation::deletable()
+{
+    return (m_type == ENDED) && m_finished;
 }
 
 void Animation::set_rect(Rect &pos)

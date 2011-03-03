@@ -19,7 +19,7 @@ class Surface;
 
 /* Cyclique, à supprimer à la fin, à laisser sur la dernière image */
 enum anim_type {
-    CYCLE, ENDED, NONEND
+    CYCLE, ENDED, NOEND
 };
 
 /**
@@ -61,6 +61,7 @@ public:
     * @return l'image de l'animation a afficher.
     */
     Surface * curr_pic();
+
     /*!
     * @brief si on peut interrompre l'animation.
     *
@@ -68,6 +69,12 @@ public:
     */
     bool interruptable();
 
+    /*!
+    * @brief si on peut supprimer l'animation.
+    *
+    * @return booleen, true si on peut la suppr.
+    */
+    bool deletable();
 
     /**
      *  @brief Set hauteur et largeur en fonction de l'image courante

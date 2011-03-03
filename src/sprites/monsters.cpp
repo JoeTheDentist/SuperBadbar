@@ -14,6 +14,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../video/surface.h"
+#include "../video/animation_engine.h"
 #include "babar.h"
 
 
@@ -77,5 +78,9 @@ void Monster::damage(uint32_t damage)
 
 bool Monster::dead() const
 {
-    return (m_life <= 0);
+    if ( m_life <= 0 ) {
+        gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);
+        return true;
+    }
+    return false;
 }

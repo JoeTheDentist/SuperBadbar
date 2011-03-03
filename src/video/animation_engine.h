@@ -18,24 +18,27 @@
 
 
 struct anim_pos {
-    Rect * pos;
+    Rect pos;
     Animation * anim;
+    Rect speed;
+    bool falling;
 };
 
 class Animation_engine {
 	private:
         /* listes des noms des animations à jouer */
         std::list<anim_pos> m_anims;
+        int m_phase;
 
 	public:
         Animation_engine();
         ~Animation_engine();
-        void add(std::string pic, Rect pos, anim_type type);
-        void add(std::string pic, int x, int y, anim_type type);
+        void add(std::string pic, Rect pos, anim_type type, bool falling);
+        void add(std::string pic, Rect pos, anim_type type, Rect speed, bool falling);
+        void add(std::string pic, int x, int y);
+        void add(std::string pic, int x, int y, anim_type type, int sx, int sy, bool falling);
         void display_anims(Camera * camera);
 
-        /* TODO, virer les anim out of date
-        TODO faire les animations qui sont finies à laisser et les autres */
         void update();
 };
 

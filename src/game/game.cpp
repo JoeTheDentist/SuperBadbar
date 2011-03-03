@@ -45,7 +45,7 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 
 
 	gAnims = new Animation_engine();
-	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, ENDED);
+	/*gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, NOEND, 10, 10, true);*/
 }
 
 Game::~Game()
@@ -99,6 +99,7 @@ void Game::update_graphic()
 	gStatic->display_statics_back(camera);
 
 	/* affichage des animations */
+	gAnims->update();
 	gAnims->display_anims(camera);
 
 	/* affichage des événements */
