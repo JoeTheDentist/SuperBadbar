@@ -31,18 +31,20 @@
 
 
 Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
-	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), m_game_engine(new Game_engine()),
-	m_graphic_engine(new Graphic_engine())
+	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), m_game_engine(new Game_engine())
 {
+	
+	gGraphics = new Graphic_engine();
+
+
     gStatic = new Static_data();
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	gStatic->init_static_data(1);
-	m_game_engine->init_game_engine(1, m_graphic_engine->get_camera(),
-									m_keyboard, m_graphic_engine->get_pictures_container());
-	m_graphic_engine->init_graphic_engine();
-	m_time = SDL_GetTicks();
-	m_previous_time = SDL_GetTicks();
+	m_game_engine->init_game_engine(1, gGraphics->get_camera(),
+									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
+	gGraphics->init_graphic_engine();
 
+	m_previous_time = SDL_GetTicks();
 
 	gAnims = new Animation_engine();
 	/*gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, NOEND, 10, 10, true);*/
@@ -54,7 +56,7 @@ Game::~Game()
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
 	delete m_game_engine;
-	delete m_graphic_engine;
+	delete gGraphics;
     delete gStatic;
     delete gAnims;
 }
@@ -88,9 +90,9 @@ void Game::delete_dead_things()
 void Game::update_graphic()
 {
 
-	m_graphic_engine->update();
+	gGraphics->update();
 
-	Camera *camera = m_graphic_engine->get_camera();
+	Camera *camera = gGraphics->get_camera();
 	/* affichage du fond */
 	camera->update_pos();
 	camera->display_background(gStatic->background());
@@ -118,7 +120,7 @@ void Game::update_graphic()
 	gStatic->display_statics_first(camera);
 
 	/* affichage du tableau de board */
-	m_graphic_engine->draw_dashboard(gBabar->lifes(), camera);
+	gGraphics->draw_dashboard(gBabar->lifes(), camera);
 
 	/* mise à jour */
 	camera->flip_camera();

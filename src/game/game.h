@@ -24,7 +24,6 @@ class Game_engine;
 class Static_data;
 class Sound_engine;
 class Keyboard;
-class Graphic_engine;
 
 /**
  * 	@class Game
@@ -38,7 +37,6 @@ class Game {
 private:
 	Keyboard *m_keyboard;
 	Game_engine *m_game_engine;
-	Graphic_engine *m_graphic_engine;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 

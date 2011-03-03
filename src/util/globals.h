@@ -15,7 +15,7 @@
 #include "../sound/sound_engine.h"
 #include "../game/collisions_manager.h"
 #include "../game/static_data.h"
-
+#include "../video/graphic_engine.h"
 #define BOX_SIZE 5
 
 #define NO_COLL 0x0
@@ -39,6 +39,7 @@ class Projectiles_manager;
 class Events_manager;
 class Babar;
 class Animation_engine;
+class Graphic_engine;
 
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
@@ -47,6 +48,7 @@ extern Projectiles_manager * gProj;
 extern Events_manager * gEvent;
 extern Babar * gBabar;
 extern Animation_engine * gAnims;
+extern Graphic_engine *gGraphics;
 
 double dist(Rect A, Rect B);
 

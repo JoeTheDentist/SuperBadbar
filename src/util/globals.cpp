@@ -2,15 +2,15 @@
 #include <math.h>
 #include "globals.h"
 
-Sound_engine * gSound;
-Collisions_manager * gCollision;
-Static_data * gStatic;
-Projectiles_manager * gProj;
-Events_manager * gEvent;
-Babar * gBabar;
-Animation_engine * gAnims;
-
-
+Sound_engine * gSound = NULL;
+Collisions_manager * gCollision = NULL;
+Static_data * gStatic = NULL;
+Projectiles_manager * gProj = NULL;
+Events_manager * gEvent = NULL;
+Babar * gBabar = NULL;
+Animation_engine * gAnims = NULL;
+Graphic_engine *gGraphics = NULL;
+ 
 double dist(Rect A, Rect B)
 {
     Rect mA = A;
