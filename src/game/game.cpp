@@ -45,7 +45,7 @@ Game::Game(bool record_on, bool replay_on, std::string output_name, std::string 
 
 
 	gAnims = new Animation_engine();
-	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000);
+	gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, ENDED);
 }
 
 Game::~Game()

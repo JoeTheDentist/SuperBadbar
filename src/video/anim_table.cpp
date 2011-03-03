@@ -85,8 +85,8 @@ void Anim_table::init_fire(std::string anim_name)
             }
 
             /* creation de l'animation */
-            m_anim[i-'0'][j-'0'] = new Animation(link1,k1-'0',false);
-            m_anim[i-'0'+m_nb_states][j-'0'] = new Animation(link2,k2-'0',true);
+            m_anim[i-'0'][j-'0'] = new Animation(link1,k1-'0',CYCLE);
+            m_anim[i-'0'+m_nb_states][j-'0'] = new Animation(link2,k2-'0',ENDED);
 			delete[] link1;
 			delete[] link2;
         }
@@ -127,7 +127,7 @@ void Anim_table::init_nfire(std::string anim_name)
             }
 
             /* creation de l'animation */
-            m_anim[i-'0'][j-'0'] = new Animation(link,k-'0',false);
+            m_anim[i-'0'][j-'0'] = new Animation(link,k-'0',CYCLE);
 			delete[] link;
         }
     }

@@ -19,7 +19,7 @@ Animation_engine::~Animation_engine()
 	}
 }
 
-void Animation_engine::add(std::string pic, Rect pos)
+void Animation_engine::add(std::string pic, Rect pos, anim_type type)
 {
     anim_pos a;
     a.pos = new Rect;
@@ -37,19 +37,19 @@ void Animation_engine::add(std::string pic, Rect pos)
     }
 
     /* creation de l'animation */
-    a.anim = new Animation(link,k-'0',false);
+    a.anim = new Animation(link,k-'0',type);
     a.anim->set_rect(*a.pos);
     delete[] link;
 
     m_anims.push_front(a);
 }
 
-void Animation_engine::add(std::string pic, int x, int y)
+void Animation_engine::add(std::string pic, int x, int y, anim_type type)
 {
     Rect pos;
     pos.x = x;
     pos.y = y;
-    add(pic, pos);
+    add(pic, pos, type);
 }
 
 void Animation_engine::display_anims(Camera * camera)

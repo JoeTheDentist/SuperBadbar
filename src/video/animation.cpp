@@ -15,21 +15,22 @@
 #include "../video/surface.h"
 
 
-Animation::Animation(std::string * s, int size, bool force) {
+Animation::Animation(std::string * s, int size, anim_type type) {
     m_images = new Surface*[size];
     m_size = size;
     m_curr = 0;
     m_phase = 0;
-    m_force = force;
 
     for (int i=0;i<size;i++) {
         m_images[i] = new Surface(s[i]);
     }
 
-    if ( m_force ) {
-        m_finished = false;
-    } else {
+    m_type = type;
+
+    if ( type == CYCLE ) {
         m_finished = true;
+    } else {
+        m_finished = false;
     }
 }
 
@@ -47,14 +48,14 @@ Surface * Animation::curr_pic()
     m_phase%=ANIMATION_SPEED;
 
     if ( m_phase == 0 ) {
-        if ( m_force && m_finished ) {  /* si on a fini en forcé, on garde toujours la derniere image */
+        if ( m_type != CYCLE && m_finished ) {  /* si on a fini sans être en CYCLE, on garde la dernière image */
             m_curr = m_size-1;
         } else {                        /* sinon on affiche les images cycliquement */
             m_curr++;
             m_curr%=m_size;
         }
 
-        if ( m_force && ( m_curr == 0 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
+        if ( m_type == ENDED && ( m_curr == 0 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
             m_finished = true;
         }
     }

@@ -30,8 +30,8 @@ class Animation_engine {
 	public:
         Animation_engine();
         ~Animation_engine();
-        void add(std::string pic, Rect pos);
-        void add(std::string pic, int x, int y);
+        void add(std::string pic, Rect pos, anim_type type);
+        void add(std::string pic, int x, int y, anim_type type);
         void display_anims(Camera * camera);
 
         /* TODO, virer les anim out of date

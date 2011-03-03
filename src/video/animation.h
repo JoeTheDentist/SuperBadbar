@@ -17,16 +17,21 @@
 
 class Surface;
 
+/* Cyclique, à supprimer à la fin, à laisser sur la dernière image */
+enum anim_type {
+    CYCLE, ENDED, NONEND
+};
+
 /**
  * 	@class Animation
- * 	@brief
+ * 	@brief Classe animation, répresentant une succession d'images
  */
 class Animation {
 private:
     Surface ** m_images;
     int m_curr;                 /* image courante */
     int m_size;                 /* nombre d'images stockees */
-    bool m_force;               /* attente de la terminaison de l'animation */
+    anim_type m_type;           /* type de l'animation */
     bool m_finished;            /* si l'animation peut etre interrompue */
     int m_phase;                /* nombre de cycle depuis lequel l'animation a ete cree */
 
@@ -43,7 +48,7 @@ public:
 	* @param force si on doit attendre la terminaison
 	*
 	*/
-    Animation(std::string * s, int size, bool force);
+    Animation(std::string * s, int size, anim_type type);
 
     /*!
 	* @brief Destructeur

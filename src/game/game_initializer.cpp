@@ -4,7 +4,7 @@
 #ifdef WIN32
     #include "../../lib/SDL/include/SDL/SDL.h"
     #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-    #include "../../../lib/fmodapi375win/api/inc/fmod.h"
+    #include "../../lib/fmodapi375win/api/inc/fmod.h"
 #else
     #include <SDL/SDL.h>
     #include <SDL/SDL_ttf.h>
@@ -13,7 +13,7 @@
 #include "../util/globals.h"
 
 bool Game_initializer::init_game()
-{	
+{
 	// chargement des librairies
 	#ifdef WIN32
 	freopen("CON", "w", stdout);
@@ -39,7 +39,7 @@ bool Game_initializer::init_game()
 }
 
 bool Game_initializer::close_game()
-{	
+{
 	delete gSound;
 	PRINT_TRACE(1, "Fermeture de TTF")
 	TTF_Quit();
