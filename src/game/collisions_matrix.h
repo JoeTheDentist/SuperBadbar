@@ -156,6 +156,9 @@ public:
 	 * 	@return l'assertion
 	*/
 	bool can_fall(Rect pos);
+
+
+	void update_pos( Rect &pos, Rect &speed );
 };
 
 

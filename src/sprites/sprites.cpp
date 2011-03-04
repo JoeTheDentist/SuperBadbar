@@ -46,54 +46,8 @@ Surface *Sprite::current_picture()  const
 void Sprite::update_pos()
 {
 	m_phase++;
-	uint32_t coll;
-	/* cas où le sprite descend */
-	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = gCollision->down_collision_type(m_pos);
-		if (Collisions_manager::is_down_coll(coll)){
-			speed_y = 0;
-			m_speed.y = 0;
-			/*if (m_state == JUMP)
-				m_state = STATIC;*/
-		}
-		else {
-			m_pos.y += BOX_SIZE;
-			if (m_pos.y + m_pos.h > (int32_t)gStatic->static_data_height())
-				m_pos.y = gStatic->static_data_height() - m_pos.h;
-		}
-	}
-	/* cas où le sprite monte */
-	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos))){
-			speed_y = 0;
-			m_speed.y = 0;
-		}
-		else {
-			if (m_pos.y < 0)
-				m_pos.y = 0;
-			m_pos.y -= BOX_SIZE;
-		}
-	}
-	/* cas où le sprite va à droite */
-	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-			m_pos.y -= 	BOX_SIZE;
-			if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)))
-				m_pos.y += BOX_SIZE;
-			m_pos.x += BOX_SIZE;
-			if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
-				m_pos.x = gStatic->static_data_weight() - m_pos.w;
-	}
-	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			m_pos.y -= 	BOX_SIZE;
-			if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)))
-				m_pos.y += BOX_SIZE;
-			m_pos.x -= BOX_SIZE;
-			if (m_pos.x < 0)
-				m_pos.x = 0;
-	}
 
-
+	gCollision->update_pos(m_pos, m_speed);
 }
 
 
