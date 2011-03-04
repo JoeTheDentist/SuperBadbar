@@ -49,7 +49,7 @@ void Analyser::close()
 	m_opened = false;
 }
 
-void Analyser::find_string(std::string str)
+bool Analyser::find_string(std::string str)
 {
 	uint32_t char_found = 0;
 	uint32_t size = str.size();
@@ -62,6 +62,7 @@ void Analyser::find_string(std::string str)
 		else
 			char_found = 0;
 	}
+	return char_found == size;
 
 }
 

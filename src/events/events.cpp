@@ -27,10 +27,11 @@ Event::Event(std::string event_name, int x, int y)
 	m_pos.y = y;
 	m_analyser = new Analyser();
 	m_analyser->open(EVENTS_R + event_name + EVENTS_EXT);
-	m_analyser->find_string("#picture#");
-	m_picture = new Surface(PIC_EVENTS_R + m_analyser->read_string());
-	m_pos.h = m_picture->h();
-	m_pos.w = m_picture->w();
+	if (m_analyser->find_string("#picture#")) {
+		m_picture = new Surface(PIC_EVENTS_R + m_analyser->read_string());
+		m_pos.h = m_picture->h();
+		m_pos.w = m_picture->w();
+	}
 }
 
 Event::~Event()
@@ -68,8 +69,10 @@ void Event::start()
 			process_weapon();
 		} else if (action == "lifeup") {
 			process_lifeup();
+		} else if (action == "playsound") {
+			process_playsound();
 		} else {
-			PRINT_DEBUG(1, "action non reconnue dans un fichier event");
+			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
 	}
 }
@@ -114,4 +117,9 @@ void Event::process_weapon()
 void Event::process_lifeup()
 {
 	gBabar->lifeup(m_analyser->read_int());
+}
+
+void Event::process_playsound()
+{
+	gSound->play_sound(SOUNDS_R + m_analyser->read_string());
 }

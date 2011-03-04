@@ -86,6 +86,7 @@ public:
 protected:
 	void process_weapon();
 	void process_lifeup();
+	void process_playsound();
 
 };
 
