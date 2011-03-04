@@ -64,7 +64,7 @@ void Sound_engine::play_sound(std::string key)
 		to_play = (*it).second;
 	}
 	PRINT_TRACE(3, "JEU DU SON %s",key.c_str());
-	int channel = FSOUND_PlaySound(4, to_play);
+	int channel = FSOUND_PlaySound(FSOUND_FREE, to_play);
 	FSOUND_SetVolume(channel, 100);
 	
 }
