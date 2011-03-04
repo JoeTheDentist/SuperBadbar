@@ -232,10 +232,16 @@ public:
 	weapon_type type_of_weapon();
 
 	/**
-	 * 	@brief Mutateur: fait perdre des vies à Babar
+	 * 	@brief Mutateur: fait perdre des vies à Babar et le rend invincible qq secondes
 	 *	@param damages Le nombre de vies à faire perdre
 	 */
 	void damage(int damages);
+	
+	/**
+	 * 	@brief Mutateur: fait gagner des vies à Babar
+	 *	@param life Le nombre de vies à faire gagner
+	 */	
+	void lifeup(int life);
 
 	/**
 	 * 	@brief Accesseur

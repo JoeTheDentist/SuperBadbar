@@ -438,12 +438,16 @@ void Babar::go_down()
 
 void Babar::damage(int damages)
 {
-	PRINT_TRACE(3, "Babar bobo")
 	if (!is_invincible()) {
 		m_lifes -= damages;
 		m_invincible = 20;
 
 	}
+}
+
+void Babar::lifeup(int life) 
+{
+	m_lifes += life;
 }
 
 void Babar::add_weapon(weapon_type weapon)

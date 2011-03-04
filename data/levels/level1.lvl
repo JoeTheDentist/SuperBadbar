@@ -11,10 +11,11 @@ background.bmp
 1
 
 #Events#
-3
+4
 event gun 400 2850
 event shotgun 2900 2250
 event machinegun 800 2850
+event heart 2800 2250
 
 
 

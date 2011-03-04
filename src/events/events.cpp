@@ -66,6 +66,8 @@ void Event::start()
 	while ((action = m_analyser->read_string()) != "") {
 		if (action == "weapon") {
 			process_weapon();
+		} else if (action == "lifeup") {
+			process_lifeup();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event");
 		}
@@ -107,4 +109,9 @@ void Event::process_weapon()
 		weapon_type = GUN;
 	}
 	gBabar->add_weapon(weapon_type);
+}
+
+void Event::process_lifeup()
+{
+	gBabar->lifeup(m_analyser->read_int());
 }
