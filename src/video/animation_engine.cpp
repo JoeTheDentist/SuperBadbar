@@ -82,13 +82,13 @@ void Animation_engine::update()
 	for (it = m_anims.begin(); it != m_anims.end(); ) {
         if ( it->falling ) {
             /* continuité en y */
-            if ( gCollision->can_fall(it->pos) ) {
+            if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(it->pos)) ) {
                 it->pos.y += it->speed.y;
                 it->speed.y += GRAVITE;
             }
             /* continuité en x */
-            it->pos.x += it->speed.x;
             it->speed.x = (9*it->speed.x)/10;
+            it->pos.x += it->speed.x;
         }
 
 	    if ( it->anim->deletable() ) {
