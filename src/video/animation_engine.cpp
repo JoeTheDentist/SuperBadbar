@@ -82,10 +82,26 @@ void Animation_engine::update()
 	for (it = m_anims.begin(); it != m_anims.end(); ) {
         if ( it->falling ) {
             /* continuité en y */
-            if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(it->pos)) ) {
+            /*if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(it->pos)) ) {
                 it->pos.y += it->speed.y;
                 it->speed.y += GRAVITE;
+            }*/
+
+            for (int speed_y = it->speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+                int coll = gCollision->down_collision_type(it->pos);
+                if (Collisions_manager::is_down_coll(coll)){
+                    speed_y = 0;
+                    it->speed.y = 0;
+                }
+                else {
+                    it->pos.y += BOX_SIZE;
+                    if (it->pos.y + it->pos.h > gStatic->static_data_height())
+                        it->pos.y = gStatic->static_data_height() - it->pos.h;
+                }
             }
+            /*it->pos.y += it->speed.y;*/
+            it->speed.y += GRAVITE;
+
             /* continuité en x */
             it->speed.x = (9*it->speed.x)/10;
             it->pos.x += it->speed.x;
