@@ -32,6 +32,7 @@
 #include "../video/pictures_container.h"
 #include "../events/events_manager.h"
 #include "../util/globals.h"
+#include "../video/animation_engine.h"
 
 
 Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
@@ -128,6 +129,18 @@ void Game_engine::update_monsters_projectiles()
 				break;
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
                 monster->damage((*it)->damage());
+
+                /* animation du sang */
+                Rect speed = {0};
+                Rect pos = monster->position();
+                pos.y = (*it)->position().y;
+                char img = '0';
+                if ( (*it)->dir() == RIGHT ) {
+                    pos.x += pos.w;
+                    img++;
+                }
+                gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);
+
                 (*it)->kill();
 			}
         }

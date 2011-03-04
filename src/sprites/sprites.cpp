@@ -84,4 +84,7 @@ int Sprite::direction_h() const
 		return -1;
 }
 
-
+direction Sprite::dir() const
+{
+    return m_dir;
+}

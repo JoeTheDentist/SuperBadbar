@@ -103,6 +103,8 @@ public:
 	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
 	*/
 	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+
+	direction dir() const;
 };
 
 

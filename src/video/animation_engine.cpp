@@ -26,6 +26,7 @@ void Animation_engine::add(std::string pic, Rect pos, anim_type type, bool falli
 
 void Animation_engine::add(std::string pic, Rect pos, anim_type type, Rect speed, bool falling)
 {
+    std::string test = pic;
     anim_pos a;
     a.pos = pos;
     a.speed = speed;
