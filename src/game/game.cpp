@@ -32,11 +32,7 @@
 
 Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
 	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), m_game_engine(new Game_engine())
-{
-	
-	gGraphics = new Graphic_engine();
-
-
+{	
     gStatic = new Static_data();
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	gStatic->init_static_data(1);
@@ -56,7 +52,6 @@ Game::~Game()
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
 	delete m_game_engine;
-	delete gGraphics;
     delete gStatic;
     delete gAnims;
 }

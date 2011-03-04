@@ -112,7 +112,6 @@ void Keyboard::update_events()
 	}
 }
 
-
 bool Keyboard::key_down(enum key k) const
 {
 	return m_key_down[k];
@@ -137,4 +136,23 @@ void Keyboard::disable_all_keys()
 {
 	for (uint32_t i = 0; i <= k_fire; i++)
 		disable_key((enum key)i);
+}
+
+menu_key Keyboard::get_menu_key()
+{
+	SDL_Event event;
+	while (true) {
+		std::cout << "plop" << std::endl;
+		SDL_WaitEvent(&event);
+		switch(event.type)
+		{
+			case SDL_QUIT:
+				return mk_exit;
+			case SDL_KEYDOWN: /* Si appui d'une touche */
+				break;
+			default:
+				break;
+		}
+	}
+	
 }

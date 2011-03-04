@@ -35,12 +35,15 @@ bool Game_initializer::init_game()
 	}
 	// chargement des variables globales à l'ensemble du jeu
 	gSound = new Sound_engine();
+	gGraphics = new Graphic_engine();
+	gGraphics->init_graphic_engine(false);
 	return true;
 }
 
 bool Game_initializer::close_game()
 {
 	delete gSound;
+	delete gGraphics;
 	PRINT_TRACE(1, "Fermeture de TTF")
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de SDL")

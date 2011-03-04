@@ -69,10 +69,16 @@ public:
 	~Camera();
 
 	/*!
-	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
+	* 	@brief Fait pointer la camera sur le sprite passé en paramètre et crée la fenetre SDL
 	* 	@param target Le sprite à pointer
 	*/
 	void init_camera(Sprite *target);
+
+ 	/*!
+	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
+	* 	@param target Le sprite à pointer
+	*/
+	void set_target(Sprite *target);
 
 	/*!
 	* 	@brief Met à jour la position de la camera

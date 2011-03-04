@@ -29,7 +29,10 @@
 
 
 
-Dashboard::Dashboard()
+Dashboard::Dashboard():
+	m_font(NULL),
+	m_heart(NULL),
+	m_weapons_pictures(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
 }
@@ -37,12 +40,17 @@ Dashboard::Dashboard()
 
 Dashboard::~Dashboard()
 {
-	for (int i = 0; i < SHOTGUN + 1; i++)
-		delete m_weapons_pictures[i];
-	delete[] m_weapons_pictures;
-	delete m_heart;
+	if (m_weapons_pictures) {
+		for (int i = 0; i < SHOTGUN + 1; i++)
+			if (m_weapons_pictures[i])
+				delete m_weapons_pictures[i];
+		delete[] m_weapons_pictures;
+	}
+	if (m_heart)
+		delete m_heart;
+	if (m_font)
+		TTF_CloseFont(m_font);
 	PRINT_CONSTR(1, "Destruction de Dashboard")
-	TTF_CloseFont(m_font);
 }
 
 void Dashboard::init_dashboard(Pictures_container *pictures_container)

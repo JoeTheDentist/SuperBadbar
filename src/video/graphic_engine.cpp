@@ -37,11 +37,15 @@ Graphic_engine::~Graphic_engine()
 	delete m_pictures_container;
 }
 
-void Graphic_engine::init_graphic_engine()
+void Graphic_engine::init_graphic_engine(bool game)
 {
-	m_camera->init_camera(gBabar);
-	m_talks->init_talks(m_camera, m_pictures_container);
-	m_dashboard->init_dashboard(m_pictures_container);
+	if (game) {
+		m_camera->init_camera(gBabar);
+		m_talks->init_talks(m_camera, m_pictures_container);
+		m_dashboard->init_dashboard(m_pictures_container);
+	} else {
+		m_camera->init_camera(NULL);
+	}
 }
 
 void Graphic_engine::update()

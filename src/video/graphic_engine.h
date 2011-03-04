@@ -43,9 +43,10 @@ public:
 
 	/**
 	 * 	@brief Initialise le moteur graphique
+	 *	@param game Indique si on initialise le moteur pour le jeu (vrai) ou pour le menu principal (faux)
 	 *	@todo On a juste besoin du picture_container, qui doit faire partie de graphic_engine..
 	 */
-	void init_graphic_engine();
+	void init_graphic_engine(bool game = true);
 
 
 	/**
