@@ -1,0 +1,6 @@
+#picture#
+heart.png
+
+#start#
+lifeup 1
+playsound events/lifeup.wav
