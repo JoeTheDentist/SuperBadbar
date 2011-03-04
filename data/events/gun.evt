@@ -2,4 +2,5 @@
 shotgun.png
 
 #start#
-weapon shotgun
+weapon gun
+playsound events/weapon_taken.wav
