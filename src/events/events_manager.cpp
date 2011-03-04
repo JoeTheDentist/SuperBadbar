@@ -14,8 +14,6 @@
 #include "../game/static_data.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
-#include "../events/event_weapon.h"
-#include "../events/event_item.h"
 #include "../events/events.h"
 #include "../video/camera.h"
 #include "../sprites/babar.h"
@@ -47,12 +45,16 @@ void Events_manager::init_events_manager(Static_data *static_data, Game_engine *
 void Events_manager::load_events(Analyser *analyser)
 {
 	PRINT_TRACE(1, "Chargement des evenements");
+	int x, y;
 	analyser->find_string("#Events#");
 	int events_number = analyser->read_int();
 	for (int i = 0; i < events_number; i++) {
 		std::string event_class = analyser->read_string();
-		if (event_class == "event_weapon") {
-			Event_weapon *event = new Event_weapon(gBabar, m_pictures_container, analyser);
+		if (event_class == "event") {
+			std::string event_name = analyser->read_string();
+			x = analyser->read_int();
+			y = analyser->read_int();
+			Event *event = new Event(event_name, x, y);
 			m_list_events.push_back(event);
 		} else {
 			PRINT_DEBUG(1, "Event %s non reconnu", event_class.c_str());

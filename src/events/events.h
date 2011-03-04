@@ -10,9 +10,10 @@
 #ifndef _EVENTS_
 #define _EVENTS_
 
+#include <string>
+#include "../video/surface.h"
 
-struct Rect;
-class Surface;
+class Analyser;
 
 /**
  * 	@class Event
@@ -26,14 +27,17 @@ class Surface;
 class Event {
 protected:
 	bool m_can_be_destroyed;
-
+	Surface *m_picture;
+	Rect m_pos;
+	int m_phase;
+	Analyser *m_analyser;
 
 public:
 	
 	/**
 	 * 	@brief Constructeur
 	*/
-	Event();
+	Event(std::string event_name, int x, int y);
 
 	/**
 	 * 	@brief Destructeur
@@ -78,6 +82,10 @@ public:
 	 *	@return La position actuelle de l'événement
 	*/
 	virtual Rect current_pos() const;
+	
+protected:
+	void process_weapon();
+
 };
 
 

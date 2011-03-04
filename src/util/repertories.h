@@ -28,6 +28,7 @@
 	#define PIC_BACKGROUNDS_R		PIC_R + "backgrounds/"
 	#define PIC_DASHBOARD_R			PIC_R + "dashboard/"
 	#define PIC_EDITOR_R			PIC_R + "editor/"
+	#define PIC_EVENTS_R			PIC_R + "events/"
 	#define PIC_ITEMS_R				PIC_R + "items/"
 	#define PIC_MONSTERS_R 			PIC_R + "monsters/"
 	#define PIC_PROJ_R				PIC_R + "projectiles/"
@@ -35,6 +36,7 @@
 	#define PIC_TALKS_R				PIC_R + "talks/"
 	#define PIC_MAINMENU_R			PIC_R + "mainmenu/"
 #define LEVELS_R RACINE_R + "data/levels/"
+#define EVENTS_R RACINE_R + "data/events/"
 #define MONSTERS_STATS_R RACINE_R + "data/monsters/"
 #define SOUNDS_R RACINE_R + "sound/"
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"
@@ -44,6 +46,8 @@
 
 #define MONSTERS_EXT ".mstr"
 #define SOUNDS_EXT ".mp3"
+#define EVENTS_EXT ".evt"
+#define PIC_EXT ".png"
 
 
 

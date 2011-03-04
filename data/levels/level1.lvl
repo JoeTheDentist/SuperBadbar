@@ -12,9 +12,9 @@ background.bmp
 
 #Events#
 3
-event_weapon gun 400 2850
-event_weapon shotgun 2900 2250
-event_weapon machinegun 800 2850
+event gun 400 2850
+event shotgun 2900 2250
+event machinegun 800 2850
 
 
 
