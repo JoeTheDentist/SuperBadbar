@@ -77,9 +77,9 @@ public:
 	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
 	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
 	 *
-	 *	Pour une execution normale, appeler game avec false, false, "", ""
+	 *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par défaut)
 	*/
-	Game(bool record_on, bool replay_on, std::string output_name, std::string input_name);
+	Game(bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
 
 	/**
 	 * @brief Destructeur

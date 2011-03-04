@@ -40,21 +40,13 @@ Dashboard::Dashboard():
 
 Dashboard::~Dashboard()
 {
-	if (m_weapons_pictures) {
-		for (int i = 0; i < SHOTGUN + 1; i++)
-			if (m_weapons_pictures[i])
-				delete m_weapons_pictures[i];
-		delete[] m_weapons_pictures;
-	}
-	if (m_heart)
-		delete m_heart;
-	if (m_font)
-		TTF_CloseFont(m_font);
+	clear_dashboard();
 	PRINT_CONSTR(1, "Destruction de Dashboard")
 }
 
 void Dashboard::init_dashboard(Pictures_container *pictures_container)
 {
+	clear_dashboard();
     std::string rac = RAC;
 	std::string font_name = "font1.ttf";
 	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);
@@ -95,5 +87,21 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gBabar->type_of_weapon()]->h() - munitions_pictures->h)/2;
 	camera->display_picture(munitions_pictures, &pos_munitions);
 	SDL_FreeSurface(munitions_pictures);
+}
 
+void Dashboard::clear_dashboard()
+{
+	if (m_weapons_pictures) {
+		for (int i = 0; i < SHOTGUN + 1; i++)
+			if (m_weapons_pictures[i])
+				delete m_weapons_pictures[i];
+		delete[] m_weapons_pictures;
+		m_weapons_pictures = NULL;
+	}
+	if (m_heart)
+		delete m_heart;
+	m_heart = NULL;
+	if (m_font)
+		TTF_CloseFont(m_font);
+	m_font = NULL;
 }

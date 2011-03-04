@@ -68,6 +68,9 @@ public:
 	 */
 	void draw_dashboard(int lifes, Camera *camera);
 
+private:
+	void clear_dashboard();
+
 };
 
 

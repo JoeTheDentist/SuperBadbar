@@ -29,7 +29,7 @@ val:
 	valgrind $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME)
 
 valfull: 
-	valgrind --leak-check=full --show-reachable=yes --track-origins=yes $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME) 
+	valgrind --leak-check=full --show-reachable=yes --track-origins=yes $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME) -menu
 	
 profile:
 	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar yopi

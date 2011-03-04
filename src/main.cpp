@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 	Arg_Analyser arg_analyser(argc, argv);
 	if (arg_analyser.menu_on()) {
 		Main_menu *menu = new Main_menu();
+		delete menu;
 	} else {
 		Game *game = new Game(arg_analyser.record_on(), arg_analyser.replay_on(), arg_analyser.output_file(), arg_analyser.input_file());
 		game->game_loop();

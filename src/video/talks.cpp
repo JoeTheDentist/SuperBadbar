@@ -28,12 +28,12 @@ Talks::Talks()
 Talks::~Talks()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Talks")
-	if (m_font)
-		TTF_CloseFont(m_font);
+	clear_talks();
 }
 
 void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
+	clear_talks();
 	m_camera = camera;
 	PRINT_CONSTR(1, "Construction de la classe Talks")
 	std::string rac = RAC;
@@ -149,8 +149,6 @@ void Talks::wait_space()
 	}
 }
 
-
-
 void Talks::display_text(std::string str)
 {
 	PRINT_TRACE(2, "Affichage d'un texte par Talks")
@@ -189,4 +187,10 @@ void Talks::load_and_display_text(std::string filename)
 	str.erase(str.size()-1);
 	file.close();
 	display_text(str);
+}
+
+void Talks::clear_talks()
+{
+	if (m_font)
+		TTF_CloseFont(m_font);	
 }

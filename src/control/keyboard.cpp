@@ -149,10 +149,23 @@ menu_key Keyboard::get_menu_key()
 			case SDL_QUIT:
 				return mk_exit;
 			case SDL_KEYDOWN: /* Si appui d'une touche */
+				switch (event.key.keysym.sym)
+				{
+					case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
+						return mk_exit;
+						break;
+					case SDLK_UP:
+						return mk_up;
+					case SDLK_DOWN:
+						return mk_down;
+					case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
+						return mk_enter;
+					default:
+						break;
+				}
 				break;
 			default:
 				break;
 		}
 	}
-	
 }
