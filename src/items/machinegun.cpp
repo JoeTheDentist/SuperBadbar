@@ -13,7 +13,8 @@
 #include "machinegun.h"
 #include "../util/debug.h"
 #include "../sprites/projectiles.h"
-
+#include "../util/globals.h"
+#include "../util/repertories.h"
 
 
 Machinegun::Machinegun()
@@ -39,6 +40,7 @@ std::list<Projectile*> *Machinegun::fire(Rect pos, direction h)
 		proj_list->push_back(new Projectile(pos, h, dir_h, 0,1));
 		m_munitions --;
 	}
+	gSound->play_sound(FIRE_SOUNDS_R + "gun.wav");
 	return proj_list;
 }
 

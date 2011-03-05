@@ -1,51 +1,40 @@
 #Background#
-background.bmp
+level1.png
 
 #Level_dimensions#
-2000
-2000
+3200
+3400
 
 #Babar#
-2200
-2000
+1326
+2914
 1
-
-#Events#
-4
-event gun 400 2850
-event shotgun 2900 2250
-event machinegun 800 2850
-event heart 2800 2250
-
-
 
 #Statics#
 10
-block7 1800 2200 0
-block1 70 2950 0
-block2 800	2700 0
-block3 1700 2950 0
-block4_1 700 500 0
-block4_2 700 1200 0
-block4_3 700 1780 0
-block5 2200 2650 0
-block6 2750 2000 0
-soil 0 3300 1
+block8 2713 1438 0
+block8 2233 1424 0
+block8 1763 1414 0
+block8 1279 1394 0
+block4_1 432 569 0
+block4_2 433 1271 0
+block4_3 430 1845 0
+block3 1098 2905 0
+block5 130 2592 0
+soil 7 3289 1
 !
-
-
-
-
 #Monsters#
-10
-following_walking_monster maphyar 2200 2000
-following_walking_monster maphyar 300 2000
-following_walking_monster maphyar 350 2000
-following_walking_monster gailapin 400 2000
-following_walking_monster gailapin 450 2000
-following_walking_monster gailapin 500 2000
-following_walking_monster gailapin 550 2000
-following_walking_monster gailapin 600 2000
-following_walking_monster gailapin 650 2000
-following_flying_monster fubob 700 900
+7
+following_walking_monster gailapin 1364 1271
+following_walking_monster maphyar 2755 1335
+following_walking_monster maphyar 2288 1313
+following_walking_monster maphyar 1813 1312
+following_walking_monster fubob 2473 1585
+following_walking_monster fubob 2961 1801
+following_walking_monster fubob 2976 1279
+!
+#Events#
+2
+event machinegun 447 1348
+event shotgun 1503 2952
 !

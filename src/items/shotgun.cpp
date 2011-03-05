@@ -11,9 +11,12 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+
 #include "shotgun.h"
 #include "../util/debug.h"
 #include "../sprites/projectiles.h"
+#include "../util/globals.h"
+#include "../util/repertories.h"
 
 
 
@@ -71,6 +74,7 @@ std::list<Projectile*> *Shotgun::fire(Rect pos, direction h)
 		}
 		m_munitions --;
 	}
+	gSound->play_sound(FIRE_SOUNDS_R + "shotgun.wav");
 	return proj_list;
 }
 

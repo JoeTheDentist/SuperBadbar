@@ -20,12 +20,12 @@
 /* nombre maximal de munitions par armes */
 #define MUN_GUN 999
 #define MUN_MACHINEGUN 100
-#define MUN_SHOTGUN 10
+#define MUN_SHOTGUN 20
 
 /* temps de recharge des armes */
 #define RELOAD_GUN 2
 #define RELOAD_MACHINEGUN 0
-#define RELOAD_SHOTGUN 10
+#define RELOAD_SHOTGUN 18
 
 
 enum direction {

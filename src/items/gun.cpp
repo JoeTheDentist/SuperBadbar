@@ -13,8 +13,8 @@
 #include "gun.h"
 #include "../util/debug.h"
 #include "../sprites/projectiles.h"
-
-
+#include "../util/globals.h"
+#include "../util/repertories.h"
 
 
 Gun::Gun()
@@ -35,6 +35,7 @@ std::list<Projectile*> *Gun::fire(Rect pos, direction h)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1));
+	gSound->play_sound(FIRE_SOUNDS_R + "gun.wav");
 	return proj_list;
 }
 
