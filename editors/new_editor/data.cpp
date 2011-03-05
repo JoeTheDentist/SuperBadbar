@@ -10,6 +10,7 @@ Data::Data():
 	m_babar_item(NULL),
 	m_static_items(),
 	m_monsters_items(),
+	m_event_items(),
 	m_background_name(""),
 	m_background(NULL),
 	m_xpix(0),
@@ -66,6 +67,15 @@ void Data::addMonsterItem(MyItem *item)
 	item->getItem()->setZValue(MONSTERS_ZBUFFER);	
 }
 
+
+void Data::addEventItem(MyItem *item)
+{
+	m_event_items.push_front(item);
+	item->getItem()->setZValue(EVENTS_ZBUFFER);	
+}
+
+
+
 MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;
@@ -89,6 +99,14 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it);	
 		}
 	}
+	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {
+		item = (*it)->getItem();
+		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
+			return (*it);	
+		}
+	}
+	
 	return NULL;
 }
 
@@ -100,6 +118,9 @@ MyItem *Data::selectBabar()
 void Data::upInStack(MyItem *item) 
 {
 	std::list<MyItem *>::iterator it;
+ 	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
 		(*it)->getItem()->stackBefore(item->getItem());
 	}
@@ -142,7 +163,9 @@ void Data::saveData(QString fileName)
 	out << "!" << endl;
 	// sauvegarde des events TODO 
 	out << "#Events#" << endl;
-	out << 0 << endl;
+	out << m_event_items.size() << endl;
+	for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+		(*it)->saveItem(out);	
 	out << "!" << endl;
 	file.close();	
 }
@@ -150,13 +173,19 @@ void Data::saveData(QString fileName)
 void Data::removeItem(MyItem *item)
 {
 	std::list<MyItem *>::iterator it;
+	
+	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {	
+		if (item == (*it)) {
+			m_event_items.erase(it);
+			return;
+		}
+	}	
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {	
 		if (item == (*it)) {
 			m_static_items.erase(it);
 			return;
 		}
 	}
-	
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {	
 		if (item == (*it)) {
 			m_monsters_items.erase(it);

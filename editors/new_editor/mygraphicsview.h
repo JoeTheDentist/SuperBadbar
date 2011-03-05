@@ -132,6 +132,11 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void addMonster();
 	
+		/*!
+	*	@brief Fonction d'ajout d'un event au niveau
+	*/
+	void addEvent();
+	
 	
 	/*!
 	*	@brief Lance la possibilité de détruire un item au prochain clic

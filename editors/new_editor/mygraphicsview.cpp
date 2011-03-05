@@ -5,6 +5,7 @@
 #include "babaritem.h"
 #include "staticitem.h"
 #include "monsteritem.h"
+#include "eventitem.h"
 #include "analyser.h"
 
 #include <iostream>
@@ -297,6 +298,26 @@ void MyGraphicsView::addMonster()
 	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
 }
 
+void MyGraphicsView::addEvent()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", MONSTERS_DIR);
+//~ 	if (fileName.isEmpty()) {
+//~ 		return;
+//~ 	}
+//~ 	if (!(fileName.endsWith(".mstr"))) {
+//~ 	 QMessageBox::critical(this, "File opening", "filename must ends with \".mstr\"");
+//~ 		return;
+//~ 	}
+//~ 	QPixmap image;
+
+//~ 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
+//~ 	fileName.chop(5);	
+//~ 	image.load(MonsterItem::picPathFromEditor(fileName));
+//~ 	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
+}
+
+
+
 void MyGraphicsView::activeDeleteItem()
 {
 	QPixmap image;
@@ -347,7 +368,7 @@ void MyGraphicsView::copyItem(MyItem *item)
 
 void MyGraphicsView::pastItem()
 {
-	if (m_copied_item) {
+	if (m_copied_item && (m_copied_item != m_babar_item)) {
 		MyItem *item = m_copied_item->duplicate();
 		item->getItem()->setVisible(true);
 		item->getItem()->setPos(this->horizontalScrollBar()->value(), this->verticalScrollBar()->value());

@@ -65,6 +65,7 @@ class MainWindow : public QMainWindow {
 	void addBabar();
 	void addStatic();
 	void addMonster();
+	void addEvent();
 	void deleteItem();
 	
 	
@@ -90,6 +91,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_addBabar;
 	QAction *m_addStatic;
 	QAction *m_addMonster;
+	QAction *m_addEvent;
 	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;
