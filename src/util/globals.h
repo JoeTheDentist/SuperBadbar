@@ -13,7 +13,7 @@
 
 #include "../util/repertories.h"
 #include "../sound/sound_engine.h"
-#include "../game/collisions_manager.h"
+#include "../physic/collisions_manager.h"
 #include "../game/static_data.h"
 #include "../video/graphic_engine.h"
 #define BOX_SIZE 5

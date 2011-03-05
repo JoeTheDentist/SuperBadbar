@@ -14,8 +14,8 @@
 #include "../sprites/babar.h"
 #include "../util/analyser.h"
 #include "../util/debug.h"
-#include "../game/collisions_manager.h"
-#include "../game/collisions_matrix.h"
+#include "../physic/collisions_manager.h"
+#include "../physic/collisions_matrix.h"
 #include "../video/displayable.h"
 
 

@@ -14,7 +14,7 @@
 #include <stdint.h>
 
 #include "../video/statics.h"
-#include "../game/collisions_matrix.h"
+#include "../physic/collisions_matrix.h"
 
 class Surface;
 class Babar;

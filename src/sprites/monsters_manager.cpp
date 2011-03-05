@@ -17,7 +17,7 @@
 #include "../sprites/following_flying_monsters.h"
 #include "../video/camera.h"
 #include "../game/static_data.h"
-#include "../game/collisions_manager.h"
+#include "../physic/collisions_manager.h"
 #include "../util/analyser.h"
 #include "../sound/sound_engine.h"
 

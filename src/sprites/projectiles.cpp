@@ -14,7 +14,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../game/static_data.h"
-#include "../game/collisions_manager.h"
+#include "../physic/collisions_manager.h"
 #include "../video/surface.h"
 
 

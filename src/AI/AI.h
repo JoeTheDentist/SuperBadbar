@@ -3,7 +3,8 @@
 
 #include "../sprites/sprites.h"
 #include "../sprites/projectiles_manager.h"
-#include "../game/collisions_manager.h"
+#include "../physic/collisions_manager.h"
+#include "../physic/collisions_matrix.h"
 #include "../items/weapons.h" /* pour enum */
 
 #define ESTIM_SPEED 10
