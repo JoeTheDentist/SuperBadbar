@@ -49,6 +49,10 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	virtual void mousePressEvent(QMouseEvent * event);
 	
+	/*!
+	*	@brief Traite le double clic de la souris
+	*	@param event L'event de la souris
+	*/	
 	virtual void mouseDoubleClickEvent(QMouseEvent *event);
 	
 	/*!
@@ -68,17 +72,18 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param event L'event de la souris
 	*/	
 	virtual void wheelEvent(QWheelEvent *event);
+	
 	/*!
 	*	@brief Traite l'appui sur une touche du clavier
 	*	@param event L'event de la souris
 	*/
 	virtual void keyPressEvent(QKeyEvent *event);
+	
  	/*!
 	*	@brief Traite le relachement de la souris
 	*	@param event L'event de la souris
 	*/
 	virtual void keyReleaseEvent(QKeyEvent *event);
-	
 
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
@@ -86,12 +91,10 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void newFile( QString backgroundName);
 	
-
 	/*!
 	*	@brief 	Charge les donnees a partir du nom de fichier
 	*	@param fileName Le chemin relatif vers le fichier .lvl a ouvrir
 	*/
-	
 	void loadFile(QString fileName);
 	
 	/*!
@@ -106,21 +109,16 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	qreal ysize();
 	
-
 	/*!
 	*	@brief Sauvegarde de la matrice de collision dans le fichier str
 	*	@param str Le chemin du fichier a sauvegarder (doit se terminer par .col)
 	*/
 	void save(QString str);
 	
-	
-	
 	/*!
 	*	@brief Fonction d'ajout de la position de babar
 	*/
 	void addBabar();
-
-	
 	
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
@@ -132,7 +130,7 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void addMonster();
 	
-		/*!
+	/*!
 	*	@brief Fonction d'ajout d'un event au niveau
 	*/
 	void addEvent();
@@ -157,7 +155,7 @@ class MyGraphicsView : public QGraphicsView {
 
 
 	private:
-	Data *m_data;
+	Data *m_data; // Toute les donnees a sauvegarder y sont stockees
 	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé
 	bool m_ctrl_pressed; // vaut vrai quand la touche controle est pressee
@@ -172,7 +170,7 @@ class MyGraphicsView : public QGraphicsView {
 	MyItem *m_copied_item;
 	QGraphicsPixmapItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel
-	QGraphicsItem *m_background;
+	QGraphicsItem *m_background; // Le fond d'écran
 };
 
 #endif

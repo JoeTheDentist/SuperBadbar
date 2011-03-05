@@ -71,15 +71,15 @@ public:
 	* @warning non fonctionnelle sous windows
 	*/
 	void jump_separators();
-
+	
 	/*!
 	* @brief Positionne le curseur après la première occurence de str à partir du début du fichier
-	*
+	* @return vrai si la chaine a été trouvée
 	* Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier.
 	*
 	* @param str La chaine cherchée
 	*/
-	void find_string(std::string str);
+	bool find_string(std::string str);
 
 	/*!
 	* @return vrai si on est à la fin d'une section (si le caractère suivant est un '!'

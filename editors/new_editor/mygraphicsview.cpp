@@ -38,7 +38,6 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_background(NULL)
 {
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
-
 }
 
 MyGraphicsView::~MyGraphicsView()
@@ -106,8 +105,23 @@ void MyGraphicsView::loadFile(QString fileName)
 		item->setPos(x, y);
 		m_data->addItem(new MonsterItem(item, nameMonster));
 	}
-	
-	
+	analyser.find_string("#Events#");
+	int nbEvents = analyser.read_int();
+	QString nameEvent;	
+	QString classEvent;
+	for (int i = 0; i < nbEvents; i ++) {
+		classEvent = QString::fromStdString(analyser.read_string());
+		if (classEvent != "event") {
+			std::cout << "Erreur dans le fichier chargé ou l'éditeur n'est plus à jour!" << std::endl;
+		}
+		nameEvent = QString::fromStdString(analyser.read_string());
+		image.load(EventItem::picPathFromEditor(nameEvent));
+		item = this->scene()->addPixmap(image);
+		x = analyser.read_int();
+		y = analyser.read_int();
+		item->setPos(x, y);
+		m_data->addItem(new EventItem(item, nameEvent));
+	}
 	analyser.close();
 }
 
@@ -239,7 +253,6 @@ void MyGraphicsView::keyReleaseEvent(QKeyEvent *event)
 	}	
 }
 
-
 qreal MyGraphicsView::xsize()
 {
 	return m_xsize;
@@ -300,23 +313,22 @@ void MyGraphicsView::addMonster()
 
 void MyGraphicsView::addEvent()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", MONSTERS_DIR);
-//~ 	if (fileName.isEmpty()) {
-//~ 		return;
-//~ 	}
-//~ 	if (!(fileName.endsWith(".mstr"))) {
-//~ 	 QMessageBox::critical(this, "File opening", "filename must ends with \".mstr\"");
-//~ 		return;
-//~ 	}
-//~ 	QPixmap image;
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", EVENTS_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(EVENTS_EXT))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".evt\"");
+		return;
+	}
+	QPixmap image;
 
-//~ 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
-//~ 	fileName.chop(5);	
-//~ 	image.load(MonsterItem::picPathFromEditor(fileName));
-//~ 	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
+	fileName.chop(4);	
+	image.load(EventItem::picPathFromEditor(fileName));
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	
+	m_curr_item = new EventItem(item, fileName);	
 }
-
-
 
 void MyGraphicsView::activeDeleteItem()
 {
@@ -371,7 +383,7 @@ void MyGraphicsView::pastItem()
 	if (m_copied_item && (m_copied_item != m_babar_item)) {
 		MyItem *item = m_copied_item->duplicate();
 		item->getItem()->setVisible(true);
-		item->getItem()->setPos(this->horizontalScrollBar()->value(), this->verticalScrollBar()->value());
+		item->getItem()->setPos(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
 		m_data->addItem(item);
 	}
 }

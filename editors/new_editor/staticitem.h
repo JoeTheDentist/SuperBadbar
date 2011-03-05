@@ -20,7 +20,10 @@ class StaticItem: public MyItem {
 	*/
 	~StaticItem();
 	
-	
+	/*!
+	*	@brief Cree une instance identique a l'instance actuelle
+	*	@return Un pointeur vers la copie
+	*/	
 	virtual MyItem *duplicate();
 
 	/*!

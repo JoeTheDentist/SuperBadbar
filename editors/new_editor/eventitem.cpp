@@ -10,9 +10,7 @@ EventItem::EventItem(QGraphicsPixmapItem *item, QString fileName):
 	MyItem(item, fileName),
 	m_class_name("")
 {
-	Analyser analyser;
-	analyser.open((MONSTERS_DIR + fileName + ".mstr").toStdString());
-	m_class_name = QString::fromStdString(analyser.read_string());
+	m_class_name = "event";
 }                
 
 EventItem::~EventItem()
@@ -28,8 +26,6 @@ MyItem *EventItem::duplicate()
 	return item;
 }
 
-
-
 void EventItem::saveItem(QTextStream &out)
 {
 	out << m_class_name << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << endl;
@@ -42,7 +38,12 @@ void EventItem::addToData(Data *data)
 
 QString EventItem::picPathFromEditor(QString fileName)
 {
-	return MONSTERS_PIC_DIR + fileName + "/" + fileName + "_0_0_0.png";
+	Analyser analyser;
+	analyser.open(EVENTS_DIR + fileName.toStdString() + EVENTS_EXT);
+	if (analyser.find_string("#picture#")) {
+		return EVENTS_PIC_DIR + fileName + ".png";
+	} else {
+		std::cout << "Pas d'image pour cet événement, erreur" << std::endl;
+		return "";
+	}
 }
-
-

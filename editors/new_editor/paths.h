@@ -10,6 +10,8 @@
 #define EVENTS_PIC_DIR "../../pic/events/"
 #define BABAR_PIC_DIR "../../pic/babar/"
 
+#define EVENTS_EXT ".evt"
+
 // dimensions de la camera du jeu (utiles pour calculer 
 // du niveau en fonction de la taille du background)
 #define CAMERA_WIDTH 800

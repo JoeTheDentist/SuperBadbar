@@ -19,7 +19,6 @@ class Data {
 	int m_ypix;
 	
 	public:
-		
 	/*!
 	*	@brief Constructeur
 	*/
@@ -96,8 +95,6 @@ class Data {
 	*/
 	void addEventItem(MyItem *item);
 	
-	
-	
 	/*!
 	*	@brief Cherche le premier item contenant le pixel (x,y) et le retourne
 	*	@param x L'abscisse du pixel
@@ -108,8 +105,16 @@ class Data {
 	*/
 	MyItem *selectItem(int x, int y);
 	
+	/*!
+	*	@brief Accesseur sur l'item Babar
+	*	@return Un pointeur vers le BabarItem contenu dans data
+	*/
 	MyItem *selectBabar();
 	
+	/*!
+	*	@brief Fait remonter l'item dans la pile (utile pour changer l'ordre d'affichage sans toucher au zbuffer)
+	*	@param item L'item à remonter
+	*/
 	void upInStack(MyItem *item);
 	
 	/*!
@@ -126,7 +131,6 @@ class Data {
 	*	Il n'y a rien d'autre à faire pour enregistrer un .lvl
 	*/
 	void saveData(QString fileName);
-	
 };
 
 

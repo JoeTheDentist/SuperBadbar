@@ -19,7 +19,11 @@ class BabarItem: public MyItem {
 	*	@brief Destructeur
 	*/
 	~BabarItem();
-	
+
+	/*!
+	*	@brief Cree une instance identique a l'instance actuelle
+	*	@return Un pointeur vers la copie
+	*/	
 	virtual MyItem *duplicate();
 
 	/*!
