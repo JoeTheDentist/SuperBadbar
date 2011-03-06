@@ -11,6 +11,7 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="-menu" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -49,12 +50,6 @@
 		<Unit filename="..\src\AI\AI.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
-		<Unit filename="..\src\events\contact_event.cpp" />
-		<Unit filename="..\src\events\contact_event.h" />
-		<Unit filename="..\src\events\event_item.cpp" />
-		<Unit filename="..\src\events\event_item.h" />
-		<Unit filename="..\src\events\event_weapon.cpp" />
-		<Unit filename="..\src\events\event_weapon.h" />
 		<Unit filename="..\src\events\events.cpp" />
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
