@@ -25,6 +25,10 @@ class Static_data;
 class Sound_engine;
 class Keyboard;
 
+enum result_game {
+	victory, defeat, leave
+};
+
 /**
  * 	@class Game
  * 	@brief Classe gérant l'exécution d'un niveau complet
@@ -36,9 +40,40 @@ class Keyboard;
 class Game {
 private:
 	Keyboard *m_keyboard;
-	Game_engine *m_game_engine;
+	int m_level;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
+
+public:
+
+	/**
+	 * 	@brief Constructeur
+	 *	@param level Le numero du niveau actuel
+	 * 	@param record_on Indique si on doit sauvegarder la sequence de touches
+	 *	@param replay_on Indique si on doit charger une sequence de touches
+	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
+	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
+	 *
+	 *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par défaut)
+	*/
+	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
+
+	/**
+	 * @brief Destructeur
+	*/
+	~Game();
+
+	/**
+	 * @brief La boucle de jeu
+	*/
+	result_game game_loop();
+
+	/**
+	 * @brief check les collisions monstres/projectiles
+	*/
+	void check_monsters();
+	
+private:
 
 	/*!
 	 * 	@brief Mise à jour du moteur graphique et rafraichissement de l'écran
@@ -50,51 +85,27 @@ private:
 	*/
 	void update_game();
 
+	/*!
+	 *  @brief Mise à jour des evenements claviers
+	*/
 	void update_keyboard();
-
 
 	/*!
 	 *  @brief Supprime objets morts (monstres, projectiles)
 	*/
 	void delete_dead_things();
 
-
-
-
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle
 	*/
-	void play_sounds();
-
-
-
-public:
-
-	/**
-	 * 	@brief Constructeur
-	 * 	@param record_on Indique si on doit sauvegarder la sequence de touches
-	 *	@param replay_on Indique si on doit charger une sequence de touches
-	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
-	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
-	 *
-	 *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par défaut)
+	void play_sounds();	
+	
+	/*!
+	 *	@brief Affiche l'écran de victoire
+	 *	
+	 *	TODO a faire!
 	*/
-	Game(bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
-
-	/**
-	 * @brief Destructeur
-	*/
-	~Game();
-
-	/**
-	 * @brief La boucle de jeu
-	*/
-	void game_loop();
-
-	/**
-	 * @brief check les collisions monstres/projectiles
-	*/
-	void check_monsters();
+	void play_victory();
 };
 
 

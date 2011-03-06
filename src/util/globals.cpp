@@ -10,6 +10,8 @@ Events_manager * gEvent = NULL;
 Babar * gBabar = NULL;
 Animation_engine * gAnims = NULL;
 Graphic_engine *gGraphics = NULL;
+Game_engine *gGame_engine = NULL;
+
  
 double dist(Rect A, Rect B)
 {

@@ -71,6 +71,8 @@ void Event::start()
 			process_lifeup();
 		} else if (action == "playsound") {
 			process_playsound();
+		} else if (action == "victory") {
+			process_victory();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
@@ -122,4 +124,9 @@ void Event::process_lifeup()
 void Event::process_playsound()
 {
 	gSound->play_sound(SOUNDS_R + m_analyser->read_string());
+}
+
+void Event::process_victory()
+{
+	gGame_engine->set_victory();
 }

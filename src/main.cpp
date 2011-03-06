@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		Main_menu *menu = new Main_menu();
 		delete menu;
 	} else {
-		Game *game = new Game(arg_analyser.record_on(), arg_analyser.replay_on(), arg_analyser.output_file(), arg_analyser.input_file());
+		Game *game = new Game(1, arg_analyser.record_on(), arg_analyser.replay_on(), arg_analyser.output_file(), arg_analyser.input_file());
 		game->game_loop();
 		delete game;
 	}

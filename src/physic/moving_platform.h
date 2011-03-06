@@ -43,8 +43,6 @@ private:
 	Rect m_speed;
 	Rect m_begin;
 	Rect m_end;
-//~ 	int coll_size_w;
-//~ 	int coll_size_h;
 	int m_phase;
 public:
 	/**

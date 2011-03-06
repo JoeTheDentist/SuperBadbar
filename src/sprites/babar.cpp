@@ -512,7 +512,6 @@ void Babar::bind(Moving_platform *platform)
 
 void Babar::unbind()
 {
-	PRINT_DEBUG(1, "ooooo");
 	if (m_bind) {
 		m_bind->unbind();
 		m_bind = NULL;

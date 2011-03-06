@@ -16,6 +16,8 @@
 #include "../physic/collisions_manager.h"
 #include "../game/static_data.h"
 #include "../video/graphic_engine.h"
+#include "../game/game_engine.h"
+
 #define BOX_SIZE 5
 
 #define NO_COLL 0x0
@@ -49,7 +51,7 @@ extern Events_manager * gEvent;
 extern Babar * gBabar;
 extern Animation_engine * gAnims;
 extern Graphic_engine *gGraphics;
-
+extern Game_engine *gGame_engine;
 double dist(Rect A, Rect B);
 
 #endif

@@ -10,7 +10,7 @@
 
 
 #ifndef _GAME_ENGINE
-#define GAME_ENGINE
+#define _GAME_ENGINE
 
 #include <stdint.h>
 
@@ -39,7 +39,7 @@ private:
 	uint32_t m_matrix_weight;					/* Largeur de la matrice */
 	uint32_t m_matrix_height;					/* Hauteur de la matrice */
 	Monsters_manager *m_monsters_manager;
-
+	bool m_victory;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -130,6 +130,10 @@ public:
 	 * Gère pour l'instant les sons de babar et des monstres
 	*/
 	void play_sounds();
+	
+	void set_victory();
+	
+	bool has_won();
 };
 
 

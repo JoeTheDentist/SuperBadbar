@@ -30,13 +30,15 @@
 
 
 
-Game::Game(bool record_on, bool replay_on, std::string output_name, std::string input_name):
-	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), m_game_engine(new Game_engine())
+Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):
+	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), 
+	m_level(level)
 {	
+	gGame_engine = new Game_engine();
     gStatic = new Static_data();
-	PRINT_CONSTR(1, "Construction de la classe Game")
-	gStatic->init_static_data(1);
-	m_game_engine->init_game_engine(1, gGraphics->get_camera(),
+	PRINT_CONSTR(1, "Construction de la classe Game %d", m_level)
+	gStatic->init_static_data(m_level);
+	gGame_engine->init_game_engine(m_level, gGraphics->get_camera(),
 									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
 	gGraphics->init_graphic_engine();
 
@@ -51,9 +53,12 @@ Game::~Game()
 
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
-	delete m_game_engine;
+	delete gGame_engine;
+	gGame_engine = NULL;
     delete gStatic;
+	gStatic = NULL;
     delete gAnims;
+	gAnims = NULL;
 }
 
 void Game::update_keyboard()
@@ -64,22 +69,22 @@ void Game::update_keyboard()
 void Game::update_game()
 {
 
-	m_game_engine->update_pos();
-	m_game_engine->update_speed();
-	m_game_engine->babar_update_state();
-	m_game_engine->update_monsters_projectiles();
-	m_game_engine->babar_monsters_collision();
-	m_game_engine->update_events_manager();
+	gGame_engine->update_pos();
+	gGame_engine->update_speed();
+	gGame_engine->babar_update_state();
+	gGame_engine->update_monsters_projectiles();
+	gGame_engine->babar_monsters_collision();
+	gGame_engine->update_events_manager();
 }
 
 void Game::play_sounds()
 {
-	m_game_engine->play_sounds();
+	gGame_engine->play_sounds();
 }
 
 void Game::delete_dead_things()
 {
-	m_game_engine->delete_dead_things();
+	gGame_engine->delete_dead_things();
 }
 
 void Game::update_graphic()
@@ -100,14 +105,14 @@ void Game::update_graphic()
 	gAnims->display_anims(camera);
 
 	/* affichage des événements */
-	m_game_engine->display_events(camera);
+	gGame_engine->display_events(camera);
 
     /* affichage des monstres */
-	m_game_engine->display_monsters(camera);
+	gGame_engine->display_monsters(camera);
 
 
 	/* affichage des projectiles */
-	m_game_engine->display_projectiles_friend(camera);
+	gGame_engine->display_projectiles_friend(camera);
 
 	/* affichage du sprite babar */
 	camera->display(gBabar);
@@ -121,13 +126,18 @@ void Game::update_graphic()
 	camera->flip_camera();
 }
 
-void Game::game_loop()
+void Game::play_victory()
+{
+	
+}
+
+result_game Game::game_loop()
 {
 	int compteur = 0;
 	float used_time = 0;
 	float used_time_refresh_screen = 0;
 	bool end = false;
-	int begining = SDL_GetTicks();
+//~ 	int begining = SDL_GetTicks();
 	gSound->play_music();
 	while (!end){
 		m_time = SDL_GetTicks();
@@ -148,22 +158,27 @@ void Game::game_loop()
 			m_time = SDL_GetTicks();
 			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
 			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
-			if (PERF_CYCLES != 0 && compteur % PERF_CYCLES == 0) {
-				PRINT_PERF("pourcentage d'utilisation du temps: %f", ((used_time * 100) / PERF_CYCLES))
-				PRINT_PERF("pourcentage d'utilisation du temps pour le refresh: %f", ((used_time_refresh_screen * 100) / PERF_CYCLES))
-				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))
+//~ 			if (PERF_CYCLES != 0 && compteur % PERF_CYCLES == 0) {
+//~ 				PRINT_PERF("pourcentage d'utilisation du temps: %f", ((used_time * 100) / PERF_CYCLES))
+//~ 				PRINT_PERF("pourcentage d'utilisation du temps pour le refresh: %f", ((used_time_refresh_screen * 100) / PERF_CYCLES))
+//~ 				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))
 				used_time = 0;
 				used_time_refresh_screen = 0;
 
+//~ 			}
+			if (gGame_engine->has_won()) {
+				this->play_victory();
+				return victory;
 			}
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
-	float temps_moyen = (SDL_GetTicks() - begining)/compteur;
+//~ 	float temps_moyen = (SDL_GetTicks() - begining)/compteur;
 
-	PRINT_PERF("**************************************")
-	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
-	PRINT_PERF("**************************************")
+//~ 	PRINT_PERF("**************************************")
+//~ 	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
+//~ 	PRINT_PERF("**************************************")
+	return leave;
 }
 

@@ -5,6 +5,7 @@
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 #include "../game/game.h"
+#include "../game/levels_manager.h"
 
 Main_menu::Main_menu()
 {
@@ -48,7 +49,7 @@ void Main_menu::refresh_screen()
 
 void Main_menu::launch_game()
 {
-	Game *game = new Game();
-	game->game_loop();
-	delete game;	
+	Levels_manager *levels_manager = new Levels_manager();
+	levels_manager->play();
+	delete levels_manager;	
 }

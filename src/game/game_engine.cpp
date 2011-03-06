@@ -35,7 +35,9 @@
 #include "../video/animation_engine.h"
 
 
-Game_engine::Game_engine() : m_monsters_manager(new Monsters_manager())
+Game_engine::Game_engine() : 
+	m_monsters_manager(new Monsters_manager()),
+	m_victory(false)
 {
     gCollision = new Collisions_manager();
     gProj = new Projectiles_manager();
@@ -58,11 +60,15 @@ void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard
 {
     std::string rac = RAC;
 	std::string rep;
-	PRINT_CONSTR(1, "Construction de la classe Game_engine")
+    char str[3];
+    std::string str_lvl;
+    sprintf(str, "%d", level);
+    str_lvl = str;
+	
+	PRINT_CONSTR(1, "Construction de la classe Game_engine %d", level)
 	m_matrix_weight = gStatic->static_data_weight();
 	m_matrix_height = gStatic->static_data_height();
 	gCollision->init_collisions_manager(level);
-	std::string str_lvl = "1";
 	rep = LEVELS_R;
 	Analyser analyser;
 	analyser.open(rep + "level" + str_lvl + ".lvl");
@@ -156,9 +162,18 @@ void Game_engine::display_events(Camera *camera) {
 	gEvent->display_events(camera);
 }
 
-
 void Game_engine::play_sounds()
 {
 	m_monsters_manager->play_sounds();
 	gSound->play_sound(gBabar);
+}
+
+void Game_engine::set_victory()
+{
+	m_victory = true;
+}
+
+bool Game_engine::has_won()
+{
+	return m_victory;
 }
