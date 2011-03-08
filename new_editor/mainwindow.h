@@ -1,5 +1,5 @@
-#ifndef _MAIN_WINDOW_H
-#define _MAIN_WINDOW_H
+#ifndef _EDITOR_MAIN_WINDOW_H
+#define _EDITOR_MAIN_WINDOW_H
 
 #include <QMainWindow>
 
@@ -43,15 +43,10 @@ class MainWindow : public QMainWindow {
 	*/
 	void createToolBars();
 	
+
 	/*!
-	*	@brief Charge un fichier .png
-	*	@param str Nom du fichier (doit terminer par .png)
-	*/
-	void loadFile(QString str);
-	
-	/*!
-	*	@brief Enregistre le .col en fonction des modifications faites
-	*	@param str Nom au format .png du fichier à sauvegarder
+	*	@brief Enregistre le niveau en fonction des modifications faites
+	*	@param str Nom (terminant par .lvl) du fichier à sauvegarder
 	*/
 	void saveFile(QString str);
 
@@ -65,19 +60,20 @@ class MainWindow : public QMainWindow {
 	void newFile();
 	void open();
 	void save();
-	void undo();
-	void aboutBabarStaticEditor();
-	void setCursBox();
-	void setCursLine();
-	void setCursGreen();
-	void setCursRed();
-	void setCursErase();
+	void saveAs();
+	void aboutBabarEditor();
+	void addBabar();
+	void addStatic();
+	void addMonster();
+	void addEvent();
+	void deleteItem();
 	
 	
 	private:
+	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
+
 	MyGraphicsView *m_graphic_view; // objet principal de l'éditeur
 	
-	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
 	bool m_opened_file; // vaut vrai si un fichier est ouvert, faux sinon
 	QString m_file_name; // le nom du fichier en cours (si un fichier est ouvert)
 	
@@ -90,13 +86,13 @@ class MainWindow : public QMainWindow {
 	QAction *m_openAct;
 	QAction *m_exitAct;
 	QAction *m_saveAct;
-	QAction *m_undoAct;
-	QAction *m_aboutBabarStaticEditor;
-	QAction *m_curs_box;
-	QAction *m_curs_line;
-	QAction *m_curs_green;
-	QAction *m_curs_red;
-	QAction *m_curs_erase;
+	QAction *m_saveAsAct;
+	QAction *m_aboutBabarEditor;
+	QAction *m_addBabar;
+	QAction *m_addStatic;
+	QAction *m_addMonster;
+	QAction *m_addEvent;
+	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;
 

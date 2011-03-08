@@ -35,6 +35,6 @@ following_walking_monster fubob 2976 1279
 !
 #Events#
 2
-event machinegun 447 1348
+event victory 447 1348
 event shotgun 1503 2952
 !
