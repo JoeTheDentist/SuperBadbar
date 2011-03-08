@@ -32,7 +32,14 @@ void Collisions_manager::init_collisions_manager(int level) {
     char str[3];
     sprintf(str, "%d", level);
 	str_lvl = str;
-	analyser.open(LEVELS_R + "level" + str_lvl + ".lvl");
+	init_collisions_manager(LEVELS_R + "level" + str_lvl + ".lvl");
+}
+
+
+
+void Collisions_manager::init_collisions_manager(std::string level_name) {
+	Analyser analyser;
+	analyser.open(level_name);
 	analyser.find_string("#Level_dimensions#");
 	m_collisions_matrix_w = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
 	m_collisions_matrix_h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
@@ -68,12 +75,12 @@ void Collisions_manager::init_collisions_manager(int level) {
 		analyser_static.close();
 		static_name = analyser.read_string();
 	}
-
-
 	analyser.close();
 	m_moving_platform = new Moving_platform(PIC_STATICS_R + "block8", 1600, 2200, 1600, 1600);
-
 }
+
+
+
 
 bool Collisions_manager::check_collision(Rect A, Rect B)
 {

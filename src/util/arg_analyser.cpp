@@ -18,6 +18,7 @@
 	m_record_on = false;
 	m_replay_on = false;
 	m_menu = false;
+	m_level_specified = false;
 	std::string str;
 	for (int i = 1; i < argc; i++) {
 		str = argv[i];
@@ -36,6 +37,16 @@
 			}
 		} else if (str == "-menu") {
 			m_menu = true;
+		} else if (str == "-level") {
+			if (i + 1 == argc) {
+				PRINT_DEBUG(1, "Erreur: argument manquant")
+				m_arg_error = true;
+			} else {
+				i = i + 1;
+				m_level_name = argv[i];
+				m_level_specified = true;
+				std::cout << "YEAH " << std::endl;
+			}		
 		}
 	}
 }
@@ -60,6 +71,14 @@ bool Arg_Analyser::replay_on()
 bool Arg_Analyser::menu_on()
 {
 	return m_menu;
+}
+bool Arg_Analyser::level_specified_on()
+{
+	return m_level_specified;
+}
+std::string Arg_Analyser::get_level_name()
+{
+	return m_level_name;
 }
 std::string Arg_Analyser::input_file()
 {

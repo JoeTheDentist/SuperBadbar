@@ -21,8 +21,16 @@
 #include <QMessageBox>
 #include <QGraphicsColorizeEffect>
 
+#ifndef WIN32
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/resource.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#endif
 
 MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
+	m_file_name(),
 	QGraphicsView(scene, parent),
 	m_data(new Data()),
 	m_opened(false),
@@ -63,6 +71,7 @@ void MyGraphicsView::newFile(QString backgroundName)
 
 void MyGraphicsView::loadFile(QString fileName)
 {
+	m_file_name = fileName;
 	Analyser analyser;
 	QPixmap image;
 	int x, y, zbuffer, age;
@@ -170,7 +179,6 @@ void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 	}
 }
 
-
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	(void)event; // ne sert à rien..
@@ -221,6 +229,30 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 	}
 }
 
+void horror_function(QString level_name)
+{
+	#ifndef WIN32
+	int pid;
+	switch (pid = fork()) {
+	case -1:		// je suis une erreur
+	    perror("");
+	    exit(-1);
+	case 0:		// je suis ton fils
+		char *cmd[4];
+		cmd[0] = new char[20];
+		strcpy(cmd[0], "../src/babar");
+		cmd[1] = new char[10];
+		strcpy(cmd[1], "-level");		
+		cmd[2] = new char[level_name.size() + 2];
+		strcpy(cmd[2], level_name.toStdString().c_str());
+		cmd[3] = 0;
+		execvp(cmd[0], cmd);
+	default:		// je suis ton pere
+		break;
+	}
+	#endif 
+}
+
 void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 {
 	switch (event->key()) {
@@ -236,6 +268,9 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 				break;
 		case Qt::Key_C:
 			copyItem(m_selected_item);
+			break;		
+		case Qt::Key_P:
+			horror_function(m_file_name);
 			break;
 		case Qt::Key_V:
 			pastItem();
@@ -265,6 +300,7 @@ qreal MyGraphicsView::ysize()
 
 void MyGraphicsView::save(QString str)
 {
+	m_file_name = str;
 	m_data->saveData(str);
 }
 

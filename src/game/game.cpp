@@ -31,14 +31,13 @@
 
 
 Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):
-	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name)), 
-	m_level(level)
+	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name))
 {	
 	gGame_engine = new Game_engine();
     gStatic = new Static_data();
-	PRINT_CONSTR(1, "Construction de la classe Game %d", m_level)
-	gStatic->init_static_data(m_level);
-	gGame_engine->init_game_engine(m_level, gGraphics->get_camera(),
+	PRINT_CONSTR(1, "Construction de la classe Game %d", level)
+	gStatic->init_static_data(level);
+	gGame_engine->init_game_engine(level, gGraphics->get_camera(),
 									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
 	gGraphics->init_graphic_engine();
 
@@ -46,6 +45,22 @@ Game::Game(int level, bool record_on, bool replay_on, std::string output_name, s
 
 	gAnims = new Animation_engine();
 	/*gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, NOEND, 10, 10, true);*/
+}
+
+Game::Game(std::string level_name):
+	m_keyboard(new Keyboard(false, false, "", ""))
+{
+	gGame_engine = new Game_engine();
+    gStatic = new Static_data();
+	PRINT_CONSTR(1, "Construction de la classe Game")
+	gStatic->init_static_data(level_name);
+	gGame_engine->init_game_engine(level_name, gGraphics->get_camera(),
+									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
+	gGraphics->init_graphic_engine();
+
+	m_previous_time = SDL_GetTicks();
+
+	gAnims = new Animation_engine();
 }
 
 Game::~Game()

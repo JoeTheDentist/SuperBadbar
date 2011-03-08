@@ -32,6 +32,7 @@ public:
 	Static_data();														/* Constructeur par défaut*/
 	~Static_data();														/* Destructeur */
 	void init_static_data(uint32_t lvl);
+	void init_static_data(std::string level_name); /* level name est un chemin vers le level */
 	Surface * background();  										/* Accesseur */
 	uint32_t static_data_height();  									/* Hauteur du niveau */
 	uint32_t static_data_weight();   				 					/* Largeur du niveau */

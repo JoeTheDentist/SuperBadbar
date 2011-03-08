@@ -40,7 +40,6 @@ enum result_game {
 class Game {
 private:
 	Keyboard *m_keyboard;
-	int m_level;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
@@ -57,6 +56,8 @@ public:
 	 *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par défaut)
 	*/
 	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
+
+	Game(std::string level_name);
 
 	/**
 	 * @brief Destructeur

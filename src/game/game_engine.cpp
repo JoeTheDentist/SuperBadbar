@@ -58,27 +58,29 @@ Game_engine::~Game_engine()
 
 void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container)
 {
-    std::string rac = RAC;
-	std::string rep;
     char str[3];
     std::string str_lvl;
     sprintf(str, "%d", level);
     str_lvl = str;
-	
-	PRINT_CONSTR(1, "Construction de la classe Game_engine %d", level)
+	init_game_engine(LEVELS_R + "level" + str_lvl + ".lvl", camera, keyboard, pictures_container);
+}
+
+void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keyboard *keyboard,
+	Pictures_container *pictures_container)
+{
+	PRINT_CONSTR(1, "Construction de la classe Game_engine")
 	m_matrix_weight = gStatic->static_data_weight();
 	m_matrix_height = gStatic->static_data_height();
-	gCollision->init_collisions_manager(level);
-	rep = LEVELS_R;
+	gCollision->init_collisions_manager(level_name);
 	Analyser analyser;
-	analyser.open(rep + "level" + str_lvl + ".lvl");
+	analyser.open(level_name);
     gBabar = new Babar(keyboard, &analyser);
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
-	analyser.close();
-
+	analyser.close();	
 }
+
 
 void Game_engine::update_pos()
 {

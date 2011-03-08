@@ -69,6 +69,15 @@ public:
 	*/
 	void init_collisions_manager(int level);
 
+
+	/*!
+	 *	@brief Initialisation de la matrice de collision
+	 *	@param level_name Le chemin vers le fichier level à charger
+	*/
+	void init_collisions_manager(std::string level_name);
+
+
+
 	/*!
 	 *	@brief Controle la collision de deux rectangles
 	 * 	@param A Premier rectangle

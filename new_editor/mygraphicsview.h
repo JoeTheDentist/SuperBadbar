@@ -155,6 +155,7 @@ class MyGraphicsView : public QGraphicsView {
 
 
 	private:
+	QString m_file_name;
 	Data *m_data; // Toute les donnees a sauvegarder y sont stockees
 	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé

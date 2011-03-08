@@ -60,6 +60,7 @@ public:
 	 *	@param pictures_container Le gestionnaire d'images
 	*/
 	void init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container);
+	void init_game_engine(std::string level_name, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container);
 
 	/**
 	 * 	@brief Mise à jour des positions des éléments du jeu

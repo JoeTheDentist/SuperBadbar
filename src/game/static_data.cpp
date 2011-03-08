@@ -39,32 +39,37 @@ Static_data::~Static_data()
 }
 
 void Static_data::init_static_data(uint32_t lvl)
-{
-    int level = 0;
-	std::string rep;
+{	std::string rep;
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
     char str[3];
     std::string str_lvl;
     Analyser analyser;
 
-	/*** chargement du fond d'écran ***/
     sprintf(str, "%d", lvl);
     str_lvl = str;
-    m_background = new Surface(PIC_BACKGROUNDS_R + "level"+str_lvl+".png");
-
-	/*** Images des projectiles ***/
-	rep = PIC_PROJ_R;
-    /*** Remplissage des statics  ***/
+    /*** Ouverture du fichier .lvl  ***/
 	rep = LEVELS_R;
-    analyser.open(rep + "level" + str_lvl + ".lvl");
+    init_static_data(rep + "level" + str_lvl + ".lvl");
+}
 
+void Static_data::init_static_data(std::string level_name)
+{
+	PRINT_CONSTR(1, "Construction d'un Static_data")
+    Analyser analyser;
+	int level = 0;
+    /*** Ouverture du fichier .lvl  ***/
+    analyser.open(level_name);
+	
+	/*** chargement du fond d'écran ***/
+	analyser.find_string("#Background#");
+	m_background = new Surface(PIC_BACKGROUNDS_R + analyser.read_string());
 
+    /*** Remplissage des statics  ***/
 	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name;
     analyser.find_string("#Statics#");
 	analyser.read_int();
-
 	static_name = analyser.read_string();
 	Rect pos;
 	Static *curr_static;
@@ -72,7 +77,6 @@ void Static_data::init_static_data(uint32_t lvl)
 		pos.x = analyser.read_int();
 		pos.y = analyser.read_int();
         curr_static = new Static(static_pic_rep + static_name + PICS_EXT,pos);
-
         level = analyser.read_int();
 		if ( level == 0 ) {
             add_static_back(curr_static);
@@ -82,8 +86,6 @@ void Static_data::init_static_data(uint32_t lvl)
 
 		static_name = analyser.read_string();
     }
-
-
     analyser.close();
 }
 
