@@ -12,7 +12,7 @@
 #define _SPRITES_
 
 #define GRAVITE 7           /* Constante pour la décélération de saut */
-
+#define DAMAGE_BOX_RATIO 5
 #include "../items/weapons.h"
 
 
@@ -77,6 +77,8 @@ public:
 	Rect position() const;
 
 	Rect * pposition();
+	
+	Rect damage_box() const;
 
 	/*!
 	 *	@brief Accesseur

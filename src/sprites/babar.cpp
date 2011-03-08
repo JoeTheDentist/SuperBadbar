@@ -150,7 +150,7 @@ void Babar::binded_update_pos(Moving_platform *platform)
 	m_pos.x = plat_pos.x;
 	m_pos.y = plat_pos.y;
 	/* update de  m_binded_pos */
-	uint32_t coll, coll2;
+	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		coll = platform->down_collision_type(m_binded_pos);

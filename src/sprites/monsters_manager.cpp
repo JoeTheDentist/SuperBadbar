@@ -92,11 +92,11 @@ void Monsters_manager::display_monsters(const Camera &camera)
 
 void Monsters_manager::babar_monsters_collision()
 {
-	Rect babar_pos = gBabar->position();
+	Rect babar_pos = gBabar->damage_box();
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
 		if (!(*it)->dead()) {
-			if (Collisions_manager::check_collision((*it)->position(), babar_pos)) {
+			if (Collisions_manager::check_collision((*it)->damage_box(), babar_pos)) {
 				gBabar->damage(1);
 			}
 		}

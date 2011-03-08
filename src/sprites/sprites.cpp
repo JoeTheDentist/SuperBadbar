@@ -61,6 +61,17 @@ Rect * Sprite::pposition()
 	return &m_pos;
 }
 
+Rect Sprite::damage_box() const
+{
+	Rect box = this->position();
+	box.x += box.w / DAMAGE_BOX_RATIO;
+	box.y += box.h / DAMAGE_BOX_RATIO;
+	box.w *= (DAMAGE_BOX_RATIO - 2); box.w /= DAMAGE_BOX_RATIO;
+	box.h *= (DAMAGE_BOX_RATIO - 2); box.h /= DAMAGE_BOX_RATIO;
+	return box;
+}
+
+
 uint32_t Sprite::position_x() const
 {
 	return m_pos.x;

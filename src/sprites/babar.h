@@ -255,6 +255,7 @@ public:
 	 */
 	Rect speed() const;
 
+
 	/**
 	 * 	@brief Accesseur
 	 *	@return Return vrai si babar est lié à une plateforme
