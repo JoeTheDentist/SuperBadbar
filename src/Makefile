@@ -2,7 +2,8 @@
 export OBJ_DIR=obj/
 export CC = g++
 export CFLAGS=-g -Wall #$(LIB_INC) 
-export LDFLAGS= -g -lSDL_ttf -lfreetype -lSDL_image -lfmod # $(LIB_DYN)
+LDFLAGS= -g #-lfreetype -lSDL_image -lfmod # $(LIB_DYN)
+LIBCOMp=$(wildcard ../lib/gcc/*)
 
 DIR = control events game items menus physic sound sprites util video AI 
 EXEC_NAME = babar
@@ -14,7 +15,7 @@ all:
 	$(MAKE) -C $$i all; \
 	done
 	$(CC) $(CFLAGS) $(INCLUDES) -o obj/main.o -c main.cpp;
-	$(CC) -o $(EXEC_NAME) $(OBJ_DIR)*.o $(LDFLAGS)
+	$(CC) ../lib/gcc/libSDL_ttf.so -o $(EXEC_NAME) $(OBJ_DIR)*.o $(LDFLAGS)
 
 clean:
 	rm $(OBJ_DIR)*.o $(EXEC_NAME)
