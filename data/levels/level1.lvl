@@ -12,6 +12,7 @@ level1.png
 
 #Statics#
 11
+block7 1800 2200 0
 block8 1217 899 0
 soil 0 3300 1
 block6 2750 2000 0
@@ -22,7 +23,6 @@ block4_1 700 500 0
 block3 1700 2950 0
 block2 838 2707 0
 block1 70 2950 0
-block7 1800 2200 0
 !
 #Monsters#
 10
