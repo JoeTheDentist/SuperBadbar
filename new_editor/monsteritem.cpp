@@ -32,7 +32,7 @@ MyItem *MonsterItem::duplicate()
 
 void MonsterItem::saveItem(QTextStream &out)
 {
-	out << m_class_name << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << endl;
+	out << m_class_name << " " << m_file_name << " " << (int)m_item->x() << " " << (int)m_item->y() << endl;
 }
 
 void MonsterItem::addToData(Data *data)
