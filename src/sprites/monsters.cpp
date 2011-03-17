@@ -72,7 +72,7 @@ void Monster::update_speed_ai()
 void Monster::damage(uint32_t damage)
 {
     m_life -= damage;
-	prepare_sound(MONSTERS_SOUNDS_R + "kickass" + SOUNDS_EXT);
+	prepare_sound(MONSTERS_SOUNDS_R + "death.wav");
 
 }
 

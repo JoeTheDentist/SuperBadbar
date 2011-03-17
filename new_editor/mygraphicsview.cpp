@@ -181,7 +181,6 @@ void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
-	(void)event; // ne sert à rien..
 	m_mouse_pressed = false;
 	if (m_opened) {
 		if (m_del_curs) {
