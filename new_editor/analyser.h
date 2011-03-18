@@ -30,7 +30,7 @@
  * Utilisation: Utiliser open pour ouvrir un fichier.
  * 				L'interpréter avec les méthodes appropriées
  *				Le fermer avec close
- * Fonctionnement: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
+ * Fonctionnement interne: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
  *				Il est lu à chaque fois lu à l'avance par convention
 **/
 

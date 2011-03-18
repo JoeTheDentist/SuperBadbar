@@ -41,7 +41,7 @@ class EventItem: public MyItem {
 	virtual void addToData(Data *data);
 
 	/*!
-	*	@brief transforme le nom du fichier ecrit dans un .lvl
+	*	@brief transforme le nom du fichier ecrit dans un .evt
 	*	en le chemin relatif vers le fichier depuis l'editeur
 	*	@return Ce chemin
 	*/

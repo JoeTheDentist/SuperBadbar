@@ -40,8 +40,9 @@ QString EventItem::picPathFromEditor(QString fileName)
 {
 	Analyser analyser;
 	analyser.open(EVENTS_DIR + fileName.toStdString() + EVENTS_EXT);
+
 	if (analyser.find_string("#picture#")) {
-		return EVENTS_PIC_DIR + fileName + ".png";
+		return QString::fromStdString(EVENTS_PIC_DIR + analyser.read_string());
 	} else {
 		std::cout << "Pas d'image pour cet événement, erreur" << std::endl;
 		return "";

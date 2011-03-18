@@ -6,8 +6,8 @@ level1.png
 3400
 
 #Babar#
-1600
-2200
+3011
+2260
 1
 
 #Statics#
@@ -25,20 +25,27 @@ block2 838 2707 0
 block1 70 2950 0
 !
 #Monsters#
-10
-following_walking_monster maphyar 741 1251.57
-following_walking_monster maphyar 1006 1795.57
-following_walking_monster maphyar 982 2089.35
-following_walking_monster maphyar 912 2713.3
-following_walking_monster maphyar 651 2938.3
-following_walking_monster gailapin 95 2889.3
-following_walking_monster gailapin 525 2923.3
+15
+following_walking_monster maphyar 741 1251
+following_walking_monster maphyar 1006 1795
+following_walking_monster maphyar 982 2089
+following_walking_monster maphyar 912 2713
+following_walking_monster maphyar 651 2938
+following_walking_monster gailapin 95 2889
+following_walking_monster gailapin 525 2923
 following_flying_monster fubob 700 900
 following_walking_monster gailapin 383 2936
 following_walking_monster maphyar 216 2919
+following_flying_monster fubob 133 631
+following_flying_monster fubob -8 947
+following_flying_monster fubob 394 994
+following_flying_monster fubob 2788 1092
+following_flying_monster fubob 2435 1176
 !
 #Events#
-3
+4
+event victory 30 30
+event victory 1293 840
 event machinegun 616 2813
 event shotgun 2900 2250
 event gun 347 2823

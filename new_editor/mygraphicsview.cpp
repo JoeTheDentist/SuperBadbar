@@ -124,6 +124,7 @@ void MyGraphicsView::loadFile(QString fileName)
 			std::cout << "Erreur dans le fichier chargé ou l'éditeur n'est plus à jour!" << std::endl;
 		}
 		nameEvent = QString::fromStdString(analyser.read_string());
+		std::cout << "image: " << (EventItem::picPathFromEditor(nameEvent)).toStdString() << std::endl;
 		image.load(EventItem::picPathFromEditor(nameEvent));
 		item = this->scene()->addPixmap(image);
 		x = analyser.read_int();
@@ -348,7 +349,7 @@ void MyGraphicsView::addMonster()
 
 void MyGraphicsView::addEvent()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", EVENTS_DIR);
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier event", EVENTS_DIR);
 	if (fileName.isEmpty()) {
 		return;
 	}
