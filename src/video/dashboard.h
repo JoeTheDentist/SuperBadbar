@@ -14,6 +14,7 @@
 #define POS_HEART_Y 20
 #define POS_WEAPON_X 50
 #define POS_WEAPON_Y 60
+#define DASH_DECALAGE 10
 
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
@@ -38,6 +39,8 @@ private:
 	Surface **m_weapons_pictures;
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
+	Surface *m_peanut;
+
 public:
 
 	/**

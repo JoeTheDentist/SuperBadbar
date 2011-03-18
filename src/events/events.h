@@ -88,6 +88,7 @@ protected:
 	void process_lifeup();
 	void process_playsound();
 	void process_victory();
+	void process_peanut();
 };
 
 

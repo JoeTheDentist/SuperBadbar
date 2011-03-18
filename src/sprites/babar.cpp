@@ -26,7 +26,8 @@
 **	Méthodes de Babar 	**
 **********************************/
 Babar::Babar(Keyboard *keyboard, Analyser *analyser)
-    : m_keyboard(keyboard)
+    : m_keyboard(keyboard),
+	m_peanuts(0)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	init_babar(analyser);
@@ -516,5 +517,14 @@ void Babar::unbind()
 		m_bind->unbind();
 		m_bind = NULL;
 	}
+}
 
+int Babar::peanuts()
+{
+	return m_peanuts;
+}
+
+void Babar::incr_peanuts(int peanuts)
+{
+	m_peanuts += peanuts;
 }

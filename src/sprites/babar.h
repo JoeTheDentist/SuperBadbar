@@ -61,6 +61,7 @@ protected:
 	Moving_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
 	Rect m_binded_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
 	bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
+	int m_peanuts;
 
 	/**
 	 * 	@brief Charge les images de babar
@@ -273,6 +274,17 @@ public:
 	 */
 	void unbind();
 
+	/**
+	 * 	@brief Accesseur
+	 *	@return Le nombre de cacahuetes possede par babar
+	 */
+	int peanuts();
+
+	/**
+	 * 	@brief Mutateur: incremente le nombre de cacahutes
+	 *	@param peanuts Le nombre de cacahuetes a ajouter
+	 */
+	void incr_peanuts(int peanuts);
 
 };
 

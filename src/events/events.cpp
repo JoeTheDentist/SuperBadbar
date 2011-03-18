@@ -19,7 +19,8 @@
 #include "../items/weapons.h"
 
 
-Event::Event(std::string event_name, int x, int y)
+Event::Event(std::string event_name, int x, int y):
+	m_phase(0)
 {
 	PRINT_CONSTR(3, "Construction d'un event");
 	m_can_be_destroyed = false;
@@ -73,6 +74,8 @@ void Event::start()
 			process_playsound();
 		} else if (action == "victory") {
 			process_victory();
+		} else if (action == "peanut") {
+			process_peanut();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
@@ -129,4 +132,9 @@ void Event::process_playsound()
 void Event::process_victory()
 {
 	gGame_engine->set_victory();
+}
+
+void Event::process_peanut()
+{
+	gBabar->incr_peanuts(m_analyser->read_int());
 }
