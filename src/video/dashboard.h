@@ -15,11 +15,7 @@
 #define POS_WEAPON_X 50
 #define POS_WEAPON_Y 60
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#else
-    #include <SDL/SDL_ttf.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
 #include "../items/weapons.h"
 

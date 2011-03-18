@@ -10,11 +10,7 @@
 #ifndef _SOUND_ENGINE_
 #define _SOUND_ENGINE_
 
-#ifdef WIN32
-    #include "../../lib/fmodapi375win/api/inc/fmod.h"
-#else
-    #include <fmod/fmod.h>
-#endif
+#include "../../lib/fmodapi375win/api/inc/fmod.h"
 
 #include <string>
 #include <map>

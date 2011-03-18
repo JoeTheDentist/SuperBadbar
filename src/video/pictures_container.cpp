@@ -8,13 +8,8 @@
  */
 
 #include <iostream>
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-    #include "../../lib/SDL/include/SDL/SDL_image.h"
-#else
-    #include <SDL/SDL.h>
-    #include <SDL/SDL_image.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../../lib/SDL/include/SDL/SDL_image.h"
 #include <stdint.h>
 
 

@@ -11,11 +11,7 @@
 #ifndef _KEYBOARD_
 #define _KEYBOARD_
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-#else
-    #include <SDL/SDL.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL.h"
 
 #include <iostream>
 #include <string>

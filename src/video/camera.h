@@ -27,11 +27,7 @@
 
 #include "../util/globals.h"
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-#else
-    #include <SDL/SDL.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL.h"
 
 #define VITESSE_DECALAGE_CAMERA 25
 #define VITESSE_DECALAGE_RETOUR_CAMERA 10

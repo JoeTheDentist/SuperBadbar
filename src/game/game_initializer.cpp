@@ -1,15 +1,11 @@
 #include "game_initializer.h"
 #include <time.h>
 #include "../util/debug.h"
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-    #include "../../lib/fmodapi375win/api/inc/fmod.h"
-#else
-    #include <SDL/SDL.h>
-    #include <SDL/SDL_ttf.h>
-    #include <fmod/fmod.h>
-#endif
+
+#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../../lib/fmodapi375win/api/inc/fmod.h"
+
 #include "../util/globals.h"
 
 bool Game_initializer::init_game()

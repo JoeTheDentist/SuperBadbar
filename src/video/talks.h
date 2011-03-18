@@ -12,11 +12,7 @@
 
 #include <string>
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#else
-    #include <SDL/SDL_ttf.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
 #include "../video/camera.h"
 

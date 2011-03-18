@@ -9,11 +9,8 @@
 
 
 #include <iostream>
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL.h"
-#else
-    #include <SDL/SDL.h>
-#endif
+
+#include "../../lib/SDL/include/SDL/SDL.h"
 
 #include "surface.h"
 #include "../video/pictures_container.h"

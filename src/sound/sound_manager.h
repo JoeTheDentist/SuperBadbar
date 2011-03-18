@@ -10,11 +10,7 @@
 #ifndef _SOUND_MANAGER
 #define _SOUND_MANAGER
 
-#ifdef WIN32
-    #include "../../lib/fmodapi375win/api/inc/fmod.h"
-#else
-    #include <fmod/fmod.h>
-#endif
+#include "../../lib/fmodapi375win/api/inc/fmod.h"
 
 #include "../items/weapons.h"
 

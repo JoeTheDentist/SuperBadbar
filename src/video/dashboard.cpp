@@ -11,11 +11,7 @@
 #include <iostream>
 #include <stdint.h>
 
-#ifdef WIN32
-    #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#else
-    #include <SDL/SDL_ttf.h>
-#endif
+#include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
 
 #include "dashboard.h"
