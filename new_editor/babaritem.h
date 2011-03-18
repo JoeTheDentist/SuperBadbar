@@ -35,8 +35,9 @@ class BabarItem: public MyItem {
 	/*!
 	*	@brief ajoute l'objet correctement à data
 	*	@param data Le conteneur d'objets
+	*	@param push_front Indique si l'item doit etre positionne en tete ou en queue
 	*/
-	virtual void addToData(Data *data);
+	virtual void addToData(Data *data, bool push_front = true);
 	
 	virtual void edit();
 

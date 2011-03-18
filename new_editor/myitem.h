@@ -18,7 +18,7 @@ class MyItem {
 	virtual MyItem *duplicate() = 0;
 	QGraphicsPixmapItem *getItem();
 	virtual void saveItem(QTextStream &out) = 0;
-	virtual void addToData(Data *data) = 0;
+	virtual void addToData(Data *data, bool push_front = true) = 0;
 	virtual void edit();
 	
 };

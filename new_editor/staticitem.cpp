@@ -32,9 +32,9 @@ void StaticItem::saveItem(QTextStream &out)
 	out << m_file_name << " " << m_item->x() << " " << m_item->y() << " " << m_zbuffer << endl;
 }
 
-void StaticItem::addToData(Data *data)
+void StaticItem::addToData(Data *data, bool push_front)
 {
-	data->addStaticItem(this);
+	data->addStaticItem(this, push_front);
 }
 
 

@@ -57,7 +57,7 @@ class Data {
 	*	On n'a donc a priori besoin de addStaticItem, addMonsterItem etc. seulement dans item, et on
 	*	utilisera sinon addItem qui fera la distinction
 	*/
-	void addItem(MyItem *item);
+	void addItem(MyItem *item, bool push_front = false);
 	
 	/*!
 	*	@brief Ajoute un item a la liste des staticItem
@@ -75,7 +75,7 @@ class Data {
 	*	Cette méthode ne sera a priori appelée que par les items
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
 	*/
-	void addStaticItem(MyItem *item);
+	void addStaticItem(MyItem *item, bool push_front = false);
 		
 	/*!
 	*	@brief Ajoute un item a la liste des monstersItem
@@ -84,16 +84,17 @@ class Data {
 	*	Cette méthode ne sera a priori appelée que par les items
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addMonsterItem
 	*/
-	void addMonsterItem(MyItem *item);
+	void addMonsterItem(MyItem *item, bool push_front = false);
 			
 	/*!
 	*	@brief Ajoute un item a la liste des eventItem
 	*	@param item L'item a ajouter
+	*	@param push_front Indique si l'item doit etre positionne en tete ou en queue
 	*
 	*	Cette méthode ne sera a priori appelée que par les items
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addEventItem
 	*/
-	void addEventItem(MyItem *item);
+	void addEventItem(MyItem *item, bool push_front = true);
 	
 	/*!
 	*	@brief Cherche le premier item contenant le pixel (x,y) et le retourne
@@ -110,6 +111,13 @@ class Data {
 	*	@return Un pointeur vers le BabarItem contenu dans data
 	*/
 	MyItem *selectBabar();
+	
+	
+	/*!
+	*	@brief Supprime l'item de la liste MAIS NE LE DELETE PAS
+	*	@param item L'item a enlever
+	*/
+	void deleteItem(MyItem *item);
 	
 	/*!
 	*	@brief Fait remonter l'item dans la pile (utile pour changer l'ordre d'affichage sans toucher au zbuffer)

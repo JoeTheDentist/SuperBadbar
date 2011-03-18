@@ -31,9 +31,9 @@ void EventItem::saveItem(QTextStream &out)
 	out << m_class_name << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << endl;
 }
 
-void EventItem::addToData(Data *data)
+void EventItem::addToData(Data *data, bool push_front)
 {
-	data->addEventItem(this);
+	data->addEventItem(this, push_front);
 }
 
 QString EventItem::picPathFromEditor(QString fileName)

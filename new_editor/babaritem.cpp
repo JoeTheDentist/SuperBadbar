@@ -28,8 +28,9 @@ void BabarItem::saveItem(QTextStream &out)
 	out << m_item->x() << endl << m_item->y() << endl << m_age << endl;
 }
 
-void BabarItem::addToData(Data *data)
+void BabarItem::addToData(Data *data, bool push_front)
 {
+	push_front = false; // ne fait rien ;)
 	data->addBabarItem(this);
 }
 
