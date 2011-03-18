@@ -1,0 +1,36 @@
+#Background#
+level1.png
+
+#Level_dimensions#
+3200
+3400
+
+#Babar#
+1326
+2914
+1
+
+#Statics#
+6
+block4_1 432 569 0
+block4_2 433 1271 0
+block4_3 430 1845 0
+block3 1098 2905 0
+block5 130 2592 0
+soil 7 3289 1
+!
+#Monsters#
+7
+following_walking_monster gailapin 1364 1271
+following_walking_monster maphyar 2755 1335
+following_walking_monster maphyar 2288 1313
+following_walking_monster maphyar 1813 1312
+following_walking_monster fubob 2473 1585
+following_walking_monster fubob 2961 1801
+following_walking_monster fubob 2976 1279
+!
+#Events#
+2
+event machinegun 447 1348
+event shotgun 1503 2952
+!

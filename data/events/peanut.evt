@@ -1,0 +1,6 @@
+#picture# 
+peanut.png
+
+#start#
+peanut 1
+playsound events/peanut_taken.wav
