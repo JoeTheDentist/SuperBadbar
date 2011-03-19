@@ -102,8 +102,11 @@ bool Collisions_matrix::right_collision(Rect pos)
 
 bool Collisions_matrix::double_collision(Rect pos)
 {
-	for (int32_t i = pos.x / BOX_SIZE ; i <= (pos.x + pos.w) / BOX_SIZE ; i += 1) {
-		if (m_collisions_matrix[i][(pos.y + pos. h) / BOX_SIZE] == FULL_COLL) {
+	int i_min = std::max(pos.x,0) / BOX_SIZE;
+	int i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1) / BOX_SIZE;
+	int j = (pos.y + pos.h) / BOX_SIZE;
+	for (int32_t i = i_max ; i <= i_max ; i += 1) {
+		if (m_collisions_matrix[i][j] == FULL_COLL) {
 			return true;
 		}
 	}
