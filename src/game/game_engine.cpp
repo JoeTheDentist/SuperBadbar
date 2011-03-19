@@ -39,31 +39,15 @@ Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
 	m_victory(false)
 {
-    gCollision = new Collisions_manager();
-    gProj = new Projectiles_manager();
-    gEvent = new Events_manager();
-	gBabar = NULL;
 }
 
 
 
 Game_engine::~Game_engine()
 {
-    delete gBabar;
 	delete m_monsters_manager;
-	delete gCollision;
-	delete gProj;
-	delete gEvent;
 }
 
-void Game_engine::init_game_engine(int level, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container)
-{
-    char str[3];
-    std::string str_lvl;
-    sprintf(str, "%d", level);
-    str_lvl = str;
-	init_game_engine(LEVELS_R + "level" + str_lvl + ".lvl", camera, keyboard, pictures_container);
-}
 
 void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keyboard *keyboard,
 	Pictures_container *pictures_container)
@@ -81,6 +65,15 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keybo
 	analyser.close();	
 }
 
+void Game_engine::update()
+{
+	update_pos();
+	update_speed();
+	gBabar->update_state();
+	m_monsters_manager->babar_monsters_collision();
+	gEvent->update();
+
+}
 
 void Game_engine::update_pos()
 {
@@ -88,6 +81,8 @@ void Game_engine::update_pos()
 	gProj->update_pos();
 	gBabar->update_pos();
 	m_monsters_manager->monsters_update_pos();
+	update_monsters_projectiles();
+	delete_dead_things();
 }
 
 
@@ -98,15 +93,6 @@ void Game_engine::update_speed()
 	gCollision->update_platforms_speed();
 }
 
-void Game_engine::babar_update_state()
-{
-	gBabar->update_state();
-}
-
-void Game_engine::babar_monsters_collision()
-{
-	m_monsters_manager->babar_monsters_collision();
-}
 
 void Game_engine::display_monsters(Camera * const camera) const
 {
@@ -137,7 +123,6 @@ void Game_engine::update_monsters_projectiles()
 				break;
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
                 monster->damage((*it)->damage());
-
                 /* animation du sang */
                 Rect speed = {0};
                 Rect pos = monster->position();
@@ -148,7 +133,6 @@ void Game_engine::update_monsters_projectiles()
                     img++;
                 }
                 gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);
-
                 (*it)->kill();
 			}
         }
@@ -156,11 +140,9 @@ void Game_engine::update_monsters_projectiles()
     }
 }
 
-void Game_engine::update_events_manager() {
-	gEvent->update();
-}
 
-void Game_engine::display_events(Camera *camera) {
+void Game_engine::display_events(Camera *camera) 
+{
 	gEvent->display_events(camera);
 }
 

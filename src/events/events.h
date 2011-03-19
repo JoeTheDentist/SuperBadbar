@@ -31,6 +31,7 @@ protected:
 	Rect m_pos;
 	int m_phase;
 	Analyser *m_analyser;
+	std::string m_event_name;
 
 public:
 	

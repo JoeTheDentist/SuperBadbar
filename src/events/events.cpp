@@ -21,7 +21,8 @@
 
 
 Event::Event(std::string event_name, int x, int y):
-	m_phase(0)
+	m_phase(0),
+	m_event_name(event_name)
 {
 	PRINT_CONSTR(3, "Construction d'un event");
 	m_can_be_destroyed = false;
@@ -34,15 +35,13 @@ Event::Event(std::string event_name, int x, int y):
 		m_pos.h = m_picture->h();
 		m_pos.w = m_picture->w();
 	}
+	m_analyser->close();
 }
 
 Event::~Event()
 {
-	if (m_analyser) {
-		m_analyser->close();
+	if (m_analyser) 
 		delete m_analyser;
-		m_analyser = NULL;
-	}
 	if (m_picture) 
 		delete m_picture;
 }
@@ -63,6 +62,7 @@ bool Event::can_start() const
 
 void Event::start()
 {
+	m_analyser->open(EVENTS_R + m_event_name + EVENTS_EXT);
 	m_can_be_destroyed = true;
 	m_analyser->find_string("#start#");
 	std::string action;
@@ -83,6 +83,7 @@ void Event::start()
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
 	}
+	m_analyser->close();
 }
 
 bool Event::can_be_destroyed() const

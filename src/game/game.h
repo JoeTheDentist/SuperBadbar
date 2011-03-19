@@ -46,7 +46,7 @@ private:
 public:
 
 	/**
-	 * 	@brief Constructeur
+	 * 	@brief Constructeur utilisé par le jeu
 	 *	@param level Le numero du niveau actuel
 	 * 	@param record_on Indique si on doit sauvegarder la sequence de touches
 	 *	@param replay_on Indique si on doit charger une sequence de touches
@@ -57,6 +57,11 @@ public:
 	*/
 	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
 
+	
+	/*!
+	 *	@brief Constructeur utilise par l'editeur
+	 *	@param level_name Chemin vers le niveau a ouvrir (depuis la racine)
+	*/
 	Game(std::string level_name);
 
 	/**
@@ -66,6 +71,7 @@ public:
 
 	/**
 	 * @brief La boucle de jeu
+	 * @return Le resultat du joueur
 	*/
 	result_game game_loop();
 
@@ -75,6 +81,7 @@ public:
 	void check_monsters();
 	
 private:
+	void init_game(std::string level_name);
 
 	/*!
 	 * 	@brief Mise à jour du moteur graphique et rafraichissement de l'écran
@@ -90,11 +97,6 @@ private:
 	 *  @brief Mise à jour des evenements claviers
 	*/
 	void update_keyboard();
-
-	/*!
-	 *  @brief Supprime objets morts (monstres, projectiles)
-	*/
-	void delete_dead_things();
 
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle

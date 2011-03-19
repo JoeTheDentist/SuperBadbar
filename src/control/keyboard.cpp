@@ -103,7 +103,6 @@ void Keyboard::update_events()
 			m_key_down[x] = y;
 			x = m_analyser->read_int();
 			y = m_analyser->read_int();
-			PRINT_DEBUG(3, "%d %d", x, y);
 		}
 	}
 }
@@ -138,7 +137,6 @@ menu_key Keyboard::get_menu_key()
 {
 	SDL_Event event;
 	while (true) {
-		std::cout << "plop" << std::endl;
 		SDL_WaitEvent(&event);
 		switch(event.type)
 		{

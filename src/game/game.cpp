@@ -20,6 +20,7 @@
 
 
 #include "../sprites/babar.h"
+#include "../sprites/projectiles_manager.h"
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
 #include "../sound/sound_engine.h"
@@ -33,42 +34,47 @@
 Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):
 	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name))
 {	
-	gGame_engine = new Game_engine();
-    gStatic = new Static_data();
-	PRINT_CONSTR(1, "Construction de la classe Game %d", level)
-	gStatic->init_static_data(level);
-	gGame_engine->init_game_engine(level, gGraphics->get_camera(),
-									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
-	gGraphics->init_graphic_engine();
-
-	m_previous_time = SDL_GetTicks();
-
-	gAnims = new Animation_engine();
-	/*gAnims->add(PIC_BABAR_R+"1/babar_1_0_", 2000, 2000, NOEND, 10, 10, true);*/
+	PRINT_CONSTR(1, "Construction de la classe Game")
+    char str[3];
+    std::string str_lvl;
+    sprintf(str, "%d", level);
+    str_lvl = str;
+	init_game(LEVELS_R + "level" + str_lvl + ".lvl");
 }
 
 Game::Game(std::string level_name):
 	m_keyboard(new Keyboard(false, false, "", ""))
 {
+	PRINT_CONSTR(1, "Construction de la classe Game")
+	init_game(level_name);
+}
+
+void Game::init_game(std::string level_name)
+{
+    gCollision = new Collisions_manager();
+    gProj = new Projectiles_manager();
+    gEvent = new Events_manager();
+	gBabar = NULL;
 	gGame_engine = new Game_engine();
     gStatic = new Static_data();
-	PRINT_CONSTR(1, "Construction de la classe Game")
 	gStatic->init_static_data(level_name);
 	gGame_engine->init_game_engine(level_name, gGraphics->get_camera(),
-									m_keyboard, gGraphics->get_pictures_container());	m_time = SDL_GetTicks();
+									m_keyboard, gGraphics->get_pictures_container());	
 	gGraphics->init_graphic_engine();
-
-	m_previous_time = SDL_GetTicks();
-
 	gAnims = new Animation_engine();
+	m_time = SDL_GetTicks();
+	m_previous_time = SDL_GetTicks();	
 }
 
 Game::~Game()
 {
-
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete m_keyboard;
 	delete gGame_engine;
+    delete gBabar;
+	delete gCollision;
+	delete gProj;
+	delete gEvent;
 	gGame_engine = NULL;
     delete gStatic;
 	gStatic = NULL;
@@ -83,23 +89,12 @@ void Game::update_keyboard()
 
 void Game::update_game()
 {
-
-	gGame_engine->update_pos();
-	gGame_engine->update_speed();
-	gGame_engine->babar_update_state();
-	gGame_engine->update_monsters_projectiles();
-	gGame_engine->babar_monsters_collision();
-	gGame_engine->update_events_manager();
+	gGame_engine->update();
 }
 
 void Game::play_sounds()
 {
 	gGame_engine->play_sounds();
-}
-
-void Game::delete_dead_things()
-{
-	gGame_engine->delete_dead_things();
 }
 
 void Game::update_graphic()
@@ -112,7 +107,7 @@ void Game::update_graphic()
 	camera->update_pos();
 	camera->display_background(gStatic->background());
 
-	/* affichage des statics (à faire en premier car derrière -> p-e pas tous...) */
+	/* affichage des statics du deuxieme plan */
 	gStatic->display_statics_back(camera);
 
 	/* affichage des animations */
@@ -132,6 +127,7 @@ void Game::update_graphic()
 	/* affichage du sprite babar */
 	camera->display(gBabar);
 
+	/* affichage des statics du premier plan */
 	gStatic->display_statics_first(camera);
 
 	/* affichage du tableau de board */
@@ -143,57 +139,34 @@ void Game::update_graphic()
 
 void Game::play_victory()
 {
-	
+	std::cout << "You wooooooon" << std::endl;
 }
 
 result_game Game::game_loop()
 {
-	int compteur = 0;
-	float used_time = 0;
-	float used_time_refresh_screen = 0;
 	bool end = false;
-//~ 	int begining = SDL_GetTicks();
 	gSound->play_music();
 	while (!end){
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {
-			PRINT_TRACE(3,"Cycle de jeu n°%d", compteur)
-			compteur++;
 			m_previous_time = m_time;
-			delete_dead_things();
 			update_keyboard();
 			if (m_keyboard->key_down(k_exit)) {
 				end = true;
 				break;
 			}
 			update_game();
-			int begin_refresh = SDL_GetTicks();
 			update_graphic();
 			play_sounds();
-			m_time = SDL_GetTicks();
-			used_time += (float)(m_time - m_previous_time)/(float)TIME_LOOP;
-			used_time_refresh_screen += (float)(m_time - begin_refresh)/(float)TIME_LOOP;
-//~ 			if (PERF_CYCLES != 0 && compteur % PERF_CYCLES == 0) {
-//~ 				PRINT_PERF("pourcentage d'utilisation du temps: %f", ((used_time * 100) / PERF_CYCLES))
-//~ 				PRINT_PERF("pourcentage d'utilisation du temps pour le refresh: %f", ((used_time_refresh_screen * 100) / PERF_CYCLES))
-//~ 				PRINT_PERF("pourcentage d'utilisation du temps pour les calculs: %f", (((used_time - used_time_refresh_screen) * 100) / PERF_CYCLES))
-				used_time = 0;
-				used_time_refresh_screen = 0;
-
-//~ 			}
 			if (gGame_engine->has_won()) {
 				this->play_victory();
 				return victory;
 			}
+			m_time = SDL_GetTicks();
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
 		}
 	}
-//~ 	float temps_moyen = (SDL_GetTicks() - begining)/compteur;
-
-//~ 	PRINT_PERF("**************************************")
-//~ 	PRINT_PERF("* temps moyen d'un cycle en ms = %f *", temps_moyen)
-//~ 	PRINT_PERF("**************************************")
 	return leave;
 }
 

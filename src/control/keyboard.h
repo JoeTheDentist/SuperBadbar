@@ -2,7 +2,7 @@
  * 	@file keyboard.h
  * 	@brief header de la Classe Keyboard
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -28,27 +28,27 @@ class Analyser;
 
 /**
  * 	@class Keyboard
- *	@brief Gestion des évènement claviers
+ *	@brief Gestion des evènement claviers
  *
- *	La classe Keyboard met à jour le tableau des touches enfoncées.
- *	Les touches gérées sont: quitter, haut, bas, droite, gauche, action,
+ *	La classe Keyboard met à jour le tableau des touches enfoncees.
+ *	Les touches gerees sont: quitter, haut, bas, droite, gauche, action,
  * 	saut, tir.\n
- *	Elle fournit un accesseur vers l'état de ces touches.\n
- *	Elle permet également de forcer la désactivation d'une ou plusieurs
- *	touches part l'appel d'une méthode (disable_key, disable_all)
+ *	Elle fournit un accesseur vers l'etat de ces touches.\n
+ *	Elle permet egalement de forcer la desactivation d'une ou plusieurs
+ *	touches part l'appel d'une methode (disable_key, disable_all)
  *
  * 	@todo Enlever les touches inutiles, charger les touches depuis
- *	un fichier de configuration, donner la possibilité au joueur
+ *	un fichier de configuration, donner la possibilite au joueur
  * 	de choisir ses touches avec un menu
  *
- *	@warning Si trop de touches sont appuyées simultanément, certaines ne sont pas détectées.\n
- *	Solution: changer la configuration des touches (éviter en particulier les fleches directionnelles)
+ *	@warning Si trop de touches sont appuyees simultanement, certaines ne sont pas detectees.\n
+ *	Solution: changer la configuration des touches (eviter en particulier les fleches directionnelles)
  **/
 class Keyboard {
 
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
-	int m_key_down[k_fire + 1];		// tableau des touches enfoncées
+	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vra
 	std::ofstream *m_record_file;
@@ -67,27 +67,27 @@ public:
 	~Keyboard();
 
 	/*!
-	* 	@brief Met à jour le tableau des touches enfoncées
+	* 	@brief Met à jour le tableau des touches enfoncees
 	*/
 	void update_events();
 
 	/*!
 	* 	@brief Accesseur
 	*	@param k la touche a controler
-	*	@return Vrai si la touche est enfoncée
+	*	@return Vrai si la touche est enfoncee
 	*/
 	bool key_down (enum key k) const;
 
 	/*!
 	* 	@brief Accesseur
 	*	@param k la touche a controler
-	*	@return Le nombre de cycles depuis lequel la touche est enfoncée
+	*	@return Le nombre de cycles depuis lequel la touche est enfoncee
 	*/
 	int time_pressed(enum key k) const;
 
 	/*!
 	* 	@brief Accesseur
-	*	@return Vrai si une touche gauche ou droite est enfoncée
+	*	@return Vrai si une touche gauche ou droite est enfoncee
 	*/
 	bool key_dir_down() const;
 
@@ -102,8 +102,12 @@ public:
 	*/
 	void disable_all_keys();
 	
+	
+	/*!
+	*	@brief Attend un evenement menu_key et le retourne
+	*	@return Le menu_key entre par l'utilisateur
+	*/
 	menu_key get_menu_key();
-
 };
 
 

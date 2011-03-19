@@ -109,6 +109,7 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	pos_peanut.y = pos_peanuts_number.y + (peanuts_number_picture->w - m_peanut->w()) / 2;
 	camera->display_picture(peanuts_number_picture, &pos_peanuts_number);
 	camera->display_picture(m_peanut, &pos_peanut, true);
+	SDL_FreeSurface(peanuts_number_picture);
 }
 
 void Dashboard::clear_dashboard()
