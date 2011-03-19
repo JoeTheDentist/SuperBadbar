@@ -16,17 +16,24 @@
 #include "../sprites/babar.h"
 #include "../util/globals.h"
 
-Collisions_manager::Collisions_manager() {
+Collisions_manager::Collisions_manager():
+	m_moving_platforms()
+{
 	PRINT_CONSTR(1, "Construction de Collisions_manager")
 }
 
-Collisions_manager::~Collisions_manager() {
-	delete m_moving_platform;
+Collisions_manager::~Collisions_manager() 
+{
+	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end(); it++) {
+		delete (*it);
+	}			
 }
 
 
 
-void Collisions_manager::init_collisions_manager(int level) {
+void Collisions_manager::init_collisions_manager(int level) 
+{
 	Analyser analyser;
 	std::string str_lvl;
     char str[3];
@@ -37,7 +44,8 @@ void Collisions_manager::init_collisions_manager(int level) {
 
 
 
-void Collisions_manager::init_collisions_manager(std::string level_name) {
+void Collisions_manager::init_collisions_manager(std::string level_name) 
+{
 	Analyser analyser;
 	analyser.open(level_name);
 	analyser.find_string("#Level_dimensions#");
@@ -54,6 +62,15 @@ void Collisions_manager::init_collisions_manager(std::string level_name) {
             m_collisions_matrix[i][j] = NO_COLL;
         }
     }
+	init_statics(analyser);
+	init_moving_plateforms(analyser);
+	analyser.close();
+	m_moving_platforms.push_back(new Moving_platform(PIC_STATICS_R + "block8", 1600, 2200, 1600, 1600));
+}
+
+void Collisions_manager::init_statics(Analyser &analyser)
+{
+	// ATTENTION: ici on charge les collisions des statics, mais pas leurs images
     analyser.find_string("#Statics#");
 	analyser.read_int();
 	std::string static_pic_rep = PIC_STATICS_R;
@@ -63,7 +80,7 @@ void Collisions_manager::init_collisions_manager(std::string level_name) {
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
-		int level = analyser.read_int();
+		analyser.read_int(); 
 		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
 		static_weight = analyser_static.read_int();
 		static_height = analyser_static.read_int();
@@ -74,11 +91,13 @@ void Collisions_manager::init_collisions_manager(std::string level_name) {
 		}
 		analyser_static.close();
 		static_name = analyser.read_string();
-	}
-	analyser.close();
-	m_moving_platform = new Moving_platform(PIC_STATICS_R + "block8", 1600, 2200, 1600, 1600);
+	}	
 }
 
+void Collisions_manager::init_moving_plateforms(Analyser &analyser)
+{
+	
+}
 
 
 
@@ -95,25 +114,38 @@ bool Collisions_manager::check_collision(Rect A, Rect B)
 
 void Collisions_manager::display_platforms(Camera * const camera) const
 {
-	camera->display(m_moving_platform);
+	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end(); it++) {
+		camera->display((*it));
+	}
+		
 }
 
 void Collisions_manager::update_platforms_pos()
 {
-	m_moving_platform->update_pos();
+	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end(); it++) {
+		(*it)->update_pos();
+	}
 }
 
 void Collisions_manager::update_platforms_speed()
 {
-	m_moving_platform->update_speed();
+	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end(); it++) {
+		(*it)->update_speed();
+	}
 }
 
 
 void Collisions_manager::update_babar_platforms()
 {
-	if(m_moving_platform->check_babar()) {
-		m_moving_platform->bind();
-		gBabar->bind(m_moving_platform);
+	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end(); it++) {
+		if((*it)->check_babar()) {
+			(*it)->bind();
+			gBabar->bind((*it));
+		}
 	}
 }
 

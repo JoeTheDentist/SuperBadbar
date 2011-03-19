@@ -17,6 +17,7 @@
 #include "../util/repertories.h"
 #include "../sprites/babar.h"
 #include "../items/weapons.h"
+#include "../video/talks.h"
 
 
 Event::Event(std::string event_name, int x, int y):
@@ -76,6 +77,8 @@ void Event::start()
 			process_victory();
 		} else if (action == "peanut") {
 			process_peanut();
+		} else if (action == "talk") {
+			process_dialog();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
@@ -137,4 +140,10 @@ void Event::process_victory()
 void Event::process_peanut()
 {
 	gBabar->incr_peanuts(m_analyser->read_int());
+}
+
+void Event::process_dialog()
+{
+	std::cout << "plop" << std::endl;
+	gGraphics->get_talks()->load_and_display_text(m_analyser->read_string());
 }

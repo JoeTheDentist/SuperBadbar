@@ -12,14 +12,17 @@
 #define _COLLISIONS_MANAGER_
 
 #include <stdint.h>
+#include <list>
 #include "collisions_matrix.h"
 #include "moving_platform.h"
 #include "../util/globals.h"
+#include "../util/analyser.h"
 
 class Static;
 class Moving_platform;
 class Camera;
 class Babar;
+class Analyser;
 
 /**
  * 	@class Collisions_manager
@@ -50,6 +53,7 @@ class Babar;
  */
 class Collisions_manager: public Collisions_matrix {
 private:
+	std::list<Moving_platform *> m_moving_platforms;
 	Moving_platform *m_moving_platform;
 public:
 
@@ -148,6 +152,10 @@ public:
 	 *	@return Vrai si la collision codée bloque les déplacements vers la droite
 	*/
 	static bool is_right_coll(uint32_t coll_number);
+	
+private:
+	void init_statics(Analyser &analyser);
+	void init_moving_plateforms(Analyser &analyser);
 };
 
 

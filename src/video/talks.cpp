@@ -14,6 +14,7 @@
 
 #include "talks.h"
 #include "../util/debug.h"
+#include "../util/repertories.h"
 #include "../control/keyboard.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
@@ -174,7 +175,7 @@ void Talks::display_text(std::string str)
 void Talks::load_and_display_text(std::string filename)
 {
 	char curr;
-	std::ifstream file((TEXT_TALKS_DIR + filename).c_str(), std::ios::in);
+	std::ifstream file((TALKS_R + filename).c_str(), std::ios::in);
 	std::string str;
 	if(!file) {
 		std::cout << "Erreur lors de l'ouverture du fichier de dialogue " << filename << std::endl;

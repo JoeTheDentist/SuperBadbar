@@ -37,6 +37,7 @@
 	#define PIC_MAINMENU_R			PIC_R + "mainmenu/"
 #define LEVELS_R RACINE_R + "data/levels/"
 #define EVENTS_R RACINE_R + "data/events/"
+#define TALKS_R RACINE_R + "data/talks/texts/"
 #define MONSTERS_STATS_R RACINE_R + "data/monsters/"
 #define SOUNDS_R RACINE_R + "sound/"
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"

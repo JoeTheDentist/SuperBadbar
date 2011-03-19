@@ -18,7 +18,6 @@
 
 #define PIC_TALKS_DIR "/pic/talks/"
 #define FONTS_TALKS_DIR "/data/talks/fonts/"
-#define TEXT_TALKS_DIR "/data/talks/texts/"
 
 
 
