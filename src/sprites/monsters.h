@@ -42,6 +42,7 @@ protected:
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
 	bool m_fire;
+	unsigned int m_fire_phase;
 	Weapon *m_weapon;
 
 public:
@@ -54,6 +55,13 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Monster();
+
+
+	/*!
+	 *	@brief init monster's datas from a .mstr file
+	*	@param file Le chemin du fichier monstre depuis le fichier des monstres (MONSTERS_STATS_R)
+	*/
+	void initFromMonsterFile(std::string file);
 
 	/**
 	 * 	@brief Mise à jour de la vitesse du monstre
@@ -93,11 +101,17 @@ public:
 	 */
 	bool dead() const;
 
+	/*!
+	 *	@brief Accesseur: indique si on peut tirer
+	 *	@return Vrai si on peut tirer
+	 */
+	bool can_fire();
+
 	/**
 	 * 	@brief Fait tirer le monstre 
 	 *	@return La liste de projectiles tirés
 	 *
-	 *	Si le monstre n'a pas d'arme, rien n'est tiré
+	 *	Doit etre precede de can_fire()
 	 */
 	std::list<Projectile*> *fire();
 };

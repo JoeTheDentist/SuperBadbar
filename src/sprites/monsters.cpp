@@ -11,12 +11,15 @@
 #include <stdint.h>
 
 #include "monsters.h"
+#include "../util/repertories.h"
 #include "../util/debug.h"
+#include "../util/analyser.h"
 #include "../game/game.h"
 #include "../video/surface.h"
 #include "../video/animation_engine.h"
 #include "../sprites/projectiles.h"
 #include "../items/weapons.h"
+#include "../items/monster_basic_weapon.h"
 #include "babar.h"
 
 
@@ -31,6 +34,7 @@ Monster::Monster():
 {
     m_state = WALKING;
     m_fire = false;
+	m_fire_phase = 0;
 }
 
 Monster::~Monster()
@@ -38,7 +42,25 @@ Monster::~Monster()
 	PRINT_CONSTR(3, "destruction d'un monstre")
 }
 
-
+void Monster::initFromMonsterFile(std::string file)
+{
+	Analyser analyserMonster;
+	analyserMonster.open((MONSTERS_STATS_R + file + MONSTERS_EXT).c_str());
+	analyserMonster.find_string("#Lifes#");
+	m_life = analyserMonster.read_int();
+	analyserMonster.find_string("#Speed#");
+	m_speed_def = analyserMonster.read_int();
+	if (analyserMonster.find_string("#Weapon#")) {
+		//TODO faire une fonction
+		if (analyserMonster.read_string() == "monster_basic_weapon")
+			m_weapon = new Monster_basic_weapon();
+	}	
+	analyserMonster.close();
+    m_animt = new Anim_table(PIC_MONSTERS_R + m_nom + "/" + m_nom);
+	m_speed.x = m_speed_def;
+	m_dir = RIGHT;
+    m_animt->set_rect(m_pos);	
+}
 
 Surface *Monster::current_picture() const
 {
@@ -83,7 +105,7 @@ void Monster::damage(uint32_t damage)
 
 void Monster::update()
 {
-	
+	m_fire_phase++;
 }
 
 bool Monster::dead() const
@@ -95,17 +117,19 @@ bool Monster::dead() const
     return false;
 }
 
+bool Monster::can_fire()
+{
+	return m_weapon && (m_fire_phase > m_weapon->reload_time());
+}
+
 std::list<Projectile*> *Monster::fire()
 {
-	if (m_weapon) {
-		/* Calcul de la position de la source du tir */
-		Rect fire_pos = m_pos;
-		if ( m_dir == RIGHT ) {
-			fire_pos.x += m_pos.w;
-		}
-		return m_weapon->fire(fire_pos,m_dir);
-	} else {
-		return new std::list<Projectile*>();
+	/* Calcul de la position de la source du tir */
+	Rect fire_pos = m_pos;
+	if ( m_dir == RIGHT ) {
+		fire_pos.x += m_pos.w;
 	}
+	m_fire_phase = 0;
+	return m_weapon->fire(fire_pos,m_dir);
 }
 

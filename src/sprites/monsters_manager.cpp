@@ -96,7 +96,9 @@ void Monsters_manager::make_monsters_fire()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++) {
-		gProj->add_ennemy_proj((*it)->fire());
+		(*it)->update();
+		if ((*it)->can_fire())
+			gProj->add_ennemy_proj((*it)->fire());
 	}
 }
 

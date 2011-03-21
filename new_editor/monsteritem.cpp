@@ -12,6 +12,7 @@ MonsterItem::MonsterItem(QGraphicsPixmapItem *item, QString fileName):
 {
 	Analyser analyser;
 	analyser.open((MONSTERS_DIR + fileName + ".mstr").toStdString());
+	analyser.find_string("#Class#");
 	m_class_name = QString::fromStdString(analyser.read_string());
 }                
 
