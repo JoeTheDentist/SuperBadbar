@@ -71,8 +71,11 @@ void Game_engine::update()
 	update_speed();
 	gBabar->update_state();
 	m_monsters_manager->babar_monsters_collision();
+	m_monsters_manager->make_monsters_fire();
 	gEvent->update();
-
+	update_monsters_projectiles();
+	update_babar_projectiles();
+	delete_dead_things();
 }
 
 void Game_engine::update_pos()
@@ -81,8 +84,6 @@ void Game_engine::update_pos()
 	gProj->update_pos();
 	gBabar->update_pos();
 	m_monsters_manager->monsters_update_pos();
-	update_monsters_projectiles();
-	delete_dead_things();
 }
 
 
@@ -140,7 +141,16 @@ void Game_engine::update_monsters_projectiles()
     }
 }
 
-
+void Game_engine::update_babar_projectiles()
+{
+	for (std::list<Projectile *>::iterator it = gProj->proj_ennemy_begin();
+				it != gProj->proj_ennemy_end(); it++) {
+            if ( Collisions_manager::check_collision(gBabar->position(),(*it)->position()) && !(*it)->dead()) {
+				gBabar->damage(1);
+			}
+	}
+}
+                                                            
 void Game_engine::display_events(Camera *camera) 
 {
 	gEvent->display_events(camera);

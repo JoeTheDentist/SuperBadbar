@@ -15,7 +15,10 @@
 #include "../game/game.h"
 #include "../video/surface.h"
 #include "../video/animation_engine.h"
+#include "../sprites/projectiles.h"
+#include "../items/weapons.h"
 #include "babar.h"
+#include <stdlib.h>
 
 
 
@@ -24,7 +27,8 @@
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster()
+Monster::Monster():
+	m_weapon(NULL)
 {
     m_state = WALKING;
     m_fire = false;
@@ -34,6 +38,8 @@ Monster::~Monster()
 {
 	PRINT_CONSTR(3, "destruction d'un monstre")
 }
+
+
 
 Surface *Monster::current_picture() const
 {
@@ -76,6 +82,11 @@ void Monster::damage(uint32_t damage)
 
 }
 
+void Monster::update()
+{
+	
+}
+
 bool Monster::dead() const
 {
     if ( m_life <= 0 ) {
@@ -84,3 +95,18 @@ bool Monster::dead() const
     }
     return false;
 }
+
+std::list<Projectile*> *Monster::fire()
+{
+	if (m_weapon && (rand() % 10 == 0)) {
+		/* Calcul de la position de la source du tir */
+		Rect fire_pos = m_pos;
+		if ( m_dir == RIGHT ) {
+			fire_pos.x += m_pos.w;
+		}
+		return m_weapon->fire(fire_pos,m_dir);
+	} else {
+		return new std::list<Projectile*>();
+	}
+}
+

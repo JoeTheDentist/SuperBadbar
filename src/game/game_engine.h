@@ -85,9 +85,13 @@ public:
 
 	/**
 	 * 	@brief Check les collisions monstres/projectiles
-	 *	@todo à revoir / changer
 	*/
 	void update_monsters_projectiles();
+
+	/**
+	 * 	@brief Check les collisions babar/projectiles
+	*/
+	void update_babar_projectiles();
 
 	/**
 	 * 	@brief Affichage des monstres

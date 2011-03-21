@@ -16,11 +16,13 @@
 #include "sprites.h"
 #include "../video/animation.h"
 #include "../sound/sonorisable.h"
+#include <list>
 
 class Animation;
 class Babar;
 class Surface;
-
+class Weapon;
+class Projectile;
 
 enum state_m {
     WALKING, WAIT, DEATH
@@ -39,8 +41,9 @@ protected:
 	std::string m_nom;				/* sa nature (peut-etre à enlever) */
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
-	bool m_can_fire;                /* si le monstre à le droit de tirer ou non */
 	bool m_fire;
+	Weapon *m_weapon;
+
 public:
 	/**
 	 * 	@brief Constructeur
@@ -78,6 +81,11 @@ public:
 	 *	@param damage Le nombre de viesà faire perdre
 	 */
 	void damage(uint32_t damage);
+	
+	/**
+	 *	@brief Methode reservee pour les actions speciales telles que le tir
+	 */
+	virtual void update();
 
 	/**
 	 * 	@brief Accesseur: Indique si le monstre est mort
@@ -85,7 +93,13 @@ public:
 	 */
 	bool dead() const;
 
-
+	/**
+	 * 	@brief Fait tirer le monstre 
+	 *	@return La liste de projectiles tirés
+	 *
+	 *	Si le monstre n'a pas d'arme, rien n'est tiré
+	 */
+	std::list<Projectile*> *fire();
 };
 
 #endif

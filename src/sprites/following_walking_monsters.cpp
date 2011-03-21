@@ -12,6 +12,7 @@
 #include "following_walking_monsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
+#include "../items/gun.h"
 #include "babar.h"
 #include "../AI/AI.h"
 
@@ -30,6 +31,13 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
 	analyserMonster.read_string(); // on saute la premiere ligne inutile ici
 	m_life = analyserMonster.read_int();
 	m_speed_def = analyserMonster.read_int();
+	if (analyserMonster.find_string("#Weapon#")) {
+		std::string plop = analyserMonster.read_string();
+		if (plop == "gun") 
+			m_weapon = new Gun();
+		m_weapon->add_munitions();
+
+	}
 	analyserMonster.close();
 
 	// images
@@ -42,9 +50,12 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
 
     m_animt->set_rect(m_pos);
 
-	m_can_fire = false;
 
     m_ai = new AI(gBabar, &m_pos);
+	
+//~ 	m_weapon->add_munitions();
+//~ 	m_weapon->add_munitions();
+	
 }
 
 Following_walking_monster::~Following_walking_monster()

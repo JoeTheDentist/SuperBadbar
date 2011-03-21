@@ -82,6 +82,8 @@ public:
 	*	@todo implémenter cette méthode avec un itérateur pour pouvoir la passer en const
 	*/
 	void display_monsters(const Camera &camera);
+	
+	void make_monsters_fire();
 
 	/*!
 	* 	@brief check les collisions entre babar et les monstres
