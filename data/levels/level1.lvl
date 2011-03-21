@@ -43,7 +43,7 @@ following_walking_monster gailapin 939 3212
 following_walking_monster maphyar 652 2952
 !
 #Events#
-74
+75
 event peanut 1394 2643
 event peanut 1189 2640
 event peanut 967 2632
@@ -118,4 +118,5 @@ event peanut 1059 1111
 event peanut 1101 1030
 event peanut 1143 921
 event victory 1291 806
+event talk_plop 75 2815
 !

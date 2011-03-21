@@ -18,7 +18,6 @@
 #include "../sprites/projectiles.h"
 #include "../items/weapons.h"
 #include "babar.h"
-#include <stdlib.h>
 
 
 
@@ -98,7 +97,7 @@ bool Monster::dead() const
 
 std::list<Projectile*> *Monster::fire()
 {
-	if (m_weapon && (rand() % 10 == 0)) {
+	if (m_weapon) {
 		/* Calcul de la position de la source du tir */
 		Rect fire_pos = m_pos;
 		if ( m_dir == RIGHT ) {

@@ -13,8 +13,10 @@
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../items/gun.h"
+#include "../items/monster_basic_weapon.h"
 #include "babar.h"
 #include "../AI/AI.h"
+
 
 
 Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
@@ -35,6 +37,8 @@ Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
 		std::string plop = analyserMonster.read_string();
 		if (plop == "gun") 
 			m_weapon = new Gun();
+		else if (plop == "monster_basic_weapon")
+			m_weapon = new Monster_basic_weapon();
 		m_weapon->add_munitions();
 
 	}

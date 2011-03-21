@@ -38,7 +38,7 @@ public:
 	~Gun();
 
 	/**
-	 * 	@brief Tire plusieurs balles de fusil à pompe
+	 * 	@brief Tire une balle de gun
 	 *	@param pos La position du propriétaire de l'arme
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés

@@ -34,7 +34,7 @@ enum direction {
 
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
+    GUN, MACHINEGUN, SHOTGUN, MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
 
