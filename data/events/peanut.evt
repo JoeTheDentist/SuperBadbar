@@ -3,4 +3,4 @@ peanut.png
 
 #start#
 peanut 1
-playsound events/peanut_taken.wav
+playsound events/peanut_taken.mp3
