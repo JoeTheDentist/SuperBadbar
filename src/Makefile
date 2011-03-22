@@ -2,8 +2,8 @@
 export OBJ_DIR=obj/
 export CC = g++
 export CFLAGS=-g -Wall #$(LIB_INC) 
-LDFLAGS= -g #-lfreetype -lSDL_image -lfmod # $(LIB_DYN)
-LIBCOMP=$(wildcard ../lib/gcc/*)
+LDFLAGS= -g -lfreetype -lSDL_image -lSDL_ttf #-lfmod # $(LIB_DYN)
+LIBCOMP=../lib/gcc/libfmod.so #../lib/gcc/libSDL_ttf.so
 
 DIR = control events game items menus physic sound sprites util video AI 
 EXEC_NAME = babar
