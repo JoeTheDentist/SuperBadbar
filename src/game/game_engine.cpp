@@ -35,7 +35,7 @@
 #include "../video/animation_engine.h"
 
 
-Game_engine::Game_engine() : 
+Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
 	m_victory(false)
 {
@@ -62,7 +62,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keybo
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
-	analyser.close();	
+	analyser.close();
 }
 
 void Game_engine::update()
@@ -133,6 +133,7 @@ void Game_engine::update_monsters_projectiles()
                     pos.x += pos.w;
                     img++;
                 }
+                /* TODO */
                 gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);
                 (*it)->kill();
 			}
@@ -147,11 +148,12 @@ void Game_engine::update_babar_projectiles()
 				it != gProj->proj_ennemy_end(); it++) {
             if ( Collisions_manager::check_collision(gBabar->position(),(*it)->position()) && !(*it)->dead()) {
 				gBabar->damage(1);
+				(*it)->kill();
 			}
 	}
 }
-                                                            
-void Game_engine::display_events(Camera *camera) 
+
+void Game_engine::display_events(Camera *camera)
 {
 	gEvent->display_events(camera);
 }

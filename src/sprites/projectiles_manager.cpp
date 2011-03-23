@@ -65,10 +65,12 @@ void Projectiles_manager::delete_old_projectiles()
 	}
 	// suppression de projectiles ennemis
 	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-			it != m_projectiles_ennemy.end(); it++) {
+			it != m_projectiles_ennemy.end(); ) {
 		if ((*it)->dead()) {
-			m_projectiles_ennemy.erase(it);
-			it--;
+			delete (*it);
+			it = m_projectiles_friend.erase(it);
+		} else {
+			++it;
 		}
 	}
 }
