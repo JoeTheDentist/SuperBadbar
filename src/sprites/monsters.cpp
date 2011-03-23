@@ -98,9 +98,8 @@ void Monster::update_speed_ai()
 
 void Monster::damage(uint32_t damage)
 {
-    m_life -= damage;
-	prepare_sound(MONSTERS_SOUNDS_R + "death.wav");
-
+	m_life -= damage;
+	prepare_sound(MONSTERS_SOUNDS_R + "hit.mp3");
 }
 
 void Monster::update()
