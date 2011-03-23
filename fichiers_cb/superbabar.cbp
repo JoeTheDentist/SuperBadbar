@@ -68,6 +68,8 @@
 		<Unit filename="..\src\items\gun.h" />
 		<Unit filename="..\src\items\machinegun.cpp" />
 		<Unit filename="..\src\items\machinegun.h" />
+		<Unit filename="..\src\items\monster_basic_weapon.cpp" />
+		<Unit filename="..\src\items\monster_basic_weapon.h" />
 		<Unit filename="..\src\items\shotgun.cpp" />
 		<Unit filename="..\src\items\shotgun.h" />
 		<Unit filename="..\src\items\weapons.cpp" />
