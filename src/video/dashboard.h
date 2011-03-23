@@ -19,6 +19,7 @@
 #include "../video/surface_text.h"
 
 #include "../items/weapons.h"
+#include "../video/font.h"
 
 class Camera;
 class Babar;
@@ -38,6 +39,7 @@ private:
 	Rect m_lifes_pos;
 	Rect m_weapons_pos;
 	Surface *m_peanut;
+	Font m_font;
 
 public:
 

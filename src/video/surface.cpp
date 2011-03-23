@@ -34,6 +34,10 @@ Surface::Surface(Surface * s)
 
 Surface::~Surface()
 {
+	/* 
+		NE PAS DELETER m_surface !! Ce pointeur est partage
+		et sera deleted par le gestionnaire de surfaces
+	*/
 	PRINT_CONSTR(3, "Destruction d'une classe Surface");
 }
 

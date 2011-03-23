@@ -13,9 +13,7 @@
 #include "surface.h"
 #include <string>
 
-class Pictures_container;
-struct SDL_Surface;
-
+class Font;
 
 /*!
 *	@class Surface_text 
@@ -26,8 +24,17 @@ class Surface_text: public Surface {
 	/*!
 	*	@brief Constructeur
 	*	@param text Le texte a afficher
+	*	@param size La taille du texte a afficher
+	*	@param font_name Le nom de la police (qui sera charge dans le repertoire des polices)
 	*/
 	Surface_text(std::string text, int size = 30, std::string font_name = "defaultfont.ttf");
+	
+	/*!
+	*	@brief Constructeur
+	*	@param text Le texte a afficher
+	*	@param font La police a utiliser pour afficher le texte
+	*/
+	Surface_text(std::string text, Font &font);
 	
 	/*!
 	*	@brief Destructeur

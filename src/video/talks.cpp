@@ -36,7 +36,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
 	clear_talks();
 	m_camera = camera;
-	PRINT_CONSTR(1, "Construction de la classe Talks")
+	PRINT_CONSTR(1, "Initialisation de la classe Talks")
 	std::string rac = RAC;
 	std::string background_name = "talks_background.png";
 	std::string font_name = "font1.ttf"; //

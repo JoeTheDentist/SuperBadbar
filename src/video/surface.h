@@ -42,6 +42,10 @@ public:
 	*/
 	Surface(std::string filename);
 
+	/*!
+	*	@brief Constructeur depuis un pointeur vers une surface
+	*	@param s La surface a copier
+	*/
 	Surface(Surface * s);
 
 	/*!

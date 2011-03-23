@@ -9,6 +9,7 @@
 
 
 #include "graphic_engine.h"
+#include "../util/debug.h"
 #include "../sprites/babar.h"
 #include "../video/camera.h"
 #include "../video/talks.h"

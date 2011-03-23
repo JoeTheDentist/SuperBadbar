@@ -28,7 +28,8 @@
 Dashboard::Dashboard():
 	m_heart(NULL),
 	m_weapons_pictures(NULL),
-	m_peanut(NULL)
+	m_peanut(NULL),
+	m_font()
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
 }
@@ -81,7 +82,7 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
     std::ostringstream ossmun;
     ossmun <<  "x " << gBabar->munitions();
     std::string munitions = ossmun.str();
-	Surface_text *munitions_picture = new Surface_text(munitions);
+	Surface_text *munitions_picture = new Surface_text(munitions, m_font);
 	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gBabar->type_of_weapon()]->w() + 10;
 	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gBabar->type_of_weapon()]->h() - munitions_picture->h())/2;
 	camera->display_picture(munitions_picture, &pos_munitions, true);
@@ -96,7 +97,7 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	std::ostringstream osspeanut;
 	osspeanut << "x " << gBabar->peanuts();
 	std::string peanuts_number = osspeanut.str();
-	Surface_text *peanuts_number_picture = new Surface_text(peanuts_number);
+	Surface_text *peanuts_number_picture = new Surface_text(peanuts_number, m_font);
 	Rect pos_camera = camera->frame();
 	pos_peanuts_number.x = pos_camera.w - peanuts_number_picture->w() - 30;
 	pos_peanuts_number.y = 30;
