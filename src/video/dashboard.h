@@ -16,7 +16,7 @@
 #define POS_WEAPON_Y 60
 #define DASH_DECALAGE 10
 
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../video/surface_text.h"
 
 #include "../items/weapons.h"
 
@@ -33,8 +33,6 @@ class Surface;
  */
 class Dashboard {
 private:
-	TTF_Font *m_font;
-	SDL_Color m_font_color;
 	Surface *m_heart;
 	Surface **m_weapons_pictures;
 	Rect m_lifes_pos;

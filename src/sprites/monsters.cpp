@@ -32,9 +32,7 @@
 Monster::Monster():
 	m_weapon(NULL)
 {
-    m_state = WALKING;
-    m_fire = false;
-	m_fire_phase = 0;
+
 }
 
 Monster::~Monster()
@@ -44,6 +42,10 @@ Monster::~Monster()
 
 void Monster::initFromMonsterFile(std::string file)
 {
+	m_weapon = NULL;
+	m_state = WALKING;
+    m_fire = false;
+	m_fire_phase = 0;
 	Analyser analyserMonster;
 	analyserMonster.open((MONSTERS_STATS_R + file + MONSTERS_EXT).c_str());
 	analyserMonster.find_string("#Lifes#");

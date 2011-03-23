@@ -105,7 +105,7 @@ bool Collisions_matrix::double_collision(Rect pos)
 	int i_min = std::max(pos.x,0) / BOX_SIZE;
 	int i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1) / BOX_SIZE;
 	int j = (pos.y + pos.h) / BOX_SIZE;
-	for (int32_t i = i_max ; i <= i_max ; i += 1) {
+	for (int32_t i = i_min ; i <= i_max ; i += 1) {
 		if (m_collisions_matrix[i][j] == FULL_COLL) {
 			return true;
 		}
@@ -145,7 +145,7 @@ void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 		}
 		else {
 			pos.y += BOX_SIZE;
-			if (pos.y + pos.h > gStatic->static_data_height())
+			if ((unsigned int)(pos.y + pos.h) > gStatic->static_data_height())
 				pos.y = gStatic->static_data_height() - pos.h;
 		}
 	}

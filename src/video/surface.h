@@ -22,12 +22,20 @@ struct Rect {
     int h;
 };
 
+/*!
+*	@class Surface 
+*	@brief Classe representant toute image du jeu (sans sa position)
+*/
 class Surface {
-private:
+protected:
 	SDL_Surface *m_surface;
 	static Pictures_container *m_pictures_container;
 public:
 
+
+	Surface():
+		m_surface(NULL) {}
+		
 	/*!
 	*	@brief Constructeur
 	*	@param filename Le chemin du fichier à partir de la racine du projet

@@ -146,7 +146,7 @@ void Game_engine::update_babar_projectiles()
 {
 	for (std::list<Projectile *>::iterator it = gProj->proj_ennemy_begin();
 				it != gProj->proj_ennemy_end(); it++) {
-            if ( Collisions_manager::check_collision(gBabar->position(),(*it)->position()) && !(*it)->dead()) {
+            if ( Collisions_manager::check_collision(gBabar->damage_box(),(*it)->position()) && !(*it)->dead()) {
 				gBabar->damage(1);
 				(*it)->kill();
 			}

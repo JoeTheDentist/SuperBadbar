@@ -38,6 +38,7 @@
 #define LEVELS_R RACINE_R + "data/levels/"
 #define EVENTS_R RACINE_R + "data/events/"
 #define TALKS_R RACINE_R + "data/talks/texts/"
+#define FONTS_R RACINE_R + "data/talks/fonts/"
 #define MONSTERS_STATS_R RACINE_R + "data/monsters/"
 #define SOUNDS_R RACINE_R + "sound/"
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"
