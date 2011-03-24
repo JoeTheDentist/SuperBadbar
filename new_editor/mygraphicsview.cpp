@@ -20,6 +20,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QGraphicsColorizeEffect>
+#include <QProcess>
 
 #ifndef WIN32
 #include <stdio.h>
@@ -232,25 +233,30 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-	int pid;
-	switch (pid = fork()) {
-	case -1:		// je suis une erreur
-	    perror("");
-	    exit(-1);
-	case 0:		// je suis ton fils
-		char *cmd[4];
-		cmd[0] = new char[20];
-		strcpy(cmd[0], "../src/babar");
-		cmd[1] = new char[10];
-		strcpy(cmd[1], "-level");		
-		cmd[2] = new char[level_name.size() + 2];
-		strcpy(cmd[2], level_name.toStdString().c_str());
-		cmd[3] = 0;
-		execvp(cmd[0], cmd);
-	default:		// je suis ton pere
-		break;
-	}
-	#endif 
+    QProcess::execute(QString("../src/babar ") + "-level " + level_name);
+	#else
+	QProcess::execute(QString("../src/babar.exe -level " + level_name);
+	#endif
+//~ 	#ifndef WIN32
+//~ 	int pid;
+//~ 	switch (pid = fork()) {
+//~ 	case -1:		// je suis une erreur
+//~ 	    perror("");
+//~ 	    exit(-1);
+//~ 	case 0:		// je suis ton fils
+//~ 		char *cmd[4];
+//~ 		cmd[0] = new char[20];
+//~ 		strcpy(cmd[0], "../src/babar");
+//~ 		cmd[1] = new char[10];
+//~ 		strcpy(cmd[1], "-level");		
+//~ 		cmd[2] = new char[level_name.size() + 2];
+//~ 		strcpy(cmd[2], level_name.toStdString().c_str());
+//~ 		cmd[3] = 0;
+//~ 		execvp(cmd[0], cmd);
+//~ 	default:		// je suis ton pere
+//~ 		break;
+//~ 	}
+//~ 	#endif 
 }
 
 void MyGraphicsView::keyPressEvent(QKeyEvent *event)
