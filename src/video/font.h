@@ -60,6 +60,8 @@ class Font {
 	*	@return La couleur de la police
 	*/
 	SDL_Color& get_color();
+	
+	void set_color(int r, int g, int b);
 };
 
 #endif

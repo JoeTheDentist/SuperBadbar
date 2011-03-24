@@ -23,7 +23,6 @@
 
 Talks::Talks()
 {
-	m_font = NULL;
 }
 
 Talks::~Talks()
@@ -34,16 +33,11 @@ Talks::~Talks()
 
 void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
+	PRINT_CONSTR(1, "Initialisation de la classe Talks")
 	clear_talks();
 	m_camera = camera;
-	PRINT_CONSTR(1, "Initialisation de la classe Talks")
-	std::string rac = RAC;
 	std::string background_name = "talks_background.png";
-	std::string font_name = "font1.ttf"; //
-	m_font_color.r = 0;
-	m_font_color.g = 0;
-	m_font_color.b = 0;
-	m_text_background = pictures_container->load_IMG((rac + PIC_TALKS_DIR + background_name).c_str());
+	m_text_background = new Surface(PIC_TALKS_R + background_name);
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
 	for (int i = 0; i < LINES_NUMBER; i++){
@@ -51,7 +45,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 		m_pos_text[i].x = POSX;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
-	m_font = TTF_OpenFont((rac + FONTS_TALKS_DIR + font_name).c_str(), 30);
+	m_font.set_color(0, 0, 0);
 }
 void Talks::display_background()
 {
@@ -62,15 +56,15 @@ void Talks::display_background()
 struct cell_string *Talks::cut_text(std::string text)
 {
 	std::string str;
-	SDL_Surface *surface;
 	cell_string *list_string = NULL, *curs_list;
+	Surface_text *surface;
 	list_string = new cell_string;
 	curs_list = list_string;
 	text+= ' '; // necessaire pour eviter une boucle infinie avec text == "-"
 	while (!text.empty()) {
 		str = "M";
-		surface = TTF_RenderText_Blended(m_font, str.c_str(), m_font_color);
-		while( (surface->w < POSW) && !text.empty()) {
+		surface = new Surface_text(str, m_font);
+		while( (surface->w() < POSW) && !text.empty()) {
 			if (text[0] == '\n') {
 				text = text.substr(1, text.size() - 1);
 				str+= ' ';
@@ -78,8 +72,8 @@ struct cell_string *Talks::cut_text(std::string text)
 			}
 			str+= text[0];
 			text = text.substr(1, text.size() - 1);
-			SDL_FreeSurface(surface);
-			surface = TTF_RenderText_Blended(m_font, str.c_str(), m_font_color);
+			delete surface;
+			surface = new Surface_text(str, m_font);
 		}
 		str = str.substr(1, str.size() - 1);
 		if (text[0] != ' ' && str[str.size()-1] != ' ') {
@@ -91,7 +85,7 @@ struct cell_string *Talks::cut_text(std::string text)
 		curs_list = curs_list->next;
 		curs_list->str = str;
 		curs_list->next = NULL;
-		SDL_FreeSurface(surface);
+		delete surface;
 	}
 	return list_string->next;
 }
@@ -99,8 +93,8 @@ struct cell_string *Talks::cut_text(std::string text)
 void Talks::instant_display(std::string str, int line)
 {
 	if (m_text_surface[line] != NULL)
-		SDL_FreeSurface(m_text_surface[line]);
-	m_text_surface[line] = TTF_RenderText_Blended(m_font, str.c_str(), m_font_color);
+		delete m_text_surface[line];
+	m_text_surface[line] = new Surface_text(str, m_font);
 	m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
 	m_camera->flip_camera();
 }
@@ -112,7 +106,7 @@ void Talks::progressive_display(std::string str, int line)
 	for (uint32_t i = 0; i < str.size(); i++){
 		SDL_Delay(DISPLAY_SPEED);
 		curr_text += str[i];
-		m_text_surface[line] = TTF_RenderText_Blended(m_font, curr_text.c_str(), m_font_color);
+		m_text_surface[line] = new Surface_text(curr_text, m_font);
 		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
 		m_camera->flip_camera();
 		while(SDL_PollEvent(&event)) {
@@ -129,7 +123,7 @@ void Talks::progressive_display(std::string str, int line)
 void Talks::move_up()
 {
 	display_background();
-	SDL_FreeSurface(m_text_surface[0]);
+	delete m_text_surface[0];
 	for (int i = 0; i < LINES_NUMBER - 1; i++){
 		m_text_surface[i] = m_text_surface[i+1];
 		m_camera->display_picture(m_text_surface[i], &(m_pos_text[i]));
@@ -192,6 +186,4 @@ void Talks::load_and_display_text(std::string filename)
 
 void Talks::clear_talks()
 {
-	if (m_font)
-		TTF_CloseFont(m_font);	
 }

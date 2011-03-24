@@ -49,3 +49,9 @@ SDL_Color& Font::get_color()
 	return  m_font_color;
 }
 
+void Font::set_color(int r, int g, int b)
+{
+	m_font_color.r = r;
+	m_font_color.g = g;
+	m_font_color.b = b;
+}

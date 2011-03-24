@@ -27,13 +27,17 @@
 #define POSY 400
 #define LINES_NUMBER 3
 #define DISPLAY_SPEED 20
-class Pictures_container;
 
+
+#include "../video/font.h"
+#include "../video/surface_text.h"
+#include "../video/surface.h"
 
 struct cell_string {
 	std::string str;
 	cell_string *next;
 };
+
 
 
 /**
@@ -45,12 +49,11 @@ struct cell_string {
  */
 class Talks {
 private:
-	SDL_Surface *m_text_background;
-	SDL_Surface *m_text_surface[LINES_NUMBER];
+	Surface *m_text_background;
+	Surface_text *m_text_surface[LINES_NUMBER];
 	Rect m_pos_background;
 	Rect m_pos_text[LINES_NUMBER];
-	TTF_Font *m_font;
-	SDL_Color m_font_color;
+	Font m_font;
 	Camera *m_camera;
 
 
