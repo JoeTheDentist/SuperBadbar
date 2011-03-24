@@ -15,13 +15,13 @@
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
-Surface_text::Surface_text(std::string text, int size, std::string font_name)
+Surface_text::Surface_text(std::string text, int size, int r, int g, int b, std::string font_name)
 {
 	TTF_Font *font = TTF_OpenFont((FONTS_R + font_name).c_str(), size);
 	SDL_Color font_color;
-	font_color.r = 255;
-	font_color.g = 255;
-	font_color.b = 255;
+	font_color.r = r;
+	font_color.g = g;
+	font_color.b = b;
 	m_surface = TTF_RenderText_Blended(font, text.c_str(), font_color);
 	TTF_CloseFont(font);
 }

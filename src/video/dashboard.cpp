@@ -77,7 +77,6 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 		Affichage de l'arme et des munitions
 	*/
 	camera->display_picture(m_weapons_pictures[gBabar->type_of_weapon()], &m_weapons_pos, true);
-	
 	Rect pos_munitions;
     std::ostringstream ossmun;
     ossmun <<  "x " << gBabar->munitions();

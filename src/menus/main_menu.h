@@ -3,10 +3,14 @@
 
 #include "../video/surface.h"
 
+class Menu_action;
+
 class Main_menu {
 	private:
 	Surface *m_menu_background;
 	Rect m_pos_background;
+	Menu_action *m_menu_action;
+	Rect m_pos_menu;
 
 	
 	public:
