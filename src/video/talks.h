@@ -12,7 +12,6 @@
 
 #include <string>
 
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
 
 #include "../video/camera.h"
 

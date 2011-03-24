@@ -6,26 +6,26 @@ level1.png
 3400
 
 #Babar#
-120
-3228
+156
+3214
 1
 
 #Statics#
 11
 block4_2 700 1200 0
 block6 2750 2000 0
-block5 2200 2650 0
 block4_3 700 1780 0
 block2 838 2707 0
-soil 0 3300 1
+block3 1700 2950 1
 block1 70 2952 0
+soil 0 3300 1
 block7 1801 2204 0
-block8 1217 899 0
-block4_1 700 500 0
-block3 1700 2950 0
+block5 2200 2650 0
+block4_1 699 503 0
+block5 1178 897 0
 !
 #Monsters#
-15
+13
 following_walking_monster maphyar 741 1251
 following_walking_monster maphyar 1006 1795
 following_walking_monster maphyar 982 2089
@@ -37,13 +37,11 @@ following_flying_monster fubob 394 994
 following_flying_monster fubob 2788 1092
 following_flying_monster fubob 2435 1176
 following_walking_monster gailapin 702 3195
-following_walking_monster maphyar 758 3210
-following_walking_monster gailapin 881 3200
-following_walking_monster gailapin 939 3212
-following_walking_monster maphyar 652 2952
+following_walking_monster gailapin 409 2944
+following_walking_monster maphyar 449 2957
 !
 #Events#
-75
+83
 event peanut 1394 2643
 event peanut 1189 2640
 event peanut 967 2632
@@ -56,10 +54,8 @@ event peanut 860 2753
 event peanut 757 2749
 event peanut 669 2787
 event peanut 606 2855
-event peanut 575 2945
 event peanut 607 2994
 event peanut 322 3244
-event victory 158 149
 event shotgun 2900 2250
 event peanut 372 3246
 event peanut 420 3248
@@ -116,7 +112,17 @@ event peanut 1070 1282
 event peanut 1023 1227
 event peanut 1059 1111
 event peanut 1101 1030
-event peanut 1143 921
-event victory 1291 806
-event talk_plop 75 2815
+event peanut 573 2939
+event victory 1588 789
+event peanut 1189 947
+event peanut 1312 906
+event peanut 1425 911
+event peanut 1423 851
+event peanut 1488 883
+event peanut 1906 787
+event peanut 1823 787
+event peanut 1805 859
+event peanut 1897 863
+event peanut 1856 823
+event talk_plop 51 2700
 !

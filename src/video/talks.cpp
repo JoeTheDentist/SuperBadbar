@@ -49,7 +49,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 }
 void Talks::display_background()
 {
-	m_camera->display_picture(m_text_background, &m_pos_background);
+	m_camera->display_picture(m_text_background, &m_pos_background, true);
 }
 
 
@@ -95,7 +95,7 @@ void Talks::instant_display(std::string str, int line)
 	if (m_text_surface[line] != NULL)
 		delete m_text_surface[line];
 	m_text_surface[line] = new Surface_text(str, m_font);
-	m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
+	m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
 	m_camera->flip_camera();
 }
 
@@ -107,7 +107,7 @@ void Talks::progressive_display(std::string str, int line)
 		SDL_Delay(DISPLAY_SPEED);
 		curr_text += str[i];
 		m_text_surface[line] = new Surface_text(curr_text, m_font);
-		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]));
+		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
 		m_camera->flip_camera();
 		while(SDL_PollEvent(&event)) {
 			if(event.type == SDL_KEYDOWN)
@@ -126,7 +126,7 @@ void Talks::move_up()
 	delete m_text_surface[0];
 	for (int i = 0; i < LINES_NUMBER - 1; i++){
 		m_text_surface[i] = m_text_surface[i+1];
-		m_camera->display_picture(m_text_surface[i], &(m_pos_text[i]));
+		m_camera->display_picture(m_text_surface[i], &(m_pos_text[i]), true);
 	}
 	m_text_surface[LINES_NUMBER - 1] = NULL;
 	m_camera->flip_camera();
@@ -153,7 +153,8 @@ void Talks::display_text(std::string str)
 	cell_string *curr_list = list_string;
 	/* affichage des premieres lignes (tant qu'on a pas besoin de décaler vers le haut) */
 	for (int i = 0; (i < LINES_NUMBER) && (curr_list!=NULL); i++) {
-		progressive_display(curr_list->str, i);		curr_list = curr_list->next;
+		progressive_display(curr_list->str, i);
+		curr_list = curr_list->next;
 	}
 
 	while (curr_list!=NULL) {
