@@ -103,7 +103,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
-	QString nameMonster;	
+	QString nameMonster;
 	QString classMonster;
 	for (int i = 0; i < nbMonsters; i ++) {
 		classMonster = QString::fromStdString(analyser.read_string());
@@ -117,7 +117,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	}
 	analyser.find_string("#Events#");
 	int nbEvents = analyser.read_int();
-	QString nameEvent;	
+	QString nameEvent;
 	QString classEvent;
 	for (int i = 0; i < nbEvents; i ++) {
 		classEvent = QString::fromStdString(analyser.read_string());
@@ -166,7 +166,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 			this->scene()->removeItem(m_curr_item->getItem());
 			delete m_curr_item->getItem();
 			delete m_curr_item;
-			m_curr_item = NULL;				
+			m_curr_item = NULL;
 		}
 	}
 }
@@ -199,7 +199,7 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 	}
 }
 
-void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) 
+void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
 	if (m_opened) {
 		if (m_del_curs) {
@@ -209,8 +209,8 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
 		} else if (m_curr_item) {
 			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
-		} 
-	}	
+		}
+	}
 	m_xprec = posClicX(event);
 	m_yprec = posClicY(event);
 }
@@ -235,7 +235,7 @@ void horror_function(QString level_name)
 	#ifndef WIN32
     QProcess::execute(QString("../src/babar ") + "-level " + level_name);
 	#else
-	QProcess::execute(QString("../src/babar.exe -level " + level_name);
+	QProcess::execute(QString("../src/babar.exe"));
 	#endif
 //~ 	#ifndef WIN32
 //~ 	int pid;
@@ -248,7 +248,7 @@ void horror_function(QString level_name)
 //~ 		cmd[0] = new char[20];
 //~ 		strcpy(cmd[0], "../src/babar");
 //~ 		cmd[1] = new char[10];
-//~ 		strcpy(cmd[1], "-level");		
+//~ 		strcpy(cmd[1], "-level");
 //~ 		cmd[2] = new char[level_name.size() + 2];
 //~ 		strcpy(cmd[2], level_name.toStdString().c_str());
 //~ 		cmd[3] = 0;
@@ -256,7 +256,7 @@ void horror_function(QString level_name)
 //~ 	default:		// je suis ton pere
 //~ 		break;
 //~ 	}
-//~ 	#endif 
+//~ 	#endif
 }
 
 void MyGraphicsView::keyPressEvent(QKeyEvent *event)
@@ -274,7 +274,7 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 				break;
 		case Qt::Key_C:
 			copyItem(m_selected_item);
-			break;		
+			break;
 		case Qt::Key_P:
 			horror_function(m_file_name);
 			break;
@@ -291,7 +291,7 @@ void MyGraphicsView::keyReleaseEvent(QKeyEvent *event)
 {
 	if (event->key() == Qt::Key_Control) {
 		m_ctrl_pressed = false;
-	}	
+	}
 }
 
 qreal MyGraphicsView::xsize()
@@ -348,9 +348,9 @@ void MyGraphicsView::addMonster()
 	QPixmap image;
 
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
-	fileName.chop(5);	
+	fileName.chop(5);
 	image.load(MonsterItem::picPathFromEditor(fileName));
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);	
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);
 }
 
 void MyGraphicsView::addEvent()
@@ -366,10 +366,10 @@ void MyGraphicsView::addEvent()
 	QPixmap image;
 
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
-	fileName.chop(4);	
+	fileName.chop(4);
 	image.load(EventItem::picPathFromEditor(fileName));
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	
-	m_curr_item = new EventItem(item, fileName);	
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
+	m_curr_item = new EventItem(item, fileName);
 }
 
 void MyGraphicsView::activeDeleteItem()
@@ -388,7 +388,7 @@ void MyGraphicsView::zoom(qreal z)
 void MyGraphicsView::selectItem(MyItem *item)
 {
 	deSelectItem();
-	m_selected_item = item;	
+	m_selected_item = item;
 	m_selected_item->getItem()->setGraphicsEffect(new QGraphicsColorizeEffect());
 	m_data->upInStack(item);
 }
@@ -396,7 +396,7 @@ void MyGraphicsView::selectItem(MyItem *item)
 void MyGraphicsView::deSelectItem()
 {
 	if (m_selected_item) {
-		m_selected_item->getItem()->setGraphicsEffect(NULL);	
+		m_selected_item->getItem()->setGraphicsEffect(NULL);
 	}
 	m_selected_item = NULL;
 }
@@ -406,10 +406,10 @@ void MyGraphicsView::deleteFromEditor(MyItem *item)
 	if (item && item != m_babar_item) {
 		this->scene()->removeItem(item->getItem());
 		m_data->removeItem(item);
-	}	
+	}
 }
 
-void MyGraphicsView::copyItem(MyItem *item) 
+void MyGraphicsView::copyItem(MyItem *item)
 {
 	if (item) {
 		if (m_copied_item) {
