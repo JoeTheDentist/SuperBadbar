@@ -42,6 +42,7 @@ class Events_manager;
 class Babar;
 class Animation_engine;
 class Graphic_engine;
+class Keyboard;
 
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
@@ -52,6 +53,7 @@ extern Babar * gBabar;
 extern Animation_engine * gAnims;
 extern Graphic_engine *gGraphics;
 extern Game_engine *gGame_engine;
+extern Keyboard *gKeyboard;
 double dist(Rect A, Rect B);
 
 #endif

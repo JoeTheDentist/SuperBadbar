@@ -49,7 +49,7 @@ Game_engine::~Game_engine()
 }
 
 
-void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keyboard *keyboard,
+void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Pictures_container *pictures_container)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
@@ -58,7 +58,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera, Keybo
 	gCollision->init_collisions_manager(level_name);
 	Analyser analyser;
 	analyser.open(level_name);
-    gBabar = new Babar(keyboard, &analyser);
+    gBabar = new Babar(&analyser);
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);

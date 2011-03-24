@@ -31,20 +31,20 @@
 
 
 
-Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):
-	m_keyboard(new Keyboard(record_on, replay_on, output_name, input_name))
-{	
+Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name)
+{
 	PRINT_CONSTR(1, "Construction de la classe Game")
     char str[3];
     std::string str_lvl;
+    gKeyboard = new Keyboard(record_on, replay_on, output_name, input_name);
     sprintf(str, "%d", level);
     str_lvl = str;
 	init_game(LEVELS_R + "level" + str_lvl + ".lvl");
 }
 
-Game::Game(std::string level_name):
-	m_keyboard(new Keyboard(false, false, "", ""))
+Game::Game(std::string level_name)
 {
+    gKeyboard = new Keyboard(false, false, "", "");
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	init_game(level_name);
 }
@@ -59,21 +59,25 @@ void Game::init_game(std::string level_name)
     gStatic = new Static_data();
 	gStatic->init_static_data(level_name);
 	gGame_engine->init_game_engine(level_name, gGraphics->get_camera(),
-									m_keyboard, gGraphics->get_pictures_container());	
+                                    gGraphics->get_pictures_container());
 	gGraphics->init_graphic_engine();
 	gAnims = new Animation_engine();
 	m_time = SDL_GetTicks();
-	m_previous_time = SDL_GetTicks();	
+	m_previous_time = SDL_GetTicks();
 }
 
 Game::~Game()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Game")
-	delete m_keyboard;
+	delete gKeyboard;
+	gKeyboard = NULL;
 	delete gGame_engine;
+	gGame_engine = NULL;
     delete gBabar;
+    gBabar = NULL;
 	delete gCollision;
 	delete gProj;
+	gProj = NULL;
 	delete gEvent;
 	gGame_engine = NULL;
     delete gStatic;
@@ -84,7 +88,7 @@ Game::~Game()
 
 void Game::update_keyboard()
 {
-	m_keyboard->update_events();
+	gKeyboard->update_events();
 }
 
 void Game::update_game()
@@ -151,7 +155,7 @@ result_game Game::game_loop()
 		if (m_time - m_previous_time > TIME_LOOP) {
 			m_previous_time = m_time;
 			update_keyboard();
-			if (m_keyboard->key_down(k_exit)) {
+			if (gKeyboard->key_down(k_exit)) {
 				end = true;
 				break;
 			}

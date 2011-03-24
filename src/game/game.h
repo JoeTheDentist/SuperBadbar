@@ -39,7 +39,6 @@ enum result_game {
  */
 class Game {
 private:
-	Keyboard *m_keyboard;
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 
@@ -57,7 +56,7 @@ public:
 	*/
 	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
 
-	
+
 	/*!
 	 *	@brief Constructeur utilise par l'editeur
 	 *	@param level_name Chemin vers le niveau a ouvrir (depuis la racine)
@@ -79,7 +78,7 @@ public:
 	 * @brief check les collisions monstres/projectiles
 	*/
 	void check_monsters();
-	
+
 private:
 	void init_game(std::string level_name);
 
@@ -101,11 +100,11 @@ private:
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle
 	*/
-	void play_sounds();	
-	
+	void play_sounds();
+
 	/*!
 	 *	@brief Affiche l'écran de victoire
-	 *	
+	 *
 	 *	TODO a faire!
 	*/
 	void play_victory();

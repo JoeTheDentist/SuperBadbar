@@ -11,8 +11,9 @@ Babar * gBabar = NULL;
 Animation_engine * gAnims = NULL;
 Graphic_engine *gGraphics = NULL;
 Game_engine *gGame_engine = NULL;
+Keyboard *gKeyboard = NULL;
 
- 
+
 double dist(Rect A, Rect B)
 {
     Rect mA = A;

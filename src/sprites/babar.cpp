@@ -25,9 +25,8 @@
 /*********************************
 **	Méthodes de Babar 	**
 **********************************/
-Babar::Babar(Keyboard *keyboard, Analyser *analyser)
-    : m_keyboard(keyboard),
-	m_peanuts(0)
+Babar::Babar(Analyser *analyser)
+    : m_peanuts(0)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
 	init_babar(analyser);
@@ -208,14 +207,14 @@ void Babar::update_speed()
     m_speed.y += GRAVITE;
 
     m_speed.x = 0;                          /* Pour pouvoir se diriger (ttlt) */
-    if (m_keyboard->key_down(k_left)) {
+    if (gKeyboard->key_down(k_left)) {
         if ( m_state == CROUCH_WALKING ) {
             m_speed.x -= BABAR_SPEED/3;
         } else {
             m_speed.x -= BABAR_SPEED;
         }
     }
-    if (m_keyboard->key_down(k_right)) {
+    if (gKeyboard->key_down(k_right)) {
         if ( m_state == CROUCH_WALKING ) {
             m_speed.x += BABAR_SPEED/3;
         } else {
@@ -294,9 +293,9 @@ void Babar::update_state()
 	if (m_invincible > 0)
 		m_invincible --;
 
-	if (m_keyboard->time_pressed(k_prev_weapon) == 1)
+	if (gKeyboard->time_pressed(k_prev_weapon) == 1)
 		m_weapons_armory.previous_weapon();
-	if (m_keyboard->time_pressed(k_next_weapon) == 1)
+	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
     /* remarque : cette methode a un tour de retard, du fait de la ou elle est placee */
@@ -305,17 +304,17 @@ void Babar::update_state()
 
 void Babar::update_direction()
 {
-	if (m_keyboard->key_down(k_left)) {
+	if (gKeyboard->key_down(k_left)) {
 		m_dir = LEFT;
 	}
-	if (m_keyboard->key_down(k_right)) {
+	if (gKeyboard->key_down(k_right)) {
 		m_dir = RIGHT;
 	}
 }
 
 bool Babar::can_fire()
 {
-	return m_keyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
+	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
 }
 
 std::list<Projectile*> *Babar::fire()
@@ -332,7 +331,7 @@ std::list<Projectile*> *Babar::fire()
 
 bool Babar::can_walk() const
 {
-    return (m_keyboard->key_down(k_right)||m_keyboard->key_down(k_left))&&(m_state!=JUMP && m_state!=CROUCH && m_state!=CROUCH_WALKING );
+    return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&&(m_state!=JUMP && m_state!=CROUCH && m_state!=CROUCH_WALKING );
 }
 
 void Babar::walk()
@@ -342,21 +341,21 @@ void Babar::walk()
 
 bool Babar::can_crouch() const
 {
-    return m_keyboard->key_down(k_down)&&(m_state!=JUMP && m_state!=CROUCH);
+    return gKeyboard->key_down(k_down)&&(m_state!=JUMP && m_state!=CROUCH);
 }
 
 void Babar::crouch()
 {
     m_crouch_time++;
     m_state = CROUCH;
-    if ( m_keyboard->key_down(k_right) || m_keyboard->key_down(k_left) )
+    if ( gKeyboard->key_down(k_right) || gKeyboard->key_down(k_left) )
         m_state = CROUCH_WALKING;
 }
 
 bool Babar::can_jump() const
 {
-    return m_keyboard->key_down(k_jump) && m_ready_jump && ( !m_double_jump )
-     && !m_keyboard->key_down(k_down);
+    return gKeyboard->key_down(k_jump) && m_ready_jump && ( !m_double_jump )
+     && !gKeyboard->key_down(k_down);
 }
 
 void Babar::jump()
@@ -364,21 +363,21 @@ void Babar::jump()
 	m_state = JUMP;
 	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
 	PRINT_TRACE(1, "Saut de Babar")
-	if ( m_keyboard->time_pressed(k_jump) > 1 ) {
+	if ( gKeyboard->time_pressed(k_jump) > 1 ) {
         m_ready_double_jump = true;
-        if ( m_keyboard->time_pressed(k_jump) > JUMP_TIME) {
+        if ( gKeyboard->time_pressed(k_jump) > JUMP_TIME) {
             m_ready_jump = false;
-            m_keyboard->disable_key(k_jump);
+            gKeyboard->disable_key(k_jump);
         }
 	}
-	if (m_keyboard->time_pressed(k_jump) == 1)
+	if (gKeyboard->time_pressed(k_jump) == 1)
 		prepare_sound(BABAR_SOUNDS_R + "jump" + SOUNDS_EXT);
 	unbind();
 }
 
 bool Babar::can_double_jump() const
 {
-	return (m_state == JUMP) && (m_keyboard->time_pressed(k_jump)==1) && (!m_double_jump) && m_ready_double_jump;
+	return (m_state == JUMP) && (gKeyboard->time_pressed(k_jump)==1) && (!m_double_jump) && m_ready_double_jump;
 }
 
 void Babar::double_jump()
@@ -387,7 +386,7 @@ void Babar::double_jump()
 	m_ready_double_jump = false;
 	PRINT_TRACE(2, "Double-saut de Babar")
 	m_speed.y = -4*BABAR_SPEED;
-	m_keyboard->disable_key(k_jump);
+	gKeyboard->disable_key(k_jump);
 
 }
 
@@ -402,7 +401,7 @@ bool Babar::can_go_down() const
 		plop = gCollision;
 		pos = m_pos;
 	}
-	return (m_keyboard->key_down(k_jump) && m_keyboard->key_down(k_down)
+	return (gKeyboard->key_down(k_jump) && gKeyboard->key_down(k_down)
                 && (m_state == STATIC || m_state == WALK || m_state == CROUCH)
 				&& Collisions_manager::is_down_coll(plop->down_collision_type(pos)))
 				&& !plop->double_collision(pos);
@@ -432,7 +431,7 @@ void Babar::go_down()
 				m_pos.y += BOX_SIZE;
 			}
 		}
-	}		
+	}
 //~ 	m_keyboard->disable_key(k_jump);
 	PRINT_TRACE(1, "Descente d'une plateforme")
 }
@@ -446,7 +445,7 @@ void Babar::damage(int damages)
 	}
 }
 
-void Babar::lifeup(int life) 
+void Babar::lifeup(int life)
 {
 	m_lifes += life;
 }

@@ -52,20 +52,20 @@ public:
 	~Game_engine();
 
 	/**
-	 * 	@brief Initialisation des données 
+	 * 	@brief Initialisation des données
 	 * 	@param level_name Le chemin depuis la racine vers le niveau a charger
 	 * 	@param camera La camera qui servira à afficher les images
 	 * 	@param static_data Données du niveau
 	 * 	@param keyboard Gestionnaire du clavier
 	 *	@param pictures_container Le gestionnaire d'images
 	*/
-	void init_game_engine(std::string level_name, Camera *camera, Keyboard *keyboard, Pictures_container *pictures_container);
+	void init_game_engine(std::string level_name, Camera *camera, Pictures_container *pictures_container);
 
 	/*!
 	 *	@brief Met a jour le game_engine
 	*/
 	void update();
-	
+
 	/**
 	 * 	@brief Mise à jour des positions des éléments du jeu
 	 *	@todo à déplacer
@@ -119,15 +119,15 @@ public:
 	 * Gère pour l'instant les sons de babar et des monstres
 	*/
 	void play_sounds();
-	
+
 	/*!
 	 *	@brief Fait gagner le niveau
 	*/
 	void set_victory();
-	
+
 	/*!
 	 *	@brief Accesseur
-	 *	@return Vrai si le joueur a gagne 
+	 *	@return Vrai si le joueur a gagne
 	*/
 	bool has_won();
 };

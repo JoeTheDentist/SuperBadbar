@@ -49,7 +49,6 @@ enum state_player {
 class Babar: public Sprite, public Sonorisable {
 protected:
     state_player m_state;
-	Keyboard *m_keyboard;	            /* pointeur sur le clavier de Game. C'est Game qui met à jour ce clavier*/
 	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
@@ -77,7 +76,7 @@ public:
 	 *	@param sound_manager Le gestionnaire de son
 	 *  @param analyser ouvert sur un fichier lvl, en l'occurence du premier level
 	 */
-	Babar(Keyboard *keyboard, Analyser *analyser);
+	Babar(Analyser *analyser);
 
 	/**
 	 * 	@brief Destructeur
@@ -237,11 +236,11 @@ public:
 	 *	@param damages Le nombre de vies à faire perdre
 	 */
 	void damage(int damages);
-	
+
 	/**
 	 * 	@brief Mutateur: fait gagner des vies à Babar
 	 *	@param life Le nombre de vies à faire gagner
-	 */	
+	 */
 	void lifeup(int life);
 
 	/**
