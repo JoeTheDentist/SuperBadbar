@@ -79,6 +79,8 @@
 		<Unit filename="..\src\main.cpp" />
 		<Unit filename="..\src\menus\main_menu.cpp" />
 		<Unit filename="..\src\menus\main_menu.h" />
+		<Unit filename="..\src\menus\menu_action.cpp" />
+		<Unit filename="..\src\menus\menu_action.h" />
 		<Unit filename="..\src\physic\collisions_manager.cpp" />
 		<Unit filename="..\src\physic\collisions_manager.h" />
 		<Unit filename="..\src\physic\collisions_matrix.cpp" />
@@ -134,6 +136,8 @@
 		<Unit filename="..\src\video\dashboard.h" />
 		<Unit filename="..\src\video\displayable.cpp" />
 		<Unit filename="..\src\video\displayable.h" />
+		<Unit filename="..\src\video\font.cpp" />
+		<Unit filename="..\src\video\font.h" />
 		<Unit filename="..\src\video\graphic_engine.cpp" />
 		<Unit filename="..\src\video\graphic_engine.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />
@@ -142,6 +146,8 @@
 		<Unit filename="..\src\video\statics.h" />
 		<Unit filename="..\src\video\surface.cpp" />
 		<Unit filename="..\src\video\surface.h" />
+		<Unit filename="..\src\video\surface_text.cpp" />
+		<Unit filename="..\src\video\surface_text.h" />
 		<Unit filename="..\src\video\talks.cpp" />
 		<Unit filename="..\src\video\talks.h" />
 		<Extensions>
