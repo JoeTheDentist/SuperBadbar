@@ -62,7 +62,6 @@ private:
 	void progressive_display(std::string str, int line);
 	void move_up();
 	void display_line(int line);
-	void wait_space();
 	void clear_talks();
 public:
 	/**

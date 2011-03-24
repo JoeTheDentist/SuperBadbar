@@ -47,11 +47,11 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	}
 	m_font.set_color(0, 0, 0);
 }
+
 void Talks::display_background()
 {
 	m_camera->display_picture(m_text_background, &m_pos_background, true);
 }
-
 
 struct cell_string *Talks::cut_text(std::string text)
 {
@@ -102,20 +102,15 @@ void Talks::instant_display(std::string str, int line)
 void Talks::progressive_display(std::string str, int line)
 {
 	std::string curr_text;
-	SDL_Event event;
 	for (uint32_t i = 0; i < str.size(); i++){
 		SDL_Delay(DISPLAY_SPEED);
 		curr_text += str[i];
 		m_text_surface[line] = new Surface_text(curr_text, m_font);
 		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
 		m_camera->flip_camera();
-		while(SDL_PollEvent(&event)) {
-			if(event.type == SDL_KEYDOWN)
-				if(event.key.keysym.sym == SDLK_SPACE) {
-					instant_display(str, line);
-					return;
-				}
-
+		if (gKeyboard->key_recently_pressed(k_fire)) {
+			instant_display(str, line);
+			return;	
 		}
 	}
 }
@@ -132,17 +127,6 @@ void Talks::move_up()
 	m_camera->flip_camera();
 }
 
-void Talks::wait_space()
-{
-	SDL_Event event;
-	bool leave = false;
-	while(!leave){
-		SDL_WaitEvent(&event);
-		if(event.type == SDL_KEYDOWN)
-			if(event.key.keysym.sym == SDLK_SPACE)
-				leave = true;
-	}
-}
 
 void Talks::display_text(std::string str)
 {
@@ -158,12 +142,12 @@ void Talks::display_text(std::string str)
 	}
 
 	while (curr_list!=NULL) {
-		wait_space();
+		gKeyboard->wait_key(k_fire);
 		move_up();
 		progressive_display(curr_list->str, LINES_NUMBER - 1);
 		curr_list = curr_list->next;
 	}
-	wait_space();
+	gKeyboard->wait_key(k_fire);
 
 }
 

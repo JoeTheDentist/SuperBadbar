@@ -163,3 +163,27 @@ menu_key Keyboard::get_menu_key()
 		}
 	}
 }
+
+void Keyboard::wait_key(enum key k)
+{
+	SDL_Event event;
+	bool leave = false;
+	while(!leave){
+		SDL_WaitEvent(&event);
+		if(event.type == SDL_KEYDOWN)
+			if(m_key_config[event.key.keysym.sym] == k)
+				leave = true;
+	}	
+}
+
+bool Keyboard::key_recently_pressed(enum key k)
+{
+	SDL_Event event;	
+	while(SDL_PollEvent(&event)) {
+		if(event.type == SDL_KEYDOWN)
+			if(m_key_config[event.key.keysym.sym] == k) {
+				return true;
+		}
+	}	
+	return false;
+}

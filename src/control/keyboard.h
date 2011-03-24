@@ -108,6 +108,11 @@ public:
 	*	@return Le menu_key entre par l'utilisateur
 	*/
 	menu_key get_menu_key();
+	
+	void wait_key(enum key k);
+	
+	bool key_recently_pressed(enum key k);
+
 };
 
 
