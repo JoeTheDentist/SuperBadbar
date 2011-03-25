@@ -62,6 +62,7 @@ void Game::init_game(std::string level_name)
                                     gGraphics->get_pictures_container());
 	gGraphics->init_graphic_engine();
 	gAnims = new Animation_engine();
+	gAnims->init(level_name);
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 }

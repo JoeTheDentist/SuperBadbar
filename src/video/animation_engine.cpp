@@ -3,6 +3,8 @@
 
 #include "animation_engine.h"
 #include "../video/anim_table.h"
+#include "../util/analyser.h"
+
 
 Animation_engine::Animation_engine()
 {
@@ -11,11 +13,29 @@ Animation_engine::Animation_engine()
 
 Animation_engine::~Animation_engine()
 {
-    /* essayer en appelant que le destructeur ? */
     std::list<anim_pos>::iterator it;
 	for (it = m_anims.begin(); it != m_anims.end(); it++) {
         delete (*it).anim;
 	}
+}
+
+void Animation_engine::init(std::string lvl_name)
+{
+    Analyser a;
+    a.open(lvl_name);
+
+    a.find_string("#Anims#");
+    a.read_int();
+	std::string anim_name = a.read_string();
+	Rect pos;
+	while(anim_name[0]!='!') {
+		pos.x = a.read_int();
+		pos.y = a.read_int();
+        this->add(RACINE_R+anim_name, pos, CYCLE, false);
+		anim_name = a.read_string();
+    }
+
+    a.close();
 }
 
 void Animation_engine::add(std::string pic, Rect pos, anim_type type, bool falling)

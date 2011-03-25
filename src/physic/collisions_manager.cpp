@@ -22,17 +22,17 @@ Collisions_manager::Collisions_manager():
 	PRINT_CONSTR(1, "Construction de Collisions_manager")
 }
 
-Collisions_manager::~Collisions_manager() 
+Collisions_manager::~Collisions_manager()
 {
 	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		delete (*it);
-	}			
+	}
 }
 
 
 
-void Collisions_manager::init_collisions_manager(int level) 
+void Collisions_manager::init_collisions_manager(int level)
 {
 	Analyser analyser;
 	std::string str_lvl;
@@ -44,7 +44,7 @@ void Collisions_manager::init_collisions_manager(int level)
 
 
 
-void Collisions_manager::init_collisions_manager(std::string level_name) 
+void Collisions_manager::init_collisions_manager(std::string level_name)
 {
 	Analyser analyser;
 	analyser.open(level_name);
@@ -65,7 +65,6 @@ void Collisions_manager::init_collisions_manager(std::string level_name)
 	init_statics(analyser);
 	init_moving_plateforms(analyser);
 	analyser.close();
-	m_moving_platforms.push_back(new Moving_platform(PIC_STATICS_R + "block8", 1600, 2200, 1600, 1600));
 }
 
 void Collisions_manager::init_statics(Analyser &analyser)
@@ -80,7 +79,7 @@ void Collisions_manager::init_statics(Analyser &analyser)
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
-		analyser.read_int(); 
+		analyser.read_int();
 		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
 		static_weight = analyser_static.read_int();
 		static_height = analyser_static.read_int();
@@ -91,12 +90,24 @@ void Collisions_manager::init_statics(Analyser &analyser)
 		}
 		analyser_static.close();
 		static_name = analyser.read_string();
-	}	
+	}
 }
 
 void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 {
-	
+    analyser.find_string("#Plateforms#");
+
+    analyser.read_int();
+	std::string plateform_name = analyser.read_string();
+	Rect pos_begin, pos_end;
+	while(plateform_name[0]!='!') {
+		pos_begin.x = analyser.read_int();
+		pos_begin.y = analyser.read_int();
+		pos_end.x = analyser.read_int();
+		pos_end.y = analyser.read_int();
+        m_moving_platforms.push_back(new Moving_platform(PIC_STATICS_R + plateform_name, pos_begin.x, pos_begin.y, pos_end.x, pos_end.y));
+		plateform_name = analyser.read_string();
+    }
 }
 
 
@@ -118,7 +129,7 @@ void Collisions_manager::display_platforms(Camera * const camera) const
 			it != m_moving_platforms.end(); it++) {
 		camera->display((*it));
 	}
-		
+
 }
 
 void Collisions_manager::update_platforms_pos()

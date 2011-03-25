@@ -1,6 +1,5 @@
 
-Plateforme => fichier
 Sang des monstres (moche pour le moment)
 Son mort
-Qq animations fixes + codée dans fichier
+Qq animations fixes
 Groupes de sons rand

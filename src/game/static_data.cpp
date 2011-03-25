@@ -39,7 +39,8 @@ Static_data::~Static_data()
 }
 
 void Static_data::init_static_data(uint32_t lvl)
-{	std::string rep;
+{
+    std::string rep;
     std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
     char str[3];
@@ -60,7 +61,7 @@ void Static_data::init_static_data(std::string level_name)
 	int level = 0;
     /*** Ouverture du fichier .lvl  ***/
     analyser.open(level_name);
-	
+
 	/*** chargement du fond d'écran ***/
 	analyser.find_string("#Background#");
 	m_background = new Surface(PIC_BACKGROUNDS_R + analyser.read_string());
