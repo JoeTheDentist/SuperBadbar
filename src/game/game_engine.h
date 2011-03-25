@@ -130,6 +130,14 @@ public:
 	 *	@return Vrai si le joueur a gagne
 	*/
 	bool has_won();
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return Vrai si le joueur a perdu
+	*/
+	bool has_lost();
+	
+	
 };
 
 

@@ -59,6 +59,7 @@ void MyGraphicsView::newFile(QString backgroundName)
 	m_data->initData(backgroundName);
 	m_xsize = m_data->levelWidth();
 	m_ysize = m_data->levelHeight();
+	std::cout << "OGH " << m_xsize << " " << m_ysize << std::endl;
 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
@@ -233,30 +234,10 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-    QProcess::execute(QString("../src/babar ") + "-level " + level_name);
+    	QProcess::execute(QString("../src/babar ") + "-level " + level_name);
 	#else
 	QProcess::execute(QString("../src/babar.exe"));
 	#endif
-//~ 	#ifndef WIN32
-//~ 	int pid;
-//~ 	switch (pid = fork()) {
-//~ 	case -1:		// je suis une erreur
-//~ 	    perror("");
-//~ 	    exit(-1);
-//~ 	case 0:		// je suis ton fils
-//~ 		char *cmd[4];
-//~ 		cmd[0] = new char[20];
-//~ 		strcpy(cmd[0], "../src/babar");
-//~ 		cmd[1] = new char[10];
-//~ 		strcpy(cmd[1], "-level");
-//~ 		cmd[2] = new char[level_name.size() + 2];
-//~ 		strcpy(cmd[2], level_name.toStdString().c_str());
-//~ 		cmd[3] = 0;
-//~ 		execvp(cmd[0], cmd);
-//~ 	default:		// je suis ton pere
-//~ 		break;
-//~ 	}
-//~ 	#endif
 }
 
 void MyGraphicsView::keyPressEvent(QKeyEvent *event)

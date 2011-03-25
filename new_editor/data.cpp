@@ -28,7 +28,7 @@ void Data::initData(QString backgroundName)
 {
 	
 	QPixmap image;
-	image.load(backgroundName, 0, Qt::AutoColor);
+	image.load(BACKGROUND_DIR + backgroundName, 0, Qt::AutoColor);
 	m_background_name = backgroundName.right(backgroundName.size() - (backgroundName.lastIndexOf("backgrounds/") + 12));
 	m_xpix = image.width() * 2 - CAMERA_WIDTH;
 	m_ypix = image.height() * 2 - CAMERA_HEIGHT;

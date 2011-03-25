@@ -165,6 +165,8 @@ result_game Game::game_loop()
 			if (gGame_engine->has_won()) {
 				this->play_victory();
 				return victory;
+			} else if (gGame_engine->has_lost()) {
+				return defeat;
 			}
 			m_time = SDL_GetTicks();
 		} else  {

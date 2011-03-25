@@ -73,9 +73,12 @@ uint32_t Collisions_matrix::right_collision_type(Rect pos)
 uint32_t Collisions_matrix::left_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
+	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, m_collisions_matrix_h * BOX_SIZE);
+	if (pos.x < 0 || pos.x / BOX_SIZE >= m_collisions_matrix_w)
+		return coll;
+	for (int32_t j = j_min ; j <= j_max ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
-			coll |= m_collisions_matrix[pos.x / BOX_SIZE - 1][j / BOX_SIZE];
+			coll |= m_collisions_matrix[pos.x / BOX_SIZE][j / BOX_SIZE];
 
 	return coll;
 }
