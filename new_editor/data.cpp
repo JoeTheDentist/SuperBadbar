@@ -197,13 +197,21 @@ void Data::saveData(QString fileName)
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
 		(*it)->saveItem(out);
 	out << "!" << endl;
-	// sauvegarde des events TODO 
+	// sauvegarde des events  
 	out << "#Events#" << endl;
 	out << m_event_items.size() << endl;
 	for (it = m_event_items.begin(); it != m_event_items.end(); it++)
 		(*it)->saveItem(out);	
 	out << "!" << endl;
+	// sauvegarde des plateformes
+	out << "#Plateforms#" << endl;
+	out << "0" << endl;
+	out << "!" << endl;
+	out << "#Anims#" << endl;
+	out << "0" << endl;
+	out << "!" << endl;
 	file.close();	
+	
 }
 
 void Data::removeItem(MyItem *item)
