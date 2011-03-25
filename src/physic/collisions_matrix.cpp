@@ -46,7 +46,7 @@ uint32_t Collisions_matrix::down_collision_type(Rect pos)
 	int i_min = std::max(pos.x,0), i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1);
 	if (pos.y + pos.h < 0 || (pos.y+pos.h)/BOX_SIZE >= m_collisions_matrix_h)
 		return coll;
-	for (int i = i_min ; i <= i_max; i += BOX_SIZE) {
+	for (int i = i_min ; i < i_max; i += BOX_SIZE) {
 		coll |= m_collisions_matrix[i / BOX_SIZE][(pos.y + pos.h) / BOX_SIZE + 1] ;
 	}
 	return coll;
@@ -55,7 +55,8 @@ uint32_t Collisions_matrix::down_collision_type(Rect pos)
 uint32_t Collisions_matrix::up_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t i = std::max(pos.x, 0) ; i < (pos.x + pos.w) ; i += BOX_SIZE)
+	int i_min = std::max(pos.x,0), i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1);
+	for (int32_t i = i_min ; i < i_max ; i += BOX_SIZE)
 		if (i / BOX_SIZE < m_collisions_matrix_w)
 			coll |= m_collisions_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
@@ -64,21 +65,24 @@ uint32_t Collisions_matrix::up_collision_type(Rect pos)
 uint32_t Collisions_matrix::right_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
-	for (int32_t j = pos.y ; j <= (pos.y + pos.h) ; j += BOX_SIZE)
+	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, m_collisions_matrix_h * BOX_SIZE - 1);
+	int posx = std::min(pos.x + pos.w, m_collisions_matrix_w - BOX_SIZE);
+	for (int32_t j = j_min ; j < j_max ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
-			coll |= m_collisions_matrix[(pos.x + pos.w)/ BOX_SIZE + 1][j / BOX_SIZE];
+			coll |= m_collisions_matrix[posx/ BOX_SIZE + 1][j / BOX_SIZE];
 	return coll;
 }
 
 uint32_t Collisions_matrix::left_collision_type(Rect pos)
 {
 	uint32_t coll = 0;
-	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, m_collisions_matrix_h * BOX_SIZE);
+	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, (m_collisions_matrix_h-1) * BOX_SIZE);
+	int posx = std::max(BOX_SIZE, pos.h); 
 	if (pos.x < 0 || pos.x / BOX_SIZE >= m_collisions_matrix_w)
 		return coll;
-	for (int32_t j = j_min ; j <= j_max ; j += BOX_SIZE)
+	for (int32_t j = j_min ; j < j_max ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
-			coll |= m_collisions_matrix[pos.x / BOX_SIZE][j / BOX_SIZE];
+			coll |= m_collisions_matrix[posx / BOX_SIZE - 1][j / BOX_SIZE];
 
 	return coll;
 }

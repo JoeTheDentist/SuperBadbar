@@ -76,6 +76,7 @@ void Babar::init_babar(Analyser * a)
 
 void Babar::update_pos()
 {
+	bool pente;
 	m_phase++;
 	/* Si Babar est lié à une plateforme, on gère autrement sa position */
 	if (binded()) {
@@ -121,10 +122,17 @@ void Babar::update_pos()
 		gCollision->update_babar_platforms();
 		if(binded())
 			break;
-		m_pos.y -= 	BOX_SIZE;
-		if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)))
+		pente = !Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos));
+		if (pente)
+			m_pos.y -= 	BOX_SIZE;
+		if (Collisions_manager::is_right_coll(gCollision->right_collision_type(m_pos))){
+			speed_x = 0;
+			m_speed.x = 0;
+		} else {
+			m_pos.x += BOX_SIZE; // On avance!
+		}
+		if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)) && pente)
 			m_pos.y += BOX_SIZE;
-		m_pos.x += BOX_SIZE;
 		if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
 			m_pos.x = gStatic->static_data_weight() - m_pos.w;
 	}
@@ -133,14 +141,20 @@ void Babar::update_pos()
 		gCollision->update_babar_platforms();
 		if(binded())
 			break;
-		m_pos.y -= 	BOX_SIZE;
-		if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)))
-			m_pos.y += BOX_SIZE;
-		m_pos.x -= BOX_SIZE;
+		pente =  !Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos));
+		if (pente)
+			m_pos.y -= 	BOX_SIZE;
+		
+
 		if (Collisions_manager::is_left_coll(gCollision->left_collision_type(m_pos))){
 			speed_x = 0;
 			m_speed.x = 0;
+		} else {
+			m_pos.x -= BOX_SIZE; // on avance!
+			
 		}
+		if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)) && pente)
+			m_pos.y += BOX_SIZE;
 		if (m_pos.x < 0)
 			m_pos.x = 0;
 	}
