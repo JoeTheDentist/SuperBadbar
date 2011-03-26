@@ -22,6 +22,7 @@ class Main_menu {
 	private:
 	void refresh_screen();
 	void launch_game();
+	bool treat_choice(int choice);
 };
 
 

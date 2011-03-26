@@ -19,9 +19,9 @@ Main_menu::Main_menu() :
 	m_pos_background.y = 0;
 	m_pos_menu.x = 200;
 	m_pos_menu.y = 300;
-	m_menu_actions.add_action("yop", 1);
-	m_menu_actions.add_action("ploui", 2);
-	m_menu_actions.add_action("zemoh", 3);
+	m_menu_actions.add_action("New game", 1);
+	m_menu_actions.add_action("Options", 2);
+	m_menu_actions.add_action("Leave", 3);
 	loop();
 }
 
@@ -48,7 +48,7 @@ void Main_menu::loop()
 			m_menu_actions.incr_curs(-1);
 			break;
 		case mk_enter:
-			launch_game();
+			go_on = treat_choice(m_menu_actions.get_selected_action());
 			break;
 		default:
 			break;		
@@ -63,6 +63,22 @@ void Main_menu::refresh_screen()
 	camera->display_picture(m_menu_background, &m_pos_background, true);
 	m_menu_actions.display(camera, m_pos_menu);
 	camera->flip_camera();
+}
+
+bool Main_menu::treat_choice(int choice)
+{
+	switch(choice) {
+		case 1:
+			launch_game();
+			return true;
+		case 2:
+			return true;
+		case 3:
+			return false;
+		default:
+			return true;
+		
+	}
 }
 
 void Main_menu::launch_game()
