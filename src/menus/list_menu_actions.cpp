@@ -14,6 +14,7 @@
 #include "../video/surface_text.h"
 #include "../util/globals.h"
 #include "../sound/sound_engine.h"
+#include <algorithm>
 
 List_menu_actions::List_menu_actions():
 	m_actions(),
@@ -63,3 +64,23 @@ int List_menu_actions::get_selected_action()
 	}
 	return (*m_iterator)->get_index();
 }
+
+int List_menu_actions::width()
+{
+	int res = 0;
+	for(std::list<Menu_action*>::iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+		res = std::max(res, (*it)->get_surface()->w());
+	}
+	return res;
+}
+
+int List_menu_actions::height()
+{
+	int res = 0;
+	for(std::list<Menu_action*>::iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+		res += (*it)->get_surface()->h();
+	}
+	return res;
+}
+
+

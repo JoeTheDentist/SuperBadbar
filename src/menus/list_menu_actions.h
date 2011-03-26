@@ -68,6 +68,20 @@ class List_menu_actions {
 	*	@return Le numero de l'action selectionnee
 	*/
 	int get_selected_action();
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La largeur de la Surface_text de la plus large action
+	*/
+	int width();
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La somme des hautes des Surface_text des actions
+	*/
+	int height();
+	
+	
 }; // end class
 
 

@@ -139,6 +139,8 @@ public:
 	*/
 	void flip_camera();
 	
+	SDL_Surface *sdl_screen() { return m_screen; }
+	
 	#ifdef DEBUG_COLL
 	void display_green_coll(Rect pos);
 	void display_red_coll(Rect pos);
