@@ -1,0 +1,33 @@
+#Background#
+leveltest.png
+
+#Level_dimensions#
+4756
+4400
+
+#Babar#
+220
+3923
+1
+
+#Statics#
+5
+arbre_bord 0 511 0
+flower1 1045 4160 1
+arbre_feuilles 1222 3586 0
+arbre_feuilles_front 1179 3639 1
+grass1 778 4192 0
+!
+#Monsters#
+1
+following_walking_monster gailapin 1298 4071
+!
+#Events#
+0
+!
+#Plateforms#
+0
+!
+#Anims#
+0
+!
