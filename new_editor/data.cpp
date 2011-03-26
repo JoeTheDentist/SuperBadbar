@@ -28,8 +28,10 @@ void Data::initData(QString backgroundName)
 {
 	
 	QPixmap image;
-	image.load(BACKGROUND_DIR + backgroundName, 0, Qt::AutoColor);
+	std::cout << backgroundName.toStdString() << " " ;
 	m_background_name = backgroundName.right(backgroundName.size() - (backgroundName.lastIndexOf("backgrounds/") + 12));
+	image.load(BACKGROUND_DIR + m_background_name, 0, Qt::AutoColor);
+	std::cout << m_background_name.toStdString() << std::endl;
 	m_xpix = image.width() * 2 - CAMERA_WIDTH;
 	m_ypix = image.height() * 2 - CAMERA_HEIGHT;
 }
@@ -175,6 +177,7 @@ void Data::saveData(QString fileName)
 	QTextStream out(&file);
 	// sauvegarde du background  
 	out << "#Background#" << endl;
+	std::cout << m_background_name.toStdString() << std::endl;
 	out << m_background_name << endl << endl;
 	// sauvegarde de la taile du niveau  
 	out << "#Level_dimensions#" << endl;

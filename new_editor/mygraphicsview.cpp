@@ -81,7 +81,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
-	newFile(QString::fromStdString(analyser.read_string()));
+	newFile(QString::fromStdString(BACKGROUND_DIR + analyser.read_string()));
 	analyser.find_string("#Babar#");
 	x = analyser.read_int();
 	y = analyser.read_int();

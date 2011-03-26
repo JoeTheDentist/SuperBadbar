@@ -41,12 +41,9 @@ Static_data::~Static_data()
 void Static_data::init_static_data(uint32_t lvl)
 {
     std::string rep;
-    std::string rac = RAC;
 	PRINT_CONSTR(1, "Construction d'un Static_data")
     char str[3];
     std::string str_lvl;
-    Analyser analyser;
-
     sprintf(str, "%d", lvl);
     str_lvl = str;
     /*** Ouverture du fichier .lvl  ***/
