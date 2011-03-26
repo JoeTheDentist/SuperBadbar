@@ -52,6 +52,8 @@ private:
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
 	Sprite *m_target;		/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;
+	Surface *m_green_coll;
+	Surface *m_red_coll;
 public:
 
 	/*!
@@ -136,6 +138,11 @@ public:
 	*	L'affichage réel n'est mis à jour que dans cette méthode
 	*/
 	void flip_camera();
+	
+	#ifdef DEBUG_COLL
+	void display_green_coll(Rect pos);
+	void display_red_coll(Rect pos);
+	#endif
 
 private:
 	void update_decalage();	/* mise à jour du decalage du cadre (appelé par update_pos) */

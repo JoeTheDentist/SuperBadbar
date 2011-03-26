@@ -15,6 +15,8 @@
 #include "../video/camera.h"
 #include "../sprites/babar.h"
 #include "../util/globals.h"
+#include <iostream> 
+#include <algorithm> 
 
 Collisions_manager::Collisions_manager():
 	m_moving_platforms()
@@ -53,6 +55,7 @@ void Collisions_manager::init_collisions_manager(std::string level_name)
 	m_collisions_matrix_h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
     /*** Allocation du tableau pour les collisions ***/
     m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];
+	std::cout << "levels dimensions: " << m_collisions_matrix_w << " " << m_collisions_matrix_h << std::endl;
     for(int i = 0; i<m_collisions_matrix_w ;i++) {
         m_collisions_matrix[i] = new uint32_t[m_collisions_matrix_h + 1];
     }
@@ -79,12 +82,15 @@ void Collisions_manager::init_statics(Analyser &analyser)
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
+		std::cout << x << " " << y << std::endl;
 		analyser.read_int();
 		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
 		static_weight = analyser_static.read_int();
 		static_height = analyser_static.read_int();
-		for (uint32_t j = y / BOX_SIZE ; j < y / BOX_SIZE + static_height; j++) {
-			for (uint32_t i = x / BOX_SIZE; i < x / BOX_SIZE + static_weight; i++) {
+		int j_min = std::max(0, y/BOX_SIZE), j_max = std::min((int)(y / BOX_SIZE + static_height), (int)m_collisions_matrix_h);
+		int i_min = std::max(0, x/BOX_SIZE), i_max = std::min((int)(x / BOX_SIZE + static_weight), (int)m_collisions_matrix_w);
+		for (int j = j_min ; j < j_max; j++) {
+			for (int i = i_min; i < i_max; i++) {
 				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 			}
 		}
@@ -185,3 +191,21 @@ bool Collisions_manager::is_right_coll(uint32_t coll_number)
 	return ((coll_number & 0x1) == 0x1);
 }
 
+#ifdef DEBUG_COLL
+void Collisions_manager::display_coll(Camera *camera)
+{
+	Rect plop;
+	for (int i = 0; i < m_collisions_matrix_w; i ++) {
+		plop.x = i * BOX_SIZE;
+		for (int j = 0; j < m_collisions_matrix_h; j++) {
+			if (m_collisions_matrix[i][j] == 4) {
+				plop.y = j * BOX_SIZE;
+				camera->display_green_coll(plop);
+			} else if (m_collisions_matrix[i][j] == 15) {
+				plop.y = j*BOX_SIZE;
+				camera->display_red_coll(plop);
+			}
+		}
+	}
+}
+#endif

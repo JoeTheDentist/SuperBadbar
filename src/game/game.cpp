@@ -134,6 +134,10 @@ void Game::update_graphic()
 
 	/* affichage des statics du premier plan */
 	gStatic->display_statics_first(camera);
+	
+	#ifdef DEBUG_COLL
+	gCollision->display_coll(camera);
+	#endif
 
 	/* affichage du tableau de board */
 	gGraphics->draw_dashboard(gBabar->lifes(), camera);

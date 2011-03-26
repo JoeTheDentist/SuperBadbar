@@ -99,12 +99,12 @@ bool Collisions_matrix::down_collision(Rect pos)
 
 bool Collisions_matrix::left_collision(Rect pos)
 {
-	return Collisions_manager::is_left_coll(up_collision_type(pos));
+	return Collisions_manager::is_right_coll(left_collision_type(pos));
 }
 
 bool Collisions_matrix::right_collision(Rect pos)
 {
-	return Collisions_manager::is_right_coll(up_collision_type(pos));
+	return Collisions_manager::is_left_coll(right_collision_type(pos));
 }
 
 bool Collisions_matrix::double_collision(Rect pos)

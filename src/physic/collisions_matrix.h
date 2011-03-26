@@ -48,7 +48,7 @@
 class Collisions_matrix {
 protected:
 	uint32_t ** m_collisions_matrix;      	/* matrice des statics */
-	int m_collisions_matrix_w;
+	int m_collisions_matrix_w; // taille de la matrice (en box)
 	int m_collisions_matrix_h;
 public:
 

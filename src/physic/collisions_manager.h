@@ -153,6 +153,10 @@ public:
 	*/
 	static bool is_right_coll(uint32_t coll_number);
 	
+	#ifdef DEBUG_COLL
+	void display_coll(Camera *camera);
+	#endif
+	
 private:
 	void init_statics(Analyser &analyser);
 	void init_moving_plateforms(Analyser &analyser);

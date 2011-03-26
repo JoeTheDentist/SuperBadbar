@@ -141,11 +141,9 @@ void Babar::update_pos()
 		gCollision->update_babar_platforms();
 		if(binded())
 			break;
-		pente =  !Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos));
+		pente =  !Collisions_manager::is_up_coll(gCollision->up_collision_type(m_pos)); // pour la pente
 		if (pente)
 			m_pos.y -= 	BOX_SIZE;
-		
-
 		if (Collisions_manager::is_left_coll(gCollision->left_collision_type(m_pos))){
 			speed_x = 0;
 			m_speed.x = 0;
