@@ -46,6 +46,7 @@
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"
 	#define BABAR_SOUNDS_R SOUNDS_R + "babar/"
 	#define FIRE_SOUNDS_R SOUNDS_R + "fire/"
+	#define MENU_SOUNDS_R SOUNDS_R + "menu/"
 
 
 

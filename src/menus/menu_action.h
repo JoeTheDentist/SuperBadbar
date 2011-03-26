@@ -14,7 +14,10 @@ class Menu_action {
 	public:
 	Menu_action(std::string str, int i);
 	~Menu_action();
+	
 	int get_index() { return m_index; }
+	
+	
 	Surface_text *get_surface(bool selected = false) 
 	{
 		return (selected ? m_surface_text_selected : m_surface_text);

@@ -2,14 +2,15 @@
 #define _MAIN_MENU_H
 
 #include "../video/surface.h"
+#include "../menus/list_menu_actions.h"
 
-class Menu_action;
 
 class Main_menu {
 	private:
 	Surface *m_menu_background;
 	Rect m_pos_background;
-	Menu_action *m_menu_action;
+	
+	List_menu_actions m_menu_actions;
 	Rect m_pos_menu;
 
 	
