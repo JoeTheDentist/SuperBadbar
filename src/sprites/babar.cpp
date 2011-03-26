@@ -151,7 +151,7 @@ void Babar::update_pos()
 			m_pos.x -= BOX_SIZE; // on avance!
 			
 		}
-		if(!Collisions_manager::is_down_coll(gCollision->down_collision_type(m_pos)) && pente)
+		if(!Collisions_manager::is_left_coll(gCollision->down_collision_type(m_pos)) && pente)
 			m_pos.y += BOX_SIZE;
 		if (m_pos.x < 0)
 			m_pos.x = 0;
