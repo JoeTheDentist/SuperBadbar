@@ -11,22 +11,23 @@ leveltest.png
 1
 
 #Statics#
-3
+5
 arbre_bord 0 511 0
 grass1 778 4192 0
 flower1 1045 4160 1
+arbre_feuilles 1222 3586 0
+arbre_feuilles_front 1179 3639 1
 !
 #Monsters#
-0
+1
+following_walking_monster gailapin 1298 4071
 !
 #Events#
 0
 !
 #Plateforms#
-1
-block8 220 3900 220 3700
+0
 !
 #Anims#
-1
-/pic/babar/1/babar_1_0_ 220 3923
+0
 !
