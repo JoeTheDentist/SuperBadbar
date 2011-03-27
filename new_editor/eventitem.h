@@ -11,10 +11,10 @@ class EventItem: public MyItem {
 	public:
 	/*!
 	*	@brief Constructeur
-	*	@param item L'objet à encapsuler
+	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier, contenant "monsters/chemindufichier"
 	*/
-	EventItem(QGraphicsPixmapItem *item, QString fileName);
+	EventItem(QGraphicsScene *scene, QString fileName);
 	
 	/*!
 	*	@brief Destructeur
@@ -23,9 +23,10 @@ class EventItem: public MyItem {
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
+	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
 	*/
-	virtual MyItem *duplicate();
+	virtual MyItem *duplicate(QGraphicsScene *scene);
 	
 	
 	/*!

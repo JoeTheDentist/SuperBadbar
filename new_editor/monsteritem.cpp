@@ -6,25 +6,29 @@
 #include "analyser.h"
 #include <QGraphicsScene>
 
-MonsterItem::MonsterItem(QGraphicsPixmapItem *item, QString fileName):
-	MyItem(item, fileName),
+
+
+MonsterItem::MonsterItem(QGraphicsScene *scene, QString fileName):
+	MyItem(NULL, fileName),
 	m_class_name("")
 {
+	QPixmap image;
+	image.load(MonsterItem::picPathFromEditor(fileName));
+	setItem(scene->addPixmap(image));
 	Analyser analyser;
 	analyser.open((MONSTERS_DIR + fileName + ".mstr").toStdString());
 	analyser.find_string("#Class#");
 	m_class_name = QString::fromStdString(analyser.read_string());
-}                
+}      
 
 MonsterItem::~MonsterItem()
 {
 	
 }
 
-MyItem *MonsterItem::duplicate()
+MyItem *MonsterItem::duplicate(QGraphicsScene *scene)
 {
-	QPixmap image(m_item->pixmap());
-	MyItem *item = new MonsterItem(m_item->scene()->addPixmap(image), m_file_name);
+	MyItem *item = new MonsterItem(scene, m_file_name);
 	item->getItem()->setVisible(false);
 	return item;
 }

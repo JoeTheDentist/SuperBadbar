@@ -6,22 +6,25 @@
 #include "analyser.h"
 #include <QGraphicsScene>
 
-EventItem::EventItem(QGraphicsPixmapItem *item, QString fileName):
-	MyItem(item, fileName),
+EventItem::EventItem(QGraphicsScene *scene, QString fileName):
+	MyItem(NULL, fileName),
 	m_class_name("")
 {
+	QPixmap image;
+	image.load(EventItem::picPathFromEditor(fileName));
+	setItem(scene->addPixmap(image));
 	m_class_name = "event";
 }                
+
 
 EventItem::~EventItem()
 {
 	
 }
 
-MyItem *EventItem::duplicate()
+MyItem *EventItem::duplicate(QGraphicsScene *scene)
 {
-	QPixmap image(m_item->pixmap());
-	MyItem *item = new EventItem(m_item->scene()->addPixmap(image), m_file_name);
+	MyItem *item = new EventItem(scene, m_file_name);
 	item->getItem()->setVisible(false);
 	return item;
 }

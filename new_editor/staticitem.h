@@ -14,6 +14,7 @@ class StaticItem: public MyItem {
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
 	StaticItem(QGraphicsPixmapItem *item, QString fileName, int buffer = 0);
+	StaticItem(QGraphicsScene *scene, QString fileName, int buffer = 0);
 	
 	/*!
 	*	@brief Destructeur
@@ -22,9 +23,10 @@ class StaticItem: public MyItem {
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
+	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
 	*/	
-	virtual MyItem *duplicate();
+	virtual MyItem *duplicate(QGraphicsScene *scene);
 
 	/*!
 	*	@brief Sauvegarde l'objet dans out

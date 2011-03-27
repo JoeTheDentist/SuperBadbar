@@ -31,8 +31,8 @@
 #endif
 
 MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
-	m_file_name(),
 	QGraphicsView(scene, parent),
+	m_file_name(),
 	m_data(new Data()),
 	m_opened(false),
 	m_mouse_pressed(false),
@@ -64,10 +64,7 @@ void MyGraphicsView::newFile(QString backgroundName)
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
 	m_opened = true;
-	QPixmap babarpix;
-	babarpix.load(QString(BABAR_PIC_DIR) + "1/babar_0_0_0.png");
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(babarpix);
-	m_babar_item = new BabarItem(item);
+	m_babar_item = new BabarItem(this->scene());
 	m_data->addItem(m_babar_item);
 }
 
@@ -75,9 +72,8 @@ void MyGraphicsView::loadFile(QString fileName)
 {
 	m_file_name = fileName;
 	Analyser analyser;
-	QPixmap image;
 	int x, y, zbuffer, age;
-	QGraphicsPixmapItem *item = NULL;
+	MyItem *myitem = NULL;
 	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
@@ -93,28 +89,25 @@ void MyGraphicsView::loadFile(QString fileName)
 	QString nameStatic;
 	for (int i = 0; i < nbStatics; i ++) {
 		nameStatic = QString::fromStdString(analyser.read_string());
-		image.load(StaticItem::picPathFromEditor(nameStatic));
-		item = this->scene()->addPixmap(image);
 		std::cout << nameStatic.toStdString() << std::endl;
 		x = analyser.read_int();
 		y = analyser.read_int();
 		zbuffer = analyser.read_int();
-		item->setPos(x, y);
-		m_data->addItem(new StaticItem(item, nameStatic, zbuffer));
+		myitem = new StaticItem(this->scene(), nameStatic, zbuffer);
+		myitem->setPos(x, y);
+		m_data->addItem(myitem);
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
 	QString nameMonster;
-	QString classMonster;
 	for (int i = 0; i < nbMonsters; i ++) {
-		classMonster = QString::fromStdString(analyser.read_string());
+		analyser.read_string(); // on ignore la classe du monstre
 		nameMonster = QString::fromStdString(analyser.read_string());
-		image.load(MonsterItem::picPathFromEditor(nameMonster));
-		item = this->scene()->addPixmap(image);
 		x = analyser.read_int();
 		y = analyser.read_int();
-		item->setPos(x, y);
-		m_data->addItem(new MonsterItem(item, nameMonster));
+		myitem = new MonsterItem(this->scene(), nameMonster);
+		myitem->setPos(x, y);
+		m_data->addItem(myitem);
 	}
 	analyser.find_string("#Events#");
 	int nbEvents = analyser.read_int();
@@ -126,13 +119,11 @@ void MyGraphicsView::loadFile(QString fileName)
 			std::cout << "Erreur dans le fichier chargé ou l'éditeur n'est plus à jour!" << std::endl;
 		}
 		nameEvent = QString::fromStdString(analyser.read_string());
-		std::cout << "image: " << (EventItem::picPathFromEditor(nameEvent)).toStdString() << std::endl;
-		image.load(EventItem::picPathFromEditor(nameEvent));
-		item = this->scene()->addPixmap(image);
 		x = analyser.read_int();
 		y = analyser.read_int();
-		item->setPos(x, y);
-		m_data->addItem(new EventItem(item, nameEvent));
+		myitem = new EventItem(this->scene(), nameEvent);
+		myitem->setPos(x, y);
+		m_data->addItem(myitem);
 	}
 	analyser.close();
 }
@@ -305,14 +296,11 @@ void MyGraphicsView::addStatic()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
 		return;
 	}
-	QPixmap image;
-	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
-	fileName.append("png");
-	image.load(fileName);
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
+//~ 	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
+//~ 	fileName.append("png");
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
-	m_curr_item = new StaticItem(item, fileName);
+	m_curr_item = new StaticItem(this->scene(), fileName);
 }
 
 void MyGraphicsView::addPlatform()
@@ -327,13 +315,11 @@ void MyGraphicsView::addPlatform()
 		return;
 	}
 	QPixmap image;
-	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
-	fileName.append("png");
-	image.load(fileName);
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
+//~ 	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
+//~ 	fileName.append("png");
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
-	m_curr_item = new PlatformItem(item, fileName, this);
+	m_curr_item = new PlatformItem(this->scene(), fileName);
 }
 
 void MyGraphicsView::addMonster()
@@ -346,13 +332,9 @@ void MyGraphicsView::addMonster()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".mstr\"");
 		return;
 	}
-	QPixmap image;
-
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
 	fileName.chop(5);
-	image.load(MonsterItem::picPathFromEditor(fileName));
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	
-	m_curr_item = new MonsterItem(item, fileName);
+	m_curr_item = new MonsterItem(this->scene(), fileName);
 }
 
 
@@ -370,9 +352,7 @@ void MyGraphicsView::addEvent()
 
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
 	fileName.chop(4);
-	image.load(EventItem::picPathFromEditor(fileName));
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
-	m_curr_item = new EventItem(item, fileName);
+	m_curr_item = new EventItem(this->scene(), fileName);
 }
 
 void MyGraphicsView::activeDeleteItem()
@@ -419,14 +399,14 @@ void MyGraphicsView::copyItem(MyItem *item)
 			// remove m_copied_item de la scene
 			delete m_copied_item;
 		}
-		m_copied_item = item->duplicate();
+		m_copied_item = item->duplicate(this->scene());
 	}
 }
 
 void MyGraphicsView::pastItem()
 {
 	if (m_copied_item && (m_copied_item != m_babar_item)) {
-		MyItem *item = m_copied_item->duplicate();
+		MyItem *item = m_copied_item->duplicate(this->scene());
 		item->getItem()->setVisible(true);
 		item->setPos(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
 		m_data->addItem(item);

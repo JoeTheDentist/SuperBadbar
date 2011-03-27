@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QString>
  #include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
 
 class Data;
 class QGraphicsPixmapItem;
@@ -15,7 +16,7 @@ class MyItem {
 	public:
 	MyItem(QGraphicsPixmapItem *item, QString);
 	~MyItem();
-	virtual MyItem *duplicate() = 0;
+	virtual MyItem *duplicate(QGraphicsScene *scene) = 0;
 	QGraphicsPixmapItem *getItem();
 	virtual void saveItem(QTextStream &out) = 0;
 	virtual void addToData(Data *data, bool push_front = true) = 0;
@@ -23,6 +24,9 @@ class MyItem {
 	virtual void moveItem(int x, int y);
 	virtual void setPos(int x, int y);
 	virtual MyItem* selectItem(int x, int y);
+	
+	protected:
+	void setItem(QGraphicsPixmapItem *item) { m_item = item; }
 	
 };
 

@@ -6,14 +6,13 @@
 #include <QGraphicsScene>
 #include <QInputDialog>
 
-PlatformItem::PlatformItem(QGraphicsPixmapItem *item, QString fileName, MyGraphicsView *scene, PlatformItem *father):
-	StaticItem(item, fileName),
+PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father):
+	StaticItem(scene, fileName),
 	m_father(father),
 	m_son(NULL)
 {
 	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
-		QPixmap image(m_item->pixmap()); // on duplique l'image pour le fils
-		this->setSon(new PlatformItem(scene->scene()->addPixmap(image), fileName, scene, this)); // felicitations, c'est un garcon!
+		this->setSon(new PlatformItem(scene, fileName, this)); // felicitations, c'est un garcon!
 	}
 }
 
@@ -36,7 +35,7 @@ void PlatformItem::setSon(PlatformItem *son)
 	son->setFather(this);
 }
 
-MyItem *PlatformItem::duplicate()
+MyItem *PlatformItem::duplicate(QGraphicsScene *scene)
 {
 	// TODO 
 	QPixmap image(m_item->pixmap());

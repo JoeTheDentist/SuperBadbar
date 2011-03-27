@@ -15,11 +15,11 @@ class PlatformItem: public StaticItem {
 	public:
 	/*!
 	*	@brief Constructeur
-	*	@param item L'objet à encapsuler
+	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
 	*/
-	PlatformItem(QGraphicsPixmapItem *item, QString fileName, MyGraphicsView *scene, PlatformItem *father = NULL);
+	PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Destructeur
@@ -31,9 +31,10 @@ class PlatformItem: public StaticItem {
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
+	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
 	*/	
-	virtual MyItem *duplicate();
+	virtual MyItem *duplicate(QGraphicsScene *scene);
 
 	/*!
 	*	@brief Sauvegarde l'objet dans out

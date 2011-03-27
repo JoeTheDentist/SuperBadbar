@@ -13,7 +13,7 @@ class BabarItem: public MyItem {
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-	BabarItem(QGraphicsPixmapItem *item, int age = 1);
+	BabarItem(QGraphicsScene *scene, int age = 1);
 	
 	/*!
 	*	@brief Destructeur
@@ -22,9 +22,10 @@ class BabarItem: public MyItem {
 
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
+	*	@param scene La scene de l'editeur (ici inutile)
 	*	@return Un pointeur vers la copie
 	*/	
-	virtual MyItem *duplicate();
+	virtual MyItem *duplicate(QGraphicsScene *scene);
 
 	/*!
 	*	@brief Sauvegarde l'objet dans out
