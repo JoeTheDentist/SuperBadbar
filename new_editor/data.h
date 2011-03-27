@@ -11,6 +11,7 @@ class Data {
 	private:
 	MyItem *m_babar_item;
 	std::list<MyItem *> m_static_items;
+	std::list<MyItem *> m_platform_items;
 	std::list<MyItem *> m_monsters_items;
 	std::list<MyItem *> m_event_items;
 	QString m_background_name;
@@ -76,6 +77,17 @@ class Data {
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
 	*/
 	void addStaticItem(MyItem *item, bool push_front = false);
+			
+	/*!
+	*	@brief Ajoute un item a la liste des platformItem
+	*	@param item L'item a ajouter
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addPlatformItem
+	*/
+	void addPlatformItem(MyItem *item, bool push_front = false);
+		
+		
 		
 	/*!
 	*	@brief Ajoute un item a la liste des monstersItem

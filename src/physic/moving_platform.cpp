@@ -39,8 +39,8 @@ Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, 
 
 	/*Normalisation du vecteur vitesse*/
 	double norme = sqrt(m_speed.x*m_speed.x+m_speed.y*m_speed.y);
-	m_speed.x = m_speed.x*5/norme;
-	m_speed.y = m_speed.y*5/norme;
+	m_speed.x = (m_speed.x*5)/norme;
+	m_speed.y = (m_speed.y*5)/norme;
 
 	m_collisions_matrix_w = analyser.read_int();
 	m_collisions_matrix_h = analyser.read_int();

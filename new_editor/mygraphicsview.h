@@ -3,6 +3,7 @@
 #include <QGraphicsView>
 #include "paths.h"
 #include "babaritem.h"
+#include "platformitem.h"
 
 #define CURS_BOX 0
 #define CURS_LINE 1
@@ -123,7 +124,11 @@ class MyGraphicsView : public QGraphicsView {
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
-	void addStatic();
+	void addStatic();	
+	/*!
+	*	@brief Fonction d'ajout de static au niveau
+	*/
+	void addPlatform();
 	
 	/*!
 	*	@brief Fonction d'ajout de monstre au niveau

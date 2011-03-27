@@ -1,5 +1,6 @@
 #include "data.h"
 #include "myitem.h"
+#include "platformitem.h"
 #include <iostream>
 #include <QTextStream>
 #include <QFile>
@@ -49,6 +50,7 @@ int Data::levelHeight()
 void Data::addItem(MyItem *item, bool push_front)
 {
 	item->addToData(this, push_front);
+	std::cout << "ADD" << std::endl;
 }
 
 void Data::addBabarItem(MyItem *item)
@@ -66,6 +68,18 @@ void Data::addStaticItem(MyItem *item, bool push_front)
 	}
 	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
+
+void Data::addPlatformItem(MyItem *item, bool push_front)
+{
+	if (push_front) {
+		m_platform_items.push_front(item);		
+	} else {
+		m_platform_items.push_back(item);
+	}
+	item->getItem()->setZValue(STATICS_0_ZBUFFER);
+}
+
+
 
 void Data::addMonsterItem(MyItem *item, bool push_front)
 {	
@@ -120,6 +134,27 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it);	
 		}
 	}
+	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
+		
+		std::cout << "before get item"  << m_platform_items.size() << std::endl;
+		item = (*it)->getItem();
+		QGraphicsPixmapItem *fils = ((PlatformItem *)(*it))->getSon()->getItem(); // on sait que c'est un PlatformItem
+		if (fils->x() <= x && x <= fils->x() + fils->boundingRect().width()
+			&& fils->y() <= y && y <= fils->y() + fils->boundingRect().height()) {
+		std::cout << "after get item" << std::endl;
+
+			return ((PlatformItem *)(*it))->getSon();	
+		} 	
+		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {		
+				std::cout << "after get item" << std::endl;
+
+			return (*it);	
+		} 	
+	}
+		std::cout << "after get item" << std::endl;
+
+	
 	return NULL;
 }
 
@@ -146,6 +181,12 @@ void Data::deleteItem(MyItem *item)
 	for (it = m_static_items.begin(); it != m_static_items.end();it++) {
 		if (*it == item) {
 			m_static_items.erase(it);
+			return;
+		}
+	}	
+	for (it = m_platform_items.begin(); it != m_platform_items.end();it++) {
+		if (*it == item) {
+			m_platform_items.erase(it);
 			return;
 		}
 	}
@@ -206,9 +247,11 @@ void Data::saveData(QString fileName)
 	for (it = m_event_items.begin(); it != m_event_items.end(); it++)
 		(*it)->saveItem(out);	
 	out << "!" << endl;
-	// sauvegarde des plateformes
-	out << "#Plateforms#" << endl;
-	out << "0" << endl;
+	// sauvegarde des platformes
+	out << "#Platforms#" << endl;
+	out << m_platform_items.size() << endl;
+	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+		(*it)->saveItem(out);		
 	out << "!" << endl;
 	out << "#Anims#" << endl;
 	out << "0" << endl;

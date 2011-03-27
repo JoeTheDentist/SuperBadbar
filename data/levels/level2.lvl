@@ -6,8 +6,8 @@ level1.png
 3400
 
 #Babar#
-1326
-2914
+499
+2634
 1
 
 #Statics#
@@ -16,8 +16,8 @@ block4_1 432 569 0
 block4_2 433 1271 0
 block4_3 430 1845 0
 block3 1098 2905 0
-block5 130 2592 0
 soil 7 3289 1
+block5 180 2643 0
 !
 #Monsters#
 7
@@ -34,8 +34,9 @@ following_flying_monster fubob 2976 1279
 event machinegun 447 1348
 event shotgun 1503 2952
 !
-#Plateforms#
-0
+#Platforms#
+1
+flower1 274 2496 633 2494
 !
 #Anims#
 0

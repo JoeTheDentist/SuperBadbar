@@ -101,10 +101,11 @@ void Collisions_manager::init_statics(Analyser &analyser)
 
 void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 {
-    analyser.find_string("#Plateforms#");
+    analyser.find_string("#Platforms#");
 
     analyser.read_int();
 	std::string plateform_name = analyser.read_string();
+	std::cout << plateform_name << std::endl;
 	Rect pos_begin, pos_end;
 	while(plateform_name[0]!='!') {
 		pos_begin.x = analyser.read_int();

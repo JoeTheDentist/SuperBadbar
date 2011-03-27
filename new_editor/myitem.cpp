@@ -27,3 +27,15 @@ void MyItem::edit()
 {
 	
 }
+
+void MyItem::moveItem(int x, int y)
+{
+	QGraphicsPixmapItem *item = this->getItem();
+	item->setPos(item->x() + x, item->y() + y);
+}
+
+void MyItem::setPos(int x, int y)
+{
+	QGraphicsPixmapItem *item = this->getItem();
+	item->setPos(x, y);	
+}

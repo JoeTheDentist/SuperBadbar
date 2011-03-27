@@ -64,6 +64,7 @@ class MainWindow : public QMainWindow {
 	void aboutBabarEditor();
 	void addBabar();
 	void addStatic();
+	void addPlatform();
 	void addMonster();
 	void addEvent();
 	void deleteItem();
@@ -90,6 +91,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_aboutBabarEditor;
 	QAction *m_addBabar;
 	QAction *m_addStatic;
+	QAction *m_addPlatform;
 	QAction *m_addMonster;
 	QAction *m_addEvent;
 	QAction *m_deleteItem;

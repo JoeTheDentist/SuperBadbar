@@ -20,6 +20,8 @@ class MyItem {
 	virtual void saveItem(QTextStream &out) = 0;
 	virtual void addToData(Data *data, bool push_front = true) = 0;
 	virtual void edit();
+	virtual void moveItem(int x, int y);
+	virtual void setPos(int x, int y);
 	
 };
 

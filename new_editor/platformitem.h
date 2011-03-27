@@ -1,24 +1,29 @@
-#ifndef _EDITOR_STATIC_ITEM_H_
-#define _EDITOR_STATIC_ITEM_H_
+#ifndef _EDITOR_PLATEFORM_ITEM_H_
+#define _EDITOR_PLATEFORM_ITEM_H_
 
 #include "myitem.h"
+#include "staticitem.h"
 #include "data.h"
 
-class StaticItem: public MyItem {
+class PlatformItem: public StaticItem {
 	protected:
-	int m_zbuffer; // 0 ou 1
+	PlatformItem *m_son;
+	PlatformItem *m_father;
 	public:
 	/*!
 	*	@brief Constructeur
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-	StaticItem(QGraphicsPixmapItem *item, QString fileName, int buffer = 0);
+	PlatformItem(QGraphicsPixmapItem *item, QString fileName, PlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Destructeur
 	*/
-	~StaticItem();
+	~PlatformItem();
+	
+	void setFather(PlatformItem *father);
+	void setSon(PlatformItem *son);
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
@@ -48,9 +53,18 @@ class StaticItem: public MyItem {
 	*/
 	static QString picPathFromEditor(QString fileName);
 	
+	
+	bool isFather() { return m_son; }
+	
+	PlatformItem *getSon() { return m_son; }
+
+	virtual void moveItem(int x, int y);
+	virtual void setPos(int x, int y);	
+	
 	protected:
 		
 	virtual void setStaticZBuffer(int buffer);
+
 
 };
 

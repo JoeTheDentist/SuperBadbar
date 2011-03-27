@@ -28,6 +28,7 @@ MainWindow::MainWindow():
 	m_saveAct(NULL),
 	m_aboutBabarEditor(NULL),
 	m_addStatic(NULL),
+	m_addPlatform(NULL),
 	m_addMonster(NULL),
 	m_addEvent(NULL),
 	m_fileToolBar(NULL)
@@ -51,6 +52,7 @@ MainWindow::~MainWindow()
 	delete m_editMenu;
 	delete m_helpMenu;
 	delete m_addStatic;
+	delete m_addPlatform;
 	delete m_addMonster;
 	delete m_addEvent;
 	delete m_addBabar;
@@ -97,6 +99,11 @@ void MainWindow::createActions()
 	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
+	
+	m_addPlatform = new QAction(QIcon("images/addplatform.png"),tr("AddPlatform"), this); 
+	m_addPlatform->setStatusTip(tr("Add a platform to the level"));
+	connect(m_addPlatform, SIGNAL(triggered()), this, SLOT(addPlatform()));	
+
 
 	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
 	m_addMonster->setStatusTip(tr("Add a monster to the level"));
@@ -125,6 +132,7 @@ void MainWindow::createActions()
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
 	m_editMenu->addAction(m_addBabar);
 	m_editMenu->addAction(m_addStatic);
+	m_editMenu->addAction(m_addPlatform);
 	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_addEvent);
 	m_editMenu->addAction(m_deleteItem);
@@ -142,6 +150,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_saveAsAct);
 	m_fileToolBar->addAction(m_addBabar);
 	m_fileToolBar->addAction(m_addStatic);
+	m_fileToolBar->addAction(m_addPlatform);
 	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_addEvent);
 	m_fileToolBar->addAction(m_deleteItem);
@@ -245,6 +254,13 @@ void MainWindow::addStatic()
 	if (m_opened_file)
 		m_graphic_view->addStatic();
 }
+
+void MainWindow::addPlatform()
+{
+	if (m_opened_file)
+		m_graphic_view->addPlatform();
+}
+
 
 void MainWindow::addMonster()
 {

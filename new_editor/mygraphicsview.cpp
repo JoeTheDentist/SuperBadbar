@@ -86,7 +86,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	x = analyser.read_int();
 	y = analyser.read_int();
 	age = analyser.read_int();
-	m_babar_item->getItem()->setPos(x, y);
+	m_babar_item->setPos(x, y);
 	m_babar_item->setBabarAge(age);
 	analyser.find_string("#Statics#");
 	int nbStatics = analyser.read_int();
@@ -162,7 +162,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 				selectItem(m_moved_item);
 			}
 		}
-	} else if (event->button() == Qt::LeftButton) {
+	} else if (event->button() == Qt::RightButton) {
 		if (m_opened && !m_del_curs && m_curr_item) {
 			this->scene()->removeItem(m_curr_item->getItem());
 			delete m_curr_item->getItem();
@@ -206,10 +206,9 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 		if (m_del_curs) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
 		} else if (m_moved_item) {
-			QGraphicsPixmapItem *item = m_moved_item->getItem();
-			item->setPos(item->x() + posClicX(event) - m_xprec, item->y() + posClicY(event) - m_yprec);
+			m_moved_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
 		} else if (m_curr_item) {
-			m_curr_item->getItem()->setPos(posClicX(event), posClicY(event));
+			m_curr_item->setPos(posClicX(event), posClicY(event));
 		}
 	}
 	m_xprec = posClicX(event);
@@ -316,6 +315,27 @@ void MyGraphicsView::addStatic()
 	m_curr_item = new StaticItem(item, fileName);
 }
 
+void MyGraphicsView::addPlatform()
+{
+	// TODO: factoriser avec addStatic
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de platform", STATIC_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(".col") || fileName.endsWith(".png"))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
+		return;
+	}
+	QPixmap image;
+	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
+	fileName.append("png");
+	image.load(fileName);
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
+	fileName.chop(4);
+	m_curr_item = new PlatformItem(item, fileName);
+}
+
 void MyGraphicsView::addMonster()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", MONSTERS_DIR);
@@ -406,7 +426,7 @@ void MyGraphicsView::pastItem()
 	if (m_copied_item && (m_copied_item != m_babar_item)) {
 		MyItem *item = m_copied_item->duplicate();
 		item->getItem()->setVisible(true);
-		item->getItem()->setPos(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
+		item->setPos(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
 		m_data->addItem(item);
 	}
 }
