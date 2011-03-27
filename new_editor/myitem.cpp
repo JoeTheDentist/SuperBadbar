@@ -39,3 +39,13 @@ void MyItem::setPos(int x, int y)
 	QGraphicsPixmapItem *item = this->getItem();
 	item->setPos(x, y);	
 }
+
+MyItem *MyItem::selectItem(int x, int y)
+{
+	QGraphicsPixmapItem *item = this->getItem();
+	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
+		return this;	
+	}
+	return NULL;
+}

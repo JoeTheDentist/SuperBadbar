@@ -333,7 +333,7 @@ void MyGraphicsView::addPlatform()
 	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
-	m_curr_item = new PlatformItem(item, fileName);
+	m_curr_item = new PlatformItem(item, fileName, this);
 }
 
 void MyGraphicsView::addMonster()
@@ -351,8 +351,10 @@ void MyGraphicsView::addMonster()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
 	fileName.chop(5);
 	image.load(MonsterItem::picPathFromEditor(fileName));
-	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	m_curr_item = new MonsterItem(item, fileName);
+	QGraphicsPixmapItem *item = this->scene()->addPixmap(image);	
+	m_curr_item = new MonsterItem(item, fileName);
 }
+
 
 void MyGraphicsView::addEvent()
 {

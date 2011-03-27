@@ -2,19 +2,22 @@
 #include <QGraphicsPixmapItem>
 #include <iostream>
 #include "paths.h"
+#include "mygraphicsview.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
 
-PlatformItem::PlatformItem(QGraphicsPixmapItem *item, QString fileName, PlatformItem *father):
+PlatformItem::PlatformItem(QGraphicsPixmapItem *item, QString fileName, MyGraphicsView *scene, PlatformItem *father):
 	StaticItem(item, fileName),
 	m_father(father),
 	m_son(NULL)
 {
 	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
 		QPixmap image(m_item->pixmap()); // on duplique l'image pour le fils
-		this->setSon(new PlatformItem(m_item->scene()->addPixmap(image), fileName, this)); // felicitations, c'est un garcon!
+		this->setSon(new PlatformItem(scene->scene()->addPixmap(image), fileName, scene, this)); // felicitations, c'est un garcon!
 	}
 }
+
+
 
 PlatformItem::~PlatformItem()
 {
@@ -37,7 +40,7 @@ MyItem *PlatformItem::duplicate()
 {
 	// TODO 
 	QPixmap image(m_item->pixmap());
-	PlatformItem *item = new PlatformItem(m_item->scene()->addPixmap(image), m_file_name);
+	PlatformItem *item = NULL; //new PlatformItem(m_item->scene()->addPixmap(image), m_file_name);
 	item->getItem()->setVisible(false);
 	item->m_zbuffer = m_zbuffer;
 	return item;	
@@ -105,3 +108,18 @@ void PlatformItem::setStaticZBuffer(int buffer)
 		m_son->setStaticZBuffer(buffer);
 	}
 }
+
+MyItem *PlatformItem::selectItem(int x, int y)
+{
+	if (isFather()) {
+		if (m_son->selectItem(x, y))
+			return m_son->selectItem(x, y);
+	}
+	QGraphicsPixmapItem *item = this->getItem();
+	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
+		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
+		return this;	
+	}
+	return NULL;
+}
+

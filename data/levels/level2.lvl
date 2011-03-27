@@ -6,8 +6,8 @@ level1.png
 3400
 
 #Babar#
-499
-2634
+418
+2581
 1
 
 #Statics#
@@ -17,10 +17,10 @@ block4_2 433 1271 0
 block4_3 430 1845 0
 block3 1098 2905 0
 soil 7 3289 1
-block5 180 2643 0
+block5 337 2775 0
 !
 #Monsters#
-7
+8
 following_walking_monster gailapin 1364 1271
 following_walking_monster maphyar 2755 1335
 following_walking_monster maphyar 2288 1313
@@ -28,6 +28,7 @@ following_walking_monster maphyar 1813 1312
 following_flying_monster fubob 2473 1585
 following_flying_monster fubob 2961 1801
 following_flying_monster fubob 2976 1279
+following_flying_monster fubob 139 2490
 !
 #Events#
 2
@@ -36,7 +37,7 @@ event shotgun 1503 2952
 !
 #Platforms#
 1
-flower1 274 2496 633 2494
+flower1 204 2225 590 2567
 !
 #Anims#
 0

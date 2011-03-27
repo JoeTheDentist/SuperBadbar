@@ -107,54 +107,29 @@ void Data::addEventItem(MyItem *item, bool push_front)
 MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;
-	QGraphicsPixmapItem *item;
-	item = m_babar_item->getItem();
-	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
-		return m_babar_item;	
+	if (m_babar_item->selectItem(x, y)) {	
+		return m_babar_item->selectItem(x, y);	
 	}
 	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {
-		item = (*it)->getItem();
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
-			return (*it);	
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
 		}
 	}
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
-		item = (*it)->getItem();
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
-			return (*it);	
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
 		}
 	}
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
-		item = (*it)->getItem();
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {
-			return (*it);	
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
 		}
 	}
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
-		
-		std::cout << "before get item"  << m_platform_items.size() << std::endl;
-		item = (*it)->getItem();
-		QGraphicsPixmapItem *fils = ((PlatformItem *)(*it))->getSon()->getItem(); // on sait que c'est un PlatformItem
-		if (fils->x() <= x && x <= fils->x() + fils->boundingRect().width()
-			&& fils->y() <= y && y <= fils->y() + fils->boundingRect().height()) {
-		std::cout << "after get item" << std::endl;
-
-			return ((PlatformItem *)(*it))->getSon();	
-		} 	
-		if (item->x() <= x && x <= item->x() + item->boundingRect().width()
-			&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {		
-				std::cout << "after get item" << std::endl;
-
-			return (*it);	
-		} 	
-	}
-		std::cout << "after get item" << std::endl;
-
-	
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
+		}	
+	}	
 	return NULL;
 }
 

@@ -5,17 +5,21 @@
 #include "staticitem.h"
 #include "data.h"
 
+class MyGraphicsView;
+
 class PlatformItem: public StaticItem {
 	protected:
-	PlatformItem *m_son;
 	PlatformItem *m_father;
+	PlatformItem *m_son;
+
 	public:
 	/*!
 	*	@brief Constructeur
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
+	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
 	*/
-	PlatformItem(QGraphicsPixmapItem *item, QString fileName, PlatformItem *father = NULL);
+	PlatformItem(QGraphicsPixmapItem *item, QString fileName, MyGraphicsView *scene, PlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Destructeur
@@ -60,6 +64,9 @@ class PlatformItem: public StaticItem {
 
 	virtual void moveItem(int x, int y);
 	virtual void setPos(int x, int y);	
+	
+	virtual MyItem* selectItem(int x, int y);
+
 	
 	protected:
 		

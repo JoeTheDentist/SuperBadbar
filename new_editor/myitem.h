@@ -22,6 +22,7 @@ class MyItem {
 	virtual void edit();
 	virtual void moveItem(int x, int y);
 	virtual void setPos(int x, int y);
+	virtual MyItem* selectItem(int x, int y);
 	
 };
 
