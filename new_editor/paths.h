@@ -8,6 +8,7 @@
 #define MONSTERS_DIR "../data/monsters/"
 #define MONSTERS_PIC_DIR "../pic/monsters/"
 #define EVENTS_DIR "../data/events/"
+#define LEVELS_DIR "../data/levels/"
 #define EVENTS_PIC_DIR "../pic/events/"
 #define BABAR_PIC_DIR "../pic/babar/"
 

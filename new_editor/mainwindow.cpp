@@ -169,7 +169,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
 	// TODO ici on triche
-	QString fileName = QFileDialog::getOpenFileName(this, "Opening a level");
+	QString fileName = QFileDialog::getOpenFileName(this, "Opening a level", LEVELS_DIR);
 	if (fileName.isEmpty()) {
 		return;
 	}
