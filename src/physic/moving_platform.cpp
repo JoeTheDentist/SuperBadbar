@@ -27,10 +27,10 @@ Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, 
 	analyser.open(file_name + ".col");
 	m_pos.x = beginx;
 	m_pos.y = beginy;
-	m_begin.x = beginx;
-	m_begin.y = beginy;
-	m_end.x = endx;
-	m_end.y = endy;
+	m_begin.x = std::min(beginx, endx);
+	m_begin.y = std::min(beginy, endy);
+	m_end.x = std::max(beginx, endx);
+	m_end.y = std::max(beginy, endy);
 	m_phase = 0;
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
@@ -91,7 +91,7 @@ void Moving_platform::update_speed()
     if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
         m_speed.x *= -1;
     }
-    if (m_pos.y > m_begin.y || m_pos.y < m_end.y ) {
+    if (m_pos.y < m_begin.y || m_pos.y > m_end.y ) {
         m_speed.y *= -1;
     }
 }

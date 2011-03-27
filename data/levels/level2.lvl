@@ -6,31 +6,83 @@ level1.png
 3400
 
 #Babar#
-303
-2861
+1698
+3220
 1
 
 #Statics#
-8
-block4_1 432 569 0
-block4_2 433 1271 0
-block3 1098 2905 0
+1
 soil 7 3289 1
-flower1 483 2831 0
-block4_3 430 1845 0
-block5 530 2887 0
-flower1 528 2485 0
 !
 #Monsters#
-0
+15
+following_flying_monster fubob 1638 1253
+following_flying_monster fubob 0 2307
+following_flying_monster fubob 148 2654
+following_flying_monster fubob -11 2824
+following_flying_monster fubob 810 2924
+following_flying_monster fubob 0 2105
+following_flying_monster fubob 784 2543
+following_flying_monster fubob 0 1843
+following_flying_monster fubob 904 2050
+following_flying_monster fubob 2761 2133
+following_flying_monster fubob 2698 2378
+following_flying_monster fubob 2132 1972
+following_flying_monster fubob 2787 1618
+following_flying_monster fubob 3007 1051
+following_flying_monster fubob 1694 1313
 !
 #Events#
-0
+29
+event shotgun 1609 3246
+event shotgun 1813 3255
+event peanut 2056 2045
+event peanut 1988 2094
+event peanut 1907 2103
+event peanut 1829 2100
+event peanut 1757 2069
+event peanut 1692 2040
+event peanut 1705 2138
+event peanut 1746 2203
+event peanut 1791 2262
+event peanut 1854 2285
+event peanut 1938 2286
+event peanut 2011 2229
+event peanut 2058 2169
+event peanut 2092 2091
+event peanut 1891 1866
+event peanut 1839 1933
+event peanut 1927 1945
+event peanut 1777 1745
+event peanut 1709 1767
+event peanut 1661 1718
+event peanut 1689 1656
+event peanut 1762 1679
+event peanut 1989 1711
+event peanut 2012 1649
+event peanut 2078 1662
+event peanut 2101 1720
+event peanut 2036 1753
 !
 #Platforms#
-2
-block8 121 2540 428 2527
+17
 block8 187 230 558 207
+block8 854 2876 617 3148
+block8 626 2663 866 2459
+block8 168 2428 408 2224
+block8 58 2916 352 3142
+block8 1251 2677 1491 2473
+block8 1821 3145 1497 2823
+block8 2050 2869 1717 2452
+block8 2632 2990 2313 2609
+block8 2639 2674 2932 2365
+block8 2461 2317 2128 1900
+block8 2065 2641 1746 2260
+block8 1534 2024 1201 1607
+block8 1969 1947 1636 1530
+block8 2919 1867 2586 1450
+block8 2076 1552 1650 1838
+block8 2550 1914 2124 2200
 !
 #Anims#
 0
