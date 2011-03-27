@@ -16,6 +16,19 @@ PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem
 	}
 }
 
+PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, PlatformItem *father):
+	StaticItem(scene, fileName),
+	m_father(father),
+	m_son(NULL)
+{
+	int x = analyser.read_int();
+	int y = analyser.read_int();
+	setPos(x, y);
+	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
+		this->setSon(new PlatformItem(scene, fileName, analyser, this)); // felicitations, c'est un garcon!
+	}
+}
+
 
 
 PlatformItem::~PlatformItem()
@@ -37,12 +50,16 @@ void PlatformItem::setSon(PlatformItem *son)
 
 MyItem *PlatformItem::duplicate(QGraphicsScene *scene)
 {
-	// TODO 
-	QPixmap image(m_item->pixmap());
-	PlatformItem *item = NULL; //new PlatformItem(m_item->scene()->addPixmap(image), m_file_name);
-	item->getItem()->setVisible(false);
-	item->m_zbuffer = m_zbuffer;
-	return item;	
+	if (isFather()) {
+		QPixmap image(m_item->pixmap());
+		PlatformItem *item = new PlatformItem(scene, m_file_name);
+		item->m_son->moveItem(m_son->x() - x(), m_son->y() - y()); // on maintient le decalage
+		item->setVisible(false); 
+		item->m_zbuffer = m_zbuffer;
+		return item;	
+	} else {
+		return m_father->duplicate(scene);
+	}
 }
 
 void PlatformItem::saveItem(QTextStream &out)
@@ -120,5 +137,20 @@ MyItem *PlatformItem::selectItem(int x, int y)
 		return this;	
 	}
 	return NULL;
+}
+
+void PlatformItem::removeFromScene(QGraphicsScene *scene)
+{
+	if (isFather()) {
+		scene->removeItem(m_son->getItem());
+		MyItem::removeFromScene(scene);
+	}
+}
+
+void PlatformItem::setVisible(bool visible)
+{
+	if (isFather())
+		m_son->setVisible(visible);
+	MyItem::setVisible(visible);
 }
 

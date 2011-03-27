@@ -29,7 +29,7 @@ MonsterItem::~MonsterItem()
 MyItem *MonsterItem::duplicate(QGraphicsScene *scene)
 {
 	MyItem *item = new MonsterItem(scene, m_file_name);
-	item->getItem()->setVisible(false);
+	setVisible(false);
 	return item;
 }
 

@@ -50,7 +50,6 @@ int Data::levelHeight()
 void Data::addItem(MyItem *item, bool push_front)
 {
 	item->addToData(this, push_front);
-	std::cout << "ADD" << std::endl;
 }
 
 void Data::addBabarItem(MyItem *item)
@@ -179,6 +178,10 @@ void Data::upInStack(MyItem *item)
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
  		(*it)->getItem()->stackBefore(item->getItem());
 	}	
+	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}	
+	
 	deleteItem(item);
 	addItem(item, false);
 }
@@ -254,6 +257,12 @@ void Data::removeItem(MyItem *item)
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {	
 		if (item == (*it)) {
 			m_monsters_items.erase(it);
+			return;
+		}
+	}
+	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {	
+		if (item == (*it)) {
+			m_platform_items.erase(it);
 			return;
 		}
 	}

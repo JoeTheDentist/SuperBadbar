@@ -17,7 +17,6 @@ MyItem::~MyItem()
 	// TODO liberer??
 }
 
-
 QGraphicsPixmapItem *MyItem::getItem()
 {
 	return m_item;
@@ -49,3 +48,9 @@ MyItem *MyItem::selectItem(int x, int y)
 	}
 	return NULL;
 }
+
+void MyItem::removeFromScene(QGraphicsScene *scene)
+{
+	scene->removeItem(getItem());
+}
+

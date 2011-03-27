@@ -16,36 +16,21 @@ block4_1 432 569 0
 block4_2 433 1271 0
 block3 1098 2905 0
 soil 7 3289 1
+flower1 483 2831 0
 block4_3 430 1845 0
-block5 269 2729 0
-flower1 665 2729 0
-flower1 510 2687 0
+block5 530 2887 0
+flower1 528 2485 0
 !
 #Monsters#
-13
-following_walking_monster gailapin 1364 1271
-following_walking_monster maphyar 2755 1335
-following_walking_monster maphyar 2288 1313
-following_walking_monster maphyar 1813 1312
-following_flying_monster fubob 2473 1585
-following_flying_monster fubob 2961 1801
-following_flying_monster fubob 2976 1279
-following_flying_monster fubob 139 2490
-following_walking_monster gailapin 420 2644
-following_walking_monster gailapin 215 2712
-following_walking_monster gailapin 309 2691
-following_walking_monster gailapin 104 2597
-following_walking_monster gailapin 65 2719
+0
 !
 #Events#
-4
-event shotgun 1503 2952
-event machinegun 447 1348
-event machinegun 326 1909
-event machinegun 654 2747
+0
 !
 #Platforms#
-0
+2
+block8 121 2540 428 2527
+block8 187 230 558 207
 !
 #Anims#
 0

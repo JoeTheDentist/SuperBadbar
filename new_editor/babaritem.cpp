@@ -21,7 +21,7 @@ BabarItem::~BabarItem()
 
 MyItem *BabarItem::duplicate(QGraphicsScene *scene)
 {
-	(void*)scene;
+	scene = NULL; // on evite le warning de compil' bien salement
 	return this;	
 }
 

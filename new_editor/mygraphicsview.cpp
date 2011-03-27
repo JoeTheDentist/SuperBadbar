@@ -97,6 +97,12 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
+	analyser.find_string("#Platforms#");
+	int nbPlatforms = analyser.read_int();
+	for (int i = 0; i < nbPlatforms; i++) {
+		std::cout << "plopmoih " << std::endl;
+		m_data->addItem(new PlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser));
+	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
 	QString nameMonster;
@@ -125,6 +131,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
+
 	analyser.close();
 }
 
@@ -387,7 +394,8 @@ void MyGraphicsView::deSelectItem()
 void MyGraphicsView::deleteFromEditor(MyItem *item)
 {
 	if (item && item != m_babar_item) {
-		this->scene()->removeItem(item->getItem());
+		deSelectItem();
+		item->removeFromScene(this->scene());
 		m_data->removeItem(item);
 	}
 }
@@ -397,6 +405,7 @@ void MyGraphicsView::copyItem(MyItem *item)
 	if (item) {
 		if (m_copied_item) {
 			// remove m_copied_item de la scene
+			m_copied_item->removeFromScene(this->scene());
 			delete m_copied_item;
 		}
 		m_copied_item = item->duplicate(this->scene());
@@ -407,8 +416,8 @@ void MyGraphicsView::pastItem()
 {
 	if (m_copied_item && (m_copied_item != m_babar_item)) {
 		MyItem *item = m_copied_item->duplicate(this->scene());
-		item->getItem()->setVisible(true);
-		item->setPos(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
+		item->setVisible(true);
+		item->moveItem(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
 		m_data->addItem(item);
 	}
 }

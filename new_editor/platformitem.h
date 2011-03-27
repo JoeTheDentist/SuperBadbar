@@ -4,6 +4,7 @@
 #include "myitem.h"
 #include "staticitem.h"
 #include "data.h"
+#include "analyser.h"
 
 class MyGraphicsView;
 
@@ -20,6 +21,15 @@ class PlatformItem: public StaticItem {
 	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
 	*/
 	PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father = NULL);
+	
+	/*!
+	*	@brief Constructeur
+	*	@param scene La scene de l'editeur
+	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
+	*	@param analyser Un analyseur pret a donner les coordonnees de l'item
+	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
+	*/	
+	PlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, PlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Destructeur
@@ -68,7 +78,11 @@ class PlatformItem: public StaticItem {
 	
 	virtual MyItem* selectItem(int x, int y);
 
+
+	virtual void removeFromScene(QGraphicsScene *scene);
 	
+	virtual void setVisible(bool visible);
+
 	protected:
 		
 	virtual void setStaticZBuffer(int buffer);
