@@ -4,3 +4,4 @@
 
 - Segfault lorsque des balles du shotgun sortent du niveau
 - Pas de raz du double saut sur plateforme
+- Segfault quand on vide le chargeur du shotgun !
