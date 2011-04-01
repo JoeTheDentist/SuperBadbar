@@ -77,8 +77,12 @@
 		<Unit filename="..\src\items\weapons_armory.cpp" />
 		<Unit filename="..\src\items\weapons_armory.h" />
 		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\menus\list_menu_actions.cpp" />
+		<Unit filename="..\src\menus\list_menu_actions.h" />
 		<Unit filename="..\src\menus\main_menu.cpp" />
 		<Unit filename="..\src\menus\main_menu.h" />
+		<Unit filename="..\src\menus\menu.cpp" />
+		<Unit filename="..\src\menus\menu.h" />
 		<Unit filename="..\src\menus\menu_action.cpp" />
 		<Unit filename="..\src\menus\menu_action.h" />
 		<Unit filename="..\src\physic\collisions_manager.cpp" />
@@ -148,6 +152,8 @@
 		<Unit filename="..\src\video\surface.h" />
 		<Unit filename="..\src\video\surface_text.cpp" />
 		<Unit filename="..\src\video\surface_text.h" />
+		<Unit filename="..\src\video\surface_uniform.cpp" />
+		<Unit filename="..\src\video\surface_uniform.h" />
 		<Unit filename="..\src\video\talks.cpp" />
 		<Unit filename="..\src\video\talks.h" />
 		<Extensions>
