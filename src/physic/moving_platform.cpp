@@ -19,9 +19,23 @@
 #include "../video/displayable.h"
 
 
-Moving_platform::Moving_platform(std::string file_name, int beginx, int beginy, int endx, int endy)
+Moving_platform::Moving_platform(Analyser &analyserLevel):
+	m_speed()
 {
+	m_can_bind = 1;
+	m_falling_platform = true;
+	m_is_falling = false;
+	// on parse analyserLevel
+	std::string file_name;
+	file_name = PIC_STATICS_R + analyserLevel.read_string();
+	std::cout << "file_name : " << file_name << std::endl;
 	m_image = new Surface(file_name + ".png");
+	int beginx = analyserLevel.read_int();
+	int beginy = analyserLevel.read_int();
+	int endx = analyserLevel.read_int();
+	int endy = analyserLevel.read_int();
+	
+	// on commence la construction
 	m_babar = NULL;
 	Analyser analyser;
 	analyser.open(file_name + ".col");
@@ -60,44 +74,61 @@ Moving_platform::~Moving_platform() {}
 
 void Moving_platform::update_pos()
 {
+	if (m_can_bind <= 0)
+		m_can_bind++;
 	m_phase++;
 	/* descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		if (check_babar())
 			gBabar->bind(this);
 		m_pos.y += BOX_SIZE;
+		if (m_babar)
+			m_babar->check_unbind();
 	}
 	/* cas monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		check_babar();
 		m_pos.y -= BOX_SIZE;
+		if (m_babar)
+			m_babar->check_unbind();
 	}
 	/* droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 		check_babar();
 		m_pos.x += 	BOX_SIZE;
+		if (m_babar)
+			m_babar->check_unbind();
 	}
 	/* gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 		check_babar();
 		m_pos.x -= BOX_SIZE;
+		if (m_babar)
+			m_babar->check_unbind();
 	}
-
-
 }
 
 void Moving_platform::update_speed()
-{
-    if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
-        m_speed.x *= -1;
-    }
-    if (m_pos.y < m_begin.y || m_pos.y > m_end.y ) {
-        m_speed.y *= -1;
-    }
+{             
+	if (!m_is_falling) {
+		if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
+			m_speed.x *= -1;
+		}
+		if (m_pos.y < m_begin.y || m_pos.y > m_end.y ) {
+			m_speed.y *= -1;
+		}
+	} else {
+		m_speed.y += 3;
+	}
 }
 
 void Moving_platform::bind()
 {
+	if (m_falling_platform && !m_is_falling) {
+		m_is_falling = true;
+		m_speed.x = 0;
+		m_speed.y = 0;
+	}
 	PRINT_DEBUG(1, "bind");
 	m_babar = gBabar;
 }
@@ -106,44 +137,33 @@ void Moving_platform::unbind()
 {
 	PRINT_DEBUG(1, "bind");
 	m_babar = NULL;
+	m_can_bind = -3;
 }
-
-/*Surface *Moving_platform::current_picture() const
-{
-	return m_image;
-}*/
-
-/*Rect Moving_platform::position() const
-{
-	return m_pos;
-}*/
 
 Rect Moving_platform::speed() const
 {
 	return m_speed;
 }
 
+bool Moving_platform::is_going_down() 
+{
+	return m_speed.y > 0;
+}
 
 bool Moving_platform::check_babar()
 {
+	if (m_can_bind <= 0)
+		return false;
 	if (m_babar != NULL)
+		return false;
+	if (gBabar->binded())
 		return false;
 	Rect babar_speed = gBabar->speed();
 	Rect babar_pos = gBabar->position();
 	if (babar_speed.y < m_speed.y)
 		return false;
-	int j = (babar_pos.y + babar_pos.h - m_pos.y) / BOX_SIZE + 1;
-	if (j < 0 || j >= m_collisions_matrix_h)
-		return false;
-	int i_deb = (babar_pos.x - m_pos.x) / BOX_SIZE;
-	int i_max = (babar_pos.x + babar_pos.w - m_pos.x) / BOX_SIZE;
-	if (i_deb < 0)
-		i_deb = 0;
-	if (i_max > m_collisions_matrix_w)
-		i_max = m_collisions_matrix_w;
-	for (int i = i_deb; i < i_max; i++)
-		if (Collisions_manager::is_down_coll(m_collisions_matrix[i][j])) {
-			return true;
-		}
-	return false;
+	Rect babar_rel_pos = gBabar->position();
+	babar_pos.x -= m_pos.x;
+	babar_pos.y -= m_pos.y;
+	return Collisions_manager::is_down_coll(this->down_collision_type(babar_pos));
 }

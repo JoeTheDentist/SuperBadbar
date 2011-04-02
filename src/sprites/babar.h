@@ -91,6 +91,12 @@ public:
 	 */
 	void init_babar(Analyser * a);
 
+	/*!
+	 *	@brief Surcharge de l'accesseur de sprite pour avoir la position meme quand babar est binded
+	 * 	@return La position actuelle de babar
+	*/
+	virtual Rect position() const;
+
 
 	/*!
 	 *	@brief Met à jour la position du sprite
@@ -290,6 +296,8 @@ public:
 	
 	void interrupt_crouch();
 
+	// check et fait l'unbind
+	bool check_unbind();
 };
 
 #endif

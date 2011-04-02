@@ -14,6 +14,7 @@
 #include <stdint.h>
 
 #include "../video/statics.h"
+#include "../util/analyser.h"
 #include "../physic/collisions_matrix.h"
 
 class Surface;
@@ -38,18 +39,21 @@ class Babar;
  */
 class Moving_platform : public Static, public Collisions_matrix
 {
-private:
+protected:
 	Babar *m_babar;
 	Rect m_speed;
 	Rect m_begin;
 	Rect m_end;
 	int m_phase;
+	bool m_falling_platform;
+	bool m_is_falling;
+	int m_can_bind;
 public:
 	/**
 	 * 	@brief Constructeur
-	 *	@param filename	Le nom des fichiers images et col sans extension
+	 *	@param analyserLevel Un analyser positionne avant la description d'un Moving_platform
 	 */
-	Moving_platform(std::string file_name, int beginx, int beginy, int endx, int endy);
+	Moving_platform(Analyser &analyserLevel);
 
 	/**
 	 * 	@brief Destructeur
@@ -87,12 +91,12 @@ public:
 	 *	@return La vitesse actuelle de la plateforme
 	 */
 	Rect speed() const;
-
+	
+	bool is_going_down();
 
 
 	/**
 	 * 	@brief Indique si Babar doit etre lié à la plateforme
-	 *	@param babar Le Babar à lier
 	 *	@return Vrai si Babar doit etre lié à la plateforme courante
 	 */
 	bool check_babar();

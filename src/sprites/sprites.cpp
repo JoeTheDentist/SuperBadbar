@@ -56,10 +56,6 @@ Rect Sprite::position() const
 	return m_pos;
 }
 
-Rect * Sprite::pposition()
-{
-	return &m_pos;
-}
 
 Rect Sprite::damage_box() const
 {
@@ -74,12 +70,12 @@ Rect Sprite::damage_box() const
 
 uint32_t Sprite::position_x() const
 {
-	return m_pos.x;
+	return position().x;
 }
 
 uint32_t Sprite::position_y() const
 {
-	return m_pos.y;
+	return position().y;
 }
 
 uint32_t Sprite::phase() const

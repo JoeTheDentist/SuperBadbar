@@ -103,17 +103,9 @@ void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 {
     analyser.find_string("#Platforms#");
 
-    analyser.read_int();
-	std::string plateform_name = analyser.read_string();
-	std::cout << plateform_name << std::endl;
-	Rect pos_begin, pos_end;
-	while(plateform_name[0]!='!') {
-		pos_begin.x = analyser.read_int();
-		pos_begin.y = analyser.read_int();
-		pos_end.x = analyser.read_int();
-		pos_end.y = analyser.read_int();
-        m_moving_platforms.push_back(new Moving_platform(PIC_STATICS_R + plateform_name, pos_begin.x, pos_begin.y, pos_end.x, pos_end.y));
-		plateform_name = analyser.read_string();
+    int platforms_number = analyser.read_int();
+	for (int i = 0; i  < platforms_number; i++) {
+        m_moving_platforms.push_back(new Moving_platform(analyser));
     }
 }
 

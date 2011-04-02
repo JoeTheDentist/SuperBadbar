@@ -74,9 +74,8 @@ public:
 	 *	@brief Accesseur
 	 *	@return La position du sprite
 	*/
-	Rect position() const;
+	virtual Rect position() const;
 
-	Rect * pposition();
 	
 	Rect damage_box() const;
 
