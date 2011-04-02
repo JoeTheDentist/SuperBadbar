@@ -108,7 +108,7 @@ void Talks::progressive_display(std::string str, int line)
 		m_text_surface[line] = new Surface_text(curr_text, m_font);
 		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
 		m_camera->flip_camera();
-		if (gKeyboard->key_recently_pressed(k_fire)) {
+		if (gKeyboard->poll_menu_key() == mk_enter) {
 			instant_display(str, line);
 			return;	
 		}
@@ -142,12 +142,12 @@ void Talks::display_text(std::string str)
 	}
 
 	while (curr_list!=NULL) {
-		gKeyboard->wait_key(k_fire);
+		while (gKeyboard->wait_menu_key() != mk_enter) {}
 		move_up();
 		progressive_display(curr_list->str, LINES_NUMBER - 1);
 		curr_list = curr_list->next;
 	}
-	gKeyboard->wait_key(k_fire);
+	while (gKeyboard->wait_menu_key() != mk_enter) {}
 
 }
 

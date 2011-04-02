@@ -30,7 +30,7 @@ void Menu::loop()
 	Keyboard *keyboard = new Keyboard();
 	while (go_on) {
 		this->refresh_screen();
-		menu_key key = keyboard->get_menu_key();
+		menu_key key = keyboard->wait_menu_key();
 		switch (key) {
 		case mk_exit:
 			go_on = false;

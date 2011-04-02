@@ -133,35 +133,69 @@ void Keyboard::disable_all_keys()
 		disable_key((enum key)i);
 }
 
-menu_key Keyboard::get_menu_key()
+menu_key Keyboard::treat_menu_key(SDL_Event event)
+{
+	switch(event.type)
+	{
+		case SDL_QUIT:
+			return mk_exit;
+		case SDL_KEYDOWN: /* Si appui d'une touche */
+			// priorite aux touches en dur
+			switch (event.key.keysym.sym)
+			{
+				case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
+					return mk_exit;
+					break;
+				case SDLK_UP:
+					return mk_up;
+				case SDLK_DOWN:
+					return mk_down;
+				case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
+					return mk_enter;
+				default:
+					break;
+			}
+			// sinon on regarde les touches du joueur
+			switch (m_key_config[event.key.keysym.sym]) {
+				case k_jump: case k_fire:
+					return mk_enter;
+				case k_up:
+					return mk_up;
+				case k_down:
+					return mk_down;
+				default:
+					break;
+			}
+			break;
+		default:
+			break;
+	}	
+	return mk_none;
+}
+
+menu_key Keyboard::poll_menu_key()
+{
+	SDL_Event event;	
+	menu_key res;
+	while(SDL_PollEvent(&event)) {
+		res = treat_menu_key(event);
+		if (res != mk_none)
+			return res;	
+	}	
+	return mk_none;	
+}
+
+menu_key Keyboard::wait_menu_key()
 {
 	SDL_Event event;
+	menu_key res;
 	while (true) {
 		SDL_WaitEvent(&event);
-		switch(event.type)
-		{
-			case SDL_QUIT:
-				return mk_exit;
-			case SDL_KEYDOWN: /* Si appui d'une touche */
-				switch (event.key.keysym.sym)
-				{
-					case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
-						return mk_exit;
-						break;
-					case SDLK_UP:
-						return mk_up;
-					case SDLK_DOWN:
-						return mk_down;
-					case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
-						return mk_enter;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
-		}
+		res = treat_menu_key(event);
+		if (res != mk_none)
+			return res;
 	}
+	return mk_none;
 }
 
 void Keyboard::wait_key(enum key k)
@@ -176,14 +210,3 @@ void Keyboard::wait_key(enum key k)
 	}	
 }
 
-bool Keyboard::key_recently_pressed(enum key k)
-{
-	SDL_Event event;	
-	while(SDL_PollEvent(&event)) {
-		if(event.type == SDL_KEYDOWN)
-			if(m_key_config[event.key.keysym.sym] == k) {
-				return true;
-		}
-	}	
-	return false;
-}

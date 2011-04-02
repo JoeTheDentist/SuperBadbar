@@ -107,11 +107,23 @@ public:
 	*	@brief Attend un evenement menu_key et le retourne
 	*	@return Le menu_key entre par l'utilisateur
 	*/
-	menu_key get_menu_key();
+	menu_key wait_menu_key();
+	
+	/*!
+	*	@brief Detecte dans la pile un evenement menu_key et le retourne
+	*	@return Le menu_key entre par l'utilisateur (mk_none s'il n'y en a pas)
+	*/	
+	menu_key poll_menu_key();
+	
 	
 	void wait_key(enum key k);
 	
-	bool key_recently_pressed(enum key k);
+	
+	
+private:
+	// auxilliaire de wait_menu_key et poll_menu_key
+	menu_key treat_menu_key(SDL_Event event);
+
 
 };
 
