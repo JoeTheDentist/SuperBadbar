@@ -49,13 +49,15 @@ enum state_player {
 class Babar: public Sprite, public Sonorisable {
 protected:
     state_player m_state;
-	bool m_double_jump;		            /* vaut vrai si Babar est en double saut */
     uint32_t m_fire_phase;	            /* phase du tir */
 	int m_lifes;                        /* nombre de vies */
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
-	bool m_ready_double_jump;           /* booléen indiquant si on peut effectuer un double saut */
-	bool m_ready_jump;                  /* idem pour le saut */
+	bool m_ready_double_jump;           /* booléen autorisant le double saut */
+	bool m_ready_jump;                  /* booleen autorisant le saut */	
+	bool m_jump;						/* indique que le joueur est en cours de saut (sa vitesse augment) */
+	bool m_double_jump;		            /* vaut vrai si Babar est en cours de double saut */
+
 	Weapons_armory m_weapons_armory;
 	Moving_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
 	Rect m_binded_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
@@ -146,10 +148,7 @@ public:
 	 */
 	bool can_walk() const;
 
-	/**
-	 *  @brief faire marcher
-	 */
-	void walk();
+
 
     /**
 	 *  @brief si le joueur demande a s'accroupir
@@ -284,6 +283,12 @@ public:
 	 *	@param peanuts Le nombre de cacahuetes a ajouter
 	 */
 	void incr_peanuts(int peanuts);
+	
+	state_player get_state() const;
+	
+	void interrupt_jump();
+	
+	void interrupt_crouch();
 
 };
 

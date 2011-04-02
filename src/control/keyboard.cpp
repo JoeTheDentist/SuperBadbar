@@ -124,7 +124,7 @@ bool Keyboard::key_dir_down() const
 
 void Keyboard::disable_key(enum key k)
 {
-	m_key_down[k] = false;
+	m_key_down[k] = 0;
 }
 
 void Keyboard::disable_all_keys()
