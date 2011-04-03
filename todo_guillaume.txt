@@ -1,7 +1,9 @@
 
+Arbre branche un peu mieux
 Sang des monstres (moche pour le moment)
 Son mort
 Qq animations fixes
 Groupes de sons rand
 Nuages dans le fond du background
 Sol du background
+Rebond à la collision ? (par le haut)

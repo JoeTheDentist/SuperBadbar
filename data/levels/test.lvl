@@ -11,16 +11,17 @@ leveltest.png
 1
 
 #Statics#
-5
-arbre_bord 0 511 0
+6
+arbre_bord -2 506 0
 flower1 1045 4160 1
-arbre_feuilles 1222 3586 0
-arbre_feuilles_front 1179 3639 1
-grass1 778 4192 0
+arbre_feuilles 1050 3471 0
+grass1 753 4194 0
+arbre_feuilles_racines 1934 3956 0
+arbre_feuilles_front 997 3532 1
 !
 #Monsters#
 1
-following_walking_monster gailapin 1298 4071
+following_walking_monster gailapin 1254 4181
 !
 #Events#
 0
