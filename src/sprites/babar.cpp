@@ -535,8 +535,6 @@ void Babar::incr_peanuts(int peanuts)
 	m_peanuts += peanuts;
 }
 
-
-
 state_player Babar::get_state() const
 {
 	if (m_crouch_time && can_walk())

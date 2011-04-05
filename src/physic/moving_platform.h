@@ -101,6 +101,11 @@ public:
 	 */
 	bool check_babar();
 
+	/*!
+	 *	@brief Indique si la plateforme doit etre supprimee
+	 *	@return Vrai si oui
+	 */
+	bool dead();
 
 	/**
 	 * 	@brief

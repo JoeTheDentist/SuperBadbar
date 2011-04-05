@@ -86,7 +86,6 @@ void Game_engine::update_pos()
 	m_monsters_manager->monsters_update_pos();
 }
 
-
 void Game_engine::update_speed()
 {
 	gBabar->update_speed();
@@ -94,13 +93,11 @@ void Game_engine::update_speed()
 	gCollision->update_platforms_speed();
 }
 
-
 void Game_engine::display_monsters(Camera * const camera) const
 {
 	m_monsters_manager->display_monsters(*camera);
 	gCollision->display_platforms(camera);
 }
-
 
 void Game_engine::display_projectiles_friend(Camera *camera)
 {
@@ -111,6 +108,7 @@ void Game_engine::delete_dead_things()
 {
 	gProj->delete_old_projectiles();
 	m_monsters_manager->delete_dead_monsters();
+	gCollision->update_dead_platforms();
 }
 
 void Game_engine::update_monsters_projectiles()
@@ -176,5 +174,5 @@ bool Game_engine::has_won()
 
 bool Game_engine::has_lost()
 {
-	return gBabar->lifes() <= 0;
+	return gBabar->lifes() <= 0 || gBabar->position().y + gBabar->position().h >= (int)gStatic->static_data_height();
 }

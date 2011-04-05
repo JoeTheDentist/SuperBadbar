@@ -114,6 +114,11 @@ public:
 
 
 
+	/*!
+	 *	@brief Supprime les plateformes "mortes" (sorties de l'écran etc.)
+	*/
+	void update_dead_platforms();
+
 
 	/*!
 	 *	@brief

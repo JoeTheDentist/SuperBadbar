@@ -10,6 +10,7 @@
 #include <iostream>
 #include <math.h>
 #include "moving_platform.h"
+#include "../game/static_data.h"
 #include "../video/surface.h"
 #include "../sprites/babar.h"
 #include "../util/analyser.h"
@@ -166,4 +167,9 @@ bool Moving_platform::check_babar()
 	babar_pos.x -= m_pos.x;
 	babar_pos.y -= m_pos.y;
 	return Collisions_manager::is_down_coll(this->down_collision_type(babar_pos));
+}
+
+bool Moving_platform::dead()
+{
+	return m_pos.y < 0 || m_pos.y >  (int)gStatic->static_data_height();
 }

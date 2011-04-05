@@ -44,8 +44,6 @@ void Collisions_manager::init_collisions_manager(int level)
 	init_collisions_manager(LEVELS_R + "level" + str_lvl + ".lvl");
 }
 
-
-
 void Collisions_manager::init_collisions_manager(std::string level_name)
 {
 	Analyser analyser;
@@ -109,8 +107,6 @@ void Collisions_manager::init_moving_plateforms(Analyser &analyser)
     }
 }
 
-
-
 bool Collisions_manager::check_collision(Rect A, Rect B)
 {
 	uint16_t A_right = A.x + A.w;
@@ -147,7 +143,6 @@ void Collisions_manager::update_platforms_speed()
 	}
 }
 
-
 void Collisions_manager::update_babar_platforms()
 {
 	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
@@ -159,7 +154,18 @@ void Collisions_manager::update_babar_platforms()
 	}
 }
 
-
+void Collisions_manager::update_dead_platforms()
+{
+	for(std::list<Moving_platform *>::iterator it = m_moving_platforms.begin();
+			it != m_moving_platforms.end();) {
+		if ((*it)->dead()) {
+			delete (*it);
+			it = m_moving_platforms.erase(it);
+		} else {
+			it++;
+		}
+	}
+}
 
 
 
