@@ -27,7 +27,10 @@ following_walking_monster gailapin 1254 4181
 0
 !
 #Platforms#
-0
+3
+falling block8 2222 3645 2222 3645
+falling block8 2617 3547 2617 3547
+falling block8 3343 3547 3343 3547
 !
 #Anims#
 0

@@ -66,7 +66,7 @@ event peanut 2036 1753
 !
 #Platforms#
 18
-normal block8 854 2876 617 3148
+falling block8 2222 3645 2222 3645
 normal block8 626 2663 866 2459
 normal block8 168 2428 408 2224
 normal block8 1251 2677 1491 2473

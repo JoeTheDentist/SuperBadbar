@@ -32,8 +32,6 @@ Collisions_manager::~Collisions_manager()
 	}
 }
 
-
-
 void Collisions_manager::init_collisions_manager(int level)
 {
 	Analyser analyser;

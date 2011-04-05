@@ -55,13 +55,15 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	m_phase = 0;
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
+	
 	m_speed.x = beginx-endx;
 	m_speed.y = beginy-endy;
-
 	/*Normalisation du vecteur vitesse*/
 	double norme = sqrt(m_speed.x*m_speed.x+m_speed.y*m_speed.y);
-	m_speed.x = (m_speed.x*5)/norme;
-	m_speed.y = (m_speed.y*5)/norme;
+	if (norme != 0) {
+		m_speed.x = (m_speed.x*5)/norme;
+		m_speed.y = (m_speed.y*5)/norme;
+	}
 
 	m_collisions_matrix_w = analyser.read_int();
 	m_collisions_matrix_h = analyser.read_int();
