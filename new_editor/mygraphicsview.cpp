@@ -99,9 +99,12 @@ void MyGraphicsView::loadFile(QString fileName)
 	}
 	analyser.find_string("#Platforms#");
 	int nbPlatforms = analyser.read_int();
+	QString platformNature;
 	for (int i = 0; i < nbPlatforms; i++) {
-		std::cout << "plopmoih " << std::endl;
-		m_data->addItem(new PlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser));
+		platformNature = QString::fromStdString(analyser.read_string());
+		PlatformItem *temp = new PlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser);
+		m_data->addItem(temp);
+		temp->setNature(platformNature);
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();

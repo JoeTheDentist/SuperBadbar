@@ -8,11 +8,12 @@
 
 class MyGraphicsView;
 
+
 class PlatformItem: public StaticItem {
 	protected:
 	PlatformItem *m_father;
 	PlatformItem *m_son;
-
+	QString m_nature; // normal ou falling
 	public:
 	/*!
 	*	@brief Constructeur
@@ -82,9 +83,9 @@ class PlatformItem: public StaticItem {
 	virtual void removeFromScene(QGraphicsScene *scene);
 	
 	virtual void setVisible(bool visible);
+	void setNature(QString nature);
 
 	protected:
-		
 	virtual void setStaticZBuffer(int buffer);
 
 

@@ -6,13 +6,12 @@ level1.png
 3400
 
 #Babar#
-202
-355
+135
+3197
 1
 
 #Statics#
 11
-block4_2 700 1200 0
 block6 2750 2000 0
 block4_3 700 1780 0
 block2 838 2707 0
@@ -23,6 +22,7 @@ block7 1801 2204 0
 block5 2200 2650 0
 block5 1178 897 0
 block4_1 687 573 0
+block4_2 700 1200 0
 !
 #Monsters#
 13
@@ -41,7 +41,7 @@ following_walking_monster gailapin 409 2944
 following_walking_monster maphyar 449 2957
 !
 #Events#
-83
+82
 event peanut 1394 2643
 event peanut 1189 2640
 event peanut 967 2632
@@ -124,11 +124,11 @@ event peanut 1823 787
 event peanut 1805 859
 event peanut 1897 863
 event peanut 1856 823
-event talk_plop 51 2700
 !
 #Platforms#
-1
-block8 296 752 727 1087
+2
+normal block8 296 752 727 1087
+normal block8 1555 1668 1552 1980
 !
 #Anims#
 0

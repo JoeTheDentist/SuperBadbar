@@ -24,9 +24,15 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	m_speed()
 {
 	m_can_bind = 1;
-	m_falling_platform = true;
+	m_falling_platform = false;
 	m_is_falling = false;
 	// on parse analyserLevel
+	std::string nature = analyserLevel.read_string();
+	if (nature == "normal") {
+		
+	} else if (nature == "falling") {
+		m_falling_platform = true;
+	}
 	std::string file_name;
 	file_name = PIC_STATICS_R + analyserLevel.read_string();
 	std::cout << "file_name : " << file_name << std::endl;

@@ -5,11 +5,13 @@
 #include "mygraphicsview.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
+#include <QStringList>
 
 PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father):
 	StaticItem(scene, fileName),
 	m_father(father),
-	m_son(NULL)
+	m_son(NULL),
+	m_nature("normal")
 {
 	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
 		this->setSon(new PlatformItem(scene, fileName, this)); // felicitations, c'est un garcon!
@@ -19,8 +21,11 @@ PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem
 PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, PlatformItem *father):
 	StaticItem(scene, fileName),
 	m_father(father),
-	m_son(NULL)
+	m_son(NULL),
+	m_nature("normal")
 {
+	if (isFather())
+		setNature(QString(analyser.read_string().c_str()));
 	int x = analyser.read_int();
 	int y = analyser.read_int();
 	setPos(x, y);
@@ -56,6 +61,7 @@ MyItem *PlatformItem::duplicate(QGraphicsScene *scene)
 		item->m_son->moveItem(m_son->x() - x(), m_son->y() - y()); // on maintient le decalage
 		item->setVisible(false); 
 		item->m_zbuffer = m_zbuffer;
+		item->setNature(m_nature);
 		return item;	
 	} else {
 		return m_father->duplicate(scene);
@@ -65,7 +71,7 @@ MyItem *PlatformItem::duplicate(QGraphicsScene *scene)
 void PlatformItem::saveItem(QTextStream &out)
 {
 	if (isFather()) {
-		out << m_file_name << " " << m_item->x() << " " << m_item->y() << " ";
+		out << m_nature << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << " ";
 		m_son->saveItem(out);
 	} else {
 		out << m_item->x() << " " << m_item->y() << endl;
@@ -80,13 +86,9 @@ void PlatformItem::addToData(Data *data, bool push_front)
 
 void PlatformItem::edit()
 {
-	// TODO
-	int entier = QInputDialog::getInteger(NULL, "ZBuffer", "Entrez le niveau de zbuffer (0 ou 1)");
-	if (entier <= 0) {
-		setStaticZBuffer(0);
-	} else {
-		setStaticZBuffer(1);
-	}
+	QStringList choices;
+    choices << "normal" << "falling";
+    setNature(QInputDialog::getItem(NULL, "Plaform nature", "Indicate the nature of the platform", choices));
 }
 
 QString PlatformItem::picPathFromEditor(QString fileName)
@@ -154,3 +156,11 @@ void PlatformItem::setVisible(bool visible)
 	MyItem::setVisible(visible);
 }
 
+void PlatformItem::setNature(QString nature)
+{
+	m_nature = nature;
+	if (isFather())
+		m_son->m_nature = nature;
+	else
+		m_father->m_nature = nature;
+}
