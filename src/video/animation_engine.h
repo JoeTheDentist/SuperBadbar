@@ -50,7 +50,7 @@ class Animation_engine {
 
         /**
          *  @brief Fonction d'ajout
-         *  @param pic : nom de l'animation
+         *  @param pic : nom de l'animation nom
          *  @param pos : position où jouer l'animation
          *  @param type : type d'animation
          *  @param falling : si l'animation doit subir la gavité

@@ -78,7 +78,7 @@ void Animation::set_rect(Rect &pos)
     pos.w = m_images[m_curr]->w();
 }
 
-void Animation::set_phase(int p)
+void Animation::set_img(int p)
 {
-    m_phase = p;
+    m_curr = p;
 }

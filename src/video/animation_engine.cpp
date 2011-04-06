@@ -31,7 +31,7 @@ void Animation_engine::init(std::string lvl_name)
 	while(anim_name[0]!='!') {
 		pos.x = a.read_int();
 		pos.y = a.read_int();
-        this->add(RACINE_R+anim_name, pos, CYCLE, false);
+        this->add(PIC_R+"animations/"+anim_name, pos, CYCLE, false);
 		anim_name = a.read_string();
     }
 
@@ -53,17 +53,30 @@ void Animation_engine::add(std::string pic, Rect pos, anim_type type, Rect speed
     a.falling = falling;
 
     /* création de l'animation */
-    char k;
-    for (k='0'; FileExists(pic+k+PICS_EXT); k++) {}
+    int k;
+    k=0;
+    char num[3];
+    sprintf(num,"%d",k);
+    while ( FileExists(pic+num+PICS_EXT) ) {
+        k++;
+        sprintf(num,"%d",k);
+    }
     std::string * link;
-    link = new std::string[k-'0'];
+    link = new std::string[k];
 
-    for (k='0'; FileExists(pic+k+PICS_EXT); k++) {
-        link[k-'0'] = pic+k+PICS_EXT;
+    k=0;
+    sprintf(num,"%d",k);
+    while ( FileExists(pic+num+PICS_EXT) ) {
+        link[k] = pic+num+PICS_EXT;
+        k++;
+        sprintf(num,"%d",k);
     }
 
     /* creation de l'animation */
-    a.anim = new Animation(link,k-'0',type);
+    a.anim = new Animation(link,k,type);
+    if ( type == CYCLE ) {
+        a.anim->set_img(rand()%k);
+    }
     a.anim->set_rect(a.pos);
     delete[] link;
 

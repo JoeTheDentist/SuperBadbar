@@ -11,12 +11,13 @@ leveltest.png
 1
 
 #Statics#
-6
+7
 arbre_bord -2 506 0
-flower1 1045 4160 1
+water1 1685 4281 0
 arbre_feuilles 1050 3471 0
 grass1 753 4194 0
-arbre_feuilles_racines 1934 3956 0
+water1 2041 4287 0
+arbre_feuilles_racines 2098 3839 0
 arbre_feuilles_front 997 3532 1
 !
 #Monsters#
@@ -27,11 +28,11 @@ following_walking_monster gailapin 1254 4181
 0
 !
 #Platforms#
-3
-falling block8 2222 3645 2222 3645
-falling block8 2617 3547 2617 3547
-falling block8 3343 3547 3343 3547
+0
 !
 #Anims#
-0
+3
+butterfly/butterfly 220 3923
+butterfly/butterfly 300 3923
+butterfly/butterfly 1254 4181
 !

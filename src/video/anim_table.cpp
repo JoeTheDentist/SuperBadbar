@@ -144,7 +144,7 @@ void Anim_table::change_anim(int s, direction dir, bool fire, bool phase_rand) {
         if ( m_curr_anim->interruptable() ) {
             m_curr_anim = m_anim[s][dir];
             if ( phase_rand ) {
-                m_curr_anim->set_phase( rand()%3 );
+                m_curr_anim->set_img( rand()%3 );
             }
         }
         m_last_state = s;

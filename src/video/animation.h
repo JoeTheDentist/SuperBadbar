@@ -87,7 +87,7 @@ public:
      * @brief Set phase
      * @param Nouvelle phase
      */
-    void set_phase(int p);
+    void set_img(int p);
 };
 
 #endif // ANIMATION_H_INCLUDED
