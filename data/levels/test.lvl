@@ -11,13 +11,12 @@ leveltest.png
 1
 
 #Statics#
-11
+10
 arbre_bord -2 506 0
 arbre_feuilles_racines 3530 4200 0
 arbre_feuilles 1013 3455 0
 arbre_feuilles_front 961 3516 1
 arbre_feuilles_racines 2536 3935 0
-arbre_feuilles_racines 1934 3865 0
 water1 1683 4280 0
 water1 2038 4285 0
 water1 2399 4291 0
@@ -32,7 +31,8 @@ following_walking_monster gailapin 1254 4181
 0
 !
 #Platforms#
-0
+1
+normal block8 1996 3425 2011 3937
 !
 #Anims#
 0
