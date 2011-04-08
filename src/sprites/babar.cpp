@@ -430,6 +430,7 @@ void Babar::go_down()
 			}
 		}
 	}
+	unbind();
 //~ 	gKeyboard->disable_key(k_jump);
 	PRINT_TRACE(1, "Descente d'une plateforme")
 }
