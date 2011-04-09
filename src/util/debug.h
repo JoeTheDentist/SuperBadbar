@@ -6,20 +6,20 @@
  * 	@date decembre 2010
  *
  * Trois macros de debug et une de performance:
- * PRINT_CONSTR pour tracer les constructeurs et destructeurs, 
+ * PRINT_CONSTR pour tracer les constructeurs et destructeurs,
  * PRINT_TRACE pour tracer le reste
  * PRINT_DEBUG  pour du debugage localisé et pour les messages d'erreurs classiques
- * Chacune utilise une constante définie dans ce fichier afin de déterminer la 
- * précision des messages: 0 pour n'afficher aucun message, 3 pour afficher le maximum 
- * de messages. 
+ * Chacune utilise une constante définie dans ce fichier afin de déterminer la
+ * précision des messages: 0 pour n'afficher aucun message, 3 pour afficher le maximum
+ * de messages.
  * Ces messages ne doivent pas apparaitre dans le projet final et servent seulement à suivre
  * le comportement du programme.
  *
  *
- * PRINT_PERF():  macro utilisée par Game pour afficher 
+ * PRINT_PERF():  macro utilisée par Game pour afficher
  * le pourcentage de cpu utilisé par le programme sur un tour
  * de jeu
- * La constante PERF_CYCLES correspond au nombre de cycles 
+ * La constante PERF_CYCLES correspond au nombre de cycles
  * entre lesquels se fait l'affichage
 **/
 
@@ -28,7 +28,7 @@
 
 #include <stdio.h>
 
-//~ #define DEBUG_COLL 1
+#define DEBUG_COLL 1
 #define DEBUG 2
 #define TRACE 2
 #define TRACE_CONSTR 2 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
@@ -37,7 +37,7 @@
 
 
 
-	
+
 
 #ifdef WIN32
 	#ifdef DEBUG
@@ -47,7 +47,7 @@
 			fprintf(stderr, "\n"); \
 		}
 	#else
-		#define PRINT_DEBUG(format, args...) 
+		#define PRINT_DEBUG(format, args...)
 	#endif
 
 	#ifdef TRACE
@@ -57,7 +57,7 @@
 			fprintf(stderr, "\n"); \
 		}
 	#else
-		#define PRINT_TRACE(format, args...) 
+		#define PRINT_TRACE(format, args...)
 	#endif
 
 	#ifdef TRACE_CONSTR
@@ -87,7 +87,7 @@
 			fprintf(stderr, "\n"); \
 		}
 	#else
-		#define PRINT_DEBUG(format, args...) 
+		#define PRINT_DEBUG(format, args...)
 	#endif
 
 	#ifdef TRACE
@@ -97,7 +97,7 @@
 			fprintf(stderr, "\n"); \
 		}
 	#else
-		#define PRINT_TRACE(format, args...) 
+		#define PRINT_TRACE(format, args...)
 	#endif
 
 	#ifdef TRACE_CONSTR
@@ -124,8 +124,8 @@
 
 
 
-		
-	
+
+
 
 
 

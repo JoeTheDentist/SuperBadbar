@@ -29,7 +29,7 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	// on parse analyserLevel
 	std::string nature = analyserLevel.read_string();
 	if (nature == "normal") {
-		
+
 	} else if (nature == "falling") {
 		m_falling_platform = true;
 	}
@@ -41,7 +41,7 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	int beginy = analyserLevel.read_int();
 	int endx = analyserLevel.read_int();
 	int endy = analyserLevel.read_int();
-	
+
 	// on commence la construction
 	m_babar = NULL;
 	Analyser analyser;
@@ -55,7 +55,7 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	m_phase = 0;
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
-	
+
 	m_speed.x = beginx-endx;
 	m_speed.y = beginy-endy;
 	/*Normalisation du vecteur vitesse*/
@@ -118,7 +118,7 @@ void Moving_platform::update_pos()
 }
 
 void Moving_platform::update_speed()
-{             
+{
 	if (!m_is_falling) {
 		if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
 			m_speed.x *= -1;
@@ -156,7 +156,7 @@ Rect Moving_platform::speed() const
 	return m_speed;
 }
 
-bool Moving_platform::is_going_down() 
+bool Moving_platform::is_going_down()
 {
 	return m_speed.y > 0;
 }
@@ -169,6 +169,7 @@ bool Moving_platform::check_babar()
 		return false;
 	if (gBabar->binded())
 		return false;
+
 	Rect babar_speed = gBabar->speed();
 	Rect babar_pos = gBabar->position();
 	if (babar_speed.y < m_speed.y)
