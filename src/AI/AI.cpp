@@ -54,7 +54,7 @@ double AI::eval(direction d) {
 
 double AI::eval_up()
 {
-    if ( !Collisions_manager::is_down_coll(gCollision->down_collision_type(*m_pos)) ) {
+    if ( !Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos)) ) {
         return -1000000;
     }
 
@@ -77,8 +77,8 @@ double AI::eval_up()
 
 double AI::eval_down()
 {
-    if ( Collisions_manager::is_down_coll(gCollision->down_collision_type(*m_pos))
-				&& !gCollision->double_collision(*m_pos) ) {
+    if ( Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos))
+				&& !gCollision->get_matrix()->double_collision(*m_pos) ) {
         return -1000000;
     }
 

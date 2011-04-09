@@ -46,8 +46,7 @@ Surface *Sprite::current_picture()  const
 void Sprite::update_pos()
 {
 	m_phase++;
-
-	gCollision->update_pos(m_pos, m_speed);
+	gCollision->get_matrix()->update_pos(m_pos, m_speed);
 }
 
 

@@ -115,7 +115,7 @@ void Animation_engine::update()
     std::list<anim_pos>::iterator it;
 	for (it = m_anims.begin(); it != m_anims.end(); ) {
         if ( it->falling ) {
-            gCollision->update_pos(it->pos, it->speed);
+            gCollision->get_matrix()->update_pos(it->pos, it->speed);
             it->speed.y += GRAVITE;
 
             /* continuité en x */

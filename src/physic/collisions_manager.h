@@ -51,10 +51,10 @@ class Analyser;
 
  *	@warning Beaucoup de vérifications sont faites pour éviter les dépassements de tableaux. On peut donc optimiser ici
  */
-class Collisions_manager: public Collisions_matrix {
+class Collisions_manager {
 private:
+	Collisions_matrix *m_matrix; // la matrice de collision du niveau
 	std::list<Moving_platform *> m_moving_platforms;
-	Moving_platform *m_moving_platform;
 public:
 
 	/*!
@@ -66,6 +66,12 @@ public:
 	 *	@brief Destructeur
 	*/
 	~Collisions_manager();
+
+	/*!
+	 *	@brief Accesseur
+	 *	@return La matrice des collisions statiques
+	*/
+	Collisions_matrix *get_matrix() { return m_matrix; }
 
 	/*!
 	 *	@brief Initialisation de la matrice de collision
@@ -118,17 +124,6 @@ public:
 	 *	@brief Supprime les plateformes "mortes" (sorties de l'écran etc.)
 	*/
 	void update_dead_platforms();
-
-
-	/*!
-	 *	@brief
-	*/
-
-
-
-
-
-
 
 
 	/*!

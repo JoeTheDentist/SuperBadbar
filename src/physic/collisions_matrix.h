@@ -52,18 +52,32 @@ protected:
 	int m_collisions_matrix_h;
 public:
 
+	/*!
+	 *	@brief Constructeur par defaut
+	*/
 	Collisions_matrix();
 
 	/*!
 	 *	@brief Constructeur
+	 *	@param w La largeur de la matrice en BOX
+	 *	@param h La hauteur de la matrice en BOX
 	*/
-	Collisions_matrix(std::string filename);
+	Collisions_matrix(int w, int h);
 
 	/*!
 	 *	@brief Destructeur
 	*/
 	virtual ~Collisions_matrix();
 
+	//static_name: le nom du static depuis le dossier des statics sans l'extension
+	// x et y les positions en pixels
+	/*!
+	 *	@brief Ajoute les collisions du static a la matrice
+	 *	@param x L'abscisse en pixels du static a ajouter
+	 *	@param y L'ordonnee en pixels du static a ajouter
+	 *	@param static_name Le nom du static (depuis le dossier des statics et sans l'extension)
+	 */
+	void addStatic(int x, int y, std::string static_name);
 
 	/*!
 	 *	@brief Retourne le type de collision de la matrice en un point

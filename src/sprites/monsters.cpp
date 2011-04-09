@@ -81,7 +81,7 @@ void Monster::update_speed()
 
 void Monster::update_speed_simple()
 {
-    if ( gCollision->can_fall(m_pos) ) {
+    if ( gCollision->get_matrix()->can_fall(m_pos) ) {
         m_speed.x *= -1;
         if ( m_dir == LEFT ) {
             m_dir = RIGHT;

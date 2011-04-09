@@ -19,8 +19,7 @@
 #include <iostream> 
 #include <algorithm> 
 
-Collisions_manager::Collisions_manager():
-	m_moving_platforms()
+Collisions_manager::Collisions_manager()
 {
 	PRINT_CONSTR(1, "Construction de Collisions_manager")
 }
@@ -48,20 +47,9 @@ void Collisions_manager::init_collisions_manager(std::string level_name)
 	Analyser analyser;
 	analyser.open(level_name);
 	analyser.find_string("#Level_dimensions#");
-	m_collisions_matrix_w = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
-	m_collisions_matrix_h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
-    /*** Allocation du tableau pour les collisions ***/
-    m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];
-	std::cout << "levels dimensions: " << m_collisions_matrix_w << " " << m_collisions_matrix_h << std::endl;
-    for(int i = 0; i<m_collisions_matrix_w ;i++) {
-        m_collisions_matrix[i] = new uint32_t[m_collisions_matrix_h + 1];
-    }
-    /*** Remplissage de la matrice pour les collisions ***/
-    for(int i = 0;i<m_collisions_matrix_w;i++) {
-        for(int j = 0;j<m_collisions_matrix_h;j++) {
-            m_collisions_matrix[i][j] = NO_COLL;
-        }
-    }
+	int w = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
+	int h = analyser.read_int() / BACKGROUND_SPEED / BOX_SIZE;
+	m_matrix = new Collisions_matrix(w, h);
 	init_statics(analyser);
 	init_moving_plateforms(analyser);
 	analyser.close();
@@ -72,26 +60,12 @@ void Collisions_manager::init_statics(Analyser &analyser)
 	// ATTENTION: ici on charge les collisions des statics, mais pas leurs images
     analyser.find_string("#Statics#");
 	analyser.read_int();
-	std::string static_pic_rep = PIC_STATICS_R;
 	std::string static_name = analyser.read_string();
-	Analyser analyser_static;
-	uint32_t static_weight, static_height;
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
-		std::cout << x << " " << y << std::endl;
 		analyser.read_int();
-		analyser_static.open((static_pic_rep + static_name + COLL_EXT));
-		static_weight = analyser_static.read_int();
-		static_height = analyser_static.read_int();
-		int j_min = std::max(0, y/BOX_SIZE), j_max = std::min((int)(y / BOX_SIZE + static_height), (int)m_collisions_matrix_h);
-		int i_min = std::max(0, x/BOX_SIZE), i_max = std::min((int)(x / BOX_SIZE + static_weight), (int)m_collisions_matrix_w);
-		for (int j = j_min ; j < j_max; j++) {
-			for (int i = i_min; i < i_max; i++) {
-				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
-			}
-		}
-		analyser_static.close();
+		m_matrix->addStatic(x, y, static_name);
 		static_name = analyser.read_string();
 	}
 }

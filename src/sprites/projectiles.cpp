@@ -51,7 +51,7 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = collisions_manager->down_collision_type(m_pos);
+		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
 		if (Collisions_manager::is_down_coll(coll)){
 			m_dead = true;
 		}
@@ -62,21 +62,21 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (Collisions_manager::is_up_coll(collisions_manager->up_collision_type(m_pos))){
+		if (Collisions_manager::is_up_coll(collisions_manager->get_matrix()->up_collision_type(m_pos))){
 			m_dead = true;
 		}
 	}
 
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos)))
+			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->down_collision_type(m_pos))) {
+			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;
 			}
 			m_pos.x -= BOX_SIZE;
@@ -124,14 +124,14 @@ bool too_old(Projectile * p, Collisions_manager *collisions_manager)
     bool to_return = (p->phase()>PROJ_LIFE_SPAN);
     Rect speed = p->speed();
     if (speed.x>0)
-        to_return |= collisions_manager->right_collision(p->position());
+        to_return |= collisions_manager->get_matrix()->right_collision(p->position());
     else
-        to_return |= collisions_manager->left_collision(p->position());
+        to_return |= collisions_manager->get_matrix()->left_collision(p->position());
 
     if (speed.y>0)
-        to_return |= collisions_manager->down_collision(p->position());
+        to_return |= collisions_manager->get_matrix()->down_collision(p->position());
     else
-        to_return |= collisions_manager->up_collision(p->position());
+        to_return |= collisions_manager->get_matrix()->up_collision(p->position());
     return to_return;
 }
 
