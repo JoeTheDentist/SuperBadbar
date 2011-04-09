@@ -80,9 +80,9 @@ void Game_engine::update()
 
 void Game_engine::update_pos()
 {
+	gBabar->update_pos();
 	gCollision->update_platforms_pos();
 	gProj->update_pos();
-	gBabar->update_pos();
 	m_monsters_manager->monsters_update_pos();
 }
 

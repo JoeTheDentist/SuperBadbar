@@ -100,6 +100,8 @@ public:
 	 *	@return Vrai si les points de vies sont <= 0
 	 */
 	bool dead() const;
+	
+	void kill();
 
 	/*!
 	 *	@brief Accesseur: indique si on peut tirer

@@ -60,7 +60,7 @@ protected:
 
 	Weapons_armory m_weapons_armory;
 	Moving_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
-	Rect m_binded_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
+	Rect m_rel_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
 	bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
 	int m_peanuts;
 
@@ -69,6 +69,7 @@ protected:
 	 *	@param age	L'age de Babar
 	 */
 	void load_anim(char age);
+	bool is_on_something();
 public:
 
 	/**
@@ -97,6 +98,7 @@ public:
 	*/
 	virtual Rect position() const;
 
+	virtual void move(int x, int y);
 
 	/*!
 	 *	@brief Met à jour la position du sprite
@@ -104,15 +106,6 @@ public:
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
     void update_pos();
-
-	/*!
-	 *	@brief Met à jour la position du sprite s'il est lié à une plateforme
-	 *	@param static_data Données du jeu
-	 *	@param platform La plateforme liée
-	*/
-    void binded_update_pos(Moving_platform *platform);
-
-
 
 
 	/**

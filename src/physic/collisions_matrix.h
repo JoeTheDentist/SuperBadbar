@@ -170,6 +170,8 @@ public:
 	 * 	@return l'assertion
 	*/
 	bool can_fall(Rect pos);
+	
+//~ 	virtual Rect position();
 
 
 	void update_pos( Rect &pos, Rect &speed );

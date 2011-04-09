@@ -50,6 +50,7 @@ protected:
 	bool m_is_falling;
 	int m_can_bind;
 public:
+	
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Un analyser positionne avant la description d'un Moving_platform

@@ -60,6 +60,7 @@ void Babar::init_babar(Analyser * a)
     m_pos.y = a->read_int();
     /* Chargement des images en fonction de l'age */
     load_anim(a->read_int());
+	m_rel_pos = m_pos;
 
     /* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
     m_lifes = 5;
@@ -72,14 +73,15 @@ void Babar::init_babar(Analyser * a)
 	m_dir = RIGHT;
 	m_crouch_time = 0;
 	interrupt_jump();
+	m_bind = NULL;
 }
 
 Rect Babar::position() const
 {
 	if (binded()) {
 		Rect res = m_bind->position();
-		res.x += m_binded_pos.x;
-		res.y += m_binded_pos.y;
+		res.x += m_rel_pos.x;
+		res.y += m_rel_pos.y;
 		res.h = m_pos.h;
 		res.w = m_pos.w;
 		return res;
@@ -88,165 +90,117 @@ Rect Babar::position() const
 	}
 }
 
+void Babar::move(int x, int y)
+{
+	if (binded()) {
+		m_rel_pos.x += x;
+		m_rel_pos.y += y;
+	} else {
+		m_pos.x += x;
+		m_pos.y += y;
+	}
+}
+
+bool Babar::is_on_something()
+{		
+	if (binded()) {
+		return Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos));
+	} else {
+		return Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()));
+	}
+	
+}
+
+
+
 void Babar::update_pos()
 {
-	bool pente;
 	m_phase++;
-	/* Si Babar est lié à une plateforme, on gère autrement sa position */
-	if (binded()) {
-		binded_update_pos(m_bind);
-		return;
-	}
 	uint32_t coll;
 	/* cas où le sprite descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = gCollision->get_matrix()->down_collision_type(m_pos);
-		if(binded())
-			break;
+		check_unbind();
 		gCollision->update_babar_platforms();
+		coll = gCollision->get_matrix()->down_collision_type(position());
+		if (binded()) {
+			coll |= m_bind->down_collision_type(m_rel_pos);
+		}
 		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
-		}
-		else {
-			m_pos.y += BOX_SIZE;
-			if (m_pos.y + m_pos.h > (int32_t)gStatic->static_data_height())
-				m_pos.y = gStatic->static_data_height() - m_pos.h;
+		} else {
+			move(0, BOX_SIZE);
+//~ 			if (position().y + position().h > (int32_t)gStatic->static_data_height())
+//~ 				m_rel_pos.y = gStatic->static_data_height() - m_pos.h;
 		}
 	}
 	/* cas où le sprite monte */
 	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+		check_unbind();
 		gCollision->update_babar_platforms();
-		if(binded())
-			break;
-		if (Collisions_manager::is_up_coll(gCollision->get_matrix()->up_collision_type(m_pos))){
+		coll = gCollision->get_matrix()->up_collision_type(position());
+		if (binded()) {
+			coll |= m_bind->up_collision_type(m_rel_pos);
+		}
+		if (Collisions_manager::is_up_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
 		}
 		else {
-			if (m_pos.y < 0)
-				m_pos.y = 0;
-			m_pos.y -= BOX_SIZE;
+//~ 			if (m_pos.y < 0)
+//~ 				m_pos.y = 0;
+			move(0, -BOX_SIZE);
 		}
 	}
 	/* cas où le sprite va à droite */
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+		check_unbind();
 		gCollision->update_babar_platforms();
-		if(binded())
-			break;
-		pente = !Collisions_manager::is_up_coll(gCollision->get_matrix()->up_collision_type(m_pos));
-		if (pente)
-			m_pos.y -= 	BOX_SIZE;
-		if (Collisions_manager::is_right_coll(gCollision->get_matrix()->right_collision_type(m_pos))){
+		move(0, -BOX_SIZE);
+		coll = gCollision->get_matrix()->right_collision_type(position());
+		if (binded()) {
+			coll |= m_bind->right_collision_type(m_rel_pos);
+		}
+		if (Collisions_manager::is_right_coll(coll)){
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
-			m_pos.x += BOX_SIZE; // On avance!
+			move(BOX_SIZE, 0); // On avance!
 		}
-		if(!Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(m_pos)) && pente)
-			m_pos.y += BOX_SIZE;
-		if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
-			m_pos.x = gStatic->static_data_weight() - m_pos.w;
+		if(!is_on_something()) // s'il n'y avait pas de pente montante, on revient
+			move(0, BOX_SIZE);	
+		if(!is_on_something()) // gestion de la pente descendante
+			move(0, BOX_SIZE);
+		if(!is_on_something()) 
+			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
+				
+		
+//~ 		if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
+//~ 			m_pos.x = gStatic->static_data_weight() - m_pos.w;
 	}
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+		check_unbind();
 		gCollision->update_babar_platforms();
-		if(binded())
-			break;
-		pente =  !Collisions_manager::is_up_coll(gCollision->get_matrix()->up_collision_type(m_pos)); // pour la pente
-		if (pente)
-			m_pos.y -= 	BOX_SIZE;
-		if (Collisions_manager::is_left_coll(gCollision->get_matrix()->left_collision_type(m_pos))){
+		move(0, -BOX_SIZE);
+		coll = gCollision->get_matrix()->left_collision_type(position());
+		if (binded()) {
+			coll |= m_bind->left_collision_type(m_rel_pos);
+		}
+		if (Collisions_manager::is_left_coll(coll)){
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
-			m_pos.x -= BOX_SIZE; // on avance!
-			
+			move(-BOX_SIZE, 0); // On avance!
 		}
-		if(!Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(m_pos)) && pente)
-			m_pos.y += BOX_SIZE;
-		if (m_pos.x < 0)
-			m_pos.x = 0;
+		if(!is_on_something()) // s'il n'y avait pas de pente montante, on revient
+			move(0, BOX_SIZE);	
+		if(!is_on_something()) // gestion de la pente descendante
+			move(0, BOX_SIZE);
+		if(!is_on_something()) 
+			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
+				
 	}
-
-}
-
-void Babar::binded_update_pos(Moving_platform *platform)
-{
-	/* update de  m_binded_pos */
-	uint32_t coll;
-	if (check_unbind())
-		return;	
-	/* cas où le sprite descend */
-	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
-		coll = platform->down_collision_type(m_binded_pos);
-		if (check_unbind())
-			return;
-		if (Collisions_manager::is_down_coll(coll)){
-			speed_y = 0;
-			m_speed.y = 0;
-		}
-		else {
-			m_binded_pos.y += BOX_SIZE;
-		}
-	}
-	/* cas où le sprite monte */
-	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (check_unbind())
-			return;
-		if (Collisions_manager::is_up_coll(platform->up_collision_type(m_binded_pos))){
-			speed_y = 0;
-			m_speed.y = 0;
-		}
-		else {
-			m_binded_pos.y -= BOX_SIZE;
-		}
-	}
-	/* cas où le sprite va à droite */
-	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-		if (check_unbind())
-			return;
-		bool pente =  !Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)); // pour la pente
-		if (pente) {
-			m_binded_pos.y -= 	BOX_SIZE;
-		}
-
-		if (Collisions_manager::is_right_coll(platform->right_collision_type(m_binded_pos))
-			|| Collisions_manager::is_right_coll(gCollision->get_matrix()->right_collision_type(position()))){
-			speed_x = 0;
-			m_speed.x = 0;
-		} else {
-			m_binded_pos.x += BOX_SIZE; // on avance!
-		}	
-		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)) && pente) {
-			m_binded_pos.y += BOX_SIZE;		
-		}
-	}
-	if (check_unbind())
-		PRINT_DEBUG(1, "check_unbind avant gauche");
-	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE) {
-		if (check_unbind()) {
-			return;
-		}
-		bool pente =  !Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)); // pour la pente
-		if (pente) {
-			m_binded_pos.y -= 	BOX_SIZE;
-		}
-
-		if (Collisions_manager::is_left_coll(platform->left_collision_type(m_binded_pos))
-			|| Collisions_manager::is_left_coll(gCollision->get_matrix()->left_collision_type(position()))){
-			speed_x = 0;
-			m_speed.x = 0;
-		} else {
-			m_binded_pos.x -= BOX_SIZE; // on avance!
-		}	
-		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)) && pente) {
-			m_binded_pos.y += BOX_SIZE;		
-		}
-	}
-	if (check_unbind())
-		PRINT_DEBUG(1, "check_unbind a la fin de update_pos");
 }
 
 void Babar::update_speed()
@@ -276,11 +230,7 @@ void Babar::update_speed()
 }
 
 void Babar::update_state()
-{
-	if (check_unbind()) {
-		PRINT_DEBUG(1, "update_state check_unbind")
-	}
-	
+{	
 	if (!gKeyboard->time_pressed(k_jump))
 		m_jump = false;
 	if (m_jump) {
@@ -420,7 +370,7 @@ bool Babar::can_go_down() const
 	Rect pos;
 	if (binded()) {
 		plop = m_bind;
-		pos = m_binded_pos;
+		pos = m_rel_pos;
 	} else {
 		plop = gCollision->get_matrix();
 		pos = m_pos;
@@ -435,13 +385,13 @@ void Babar::go_down()
 	m_pos.y += 2*BOX_SIZE;
 	m_speed.y += BOX_SIZE;
 	if (binded()) {
-		while (Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))){
-			if (m_bind->double_collision(m_binded_pos)) {
-				m_binded_pos.y -= BOX_SIZE;
+		while (Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos))){
+			if (m_bind->double_collision(m_rel_pos)) {
+				m_rel_pos.y -= BOX_SIZE;
 				break;
 			}
 			else {
-				m_binded_pos.y += BOX_SIZE;
+				m_rel_pos.y += BOX_SIZE;
 			}
 		}
 	} else {
@@ -456,7 +406,6 @@ void Babar::go_down()
 		}
 	}
 	unbind();
-//~ 	gKeyboard->disable_key(k_jump);
 	PRINT_TRACE(1, "Descente d'une plateforme")
 }
 
@@ -516,7 +465,7 @@ Rect Babar::speed() const
 
 bool Babar::binded() const
 {
-	return m_bind != NULL;
+	return m_bind;
 }
 
 
@@ -529,13 +478,11 @@ void Babar::bind(Moving_platform *platform)
 		Rect plat_pos = platform->position();
 		m_speed.x = plat_speed.x;
 		m_speed.y = plat_speed.y;
-		m_binded_pos.x = m_pos.x - plat_pos.x;
-		m_binded_pos.y = m_pos.y - plat_pos.y;
-		m_binded_pos.w = m_pos.w;
-		m_binded_pos.h = m_pos.h;
 		interrupt_jump();
 		m_ready_jump = true;
 		gKeyboard->disable_key(k_jump);
+		m_rel_pos.x = m_pos.x - plat_pos.x;
+		m_rel_pos.y = m_pos.y - plat_pos.y;
 	}
 }
 
@@ -543,7 +490,8 @@ void Babar::unbind()
 {
 	if (binded()) {
 		std::cout << "unbind" << std::endl;
-		m_pos = position();
+		m_pos.x = m_rel_pos.x + m_bind->position().x;
+		m_pos.y = m_rel_pos.y + m_bind->position().y;
 		m_bind->unbind();
 		m_bind = NULL;
 	}
@@ -588,11 +536,11 @@ void Babar::interrupt_crouch()
 
 bool Babar::check_unbind()
 {
-	Rect rectdown = m_binded_pos;
+	Rect rectdown = m_rel_pos;
 	rectdown.y += 1;
 	
 	if (binded()) {
-		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))
+		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos))
 			&& !Collisions_manager::is_down_coll(m_bind->down_collision_type(rectdown))) {
 			PRINT_DEBUG(1, "AIUYGFSGDF");
 			unbind();

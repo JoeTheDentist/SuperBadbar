@@ -154,6 +154,7 @@ void Monsters_manager::delete_dead_monsters()
 	for (std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); ) {
 		if ((*it)->dead()) {
+			(*it)->kill();
 			delete (*it);
 			it = m_monsters.erase(it);
 		} else {

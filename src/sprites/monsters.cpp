@@ -101,7 +101,6 @@ void Monster::update_speed_ai()
 void Monster::damage(uint32_t damage)
 {
 	m_life -= damage;
-	prepare_sound(MONSTERS_SOUNDS_R + "hit.mp3");
 }
 
 void Monster::update()
@@ -112,10 +111,17 @@ void Monster::update()
 bool Monster::dead() const
 {
     if ( m_life <= 0 ) {
-        gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);
         return true;
     }
     return false;
+}
+
+void Monster::kill()
+{
+	if (m_speed.y < 0)
+		m_speed.y = 0;
+	gSound->play_sound(MONSTERS_SOUNDS_R + "hit.mp3");
+	gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);	
 }
 
 bool Monster::can_fire()

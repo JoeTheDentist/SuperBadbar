@@ -148,7 +148,7 @@ void Moving_platform::unbind()
 {
 	PRINT_DEBUG(1, "unbind");
 	m_babar = NULL;
-//~ 	m_can_bind = -3;
+	m_can_bind = -3;
 }
 
 Rect Moving_platform::speed() const

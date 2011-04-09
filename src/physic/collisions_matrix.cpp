@@ -167,6 +167,15 @@ bool Collisions_matrix::can_fall(Rect pos) {
     return ret;
 }
 
+//~ Rect Collisions_matrix::position()
+//~ {
+//~ 	Rect rec;
+//~ 	rec.x = 0;
+//~ 	rec.y = 0;
+//~ 	return rec;
+//~ }
+
+
 void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 {
     int coll;
