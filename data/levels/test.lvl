@@ -6,13 +6,12 @@ leveltest.png
 4400
 
 #Babar#
-220
-3923
+3976
+3692
 1
 
 #Statics#
-10
-arbre_bord -2 506 0
+11
 arbre_feuilles_racines 3530 4200 0
 arbre_feuilles 1013 3455 0
 arbre_feuilles_front 961 3516 1
@@ -21,7 +20,9 @@ water1 1683 4280 0
 water1 2038 4285 0
 water1 2399 4291 0
 grass2 2806 4271 0
-grass1 753 4194 0
+arbre_bord 7 465 0
+grass1 743 4227 0
+block6 2893 3706 0
 !
 #Monsters#
 1
@@ -31,8 +32,10 @@ following_walking_monster gailapin 1254 4181
 0
 !
 #Platforms#
-1
+3
 normal block8 1996 3425 2011 3937
+normal block8 796 3801 788 4108
+normal block6 3682 3707 3484 3317
 !
 #Anims#
 0
