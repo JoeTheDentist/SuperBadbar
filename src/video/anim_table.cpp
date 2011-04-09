@@ -60,9 +60,9 @@ void Anim_table::init_fire(std::string anim_name)
     m_nb_states = state-'0'+1;
 
     /* allocation du tableau d'animation 2x pour les états de tir */
-    m_anim = new Animation**[2*m_nb_states];
+    m_anim = new Anim_pic**[2*m_nb_states];
     for (int i=0;i<m_nb_states;i++) {
-        m_anim[i] = new Animation*[2];
+        m_anim[i] = new Anim_pic*[2];
     }
 
     /* creation des animations */
@@ -85,8 +85,8 @@ void Anim_table::init_fire(std::string anim_name)
             }
 
             /* creation de l'animation */
-            m_anim[i-'0'][j-'0'] = new Animation(link1,k1-'0',CYCLE);
-            m_anim[i-'0'+m_nb_states][j-'0'] = new Animation(link2,k2-'0',ENDED);
+            m_anim[i-'0'][j-'0'] = new Anim_pic(link1,k1-'0',CYCLE);
+            m_anim[i-'0'+m_nb_states][j-'0'] = new Anim_pic(link2,k2-'0',ENDED);
 			delete[] link1;
 			delete[] link2;
         }
@@ -108,9 +108,9 @@ void Anim_table::init_nfire(std::string anim_name)
     m_nb_states = state-'0'+1;
 
     /* allocation du tableau d'animation */
-    m_anim = new Animation**[m_nb_states];
+    m_anim = new Anim_pic**[m_nb_states];
     for (int i=0;i<m_nb_states;i++) {
-        m_anim[i] = new Animation*[2];
+        m_anim[i] = new Anim_pic*[2];
     }
 
     /* creation des animations */
@@ -127,7 +127,7 @@ void Anim_table::init_nfire(std::string anim_name)
             }
 
             /* creation de l'animation */
-            m_anim[i-'0'][j-'0'] = new Animation(link,k-'0',CYCLE);
+            m_anim[i-'0'][j-'0'] = new Anim_pic(link,k-'0',CYCLE);
 			delete[] link;
         }
     }

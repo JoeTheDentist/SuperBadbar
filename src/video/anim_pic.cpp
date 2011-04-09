@@ -11,11 +11,11 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "animation.h"
+#include "anim_pic.h"
 #include "../video/surface.h"
 
 
-Animation::Animation(std::string * s, int size, anim_type type) {
+Anim_pic::Anim_pic(std::string * s, int size, anim_type type) {
     m_images = new Surface*[size];
     m_size = size;
     m_curr = 0;
@@ -34,14 +34,14 @@ Animation::Animation(std::string * s, int size, anim_type type) {
     }
 }
 
-Animation::~Animation() {
+Anim_pic::~Anim_pic() {
     for (int i=0;i<m_size;i++) {
         delete m_images[i];
     }
     delete[] m_images;
 }
 
-Surface * Animation::curr_pic()
+Surface * Anim_pic::curr_pic()
 {
     Surface *image = m_images[m_curr];
     m_phase++;
@@ -62,23 +62,23 @@ Surface * Animation::curr_pic()
     return image;
 }
 
-bool Animation::interruptable()
+bool Anim_pic::interruptable()
 {
     return (m_type != NOEND) && m_finished;
 }
 
-bool Animation::deletable()
+bool Anim_pic::deletable()
 {
     return (m_type == ENDED) && m_finished;
 }
 
-void Animation::set_rect(Rect &pos)
+void Anim_pic::set_rect(Rect &pos)
 {
     pos.h = m_images[m_curr]->h();
     pos.w = m_images[m_curr]->w();
 }
 
-void Animation::set_img(int p)
+void Anim_pic::set_img(int p)
 {
     m_curr = p;
 }

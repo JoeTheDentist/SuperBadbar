@@ -14,7 +14,7 @@
 #define SWITCH_DIST 400
 
 #include "sprites.h"
-#include "../video/animation.h"
+#include "../video/anim_pic.h"
 #include "../sound/sonorisable.h"
 #include <list>
 
@@ -89,7 +89,7 @@ public:
 	 *	@param damage Le nombre de viesà faire perdre
 	 */
 	void damage(uint32_t damage);
-	
+
 	/**
 	 *	@brief Methode reservee pour les actions speciales telles que le tir
 	 */
@@ -108,7 +108,7 @@ public:
 	bool can_fire();
 
 	/**
-	 * 	@brief Fait tirer le monstre 
+	 * 	@brief Fait tirer le monstre
 	 *	@return La liste de projectiles tirés
 	 *
 	 *	Doit etre precede de can_fire()

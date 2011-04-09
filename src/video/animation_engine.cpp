@@ -73,7 +73,7 @@ void Animation_engine::add(std::string pic, Rect pos, anim_type type, Rect speed
     }
 
     /* creation de l'animation */
-    a.anim = new Animation(link,k,type);
+    a.anim = new Anim_pic(link,k,type);
     if ( type == CYCLE ) {
         a.anim->set_img(rand()%k);
     }

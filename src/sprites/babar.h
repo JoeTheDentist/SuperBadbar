@@ -13,7 +13,7 @@
 #include "sprites.h"
 #include "../sound/sonorisable.h"
 #include "../util/analyser.h"
-#include "../video/animation.h"
+#include "../video/anim_pic.h"
 #include "../video/anim_table.h"
 #include <list>
 #define BABAR_SPEED 15
@@ -54,7 +54,7 @@ protected:
 	int m_invincible;                   /* durée d'invicibilité après avoir été touché */
 	int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
 	bool m_ready_double_jump;           /* booléen autorisant le double saut */
-	bool m_ready_jump;                  /* booleen autorisant le saut */	
+	bool m_ready_jump;                  /* booleen autorisant le saut */
 	bool m_jump;						/* indique que le joueur est en cours de saut (sa vitesse augment) */
 	bool m_double_jump;		            /* vaut vrai si Babar est en cours de double saut */
 
@@ -289,11 +289,11 @@ public:
 	 *	@param peanuts Le nombre de cacahuetes a ajouter
 	 */
 	void incr_peanuts(int peanuts);
-	
+
 	state_player get_state() const;
-	
+
 	void interrupt_jump();
-	
+
 	void interrupt_crouch();
 
 	// check et fait l'unbind

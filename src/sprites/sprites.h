@@ -22,7 +22,7 @@
 	 *	Sert également à savoir ce que le sprite peut ou ne peut pas faire
 	*/
 
-#include "../video/animation.h"
+#include "../video/anim_pic.h"
 #include "../video/anim_table.h"
 #include "../video/displayable.h"
 
@@ -76,7 +76,7 @@ public:
 	*/
 	virtual Rect position() const;
 
-	
+
 	Rect damage_box() const;
 
 	/*!

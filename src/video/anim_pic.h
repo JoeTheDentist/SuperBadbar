@@ -1,5 +1,5 @@
 /**
- * 	@file animation.h
+ * 	@file anim_pic.h
  * 	@brief Header de la classe Animation
  *
  * 	@author Guillaume Bérard & Benoit Morel
@@ -26,7 +26,7 @@ enum anim_type {
  * 	@class Animation
  * 	@brief Classe animation, répresentant une succession d'images
  */
-class Animation {
+class Anim_pic {
 private:
     Surface ** m_images;
     int m_curr;                 /* image courante */
@@ -48,12 +48,12 @@ public:
 	* @param force si on doit attendre la terminaison
 	*
 	*/
-    Animation(std::string * s, int size, anim_type type);
+    Anim_pic(std::string * s, int size, anim_type type);
 
     /*!
 	* @brief Destructeur
 	*/
-    ~Animation();
+    ~Anim_pic();
 
     /*!
     * @brief Image a afficher.

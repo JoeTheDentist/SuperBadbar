@@ -13,13 +13,13 @@
 #include <map>
 
 #include "../video/surface.h"
-#include "../video/animation.h"
+#include "../video/anim_pic.h"
 #include "../video/camera.h"
 
 
 struct anim_pos {
     Rect pos;
-    Animation * anim;
+    Anim_pic * anim;
     Rect speed;
     bool falling;
 };
