@@ -17,10 +17,10 @@
 #include "moving_platform.h"
 #include "../util/globals.h"
 #include "../util/analyser.h"
+#include "../util/debug.h"
 
 class Static;
 class Moving_platform;
-class Camera;
 class Babar;
 class Analyser;
 

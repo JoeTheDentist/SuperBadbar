@@ -14,12 +14,13 @@
 #include <stdint.h>
 
 #include "../video/statics.h"
+#include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../physic/collisions_matrix.h"
 
 class Surface;
 class Babar;
-
+class Camera;
 
 
 /**
@@ -108,10 +109,14 @@ public:
 	bool dead();
 
 	/**
-	 * 	@brief
+	 * 	@brief Indique si la plateforme est en état d'etre liee
+	 *	@return Vrai si la plateforme peut etre liee
 	 */
+	bool can_bind();
 
-
+	#ifdef DEBUG_COLL
+	void display_coll(Camera *camera);
+	#endif
 
 };
 

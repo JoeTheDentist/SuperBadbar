@@ -43,6 +43,9 @@ void Babar::load_anim(char age)
 {
     char age_c = '0';
     age_c += age;
+	#ifdef DEBUG_COLL
+	age_c = '0';
+	#endif
 	std::string babar_pic_dir = PIC_BABAR_R;
 
 	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
@@ -165,16 +168,13 @@ void Babar::update_pos()
 		if (m_pos.x < 0)
 			m_pos.x = 0;
 	}
-	m_pos = position();
+//~ 	m_pos = position();
 
 
 }
 
 void Babar::binded_update_pos(Moving_platform *platform)
 {
-	Rect plat_pos = platform->position();
-//~ 	m_pos.x = plat_pos.x;
-//~ 	m_pos.y = plat_pos.y;
 	/* update de  m_binded_pos */
 	uint32_t coll;
 	if (check_unbind())
@@ -208,20 +208,47 @@ void Babar::binded_update_pos(Moving_platform *platform)
 	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 		if (check_unbind())
 			return;
-		m_binded_pos.y -= 	BOX_SIZE;
-		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)))
-			m_binded_pos.y += BOX_SIZE;
-		m_binded_pos.x += BOX_SIZE;
+		bool pente =  !Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)); // pour la pente
+		if (pente) {
+			m_binded_pos.y -= 	BOX_SIZE;
+		}
+
+		if (Collisions_manager::is_right_coll(platform->right_collision_type(m_binded_pos))
+			|| Collisions_manager::is_right_coll(gCollision->right_collision_type(position()))){
+			speed_x = 0;
+			m_speed.x = 0;
+		} else {
+			m_binded_pos.x += BOX_SIZE; // on avance!
+		}	
+		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)) && pente) {
+			m_binded_pos.y += BOX_SIZE;		
+		}
 	}
+	if (check_unbind())
+		PRINT_DEBUG(1, "check_unbind avant gauche");
 	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-		if (check_unbind())
+	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE) {
+		if (check_unbind()) {
 			return;
-		m_binded_pos.y -= 	BOX_SIZE;
-		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)))
-			m_binded_pos.y += BOX_SIZE;
-		m_binded_pos.x -= BOX_SIZE;
+		}
+		bool pente =  !Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)); // pour la pente
+		if (pente) {
+			m_binded_pos.y -= 	BOX_SIZE;
+		}
+
+		if (Collisions_manager::is_left_coll(platform->left_collision_type(m_binded_pos))
+			|| Collisions_manager::is_left_coll(gCollision->left_collision_type(position()))){
+			speed_x = 0;
+			m_speed.x = 0;
+		} else {
+			m_binded_pos.x -= BOX_SIZE; // on avance!
+		}	
+		if(!Collisions_manager::is_down_coll(platform->down_collision_type(m_binded_pos)) && pente) {
+			m_binded_pos.y += BOX_SIZE;		
+		}
 	}
+	if (check_unbind())
+		PRINT_DEBUG(1, "check_unbind a la fin de update_pos");
 }
 
 void Babar::update_speed()
@@ -252,7 +279,10 @@ void Babar::update_speed()
 
 void Babar::update_state()
 {
-	check_unbind();
+	if (check_unbind()) {
+		PRINT_DEBUG(1, "update_state check_unbind")
+	}
+	
 	if (!gKeyboard->time_pressed(k_jump))
 		m_jump = false;
 	if (m_jump) {
@@ -264,10 +294,7 @@ void Babar::update_state()
 			}
 		}		
 	}
-
-	m_weapons_armory.update();
-
-
+	
 	update_direction();
 
     if ( Collisions_manager::is_down_coll(gCollision->down_collision_type(position())) ) {
@@ -278,8 +305,7 @@ void Babar::update_state()
         m_fire = true;
 		gProj->add_friend_proj(fire());
         m_fire_phase = 0;
-    }
-    else {
+    } else {
         m_fire = false;
         m_fire_phase++;
     }
@@ -292,7 +318,6 @@ void Babar::update_state()
            interrupt_crouch();
         }
     }
-
 	
     if (can_jump())
 		jump();
@@ -305,6 +330,8 @@ void Babar::update_state()
 
 	if (m_invincible > 0)
 		m_invincible --;
+	
+	m_weapons_armory.update();
 
 	if (gKeyboard->time_pressed(k_prev_weapon) == 1)
 		m_weapons_armory.previous_weapon();
@@ -494,26 +521,24 @@ bool Babar::binded() const
 	return m_bind != NULL;
 }
 
-void plop()
-{
-}
 
 void Babar::bind(Moving_platform *platform)
 {
-	unbind();
-	m_bind = platform;
-	Rect plat_speed = platform->speed();
-	Rect plat_pos = platform->position();
-	m_speed.x = plat_speed.x;
-	m_speed.y = plat_speed.y;
-	m_binded_pos.x = m_pos.x - plat_pos.x;
-	m_binded_pos.y = m_pos.y - plat_pos.y;
-	m_binded_pos.w = m_pos.w;
-	m_binded_pos.h = m_pos.h;
-	interrupt_jump();
-	m_ready_jump = true;
-	gKeyboard->disable_key(k_jump);
-	plop();
+	if (platform->can_bind()) {
+		unbind();
+		m_bind = platform;
+		Rect plat_speed = platform->speed();
+		Rect plat_pos = platform->position();
+		m_speed.x = plat_speed.x;
+		m_speed.y = plat_speed.y;
+		m_binded_pos.x = m_pos.x - plat_pos.x;
+		m_binded_pos.y = m_pos.y - plat_pos.y;
+		m_binded_pos.w = m_pos.w;
+		m_binded_pos.h = m_pos.h;
+		interrupt_jump();
+		m_ready_jump = true;
+		gKeyboard->disable_key(k_jump);
+	}
 }
 
 void Babar::unbind()
@@ -565,14 +590,12 @@ void Babar::interrupt_crouch()
 
 bool Babar::check_unbind()
 {
-	// ATTENTION: "arnaque" pour la sortie de plateforme mobile:
-	// les pentes introduisent des sorties non voulues, donc
-	// on considère qu'on sort de la plateforme après 3 cycles de chute
-	Rect rect = m_binded_pos;
-	rect.y += 1;
+	Rect rectdown = m_binded_pos;
+	rectdown.y += 1;
+	
 	if (m_bind) {
 		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_binded_pos))
-			&& !Collisions_manager::is_down_coll(m_bind->down_collision_type(rect))) {
+			&& !Collisions_manager::is_down_coll(m_bind->down_collision_type(rectdown))) {
 			PRINT_DEBUG(1, "AIUYGFSGDF");
 			unbind();
 			return true;

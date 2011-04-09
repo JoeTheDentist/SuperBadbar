@@ -11,10 +11,10 @@
 #include <math.h>
 #include "moving_platform.h"
 #include "../game/static_data.h"
+#include "../video/camera.h"
 #include "../video/surface.h"
 #include "../sprites/babar.h"
 #include "../util/analyser.h"
-#include "../util/debug.h"
 #include "../physic/collisions_manager.h"
 #include "../physic/collisions_matrix.h"
 #include "../video/displayable.h"
@@ -133,20 +133,22 @@ void Moving_platform::update_speed()
 
 void Moving_platform::bind()
 {
-	if (m_falling_platform && !m_is_falling) {
-		m_is_falling = true;
-		m_speed.x = 0;
-		m_speed.y = 0;
+	if (can_bind()) {
+		if (m_falling_platform && !m_is_falling) {
+			m_is_falling = true;
+			m_speed.x = 0;
+			m_speed.y = 0;
+		}
+		PRINT_DEBUG(1, "bind");
+		m_babar = gBabar;
 	}
-	PRINT_DEBUG(1, "bind");
-	m_babar = gBabar;
 }
 
 void Moving_platform::unbind()
 {
-	PRINT_DEBUG(1, "bind");
+	PRINT_DEBUG(1, "unbind");
 	m_babar = NULL;
-	m_can_bind = -3;
+//~ 	m_can_bind = -3;
 }
 
 Rect Moving_platform::speed() const
@@ -181,3 +183,27 @@ bool Moving_platform::dead()
 {
 	return m_pos.y < 0 || m_pos.y >  (int)gStatic->static_data_height();
 }
+
+bool Moving_platform::can_bind()
+{
+	return m_can_bind > 0;
+}
+
+#ifdef DEBUG_COLL
+void Moving_platform::display_coll(Camera *camera)
+{
+	Rect plop;
+	for (int i = 0; i < m_collisions_matrix_w; i ++) {
+		plop.x = i * BOX_SIZE + m_pos.x;
+		for (int j = 0; j < m_collisions_matrix_h; j++) {
+			if (m_collisions_matrix[i][j] == 4) {
+				plop.y = j * BOX_SIZE + m_pos.y;
+				camera->display_green_coll(plop);
+			} else if (m_collisions_matrix[i][j] == 15) {
+				plop.y = j*BOX_SIZE;
+				camera->display_red_coll(plop);
+			}
+		}
+	}
+}
+#endif

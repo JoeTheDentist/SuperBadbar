@@ -24,7 +24,6 @@
 
 #ifndef _CAMERA_
 #define _CAMERA_
-
 #include "../util/globals.h"
 
 #include "../../lib/SDL/include/SDL/SDL.h"

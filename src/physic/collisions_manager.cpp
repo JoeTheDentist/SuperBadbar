@@ -12,9 +12,10 @@
 #include "../util/analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
-#include "../video/camera.h"
 #include "../sprites/babar.h"
 #include "../util/globals.h"
+#include "../video/camera.h"
+
 #include <iostream> 
 #include <algorithm> 
 
@@ -121,6 +122,9 @@ void Collisions_manager::display_platforms(Camera * const camera) const
 	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		camera->display((*it));
+		#ifdef DEBUG_COLL
+		(*it)->display_coll(camera);
+		#endif
 	}
 
 }

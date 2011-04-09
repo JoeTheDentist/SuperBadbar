@@ -186,3 +186,5 @@ void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 				pos.x = 0;
 	}
 }
+
+
