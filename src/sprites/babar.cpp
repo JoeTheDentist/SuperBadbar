@@ -102,13 +102,13 @@ void Babar::move(int x, int y)
 }
 
 bool Babar::is_on_something()
-{		
+{
 	if (binded()) {
 		return Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos));
 	} else {
 		return Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()));
 	}
-	
+
 }
 
 
@@ -168,13 +168,13 @@ void Babar::update_pos()
 			move(BOX_SIZE, 0); // On avance!
 		}
 		if(!is_on_something()) // s'il n'y avait pas de pente montante, on revient
-			move(0, BOX_SIZE);	
+			move(0, BOX_SIZE);
 		if(!is_on_something()) // gestion de la pente descendante
 			move(0, BOX_SIZE);
-		if(!is_on_something()) 
+		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
-				
-		
+
+
 //~ 		if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
 //~ 			m_pos.x = gStatic->static_data_weight() - m_pos.w;
 	}
@@ -194,24 +194,24 @@ void Babar::update_pos()
 			move(-BOX_SIZE, 0); // On avance!
 		}
 		if(!is_on_something()) // s'il n'y avait pas de pente montante, on revient
-			move(0, BOX_SIZE);	
+			move(0, BOX_SIZE);
 		if(!is_on_something()) // gestion de la pente descendante
 			move(0, BOX_SIZE);
-		if(!is_on_something()) 
+		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
-				
+
 	}
 }
 
 void Babar::update_speed()
 {
     m_speed.y += GRAVITE;
-    m_speed.x = 0;         
+    m_speed.x = 0;
 
 	if (m_jump) {
 		m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
 	}
-	
+
 	/* Pour pouvoir se diriger (ttlt) */
     if (gKeyboard->key_down(k_left)) {
         if ( m_crouch_time ) {
@@ -230,7 +230,7 @@ void Babar::update_speed()
 }
 
 void Babar::update_state()
-{	
+{
 	if (!gKeyboard->time_pressed(k_jump))
 		m_jump = false;
 	if (m_jump) {
@@ -240,9 +240,9 @@ void Babar::update_state()
 				m_jump = false;
 				gKeyboard->disable_key(k_jump);
 			}
-		}		
+		}
 	}
-	
+
 	update_direction();
 
     if ( Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position())) ) {
@@ -266,24 +266,24 @@ void Babar::update_state()
            interrupt_crouch();
         }
     }
-	
+
     if (can_jump())
 		jump();
 
 	if (can_double_jump())
 		double_jump();
-	
+
 	if (can_go_down())
 		go_down();
 
 	if (m_invincible > 0)
 		m_invincible --;
-	
+
 	m_weapons_armory.update();
 
 	if (gKeyboard->time_pressed(k_prev_weapon) == 1)
 		m_weapons_armory.previous_weapon();
-	
+
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
@@ -538,7 +538,7 @@ bool Babar::check_unbind()
 {
 	Rect rectdown = m_rel_pos;
 	rectdown.y += 1;
-	
+
 	if (binded()) {
 		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos))
 			&& !Collisions_manager::is_down_coll(m_bind->down_collision_type(rectdown))) {

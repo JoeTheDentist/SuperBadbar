@@ -9,9 +9,10 @@ Projectiles_manager * gProj = NULL;
 Events_manager * gEvent = NULL;
 Babar * gBabar = NULL;
 Animation_engine * gAnims = NULL;
-Graphic_engine *gGraphics = NULL;
-Game_engine *gGame_engine = NULL;
-Keyboard *gKeyboard = NULL;
+Graphic_engine * gGraphics = NULL;
+Game_engine * gGame_engine = NULL;
+Keyboard * gKeyboard = NULL;
+Stats * gStats = NULL;
 
 
 double dist(Rect A, Rect B)

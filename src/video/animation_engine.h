@@ -96,6 +96,11 @@ class Animation_engine {
         void add(std::string pic, int x, int y, anim_type type, int sx, int sy, bool falling);
 
         /**
+         *
+         */
+        void alert(std::string text);
+
+        /**
          *  @brief Affichage des animations
          *  @param camera : camera permettant d'afficher les animations
          */

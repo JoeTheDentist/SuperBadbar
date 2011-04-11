@@ -5,9 +5,6 @@
 #include "../video/anim_table.h"
 #include "../util/analyser.h"
 #include "../video/anim_text.h"
-/* Temp */
-#include "../sprites/babar.h"
-
 
 Animation_engine::Animation_engine()
 {
@@ -39,13 +36,6 @@ void Animation_engine::init(std::string lvl_name)
     }
 
     a.close();
-
-
-
-    /* Temp */
-    Rect pos_temp = {400,300,0,0};
-    add(new Anim_text("TEST !!!!!", 250, 100, 30), pos_temp, ENDED, false);
-
 }
 
 void Animation_engine::add(Animation * anim, Rect pos, anim_type type, bool falling)
@@ -123,6 +113,12 @@ void Animation_engine::add(std::string pic, int x, int y, anim_type type, int sx
     speed.x = sx;
     speed.y = sy;
     add(pic, pos, type, speed, falling);
+}
+
+void Animation_engine::alert(std::string text)
+{
+    Rect pos_temp = {400,300,0,0};
+    add(new Anim_text(text, 250, 100, 30), pos_temp, ENDED, false);
 }
 
 void Animation_engine::display_anims(Camera * camera)

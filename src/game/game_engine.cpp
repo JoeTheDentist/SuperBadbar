@@ -33,6 +33,7 @@
 #include "../events/events_manager.h"
 #include "../util/globals.h"
 #include "../video/animation_engine.h"
+#include "../events/stats.h"
 
 
 Game_engine::Game_engine() :
@@ -59,6 +60,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Analyser analyser;
 	analyser.open(level_name);
     gBabar = new Babar(&analyser);
+    gStats = new Stats();
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
@@ -70,6 +72,7 @@ void Game_engine::update()
 	update_pos();
 	update_speed();
 	gBabar->update_state();
+	gStats->update();
 	m_monsters_manager->babar_monsters_collision();
 	m_monsters_manager->make_monsters_fire();
 	gEvent->update();
@@ -118,8 +121,10 @@ void Game_engine::update_monsters_projectiles()
 		Monster *monster = m_monsters_manager->element();
         for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
 				it != gProj->proj_friend_end(); it++){
-			if (monster->dead())
+			if (monster->dead()) {
+			    gStats->kill();
 				break;
+			}
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
                 monster->damage((*it)->damage());
                 /* animation du sang */
@@ -145,6 +150,7 @@ void Game_engine::update_babar_projectiles()
 	for (std::list<Projectile *>::iterator it = gProj->proj_ennemy_begin();
 				it != gProj->proj_ennemy_end(); it++) {
             if ( Collisions_manager::check_collision(gBabar->damage_box(),(*it)->position()) && !(*it)->dead()) {
+                gStats->hit();
 				gBabar->damage(1);
 				(*it)->kill();
 			}

@@ -76,6 +76,8 @@ Game::~Game()
 	gGame_engine = NULL;
     delete gBabar;
     gBabar = NULL;
+    delete gStats;
+    gStats = NULL;
 	delete gCollision;
 	delete gProj;
 	gProj = NULL;
@@ -134,7 +136,7 @@ void Game::update_graphic()
 
 	/* affichage des statics du premier plan */
 	gStatic->display_statics_first(camera);
-	
+
 	#ifdef DEBUG_COLL
 	gCollision->display_coll(camera);
 	#endif

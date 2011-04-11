@@ -16,6 +16,7 @@
 #include "../video/anim_pic.h"
 #include "../video/anim_table.h"
 #include <list>
+
 #define BABAR_SPEED 15
 #define JUMP_TIME 6
 #define SOURCE_Y 30  /* décalage en y de la source, par rapport au haut */

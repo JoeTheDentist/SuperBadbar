@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-220
-3923
+173
+3876
 1
 
 #Statics#
@@ -26,11 +26,16 @@ grass2 2806 4271 0
 arbre_feuilles_racines 3530 4200 0
 !
 #Monsters#
-1
+5
 following_walking_monster gailapin 1254 4181
+following_walking_monster gailapin 1072 4153
+following_walking_monster gailapin 951 3957
+following_walking_monster gailapin 1117 3921
+following_walking_monster gailapin 793 4008
 !
 #Events#
-0
+1
+event shotgun 295 3900
 !
 #Platforms#
 1

@@ -43,17 +43,20 @@ class Babar;
 class Animation_engine;
 class Graphic_engine;
 class Keyboard;
+class Stats;
 
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
 extern Static_data * gStatic;
-extern Projectiles_manager * gProj;
+extern Projectiles_manager * gProj; /* liste si multi */
 extern Events_manager * gEvent;
-extern Babar * gBabar;
+extern Babar * gBabar; /* liste si multi */
 extern Animation_engine * gAnims;
 extern Graphic_engine *gGraphics;
 extern Game_engine *gGame_engine;
 extern Keyboard *gKeyboard;
+extern Stats * gStats; /* liste si multi */
+
 double dist(Rect A, Rect B);
 
 #endif
