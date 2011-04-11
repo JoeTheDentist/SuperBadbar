@@ -1,8 +1,8 @@
 #ifndef AI_H_INCLUDED
 #define AI_H_INCLUDED
 
-#include "../sprites/sprites.h"
-#include "../sprites/projectiles_manager.h"
+#include "../actors/actor.h"
+#include "../actors/projectiles_manager.h"
 #include "../physic/collisions_manager.h"
 #include "../physic/collisions_matrix.h"
 #include "../items/weapons.h" /* pour enum */
@@ -15,7 +15,7 @@
 class AI {
     private:
         Rect * m_pos;
-        Sprite * m_target;
+        Actor * m_target;
 
         double eval(direction d);
         bool check_collision(Rect A, Rect B);
@@ -25,7 +25,7 @@ class AI {
         double eval_right();
 
     public:
-        AI(Sprite * target, Rect * pos);
+        AI(Actor * target, Rect * pos);
         ~AI();
 
         /**

@@ -10,7 +10,7 @@
 
 #include "graphic_engine.h"
 #include "../util/debug.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../video/camera.h"
 #include "../video/talks.h"
 #include "../video/dashboard.h"

@@ -13,7 +13,7 @@
 #include <string>
 
 #include "anim_pic.h"
-#include "../sprites/sprites.h"
+#include "../actors/actor.h"
 #include "../util/debug.h"
 
 #define PICS_EXT ".png"

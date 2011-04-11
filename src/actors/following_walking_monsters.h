@@ -10,8 +10,8 @@
 #ifndef _FOLLOWING_WALKING_MONSTERS_
 #define _FOLLOWING_WALKING_MONSTERS_
 
-#include "../sprites/monsters.h"
-#include "../sprites/walking_monsters.h"
+#include "../actors/monsters.h"
+#include "../actors/walking_monsters.h"
 #include "../AI/AI.h"
 
 class Analyser;
@@ -46,7 +46,7 @@ public:
 	 */
 	void update_speed_ai();
 
-	
+
 };
 
 

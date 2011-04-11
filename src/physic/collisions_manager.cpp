@@ -12,12 +12,12 @@
 #include "../util/analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../util/globals.h"
 #include "../video/camera.h"
 
-#include <iostream> 
-#include <algorithm> 
+#include <iostream>
+#include <algorithm>
 
 Collisions_manager::Collisions_manager()
 {

@@ -19,8 +19,8 @@
 #include "../control/keyboard.h"
 
 
-#include "../sprites/babar.h"
-#include "../sprites/projectiles_manager.h"
+#include "../actors/babar.h"
+#include "../actors/projectiles_manager.h"
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
 #include "../sound/sound_engine.h"

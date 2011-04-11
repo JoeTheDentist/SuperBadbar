@@ -18,7 +18,7 @@
 #include <list>
 #include <stdint.h>
 
-#include "../sprites/projectiles_manager.h"
+#include "../actors/projectiles_manager.h"
 
 class Monster;
 class Camera;
@@ -82,7 +82,7 @@ public:
 	*	@todo implémenter cette méthode avec un itérateur pour pouvoir la passer en const
 	*/
 	void display_monsters(const Camera &camera);
-	
+
 	void make_monsters_fire();
 
 	/*!

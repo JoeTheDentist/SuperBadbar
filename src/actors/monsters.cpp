@@ -17,7 +17,7 @@
 #include "../game/game.h"
 #include "../video/surface.h"
 #include "../video/animation_engine.h"
-#include "../sprites/projectiles.h"
+#include "../actors/projectiles.h"
 #include "../items/weapons.h"
 #include "../items/monster_basic_weapon.h"
 #include "babar.h"
@@ -56,12 +56,12 @@ void Monster::initFromMonsterFile(std::string file)
 		//TODO faire une fonction
 		if (analyserMonster.read_string() == "monster_basic_weapon")
 			m_weapon = new Monster_basic_weapon();
-	}	
+	}
 	analyserMonster.close();
     m_animt = new Anim_table(PIC_MONSTERS_R + m_nom + "/" + m_nom);
 	m_speed.x = m_speed_def;
 	m_dir = RIGHT;
-    m_animt->set_rect(m_pos);	
+    m_animt->set_rect(m_pos);
 }
 
 Surface *Monster::current_picture() const
@@ -121,7 +121,7 @@ void Monster::kill()
 	if (m_speed.y < 0)
 		m_speed.y = 0;
 	gSound->play_sound(MONSTERS_SOUNDS_R + "hit.mp3");
-	gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);	
+	gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);
 }
 
 bool Monster::can_fire()

@@ -16,7 +16,7 @@
 #include "dashboard.h"
 #include "../video/camera.h"
 #include "../util/debug.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../video/talks.h"
 #include "../video/surface.h"
 #include "../video/surface_text.h"
@@ -87,10 +87,10 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	camera->display_picture(munitions_picture, &pos_munitions, true);
 	delete munitions_picture;
 
-	
+
 	/*
 		Affichage des cacahuetes
-	*/	
+	*/
 	Rect pos_peanut;
 	Rect pos_peanuts_number;
 	std::ostringstream osspeanut;

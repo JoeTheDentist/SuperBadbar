@@ -32,7 +32,7 @@
 #define VITESSE_DECALAGE_RETOUR_CAMERA 10
 #define MAX_DECALAGE_CAMERA 0.15
 
-class Sprite;
+class Actor;
 class Babar;
 class Monster;
 class Projectile;
@@ -49,7 +49,7 @@ private:
 	Rect m_frame;		/* cadre de la camera */
 	Rect m_direction; 	/* direction de la camera (les composantes sont à valeur dans {-1, 1}*/
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
-	Sprite *m_target;		/* sprite sur lequel pointe la camera */
+	Actor *m_target;		/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;
 	Surface *m_green_coll;
 	Surface *m_red_coll;
@@ -69,13 +69,13 @@ public:
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre et crée la fenetre SDL
 	* 	@param target Le sprite à pointer
 	*/
-	void init_camera(Sprite *target);
+	void init_camera(Actor *target);
 
  	/*!
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
 	* 	@param target Le sprite à pointer
 	*/
-	void set_target(Sprite *target);
+	void set_target(Actor *target);
 
 	/*!
 	* 	@brief Met à jour la position de la camera

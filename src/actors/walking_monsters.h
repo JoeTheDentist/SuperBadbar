@@ -10,7 +10,7 @@
 #ifndef _WALKING_MONSTERS_
 #define _WALKING_MONSTERS_
 
-#include "../sprites/monsters.h"
+#include "../actors/monsters.h"
 
 class Analyser;
 

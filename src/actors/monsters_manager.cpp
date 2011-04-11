@@ -9,18 +9,18 @@
 
 
 #include "monsters_manager.h"
-#include "../sprites/babar.h"
-#include "../sprites/monsters.h"
-#include "../sprites/walking_monsters.h"
-#include "../sprites/flying_monster.h"
-#include "../sprites/following_walking_monsters.h"
-#include "../sprites/following_flying_monsters.h"
+#include "../actors/babar.h"
+#include "../actors/monsters.h"
+#include "../actors/walking_monsters.h"
+#include "../actors/flying_monster.h"
+#include "../actors/following_walking_monsters.h"
+#include "../actors/following_flying_monsters.h"
 #include "../video/camera.h"
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
 #include "../util/analyser.h"
 #include "../sound/sound_engine.h"
-#include "../sprites/projectiles_manager.h"
+#include "../actors/projectiles_manager.h"
 #include "../util/globals.h"
 
 

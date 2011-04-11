@@ -11,7 +11,7 @@
 #ifndef _PROJECTILES_
 #define _PROJECTILES_
 
-#include "sprites.h"
+#include "actor.h"
 
 class Static_data;
 
@@ -25,7 +25,7 @@ enum state_p {
  * 	@class Projectile
  * 	@brief Projectiles du jeu
  */
-class Projectile: public Sprite {
+class Projectile: public Actor {
 protected:
     state_p m_state;
     uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */

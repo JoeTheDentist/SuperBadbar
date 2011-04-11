@@ -16,7 +16,7 @@
 #include "../util/repertories.h"
 #include "../physic/moving_platform.h"
 #include "../video/camera.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../util/globals.h"
 
 Collisions_matrix::Collisions_matrix()
@@ -62,7 +62,7 @@ void Collisions_matrix::addStatic(int x, int y, std::string static_name)
 			m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 		}
 	}
-	analyser_static.close();	
+	analyser_static.close();
 }
 
 uint32_t Collisions_matrix::collision(uint32_t x, uint32_t y)

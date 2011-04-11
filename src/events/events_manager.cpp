@@ -16,7 +16,7 @@
 #include "../util/analyser.h"
 #include "../events/events.h"
 #include "../video/camera.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../video/pictures_container.h"
 
 

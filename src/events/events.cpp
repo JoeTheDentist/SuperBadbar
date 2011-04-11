@@ -15,7 +15,7 @@
 #include "../util/globals.h"
 #include "../util/analyser.h"
 #include "../util/repertories.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../items/weapons.h"
 #include "../video/talks.h"
 
@@ -40,9 +40,9 @@ Event::Event(std::string event_name, int x, int y):
 
 Event::~Event()
 {
-	if (m_analyser) 
+	if (m_analyser)
 		delete m_analyser;
-	if (m_picture) 
+	if (m_picture)
 		delete m_picture;
 }
 
@@ -106,7 +106,7 @@ Rect Event::current_pos() const
 	return m_pos;
 }
 
-void Event::process_weapon() 
+void Event::process_weapon()
 {
 	std::string weapon_name = m_analyser->read_string();
 	weapon_type weapon_type;

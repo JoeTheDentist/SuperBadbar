@@ -13,7 +13,7 @@
 /* distance à partir de laquelle le monstre se déplace suivant l'ai */
 #define SWITCH_DIST 400
 
-#include "sprites.h"
+#include "actor.h"
 #include "../video/anim_pic.h"
 #include "../sound/sonorisable.h"
 #include <list>
@@ -35,7 +35,7 @@ enum state_m {
  *
  */
 
-class Monster: public Sprite, public Sonorisable {
+class Monster: public Actor, public Sonorisable {
 protected:
     state_m m_state;
 	std::string m_nom;				/* sa nature (peut-etre à enlever) */
@@ -100,7 +100,7 @@ public:
 	 *	@return Vrai si les points de vies sont <= 0
 	 */
 	bool dead() const;
-	
+
 	void kill();
 
 	/*!

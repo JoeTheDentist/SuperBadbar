@@ -2,9 +2,9 @@
 #include <cmath>
 
 #include "AI.h"
-#include "../sprites/projectiles.h"
+#include "../actors/projectiles.h"
 
-AI::AI(Sprite * target, Rect * pos)
+AI::AI(Actor * target, Rect * pos)
 {
     m_target = target;
     m_pos = pos;

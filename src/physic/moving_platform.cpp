@@ -13,7 +13,7 @@
 #include "../game/static_data.h"
 #include "../video/camera.h"
 #include "../video/surface.h"
-#include "../sprites/babar.h"
+#include "../actors/babar.h"
 #include "../util/analyser.h"
 #include "../physic/collisions_manager.h"
 #include "../physic/collisions_matrix.h"

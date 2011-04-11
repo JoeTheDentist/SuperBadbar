@@ -10,7 +10,7 @@
 #ifndef _BABAR_
 #define _BABAR_
 
-#include "sprites.h"
+#include "actor.h"
 #include "../sound/sonorisable.h"
 #include "../util/analyser.h"
 #include "../video/anim_pic.h"
@@ -47,7 +47,7 @@ enum state_player {
  *	Une méthode doit renvoyer le tir au projectiles manager, au lieu de prendre le projectiles_manager en parametre
  *
  */
-class Babar: public Sprite, public Sonorisable {
+class Babar: public Actor, public Sonorisable {
 protected:
     state_player m_state;
     uint32_t m_fire_phase;	            /* phase du tir */

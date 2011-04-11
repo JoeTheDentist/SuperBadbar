@@ -18,7 +18,7 @@
 #include "../physic/moving_platform.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
-#include "../sprites/projectiles_manager.h"
+#include "../actors/projectiles_manager.h"
 #include "../video/surface.h"
 #include "../util/globals.h"
 

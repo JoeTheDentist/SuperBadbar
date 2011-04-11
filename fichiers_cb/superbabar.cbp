@@ -47,6 +47,7 @@
 		</Linker>
 		<Unit filename="..\src\AI\AI.cpp" />
 		<Unit filename="..\src\AI\AI.h" />
+		<Unit filename="..\src\actors\actors.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
 		<Unit filename="..\src\events\events.cpp" />
