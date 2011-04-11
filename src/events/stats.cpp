@@ -36,17 +36,17 @@ void Stats::alert()
     /* Si aucun message n'a été émis */
     if ( !m_msg_sent ) {
         switch (m_kills) {
-            case 2:
+            case 5:
                 m_msg_sent=true;
-                gAnims->alert("DOUBLE KILL !");
+                gAnims->alert("MEGA KILL !");
                 break;
             case 3:
                 m_msg_sent=true;
                 gAnims->alert("MULTI KILL !");
                 break;
-            case 5:
+            case 2:
                 m_msg_sent=true;
-                gAnims->alert("MEGA KILL !");
+                gAnims->alert("DOUBLE KILL !");
                 break;
             default:
                 break;

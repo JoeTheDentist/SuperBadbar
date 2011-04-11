@@ -53,6 +53,8 @@
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
 		<Unit filename="..\src\events\events_manager.h" />
+		<Unit filename="..\src\events\stats.cpp" />
+		<Unit filename="..\src\events\stats.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />

@@ -24,7 +24,7 @@ class Stats {
         ~Stats();
 
         /**
-         * Mise à jour : compte un cycle
+         * Mise à jour : compte un cycle, raz si besoin
          */
         void update();
 
