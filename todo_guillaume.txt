@@ -1,3 +1,6 @@
+AI, état d'arrêt
+Finir texte
+Z buffer ?
 
 Arbre branche un peu mieux
 Sang des monstres (moche pour le moment)

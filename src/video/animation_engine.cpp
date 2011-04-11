@@ -4,6 +4,9 @@
 #include "animation_engine.h"
 #include "../video/anim_table.h"
 #include "../util/analyser.h"
+#include "../video/anim_text.h"
+/* Temp */
+#include "../sprites/babar.h"
 
 
 Animation_engine::Animation_engine()
@@ -36,11 +39,30 @@ void Animation_engine::init(std::string lvl_name)
     }
 
     a.close();
+
+
+
+    /* Temp */
+    Rect pos_temp = {400,300,0,0};
+    add(new Anim_text("TEST !!!!!", 250, 100, 30), pos_temp, ENDED, false);
+
+}
+
+void Animation_engine::add(Animation * anim, Rect pos, anim_type type, bool falling)
+{
+    anim_pos a;
+    a.pos = pos;
+    Rect speed = {0};
+    a.speed = speed;
+    a.falling = falling;
+    a.anim = anim;
+    a.fixe = true;
+    m_anims.push_front(a);
 }
 
 void Animation_engine::add(std::string pic, Rect pos, anim_type type, bool falling)
 {
-    Rect speed = {0,0,0,0};
+    Rect speed = {0};
     add(pic, pos, type, speed, falling);
 }
 
@@ -51,6 +73,7 @@ void Animation_engine::add(std::string pic, Rect pos, anim_type type, Rect speed
     a.pos = pos;
     a.speed = speed;
     a.falling = falling;
+    a.fixe=false;
 
     /* création de l'animation */
     int k;
@@ -105,8 +128,17 @@ void Animation_engine::add(std::string pic, int x, int y, anim_type type, int sx
 void Animation_engine::display_anims(Camera * camera)
 {
     std::list<anim_pos>::iterator it;
+    Rect pos;
+    Surface * surf;
 	for (it = m_anims.begin(); it != m_anims.end(); it++) {
-	    camera->display_picture( (*it).anim->curr_pic(), &(*it).pos);
+	    pos = (*it).pos;
+	    surf = (*it).anim->curr_pic();
+	    /* Si on est en animation fixe, la position est le centre de l'image */
+	    if ( (*it).fixe ) {
+            pos.x -= surf->w()/2;
+            pos.y -= surf->h()/2;
+	    }
+	    camera->display_picture( surf, &pos, (*it).fixe);
 	}
 }
 

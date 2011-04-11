@@ -23,7 +23,7 @@ struct Rect {
 };
 
 /*!
-*	@class Surface 
+*	@class Surface
 *	@brief Classe representant toute image du jeu (sans sa position)
 */
 class Surface {
@@ -35,7 +35,7 @@ public:
 
 	Surface():
 		m_surface(NULL) {}
-		
+
 	/*!
 	*	@brief Constructeur
 	*	@param filename Le chemin du fichier à partir de la racine du projet
@@ -77,6 +77,18 @@ public:
 	*	@return La hauteur de l'image
 	*/
 	int h();
+
+	/*!
+	*	@brief Mutateur
+	*	@param La largeur de l'image
+	*/
+	void set_w(int w);
+
+	/*!
+	*	@brief Mutateur
+	*	@return La hauteur de l'image
+	*/
+	void set_h(int h);
 
 };
 

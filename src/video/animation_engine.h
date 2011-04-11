@@ -19,9 +19,10 @@
 
 struct anim_pos {
     Rect pos;
-    Anim_pic * anim;
+    Animation * anim;
     Rect speed;
     bool falling;
+    bool fixe;
 };
 
 class Animation_engine {
@@ -47,6 +48,15 @@ class Animation_engine {
          *  @param lvl : chemin vers dossier lvl courant
          */
         void init(std::string lvl_name);
+
+        /**
+         *  @brief Fonction d'ajout
+         *  @param anim : animation
+         *  @param pos : position où jouer l'animation
+         *  @param type : type d'animation
+         *  @param falling : si l'animation doit subir la gavité
+         */
+        void add(Animation * anim, Rect pos, anim_type type, bool falling);
 
         /**
          *  @brief Fonction d'ajout

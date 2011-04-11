@@ -7,33 +7,25 @@
  *
  */
 
-#ifndef ANIMATION_H_INCLUDED
-#define ANIMATION_H_INCLUDED
+#ifndef ANIM_PIC_H_INCLUDED
+#define ANIM_PIC_H_INCLUDED
 
 #include <string>
 #include "../util/globals.h"
+#include "../video/animation.h"
 
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
 class Surface;
-
-/* Cyclique, à supprimer à la fin, à laisser sur la dernière image */
-enum anim_type {
-    CYCLE, ENDED, NOEND
-};
+class Animation;
 
 /**
  * 	@class Animation
  * 	@brief Classe animation, répresentant une succession d'images
  */
-class Anim_pic {
+class Anim_pic: public Animation {
 private:
     Surface ** m_images;
-    int m_curr;                 /* image courante */
-    int m_size;                 /* nombre d'images stockees */
-    anim_type m_type;           /* type de l'animation */
-    bool m_finished;            /* si l'animation peut etre interrompue */
-    int m_phase;                /* nombre de cycle depuis lequel l'animation a ete cree */
 
 public:
 

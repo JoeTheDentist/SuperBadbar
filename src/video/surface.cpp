@@ -35,7 +35,7 @@ Surface::Surface(Surface * s)
 
 Surface::~Surface()
 {
-	/* 
+	/*
 		NE PAS DELETER m_surface !! Ce pointeur est partage
 		et sera deleted par le gestionnaire de surfaces
 	*/
@@ -63,3 +63,12 @@ int Surface::h()
 	return m_surface->h;
 }
 
+void Surface::set_w(int w)
+{
+    m_surface->w = w;
+}
+
+void Surface::set_h(int h)
+{
+    m_surface->h = h;
+}
