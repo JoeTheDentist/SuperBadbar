@@ -22,6 +22,12 @@ Stats::~Stats()
 void Stats::update()
 {
     m_date++;
+
+    if ( m_date-m_date_last_kill >= INT_KILL ) {
+        m_kills = 0;
+        m_date_last_kill = 0;
+    }
+
     alert();
 }
 
@@ -60,7 +66,7 @@ void Stats::hit()
 void Stats::kill()
 {
     /* Si on a fait un kill il y a peu ou si c'est le premier de la série, on l'ajoute */
-    if ( m_date-m_date_last_kill < INT_KILL || m_date_last_kill==0 ) {
+    if ( m_date-m_date_last_kill < INT_KILL || (m_date_last_kill==0 && m_kills==0) ) {
         m_kills++;
     }
     m_frenzy++;

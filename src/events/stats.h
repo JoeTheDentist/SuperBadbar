@@ -1,7 +1,7 @@
 #ifndef STATS_H_INCLUDED
 #define STATS_H_INCLUDED
 
-#define INT_KILL 20 /* nombre de cycle maximal pour compter deux kills */
+#define INT_KILL 50 /* nombre de cycle maximal pour compter deux kills */
 
 /**
  * Classe associée à un Babar, s'occupe de ses statistiques.
