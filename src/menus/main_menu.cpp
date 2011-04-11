@@ -7,6 +7,7 @@
 #include "../game/game.h"
 #include "../game/levels_manager.h"
 #include "../menus/menu_action.h"
+#include "../menus/options_menu.h"
 #include "../video/surface_text.h"
 
 Main_menu::Main_menu() :
@@ -41,6 +42,7 @@ bool Main_menu::treat_choice(int choice)
 			launch_game();
 			return true;
 		case 2:
+			launch_options();
 			return true;
 		case 3:
 			return false;
@@ -55,4 +57,10 @@ void Main_menu::launch_game()
 	Levels_manager *levels_manager = new Levels_manager();
 	levels_manager->play();
 	delete levels_manager;	
+}
+
+void Main_menu::launch_options()
+{
+	Options_menu *om = new Options_menu();
+	delete om;	
 }

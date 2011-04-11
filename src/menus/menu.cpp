@@ -41,6 +41,12 @@ void Menu::loop()
 		case mk_up:
 			m_menu_actions.incr_curs(-1);
 			break;
+		case mk_left:
+			m_menu_actions.incr_value(-1);
+			break;
+		case mk_right:
+			m_menu_actions.incr_value(1);
+			break;
 		case mk_enter:
 			go_on = treat_choice(m_menu_actions.get_selected_action());
 			break;

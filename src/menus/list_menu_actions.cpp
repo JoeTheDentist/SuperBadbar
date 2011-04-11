@@ -28,9 +28,9 @@ List_menu_actions::~List_menu_actions()
 	PRINT_CONSTR(2, "Destruction d'une liste d'actions (List_menu_actions)")
 }
 
-void List_menu_actions::add_action(std::string action, int action_num)
+void List_menu_actions::add_action(std::string action, int action_num, int action_value)
 {
-	m_actions.push_back(new Menu_action(action, action_num));
+	m_actions.push_back(new Menu_action(action, action_num, action_value));
 	m_iterator = m_actions.begin();
 }
 
@@ -44,6 +44,13 @@ void List_menu_actions::incr_curs(int dep)
 	}
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 }
+
+void List_menu_actions::incr_value(int value)
+{
+	(*m_iterator)->incr_value(value);
+	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
+}
+
 
 
 void List_menu_actions::display(Camera *camera, Rect pos)

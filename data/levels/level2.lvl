@@ -6,8 +6,8 @@ level1.png
 3400
 
 #Babar#
-218
-3209
+1716
+3208
 1
 
 #Statics#
@@ -33,7 +33,7 @@ following_flying_monster fubob 3007 1051
 following_flying_monster fubob 1694 1313
 !
 #Events#
-29
+30
 event shotgun 1609 3246
 event shotgun 1813 3255
 event peanut 2056 2045
@@ -63,6 +63,7 @@ event peanut 2012 1649
 event peanut 2078 1662
 event peanut 2101 1720
 event peanut 2036 1753
+event victory 1912 1393
 !
 #Platforms#
 18

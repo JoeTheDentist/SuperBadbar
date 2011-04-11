@@ -47,14 +47,20 @@ class List_menu_actions {
 	*	@brief Ajoute a la liste une action possible, a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action
 	*	@param action_num Le numero de l'action
+	*	@param action_value Une valeur donnee a l'action (-1 si on n'en veut pas)
 	*/
-	void add_action(std::string action_name, int action_num);
+	void add_action(std::string action_name, int action_num, int action_value = -1);
 	
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)
 	*	@param dep Le deplacement du curseur (modulo le nombre d'actions)
 	*/
 	void incr_curs(int dep);
+	/*!
+	*	@brief Augmente la valeur (s'il y en a) de l'action courante (et joue un son)
+	*	@param value Le deplacement de la valeur
+	*/
+	void incr_value(int value);
 	
 	/*!
 	*	@brief Affiche a l'ecran les actions

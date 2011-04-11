@@ -12,7 +12,7 @@
 
 #include "weapons.h"
 #include "../util/debug.h"
-#include "../sprites/projectiles.h"
+#include "../actors/projectiles.h"
 
 
 Weapon::Weapon()

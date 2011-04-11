@@ -12,7 +12,7 @@
 
 #include "machinegun.h"
 #include "../util/debug.h"
-#include "../sprites/projectiles.h"
+#include "../actors/projectiles.h"
 #include "../util/globals.h"
 #include "../util/repertories.h"
 

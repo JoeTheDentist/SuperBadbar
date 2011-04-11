@@ -11,6 +11,7 @@
 #include "../util/repertories.h"
 #include "../util/debug.h"
 #include "../video/font.h"
+#include <iostream>
 
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
@@ -23,6 +24,8 @@ Surface_text::Surface_text(std::string text, int size, int r, int g, int b, std:
 	font_color.g = g;
 	font_color.b = b;
 	m_surface = TTF_RenderText_Blended(font, text.c_str(), font_color);
+	if (!m_surface)
+		PRINT_DEBUG(1, "Erreur dans le chargement d'une surface texte");
 	TTF_CloseFont(font);
 }
 

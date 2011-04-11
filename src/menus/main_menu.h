@@ -21,6 +21,7 @@ class Main_menu: public Menu {
 	protected:
 	virtual void refresh_screen();
 	void launch_game();
+	void launch_options();
 	virtual bool treat_choice(int choice);
 };
 

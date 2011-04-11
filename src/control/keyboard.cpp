@@ -150,6 +150,10 @@ menu_key Keyboard::treat_menu_key(SDL_Event event)
 					return mk_up;
 				case SDLK_DOWN:
 					return mk_down;
+				case SDLK_LEFT:
+					return mk_left;
+				case SDLK_RIGHT:
+					return mk_right;
 				case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
 					return mk_enter;
 				default:
@@ -163,6 +167,10 @@ menu_key Keyboard::treat_menu_key(SDL_Event event)
 					return mk_up;
 				case k_down:
 					return mk_down;
+				case k_right:
+					return mk_right;
+				case k_left:
+					return mk_left;
 				default:
 					break;
 			}
