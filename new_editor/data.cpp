@@ -119,16 +119,17 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it)->selectItem(x, y);	
 		}
 	}
-	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
-		if ((*it)->selectItem(x, y)) {
-			return (*it)->selectItem(x, y);	
-		}
-	}
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
 		if ((*it)->selectItem(x, y)) {
 			return (*it)->selectItem(x, y);	
 		}	
 	}	
+	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
+		}
+	}
+
 	return NULL;
 }
 

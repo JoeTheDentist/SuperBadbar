@@ -19,7 +19,7 @@ class Main_menu: public Menu {
 	~Main_menu();
 	
 	protected:
-	virtual void refresh_screen();
+	virtual void refresh_screen(bool flip = true);
 	void launch_game();
 	void launch_options();
 	virtual bool treat_choice(int choice);
