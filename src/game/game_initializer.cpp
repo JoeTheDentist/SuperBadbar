@@ -1,7 +1,7 @@
 #include "game_initializer.h"
 #include <time.h>
 #include "../util/debug.h"
-
+#include "../control/keyboard.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 #include "../../lib/fmodapi375win/api/inc/fmod.h"
@@ -33,6 +33,7 @@ bool Game_initializer::init_game()
 	gSound = new Sound_engine();
 	gGraphics = new Graphic_engine();
 	gGraphics->init_graphic_engine(false);
+	gKeyboard = new Keyboard();
 	return true;
 }
 

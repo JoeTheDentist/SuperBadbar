@@ -30,9 +30,9 @@ class Sonorisable;
 class Sound_engine {
 private:
 	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
-
 	FSOUND_STREAM *m_music;
-
+	int m_sounds_volume;
+	int m_music_volume;
 
 
 public:
@@ -58,7 +58,11 @@ public:
 	void play_sound(std::string key);
 
 	void play_sound(Sonorisable *sonorisable);
-
+	
+	void set_sounds_volume(int v);
+	void set_music_volume(int v);
+	int get_sounds_volume() const;
+	int get_music_volume() const;
 };
 
 

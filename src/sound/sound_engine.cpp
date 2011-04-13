@@ -18,7 +18,9 @@
 #include "../util/globals.h"
 
 
-Sound_engine::Sound_engine()
+Sound_engine::Sound_engine():
+	m_sounds_volume(99),
+	m_music_volume(99)
 {
 
 	PRINT_CONSTR(1, "Construction du Sound_engine")
@@ -77,3 +79,23 @@ void Sound_engine::play_sound(Sonorisable *sonorisable)
 		sonorisable->pop_sound();
 	}
 }
+
+void Sound_engine::set_sounds_volume(int v)
+{
+	m_sounds_volume = v;
+}
+void Sound_engine::set_music_volume(int v)
+{
+	m_music_volume = v;
+}
+
+int Sound_engine::get_sounds_volume() const
+{
+	return m_sounds_volume;
+}
+
+int Sound_engine::get_music_volume() const
+{
+	return m_music_volume;
+}
+

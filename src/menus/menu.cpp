@@ -29,7 +29,7 @@ Menu::~Menu()
 void Menu::loop()
 {
 	bool go_on = true;
-	Keyboard *keyboard = new Keyboard();
+	Keyboard *keyboard = gKeyboard;
 	keyboard->enable_key_repeat();
 	while (go_on) {
 		this->refresh_screen();
@@ -57,7 +57,7 @@ void Menu::loop()
 			break;		
 		}
 	}
-	delete keyboard;
+	keyboard->disable_key_repeat();
 }
 
 void Menu::refresh_screen(bool flip)
