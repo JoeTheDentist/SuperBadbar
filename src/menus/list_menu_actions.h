@@ -75,6 +75,8 @@ class List_menu_actions {
 	*/
 	int get_selected_action();
 	
+	int get_selected_action_value();
+	
 	/*!
 	*	@brief Accesseur
 	*	@return La largeur de la Surface_text de la plus large action

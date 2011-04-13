@@ -70,8 +70,6 @@ void Game::init_game(std::string level_name)
 Game::~Game()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Game")
-	delete gKeyboard;
-	gKeyboard = NULL;
 	delete gGame_engine;
 	gGame_engine = NULL;
     delete gBabar;

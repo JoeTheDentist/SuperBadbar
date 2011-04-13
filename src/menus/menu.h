@@ -19,6 +19,10 @@ class Menu {
 	~Menu();
 	virtual void loop();
 	
+	// appelee a chaque tour de loop
+	// ne fait rien a priori mais peut etre redefinie
+	virtual void aux_loop() {}
+	
 	protected:
 	virtual void refresh_screen(bool flip = true);
 	virtual bool treat_choice(int choice) = 0;

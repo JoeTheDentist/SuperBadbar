@@ -70,6 +70,15 @@ int List_menu_actions::get_selected_action()
 	return (*m_iterator)->get_index();
 }
 
+int List_menu_actions::get_selected_action_value()
+{
+	if (m_actions.empty()) {
+		PRINT_DEBUG(1, "Actions list is empty, default value returned")
+		return 0;
+	}
+	return (*m_iterator)->get_value();
+}
+
 int List_menu_actions::width()
 {
 	int res = 0;

@@ -41,6 +41,7 @@ bool Game_initializer::close_game()
 {
 	delete gSound;
 	delete gGraphics;
+	delete gKeyboard;
 	PRINT_TRACE(1, "Fermeture de TTF")
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de SDL")

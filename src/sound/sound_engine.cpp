@@ -81,12 +81,17 @@ void Sound_engine::play_sound(Sonorisable *sonorisable)
 }
 
 void Sound_engine::set_sounds_volume(int v)
-{
+{	
 	m_sounds_volume = v;
+	FSOUND_SetVolume(FSOUND_ALL, (255.0 * (double)m_sounds_volume / 100.0));	
+	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
+
 }
+
 void Sound_engine::set_music_volume(int v)
 {
 	m_music_volume = v;
+	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));	
 }
 
 int Sound_engine::get_sounds_volume() const

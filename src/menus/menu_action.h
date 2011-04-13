@@ -22,6 +22,8 @@ class Menu_action {
 	
 	int get_index() { return m_index; }
 	
+	int get_value() {return m_value;}
+	
 	
 	Surface_text *get_surface(bool selected = false) 
 	{

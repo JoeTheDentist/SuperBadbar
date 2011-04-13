@@ -32,6 +32,7 @@ void Menu::loop()
 	Keyboard *keyboard = gKeyboard;
 	keyboard->enable_key_repeat();
 	while (go_on) {
+		aux_loop();
 		this->refresh_screen();
 		menu_key key = keyboard->wait_menu_key();
 		switch (key) {

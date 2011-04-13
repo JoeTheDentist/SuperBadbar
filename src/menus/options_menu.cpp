@@ -1,6 +1,7 @@
 #include "options_menu.h"
 
 #include "../video/camera.h"
+#include "../sound/sound_engine.h"
 #include "../util/repertories.h"
 #include "../util/globals.h"
 #include "../control/keyboard.h"
@@ -23,6 +24,21 @@ Options_menu::~Options_menu()
 {
 }
 
+void Options_menu::aux_loop()
+{
+	switch(m_menu_actions.get_selected_action()) {
+	case 1:
+		gSound->set_sounds_volume(m_menu_actions.get_selected_action_value());
+		break;
+	case 2:
+		gSound->set_music_volume(m_menu_actions.get_selected_action_value());
+		break;
+	default:
+		break;
+		
+	
+	}
+}
 
 bool Options_menu::treat_choice(int choice)
 {
