@@ -15,7 +15,7 @@
 #include "../game/game.h"
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
-#include "../video/surface.h"
+#include "../sprites/sprites_manager.h"
 
 
 /**************************
@@ -24,7 +24,7 @@
 
 
 
-Projectile::Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, uint32_t damage)
+Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
@@ -34,9 +34,8 @@ Projectile::Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, 
     std::string rep = PIC_PROJ_R;
 
     /* Rajouter le nom... */
-    m_animt = new Anim_table(rep+"simple/simple");
-
-    m_animt->set_rect(m_pos);
+    m_sprite = gSprites->add_table(rep+"simple/simple", MIDDLEGROUND);
+    m_sprite->synchro(&m_pos);
 
     m_speed.x = speedx;
     m_speed.y = speedy;
@@ -48,9 +47,9 @@ Projectile::Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, 
 void Projectile::update_pos(Collisions_manager *collisions_manager)
 {
 	m_phase++;
-	uint32_t coll;
+	unsigned int coll;
 	/* cas où le sprite descend */
-	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
 		if (Collisions_manager::is_down_coll(coll)){
 			m_dead = true;
@@ -61,21 +60,21 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	}
 
 	/* cas où le sprite monte */
-	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+	for (int speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (Collisions_manager::is_up_coll(collisions_manager->get_matrix()->up_collision_type(m_pos))){
 			m_dead = true;
 		}
 	}
 
 	/* cas où le sprite va à droite */
-	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
 	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;
 			}
@@ -90,13 +89,7 @@ Projectile::~Projectile()
 	PRINT_CONSTR(3, "Destruction d'un projectile")
 }
 
-Surface *Projectile::current_picture() const
-{
-    m_animt->change_anim(NONE, m_dir);
-    return m_animt->curr_pic();
-}
-
-uint32_t Projectile::damage() const
+unsigned int Projectile::damage() const
 {
     return m_damage;
 }

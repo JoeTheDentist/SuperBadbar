@@ -11,12 +11,26 @@
 #ifndef _GLOBALS_
 #define _GLOBALS_
 
+class Sound_engine;
+class Collisions_manager;
+class Static_data;
+class Projectiles_manager;
+class Events_manager;
+class Babar;
+class Sprites_manager;
+class Animated_set_manager;
+class Graphic_engine;
+class Keyboard;
+class Stats;
+
 #include "../util/repertories.h"
+#include "../actors/actor.h"
 #include "../sound/sound_engine.h"
 #include "../physic/collisions_manager.h"
 #include "../game/static_data.h"
 #include "../video/graphic_engine.h"
 #include "../game/game_engine.h"
+#include "../sets/animated_set_manager.h"
 
 #define BOX_SIZE 5
 
@@ -34,29 +48,28 @@
     #define RAC ".."
 #endif
 
-class Sound_engine;
-class Collisions_manager;
-class Static_data;
-class Projectiles_manager;
-class Events_manager;
-class Babar;
-class Animation_engine;
-class Graphic_engine;
-class Keyboard;
-class Stats;
-
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
 extern Static_data * gStatic;
 extern Projectiles_manager * gProj; /* liste si multi */
 extern Events_manager * gEvent;
 extern Babar * gBabar; /* liste si multi */
-extern Animation_engine * gAnims;
-extern Graphic_engine *gGraphics;
-extern Game_engine *gGame_engine;
-extern Keyboard *gKeyboard;
+extern Sprites_manager * gSprites;
+extern Animated_set_manager * gSets;
+extern Graphic_engine * gGraphics;
+extern Game_engine * gGame_engine;
+extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
 
 double dist(Rect A, Rect B);
+
+/**
+ * Fonction permettant de savoir si un fichier existe ou non.
+ * /!\ Il ne prend pas en compte la case. /!\
+ * Avantage, ne depend pas du fait qu'on ait des permissions ou non sur le fichier.
+ *
+ * Code de DPAK, http://www.techbytes.ca/techbyte103.html.
+ */
+bool FileExists(std::string strFilename);
 
 #endif

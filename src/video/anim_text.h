@@ -1,13 +1,13 @@
 #ifndef ANIM_TEXT_H_INCLUDED
 #define ANIM_TEXT_H_INCLUDED
 
-#include "../video/animation.h"
+#include "../video/anim.h"
 #include "../video/surface_text.h"
 
-class Animation;
+class Anim;
 
 
-class Anim_text: public Animation {
+class Anim_text: public Anim {
     private:
         std::string m_text;
         int m_begin_size;
@@ -40,6 +40,11 @@ class Anim_text: public Animation {
         * @return l'image de l'animation a afficher.
         */
         Surface * curr_pic();
+
+        /*!
+        * @brief Passe à l'image suivante
+        */
+        void next_pic();
 
         /*!
         * @brief si on peut interrompre l'animation.

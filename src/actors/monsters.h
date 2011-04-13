@@ -18,15 +18,11 @@
 #include "../sound/sonorisable.h"
 #include <list>
 
-class Animation;
+class Anim;
 class Babar;
 class Surface;
 class Weapon;
 class Projectile;
-
-enum state_m {
-    WALKING, WAIT, DEATH
-};
 
 
 /**
@@ -88,7 +84,7 @@ public:
 	 * 	@brief Fait perdre des vies au monstre
 	 *	@param damage Le nombre de viesà faire perdre
 	 */
-	void damage(uint32_t damage);
+	void damage(unsigned int damage);
 
 	/**
 	 *	@brief Methode reservee pour les actions speciales telles que le tir

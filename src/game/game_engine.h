@@ -36,8 +36,8 @@ class Sound_engine;
  */
 class Game_engine {
 private:
-	uint32_t m_matrix_weight;					/* Largeur de la matrice */
-	uint32_t m_matrix_height;					/* Hauteur de la matrice */
+	unsigned int m_matrix_weight;					/* Largeur de la matrice */
+	unsigned int m_matrix_height;					/* Hauteur de la matrice */
 	Monsters_manager *m_monsters_manager;
 	bool m_victory;
 public:
@@ -130,14 +130,14 @@ public:
 	 *	@return Vrai si le joueur a gagne
 	*/
 	bool has_won();
-	
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return Vrai si le joueur a perdu
 	*/
 	bool has_lost();
-	
-	
+
+
 };
 
 

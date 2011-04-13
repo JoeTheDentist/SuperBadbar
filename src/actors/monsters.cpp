@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #include "monsters.h"
+#include "../util/globals.h"
 #include "../util/repertories.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
@@ -21,8 +22,9 @@
 #include "../items/weapons.h"
 #include "../items/monster_basic_weapon.h"
 #include "babar.h"
+#include "../sprites/sprites_manager.h"
 
-
+class Animated_set_manager;
 
 
 /*********************************
@@ -58,16 +60,17 @@ void Monster::initFromMonsterFile(std::string file)
 			m_weapon = new Monster_basic_weapon();
 	}
 	analyserMonster.close();
-    m_animt = new Anim_table(PIC_MONSTERS_R + m_nom + "/" + m_nom);
 	m_speed.x = m_speed_def;
 	m_dir = RIGHT;
-    m_animt->set_rect(m_pos);
+
+	m_sprite = gSprites->add_table(PIC_MONSTERS_R + m_nom + "/" + m_nom, MIDDLEGROUND);
+    m_sprite->synchro(&m_pos);
 }
 
 Surface *Monster::current_picture() const
 {
-    m_animt->change_anim(m_state, m_dir, m_fire, true);
-    return m_animt->curr_pic();
+    m_sprite->change_anim(m_state, m_dir, m_fire, true);
+    return m_sprite->curr_pic();
 }
 
 void Monster::update_speed()
@@ -98,7 +101,7 @@ void Monster::update_speed_ai()
     update_speed_simple();
 }
 
-void Monster::damage(uint32_t damage)
+void Monster::damage(unsigned int damage)
 {
 	m_life -= damage;
 }
@@ -121,7 +124,7 @@ void Monster::kill()
 	if (m_speed.y < 0)
 		m_speed.y = 0;
 	gSound->play_sound(MONSTERS_SOUNDS_R + "hit.mp3");
-	gAnims->add(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, NOEND, m_speed, true);
+	gSets->add_set("monsters/"+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, m_speed);
 }
 
 bool Monster::can_fire()

@@ -1,5 +1,7 @@
 
 #include <math.h>
+#include <sys/stat.h>
+
 #include "globals.h"
 
 Sound_engine * gSound = NULL;
@@ -8,7 +10,9 @@ Static_data * gStatic = NULL;
 Projectiles_manager * gProj = NULL;
 Events_manager * gEvent = NULL;
 Babar * gBabar = NULL;
-Animation_engine * gAnims = NULL;
+Sprites_manager * gSprites = NULL;
+/* TODO les virer de global */
+Animated_set_manager * gSets = NULL;
 Graphic_engine * gGraphics = NULL;
 Game_engine * gGame_engine = NULL;
 Keyboard * gKeyboard = NULL;
@@ -27,4 +31,28 @@ double dist(Rect A, Rect B)
     mB.y = mB.y+mB.h/2;
 
     return sqrt( (mA.x-mB.x)*(mA.x-mB.x) + (mA.y-mB.y)*(mA.y-mB.y) );
+}
+
+bool FileExists(std::string strFilename) {
+  struct stat stFileInfo;
+  bool blnReturn;
+  int intStat;
+
+  // Attempt to get the file attributes
+  intStat = stat(strFilename.c_str(),&stFileInfo);
+  if(intStat == 0) {
+    // We were able to get the file attributes
+    // so the file obviously exists.
+    blnReturn = true;
+  } else {
+    // We were not able to get the file attributes.
+    // This may mean that we don't have permission to
+    // access the folder which contains this file. If you
+    // need to do that level of checking, lookup the
+    // return values of stat which will give you
+    // more details on why stat failed.
+    blnReturn = false;
+  }
+
+  return(blnReturn);
 }

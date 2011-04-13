@@ -1,5 +1,5 @@
-#ifndef ANIMATION_H_INCLUDED
-#define ANIMATION_H_INCLUDED
+#ifndef ANIM_H_INCLUDED
+#define ANIM_H_INCLUDED
 
 #include "../video/surface.h"
 
@@ -10,7 +10,7 @@ enum anim_type {
     CYCLE, ENDED, NOEND
 };
 
-class Animation {
+class Anim {
     protected:
         int m_curr;                 /* image courante */
         int m_size;                 /* nombre d'images stockees */
@@ -22,28 +22,29 @@ class Animation {
     public:
         /*!
         * @brief Image a afficher.
-        *
         * @return l'image de l'animation a afficher, et MET A JOUR !!! l'image suivante.
         */
         virtual Surface * curr_pic()=0;
 
         /*!
+        * @brief Passe à l'image suivante
+        */
+        virtual void next_pic()=0;
+
+        /*!
         * @brief si on peut interrompre l'animation.
-        *
         * @return booleen, true si on peut l'interrompre.
         */
         virtual bool interruptable()=0;
 
         /*!
         * @brief si on peut supprimer l'animation.
-        *
         * @return booleen, true si on peut la suppr.
         */
         virtual bool deletable()=0;
 
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
-         *
          *  @param pos Rect à modifier
          */
         virtual void set_rect(Rect &pos)=0;
@@ -55,4 +56,4 @@ class Animation {
         virtual void set_img(int p)=0;
 };
 
-#endif // ANIMATION_H_INCLUDED
+#endif // ANIM_H_INCLUDED

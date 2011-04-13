@@ -3,31 +3,42 @@
 
 #define GRAVITE 7           /* Constante pour la décélération de saut */
 #define DAMAGE_BOX_RATIO 5
-#include "../items/weapons.h"
-#include "../video/anim_pic.h"
-#include "../video/anim_table.h"
-#include "../video/displayable.h"
 
-/* /!\ Les enums direction et vertical sont dans weapon... */
+/* Différents états du joueur */
+enum state_player {
+    STATIC, WALK, JUMP, CROUCH, CROUCH_WALKING
+};
+
+/* Différents états des monstres */
+enum state_m {
+    WALKING, WAIT, DEATH
+};
+
+
+enum direction {
+    LEFT, RIGHT, UP, DOWN, NOPE
+};
+
+#include "../items/weapons.h"
+#include "../sprites/sprites.h"
+#include "../video/displayable.h"
 
 class Static_data;
 class Keyboard;
-class Camera;
-class Anim_table;
 class Collisions_manager;
-class Surface;
+class Sprite;
 
 /**
  * 	@class Actor
  * 	@brief Classe mère à tous les acteurs du jeux
  */
-class Actor: public Displayable {
+class Actor {
 protected:
-	Rect m_pos; 		        /* position du sprite et sa taille */
-	Rect m_speed;		        /* vitesse du sprite */
-	direction m_dir;    /* direction directione */
-	Anim_table * m_animt;     /* gestionnaire d'animations */
-	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
+	Rect m_pos; 		/* position du sprite et sa taille */
+	Rect m_speed;		/* vitesse du sprite */
+	direction m_dir;    /* direction */
+	Sprite * m_sprite;  /* Représentation de l'acteur */
+	int m_phase;        /* temps depuis création, en nombre de cycle */
 public:
 	/*!
 	 *	@brief Constructeur
@@ -37,13 +48,7 @@ public:
 	/*!
 	 *	@brief Destructeur
 	*/
-	virtual ~Actor();
-
-	/*!
-	 *	@brief Accesseur
-	 *	@return Un pointeur vers l'image actuelle du sprite
-	*/
-    virtual Surface *current_picture() const;
+    virtual ~Actor();
 
 	/*!
 	 *	@brief Met à jour la position du sprite
@@ -63,21 +68,9 @@ public:
 
 	/*!
 	 *	@brief Accesseur
-	 *	@return L'abscisse de la position du sprite
-	*/
-	uint32_t position_x() const;
-
-	/*!
-	 *	@brief Accesseur
-	 *	@return L'ordonnée de la position du sprite
-	*/
-	uint32_t position_y() const;
-
-	/*!
-	 *	@brief Accesseur
 	 *	@return La phase du sprite
 	*/
-	uint32_t phase() const;
+	int phase() const;
 
 	/*!
 	 *	@brief Accesseur

@@ -15,14 +15,53 @@
 #include "../video/surface.h"
 
 
-Anim_pic::Anim_pic(std::string * s, int size, anim_type type) {
+Anim_pic::Anim_pic(std::string anim_name, anim_type type) {
+    int nb_pic = 0;
+    std::string sup;
+    if ( FileExists(PIC_R+anim_name+"_"+"0"+PICS_EXT) ) {
+        sup = "_";
+    } else if ( FileExists(PIC_R+anim_name+"0"+PICS_EXT) ) {
+        sup = "";
+    } else if ( FileExists(PIC_R+anim_name+PICS_EXT) ) {
+        /* si on a juste une image avec le nom stipulé */
+        m_images = new Surface*[1];
+        m_size = 1;
+        m_curr = 0;
+        m_phase = 0;
+        m_images[0] = new Surface(PIC_R+anim_name+PICS_EXT);
+
+        m_type = type;
+        if ( type == CYCLE ) {
+            m_finished = true;
+        } else {
+            m_finished = false;
+        }
+
+        return;
+    } else {
+        PRINT_DEBUG(1, "Fichier inexistant %s, crash iminent !!!", anim_name.c_str() )
+    }
+
+    std::string test = anim_name;
+
+    /* calcul du nombre d'images */
+    char num[3];
+    int size = 0;
+    sprintf(num,"%d",size);
+    for (size=0; FileExists(PIC_R+anim_name+sup+num+PICS_EXT); size++ ) {
+        sprintf(num,"%d",size);
+    }
+    /* TODO comprendre pq il faut -1 */
+    size -= 1;
+
     m_images = new Surface*[size];
     m_size = size;
     m_curr = 0;
     m_phase = 0;
 
     for (int i=0;i<size;i++) {
-        m_images[i] = new Surface(s[i]);
+        sprintf(num,"%d",i);
+        m_images[i] = new Surface(PIC_R+anim_name+sup+num+PICS_EXT);
     }
 
     m_type = type;
@@ -44,6 +83,11 @@ Anim_pic::~Anim_pic() {
 Surface * Anim_pic::curr_pic()
 {
     Surface *image = m_images[m_curr];
+    return image;
+}
+
+void Anim_pic::next_pic()
+{
     m_phase++;
     m_phase%=ANIMATION_SPEED;
 
@@ -59,7 +103,6 @@ Surface * Anim_pic::curr_pic()
             m_finished = true;
         }
     }
-    return image;
 }
 
 bool Anim_pic::interruptable()

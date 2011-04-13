@@ -11,107 +11,95 @@
 #ifndef _SPRITES_
 #define _SPRITES_
 
-#define GRAVITE 7           /* Constante pour la décélération de saut */
-#define DAMAGE_BOX_RATIO 5
-#include "../items/weapons.h"
+#include "../actors/actor.h"
+#include "../video/surface.h"
 
-
-	/*!
-	 *	@brief Etat, utile pour les animations, pour savoir quelle serie d'image afficher
-	 *
-	 *	Sert également à savoir ce que le sprite peut ou ne peut pas faire
-	*/
-
-#include "../video/anim_pic.h"
-#include "../video/anim_table.h"
-#include "../video/displayable.h"
-
-/* /!\ Les enums direction et vertical sont dans weapon... */
-
-class Static_data;
-class Keyboard;
-class Camera;
-class Anim_table;
-class Collisions_manager;
 class Surface;
+
+enum screen_level {
+    BACKGROUND, MIDDLEGROUND, FOREGROUND, DASHGROUND /* le dernier existe pas en anglais, c'est une blague !*/
+};
 
 /**
  * 	@class Sprite
- * 	@brief Entités 2D mobiles et afichables
+ * 	@brief Entités 2D afichables
  */
-class Sprite: public Displayable {
-protected:
-	Rect m_pos; 		        /* position du sprite et sa taille */
-	Rect m_speed;		        /* vitesse du sprite */
-	direction m_dir;    /* direction directione */
-	Anim_table * m_animt;     /* gestionnaire d'animations */
-	uint32_t m_phase;		    /* phase pour alterner les images lors du déplacememnt */
-public:
-	/*!
-	 *	@brief Constructeur
-	*/
-	Sprite();
+class Sprite {
+    protected:
+        Rect * m_pos; 		    /* position du sprite et sa taille, pointe sur le Rect de son acteur */
+        unsigned int m_phase;	/* phase pour alterner les images lors du déplacememnt */
+        screen_level m_lvl;     /* niveau du plan d'affichage */
+        bool m_to_delete;       /* si le sprite est à détruire, ce booléen est mis à jour par son acteur */
 
-	/*!
-	 *	@brief Destructeur
-	*/
-	virtual ~Sprite();
+    public:
+        /**
+         *	@brief Constructeur
+         */
+        Sprite();
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return Un pointeur vers l'image actuelle du sprite
-	*/
-    virtual Surface *current_picture() const;
+        /**
+         *	@brief Destructeur
+         */
+        ~Sprite();
 
-	/*!
-	 *	@brief Met à jour la position du sprite
-	 *	@param static_data Données du jeu
-	 *	@param collisions_manager Gestionnaire de collisions
-	*/
-    void update_pos();
+        /**
+         *  @brief Relation d'ordre pour le sort
+         */
+        bool operator<(const Sprite &s) const;
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return La position du sprite
-	*/
-	virtual Rect position() const;
+        /**
+         *	@brief Accesseur
+         *	@return Un pointeur vers l'image actuelle du sprite
+         */
+        virtual Surface * curr_pic()=0;
 
+        /**
+         *	@brief Change l'image à venir
+         */
+        virtual void next_pic()=0;
 
-	Rect damage_box() const;
+        /**
+         *	@brief accesseur sur la position
+         */
+        Rect * pos();
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return L'abscisse de la position du sprite
-	*/
-	uint32_t position_x() const;
+        /**
+         *  @brief Synchronise la position le l'acteur avec la position du sprite
+         *  Attention, c'est aux curr_pic de bien mettre à jour les dimensions de l'image.
+         */
+        void synchro(Rect * pos);
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return L'ordonnée de la position du sprite
-	*/
-	uint32_t position_y() const;
+        /**
+         *	@brief Change l'état, pour un joueur. Uniquement pour les anim_table.
+         */
+        virtual void change_anim(state_player s, direction dir, bool fire=false, bool phase_rand=false);
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return La phase du sprite
-	*/
-	uint32_t phase() const;
+        /**
+         *	@brief Change l'état pour un monstre. Uniquement pour les anim_table.
+         */
+        virtual void change_anim(state_m s, direction dir, bool fire=false, bool phase_rand=false);
 
-	/*!
-	 *	@brief Accesseur
-	 *	@return La direction directione du sprite
-	 *
-	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
-	*/
-	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+        /**
+         *  @brief Change le texte de l'animation. Uniquement pour les anims simples
+         */
+        virtual void change_text_to(std::string text, int begin_size, int end_size, int nb_pic);
 
-	direction dir() const;
+        /**
+         *	@brief Accesseur
+         *	@return La phase du sprite
+         */
+        unsigned int phase() const;
+
+        /**
+         *  @brief Mutateur
+         */
+        void set_to_delete();
+
+        /**
+         *	@brief Accesseur
+         *	@return Si on doit détruire le sprite
+         */
+        bool to_delete() const;
 };
-
-
-
-
-
-
 
 #endif

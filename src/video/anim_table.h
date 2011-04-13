@@ -35,7 +35,7 @@ class Anim_table
         bool m_fire;                /* si il y a un état de tir dans les animations */
 
         /**
-         * @brief Construction de l'animation pour un monstre ayant un état de tir (2x plus d'images)
+         * @brief TODO refaire !!!!!!!!!! Construction de l'animation pour un monstre ayant un état de tir (2x plus d'images)
          */
         void init_fire(std::string anim_name);
 
@@ -67,9 +67,11 @@ class Anim_table
         void change_anim(int s, direction dir, bool fire=false ,bool phase_rand=false);
 
         /**
-         * @brief Accesseur a l'image courante de l'animation, l'image a afficher (à appeler une fois par cycle).
+         * @brief Accesseur a l'image courante de l'animation, l'image a afficher
          */
         Surface * curr_pic();
+
+        void next_pic();
 
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
@@ -78,15 +80,4 @@ class Anim_table
          */
         void set_rect(Rect &pos);
 };
-
-/**
- * Fonction permettant de savoir si un fichier existe ou non.
- * /!\ Il ne prend pas en compte la case. /!\
- * Avantage, ne depend pas du fait qu'on ait des permissions ou non sur le fichier.
- *
- * Code de DPAK, http://www.techbytes.ca/techbyte103.html.
- */
-bool FileExists(std::string strFilename);
-
-
-#endif // ANIM_MANAGER_H_INCLUDED
+#endif // ANIM_TABLE_H_INCLUDED

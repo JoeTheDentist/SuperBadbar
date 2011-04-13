@@ -28,6 +28,7 @@
 #include "../game/static_data.h"
 #include "../events/events_manager.h"
 #include "../video/animation_engine.h"
+#include "../sprites/sprites_manager.h"
 
 
 
@@ -61,8 +62,7 @@ void Game::init_game(std::string level_name)
 	gGame_engine->init_game_engine(level_name, gGraphics->get_camera(),
                                     gGraphics->get_pictures_container());
 	gGraphics->init_graphic_engine();
-	gAnims = new Animation_engine();
-	gAnims->init(level_name);
+	/* TODO lire fichier pour afficher les set */
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 }
@@ -77,14 +77,17 @@ Game::~Game()
     delete gStats;
     gStats = NULL;
 	delete gCollision;
+	gCollision = NULL;
 	delete gProj;
 	gProj = NULL;
 	delete gEvent;
 	gGame_engine = NULL;
     delete gStatic;
 	gStatic = NULL;
-    delete gAnims;
-	gAnims = NULL;
+	delete gSets;
+	gSets = NULL;
+	delete gSprites;
+	gSprites = NULL;
 }
 
 void Game::update_keyboard()
@@ -115,12 +118,11 @@ void Game::update_graphic()
 	/* affichage des statics du deuxieme plan */
 	gStatic->display_statics_back(camera);
 
-	/* affichage des animations */
-	gAnims->update();
-	gAnims->display_anims(camera);
-
 	/* affichage des événements */
 	gGame_engine->display_events(camera);
+
+    /* Affichage des sprites */
+    gSprites->display_sprites(camera);
 
     /* affichage des monstres */
 	gGame_engine->display_monsters(camera);
@@ -130,7 +132,7 @@ void Game::update_graphic()
 	gGame_engine->display_projectiles_friend(camera);
 
 	/* affichage du sprite babar */
-	camera->display(gBabar);
+	/*camera->display(gBabar);*/
 
 	/* affichage des statics du premier plan */
 	gStatic->display_statics_first(camera);

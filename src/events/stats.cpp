@@ -34,7 +34,7 @@ void Stats::update()
 void Stats::alert()
 {
     /* Si aucun message n'a été émis */
-    if ( !m_msg_sent ) {
+    /*if ( !m_msg_sent ) {
         switch (m_kills) {
             case 5:
                 m_msg_sent=true;
@@ -51,7 +51,7 @@ void Stats::alert()
             default:
                 break;
         }
-    }
+    }*/
 }
 
 void Stats::hit()

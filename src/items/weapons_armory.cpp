@@ -27,7 +27,7 @@ Weapons_armory::Weapons_armory()
 
 Weapons_armory::~Weapons_armory()
 {
-	PRINT_CONSTR(2, "Destruction de Weapons_armory");	
+	PRINT_CONSTR(2, "Destruction de Weapons_armory");
 	for (std::list<Weapon *>::iterator it = m_armory.begin();
 			it != m_armory.end(); it++)
 		delete (*it);
@@ -40,7 +40,7 @@ Weapon *Weapons_armory::get_current_weapon()
 
 void Weapons_armory::add_weapon(weapon_type type)
 {
-	std::list<Weapon *>::iterator it; 
+	std::list<Weapon *>::iterator it;
 	// Positionnement dans la liste
 	for (it = m_armory.begin(); it != m_armory.end() && (*it)->type_of_weapon() < type; it++) {}
 	// Cas où l'arme est déjà présente
@@ -73,7 +73,7 @@ void Weapons_armory::add_weapon(weapon_type type)
 void Weapons_armory::update()
 {
 	if ((*m_current_weapon)->munitions() <= 0) {
-		std::list<Weapon *>::iterator it = m_current_weapon; 
+		std::list<Weapon *>::iterator it = m_current_weapon;
 		it++;
 		m_armory.erase(m_current_weapon);
 		m_current_weapon--;
@@ -96,7 +96,7 @@ void Weapons_armory::next_weapon()
 
 void Weapons_armory::previous_weapon()
 {
-	if (m_current_weapon == m_armory.begin()) 
+	if (m_current_weapon == m_armory.begin())
 		m_current_weapon = m_armory.end();
 	m_current_weapon--;
 }

@@ -13,84 +13,54 @@
 
 #include "sprites.h"
 #include "../util/debug.h"
-#include "../game/game.h"
-#include "../game/static_data.h"
-#include "../physic/collisions_manager.h"
 #include "../video/surface.h"
 
 
-/*********************************
-**	Méthodes de Sprite 	**
-**********************************/
 Sprite::Sprite()
 {
-	m_animt = NULL;
-	m_speed.x = 0;
-	m_speed.y = 0;
-	m_dir = LEFT;
+    PRINT_CONSTR(3, "Construction de Sprite")
 	m_phase = 0;
+	m_to_delete = false;
+	m_lvl = BACKGROUND;
 }
 
 Sprite::~Sprite()
 {
-	PRINT_CONSTR(3, "destruction de sprite")
-	if (m_animt)
-		delete m_animt;
+	PRINT_CONSTR(3, "Destruction de Sprite")
 }
 
-Surface *Sprite::current_picture()  const
+bool Sprite::operator<(const Sprite &s) const
 {
-	return NULL;
+    return m_lvl < s.m_lvl;
 }
 
-void Sprite::update_pos()
+Rect * Sprite::pos()
 {
-	m_phase++;
-	gCollision->get_matrix()->update_pos(m_pos, m_speed);
+    return m_pos;
 }
 
-
-Rect Sprite::position() const
+void Sprite::synchro(Rect * pos)
 {
-	return m_pos;
+    m_pos = pos;
 }
 
+void Sprite::change_anim(state_player s, direction dir, bool fire ,bool phase_rand) {}
 
-Rect Sprite::damage_box() const
-{
-	Rect box = this->position();
-	box.x += box.w / DAMAGE_BOX_RATIO;
-	box.y += box.h / DAMAGE_BOX_RATIO;
-	box.w *= (DAMAGE_BOX_RATIO - 2); box.w /= DAMAGE_BOX_RATIO;
-	box.h *= (DAMAGE_BOX_RATIO - 2); box.h /= DAMAGE_BOX_RATIO;
-	return box;
-}
+void Sprite::change_anim(state_m s, direction dir, bool fire ,bool phase_rand) {}
 
+void Sprite::change_text_to(std::string text, int begin_size, int end_size, int nb_pic) {}
 
-uint32_t Sprite::position_x() const
-{
-	return position().x;
-}
-
-uint32_t Sprite::position_y() const
-{
-	return position().y;
-}
-
-uint32_t Sprite::phase() const
+unsigned int Sprite::phase() const
 {
     return m_phase;
 }
 
-int Sprite::direction_h() const
+void Sprite::set_to_delete()
 {
-	if (m_dir == RIGHT)
-		return 1;
-	else
-		return -1;
+    m_to_delete = true;
 }
 
-direction Sprite::dir() const
+bool Sprite::to_delete() const
 {
-    return m_dir;
+    return m_to_delete;
 }

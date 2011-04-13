@@ -19,7 +19,7 @@
 
 struct anim_pos {
     Rect pos;
-    Animation * anim;
+    Anim * anim;
     Rect speed;
     bool falling;
     bool fixe;
@@ -56,7 +56,7 @@ class Animation_engine {
          *  @param type : type d'animation
          *  @param falling : si l'animation doit subir la gavité
          */
-        void add(Animation * anim, Rect pos, anim_type type, bool falling);
+        void add(Anim * anim, Rect pos, anim_type type, bool falling);
 
         /**
          *  @brief Fonction d'ajout

@@ -38,7 +38,7 @@ void Animation_engine::init(std::string lvl_name)
     a.close();
 }
 
-void Animation_engine::add(Animation * anim, Rect pos, anim_type type, bool falling)
+void Animation_engine::add(Anim * anim, Rect pos, anim_type type, bool falling)
 {
     anim_pos a;
     a.pos = pos;
@@ -74,24 +74,13 @@ void Animation_engine::add(std::string pic, Rect pos, anim_type type, Rect speed
         k++;
         sprintf(num,"%d",k);
     }
-    std::string * link;
-    link = new std::string[k];
-
-    k=0;
-    sprintf(num,"%d",k);
-    while ( FileExists(pic+num+PICS_EXT) ) {
-        link[k] = pic+num+PICS_EXT;
-        k++;
-        sprintf(num,"%d",k);
-    }
 
     /* creation de l'animation */
-    a.anim = new Anim_pic(link,k,type);
+    a.anim = new Anim_pic(pic,type);
     if ( type == CYCLE ) {
         a.anim->set_img(rand()%k);
     }
     a.anim->set_rect(a.pos);
-    delete[] link;
 
     m_anims.push_front(a);
 }

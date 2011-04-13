@@ -15,11 +15,9 @@
 
 class Static_data;
 
-
 enum state_p {
     NONE
 };
-
 
 /**
  * 	@class Projectile
@@ -28,15 +26,14 @@ enum state_p {
 class Projectile: public Actor {
 protected:
     state_p m_state;
-    uint32_t m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
+    unsigned int m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 	bool m_dead;				/* Indique si le projectile est à supprimer */
+
 public:
-
-
 	/*!
 	 *	@brief Constructeur
 	*/
-    Projectile(Rect pos, direction h, uint32_t speedx, uint32_t speedy, uint32_t damage);
+    Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
 
 	/*!
 	 * 	@brief Destructeur
@@ -59,7 +56,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Le nombre de points de vies que fait perdre le projectile
 	*/
-    uint32_t damage() const;
+    unsigned int damage() const;
 
 	/*!
 	 * 	@brief Accesseur

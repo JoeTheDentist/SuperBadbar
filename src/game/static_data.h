@@ -31,11 +31,11 @@ private:
 public:
 	Static_data();														/* Constructeur par défaut*/
 	~Static_data();														/* Destructeur */
-	void init_static_data(uint32_t lvl);
+	void init_static_data(unsigned int lvl);
 	void init_static_data(std::string level_name); /* level name est un chemin vers le level */
 	Surface * background();  										/* Accesseur */
-	uint32_t static_data_height();  									/* Hauteur du niveau */
-	uint32_t static_data_weight();   				 					/* Largeur du niveau */
+	unsigned int static_data_height();  									/* Hauteur du niveau */
+	unsigned int static_data_weight();   				 					/* Largeur du niveau */
 	Pictures_container *get_pictures_container(); /* accesseur */
 	void display_statics_first(Camera *camera);	    /* fonction d'affichage des statics */
 	void display_statics_back(Camera *camera);	    /* fonction d'affichage des statics */

@@ -24,8 +24,12 @@ Surface * Anim_text::curr_pic()
         delete m_last_surf;
     }
     m_last_surf = new Surface_text(m_text, ((m_end_size-m_begin_size)*m_curr_num)/m_nb_pic + m_begin_size );
-    m_curr_num++;
     return m_last_surf;
+}
+
+void Anim_text::next_pic()
+{
+    m_curr_num++;
 }
 
 bool Anim_text::interruptable()

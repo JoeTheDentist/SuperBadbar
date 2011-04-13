@@ -34,6 +34,8 @@
 #include "../util/globals.h"
 #include "../video/animation_engine.h"
 #include "../events/stats.h"
+#include "../sets/animated_set_manager.h"
+#include "../sprites/sprites_manager.h"
 
 
 Game_engine::Game_engine() :
@@ -59,8 +61,12 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	gCollision->init_collisions_manager(level_name);
 	Analyser analyser;
 	analyser.open(level_name);
+
+	/* Avant babar car Babar en a besoin ! */
+	gSprites = new Sprites_manager();
     gBabar = new Babar(&analyser);
     gStats = new Stats();
+    gSets = new Animated_set_manager();
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
@@ -73,6 +79,8 @@ void Game_engine::update()
 	update_speed();
 	gBabar->update_state();
 	gStats->update();
+	gSets->update();
+	gSprites->update();
 	m_monsters_manager->babar_monsters_collision();
 	m_monsters_manager->make_monsters_fire();
 	gEvent->update();
@@ -128,7 +136,6 @@ void Game_engine::update_monsters_projectiles()
             if ( Collisions_manager::check_collision(monster->position(),(*it)->position()) && !(*it)->dead()) {
                 monster->damage((*it)->damage());
                 /* animation du sang */
-                Rect speed = {0};
                 Rect pos = monster->position();
                 pos.y = (*it)->position().y;
                 char img = '0';
@@ -137,7 +144,7 @@ void Game_engine::update_monsters_projectiles()
                     img++;
                 }
                 /* TODO voir si on ne peut pas changer de place */
-                gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);
+                /*gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);*/
                 (*it)->kill();
 			}
         }

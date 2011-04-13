@@ -24,9 +24,9 @@
 **********************************/
 Actor::Actor()
 {
-	m_animt = NULL;
-	m_speed.x = 0;
-	m_speed.y = 0;
+	m_sprite = NULL;
+	m_pos = {0};
+	m_speed = {0};
 	m_dir = LEFT;
 	m_phase = 0;
 }
@@ -34,13 +34,9 @@ Actor::Actor()
 Actor::~Actor()
 {
 	PRINT_CONSTR(3, "destruction de actor")
-	if (m_animt)
-		delete m_animt;
-}
-
-Surface *Actor::current_picture()  const
-{
-	return NULL;
+	if ( m_sprite ) {
+        m_sprite->set_to_delete();
+    }
 }
 
 void Actor::update_pos()
@@ -49,12 +45,10 @@ void Actor::update_pos()
 	gCollision->get_matrix()->update_pos(m_pos, m_speed);
 }
 
-
 Rect Actor::position() const
 {
 	return m_pos;
 }
-
 
 Rect Actor::damage_box() const
 {
@@ -66,18 +60,7 @@ Rect Actor::damage_box() const
 	return box;
 }
 
-
-uint32_t Actor::position_x() const
-{
-	return position().x;
-}
-
-uint32_t Actor::position_y() const
-{
-	return position().y;
-}
-
-uint32_t Actor::phase() const
+int Actor::phase() const
 {
     return m_phase;
 }

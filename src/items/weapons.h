@@ -27,12 +27,6 @@
 #define RELOAD_MACHINEGUN 0
 #define RELOAD_SHOTGUN 18
 
-
-enum direction {
-    LEFT, RIGHT, UP, DOWN, NOPE
-};
-
-
 enum weapon_type {
     GUN, MACHINEGUN, SHOTGUN, MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
@@ -55,7 +49,7 @@ class Weapon
 {
 protected:
 	weapon_type m_weapon_type;              /* type de l'arme */
-	uint32_t m_reload_time;                 /* temps entre deux tirs */
+	unsigned int m_reload_time;                 /* temps entre deux tirs */
 	int m_munitions;
 	float m_last_dir_h;
 public:
@@ -82,7 +76,7 @@ public:
 	 * 	@brief Accesseur
 	 *	@return Le temps de rechargement (en cycles de jeu)
 	 */
-	virtual uint32_t reload_time() const;
+	virtual unsigned int reload_time() const;
 
 
 	/**

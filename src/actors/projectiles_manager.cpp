@@ -100,7 +100,7 @@ void Projectiles_manager::add_ennemy_proj(std::list<Projectile*> *proj) {
 }
 
 void Projectiles_manager::display(Camera *camera) {
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
+	/*for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {
 		if (!(*it)->dead())
 			camera->display(*it);
@@ -109,7 +109,7 @@ void Projectiles_manager::display(Camera *camera) {
 			it != m_projectiles_ennemy.end(); it++) {
 		if (!(*it)->dead())
 			camera->display(*it);
-	}
+	}*/
 }
 
 std::list<Projectile *>::iterator Projectiles_manager::proj_friend_begin() {

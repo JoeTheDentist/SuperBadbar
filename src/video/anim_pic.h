@@ -12,18 +12,18 @@
 
 #include <string>
 #include "../util/globals.h"
-#include "../video/animation.h"
+#include "../video/anim.h"
 
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */
 
 class Surface;
-class Animation;
+class Anim;
 
 /**
- * 	@class Animation
+ * 	@class Anim
  * 	@brief Classe animation, répresentant une succession d'images
  */
-class Anim_pic: public Animation {
+class Anim_pic: public Anim {
 private:
     Surface ** m_images;
 
@@ -35,12 +35,13 @@ public:
 	* Constructeur d'animation.
 	* Impose de creer une animation avec une seule image...
 	*
-	* @param s tableau des chemins de images a charger
-	* @param size nombre d'image de l'animation
+	* @param noms des images à charger, supporte : x0.png, x_0.png ou x.png
+	*   , où x nom de l'anim et 0 un nombre. Si x.png : une seule image.
+	*   Le chemin donné se fait à partir du dossier pic.
 	* @param force si on doit attendre la terminaison
 	*
 	*/
-    Anim_pic(std::string * s, int size, anim_type type);
+    Anim_pic(std::string anim_name, anim_type type);
 
     /*!
 	* @brief Destructeur
@@ -53,6 +54,11 @@ public:
     * @return l'image de l'animation a afficher.
     */
     Surface * curr_pic();
+
+    /*!
+    * @brief passe à l'image suivante
+    */
+    void next_pic();
 
     /*!
     * @brief si on peut interrompre l'animation.

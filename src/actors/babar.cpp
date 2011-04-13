@@ -21,6 +21,9 @@
 #include "../actors/projectiles_manager.h"
 #include "../video/surface.h"
 #include "../util/globals.h"
+#include "../sprites/sprites_manager.h"
+
+class Sprites_manager;
 
 /*********************************
 **	Méthodes de Babar 	**
@@ -48,8 +51,8 @@ void Babar::load_anim(char age)
 	#endif
 	std::string babar_pic_dir = PIC_BABAR_R;
 
-	m_animt = new Anim_table(babar_pic_dir+age_c+"/"+"babar");
-	m_animt->set_rect(m_pos);
+	m_sprite = gSprites->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
+	m_sprite->synchro(&m_pos);
 }
 
 void Babar::init_babar(Analyser * a)
@@ -116,9 +119,9 @@ bool Babar::is_on_something()
 void Babar::update_pos()
 {
 	m_phase++;
-	uint32_t coll;
+	unsigned int coll;
 	/* cas où le sprite descend */
-	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
 		coll = gCollision->get_matrix()->down_collision_type(position());
@@ -130,12 +133,12 @@ void Babar::update_pos()
 			m_speed.y = 0;
 		} else {
 			move(0, BOX_SIZE);
-//~ 			if (position().y + position().h > (int32_t)gStatic->static_data_height())
+//~ 			if (position().y + position().h > (int)gStatic->static_data_height())
 //~ 				m_rel_pos.y = gStatic->static_data_height() - m_pos.h;
 		}
 	}
 	/* cas où le sprite monte */
-	for (int32_t speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+	for (int speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
 		coll = gCollision->get_matrix()->up_collision_type(position());
@@ -153,7 +156,7 @@ void Babar::update_pos()
 		}
 	}
 	/* cas où le sprite va à droite */
-	for (int32_t speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
 		move(0, -BOX_SIZE);
@@ -163,7 +166,7 @@ void Babar::update_pos()
 //~ 		}
 		if (Collisions_manager::is_right_coll(coll)){
 			PRINT_DEBUG(1, "ouch");
-			
+
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
@@ -177,11 +180,11 @@ void Babar::update_pos()
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
 
 
-//~ 		if (m_pos.x + m_pos.w > (int32_t)gStatic->static_data_weight())
+//~ 		if (m_pos.x + m_pos.w > (int)gStatic->static_data_weight())
 //~ 			m_pos.x = gStatic->static_data_weight() - m_pos.w;
 	}
 	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
 		move(0, -BOX_SIZE);
@@ -288,8 +291,6 @@ void Babar::update_state()
 
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
-
-    m_animt->set_rect(m_pos);
 }
 
 void Babar::update_direction()
@@ -453,9 +454,9 @@ weapon_type Babar::type_of_weapon()
 Surface *Babar::current_picture() const
 {
 	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
-		m_animt->change_anim(get_state(), m_dir);
+		m_sprite->change_anim(get_state(), m_dir);
 
-        return m_animt->curr_pic();
+        return m_sprite->curr_pic();
 	} else
 		return NULL;
 }
