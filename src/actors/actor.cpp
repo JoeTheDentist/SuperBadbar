@@ -25,8 +25,8 @@
 Actor::Actor()
 {
 	m_sprite = NULL;
-	m_pos = {0};
-	m_speed = {0};
+	m_pos = {0,0,0,0};
+	m_speed = {0,0,0,0};
 	m_dir = LEFT;
 	m_phase = 0;
 }

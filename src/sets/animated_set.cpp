@@ -4,8 +4,8 @@
 
 Animated_set::Animated_set()
 {
-    m_pos = {0};
-    m_speed = {0};
+    m_pos = {0,0,0,0};
+    m_speed = {0,0,0,0};
     m_sprite = NULL;
 }
 

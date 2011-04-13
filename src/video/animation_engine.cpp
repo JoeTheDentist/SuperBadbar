@@ -42,7 +42,7 @@ void Animation_engine::add(Anim * anim, Rect pos, anim_type type, bool falling)
 {
     anim_pos a;
     a.pos = pos;
-    Rect speed = {0};
+    Rect speed = {0,0,0,0};
     a.speed = speed;
     a.falling = falling;
     a.anim = anim;
@@ -52,7 +52,7 @@ void Animation_engine::add(Anim * anim, Rect pos, anim_type type, bool falling)
 
 void Animation_engine::add(std::string pic, Rect pos, anim_type type, bool falling)
 {
-    Rect speed = {0};
+    Rect speed = {0,0,0,0};
     add(pic, pos, type, speed, falling);
 }
 
