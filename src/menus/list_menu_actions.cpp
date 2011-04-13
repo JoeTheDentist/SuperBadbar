@@ -51,8 +51,6 @@ void List_menu_actions::incr_value(int value)
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 }
 
-
-
 void List_menu_actions::display(Camera *camera, Rect pos)
 {
 	Surface *surf;

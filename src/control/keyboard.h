@@ -118,7 +118,10 @@ public:
 	
 	void wait_key(enum key k);
 	
-	
+	void enable_key_repeat();
+
+	void disable_key_repeat();
+
 	
 private:
 	// auxilliaire de wait_menu_key et poll_menu_key

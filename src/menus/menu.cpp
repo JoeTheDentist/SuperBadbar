@@ -28,6 +28,7 @@ void Menu::loop()
 {
 	bool go_on = true;
 	Keyboard *keyboard = new Keyboard();
+	keyboard->enable_key_repeat();
 	while (go_on) {
 		this->refresh_screen();
 		menu_key key = keyboard->wait_menu_key();

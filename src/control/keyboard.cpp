@@ -218,3 +218,12 @@ void Keyboard::wait_key(enum key k)
 	}	
 }
 
+void Keyboard::enable_key_repeat()
+{
+	SDL_EnableKeyRepeat(500, 10);
+}
+
+void Keyboard::disable_key_repeat()
+{
+	SDL_EnableKeyRepeat(0, 10);
+}

@@ -12,10 +12,12 @@ class Menu_action {
 	std::string m_text;
 	int m_index;
 	int m_value;
+	int m_valmin;
+	int m_valmax;
 	bool m_has_value;
 	
 	public:
-	Menu_action(std::string str, int i, int val = -1);
+	Menu_action(std::string str, int i, int val = -1, int valmin = 0, int valmax = 99);
 	~Menu_action();
 	
 	int get_index() { return m_index; }
