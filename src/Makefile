@@ -5,7 +5,7 @@ export CFLAGS=-g -Wall #$(LIB_INC)
 LDFLAGS= -g -lfreetype -lSDL_image -lSDL_ttf #-lfmod # $(LIB_DYN)
 LIBCOMP=../lib/gcc/libfmod.so #../lib/gcc/libSDL_ttf.so
 
-DIR = actors control events game items menus physic sound sprites util video AI 
+DIR = actors control events game items menus physic sound sprites util video AI sets
 EXEC_NAME = babar
 DOC_REP = ../doc/doxydoc/
 VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/BABAR_SDL.supp  --suppressions=../utils/valgrind_suppress/SDL.supp   --suppressions=../utils/valgrind_suppress/other_SDL.supp --suppressions=../utils/valgrind_suppress/fmod.supp  --workaround-gcc296-bugs=yes

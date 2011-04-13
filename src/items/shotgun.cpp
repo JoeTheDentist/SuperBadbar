@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdlib.h>
 
 
 #include "shotgun.h"

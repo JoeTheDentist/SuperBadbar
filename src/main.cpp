@@ -7,6 +7,7 @@
  *
  */
 
+#include <stdlib.h>
 
 #include "util/debug.h"
 #include "util/repertories.h"
