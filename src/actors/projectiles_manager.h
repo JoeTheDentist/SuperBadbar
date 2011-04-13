@@ -116,14 +116,6 @@ public:
 	 *	@return Iterator pointant sur la fin de la liste de projectiles ennmis
 	*/
 	std::list<Projectile *>::iterator proj_ennemy_end();
-
-
-
-	/*!
-	 *	@brief
-	*/
-
-
 };
 
 

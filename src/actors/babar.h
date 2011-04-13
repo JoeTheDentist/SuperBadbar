@@ -243,12 +243,6 @@ class Babar: public Actor, public Sonorisable {
 
         /**
          * 	@brief Accesseur
-         *	@return L'image actuelle de Babar
-         */
-        Surface * current_picture() const;
-
-        /**
-         * 	@brief Accesseur
          *	@return La vitesse actuelle de Babar
          */
         Rect speed() const;

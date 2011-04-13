@@ -35,6 +35,7 @@ Babar::Babar(Analyser *analyser)
 	init_babar(analyser);
 	m_bind = NULL;
 	m_fire = false;
+	m_state = STATIC;
 }
 
 Babar::~Babar()
@@ -51,6 +52,7 @@ void Babar::load_anim(char age)
 	#endif
 	std::string babar_pic_dir = PIC_BABAR_R;
 
+    /* TODO ici fuite de mémoire si rechargement... */
 	m_sprite = gSprites->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
 	m_sprite->synchro(&m_pos);
 }
@@ -291,6 +293,8 @@ void Babar::update_state()
 
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
+
+    m_sprite->change_anim(m_state, m_dir);
 }
 
 void Babar::update_direction()
@@ -451,16 +455,6 @@ weapon_type Babar::type_of_weapon()
 	return m_weapons_armory.get_current_weapon()->type_of_weapon();
 }
 
-Surface *Babar::current_picture() const
-{
-	if ((m_invincible <= 0 || m_invincible%2 == 0)) {
-		m_sprite->change_anim(get_state(), m_dir);
-
-        return m_sprite->curr_pic();
-	} else
-		return NULL;
-}
-
 Rect Babar::speed() const
 {
 	return m_speed;
@@ -470,7 +464,6 @@ bool Babar::binded() const
 {
 	return m_bind;
 }
-
 
 void Babar::bind(Moving_platform *platform)
 {
