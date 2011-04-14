@@ -36,7 +36,9 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
     /* Rajouter le nom... */
     m_sprite = gSprites->add_table(rep+"simple/simple", MIDDLEGROUND);
     m_sprite->set_pos(m_pos);
-
+	m_pos.h = m_sprite->h();
+	m_pos.w = m_sprite->w();
+	
     m_speed.x = speedx;
     m_speed.y = speedy;
 
@@ -47,6 +49,8 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
 void Projectile::update_pos(Collisions_manager *collisions_manager)
 {
     m_sprite->set_pos(m_pos);
+	m_pos.h = m_sprite->h();
+	m_pos.w = m_sprite->w();
 	m_phase++;
 	unsigned int coll;
 	/* cas où le sprite descend */

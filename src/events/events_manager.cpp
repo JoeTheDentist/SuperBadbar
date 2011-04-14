@@ -8,7 +8,7 @@
  */
 
  #include "events_manager.h"
-
+#include "../events/trigger.h"
 #include "../events/events.h"
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
@@ -29,9 +29,14 @@ Events_manager::~Events_manager()
 {
 	PRINT_CONSTR(1, "Destruction de Events_manager")
 	std::list<Event*>::iterator curs;
+	std::list<Trigger*>::iterator curs2;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++ ) {
 		delete (*curs);
 	}
+	for (curs2 = m_list_triggers.begin(); curs2 != m_list_triggers.end(); curs2++ ) {
+		delete (*curs2);
+	}
+	
 }
 
 void Events_manager::init_events_manager(Static_data *static_data, Game_engine *game_engine, Pictures_container *pictures_container)
@@ -60,11 +65,13 @@ void Events_manager::load_events(Analyser *analyser)
 			PRINT_DEBUG(1, "Event %s non reconnu", event_class.c_str());
 		}
 	}
+	m_list_triggers.push_back(new Trigger());
 }
 
 void Events_manager::update()
 {
 	std::list<Event*>::iterator curs;
+	std::list<Trigger*>::iterator curs2;
 	for (curs = m_list_events.begin(); curs != m_list_events.end(); ) { // si on met le curs++ dans la boucle, on a un pb de curs après erase!
 		(*curs)->update();
 		if((*curs)->can_start())
@@ -75,6 +82,18 @@ void Events_manager::update()
 			curs = m_list_events.erase(curs);
 		} else {
 			++curs;
+		}
+	}
+	for (curs2 = m_list_triggers.begin(); curs2 != m_list_triggers.end(); ) { // si on met le curs++ dans la boucle, on a un pb de curs après erase!
+		(*curs2)->update();
+		if((*curs2)->can_start())
+			(*curs2)->start();
+		if((*curs2)->can_be_destroyed()) {
+			(*curs2)->destroy();
+			delete (*curs2);
+			curs2 = m_list_triggers.erase(curs2);
+		} else {
+			++curs2;
 		}
 	}
 }

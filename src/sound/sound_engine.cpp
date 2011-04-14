@@ -51,7 +51,7 @@ void Sound_engine::play_music()
 }
 
 void Sound_engine::play_sound(std::string key)
-{
+{	
 	PRINT_TRACE(1, "jeu du son %s", key.c_str())
 	std::map<std::string, FSOUND_SAMPLE*>::iterator it = m_sound_samples.find(key);
 	FSOUND_SAMPLE *to_play = NULL;
@@ -67,13 +67,13 @@ void Sound_engine::play_sound(std::string key)
 	}
 	PRINT_TRACE(3, "JEU DU SON %s",key.c_str());
 	int channel = FSOUND_PlaySound(FSOUND_FREE, to_play);
-	FSOUND_SetVolume(channel, 100);
-	
+	FSOUND_SetVolume(channel, m_sounds_volume);
+
 }
 
 
 void Sound_engine::play_sound(Sonorisable *sonorisable)
-{
+{	
 	while (!sonorisable->no_more_sounds()) {
 		play_sound(sonorisable->get_next_sound());
 		sonorisable->pop_sound();

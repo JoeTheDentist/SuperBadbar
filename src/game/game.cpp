@@ -24,6 +24,7 @@
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
 #include "../sound/sound_engine.h"
+#include "../menus/pause_menu.h"
 #include "../game/game_engine.h"
 #include "../game/static_data.h"
 #include "../events/events_manager.h"
@@ -165,6 +166,10 @@ result_game Game::game_loop()
 		if (m_time - m_previous_time > TIME_LOOP) {
 			m_previous_time = m_time;
 			update_keyboard();
+			if (gKeyboard->key_down(k_escape)) {
+				Pause_menu *pause = new Pause_menu(end); // end va etre modifie
+				delete pause;
+			}
 			if (gKeyboard->key_down(k_exit)) {
 				end = true;
 				break;

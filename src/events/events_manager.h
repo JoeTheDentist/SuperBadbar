@@ -13,6 +13,7 @@
 #include <list>
 
 class Event;
+class Trigger;
 class Game_engine;
 class Static_data;
 class Camera;
@@ -32,6 +33,7 @@ class Analyser;
 class Events_manager {
 private:
 	std::list<Event*> m_list_events;
+	std::list<Trigger*> m_list_triggers;
 
 	Game_engine *m_game_engine;
 	Static_data *m_static_data;

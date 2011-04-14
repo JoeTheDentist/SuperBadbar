@@ -20,6 +20,8 @@ Menu::Menu(Menu *parent) :
 {
 	m_pos_menu.x = 200;
 	m_pos_menu.y = 300;
+	gKeyboard->disable_all_keys();
+
 }
 
 Menu::~Menu()
@@ -36,7 +38,7 @@ void Menu::loop()
 		this->refresh_screen();
 		menu_key key = keyboard->wait_menu_key();
 		switch (key) {
-		case mk_exit:
+		case mk_exit: case mk_escape:
 			go_on = false;
 			break;
 		case mk_down:

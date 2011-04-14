@@ -39,12 +39,10 @@ Rect * Sprite::pos()
     return &m_pos;
 }
 
-void Sprite::set_pos(Rect &pos)
+void Sprite::set_pos(Rect pos)
 {
     m_pos.x = pos.x;
     m_pos.y = pos.y;
-    pos.h = curr_pic()->h();
-    pos.w = curr_pic()->w();
 }
 
 void Sprite::change_anim(state_player s, direction dir, bool fire ,bool phase_rand) {}

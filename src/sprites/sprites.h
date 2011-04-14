@@ -67,7 +67,7 @@ class Sprite {
          *  @brief Synchronise la position le l'acteur avec la position du sprite
          *  Attention, c'est aux curr_pic de bien mettre à jour les dimensions de l'image.
          */
-        void set_pos(Rect &pos);
+        void set_pos(Rect pos);
 
         /**
          *	@brief Change l'état, pour un joueur. Uniquement pour les anim_table.
@@ -83,6 +83,9 @@ class Sprite {
          *  @brief Change le texte de l'animation. Uniquement pour les anims simples
          */
         virtual void change_text_to(std::string text, int begin_size, int end_size, int nb_pic);
+		
+		virtual int h() {return this->curr_pic()->h();}
+		virtual int w() {return this->curr_pic()->w();}
 
         /**
          *	@brief Accesseur

@@ -8,6 +8,8 @@ Animated_physic_set::Animated_physic_set(std::string anim_name, Rect pos, Rect s
     m_speed = speed;
     m_sprite = gSprites->add_anim(anim_name, CYCLE, MIDDLEGROUND);
     m_sprite->set_pos(m_pos);
+	m_pos.h = m_sprite->h();
+	m_pos.w = m_sprite->w();
 }
 
 Animated_physic_set::~Animated_physic_set()

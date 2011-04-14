@@ -54,7 +54,9 @@ void Babar::load_anim(char age)
 
     /* TODO ici fuite de mémoire si rechargement... */
 	m_sprite = gSprites->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
-	m_sprite->set_pos(m_pos);
+	m_sprite->set_pos(position());
+	set_h(m_sprite->h());
+	set_w(m_sprite->w());
 }
 
 void Babar::init_babar(Analyser * a)
@@ -295,7 +297,9 @@ void Babar::update_state()
 		m_weapons_armory.next_weapon();
 
     m_sprite->change_anim(m_state, m_dir);
-    m_sprite->set_pos(m_pos);
+    m_sprite->set_pos(position());
+	set_h(m_sprite->h());
+	set_w(m_sprite->w());
 }
 
 void Babar::update_direction()

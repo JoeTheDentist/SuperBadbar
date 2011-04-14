@@ -30,6 +30,7 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_key_config[SDLK_l] = k_right;
 	m_key_config[SDLK_q] = k_jump;
 	m_key_config[SDLK_d] = k_fire;
+	m_key_config[SDLK_ESCAPE] = k_escape;
 	m_key_config[SDLK_SPACE] = k_action;
 	m_key_config[SDLK_a] = k_prev_weapon;
 	m_key_config[SDLK_z] = k_next_weapon;
@@ -78,11 +79,6 @@ void Keyboard::update_events()
 				if (m_record_on)
 					*m_record_file << m_key_config[event.key.keysym.sym] <<
 						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
-				if (event.key.keysym.sym==SDLK_ESCAPE) {
-					m_key_down[k_exit]=1;
-					if (m_record_on)
-						*m_record_file << k_exit << " " << m_key_down[k_exit] << " ";
-				}
 				break;
 			case SDL_KEYUP:
 				m_key_down[m_key_config[event.key.keysym.sym]] = 0;
@@ -144,7 +140,7 @@ menu_key Keyboard::treat_menu_key(SDL_Event event)
 			switch (event.key.keysym.sym)
 			{
 				case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
-					return mk_exit;
+					return mk_escape;
 					break;
 				case SDLK_UP:
 					return mk_up;

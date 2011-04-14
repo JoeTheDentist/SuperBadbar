@@ -17,12 +17,13 @@ class Analyser;
 
 /**
  * 	@class Event
- * 	@brief Classe mère de tous les événements
+ * 	@brief Classe representant un evenement declenchable
  *
- *	Fournit les prototypes des méthodes de mise à jour,
- *	de déclenchenement, de destruction et les accesseurs
+ *	Un event possede une methode pour savoir s'il doit etre declenche (can_start)
+ * 	et une autre pour etre declenche (start)
+ *	Il peut etre détruit quand il est devenu inutile et est affichable
+ *	
  *
- *	@todo Rendre la classe abstraite\n
  */
 class Event {
 protected:

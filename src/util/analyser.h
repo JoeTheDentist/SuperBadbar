@@ -17,7 +17,7 @@
 
 #include <string>
 #include <fstream>
-
+#include <stdint.h>
 
 #define COLL_EXT ".col"
 #define PICS_EXT ".png"

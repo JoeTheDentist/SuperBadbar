@@ -41,15 +41,13 @@ class Moving_platform;
  *	keyboard, dont l'état est utilisé par les méthodes de tir, de saut,
  *	de mise à jour d'état et de vitesse
  *
- *	@todo réorganiser les update\n
- *	Certaines méthodes doivent etre private\n
- *	Une méthode doit renvoyer le tir au projectiles manager, au lieu de prendre le projectiles_manager en parametre
+ *	@warning Dans cette classe, m_pos ne represente pas toujours la position (cf m_rel_pos)
  *
  */
 class Babar: public Actor, public Sonorisable {
     protected:
         state_player m_state;
-        unsigned int m_fire_phase;	            /* phase du tir */
+        unsigned int m_fire_phase;	        /* phase du tir */
         int m_lifes;                        /* nombre de vies */
         int m_invincible;                   /* durée d'invicibilité après avoir été touché */
         int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
@@ -285,6 +283,9 @@ class Babar: public Actor, public Sonorisable {
 
         // check et fait l'unbind
         bool check_unbind();
+		
+		virtual void set_h(int h) { m_pos.h = h; m_rel_pos.h = h;}
+		virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}
 };
 
 #endif
