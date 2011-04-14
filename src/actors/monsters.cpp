@@ -64,7 +64,7 @@ void Monster::initFromMonsterFile(std::string file)
 	m_dir = RIGHT;
 
 	m_sprite = gSprites->add_table(PIC_MONSTERS_R + m_nom + "/" + m_nom, MIDDLEGROUND);
-    m_sprite->synchro(&m_pos);
+    m_sprite->set_pos(m_pos);
 }
 
 void Monster::update_speed()
@@ -103,6 +103,7 @@ void Monster::damage(unsigned int damage)
 void Monster::update()
 {
 	m_fire_phase++;
+	m_sprite->set_pos(m_pos);
 }
 
 bool Monster::dead() const

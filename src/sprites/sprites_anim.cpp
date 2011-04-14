@@ -25,10 +25,7 @@ Sprite_anim::~Sprite_anim()
 
 Surface * Sprite_anim::curr_pic()
 {
-    Surface * s = m_anim->curr_pic();
-    m_pos->h = s->h();
-    m_pos->w = s->w();
-    return s;
+    return m_anim->curr_pic();
 }
 
 void Sprite_anim::next_pic()

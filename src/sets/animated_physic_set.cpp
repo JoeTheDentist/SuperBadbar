@@ -7,7 +7,7 @@ Animated_physic_set::Animated_physic_set(std::string anim_name, Rect pos, Rect s
     m_pos = pos;
     m_speed = speed;
     m_sprite = gSprites->add_anim(anim_name, CYCLE, MIDDLEGROUND);
-    m_sprite->synchro(&m_pos);
+    m_sprite->set_pos(m_pos);
 }
 
 Animated_physic_set::~Animated_physic_set()

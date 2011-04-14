@@ -16,7 +16,6 @@
 
 
 Anim_pic::Anim_pic(std::string anim_name, anim_type type) {
-    int nb_pic = 0;
     std::string sup;
     if ( FileExists(PIC_R+anim_name+"_"+"0"+PICS_EXT) ) {
         sup = "_";
@@ -51,7 +50,6 @@ Anim_pic::Anim_pic(std::string anim_name, anim_type type) {
     for (size=0; FileExists(PIC_R+anim_name+sup+num+PICS_EXT); size++ ) {
         sprintf(num,"%d",size);
     }
-    /* TODO comprendre pq il faut -1 */
     size -= 1;
 
     m_images = new Surface*[size];
@@ -82,8 +80,7 @@ Anim_pic::~Anim_pic() {
 
 Surface * Anim_pic::curr_pic()
 {
-    Surface *image = m_images[m_curr];
-    return image;
+    return m_images[m_curr];
 }
 
 void Anim_pic::next_pic()

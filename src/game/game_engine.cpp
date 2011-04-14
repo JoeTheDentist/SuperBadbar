@@ -62,11 +62,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Analyser analyser;
 	analyser.open(level_name);
 
-	/* Avant babar car Babar en a besoin ! */
-	gSprites = new Sprites_manager();
     gBabar = new Babar(&analyser);
-    gStats = new Stats();
-    gSets = new Animated_set_manager();
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
@@ -80,7 +76,6 @@ void Game_engine::update()
 	gBabar->update_state();
 	gStats->update();
 	gSets->update();
-	gSprites->update();
 	m_monsters_manager->babar_monsters_collision();
 	m_monsters_manager->make_monsters_fire();
 	gEvent->update();

@@ -29,6 +29,8 @@
 #include "../events/events_manager.h"
 #include "../video/animation_engine.h"
 #include "../sprites/sprites_manager.h"
+#include "../events/stats.h"
+#include "../sets/animated_set_manager.h"
 
 
 
@@ -55,6 +57,10 @@ void Game::init_game(std::string level_name)
     gCollision = new Collisions_manager();
     gProj = new Projectiles_manager();
     gEvent = new Events_manager();
+    gSprites = new Sprites_manager();
+    gStats = new Stats();
+    gSets = new Animated_set_manager();
+
 	gBabar = NULL;
 	gGame_engine = new Game_engine();
     gStatic = new Static_data();
@@ -107,7 +113,6 @@ void Game::play_sounds()
 
 void Game::update_graphic()
 {
-    gSprites->delete_sprites();
 	gGraphics->update();
 
 	Camera *camera = gGraphics->get_camera();
@@ -122,6 +127,8 @@ void Game::update_graphic()
 	gGame_engine->display_events(camera);
 
     /* Affichage des sprites */
+    gSprites->delete_dead_sprites();
+    gSprites->update();
     gSprites->display_sprites(camera);
 
     /* */

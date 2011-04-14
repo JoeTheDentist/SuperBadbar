@@ -54,7 +54,7 @@ class Sprites_manager {
         /**
          * Méthode de suppression des éléments.
          */
-        void delete_sprites();
+        void delete_dead_sprites();
 
         /**
          * Vide la liste, sans la détruire

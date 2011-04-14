@@ -16,10 +16,7 @@ Sprite_anim_table::~Sprite_anim_table()
 
 Surface * Sprite_anim_table::curr_pic()
 {
-    Surface * s = m_animt->curr_pic();
-    m_pos->h = s->h();
-    m_pos->w = s->w();
-    return s;
+    return m_animt->curr_pic();
 }
 
 void Sprite_anim_table::next_pic()

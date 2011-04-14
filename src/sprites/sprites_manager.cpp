@@ -14,7 +14,7 @@ Sprites_manager::~Sprites_manager()
     delete m_sprites;
 }
 
-void Sprites_manager::add(Sprite* s)
+void Sprites_manager::add(Sprite * s)
 {
     m_sprites->push_front(s);
 }
@@ -43,7 +43,7 @@ Sprite * Sprites_manager::add_table(std::string anim_name, screen_level lvl)
     return sprite;
 }
 
-void Sprites_manager::delete_sprites()
+void Sprites_manager::delete_dead_sprites()
 {
     for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ) {
         if ( (*it)->to_delete() ) {
@@ -60,24 +60,17 @@ void Sprites_manager::delete_sprites()
 
 void Sprites_manager::update()
 {
-    if ( m_to_sort ) {
-        m_to_sort = false;
-        /* il parait que le tri est stable (très très important) mais c'est pas écrit directement sur la stl */
-        /* la relation d'ordre est donnée par Sprite::operator<, pour la stabilité il faut du = aussi je pense... A voir */
-        m_sprites->sort();
-    }
+//    if ( m_to_sort ) {
+//        m_to_sort = false;
+//        /* il parait que le tri est stable (très très important) mais c'est pas écrit directement sur la stl */
+//        /* la relation d'ordre est donnée par Sprite::operator<, pour la stabilité il faut du = aussi je pense... A voir */
+//        m_sprites->sort();
+//    }
 
     /* on passe aux images suivantes */
     /* au passage on regarde le images à supprimer */
-    for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ) {
-        if ( (*it)->to_delete() ) {
-            /* suppression du sprite */
-            delete (*it);
-            (*it) = NULL;
-			it = m_sprites->erase(it);
-        } else {
-            ++it;
-        }
+    for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ++it) {
+        (*it)->next_pic();
     }
 }
 

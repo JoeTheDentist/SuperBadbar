@@ -26,7 +26,7 @@ enum screen_level {
  */
 class Sprite {
     protected:
-        Rect * m_pos; 		    /* position du sprite et sa taille, pointe sur le Rect de son acteur */
+        Rect m_pos; 		    /* position du sprite et sa taille, pointe sur le Rect de son acteur */
         unsigned int m_phase;	/* phase pour alterner les images lors du déplacememnt */
         screen_level m_lvl;     /* niveau du plan d'affichage */
         bool m_to_delete;       /* si le sprite est à détruire, ce booléen est mis à jour par son acteur */
@@ -67,7 +67,7 @@ class Sprite {
          *  @brief Synchronise la position le l'acteur avec la position du sprite
          *  Attention, c'est aux curr_pic de bien mettre à jour les dimensions de l'image.
          */
-        void synchro(Rect * pos);
+        void set_pos(Rect &pos);
 
         /**
          *	@brief Change l'état, pour un joueur. Uniquement pour les anim_table.
