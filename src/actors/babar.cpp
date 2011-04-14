@@ -61,6 +61,7 @@ void Babar::load_anim(char age)
 
 void Babar::init_babar(Analyser * a)
 {
+	m_bind = NULL;
     /* Initialisation de la position de Babar */
     a->find_string("#Babar#");
     m_pos.x = a->read_int();
