@@ -76,11 +76,6 @@ public:
 	void virtual update_speed_ai();
 
 	/**
-	 * 	@brief Acesseur
-	 */
-	Surface *current_picture() const;
-
-	/**
 	 * 	@brief Fait perdre des vies au monstre
 	 *	@param damage Le nombre de viesà faire perdre
 	 */

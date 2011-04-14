@@ -83,14 +83,6 @@ public:
 	*/
 	void add_ennemy_proj(std::list<Projectile*> *proj);
 
-
-	/*!
-	 *	@brief Affiche à l'écran l'ensemble des projectiles
-	 *	@param camera Le gestionnaire d'affichage
-	*/
-	void display(Camera *camera);
-
-
 	/*!
 	 *	@brief Accesseur
 	 *	@return Iterator pointant sur le début de la liste de projectiles amis

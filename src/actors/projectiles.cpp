@@ -107,24 +107,5 @@ bool Projectile::dead() const
 void Projectile::kill()
 {
 	m_dead = true;
+	m_sprite->set_to_delete();
 }
-
-
-/*** Fonctions ***/
-
-bool too_old(Projectile * p, Collisions_manager *collisions_manager)
-{
-    bool to_return = (p->phase()>PROJ_LIFE_SPAN);
-    Rect speed = p->speed();
-    if (speed.x>0)
-        to_return |= collisions_manager->get_matrix()->right_collision(p->position());
-    else
-        to_return |= collisions_manager->get_matrix()->left_collision(p->position());
-
-    if (speed.y>0)
-        to_return |= collisions_manager->get_matrix()->down_collision(p->position());
-    else
-        to_return |= collisions_manager->get_matrix()->up_collision(p->position());
-    return to_return;
-}
-

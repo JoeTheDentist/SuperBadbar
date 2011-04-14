@@ -48,9 +48,13 @@ class Sprites_manager {
 
         /**
          * Méthode de mise à jour de la liste, tri (éventuel) + next_pic pour tous les sprites !
-         * Supprimer les éléments à supprimer (to_delete)
          */
         void update();
+
+        /**
+         * Méthode de suppression des éléments.
+         */
+        void delete_sprites();
 
         /**
          * Vide la liste, sans la détruire

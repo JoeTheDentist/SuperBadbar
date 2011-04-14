@@ -76,13 +76,9 @@ public:
 	*/
 	void monsters_update_speed();
 
-	/*!
-	* 	@brief Affiche les monstres à l'écran
-	*	@param camera Camera pour effectuer les affichage
-	*	@todo implémenter cette méthode avec un itérateur pour pouvoir la passer en const
-	*/
-	void display_monsters(const Camera &camera);
-
+    /**
+     *
+     */
 	void make_monsters_fire();
 
 	/*!

@@ -104,17 +104,6 @@ void Game_engine::update_speed()
 	gCollision->update_platforms_speed();
 }
 
-void Game_engine::display_monsters(Camera * const camera) const
-{
-	m_monsters_manager->display_monsters(*camera);
-	gCollision->display_platforms(camera);
-}
-
-void Game_engine::display_projectiles_friend(Camera *camera)
-{
-	gProj->display(camera);
-}
-
 void Game_engine::delete_dead_things()
 {
 	gProj->delete_old_projectiles();

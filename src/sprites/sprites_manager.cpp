@@ -6,7 +6,7 @@
 Sprites_manager::Sprites_manager()
 {
     m_to_sort = false;
-    m_sprites = new std::list<Sprite*>();
+    m_sprites = new std::list<Sprite*>;
 }
 
 Sprites_manager::~Sprites_manager()
@@ -43,6 +43,21 @@ Sprite * Sprites_manager::add_table(std::string anim_name, screen_level lvl)
     return sprite;
 }
 
+void Sprites_manager::delete_sprites()
+{
+    for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ) {
+        if ( (*it)->to_delete() ) {
+            /* suppression du sprite */
+            delete (*it);
+            (*it) = NULL;
+			it = m_sprites->erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+
 void Sprites_manager::update()
 {
     if ( m_to_sort ) {
@@ -55,7 +70,6 @@ void Sprites_manager::update()
     /* on passe aux images suivantes */
     /* au passage on regarde le images à supprimer */
     for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ) {
-        (*it)->next_pic();
         if ( (*it)->to_delete() ) {
             /* suppression du sprite */
             delete (*it);

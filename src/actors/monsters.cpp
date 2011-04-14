@@ -67,12 +67,6 @@ void Monster::initFromMonsterFile(std::string file)
     m_sprite->synchro(&m_pos);
 }
 
-Surface *Monster::current_picture() const
-{
-    m_sprite->change_anim(m_state, m_dir, m_fire, true);
-    return m_sprite->curr_pic();
-}
-
 void Monster::update_speed()
 {
 	if ( dist(m_pos, gBabar->position()) > SWITCH_DIST ) {

@@ -83,15 +83,6 @@ void Monsters_manager::monsters_update_pos()
 	}
 }
 
-void Monsters_manager::display_monsters(const Camera &camera)
-{
-	/*for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++){
-		if (!(*it)->dead())
-			camera.display((*it));
-	}*/
-}
-
 void Monsters_manager::make_monsters_fire()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();

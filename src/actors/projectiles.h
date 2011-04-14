@@ -48,12 +48,6 @@ public:
 
 	/*!
 	 * 	@brief Accesseur
-	 *	@return Un pointeur vers l'image actuelle
-	*/
-    Surface * current_picture() const;
-
-	/*!
-	 * 	@brief Accesseur
 	 *	@return Le nombre de points de vies que fait perdre le projectile
 	*/
     unsigned int damage() const;
@@ -74,12 +68,6 @@ public:
 	 *	@brief Mutateur: "tue" le projectile
 	*/
 	void kill();
-
-
 };
-
-
-
-bool too_old(Projectile * p,  Collisions_manager *collisions_manager);   /* Retourne si un projectile est trop "vieux" (pour la suppression) */
 
 #endif

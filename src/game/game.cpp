@@ -107,7 +107,7 @@ void Game::play_sounds()
 
 void Game::update_graphic()
 {
-
+    gSprites->delete_sprites();
 	gGraphics->update();
 
 	Camera *camera = gGraphics->get_camera();
@@ -124,12 +124,8 @@ void Game::update_graphic()
     /* Affichage des sprites */
     gSprites->display_sprites(camera);
 
-    /* affichage des monstres */
-	gGame_engine->display_monsters(camera);
-
-
-	/* affichage des projectiles */
-	gGame_engine->display_projectiles_friend(camera);
+    /* */
+    gCollision->display_platforms(camera);
 
 	/* affichage du sprite babar */
 	/*camera->display(gBabar);*/
