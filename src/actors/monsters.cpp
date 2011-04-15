@@ -105,6 +105,7 @@ void Monster::damage(unsigned int damage)
 void Monster::update()
 {
 	m_fire_phase++;
+	m_sprite->change_anim(m_state, m_dir);
 	m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
 	m_pos.w = m_sprite->w();

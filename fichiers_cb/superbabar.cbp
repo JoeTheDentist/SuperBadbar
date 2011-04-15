@@ -75,6 +75,8 @@
 		<Unit filename="..\src\events\events_manager.h" />
 		<Unit filename="..\src\events\stats.cpp" />
 		<Unit filename="..\src\events\stats.h" />
+		<Unit filename="..\src\events\trigger.cpp" />
+		<Unit filename="..\src\events\trigger.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />
@@ -108,6 +110,8 @@
 		<Unit filename="..\src\menus\menu_action.h" />
 		<Unit filename="..\src\menus\options_menu.cpp" />
 		<Unit filename="..\src\menus\options_menu.h" />
+		<Unit filename="..\src\menus\pause_menu.cpp" />
+		<Unit filename="..\src\menus\pause_menu.h" />
 		<Unit filename="..\src\physic\collisions_manager.cpp" />
 		<Unit filename="..\src\physic\collisions_manager.h" />
 		<Unit filename="..\src\physic\collisions_matrix.cpp" />

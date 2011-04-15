@@ -47,6 +47,8 @@ class Moving_platform;
 class Babar: public Actor, public Sonorisable {
     protected:
         state_player m_state;
+        /* TODO Temp à virer */
+        state_player m_last_state;
         unsigned int m_fire_phase;	        /* phase du tir */
         int m_lifes;                        /* nombre de vies */
         int m_invincible;                   /* durée d'invicibilité après avoir été touché */
@@ -283,7 +285,7 @@ class Babar: public Actor, public Sonorisable {
 
         // check et fait l'unbind
         bool check_unbind();
-		
+
 		virtual void set_h(int h) { m_pos.h = h; m_rel_pos.h = h;}
 		virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}
 };

@@ -36,6 +36,7 @@ Babar::Babar(Analyser *analyser)
 	m_bind = NULL;
 	m_fire = false;
 	m_state = STATIC;
+	m_last_state = STATIC;
 }
 
 Babar::~Babar()
@@ -296,6 +297,9 @@ void Babar::update_state()
 
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
+
+
+    m_state = get_state();
 
     m_sprite->change_anim(m_state, m_dir);
     m_sprite->set_pos(position());
