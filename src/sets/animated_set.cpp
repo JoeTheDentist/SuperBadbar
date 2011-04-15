@@ -23,6 +23,10 @@ void Animated_set::update_pos()
 {
     m_pos.x += m_speed.x;
     m_pos.y += m_speed.y;
+
+    m_sprite->set_pos(m_pos);
+	m_pos.h = m_sprite->h();
+	m_pos.w = m_sprite->w();
 }
 
 void Animated_set::update_speed()

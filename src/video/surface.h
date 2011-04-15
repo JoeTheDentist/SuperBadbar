@@ -31,8 +31,6 @@ protected:
 	SDL_Surface *m_surface;
 	static Pictures_container *m_pictures_container;
 public:
-    /* TODO temp ! */
-    std::string m_name;
 
 	Surface():
 		m_surface(NULL) {}

@@ -36,7 +36,6 @@ Babar::Babar(Analyser *analyser)
 	m_bind = NULL;
 	m_fire = false;
 	m_state = STATIC;
-	m_last_state = STATIC;
 }
 
 Babar::~Babar()

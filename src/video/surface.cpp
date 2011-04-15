@@ -23,7 +23,6 @@ Pictures_container *Surface::m_pictures_container = NULL;
 Surface::Surface(std::string filename)
 {
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
-	m_name = filename;
 	m_surface = m_pictures_container->load_IMG(filename);
 
 }

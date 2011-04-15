@@ -47,8 +47,6 @@ class Moving_platform;
 class Babar: public Actor, public Sonorisable {
     protected:
         state_player m_state;
-        /* TODO Temp à virer */
-        state_player m_last_state;
         unsigned int m_fire_phase;	        /* phase du tir */
         int m_lifes;                        /* nombre de vies */
         int m_invincible;                   /* durée d'invicibilité après avoir été touché */

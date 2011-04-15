@@ -27,6 +27,11 @@ class Animated_physic_set : public Animated_set {
         ~Animated_physic_set();
 
         /**
+         *  @brief Mise à jour de la position
+         */
+        void update_pos();
+
+        /**
          *  @brief Mise à jour de la vitesse
          */
         void update_speed();

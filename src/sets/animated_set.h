@@ -29,7 +29,7 @@ class Animated_set {
         /**
          *  @brief Mise à jour de la position
          */
-        void update_pos();
+        virtual void update_pos();
 
         /**
          *  @brief Mise à jour de la vitesse
