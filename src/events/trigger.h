@@ -10,9 +10,9 @@
 #ifndef _TRIGGER_
 #define _TRIGGER_
 
+#include <list>
 #include <string>
 #include "../video/surface.h"
-#include <list>
 #include "../events/events.h"
 
 class Analyser;
@@ -23,18 +23,35 @@ class Analyser;
  *
  * Il n'est pas affichable
  *
+ *	Format dans un .lvl:
+ *	#Triggers#
+ *	<nombre de triggers>
+ *	chemin du trigger depuis le repertoire des levels 
+ *	(en general: <nomlevel>triggers/fichiertrigger.trg)
+ *	!
+ *
+ *	Format d'un .trg:
+ *	#zone#
+ *	<nombre de positions>
+ *	x y w h
+ *	!
+ *	#events#
+ *	<nombre d'events>
+ *	"event" eventype x y
+ *
  */
 class Trigger {
 protected:
-	bool m_can_be_destroyed;
 	std::list<Rect> m_zone;
 	std::list<Event *> m_events;
+	bool m_triggered;
 public:
 	
 	/**
 	 * 	@brief Constructeur
+	 *	@param filename Le chemin vers le fichier trigger depuis le repertoire des niveaux
 	*/
-	Trigger();
+	Trigger(std::string filename);
 
 	/**
 	 * 	@brief Destructeur
@@ -67,6 +84,18 @@ public:
 	 * 	@brief Détruit l'événement
 	*/
 	virtual void destroy();
+	
+	/*!
+	 *	@brief Ajoute une position a la zone de declenchement
+	 *	@param pos La position a ajouter
+	 */
+	void addPos(Rect pos);
+	
+	/*!
+	 *	@brief Ajoute un evenement a la liste des evenements a declencher
+	 *	@param event L'evenement a ajouter
+	 */
+	void addEvent(Event *event);
 	
 
 };

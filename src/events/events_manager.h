@@ -65,6 +65,12 @@ public:
 	 *	@param analyser un Analyser ouvert sur le fichier level à charger
 	*/
 	void load_events(Analyser *analyser);
+	
+	/**
+	 * 	@brief charge les triggers du niveau
+	 *	@param analyser un Analyser ouvert sur le fichier level à charger
+	*/
+	void load_triggers(Analyser *analyser);
 
 	/**
 	 * 	@brief Met à jour l'ensemble des événements

@@ -65,7 +65,17 @@ void Events_manager::load_events(Analyser *analyser)
 			PRINT_DEBUG(1, "Event %s non reconnu", event_class.c_str());
 		}
 	}
-	m_list_triggers.push_back(new Trigger());
+}
+
+void Events_manager::load_triggers(Analyser *analyser)
+{
+	PRINT_TRACE(1, "Chargement des triggers");
+	if (!analyser->find_string("#Triggers#"))
+		return;
+	int triggers_number = analyser->read_int();
+	for (int i = 0; i < triggers_number; i++) {
+		m_list_triggers.push_back(new Trigger(analyser->read_string()));
+	}	
 }
 
 void Events_manager::update()

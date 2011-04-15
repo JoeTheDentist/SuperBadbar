@@ -66,6 +66,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
+	gEvent->load_triggers(&analyser);
 	analyser.close();
 }
 
