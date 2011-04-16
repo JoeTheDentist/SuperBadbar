@@ -52,11 +52,17 @@ void Graphic_engine::init_graphic_engine(bool game)
 void Graphic_engine::update()
 {
 	m_camera->update_pos();
+	m_dashboard->update();
 }
 
-void Graphic_engine::draw_dashboard(int lifes, Camera *camera)
+void Graphic_engine::draw_dashboard(Camera *camera)
 {
-	m_dashboard->draw_dashboard(lifes, camera);
+	m_dashboard->draw_dashboard(camera);
+}
+
+void Graphic_engine::alert(std::string text)
+{
+    m_dashboard->alert(text);
 }
 
 

@@ -20,6 +20,7 @@
 
 #include "../items/weapons.h"
 #include "../video/font.h"
+#include "../video/anim_text.h"
 
 class Camera;
 class Babar;
@@ -40,6 +41,7 @@ private:
 	Rect m_weapons_pos;
 	Surface *m_peanut;
 	Font m_font;
+	Anim_text * m_alert;
 
 public:
 
@@ -65,7 +67,18 @@ public:
 	 *	@param camera Le gestionnaire d'affichage
 	 *	@param babar Pointeur vers babar
 	 */
-	void draw_dashboard(int lifes, Camera *camera);
+	void draw_dashboard(Camera *camera);
+
+	/**
+	 *  @brief Fonction affichant un message à l'écran
+	 *  @param text : Texte à afficher
+	 */
+    void alert(std::string text);
+
+    /**
+     *  @brief Mets à jour l'animation de texte et la suppr si besoin
+     */
+    void update();
 
 private:
 	void clear_dashboard();

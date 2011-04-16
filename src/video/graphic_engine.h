@@ -11,6 +11,8 @@
 #ifndef _GRAPHIC_ENGINE_
 #define _GRAPHIC_ENGINE_
 
+#include <string>
+
 class Camera;
 class Babar;
 class Static_data;
@@ -58,11 +60,15 @@ public:
 
 	/**
 	 * 	@brief Affiche le tableau de board
-	 * 	@param lifes Le nombre de vies de Babar
 	 *	@param camera Le gestionnaire d'affichage
-	 *	@param babar Pointeur vers babar
 	 */
-	void draw_dashboard(int lifes, Camera *camera);
+	void draw_dashboard(Camera *camera);
+
+	/**
+	 *  @brief Envoie un message d'avertissement
+	 *  @brief Message à envoyer
+	 */
+    void alert(std::string text);
 
 	/**
 	 * 	@brief Accesseur

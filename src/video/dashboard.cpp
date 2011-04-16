@@ -32,6 +32,7 @@ Dashboard::Dashboard():
 	m_font()
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
+	m_alert = NULL;
 }
 
 
@@ -60,18 +61,18 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 }
 
 
-void Dashboard::draw_dashboard(int lifes, Camera *camera)
+void Dashboard::draw_dashboard(Camera *camera)
 {
 	/*
 		Affichage des vies
 	*/
-	if (lifes < 0)
+	if (gBabar->lifes() < 0)
 		return;
-	for (int i = 0; i < lifes; i++) {
+	for (int i = 0; i < gBabar->lifes(); i++) {
 		camera->display_picture(m_heart, &m_lifes_pos, true);
 		m_lifes_pos.x += 30;
 	}
-	m_lifes_pos.x -= lifes * 30;
+	m_lifes_pos.x -= gBabar->lifes() * 30;
 
 	/*
 		Affichage de l'arme et des munitions
@@ -105,6 +106,38 @@ void Dashboard::draw_dashboard(int lifes, Camera *camera)
 	camera->display_picture(peanuts_number_picture, &pos_peanuts_number, true);
 	camera->display_picture(m_peanut, &pos_peanut, true);
 	delete peanuts_number_picture;
+
+	/* affichage de l'alert */
+	if ( m_alert ) {
+        Rect pos_alert;
+        pos_alert.x = WINDOW_HEIGHT/2;
+        pos_alert.y = WINDOW_WIDTH/2;
+        Surface * img_alert = m_alert->curr_pic();
+        /* je sais pas trop pq il y a besoin d'un offset ici... */
+        pos_alert.x -= img_alert->w()/2-100;
+        pos_alert.y -= img_alert->h()/2+100;
+        camera->display_picture(img_alert,&pos_alert,true);
+	}
+}
+
+void Dashboard::alert(std::string text)
+{
+    if ( m_alert ) {
+        delete m_alert;
+    }
+    m_alert = new Anim_text(text, 250, 100, 30);
+}
+
+void Dashboard::update()
+{
+    if ( m_alert ) {
+        if ( m_alert->deletable() ) {
+            delete m_alert;
+            m_alert = NULL;
+        } else {
+            m_alert->next_pic();
+        }
+    }
 }
 
 void Dashboard::clear_dashboard()
@@ -123,4 +156,5 @@ void Dashboard::clear_dashboard()
 		delete m_peanut;
 	m_peanut = NULL;
 
+    delete m_alert;
 }

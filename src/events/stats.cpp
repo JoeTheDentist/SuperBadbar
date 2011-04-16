@@ -36,25 +36,24 @@ void Stats::update()
 void Stats::alert()
 {
     /* Si aucun message n'a été émis */
-    /*if ( !m_msg_sent ) {
+    if ( !m_msg_sent ) {
         switch (m_kills) {
-            case 5:
+            case 2:
                 m_msg_sent=true;
-                if ( m_sprite ) {
-                    Rect pos_temp = {400,300,0,0};
-                    gSprites->add_anim(new Anim_text(text, 250, 100, 30), pos_temp, ENDED, false);
-                }
+                gGraphics->alert("DOUBLE KILL");
                 break;
             case 3:
                 m_msg_sent=true;
+                gGraphics->alert("MULTI KILL");
                 break;
-            case 2:
+            case 5:
                 m_msg_sent=true;
+                gGraphics->alert("MEGA KILL");
                 break;
             default:
                 break;
         }
-    }*/
+    }
 }
 
 void Stats::hit()

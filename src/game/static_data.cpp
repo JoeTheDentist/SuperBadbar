@@ -100,7 +100,7 @@ uint32_t Static_data::static_data_height()
 
 uint32_t Static_data::static_data_weight()
 {
-    return m_background->w() / BACKGROUND_SPEED - WINDOW_WEIGHT;
+    return m_background->w() / BACKGROUND_SPEED - WINDOW_WIDTH;
 }
 
 

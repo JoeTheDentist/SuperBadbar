@@ -146,7 +146,7 @@ void Game::update_graphic()
 	#endif
 
 	/* affichage du tableau de board */
-	gGraphics->draw_dashboard(gBabar->lifes(), camera);
+	gGraphics->draw_dashboard(camera);
 
 	/* mise à jour */
 	camera->flip_camera();
