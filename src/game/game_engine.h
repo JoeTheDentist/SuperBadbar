@@ -136,6 +136,12 @@ public:
 	 *	@return Vrai si le joueur a perdu
 	*/
 	bool has_lost();
+	
+	/*!
+	 *	@brief Accesseur
+	 *	@return Pointeur vers le gestionnaire de monstres
+	*/	
+	Monsters_manager *get_monster_manager() { return m_monsters_manager;}
 
 
 };

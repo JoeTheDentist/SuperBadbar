@@ -26,9 +26,18 @@ private:
 	int m_high_min;
 
 public:
+	
+	/*!
+	 *	@brief Constructeur
+	 *	@param name Le nom du monstre 
+	 *	@param posx Position initiale
+	 *	@param posy Position initiale
+	*/
+	Following_flying_monster(std::string name, int posx, int posy);
+
 	/**
 	 * 	@brief Constructeur
-	 *	@param analyserLevel Analyseur se fichier
+	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	*/
 	Following_flying_monster(Analyser *analyserLevel);
 
@@ -38,9 +47,7 @@ public:
 	~Following_flying_monster();
 
 	/**
-	 * 	@brief Met à jour la vitesse du monstre
-	 *	@param babar Parametre inutilisé dans cette sous classe
-	 *
+	 * 	@brief Met a jour la vitesse du monstre
 	**/
 	void update_speed_simple();
 };

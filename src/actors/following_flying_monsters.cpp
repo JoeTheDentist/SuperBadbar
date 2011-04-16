@@ -14,17 +14,14 @@
 #include "../util/analyser.h"
 #include "babar.h"
 
-
-Following_flying_monster::Following_flying_monster(Analyser *analyserLevel)
+Following_flying_monster::Following_flying_monster(std::string name, int posx, int posy):
+	Flying_monster(name, posx, posy)
 {
-    PRINT_CONSTR(1, "                               Construction d'un following_flying_monster")
-	m_nom = analyserLevel->read_string();
+}
 
-	// donnees contenues dans le level
-	m_pos.x = analyserLevel->read_int();
-	m_pos.y = analyserLevel->read_int();
-
-	initFromMonsterFile(m_nom);
+Following_flying_monster::Following_flying_monster(Analyser *analyserLevel):
+	Flying_monster(analyserLevel)
+{
 
 }
 

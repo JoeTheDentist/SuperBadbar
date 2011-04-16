@@ -18,19 +18,16 @@
 #include "../AI/AI.h"
 
 
-
-Following_walking_monster::Following_walking_monster(Analyser *analyserLevel)
+Following_walking_monster::Following_walking_monster(std::string name, int posx, int posy):
+	Walking_monster(name, posx, posy)
 {
-    m_nom = analyserLevel->read_string();
-
-	// donnees contenues dans le level
-	m_pos.x = analyserLevel->read_int();
-	m_pos.y = analyserLevel->read_int();
-
-	initFromMonsterFile(m_nom);
-
     m_ai = new AI(gBabar, &m_pos);
-		
+}
+
+Following_walking_monster::Following_walking_monster(Analyser *analyserLevel):
+	Walking_monster(analyserLevel)
+{
+    m_ai = new AI(gBabar, &m_pos);
 }
 
 Following_walking_monster::~Following_walking_monster()

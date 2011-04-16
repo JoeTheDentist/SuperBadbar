@@ -25,14 +25,17 @@ private:
 
 
 public:
-    /**
-	 * 	@brief Constructeur vide
+	/*!
+	 *	@brief Constructeur
+	 *	@param name Le nom du monstre 
+	 *	@param posx Position initiale
+	 *	@param posy Position initiale
 	*/
-    Walking_monster();
+	Walking_monster(std::string name, int posx, int posy);
 
 	/**
 	 * 	@brief Constructeur
-	 *	@param analyserLevel Analyseur se fichier
+	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	*/
 	Walking_monster(Analyser *analyserLevel);
 

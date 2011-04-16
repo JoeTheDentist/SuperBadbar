@@ -59,6 +59,12 @@ public:
 
 
 	/*!
+	*	@brief Charge un monstre depuis l'analyser 
+	*	@param analyser L'analyser avec le curseur place avant un monstre
+	*/
+	void load_monster(Analyser *analyser);
+
+	/*!
 	* 	@brief Ajoute le monstre à monsters_manager
 	*	@param monster le monstre à ajouter
 	*/

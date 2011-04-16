@@ -17,18 +17,14 @@
 #include "babar.h"
 
 
-Walking_monster::Walking_monster() {}
-
-Walking_monster::Walking_monster(Analyser *analyserLevel)
+Walking_monster::Walking_monster(std::string name, int posx, int posy):
+	Monster(name, posx, posy)
 {
-	m_nom = analyserLevel->read_string();
+}
 
-	// donnees contenues dans le level
-	m_pos.x = analyserLevel->read_int();
-	m_pos.y = analyserLevel->read_int();
-
-	// donnees propres a la nature du monstre (a chercher dans le bestiaire)
-	initFromMonsterFile(m_nom);
+Walking_monster::Walking_monster(Analyser *analyserLevel):
+	Monster(analyserLevel)
+{
 }
 
 Walking_monster::~Walking_monster()

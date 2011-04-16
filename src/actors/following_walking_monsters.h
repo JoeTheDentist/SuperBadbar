@@ -28,9 +28,18 @@ private:
     AI * m_ai;
 
 public:
+	
+	/*!
+	 *	@brief Constructeur
+	 *	@param name Le nom du monstre 
+	 *	@param posx Position initiale
+	 *	@param posy Position initiale
+	*/
+
+	Following_walking_monster(std::string name, int posx, int posy);
 	/**
 	 * 	@brief Constructeur
-	 *	@param analyserLevel Analyseur se fichier
+	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	*/
 	Following_walking_monster(Analyser *analyserLevel);
 

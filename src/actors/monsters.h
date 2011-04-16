@@ -22,6 +22,7 @@ class Anim;
 class Babar;
 class Surface;
 class Weapon;
+class Analyser;
 class Projectile;
 
 
@@ -42,10 +43,20 @@ protected:
 	Weapon *m_weapon;
 
 public:
+	
+	/*!
+	 *	@brief Constructeur
+	 *	@param name Le nom du monstre 
+	 *	@param posx Position initiale
+	 *	@param posy Position initiale
+	*/
+	Monster(std::string name, int posx, int posy);
+
 	/**
 	 * 	@brief Constructeur
+	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	 */
-	Monster();
+	Monster(Analyser *analyserLevel);
 
 	/**
 	 * 	@brief Destructeur

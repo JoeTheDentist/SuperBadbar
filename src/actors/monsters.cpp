@@ -31,16 +31,34 @@ class Animated_set_manager;
 **	Méthodes de Monster	**
 **********************************/
 
-Monster::Monster():
+
+
+Monster::Monster(std::string name, int posx, int posy):
+	m_nom(name),
 	m_weapon(NULL)
 {
-
+	m_pos.x = posx;
+	m_pos.y = posy;
+	initFromMonsterFile(m_nom);
 }
+
+Monster::Monster(Analyser *analyserLevel):
+	m_weapon(NULL)
+{
+    m_nom = analyserLevel->read_string();
+	// donnees contenues dans le level
+	m_pos.x = analyserLevel->read_int();
+	m_pos.y = analyserLevel->read_int();
+	initFromMonsterFile(m_nom);
+}
+
 
 Monster::~Monster()
 {
 	PRINT_CONSTR(3, "destruction d'un monstre")
 }
+
+
 
 void Monster::initFromMonsterFile(std::string file)
 {

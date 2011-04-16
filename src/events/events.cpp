@@ -78,7 +78,9 @@ void Event::start()
 		} else if (action == "peanut") {
 			process_peanut();
 		} else if (action == "talk") {
-			process_dialog();
+			process_dialog(); 
+		} else if (action == "monster") {
+//~ 			process_monster();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
@@ -148,3 +150,8 @@ void Event::process_dialog()
 	std::cout << "plop" << std::endl;
 	gGraphics->get_talks()->load_and_display_text(m_analyser->read_string());
 }
+
+//~ void Event::process_monster()
+//~ {
+//~ 	gGame_engine->get_monsters_manager()->load_monster(m_analyser);
+//~ }
