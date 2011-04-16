@@ -3,6 +3,8 @@
 
 #define INT_KILL 50 /* nombre de cycle maximal pour compter deux kills */
 
+#include "../sprites/sprites.h"
+
 /**
  * Classe associée à un Babar, s'occupe de ses statistiques.
  */
@@ -14,6 +16,7 @@ class Stats {
         int m_kills;            /* kills successifs, limite temps */
         int m_frenzy;           /* kills successifs, sans se faire toucher */
         bool m_msg_sent;        /* si un message vient d'être émi */
+        Sprite * m_sprite;      /* pour affichage */
 
         /**
          * Fonction d'affichage des messages

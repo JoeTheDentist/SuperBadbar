@@ -2,6 +2,7 @@
 #include "stats.h"
 #include "../util/globals.h"
 #include "../video/animation_engine.h"
+#include "../sprites/sprites_manager.h"
 
 class Animation_engine;
 
@@ -12,6 +13,7 @@ Stats::Stats()
     m_kills=0;
     m_frenzy=0;
     m_msg_sent=false;
+    m_sprite = NULL;
 }
 
 Stats::~Stats()
@@ -38,15 +40,16 @@ void Stats::alert()
         switch (m_kills) {
             case 5:
                 m_msg_sent=true;
-                gAnims->alert("MEGA KILL !");
+                if ( m_sprite ) {
+                    Rect pos_temp = {400,300,0,0};
+                    gSprites->add_anim(new Anim_text(text, 250, 100, 30), pos_temp, ENDED, false);
+                }
                 break;
             case 3:
                 m_msg_sent=true;
-                gAnims->alert("MULTI KILL !");
                 break;
             case 2:
                 m_msg_sent=true;
-                gAnims->alert("DOUBLE KILL !");
                 break;
             default:
                 break;
