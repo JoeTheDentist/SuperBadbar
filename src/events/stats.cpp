@@ -41,6 +41,7 @@ void Stats::alert()
             case 2:
                 m_msg_sent=true;
                 gGraphics->alert("DOUBLE KILL");
+                gSound->play_sound("../sound/events/doublekill.mp3");
                 break;
             case 3:
                 m_msg_sent=true;

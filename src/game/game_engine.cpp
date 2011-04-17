@@ -82,6 +82,7 @@ void Game_engine::update()
 	gEvent->update();
 	update_monsters_projectiles();
 	update_babar_projectiles();
+	update_babar_damage();
 	delete_dead_things();
 }
 
@@ -149,6 +150,15 @@ void Game_engine::update_babar_projectiles()
 	}
 }
 
+void Game_engine::update_babar_damage()
+{
+    /* Si Babar sort de l'écran => on lui fait perdre des vie et on le remet à la bonne place */
+    if ( gBabar->position().y + gBabar->position().h >= (int)gStatic->static_data_height() ) {
+        gBabar->damage(1);
+        gBabar->set_last_pos();
+    }
+}
+
 void Game_engine::display_events(Camera *camera)
 {
 	gEvent->display_events(camera);
@@ -172,5 +182,5 @@ bool Game_engine::has_won()
 
 bool Game_engine::has_lost()
 {
-	return gBabar->lifes() <= 0 || gBabar->position().y + gBabar->position().h >= (int)gStatic->static_data_height();
+	return gBabar->lifes() <= 0;
 }

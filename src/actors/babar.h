@@ -62,6 +62,8 @@ class Babar: public Actor, public Sonorisable {
         bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
         int m_peanuts;
 
+        Rect m_last_pos;                    /* dernière position sur qqch */
+
         /**
          * 	@brief Charge les images de babar
          *	@param age	L'age de Babar
@@ -283,6 +285,11 @@ class Babar: public Actor, public Sonorisable {
 
         // check et fait l'unbind
         bool check_unbind();
+
+        /**
+         *  @brief Remet babar à sa position de dernière collision
+         */
+        void set_last_pos();
 
 		virtual void set_h(int h) { m_pos.h = h; m_rel_pos.h = h;}
 		virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}

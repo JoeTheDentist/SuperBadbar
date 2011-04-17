@@ -57,6 +57,9 @@ void Babar::load_anim(char age)
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());
+
+	m_last_pos.x = 0;
+	m_last_pos.y = 0;
 }
 
 void Babar::init_babar(Analyser * a)
@@ -136,6 +139,9 @@ void Babar::update_pos()
 		if (Collisions_manager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
+			if ( !binded() ) {
+                m_last_pos = m_pos;
+			}
 		} else {
 			move(0, BOX_SIZE);
 //~ 			if (position().y + position().h > (int)gStatic->static_data_height())
@@ -562,4 +568,11 @@ bool Babar::check_unbind()
 		}
 	}
 	return false;
+}
+
+void Babar::set_last_pos()
+{
+    m_pos = m_last_pos;
+    m_speed.x = 0;
+    m_speed.y = 0;
 }

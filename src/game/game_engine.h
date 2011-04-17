@@ -94,6 +94,11 @@ public:
 	void update_babar_projectiles();
 
 	/**
+	 *  @brief Regarde si Babar doit perdre des vies à cause du décor.
+	 */
+	void update_babar_damage();
+
+	/**
 	 * 	@brief Affichage des monstres
 	 *	@param camera La camera d'affichage
 	*/

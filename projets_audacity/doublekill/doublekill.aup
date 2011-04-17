@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<audacityproject projname="doublekill_data" version="1.1.0" audacityversion="1.2.6" sel0="0.0200902239" sel1="0.0200902239" vpos="0" h="0.0000000000" zoom="398.2036261317" rate="44100.000000" >
+	<tags title="" artist="" album="" track="-1" year="" genre="-1" comments="" id3v2="1" />
+	<wavetrack name="Piste audio" channel="2" linked="0" offset="0.00000000" rate="44100.000000" gain="1.000000" pan="0.000000" >
+		<sequence maxsamples="524288" sampleformat="131073" numsamples="98787" >
+			<waveblock start="0" >
+				<simpleblockfile filename='b00140.au' len='98787' min='-1.000000' max='1.000000' rms='0.127939'/>
+			</waveblock>
+		</sequence>
+		<envelope numpoints='0'>
+		</envelope>
+	</wavetrack>
+</audacityproject>
