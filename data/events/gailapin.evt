@@ -1,0 +1,4 @@
+
+#start#
+monster gailapin
+playsound events/weapon_taken.wav
