@@ -47,23 +47,34 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser)
 	}
 }
 
+void Monsters_manager::load_monster(std::string name, int posx, int posy)
+{
+	if (name == "following_walking_monster") {
+		add(new Following_walking_monster(name, posx, posy));
+	} else if (name == "walking_monster") {
+		add(new Walking_monster(name, posx, posy));
+	} else if (name == "flying_monster") {
+		add(new Flying_monster(name, posx, posy));
+	} else if (name == "following_flying_monster") {
+		add(new Following_flying_monster(name, posx, posy));
+	} else {
+		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
+	}		
+}
+
 void Monsters_manager::load_monster(Analyser *analyser) 
 {
 	std::string monster_type = analyser->read_string();
 	if (monster_type == "following_walking_monster") {
-		Following_walking_monster * curr_monster = new Following_walking_monster(analyser);
-		add(curr_monster);
+		add(new Following_walking_monster(analyser));
 	} else if (monster_type == "walking_monster") {
-		Walking_monster * curr_monster = new Walking_monster(analyser);
-		add(curr_monster);
+		add(new Walking_monster(analyser));
 	} else if (monster_type == "flying_monster") {
-		Flying_monster * curr_monster = new Flying_monster(analyser);
-		add(curr_monster);
+		add(new Flying_monster(analyser));
 	} else if (monster_type == "following_flying_monster") {
-		Following_flying_monster * curr_monster = new Following_flying_monster(analyser);
-		add(curr_monster);
+		add(new Following_flying_monster(analyser));
 	} else {
-		PRINT_CONSTR(1, "                               Erreur dans monstre manager, chargement monstre loupe")
+		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
 	}	
 }
 

@@ -86,12 +86,20 @@ public:
 	virtual Rect current_pos() const;
 	
 protected:
+	// ramassage d'une arme
 	void process_weapon();
+	// point de vie
 	void process_lifeup();
+	// jeu d'un son
 	void process_playsound();
+	// victoire (du niveau)
 	void process_victory();
+	// ramassage d'une cacahuete
 	void process_peanut();
+	// jeu d'un dialogue
 	void process_dialog();
+	// ajout d'un monstre
+	void process_monster();
 };
 
 

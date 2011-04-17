@@ -16,19 +16,23 @@
 #include "../util/analyser.h"
 #include "../util/repertories.h"
 #include "../actors/babar.h"
+#include "../actors/monsters_manager.h"
 #include "../items/weapons.h"
 #include "../video/talks.h"
 
 
 Event::Event(std::string event_name, int x, int y):
+	m_can_be_destroyed(false),
+	m_picture(NULL),
 	m_phase(0),
+	m_analyser(new Analyser()),
 	m_event_name(event_name)
 {
 	PRINT_CONSTR(3, "Construction d'un event");
-	m_can_be_destroyed = false;
 	m_pos.x = x;
 	m_pos.y = y;
-	m_analyser = new Analyser();
+	m_pos.h = 0;
+	m_pos.w = 0;
 	m_analyser->open(EVENTS_R + event_name + EVENTS_EXT);
 	if (m_analyser->find_string("#picture#")) {
 		m_picture = new Surface(PIC_EVENTS_R + m_analyser->read_string());
@@ -80,7 +84,7 @@ void Event::start()
 		} else if (action == "talk") {
 			process_dialog(); 
 		} else if (action == "monster") {
-//~ 			process_monster();
+			process_monster();
 		} else {
 			PRINT_DEBUG(1, "action non reconnue dans un fichier event:");
 		}
@@ -151,7 +155,8 @@ void Event::process_dialog()
 	gGraphics->get_talks()->load_and_display_text(m_analyser->read_string());
 }
 
-//~ void Event::process_monster()
-//~ {
-//~ 	gGame_engine->get_monsters_manager()->load_monster(m_analyser);
-//~ }
+void Event::process_monster()
+{
+	std::string monster_name = m_analyser->read_string();
+	gGame_engine->get_monsters_manager()->load_monster(monster_name, m_pos.x, m_pos.y);
+}

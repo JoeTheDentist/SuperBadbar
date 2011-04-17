@@ -146,7 +146,7 @@ public:
 	 *	@brief Accesseur
 	 *	@return Pointeur vers le gestionnaire de monstres
 	*/	
-	Monsters_manager *get_monster_manager() { return m_monsters_manager;}
+	Monsters_manager *get_monsters_manager() { return m_monsters_manager;}
 
 
 };

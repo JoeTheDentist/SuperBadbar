@@ -17,6 +17,7 @@
 
 #include <list>
 #include <stdint.h>
+#include <string>
 
 #include "../actors/projectiles_manager.h"
 
@@ -63,6 +64,13 @@ public:
 	*	@param analyser L'analyser avec le curseur place avant un monstre
 	*/
 	void load_monster(Analyser *analyser);
+	/*!
+	*	@brief Charge un monstre a partir de son nom et de sa position
+	*	@param name Le nom du monstre
+	*	@param posx Position intiale du monstres
+	*	@param posy Position intiale du monstres
+	*/
+	void load_monster(std::string name, int posx, int posy);
 
 	/*!
 	* 	@brief Ajoute le monstre à monsters_manager

@@ -72,7 +72,6 @@ void Trigger::update()
 
 bool Trigger::can_start() const
 {
-	// TODO
 	if (m_triggered)
 		return false;
 	for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it) {
