@@ -24,17 +24,19 @@ void Camera::display_event(Event *event) const{	Surface *picture = event->curr
     pos_temp.y = m_frame.y;
     pos_temp.h = m_frame.h;
     pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const{
-    if ( fixe ) {
-        SDL_Rect * pos_sdl = new SDL_Rect;
-        pos_sdl->x = (int)pos->x;
-        pos_sdl->y = (int)pos->y;
-        pos_sdl->h = (unsigned int)pos->h;
-        pos_sdl->w = (unsigned int)pos->w;        SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);        delete pos_sdl;
-    } else {
-        Rect curr = *pos;
-        curr.x -= m_frame.x;
-		curr.y -= m_frame.y;
-		display_picture(surf, &curr, true);
+    if ( surf ) {
+        if ( fixe ) {
+            SDL_Rect * pos_sdl = new SDL_Rect;
+            pos_sdl->x = (int)pos->x;
+            pos_sdl->y = (int)pos->y;
+            pos_sdl->h = (unsigned int)pos->h;
+            pos_sdl->w = (unsigned int)pos->w;            SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);            delete pos_sdl;
+        } else {
+            Rect curr = *pos;
+            curr.x -= m_frame.x;
+            curr.y -= m_frame.y;
+            display_picture(surf, &curr, true);
+        }
     }}
 void Camera::display_picture(SDL_Surface *surf, Rect *pos){
     SDL_Rect * pos_sdl = new SDL_Rect;

@@ -40,6 +40,18 @@ class Sprite_anim : public Sprite {
          *  @brief Change le texte de l'animation.
          */
         void change_text_to(std::string text, int begin_size, int end_size, int nb_pic);
+
+        /**
+         *  @brief Hauteur
+         *  @return Hauteur
+         */
+        int h();
+
+        /**
+         *  @brief Largeur
+         *  @return Largeur
+         */
+        int w();
 };
 
 #endif // SPRITES_ANIM_H_INCLUDED

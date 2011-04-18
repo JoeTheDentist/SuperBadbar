@@ -30,6 +30,7 @@ class Sprite {
         unsigned int m_phase;	/* phase pour alterner les images lors du déplacememnt */
         screen_level m_lvl;     /* niveau du plan d'affichage */
         bool m_to_delete;       /* si le sprite est à détruire, ce booléen est mis à jour par son acteur */
+        bool m_no_pic;          /* si on doit afficher l'image ce tour ci */
 
     public:
         /**
@@ -98,6 +99,16 @@ class Sprite {
          *	@return Si on doit détruire le sprite
          */
         bool to_delete() const;
+
+        /**
+         *  @brief désactive l'affichage
+         */
+        void no_pic();
+
+        /**
+         *  @brief Remet l'affichage
+         */
+        void set_pic();
 };
 
 #endif

@@ -39,6 +39,18 @@ class Sprite_anim_table : public Sprite {
          *	@brief Change l'état pour un monstre.
          */
         void change_anim(state_m s, direction dir, bool fire=false ,bool phase_rand=false);
+
+        /**
+         *  @brief Hauteur
+         *  @return Hauteur
+         */
+        int h();
+
+        /**
+         *  @brief Largeur
+         *  @return Largeur
+         */
+        int w();
 };
 
 #endif // SPRITES_ANIM_TABLE_H_INCLUDED

@@ -292,8 +292,17 @@ void Babar::update_state()
 	if (can_go_down())
 		go_down();
 
-	if (m_invincible > 0)
+	if (m_invincible > 0) {
 		m_invincible --;
+
+		if ( m_invincible%2 ) {
+            m_sprite->no_pic();
+        } else {
+            m_sprite->set_pic();
+        }
+	}
+
+
 
 	m_weapons_armory.update();
 
@@ -436,7 +445,6 @@ void Babar::damage(int damages)
 	if (!is_invincible()) {
 		m_lifes -= damages;
 		m_invincible = 20;
-
 	}
 }
 

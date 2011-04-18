@@ -8,6 +8,7 @@ Sprite_anim::Sprite_anim(std::string anim_name, anim_type type, screen_level lvl
     PRINT_CONSTR(1, "Construction de Sprite_anim_table")
     m_anim = new Anim_pic(anim_name, type);
     m_lvl = lvl;
+    m_no_pic = false;
 }
 
 Sprite_anim::Sprite_anim(std::string text, int begin_size, int end_size, int nb_pic, screen_level lvl)
@@ -15,6 +16,7 @@ Sprite_anim::Sprite_anim(std::string text, int begin_size, int end_size, int nb_
     PRINT_CONSTR(1, "Construction de Sprite_anim_table")
     m_anim = new Anim_text(text,begin_size,end_size,nb_pic);
     m_lvl = lvl;
+    m_no_pic = false;
 }
 
 Sprite_anim::~Sprite_anim()
@@ -25,7 +27,21 @@ Sprite_anim::~Sprite_anim()
 
 Surface * Sprite_anim::curr_pic()
 {
-    return m_anim->curr_pic();
+    if ( !m_no_pic ) {
+        return m_anim->curr_pic();
+    } else {
+        return NULL;
+    }
+}
+
+int Sprite_anim::h()
+{
+    return m_anim->curr_pic()->h();
+}
+
+int Sprite_anim::w()
+{
+    return m_anim->curr_pic()->h();
 }
 
 void Sprite_anim::next_pic()

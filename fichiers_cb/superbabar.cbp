@@ -158,8 +158,6 @@
 		<Unit filename="..\src\video\anim_table.h" />
 		<Unit filename="..\src\video\anim_text.cpp" />
 		<Unit filename="..\src\video\anim_text.h" />
-		<Unit filename="..\src\video\animation_engine.cpp" />
-		<Unit filename="..\src\video\animation_engine.h" />
 		<Unit filename="..\src\video\camera.cpp" />
 		<Unit filename="..\src\video\camera.h" />
 		<Unit filename="..\src\video\dashboard.cpp" />

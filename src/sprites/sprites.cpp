@@ -22,6 +22,7 @@ Sprite::Sprite()
 	m_phase = 0;
 	m_to_delete = false;
 	m_lvl = BACKGROUND;
+	m_no_pic = false;
 }
 
 Sprite::~Sprite()
@@ -59,4 +60,14 @@ void Sprite::set_to_delete()
 bool Sprite::to_delete() const
 {
     return m_to_delete;
+}
+
+void Sprite::no_pic()
+{
+    m_no_pic = true;
+}
+
+void Sprite::set_pic()
+{
+    m_no_pic = false;
 }
