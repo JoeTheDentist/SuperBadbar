@@ -14,7 +14,6 @@
 class Sprites_manager {
     private:
         std::list<Sprite*> * m_sprites;    /* liste à trier, le tri ne se fait qu'à l'ajout : booleen to_sort=true */
-        bool m_to_sort;
 
         /**
          *  @brief Ajoute du sprite dans la liste
@@ -47,7 +46,7 @@ class Sprites_manager {
         Sprite * add_table(std::string anim_name, screen_level lvl);
 
         /**
-         * Méthode de mise à jour de la liste, tri (éventuel) + next_pic pour tous les sprites !
+         * Méthode de mise à jour de la liste, next_pic pour tous les sprites !
          */
         void update();
 

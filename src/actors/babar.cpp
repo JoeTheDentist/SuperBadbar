@@ -53,7 +53,7 @@ void Babar::load_anim(char age)
 	std::string babar_pic_dir = PIC_BABAR_R;
 
     /* TODO ici fuite de mémoire si rechargement... */
-	m_sprite = gSprites->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
+	m_sprite = gGraphics->get_sprites_manager()->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());

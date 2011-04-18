@@ -47,6 +47,12 @@ class Animated_set_manager {
          *  @brief Vide la liste sans la détruire
          */
         void clear();
+
+        /**
+         *  @brief Charge les sets du niveau
+         *  @param Analyser ouvert sur le fichier .lvl
+         */
+        void load_sets(Analyser * a);
 };
 
 #endif // ANIMATED_SET_MANAGER_H_INCLUDED

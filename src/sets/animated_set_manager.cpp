@@ -45,3 +45,15 @@ void Animated_set_manager::clear()
 {
     m_sets->clear();
 }
+
+void Animated_set_manager::load_sets(Analyser * a)
+{
+    a->find_string("#Sets#");
+    int nb_sets = a->read_int();
+	for (int i = 0; i < nb_sets; i++) {
+		std::string name = a->read_string();
+		int x = a->read_int();
+		int y = a->read_int();
+		add_set(name, x, y);
+	}
+}

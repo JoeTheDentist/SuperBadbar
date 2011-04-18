@@ -32,14 +32,14 @@
 #include "../video/pictures_container.h"
 #include "../events/events_manager.h"
 #include "../util/globals.h"
-#include "../video/animation_engine.h"
-#include "../events/stats.h"
 #include "../sets/animated_set_manager.h"
 #include "../sprites/sprites_manager.h"
+#include "../events/stats.h"
 
 
 Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
+	m_sets(new Animated_set_manager()),
 	m_victory(false)
 {
 }
@@ -49,6 +49,7 @@ Game_engine::Game_engine() :
 Game_engine::~Game_engine()
 {
 	delete m_monsters_manager;
+	delete m_sets;
 }
 
 
@@ -67,6 +68,8 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
 	gEvent->load_triggers(&analyser);
+
+	m_sets->load_sets(&analyser);
 	analyser.close();
 }
 
@@ -76,7 +79,7 @@ void Game_engine::update()
 	update_speed();
 	gBabar->update_state();
 	gStats->update();
-	gSets->update();
+	m_sets->update();
 	m_monsters_manager->babar_monsters_collision();
 	m_monsters_manager->make_monsters_fire();
 	gEvent->update();

@@ -1,7 +1,6 @@
 
 #include "stats.h"
 #include "../util/globals.h"
-#include "../video/animation_engine.h"
 #include "../sprites/sprites_manager.h"
 
 class Animation_engine;

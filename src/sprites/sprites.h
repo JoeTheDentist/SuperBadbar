@@ -43,11 +43,6 @@ class Sprite {
         ~Sprite();
 
         /**
-         *  @brief Relation d'ordre pour le sort
-         */
-        bool operator<(const Sprite &s) const;
-
-        /**
          *	@brief Accesseur
          *	@return Un pointeur vers l'image actuelle du sprite
          */
@@ -83,7 +78,7 @@ class Sprite {
          *  @brief Change le texte de l'animation. Uniquement pour les anims simples
          */
         virtual void change_text_to(std::string text, int begin_size, int end_size, int nb_pic);
-		
+
 		virtual int h() {return this->curr_pic()->h();}
 		virtual int w() {return this->curr_pic()->w();}
 

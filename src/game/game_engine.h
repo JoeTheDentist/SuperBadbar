@@ -25,7 +25,7 @@ class Collisions_manager;
 class Projectiles_manager;
 class Pictures_container;
 class Sound_engine;
-
+class Animated_set_manager;
 
 /**
  * 	@class Game_engine
@@ -39,6 +39,7 @@ private:
 	unsigned int m_matrix_weight;					/* Largeur de la matrice */
 	unsigned int m_matrix_height;					/* Hauteur de la matrice */
 	Monsters_manager *m_monsters_manager;
+	Animated_set_manager * m_sets;
 	bool m_victory;
 public:
 	/**
@@ -141,14 +142,18 @@ public:
 	 *	@return Vrai si le joueur a perdu
 	*/
 	bool has_lost();
-	
+
 	/*!
 	 *	@brief Accesseur
 	 *	@return Pointeur vers le gestionnaire de monstres
-	*/	
+	*/
 	Monsters_manager *get_monsters_manager() { return m_monsters_manager;}
 
-
+    /*!
+	 *	@brief Accesseur
+	 *	@return Pointeur vers le gestionnaire des sets
+	*/
+	Animated_set_manager * get_sets() { return m_sets;}
 };
 
 

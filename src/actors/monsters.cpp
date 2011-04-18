@@ -17,7 +17,6 @@
 #include "../util/analyser.h"
 #include "../game/game.h"
 #include "../video/surface.h"
-#include "../video/animation_engine.h"
 #include "../actors/projectiles.h"
 #include "../items/weapons.h"
 #include "../items/monster_basic_weapon.h"
@@ -81,7 +80,7 @@ void Monster::initFromMonsterFile(std::string file)
 	m_speed.x = m_speed_def;
 	m_dir = RIGHT;
 
-	m_sprite = gSprites->add_table(PIC_MONSTERS_R + m_nom + "/" + m_nom, MIDDLEGROUND);
+	m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_MONSTERS_R + m_nom + "/" + m_nom, MIDDLEGROUND);
     m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
 	m_pos.w = m_sprite->w();
@@ -142,7 +141,7 @@ void Monster::kill()
 	if (m_speed.y < 0)
 		m_speed.y = 0;
 	gSound->play_sound(MONSTERS_SOUNDS_R + "hit.mp3");
-	gSets->add_set("monsters/"+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, m_speed);
+	gGame_engine->get_sets()->add_set("monsters/"+m_nom+"/death/"+m_nom+"_"+(char)(m_dir+'0')+"_", m_pos, m_speed);
 }
 
 bool Monster::can_fire()

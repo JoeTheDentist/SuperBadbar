@@ -29,11 +29,6 @@ Sprite::~Sprite()
 	PRINT_CONSTR(3, "Destruction de Sprite")
 }
 
-bool Sprite::operator<(const Sprite &s) const
-{
-    return m_lvl < s.m_lvl;
-}
-
 Rect * Sprite::pos()
 {
     return &m_pos;

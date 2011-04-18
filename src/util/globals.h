@@ -54,8 +54,6 @@ extern Static_data * gStatic;
 extern Projectiles_manager * gProj; /* liste si multi */
 extern Events_manager * gEvent;
 extern Babar * gBabar; /* liste si multi */
-extern Sprites_manager * gSprites;
-extern Animated_set_manager * gSets;
 extern Graphic_engine * gGraphics;
 extern Game_engine * gGame_engine;
 extern Keyboard * gKeyboard;

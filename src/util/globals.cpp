@@ -10,9 +10,6 @@ Static_data * gStatic = NULL;
 Projectiles_manager * gProj = NULL;
 Events_manager * gEvent = NULL;
 Babar * gBabar = NULL;
-Sprites_manager * gSprites = NULL;
-/* TODO les virer de global */
-Animated_set_manager * gSets = NULL;
 Graphic_engine * gGraphics = NULL;
 Game_engine * gGame_engine = NULL;
 Keyboard * gKeyboard = NULL;

@@ -34,11 +34,11 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
     std::string rep = PIC_PROJ_R;
 
     /* Rajouter le nom... */
-    m_sprite = gSprites->add_table(rep+"simple/simple", MIDDLEGROUND);
+    m_sprite = gGraphics->get_sprites_manager()->add_table(rep+"simple/simple", MIDDLEGROUND);
     m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
 	m_pos.w = m_sprite->w();
-	
+
     m_speed.x = speedx;
     m_speed.y = speedy;
 

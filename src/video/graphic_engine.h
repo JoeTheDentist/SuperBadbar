@@ -19,6 +19,7 @@ class Static_data;
 class Talks;
 class Dashboard;
 class Pictures_container;
+class Sprites_manager;
 
 /**
  * 	@class Graphic_engine
@@ -31,6 +32,8 @@ private:
 	Talks *m_talks;
 	Dashboard *m_dashboard;
 	Pictures_container *m_pictures_container;
+	Sprites_manager * m_sprites;
+
 public:
 	/**
 	 * 	@brief Constructeur
@@ -65,6 +68,12 @@ public:
 	void draw_dashboard(Camera *camera);
 
 	/**
+	 * 	@brief Affiche les sprites
+	 *	@param camera Le gestionnaire d'affichage
+	 */
+	void display_sprites(Camera * cam);
+
+	/**
 	 *  @brief Envoie un message d'avertissement
 	 *  @brief Message à envoyer
 	 */
@@ -94,10 +103,10 @@ public:
 
 
 	/**
-	 * 	@brief
+	 * 	@brief Accesseur
+	 *  @return Pointeur sur le sprites_manager
 	 */
-
-
+    Sprites_manager * get_sprites_manager();
 };
 
 

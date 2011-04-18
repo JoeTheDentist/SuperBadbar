@@ -17,6 +17,7 @@
 #include "../video/pictures_container.h"
 #include "../game/static_data.h"
 #include "../video/surface.h"
+#include "../sprites/sprites_manager.h"
 
 Graphic_engine::Graphic_engine()
 {
@@ -26,6 +27,7 @@ Graphic_engine::Graphic_engine()
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
 	m_pictures_container = new Pictures_container();
+	m_sprites = new Sprites_manager;
 	Surface::set_pictures_container(m_pictures_container);
 }
 
@@ -36,6 +38,7 @@ Graphic_engine::~Graphic_engine()
 	delete m_talks;
 	delete m_dashboard;
 	delete m_pictures_container;
+	delete m_sprites;
 }
 
 void Graphic_engine::init_graphic_engine(bool game)
@@ -53,11 +56,18 @@ void Graphic_engine::update()
 {
 	m_camera->update_pos();
 	m_dashboard->update();
+	m_sprites->update();
+	m_sprites->delete_dead_sprites();
 }
 
 void Graphic_engine::draw_dashboard(Camera *camera)
 {
 	m_dashboard->draw_dashboard(camera);
+}
+
+void Graphic_engine::display_sprites(Camera * cam)
+{
+    m_sprites->display_sprites(cam);
 }
 
 void Graphic_engine::alert(std::string text)
@@ -81,3 +91,7 @@ Pictures_container *Graphic_engine::get_pictures_container()
 	return m_pictures_container;
 }
 
+Sprites_manager * Graphic_engine::get_sprites_manager()
+{
+    return m_sprites;
+}
