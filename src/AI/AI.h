@@ -1,7 +1,6 @@
 #ifndef AI_H_INCLUDED
 #define AI_H_INCLUDED
 
-#include "../actors/actor.h"
 #include "../actors/projectiles_manager.h"
 #include "../physic/collisions_manager.h"
 #include "../physic/collisions_matrix.h"
@@ -15,7 +14,6 @@
 class AI {
     private:
         Rect * m_pos;
-        Actor * m_target;
 
         double eval(direction d);
         bool check_collision(Rect A, Rect B);
@@ -25,7 +23,7 @@ class AI {
         double eval_right();
 
     public:
-        AI(Actor * target, Rect * pos);
+        AI(Rect * pos);
         ~AI();
 
         /**

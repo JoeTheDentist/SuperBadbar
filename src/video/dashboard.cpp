@@ -125,7 +125,7 @@ void Dashboard::alert(std::string text)
     if ( m_alert ) {
         delete m_alert;
     }
-    m_alert = new Anim_text(text, 250, 100, 30);
+    m_alert = new Anim_text(text, 150, 10, 30);
 }
 
 void Dashboard::update()

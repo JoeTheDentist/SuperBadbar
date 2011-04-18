@@ -21,13 +21,13 @@
 Following_walking_monster::Following_walking_monster(std::string name, int posx, int posy):
 	Walking_monster(name, posx, posy)
 {
-    m_ai = new AI(gBabar, &m_pos);
+    m_ai = new AI(&m_pos);
 }
 
 Following_walking_monster::Following_walking_monster(Analyser *analyserLevel):
 	Walking_monster(analyserLevel)
 {
-    m_ai = new AI(gBabar, &m_pos);
+    m_ai = new AI(&m_pos);
 }
 
 Following_walking_monster::~Following_walking_monster()

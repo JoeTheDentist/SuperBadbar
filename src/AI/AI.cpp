@@ -3,10 +3,10 @@
 
 #include "AI.h"
 #include "../actors/projectiles.h"
+#include "../actors/babar.h"
 
-AI::AI(Actor * target, Rect * pos)
+AI::AI(Rect * pos)
 {
-    m_target = target;
     m_pos = pos;
 }
 
@@ -70,7 +70,7 @@ double AI::eval_up()
         }
     }
 
-    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
 
     return weight;
 }
@@ -94,7 +94,7 @@ double AI::eval_down()
     }
 
     // 2/3 pour favoriser sauter /r descendre
-    weight += DIST_WEIGHT/dist(m_target->position(), zone) ;
+    weight += DIST_WEIGHT/dist(gBabar->position(), zone) ;
 
     return weight;
 }
@@ -105,7 +105,7 @@ double AI::eval_left()
 
     Rect zone=*m_pos;
     zone.x-=m_pos->w;
-    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
 				it != gProj->proj_friend_end(); it++) {
@@ -127,7 +127,7 @@ double AI::eval_right()
 
     Rect zone=*m_pos;
     zone.x+=m_pos->w;
-    weight += DIST_WEIGHT/dist(m_target->position(), zone);
+    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
 				it != gProj->proj_friend_end(); it++) {
@@ -143,21 +143,6 @@ double AI::eval_right()
     }
     return weight;
 }
-
-
-/*double AI::dist(Rect A, Rect B)
-{
-    Rect mA = A;
-    Rect mB = B;
-
-    mA.x = mA.x+mA.w/2;
-    mA.y = mA.y+mA.h/2;
-
-    mB.x = mB.x+mB.w/2;
-    mB.y = mB.y+mB.h/2;
-
-    return sqrt( (mA.x-mB.x)*(mA.x-mB.x) + (mA.y-mB.y)*(mA.y-mB.y) );
-}*/
 
 bool AI::check_collision(Rect A, Rect B)
 {
