@@ -10,6 +10,27 @@ level1.png
 3197
 1
 
+#Sets#
+18
+butterfly/butterfly 173 3876
+butterfly/butterfly 236 2969
+butterfly/butterfly 0 2907
+butterfly/butterfly 33 2907
+butterfly/butterfly 66 2907
+butterfly/butterfly 95 2907
+butterfly/butterfly 121 2907
+butterfly/butterfly 161 2907
+butterfly/butterfly 220 2907
+butterfly/butterfly 275 2907
+butterfly/butterfly 315 2907
+butterfly/butterfly 341 2907
+butterfly/butterfly 279 2907
+butterfly/butterfly 174 2863
+butterfly/butterfly 269 2863
+butterfly/butterfly 269 2863
+butterfly/butterfly 338 2863
+butterfly/butterfly 357 2863
+!
 #Statics#
 11
 block6 2750 2000 0
@@ -36,9 +57,9 @@ following_flying_monster fubob -8 947
 following_flying_monster fubob 394 994
 following_flying_monster fubob 2788 1092
 following_flying_monster fubob 2435 1176
-following_walking_monster gailapin 702 3195
 following_walking_monster gailapin 409 2944
 following_walking_monster maphyar 449 2957
+following_walking_monster gailapin 702 3195
 !
 #Events#
 82
@@ -130,6 +151,6 @@ event peanut 1856 823
 normal block8 296 752 727 1087
 normal block8 1555 1668 1552 1980
 !
-#Anims#
+#Triggers#
 0
 !

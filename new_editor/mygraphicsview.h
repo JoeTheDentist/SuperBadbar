@@ -122,9 +122,15 @@ class MyGraphicsView : public QGraphicsView {
 	void addBabar();
 	
 	/*!
+	*	@brief Fonction d'ajout de set (decor) au niveau
+	*/
+	void addSet();	
+	
+	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
-	void addStatic();	
+	void addStatic();		
+	
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
@@ -139,6 +145,11 @@ class MyGraphicsView : public QGraphicsView {
 	*	@brief Fonction d'ajout d'un event au niveau
 	*/
 	void addEvent();
+	
+	/*!
+	*	@brief Fonction d'ajout d'un Trigger au niveau
+	*/
+	void addTrigger();
 	
 	
 	/*!

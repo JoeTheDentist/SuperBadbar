@@ -27,10 +27,12 @@ MainWindow::MainWindow():
 	m_exitAct(NULL),
 	m_saveAct(NULL),
 	m_aboutBabarEditor(NULL),
+	m_addSet(NULL),
 	m_addStatic(NULL),
 	m_addPlatform(NULL),
 	m_addMonster(NULL),
 	m_addEvent(NULL),
+	m_addTrigger(NULL),
 	m_fileToolBar(NULL)
 {
 	setCentralWidget(m_graphic_view);
@@ -51,10 +53,12 @@ MainWindow::~MainWindow()
 	delete m_fileMenu;
 	delete m_editMenu;
 	delete m_helpMenu;
+	delete m_addSet;
 	delete m_addStatic;
 	delete m_addPlatform;
 	delete m_addMonster;
 	delete m_addEvent;
+	delete m_addTrigger;
 	delete m_addBabar;
 	delete m_graphic_scene;
 	delete m_graphic_view;
@@ -63,7 +67,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::createActions()
 {
-
 	m_newAct = new QAction(QIcon("images/new.png"), tr("&New"), this);
 	m_newAct->setShortcuts(QKeySequence::New);
 	m_newAct->setStatusTip(tr("Create a new file"));
@@ -96,6 +99,10 @@ void MainWindow::createActions()
 	m_addBabar->setStatusTip(tr("Change the Babar's start position"));
 	connect(m_addBabar, SIGNAL(triggered()), this, SLOT(addBabar()));	
 		
+	m_addSet = new QAction(QIcon("images/addset.png"),tr("AddSet"), this); 
+	m_addSet->setStatusTip(tr("Add a set to the level"));
+	connect(m_addSet, SIGNAL(triggered()), this, SLOT(addSet()));	
+
 	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
@@ -103,7 +110,6 @@ void MainWindow::createActions()
 	m_addPlatform = new QAction(QIcon("images/addplatform.png"),tr("AddPlatform"), this); 
 	m_addPlatform->setStatusTip(tr("Add a platform to the level"));
 	connect(m_addPlatform, SIGNAL(triggered()), this, SLOT(addPlatform()));	
-
 
 	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
 	m_addMonster->setStatusTip(tr("Add a monster to the level"));
@@ -113,12 +119,13 @@ void MainWindow::createActions()
 	m_addEvent->setStatusTip(tr("Add an event to the level"));
 	connect(m_addEvent, SIGNAL(triggered()), this, SLOT(addEvent()));	
 	
+	m_addTrigger = new QAction(QIcon("images/addtrigger.png"),tr("AddTrigger"), this); 
+	m_addTrigger->setStatusTip(tr("Add a trigger to the level"));
+	connect(m_addTrigger, SIGNAL(triggered()), this, SLOT(addTrigger()));	
+	
 	m_deleteItem = new QAction(QIcon("images/deleteitem.png"),tr("Delete item"), this); // TODO changer image
 	m_deleteItem->setStatusTip(tr("Delete an item from the level"));
 	connect(m_deleteItem, SIGNAL(triggered()), this, SLOT(deleteItem()));	
-	
-
-	
 }
 
  void MainWindow::createMenus()
@@ -131,10 +138,12 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
 	m_editMenu->addAction(m_addBabar);
+	m_editMenu->addAction(m_addSet);
 	m_editMenu->addAction(m_addStatic);
 	m_editMenu->addAction(m_addPlatform);
 	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_addEvent);
+	m_editMenu->addAction(m_addTrigger);
 	m_editMenu->addAction(m_deleteItem);
 	menuBar()->addSeparator();
 	m_helpMenu = menuBar()->addMenu(tr("&Help"));
@@ -149,10 +158,12 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
 	m_fileToolBar->addAction(m_addBabar);
+	m_fileToolBar->addAction(m_addSet);
 	m_fileToolBar->addAction(m_addStatic);
 	m_fileToolBar->addAction(m_addPlatform);
 	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_addEvent);
+	m_fileToolBar->addAction(m_addTrigger);
 	m_fileToolBar->addAction(m_deleteItem);
 }
 
@@ -192,24 +203,6 @@ void MainWindow::open()
 	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
 		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
 		m_fileMenu->height() + m_fileToolBar->height());
-//~ 	
-//~ 	if (m_opened_file) {
-//~ 		warningSave();
-//~ 	}
-//~ 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png");
-//~ 	if (fileName.isEmpty()) {
-//~ 		return;
-//~ 	}
-//~ 	if (!fileName.endsWith(".png")) {
-//~ 	 QMessageBox::critical(this, "File opening", "filename must ends with \".pgn\"");
-//~ 		return;
-//~ 	}
-//~ 	m_opened_file = true;
-//~ 	m_file_name = fileName;
-//~ 	m_graphic_view->loadFile(fileName, false);
-//~ 	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
-//~ 		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
-//~ 		m_fileMenu->height() + m_fileToolBar->height());
 }
 
 void MainWindow::save()
@@ -249,6 +242,12 @@ void MainWindow::addBabar()
 	m_graphic_view->addBabar();
 }
 
+void MainWindow::addSet()
+{
+	if (m_opened_file)
+		m_graphic_view->addSet();
+}
+
 void MainWindow::addStatic()
 {
 	if (m_opened_file)
@@ -260,7 +259,6 @@ void MainWindow::addPlatform()
 	if (m_opened_file)
 		m_graphic_view->addPlatform();
 }
-
 
 void MainWindow::addMonster()
 {
@@ -274,7 +272,11 @@ void MainWindow::addEvent()
 		m_graphic_view->addEvent();
 }
 
-
+void MainWindow::addTrigger()
+{
+	if (m_opened_file)
+		m_graphic_view->addTrigger();
+}
 
 void MainWindow::deleteItem()
 {

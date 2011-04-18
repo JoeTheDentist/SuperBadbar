@@ -19,7 +19,10 @@ HEADERS += analyser.h \
            myitem.h \
            paths.h \
            platformitem.h \
-           staticitem.h
+           staticitem.h \
+		   triggeritem.h \
+		   setitem.h
+		   
 SOURCES += analyser.cpp \
            babaritem.cpp \
            data.cpp \
@@ -30,4 +33,20 @@ SOURCES += analyser.cpp \
            mygraphicsview.cpp \
            myitem.cpp \
            platformitem.cpp \
-           staticitem.cpp
+           staticitem.cpp \
+		   triggeritem.cpp \
+		   setitem.cpp
+		   
+#############################
+#build in an other directory#
+#############################
+RCC_DIR =obj\RCCFiles
+UI_DIR =obj\UICFiles
+MOC_DIR =obj\MOCFiles
+OBJECTS_DIR =obj\ObjFiles
+CONFIG(debg, debug|release) { 
+    DESTDIR = .
+}
+CONFIG(release, debug|release) { 
+    DESTDIR = .
+}

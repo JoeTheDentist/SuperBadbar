@@ -3,6 +3,7 @@
 
 
 // definitions des chemins
+#define SET_DIR "../pic/animations/"
 #define STATIC_DIR "../pic/statics/"
 #define BACKGROUND_DIR "../pic/backgrounds/"
 #define MONSTERS_DIR "../data/monsters/"
@@ -22,9 +23,10 @@
 // niveaux de zbuffer
 #define BACKGROUND_ZBUFFER 0
 #define STATICS_0_ZBUFFER 1
-#define MONSTERS_ZBUFFER 2
-#define STATICS_1_ZBUFFER 3
-#define EVENTS_ZBUFFER 4
-#define BABAR_ZBUFFER 5
+#define SET_ZBUFFER 2
+#define MONSTERS_ZBUFFER 3
+#define STATICS_1_ZBUFFER 4
+#define EVENTS_ZBUFFER 5
+#define BABAR_ZBUFFER 6
 
 #endif

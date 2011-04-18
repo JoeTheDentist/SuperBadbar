@@ -3,9 +3,11 @@
 #include "myitem.h"
 #include "data.h"
 #include "babaritem.h"
+#include "setitem.h"
 #include "staticitem.h"
 #include "monsteritem.h"
 #include "eventitem.h"
+#include "triggeritem.h"
 #include "analyser.h"
 
 #include <iostream>
@@ -84,6 +86,20 @@ void MyGraphicsView::loadFile(QString fileName)
 	age = analyser.read_int();
 	m_babar_item->setPos(x, y);
 	m_babar_item->setBabarAge(age);
+	if (analyser.find_string("#Sets#")) {
+		int nbSets = analyser.read_int();
+		QString nameSet;
+		for (int i = 0; i < nbSets; i ++) {
+			nameSet = QString::fromStdString(analyser.read_string());
+			std::cout << nameSet.toStdString() << std::endl;
+			x = analyser.read_int();
+			y = analyser.read_int();
+			myitem = new SetItem(this->scene(), nameSet);
+			myitem->setPos(x, y);
+			m_data->addItem(myitem);
+		}
+	}
+	
 	analyser.find_string("#Statics#");
 	int nbStatics = analyser.read_int();
 	QString nameStatic;
@@ -296,6 +312,27 @@ void MyGraphicsView::addBabar()
 	m_curr_item = m_data->selectBabar();
 }
 
+void MyGraphicsView::addSet()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de set", SET_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!fileName.endsWith(".png")) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with  \".png\"");
+		return;
+	}
+	int cutRight = 0;
+	for (cutRight = fileName.size() - 1; fileName[cutRight] != '_'; cutRight--) {
+		if (cutRight == 0)
+			std::cerr << "Erreur dans le format d'une animation: doit contenir '_'" << std::endl;		
+	}
+	fileName = fileName.left(cutRight);
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("animations/") + 11));
+
+	m_curr_item = new SetItem(this->scene(), fileName);
+}
+
 void MyGraphicsView::addStatic()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de static", STATIC_DIR);
@@ -358,11 +395,26 @@ void MyGraphicsView::addEvent()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".evt\"");
 		return;
 	}
-	QPixmap image;
 
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
 	fileName.chop(4);
 	m_curr_item = new EventItem(this->scene(), fileName);
+}
+
+void MyGraphicsView::addTrigger()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier event", EVENTS_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(EVENTS_EXT))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".evt\"");
+		return;
+	}
+
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
+	fileName.chop(4);
+	m_curr_item = new TriggerItem(this->scene(), fileName);	
 }
 
 void MyGraphicsView::activeDeleteItem()

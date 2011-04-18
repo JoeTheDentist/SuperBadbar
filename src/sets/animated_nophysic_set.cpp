@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include "animated_nophysic_set.h"
 #include "../sprites/sprites_manager.h"
 

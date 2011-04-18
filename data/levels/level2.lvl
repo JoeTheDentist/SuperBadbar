@@ -10,6 +10,10 @@ level1.png
 3208
 1
 
+#Sets#
+1
+butterfly/butterfly 1513 3154
+!
 #Statics#
 1
 soil 7 3289 1
@@ -86,6 +90,6 @@ normal block8 187 230 558 207
 falling block8 141 2900 435 3126
 falling block8 -37 2914 246 3150
 !
-#Anims#
+#Triggers#
 0
 !

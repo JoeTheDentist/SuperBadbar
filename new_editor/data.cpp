@@ -9,6 +9,7 @@
 
 Data::Data():
 	m_babar_item(NULL),
+	m_set_items(),
 	m_static_items(),
 	m_monsters_items(),
 	m_event_items(),
@@ -56,6 +57,16 @@ void Data::addBabarItem(MyItem *item)
 {
 	m_babar_item = item;
 	item->getItem()->setZValue(BABAR_ZBUFFER);	
+}
+
+void Data::addSetItem(MyItem *item, bool push_front)
+{
+	if (push_front) {
+		m_set_items.push_front(item);		
+	} else {
+		m_set_items.push_back(item);
+	}
+	item->getItem()->setZValue(SET_ZBUFFER);
 }
 
 void Data::addStaticItem(MyItem *item, bool push_front)
@@ -124,6 +135,12 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it)->selectItem(x, y);	
 		}	
 	}	
+	for (it = m_set_items.begin(); it != m_set_items.end(); it++) {
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
+		}
+	}
+	
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
 		if ((*it)->selectItem(x, y)) {
 			return (*it)->selectItem(x, y);	
@@ -153,6 +170,12 @@ void Data::deleteItem(MyItem *item)
 			return;
 		}
 	}
+	for (it = m_set_items.begin(); it != m_set_items.end();it++) {
+		if (*it == item) {
+			m_static_items.erase(it);
+			return;
+		}
+	}
 	for (it = m_static_items.begin(); it != m_static_items.end();it++) {
 		if (*it == item) {
 			m_static_items.erase(it);
@@ -176,6 +199,9 @@ void Data::upInStack(MyItem *item)
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++) {
 		(*it)->getItem()->stackBefore(item->getItem());
 	}
+	for (it = m_set_items.begin(); it != m_set_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}	
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
  		(*it)->getItem()->stackBefore(item->getItem());
 	}	
@@ -208,6 +234,12 @@ void Data::saveData(QString fileName)
 	out << "#Babar#" << endl;
 	m_babar_item->saveItem(out);
 	out << endl;
+	// sauvegarde des animations
+	out << "#Sets#" << endl;
+	out << m_set_items.size() << endl;
+	for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+		(*it)->saveItem(out);		
+	out << "!" << endl;
 	// sauvegarde des statics  
 	out << "#Statics#" << endl;
 	out << m_static_items.size() << endl;	
@@ -232,8 +264,8 @@ void Data::saveData(QString fileName)
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
 		(*it)->saveItem(out);		
 	out << "!" << endl;
-	out << "#Anims#" << endl;
-	out << "0" << endl;
+	out << "#Triggers#" << endl;
+	out << 0 << endl;
 	out << "!" << endl;
 	file.close();	
 	
@@ -246,6 +278,12 @@ void Data::removeItem(MyItem *item)
 	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {	
 		if (item == (*it)) {
 			m_event_items.erase(it);
+			return;
+		}
+	}	
+	for (it = m_set_items.begin(); it != m_set_items.end(); it++) {	
+		if (item == (*it)) {
+			m_set_items.erase(it);
 			return;
 		}
 	}	

@@ -63,10 +63,12 @@ class MainWindow : public QMainWindow {
 	void saveAs();
 	void aboutBabarEditor();
 	void addBabar();
+	void addSet();
 	void addStatic();
 	void addPlatform();
 	void addMonster();
 	void addEvent();
+	void addTrigger();
 	void deleteItem();
 	
 	
@@ -90,16 +92,15 @@ class MainWindow : public QMainWindow {
 	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
 	QAction *m_addBabar;
+	QAction *m_addSet;
 	QAction *m_addStatic;
 	QAction *m_addPlatform;
 	QAction *m_addMonster;
 	QAction *m_addEvent;
+	QAction *m_addTrigger;
 	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;
-
-
-
 };
 
 

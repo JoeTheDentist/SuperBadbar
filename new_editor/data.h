@@ -10,6 +10,7 @@ class MyItem;
 class Data {
 	private:
 	MyItem *m_babar_item;
+	std::list<MyItem *> m_set_items;
 	std::list<MyItem *> m_static_items;
 	std::list<MyItem *> m_platform_items;
 	std::list<MyItem *> m_monsters_items;
@@ -68,6 +69,15 @@ class Data {
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addStaticItem
 	*/
 	void addBabarItem(MyItem *item);
+	
+	/*!
+	*	@brief Ajoute un item a la liste des setItem
+	*	@param item L'item a ajouter
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addSetItem
+	*/
+	void addSetItem(MyItem *item, bool push_front = false);	
 	
 	/*!
 	*	@brief Ajoute un item a la liste des staticItem
