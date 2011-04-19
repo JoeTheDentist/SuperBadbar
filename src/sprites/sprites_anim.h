@@ -52,6 +52,11 @@ class Sprite_anim : public Sprite {
          *  @return Largeur
          */
         int w();
+
+        /**
+         *  @brief Mets l'image de départ aléatoirement
+         */
+        void rand_pic();
 };
 
 #endif // SPRITES_ANIM_H_INCLUDED

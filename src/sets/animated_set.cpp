@@ -10,6 +10,7 @@ Animated_set::Animated_set()
 	m_pos.w = 0;
 	m_speed = m_pos;
 	m_sprite = NULL;
+	m_to_delete = false;
 }
 
 Animated_set::~Animated_set()
@@ -32,4 +33,14 @@ void Animated_set::update_pos()
 void Animated_set::update_speed()
 {
     /* rien à faire si non redéfinie */
+}
+
+void Animated_set::rand_pic()
+{
+    m_sprite->rand_pic();
+}
+
+bool Animated_set::to_delete()
+{
+
 }

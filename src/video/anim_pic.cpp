@@ -120,5 +120,5 @@ void Anim_pic::set_rect(Rect &pos)
 
 void Anim_pic::set_img(int p)
 {
-    m_curr = p;
+    m_curr = p%m_size;
 }

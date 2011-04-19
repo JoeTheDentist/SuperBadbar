@@ -1,4 +1,7 @@
 
+
+#include <stdlib.h>
+
 #include "sprites_anim.h"
 #include "../video/anim_pic.h"
 #include "../video/anim_text.h"
@@ -57,4 +60,9 @@ void Sprite_anim::change_text_to(std::string text, int begin_size, int end_size,
 {
     delete m_anim;
     m_anim = new Anim_text(text,begin_size,end_size,nb_pic);
+}
+
+void Sprite_anim::rand_pic()
+{
+    m_anim->set_img( rand() );
 }

@@ -45,14 +45,12 @@ public:
 	 */
 	~Graphic_engine();
 
-
 	/**
 	 * 	@brief Initialise le moteur graphique
 	 *	@param game Indique si on initialise le moteur pour le jeu (vrai) ou pour le menu principal (faux)
 	 *	@todo On a juste besoin du picture_container, qui doit faire partie de graphic_engine..
 	 */
 	void init_graphic_engine(bool game = true);
-
 
 	/**
 	 * 	@brief Mise à jour du moteur graphique
@@ -85,14 +83,11 @@ public:
 	 */
 	Camera *get_camera();
 
-
-
 	/**
 	 * 	@brief Accesseur
 	 *	@return Un pointeur vers le gestionnaire de dialogues
 	 */
 	Talks *get_talks();
-
 
 	/**
 	 * 	@brief Accesseur
@@ -100,13 +95,16 @@ public:
 	 */
 	Pictures_container *get_pictures_container();
 
-
-
 	/**
 	 * 	@brief Accesseur
 	 *  @return Pointeur sur le sprites_manager
 	 */
     Sprites_manager * get_sprites_manager();
+
+    /**
+     *  @brief Raz de sprites_manager
+     */
+    void clean();
 };
 
 

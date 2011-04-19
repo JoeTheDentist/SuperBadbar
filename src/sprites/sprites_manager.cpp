@@ -10,6 +10,7 @@ Sprites_manager::Sprites_manager()
 
 Sprites_manager::~Sprites_manager()
 {
+    clear();
     delete m_sprites;
 }
 
@@ -64,7 +65,11 @@ void Sprites_manager::update()
 
 void Sprites_manager::clear()
 {
-    m_sprites->clear();
+    for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ) {
+        delete (*it);
+        (*it) = NULL;
+        it = m_sprites->erase(it);
+    }
 }
 
 void Sprites_manager::display_sprites(Camera * cam)

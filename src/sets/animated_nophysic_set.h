@@ -27,6 +27,11 @@ class Animated_nophysic_set : public Animated_set {
          *  @brief Destructeur
          */
         ~Animated_nophysic_set();
+
+        /**
+         *  @brief Choisit l'image de départ aléatoirement
+         */
+        void rand_pic();
 };
 
 #endif // ANIMATED_NOPHYSIC_SET_H_INCLUDED

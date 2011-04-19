@@ -95,3 +95,8 @@ Sprites_manager * Graphic_engine::get_sprites_manager()
 {
     return m_sprites;
 }
+
+void Graphic_engine::clean()
+{
+    m_sprites->clear();
+}

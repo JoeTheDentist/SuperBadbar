@@ -71,3 +71,8 @@ void Sprite::set_pic()
 {
     m_no_pic = false;
 }
+
+void Sprite::rand_pic()
+{
+    /* Ne rien faire si non redef */
+}

@@ -109,6 +109,11 @@ class Sprite {
          *  @brief Remet l'affichage
          */
         void set_pic();
+
+        /**
+         *  @brief Mets l'image de départ aléatoirement, uniquement pour anim
+         */
+        virtual void rand_pic();
 };
 
 #endif

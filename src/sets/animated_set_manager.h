@@ -31,7 +31,7 @@ class Animated_set_manager {
         /**
          *  @brief Ajouter un nophysic_set
          */
-        void add_set(std::string anim_name, int x, int y);
+        void add_set(std::string anim_name, int x, int y, bool rand_pic=false);
 
         /**
          *  @brief Ajouter un physic_set

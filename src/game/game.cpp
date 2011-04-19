@@ -88,6 +88,7 @@ Game::~Game()
 	gGame_engine = NULL;
     delete gStatic;
 	gStatic = NULL;
+	gGraphics->clean();
 }
 
 void Game::update_keyboard()

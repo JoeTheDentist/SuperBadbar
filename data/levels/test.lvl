@@ -10,6 +10,14 @@ leveltest.png
 3876
 1
 
+#Sets#
+5
+butterfly/butterfly 173 3876
+butterfly/butterfly 3153 3875
+butterfly/butterfly 3751 4144
+butterfly/butterfly 3977 3139
+butterfly/butterfly 4487 3909
+!
 #Statics#
 12
 arbre_bord -2 506 0
@@ -25,32 +33,21 @@ block3 2531 3870 0
 grass2 2806 4271 0
 arbre_feuilles_racines 3530 4200 0
 !
-
 #Monsters#
-5
-following_walking_monster gailapin 1254 4181
-following_walking_monster gailapin 1072 4153
-following_walking_monster gailapin 951 3957
-following_walking_monster gailapin 1117 3921
-following_walking_monster gailapin 793 4008
+4
+following_walking_monster gailapin 833 4182
+following_walking_monster gailapin 1339 4179
+following_walking_monster maphyar 2835 3861
+following_walking_monster maphyar 4207 3917
 !
-
 #Events#
 1
 event shotgun 295 3900
 !
-
-#Triggers#
-1
-testtriggers/trig1.trg
-!
-
 #Platforms#
 1
 normal block8 1996 3425 2011 3937
 !
-
-#Sets#
-1
-butterfly/butterfly 173 3876
+#Triggers#
+0
 !
