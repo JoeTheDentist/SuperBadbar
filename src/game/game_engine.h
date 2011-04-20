@@ -12,6 +12,8 @@
 #ifndef _GAME_ENGINE
 #define _GAME_ENGINE
 
+#define SPAWN_TIME 20   /* temps avant respawn, en nombre de cycles */
+
 #include <stdint.h>
 
 class Static_data;
@@ -40,6 +42,7 @@ private:
 	unsigned int m_matrix_height;					/* Hauteur de la matrice */
 	Monsters_manager *m_monsters_manager;
 	Animated_set_manager * m_sets;
+	int m_spawn;                                    /* temps d'attente avant respawn */
 	bool m_victory;
 public:
 	/**

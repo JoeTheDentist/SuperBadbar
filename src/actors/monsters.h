@@ -43,10 +43,10 @@ protected:
 	Weapon *m_weapon;
 
 public:
-	
+
 	/*!
 	 *	@brief Constructeur
-	 *	@param name Le nom du monstre 
+	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
 	 *	@param posy Position initiale
 	*/
