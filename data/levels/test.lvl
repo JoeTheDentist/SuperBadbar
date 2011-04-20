@@ -11,12 +11,18 @@ leveltest.png
 1
 
 #Sets#
-5
+11
 butterfly/butterfly 173 3876
 butterfly/butterfly 3153 3875
 butterfly/butterfly 3751 4144
 butterfly/butterfly 3977 3139
 butterfly/butterfly 4487 3909
+butterfly/butterfly 604 2809
+butterfly/butterfly 543 2852
+butterfly/butterfly 530 2789
+butterfly/butterfly 674 2851
+butterfly/butterfly 665 2772
+butterfly/butterfly 586 2739
 !
 #Statics#
 12
@@ -46,7 +52,7 @@ event shotgun 295 3900
 !
 #Platforms#
 1
-normal block8 1996 3425 2011 3937
+normal block8 1882 3525 1879 4187
 !
 #Triggers#
 0

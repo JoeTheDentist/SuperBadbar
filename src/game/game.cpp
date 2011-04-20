@@ -66,7 +66,6 @@ void Game::init_game(std::string level_name)
 	gGame_engine->init_game_engine(level_name, gGraphics->get_camera(),
                                     gGraphics->get_pictures_container());
 	gGraphics->init_graphic_engine();
-	/* TODO lire fichier pour afficher les set */
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
 }

@@ -34,9 +34,11 @@ Levels_manager::~Levels_manager()
 void Levels_manager::play()
 {
 	result_game res;
-	if (m_game)
-		delete m_game;
 	while(1) {
+	    if ( m_game != NULL ) {
+            delete m_game;
+            m_game = NULL;
+        }
 		m_game = new Game(m_level);
 		switch(res = m_game->game_loop()) {
 		case victory:
@@ -65,7 +67,7 @@ void Levels_manager::play_defeat()
 	game_over_pos.x = 300;
 	game_over_pos.y = 200;
 	camera->display_picture(text, &game_over_pos, true);
-	camera->flip_camera();	
+	camera->flip_camera();
 	gKeyboard->wait_key(k_fire);
 	delete game_over_surface;
 	delete text;

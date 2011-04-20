@@ -33,9 +33,12 @@ Monsters_manager::Monsters_manager()
 Monsters_manager::~Monsters_manager()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++){
+			it != m_monsters.end(); ){
 		delete (*it);
+        (*it) = NULL;
+        it = m_monsters.erase(it);
 	}
+
 }
 
 void Monsters_manager::init_monsters_manager(Analyser *analyser)
@@ -59,10 +62,10 @@ void Monsters_manager::load_monster(std::string name, int posx, int posy)
 		add(new Following_flying_monster(name, posx, posy));
 	} else {
 		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
-	}		
+	}
 }
 
-void Monsters_manager::load_monster(Analyser *analyser) 
+void Monsters_manager::load_monster(Analyser *analyser)
 {
 	std::string monster_type = analyser->read_string();
 	if (monster_type == "following_walking_monster") {
@@ -75,7 +78,7 @@ void Monsters_manager::load_monster(Analyser *analyser)
 		add(new Following_flying_monster(analyser));
 	} else {
 		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
-	}	
+	}
 }
 
 void Monsters_manager::add(Monster *monster)

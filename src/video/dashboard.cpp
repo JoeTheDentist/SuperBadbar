@@ -156,5 +156,10 @@ void Dashboard::clear_dashboard()
 		delete m_peanut;
 	m_peanut = NULL;
 
+	if ( m_alert ) {
+        delete m_alert;
+        m_alert = NULL;
+    }
+
     delete m_alert;
 }

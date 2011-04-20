@@ -39,6 +39,7 @@ Actor::~Actor()
 	PRINT_CONSTR(3, "destruction de actor")
 	if ( m_sprite ) {
         m_sprite->set_to_delete();
+        m_sprite = NULL;
     }
 }
 
