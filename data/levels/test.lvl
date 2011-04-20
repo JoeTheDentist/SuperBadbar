@@ -25,7 +25,7 @@ butterfly/butterfly 665 2772
 butterfly/butterfly 586 2739
 !
 #Statics#
-12
+13
 arbre_bord -2 506 0
 arbre_feuilles 1013 3455 0
 arbre_feuilles_front 961 3516 1
@@ -38,6 +38,7 @@ block1 3836 3931 0
 block3 2531 3870 0
 grass2 2806 4271 0
 arbre_feuilles_racines 3530 4200 0
+block8 1977 4148 0
 !
 #Monsters#
 4

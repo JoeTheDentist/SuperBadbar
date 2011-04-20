@@ -167,6 +167,10 @@ void Monsters_manager::delete_dead_monsters()
 			(*it)->kill();
 			delete (*it);
 			it = m_monsters.erase(it);
+		} else if ( (*it)->position().y + (*it)->position().h >= (int)gStatic->static_data_height() ) {
+            gGame_engine->get_sets()->add_set("splash/splash",(*it)->position().x, (int)gStatic->static_data_height()-100, false, true);
+			delete (*it);
+			it = m_monsters.erase(it);
 		} else {
 			++it;
 		}
