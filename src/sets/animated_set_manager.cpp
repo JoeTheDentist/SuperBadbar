@@ -22,9 +22,9 @@ void Animated_set_manager::add(Animated_set * set)
     m_sets->push_front(set);
 }
 
-void Animated_set_manager::add_set(std::string anim_name, int x, int y, bool rand_pic)
+void Animated_set_manager::add_set(std::string anim_name, int x, int y, bool rand_pic, bool ended)
 {
-    Animated_set * set = new Animated_nophysic_set(anim_name, x, y);
+    Animated_set * set = new Animated_nophysic_set(anim_name, x, y, ended);
     if ( rand_pic ) {
         set->rand_pic();
     }
@@ -39,9 +39,16 @@ void Animated_set_manager::add_set(std::string anim_name, Rect pos, Rect speed)
 
 void Animated_set_manager::update()
 {
-    for (std::list<Animated_set*>::iterator it=m_sets->begin(); it!=m_sets->end(); ++it) {
-        (*it)->update_speed();
-        (*it)->update_pos();
+    for (std::list<Animated_set*>::iterator it=m_sets->begin(); it!=m_sets->end(); ) {
+        if ( (*it)->to_delete() ) {
+            delete (*it);
+            (*it) = NULL;
+            it = m_sets->erase(it);
+        } else {
+            (*it)->update_speed();
+            (*it)->update_pos();
+            ++it;
+        }
     }
 }
 

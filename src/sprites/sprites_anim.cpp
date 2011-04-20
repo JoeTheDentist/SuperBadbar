@@ -31,7 +31,11 @@ Sprite_anim::~Sprite_anim()
 Surface * Sprite_anim::curr_pic()
 {
     if ( !m_no_pic ) {
-        return m_anim->curr_pic();
+        if ( m_to_delete ) {
+            return NULL;
+        } else {
+            return m_anim->curr_pic();
+        }
     } else {
         return NULL;
     }
@@ -52,8 +56,9 @@ void Sprite_anim::next_pic()
     /* p-e le mettre à un autre endroit */
     if ( m_anim->deletable() ) {
         m_to_delete = true;
+    } else {
+        m_anim->next_pic();
     }
-    m_anim->next_pic();
 }
 
 void Sprite_anim::change_text_to(std::string text, int begin_size, int end_size, int nb_pic)

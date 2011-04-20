@@ -15,9 +15,7 @@ Animated_set::Animated_set()
 
 Animated_set::~Animated_set()
 {
-    if ( m_sprite ) {
-        m_sprite->set_to_delete();
-    }
+    /* ne pas toucher à m_sprite, il peut être déà détruit */
 }
 
 void Animated_set::update_pos()
@@ -42,5 +40,9 @@ void Animated_set::rand_pic()
 
 bool Animated_set::to_delete()
 {
-
+    if ( m_sprite ) {
+        return m_sprite->to_delete();
+    } else {
+        return true;
+    }
 }

@@ -158,6 +158,7 @@ void Game_engine::update_babar_damage()
     /* Si Babar sort de l'écran => on lui fait perdre des vie et on le remet à la bonne place */
     if ( gBabar->position().y + gBabar->position().h >= (int)gStatic->static_data_height() ) {
         gBabar->damage(1);
+        m_sets->add_set("splash/splash",gBabar->position().x, (int)gStatic->static_data_height()-100, false, true);
         gBabar->set_last_pos();
     }
 }

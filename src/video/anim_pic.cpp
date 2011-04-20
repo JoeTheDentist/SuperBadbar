@@ -96,7 +96,7 @@ void Anim_pic::next_pic()
             m_curr%=m_size;
         }
 
-        if ( m_type != CYCLE && ( m_curr == 0 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
+        if ( m_type != CYCLE && ( m_curr == m_size-1 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
             m_finished = true;
         }
     }

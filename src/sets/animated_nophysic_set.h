@@ -21,7 +21,7 @@ class Animated_nophysic_set : public Animated_set {
          *  @param x : absisse
          *  @param y : on se demande bien ce que ça peut être !
          */
-        Animated_nophysic_set(std::string anim_name, int x, int y);
+        Animated_nophysic_set(std::string anim_name, int x, int y, bool ended=false);
 
         /**
          *  @brief Destructeur
