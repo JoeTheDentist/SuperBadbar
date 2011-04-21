@@ -6,12 +6,12 @@ leveltest.png
 4400
 
 #Babar#
-575
-3982
+1944
+3377
 1
 
 #Sets#
-14
+16
 butterfly/butterfly 173 3876
 butterfly/butterfly 3153 3875
 butterfly/butterfly 3751 4144
@@ -26,6 +26,8 @@ butterfly/butterfly 586 2739
 mushroom/mushroom 1037 4307
 mushroom/mushroom 1286 4269
 mushroom/mushroom 1074 4294
+mushroom/mushroom 2994 3941
+mushroom/mushroom 4209 4271
 !
 #Statics#
 16

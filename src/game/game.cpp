@@ -120,9 +120,11 @@ void Game::update_graphic()
 	/* affichage des événements */
 	gGame_engine->display_events(camera);
 
-    gGraphics->display_sprites(camera);
-    /* */
+    /* Plateformes */
     gCollision->display_platforms(camera);
+
+    /* Sprites */
+    gGraphics->display_sprites(camera);
 
 	/* affichage du sprite babar */
 	/*camera->display(gBabar);*/

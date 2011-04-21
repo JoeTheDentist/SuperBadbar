@@ -2,10 +2,14 @@
 #include "animated_nophysic_set.h"
 #include "../sprites/sprites_manager.h"
 
-Animated_nophysic_set::Animated_nophysic_set(std::string anim_name, int x, int y, bool ended)
+Animated_nophysic_set::Animated_nophysic_set(std::string anim_name, int x, int y, bool ended, bool to_delete)
 {
     m_pos.x = x;
     m_pos.y = y;
+    m_speed.x = 0;
+    m_speed.y = 0;
+    m_sprite = NULL;
+    m_to_delete = to_delete;
     if ( ended ) {
         m_sprite = gGraphics->get_sprites_manager()->add_anim("animations/"+anim_name, ENDED, MIDDLEGROUND);
     } else {

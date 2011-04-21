@@ -10,12 +10,11 @@ Animated_set::Animated_set()
 	m_pos.w = 0;
 	m_speed = m_pos;
 	m_sprite = NULL;
-	m_to_delete = false;
 }
 
 Animated_set::~Animated_set()
 {
-    /* ne pas toucher à m_sprite, il peut être déà détruit */
+    /* ne pas toucher à m_sprite, il peut être déjà détruit */
 }
 
 void Animated_set::update_pos()
@@ -40,9 +39,15 @@ void Animated_set::rand_pic()
 
 bool Animated_set::to_delete()
 {
-    if ( m_sprite ) {
-        return m_sprite->to_delete();
+    /*if ( m_sprite ) {
+        if ( m_sprite->to_delete() ) {
+            m_sprite = NULL;
+            return true;
+        } else {
+            return false;
+        }
     } else {
         return true;
-    }
+    }*/
+    return m_to_delete;
 }

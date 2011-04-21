@@ -113,4 +113,5 @@ void Projectile::kill()
 {
 	m_dead = true;
 	m_sprite->set_to_delete();
+	m_sprite = NULL;
 }
