@@ -35,7 +35,6 @@ Babar::Babar(Analyser *analyser)
 	init_babar(analyser);
 	m_bind = NULL;
 	m_fire = false;
-	m_state = STATIC;
 }
 
 Babar::~Babar()
@@ -312,10 +311,7 @@ void Babar::update_state()
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-
-    m_state = get_state();
-
-    m_sprite->change_anim(m_state, m_dir);
+    m_sprite->change_anim(get_state(), m_dir);
     m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());
@@ -361,7 +357,10 @@ bool Babar::can_crouch() const
 void Babar::crouch()
 {
     m_crouch_time = 1;
-	std::cout << "crouch";
+    int h_last = m_sprite->curr_pic()->h();
+    m_sprite->change_anim(CROUCH, m_dir);
+    int h = m_sprite->curr_pic()->h();
+    m_pos.y += h_last-h;
 }
 
 bool Babar::can_jump() const
@@ -549,7 +548,10 @@ void Babar::interrupt_jump()
 
 void Babar::interrupt_crouch()
 {
-	m_pos.y -= m_pos.h/2;
+    int h_last = m_sprite->curr_pic()->h();
+    m_sprite->change_anim(STATIC, m_dir);
+    int h = m_sprite->curr_pic()->h();
+    m_pos.y -= h-h_last;
 	m_crouch_time = 0;
 }
 

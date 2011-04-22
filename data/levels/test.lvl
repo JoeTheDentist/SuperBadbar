@@ -6,12 +6,12 @@ leveltest.png
 4400
 
 #Babar#
-1944
-3377
+3675
+2053
 1
 
 #Sets#
-16
+22
 butterfly/butterfly 173 3876
 butterfly/butterfly 3153 3875
 butterfly/butterfly 3751 4144
@@ -28,16 +28,19 @@ mushroom/mushroom 1286 4269
 mushroom/mushroom 1074 4294
 mushroom/mushroom 2994 3941
 mushroom/mushroom 4209 4271
+butterfly/butterfly 3970 2166
+butterfly/butterfly 3861 2005
+butterfly/butterfly 4202 2050
+butterfly/butterfly 3740 2085
+butterfly/butterfly 4258 2154
+butterfly/butterfly 4273 2083
 !
 #Statics#
 16
-arbre_bord -2 506 0
-arbre_feuilles 1013 3455 0
 arbre_feuilles_front 961 3516 1
 water1 1683 4280 0
 water1 2038 4285 0
 water1 2399 4291 0
-grass1 753 4194 0
 block7 3697 3130 0
 block1 3836 3931 0
 block3 2531 3870 0
@@ -45,8 +48,11 @@ grass2 2806 4271 0
 arbre_feuilles_racines 3530 4200 0
 block6 4345 3194 0
 block4_3 2631 2597 0
-block4_2 2631 2018 0
 block4_1 2629 1319 0
+arbre_feuilles 1013 3455 0
+arbre_bord -2 506 0
+grass1 753 4194 0
+block4_2 2631 2018 0
 !
 #Monsters#
 5
@@ -57,15 +63,19 @@ following_walking_monster maphyar 4207 3917
 following_walking_monster gailapin 432 2777
 !
 #Events#
-3
+4
 event shotgun 592 2848
 event machinegun 1329 3610
 event shotgun 305 3925
+event machinegun 4497 3424
 !
 #Platforms#
-2
-normal block8 1882 3525 1879 4187
+5
 falling block8 3333 3240 3333 3240
+falling block8 1885 3963 1885 3963
+falling block8 2236 3948 2236 3948
+normal block8 3281 2127 3279 2494
+normal block8 3618 2202 4440 2220
 !
 #Triggers#
 0

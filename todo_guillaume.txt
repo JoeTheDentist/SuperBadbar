@@ -1,12 +1,5 @@
 AI, etat d'arret
-Finir texte
-Z buffer ?
 
-Arbre branche un peu mieux
-Sang des monstres (moche pour le moment)
-Son mort
+Sang des monstres
 Qq animations fixes
 Groupes de sons rand
-Nuages dans le fond du background
-Sol du background
-Rebond a la collision ? (par le haut)
