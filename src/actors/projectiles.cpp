@@ -30,7 +30,7 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
-
+	m_life_span = PROJ_LIFE_SPAN;
     std::string rep = PIC_PROJ_R;
 
     /* Rajouter le nom... */
@@ -58,8 +58,7 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
 		if (Collisions_manager::is_down_coll(coll)){
 			m_dead = true;
-		}
-		else {
+		} else {
 			m_pos.y += BOX_SIZE;
 		}
 	}
@@ -68,6 +67,8 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	for (int speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (Collisions_manager::is_up_coll(collisions_manager->get_matrix()->up_collision_type(m_pos))){
 			m_dead = true;
+		} else {
+			m_pos.y -= BOX_SIZE;
 		}
 	}
 
@@ -85,8 +86,13 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 			}
 			m_pos.x -= BOX_SIZE;
 	}
-	if (m_phase >= PROJ_LIFE_SPAN)
+	if (m_phase >= m_life_span)
 		m_dead = true;
+}
+
+void Projectile::update_speed()
+{
+	
 }
 
 Projectile::~Projectile()

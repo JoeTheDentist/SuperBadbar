@@ -14,6 +14,7 @@
 #define BABAR_PIC_DIR "../pic/babar/"
 
 #define EVENTS_EXT ".evt"
+#define TRIGGERS_EXT ".trg"
 
 // dimensions de la camera du jeu (utiles pour calculer 
 // du niveau en fonction de la taille du background)

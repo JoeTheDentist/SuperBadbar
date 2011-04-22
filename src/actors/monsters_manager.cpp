@@ -52,13 +52,17 @@ void Monsters_manager::init_monsters_manager(Analyser *analyser)
 
 void Monsters_manager::load_monster(std::string name, int posx, int posy)
 {
-	if (name == "following_walking_monster") {
+	Analyser analyserMonster;
+	analyserMonster.open((MONSTERS_STATS_R + name + MONSTERS_EXT).c_str());
+	analyserMonster.find_string("#Class#");
+	std::string monsterClass = analyserMonster.read_string();
+	if (monsterClass == "following_walking_monster") {
 		add(new Following_walking_monster(name, posx, posy));
-	} else if (name == "walking_monster") {
+	} else if (monsterClass == "walking_monster") {
 		add(new Walking_monster(name, posx, posy));
-	} else if (name == "flying_monster") {
+	} else if (monsterClass == "flying_monster") {
 		add(new Flying_monster(name, posx, posy));
-	} else if (name == "following_flying_monster") {
+	} else if (monsterClass == "following_flying_monster") {
 		add(new Following_flying_monster(name, posx, posy));
 	} else {
 		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
@@ -175,4 +179,19 @@ void Monsters_manager::delete_dead_monsters()
 			++it;
 		}
 	}
+}
+
+Rect Monsters_manager::closer_monster_pos(Rect rect, int radius)
+{
+	Rect res;
+	res.x = 0;
+	res.y = 0;
+	radius *= radius; // on regarde des normes au carre
+	for (std::list<Monster *>::iterator it = m_monsters.begin(); it != m_monsters.end(); it++) {
+		if (norm_2((*it)->position(), rect) < radius) {
+			radius = norm_2((*it)->position(), rect);
+			res = (*it)->position();
+		}
+	}		
+	return res;
 }

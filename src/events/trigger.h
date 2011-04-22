@@ -13,13 +13,13 @@
 #include <list>
 #include <string>
 #include "../video/surface.h"
-#include "../events/events.h"
+#include "../events/triggerable.h"
 
 class Analyser;
 
 /**
  * 	@class Trigger
- * 	@brief Ensemble d'evenements declenchables lorsqu'on entre dans une zone
+ * 	@brief Ensemble d'triggerables declenchables lorsqu'on entre dans une zone
  *
  * Il n'est pas affichable
  *
@@ -35,15 +35,15 @@ class Analyser;
  *	<nombre de positions>
  *	x y w h
  *	!
- *	#events#
- *	<nombre d'events>
- *	"event" eventype x y
+ *	#triggerables#
+ *	<nombre de riggerables>
+ *	<TRIGGERABLE>  (utiliser la syntaxe definie dans triggerable)
  *
  */
 class Trigger {
 protected:
 	std::list<Rect> m_zone;
-	std::list<Event *> m_events;
+	std::list<Triggerable *> m_triggerables;
 	bool m_triggered;
 public:
 	
@@ -64,24 +64,24 @@ public:
 	virtual void update();
 
 	/**
-	 * 	@brief Indique si l'événement doit etre déclenché
-	 *	@return Vrai si l'événement doit etre déclenché
+	 * 	@brief Indique si l'triggerable doit etre déclenché
+	 *	@return Vrai si l'triggerable doit etre déclenché
 	*/
 	virtual bool can_start() const;
 	
 	/**
-	 * 	@brief Déclenche l'événement
+	 * 	@brief Déclenche le triggerable
 	*/
 	virtual void start();
 	
 	/**
-	 * 	@brief Indique si l'événement doit etre détruit
-	 *	@return Vrai si l'événement doit etre détruit
+	 * 	@brief Indique si le trigger doit etre détruit
+	 *	@return Vrai si le trigger doit etre détruit
 	*/
 	virtual bool can_be_destroyed() const;
 	
 	/**
-	 * 	@brief Détruit l'événement
+	 * 	@brief Détruit le triggerable
 	*/
 	virtual void destroy();
 	
@@ -92,10 +92,10 @@ public:
 	void addPos(Rect pos);
 	
 	/*!
-	 *	@brief Ajoute un evenement a la liste des evenements a declencher
-	 *	@param event L'evenement a ajouter
+	 *	@brief Ajoute un triggerable a la liste des triggerables a declencher
+	 *	@param triggerable le triggerable a ajouter
 	 */
-	void addEvent(Event *event);
+	void addTriggerable(Triggerable *triggerable);
 	
 
 };

@@ -13,6 +13,7 @@
 #include "../items/gun.h"
 #include "../items/shotgun.h"
 #include "../items/machinegun.h"
+#include "../items/rocket_launcher.h"
 #include "../video/pictures_container.h"
 #include "../sound/sound_manager.h"
 
@@ -61,6 +62,9 @@ void Weapons_armory::add_weapon(weapon_type type)
 		case MACHINEGUN:
 			m_armory.insert(it,new Machinegun());
 			break;
+		case ROCKET_LAUNCHER:
+			m_armory.insert(it, new Rocket_launcher());
+			break;
 		default:
 			PRINT_DEBUG(1, "type d'arme inconnu dans add_weapon de weapon_armory");
 	}
@@ -81,10 +85,6 @@ void Weapons_armory::update()
 			m_current_weapon = it;
 		}
 	}
-	// Décommenter pour tester le contenu de la liste
-//~ 	for ( std::list<Weapon *>::iterator it = m_armory.begin(); it != m_armory.end(); it++)
-//~ 		std::cout << (*it)->type_of_weapon();
-//~ 	std::cout << std::endl;
 }
 
 void Weapons_armory::next_weapon()

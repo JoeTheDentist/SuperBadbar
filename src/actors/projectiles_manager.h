@@ -47,9 +47,12 @@ public:
 
 	/*!
 	 *	@brief Met à jour la position de l'ensemble des projectiles
-	 *	@param collisions_manager Le gestionnaire de collisions
 	*/
 	void update_pos();
+	/*!
+	 *	@brief Met à jour la vitesse de l'ensemble des projectiles
+	*/
+	void update_speed();
 
 	/*!
 	 *	@brief Supprime les projectiles à supprimer

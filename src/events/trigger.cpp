@@ -16,7 +16,7 @@
 #include "../util/analyser.h"
 #include "../util/repertories.h"
 #include "../actors/babar.h"
-#include "../events/events.h"
+#include "../events/triggerable.h"
 
 Trigger::Trigger(std::string filename)
 {
@@ -35,14 +35,11 @@ Trigger::Trigger(std::string filename)
 			addPos(rec);
 		}
 	}
-	if (analyser.find_string("#events#")) {
-		int nb_events = analyser.read_int();
-		for (int i = 0; i < nb_events; ++i) {
-			analyser.read_string(); // on saute le "event"
-			std::string eventtype = analyser.read_string();
-			int x = analyser.read_int();
-			int y = analyser.read_int();
-			addEvent(new Event(eventtype, x, y));
+	if (analyser.find_string("#triggerables#")) {
+		int nb_triggerables = analyser.read_int();
+		for (int i = 0; i < nb_triggerables; ++i) {
+			PRINT_DEBUG(1, "YEAH");
+			addTriggerable(new Triggerable(analyser));
 		}
 	}
 	analyser.close();
@@ -56,18 +53,6 @@ Trigger::~Trigger()
 void Trigger::update()
 {
 	
-	for (std::list<Event*>::iterator curs = m_events.begin(); curs != m_events.end(); ) { 
-		(*curs)->update();
-		if((*curs)->can_start())
-			(*curs)->start();
-		if((*curs)->can_be_destroyed()) {
-			(*curs)->destroy();
-			delete (*curs);
-			curs = m_events.erase(curs);
-		} else {
-			++curs;
-		}
-	}
 }
 
 bool Trigger::can_start() const
@@ -85,14 +70,14 @@ void Trigger::start()
 {
 	PRINT_DEBUG(1, "PULL THE TRIGGER");
 	m_triggered = true;
-	for (std::list<Event*>::iterator it = m_events.begin(); it != m_events.end(); ++it) {
+	for (std::list<Triggerable *>::iterator it = m_triggerables.begin(); it != m_triggerables.end(); ++it) {
 		(*it)->start();
 	}
 }
 
 bool Trigger::can_be_destroyed() const
 {
-	return m_triggered && m_events.empty();
+	return m_triggered;
 	
 }
 
@@ -105,7 +90,7 @@ void Trigger::addPos(Rect pos)
 	m_zone.push_back(pos);
 }
 
-void Trigger::addEvent(Event *event)
+void Trigger::addTriggerable(Triggerable *triggerable)
 {
-	m_events.push_back(event);
+	m_triggerables.push_back(triggerable);
 }

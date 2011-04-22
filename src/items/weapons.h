@@ -14,21 +14,23 @@
 #include <list>
 #include "../util/globals.h"
 
-#define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
 
 /* nombre maximal de munitions par armes */
 #define MUN_GUN 999
 #define MUN_MACHINEGUN 100
 #define MUN_SHOTGUN 20
+#define MUN_ROCKET_LAUNCHER 10
 
 /* temps de recharge des armes */
 #define RELOAD_GUN 2
 #define RELOAD_MACHINEGUN 0
 #define RELOAD_SHOTGUN 18
+#define RELOAD_ROCKET_LAUNCHER 5
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN, MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
+    GUN, MACHINEGUN, SHOTGUN, ROCKET_LAUNCHER, 
+	MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
 

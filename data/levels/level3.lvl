@@ -1,0 +1,46 @@
+#Background#
+level1.png
+
+#Level_dimensions#
+3200
+3400
+
+#Babar#
+238
+3009
+1
+
+#Sets#
+0
+!
+#Statics#
+10
+water1 -2 3236 0
+water1 357 3241 0
+water1 717 3246 0
+water1 1074 3250 0
+block1 10 2985 0
+water1 1430 3255 0
+water1 1788 3260 0
+water1 2141 3266 0
+water1 2501 3271 0
+water1 2857 3276 0
+!
+#Monsters#
+0
+!
+#Events#
+0
+!
+#Platforms#
+6
+falling block8 1101 2763 1101 2763
+falling block8 1295 2787 1295 2787
+falling block8 1475 2841 1475 2841
+falling block8 1776 2841 1776 2841
+falling block8 770 2769 770 2769
+falling block8 944 2769 944 2769
+!
+#Triggers#
+0
+!

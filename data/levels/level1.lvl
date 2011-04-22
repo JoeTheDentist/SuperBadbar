@@ -13,7 +13,6 @@ level1.png
 #Sets#
 18
 butterfly/butterfly 173 3876
-butterfly/butterfly 236 2969
 butterfly/butterfly 0 2907
 butterfly/butterfly 33 2907
 butterfly/butterfly 66 2907
@@ -30,6 +29,7 @@ butterfly/butterfly 269 2863
 butterfly/butterfly 269 2863
 butterfly/butterfly 338 2863
 butterfly/butterfly 357 2863
+butterfly/butterfly 236 2969
 !
 #Statics#
 11
@@ -37,13 +37,13 @@ block6 2750 2000 0
 block4_3 700 1780 0
 block2 838 2707 0
 block3 1700 2950 1
-block1 70 2952 0
 soil 0 3300 1
 block7 1801 2204 0
 block5 2200 2650 0
 block5 1178 897 0
 block4_1 687 573 0
 block4_2 700 1200 0
+block1 71 2952 0
 !
 #Monsters#
 13
@@ -59,10 +59,10 @@ following_flying_monster fubob 2788 1092
 following_flying_monster fubob 2435 1176
 following_walking_monster gailapin 409 2944
 following_walking_monster maphyar 449 2957
-following_walking_monster gailapin 702 3195
+following_walking_monster gailapin 912 3212
 !
 #Events#
-82
+83
 event peanut 1394 2643
 event peanut 1189 2640
 event peanut 967 2632
@@ -92,7 +92,6 @@ event peanut 967 1826
 event peanut 1243 1831
 event peanut 543 2994
 event shotgun 30 3222
-event machinegun 132 2957
 event peanut 1428 2594
 event peanut 1629 2750
 event peanut 1702 2750
@@ -145,6 +144,8 @@ event peanut 1823 787
 event peanut 1805 859
 event peanut 1897 863
 event peanut 1856 823
+event machinegun 126 2946
+event rocket_launcher 367 3250
 !
 #Platforms#
 2

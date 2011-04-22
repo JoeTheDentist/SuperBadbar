@@ -81,3 +81,11 @@ direction Actor::dir() const
 {
     return m_dir;
 }
+
+Rect Actor::center() const
+{
+	Rect res;
+	res.x = position().x + position().w / 2;
+	res.y = position().y + position().h / 2;
+	return res;
+}

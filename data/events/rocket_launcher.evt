@@ -1,0 +1,6 @@
+#picture# 
+rocket_launcher.png
+
+#start#
+weapon rocket_launcher
+playsound events/weapon_taken.wav

@@ -1,0 +1,18 @@
+Code:
+- Menus
+- Config des touches
+- Evenement ajout de monstres 
+- Triggers dans l'editeur
+- Lifes
+- Delay quand babar meurt
+- Fin de jeu: stats
+- Transitions entre les niveaux
+
+
+Graphique:
+
+
+Sons:
+
+
+Levels:

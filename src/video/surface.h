@@ -22,6 +22,13 @@ struct Rect {
     int h;
 };
 
+int norm_2(const Rect rect1, const Rect rect2);
+int det(const Rect rect1, const Rect rect2);
+// les h et w sont ceux du rect1
+Rect operator+(const Rect &rect1, const Rect &rect2);
+Rect operator-(const Rect &rect1, const Rect &rect2);
+int operator*(const Rect &rect1, const Rect &rect2);
+
 /*!
 *	@class Surface
 *	@brief Classe representant toute image du jeu (sans sa position)

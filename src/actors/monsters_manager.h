@@ -20,7 +20,7 @@
 #include <string>
 
 #include "../actors/projectiles_manager.h"
-
+#include "../video/surface.h"
 class Monster;
 class Camera;
 class Babar;
@@ -145,6 +145,14 @@ public:
 	* 	@brief Supprime les monstres qui n'ont plus de vies
 	*/
 	void delete_dead_monsters();
+	
+	/*!
+	*	@brief Cherche le monstre le plus proche de la position donnee
+	*	@param rect La position dont le monstre doit etre proche
+	*	@param radius Le rayon de recherche
+	*	@return La position du monstre trouve ou 0,0 si pas de monstre trouve dans le radius
+	*/
+	Rect closer_monster_pos(Rect rect, int radius);
 
 };
 

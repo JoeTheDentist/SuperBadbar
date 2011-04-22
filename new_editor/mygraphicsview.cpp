@@ -407,13 +407,11 @@ void MyGraphicsView::addTrigger()
 	if (fileName.isEmpty()) {
 		return;
 	}
-	if (!(fileName.endsWith(EVENTS_EXT))) {
-	 QMessageBox::critical(this, "File opening", "filename must ends with \".evt\"");
+	if (!(fileName.endsWith(TRIGGERS_EXT))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".trg\"");
 		return;
 	}
 
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
-	fileName.chop(4);
 	m_curr_item = new TriggerItem(this->scene(), fileName);	
 }
 

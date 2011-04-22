@@ -80,7 +80,20 @@ public:
 	*/
 	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
 
+	/*!
+	*	@brief Accesseur
+	*	@return La direction du sprite
+	*/
 	direction dir() const;
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La position du centre du rectangle de l'acteur
+	*
+	*	Les champs h et w du retour n'ont pas de sens
+	*/ 
+	Rect center() const;
+	
 };
 
 

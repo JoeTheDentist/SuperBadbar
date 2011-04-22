@@ -104,6 +104,7 @@ void Game_engine::update_speed()
 	gBabar->update_speed();
 	m_monsters_manager->monsters_update_speed();
 	gCollision->update_platforms_speed();
+	gProj->update_speed();
 }
 
 void Game_engine::delete_dead_things()

@@ -125,11 +125,26 @@ uint32_t Analyser::read_uint32_t()
 
 std::string Analyser::read_string()
 {
-//~ 	jump_separators();
 	std::string res;
 	*m_file >> res;
 	return res;
 }
+
+std::string Analyser::read_between_char(char delimitor)
+{
+	std::string res;
+	char current_char = ' ';
+	while (current_char != delimitor) {
+		m_file->get(current_char);
+	}
+	m_file->get(current_char);
+	while (current_char != delimitor) {
+		res += current_char;
+		m_file->get(current_char);
+	}
+	return res;
+}
+
 
 char Analyser::read_char()
 {

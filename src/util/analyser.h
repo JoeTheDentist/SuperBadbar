@@ -106,6 +106,13 @@ public:
 	* @return le string lu
 	*/
 	std::string read_string();
+	
+	/*!
+	* @brief Lit la prochaine string entouree par un caractere (par ex # ou ") 
+	* @param delimitor Le caractere entourant la string a retrouver
+	* @return La string sans le delimiteur
+	*/
+	std::string read_between_char(char delimitor);
 
 	/*!
 	* @brief Lit et renvoie le prochain char du fichier

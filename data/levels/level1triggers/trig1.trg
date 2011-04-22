@@ -7,9 +7,9 @@
 #triggerables#
 1
 #nature# monster
-#x# 50 
-#y# 100
-#text# "plop"
+#x# 130
+#y# 3100
+#text# "fubob"
 #endtriggerable#
 
 

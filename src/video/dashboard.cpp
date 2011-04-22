@@ -49,11 +49,13 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	m_heart = new Surface(rac+"/pic/dashboard/heart.png");
 	m_lifes_pos.x = POS_HEART_X;
 	m_lifes_pos.y = POS_HEART_Y;
-
-	m_weapons_pictures = new Surface*[SHOTGUN + 1];
+	m_weapons_pictures = new Surface*[LASTWEAPON];
+	for (int i = 0; i < LASTWEAPON; i++)
+		m_weapons_pictures[i] = NULL;
 	m_weapons_pictures[MACHINEGUN] = new Surface(PIC_DASHBOARD_R + "weapon/machinegun.png");
 	m_weapons_pictures[GUN] = new Surface(PIC_DASHBOARD_R + "weapon/gun.png");
 	m_weapons_pictures[SHOTGUN] = new Surface(PIC_DASHBOARD_R + "weapon/shotgun.png");
+	m_weapons_pictures[ROCKET_LAUNCHER] = new Surface(PIC_DASHBOARD_R + "weapon/rocket_launcher.png");
 	m_weapons_pos.x = POS_WEAPON_X;
 	m_weapons_pos.y = POS_WEAPON_Y;
 
@@ -143,7 +145,7 @@ void Dashboard::update()
 void Dashboard::clear_dashboard()
 {
 	if (m_weapons_pictures) {
-		for (int i = 0; i < SHOTGUN + 1; i++)
+		for (int i = 0; i < LASTWEAPON; i++)
 			if (m_weapons_pictures[i])
 				delete m_weapons_pictures[i];
 		delete[] m_weapons_pictures;
