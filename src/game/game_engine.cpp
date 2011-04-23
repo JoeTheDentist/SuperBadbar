@@ -96,6 +96,7 @@ void Game_engine::update_pos()
 	gBabar->update_pos();
 	gCollision->update_platforms_pos();
 	gProj->update_pos();
+	gProj->update_state();
 	m_monsters_manager->monsters_update_pos();
 }
 

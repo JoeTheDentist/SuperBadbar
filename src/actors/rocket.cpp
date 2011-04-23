@@ -14,10 +14,24 @@
 #include "../game/game_engine.h"
 #include "../actors/monsters_manager.h"
 
-Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage):
-	Projectile(pos, h, speedx, speedy, damage)
+Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
+    m_pos = pos;
+    m_dir = h;
+    m_damage = damage;
 	m_life_span = ROCKET_LIFE_SPAN;
+    std::string rep = PIC_PROJ_R;
+
+    m_sprite = gGraphics->get_sprites_manager()->add_table(rep+"rocket/rocket", MIDDLEGROUND);
+    m_sprite->set_pos(m_pos);
+	m_pos.h = m_sprite->h();
+	m_pos.w = m_sprite->w();
+
+    m_speed.x = speedx;
+    m_speed.y = speedy;
+
+	m_dead = false;
+	m_phase = 0;
 }
 
 Rocket::~Rocket()
@@ -64,5 +78,5 @@ void Rocket::changeDirIndirect()
 		m_speed.x-= ROCKET_TURN_SPEED;
 	} else {
 		m_speed.x+= ROCKET_TURN_SPEED;
-	}	
+	}
 }

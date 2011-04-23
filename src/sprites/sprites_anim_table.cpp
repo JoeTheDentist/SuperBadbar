@@ -29,12 +29,7 @@ void Sprite_anim_table::next_pic()
     m_animt->next_pic();
 }
 
-void Sprite_anim_table::change_anim(state_player s, direction dir, bool fire ,bool phase_rand)
-{
-    m_animt->change_anim(s, dir, fire, phase_rand);
-}
-
-void Sprite_anim_table::change_anim(state_m s, direction dir, bool fire ,bool phase_rand)
+void Sprite_anim_table::change_anim(int s, direction dir, bool fire ,bool phase_rand)
 {
     m_animt->change_anim(s, dir, fire, phase_rand);
 }

@@ -23,6 +23,7 @@
 **************************/
 
 
+Projectile::Projectile() {}
 
 Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
@@ -54,7 +55,7 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	m_phase++;
 	unsigned int coll;
 	/* cas où le sprite descend */
-	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
+	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE) {
 		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
 		if (Collisions_manager::is_down_coll(coll)){
 			m_dead = true;
@@ -92,7 +93,17 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 
 void Projectile::update_speed()
 {
-	
+
+}
+
+void Projectile::update_state()
+{
+    if ( m_speed.x > 0 ) {
+        m_dir = LEFT;
+    } else {
+        m_dir = RIGHT;
+    }
+    m_sprite->change_anim(NONE, m_dir);
 }
 
 Projectile::~Projectile()

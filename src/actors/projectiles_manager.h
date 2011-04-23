@@ -49,10 +49,16 @@ public:
 	 *	@brief Met à jour la position de l'ensemble des projectiles
 	*/
 	void update_pos();
+
 	/*!
 	 *	@brief Met à jour la vitesse de l'ensemble des projectiles
 	*/
 	void update_speed();
+
+	/*!
+	 *	@brief Met à jour les états de l'ensemble des projectiles
+	*/
+	void update_state();
 
 	/*!
 	 *	@brief Supprime les projectiles à supprimer

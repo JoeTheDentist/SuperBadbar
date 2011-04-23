@@ -36,6 +36,11 @@ protected:
 	int m_life_span;
 
 public:
+    /*!
+	 *	@brief Constructeur
+	*/
+    Projectile();
+
 	/*!
 	 *	@brief Constructeur
 	*/
@@ -51,6 +56,11 @@ public:
 	 *	@param collisions_manager Gestionnaire de collisions
 	*/
 	virtual void update_pos(Collisions_manager *collisions_manager);
+
+	/*!
+	 * 	@brief Met à jour de la direction du Projectile
+	*/
+	virtual void update_state();
 
  	/*!
 	 * 	@brief Met à jour la position du Projectile

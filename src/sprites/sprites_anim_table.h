@@ -31,14 +31,9 @@ class Sprite_anim_table : public Sprite {
         void next_pic();
 
         /**
-         *	@brief Change l'état, pour un joueur.
+         *	@brief Change l'état
          */
-        void change_anim(state_player s, direction dir, bool fire=false ,bool phase_rand=false);
-
-        /**
-         *	@brief Change l'état pour un monstre.
-         */
-        void change_anim(state_m s, direction dir, bool fire=false ,bool phase_rand=false);
+        void change_anim(int s, direction dir, bool fire=false ,bool phase_rand=false);
 
         /**
          *  @brief Hauteur

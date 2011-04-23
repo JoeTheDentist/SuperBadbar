@@ -53,15 +53,29 @@ void Projectiles_manager::update_pos()
 
 void Projectiles_manager::update_speed()
 {
-	// position des projectiles amis
+	// vitesses des projectiles amis
 	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
 			it != m_projectiles_friend.end(); it++) {
 	    (*it)->update_speed();
 	}
-	// position des projectiles ennemis
+	// vitesses des projectiles ennemis
 	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
 			it != m_projectiles_ennemy.end(); it++) {
 	    (*it)->update_speed();
+	}
+}
+
+void Projectiles_manager::update_state()
+{
+	// position des projectiles amis
+	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
+			it != m_projectiles_friend.end(); it++) {
+	    (*it)->update_state();
+	}
+	// position des projectiles ennemis
+	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
+			it != m_projectiles_ennemy.end(); it++) {
+	    (*it)->update_state();
 	}
 }
 
