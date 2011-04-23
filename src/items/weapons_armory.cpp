@@ -78,12 +78,12 @@ void Weapons_armory::update()
 {
 	if ((*m_current_weapon)->munitions() <= 0) {
 		std::list<Weapon *>::iterator it = m_current_weapon;
-		it++;
+		it--;
 		m_armory.erase(m_current_weapon);
-		m_current_weapon--;
-		if (it != m_armory.end()) {
-			m_current_weapon = it;
-		}
+		m_current_weapon = it;
+//~ 		if (it != m_armory.end()) {
+//~ 			m_current_weapon = it;
+//~ 		}
 	}
 }
 
