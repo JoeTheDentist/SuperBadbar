@@ -65,6 +65,8 @@
 		<Unit filename="..\src\actors\projectiles.h" />
 		<Unit filename="..\src\actors\projectiles_manager.cpp" />
 		<Unit filename="..\src\actors\projectiles_manager.h" />
+		<Unit filename="..\src\actors\rocket.cpp" />
+		<Unit filename="..\src\actors\rocket.h" />
 		<Unit filename="..\src\actors\walking_monsters.cpp" />
 		<Unit filename="..\src\actors\walking_monsters.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
@@ -77,6 +79,8 @@
 		<Unit filename="..\src\events\stats.h" />
 		<Unit filename="..\src\events\trigger.cpp" />
 		<Unit filename="..\src\events\trigger.h" />
+		<Unit filename="..\src\events\triggerable.cpp" />
+		<Unit filename="..\src\events\triggerable.h" />
 		<Unit filename="..\src\game\game.cpp" />
 		<Unit filename="..\src\game\game.h" />
 		<Unit filename="..\src\game\game_engine.cpp" />
@@ -93,6 +97,8 @@
 		<Unit filename="..\src\items\machinegun.h" />
 		<Unit filename="..\src\items\monster_basic_weapon.cpp" />
 		<Unit filename="..\src\items\monster_basic_weapon.h" />
+		<Unit filename="..\src\items\rocket_launcher.cpp" />
+		<Unit filename="..\src\items\rocket_launcher.h" />
 		<Unit filename="..\src\items\shotgun.cpp" />
 		<Unit filename="..\src\items\shotgun.h" />
 		<Unit filename="..\src\items\weapons.cpp" />
