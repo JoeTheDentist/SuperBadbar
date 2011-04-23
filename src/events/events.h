@@ -89,7 +89,7 @@ protected:
 	// ramassage d'une arme
 	void process_weapon();
 	// point de vie
-	void process_lifeup();
+	void process_HPup();
 	// jeu d'un son
 	void process_playsound();
 	// victoire (du niveau)

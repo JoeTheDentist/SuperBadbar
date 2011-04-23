@@ -47,8 +47,8 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	clear_dashboard();
     std::string rac = RAC;
 	m_heart = new Surface(rac+"/pic/dashboard/heart.png");
-	m_lifes_pos.x = POS_HEART_X;
-	m_lifes_pos.y = POS_HEART_Y;
+	m_HP_pos.x = POS_HEART_X;
+	m_HP_pos.y = POS_HEART_Y;
 	m_weapons_pictures = new Surface*[LASTWEAPON];
 	for (int i = 0; i < LASTWEAPON; i++)
 		m_weapons_pictures[i] = NULL;
@@ -68,13 +68,13 @@ void Dashboard::draw_dashboard(Camera *camera)
 	/*
 		Affichage des vies
 	*/
-	if (gBabar->lifes() < 0)
+	if (gBabar->HP() < 0)
 		return;
-	for (int i = 0; i < gBabar->lifes(); i++) {
-		camera->display_picture(m_heart, &m_lifes_pos, true);
-		m_lifes_pos.x += 30;
+	for (int i = 0; i < gBabar->HP(); i++) {
+		camera->display_picture(m_heart, &m_HP_pos, true);
+		m_HP_pos.x += 30;
 	}
-	m_lifes_pos.x -= gBabar->lifes() * 30;
+	m_HP_pos.x -= gBabar->HP() * 30;
 
 	/*
 		Affichage de l'arme et des munitions

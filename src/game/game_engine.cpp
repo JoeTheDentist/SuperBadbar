@@ -198,5 +198,5 @@ bool Game_engine::has_won()
 
 bool Game_engine::has_lost()
 {
-	return gBabar->lifes() <= 0;
+	return gBabar->HP() <= 0;
 }

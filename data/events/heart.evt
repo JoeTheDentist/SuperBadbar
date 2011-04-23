@@ -2,5 +2,5 @@
 heart.png
 
 #start#
-lifeup 1
-playsound events/lifeup.wav
+HPup 1
+playsound events/HPup.wav

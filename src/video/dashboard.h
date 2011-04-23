@@ -37,7 +37,7 @@ class Dashboard {
 private:
 	Surface *m_heart;
 	Surface **m_weapons_pictures;
-	Rect m_lifes_pos;
+	Rect m_HP_pos;
 	Rect m_weapons_pos;
 	Surface *m_peanut;
 	Font m_font;
@@ -63,7 +63,7 @@ public:
 
 	/**
 	 * 	@brief Affiche le tableau de board
-	 * 	@param lifes Le nombre de vies de Babar
+	 * 	@param HP Le nombre de vies de Babar
 	 *	@param camera Le gestionnaire d'affichage
 	 *	@param babar Pointeur vers babar
 	 */

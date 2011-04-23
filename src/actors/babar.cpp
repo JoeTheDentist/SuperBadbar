@@ -73,7 +73,7 @@ void Babar::init_babar(Analyser * a)
 	m_rel_pos = m_pos;
 
     /* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
-    m_lifes = 5;
+    m_hp = 5;
 
     /* Initisalisation de la phase de tir */
     m_fire_phase = 0;
@@ -360,7 +360,7 @@ void Babar::crouch()
     int h_last = m_sprite->curr_pic()->h();
     m_sprite->change_anim(CROUCH, m_dir);
     int h = m_sprite->curr_pic()->h();
-    m_pos.y += h_last-h;
+	move(0, h_last - h);
 }
 
 bool Babar::can_jump() const
@@ -442,14 +442,14 @@ void Babar::go_down()
 void Babar::damage(int damages)
 {
 	if (!is_invincible()) {
-		m_lifes -= damages;
+		m_hp -= damages;
 		m_invincible = 20;
 	}
 }
 
-void Babar::lifeup(int life)
+void Babar::HPup(int HP)
 {
-	m_lifes += life;
+	m_hp += HP;
 }
 
 void Babar::add_weapon(weapon_type weapon)
@@ -462,9 +462,9 @@ bool Babar::is_invincible() const
 	return m_invincible > 0;
 }
 
-int Babar::lifes() const
+int Babar::HP() const
 {
-	return m_lifes;
+	return m_hp;
 }
 
 int Babar::munitions()
@@ -551,7 +551,7 @@ void Babar::interrupt_crouch()
     int h_last = m_sprite->curr_pic()->h();
     m_sprite->change_anim(STATIC, m_dir);
     int h = m_sprite->curr_pic()->h();
-    m_pos.y -= h-h_last;
+	move(0, h_last - h);
 	m_crouch_time = 0;
 }
 

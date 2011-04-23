@@ -73,8 +73,8 @@ void Event::start()
 	while ((action = m_analyser->read_string()) != "") {
 		if (action == "weapon") {
 			process_weapon();
-		} else if (action == "lifeup") {
-			process_lifeup();
+		} else if (action == "HPup") {
+			process_HPup();
 		} else if (action == "playsound") {
 			process_playsound();
 		} else if (action == "victory") {
@@ -131,9 +131,9 @@ void Event::process_weapon()
 	gBabar->add_weapon(weapon_type);
 }
 
-void Event::process_lifeup()
+void Event::process_HPup()
 {
-	gBabar->lifeup(m_analyser->read_int());
+	gBabar->HPup(m_analyser->read_int());
 }
 
 void Event::process_playsound()
