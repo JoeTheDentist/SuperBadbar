@@ -79,7 +79,12 @@ Moving_platform::Moving_platform(Analyser &analyserLevel):
 	analyser.close();
 }
 
-Moving_platform::~Moving_platform() {}
+Moving_platform::~Moving_platform() {
+	PRINT_DEBUG(1, "Suppression de moving plateforme");
+	if (m_babar) {
+		m_babar->unbind();
+	}
+}
 
 void Moving_platform::update_pos()
 {

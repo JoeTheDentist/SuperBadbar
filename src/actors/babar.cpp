@@ -73,7 +73,8 @@ void Babar::init_babar(Analyser * a)
 	m_rel_pos = m_pos;
 
     /* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
-    m_hp = 5;
+    m_hp = c_babar_hp_max;
+	m_lifes = c_babar_lifes;
 
     /* Initisalisation de la phase de tir */
     m_fire_phase = 0;
@@ -444,12 +445,22 @@ void Babar::damage(int damages)
 	if (!is_invincible()) {
 		m_hp -= damages;
 		m_invincible = 20;
+		if (m_hp <= 0)
+			die();
 	}
+}
+
+void Babar::lifesup(int lifes)
+{
+	m_lifes += lifes;
 }
 
 void Babar::HPup(int HP)
 {
 	m_hp += HP;
+	if (m_hp <= 0) {
+		die();
+	}
 }
 
 void Babar::add_weapon(weapon_type weapon)
@@ -465,6 +476,17 @@ bool Babar::is_invincible() const
 int Babar::HP() const
 {
 	return m_hp;
+}
+
+int Babar::lifes() const
+{
+	return m_lifes;
+}
+
+void Babar::die()
+{
+	m_lifes--;
+	m_hp = c_babar_hp_max;
 }
 
 int Babar::munitions()

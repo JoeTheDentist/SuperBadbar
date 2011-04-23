@@ -32,6 +32,9 @@ class Gun;
 class Weapons_armory;
 class Moving_platform;
 
+const int c_babar_hp_max = 5;
+const int c_babar_lifes = 3;
+
 
 /**
  * 	@class Babar
@@ -40,6 +43,17 @@ class Moving_platform;
  *	Les touches enfoncées par l'utilisateur sont récupérées par
  *	keyboard, dont l'état est utilisé par les méthodes de tir, de saut,
  *	de mise à jour d'état et de vitesse
+ *
+ *	#############################
+ *	## 	Gestion de la position ##
+ *	#############################
+ *	Babar possede deux attributs de position: m_pos et m_rel_pos, selon qu'il soit
+ *	sur une plateforme mobile. On utilisera tant que possible les accesseurs (position()) 
+ *	et mutateurs (move(int x, int y)) et le moins possible des acces directs au champs de position.
+ *
+ *	Quand Babar n'est pas sur une plateforme mobile, sa position est m_pos. Sinon, sa position vaut
+ *	la somme de la position de la plateforme et de m_rel_pos. Ces attributs doivent etre utilises
+ *	directement le moins possible!
  *
  *	########################
  *	## 	Gestion des vies  ##
@@ -57,7 +71,8 @@ class Moving_platform;
 class Babar: public Actor, public Sonorisable {
     protected:
         unsigned int m_fire_phase;	        /* phase du tir */
-        int m_hp;                        /* nombre de vies */
+        int m_hp;                        	/* nombre de points de vies */
+		int m_lifes;						/* nombre de vies */
         int m_invincible;                   /* durée d'invicibilité après avoir été touché */
         int m_crouch_time;                  /* durée depuis laquelle le joueur demande à être accroupis */
         bool m_ready_double_jump;           /* booléen autorisant le double saut */
@@ -228,6 +243,12 @@ class Babar: public Actor, public Sonorisable {
 
         /**
          * 	@brief Accesseur
+         *	@return Le nombre de vies de Babar
+         */
+        int lifes() const;
+
+        /**
+         * 	@brief Accesseur
          *	@return Le nombre de munitions de l'arme actuelle de Babar
          */
         int munitions() ;
@@ -243,12 +264,23 @@ class Babar: public Actor, public Sonorisable {
          *	@param damages Le nombre de points de vies à faire perdre
          */
         void damage(int damages);
+		
+        /**
+         * 	@brief Mutateur: fait gagner des vies a Babar
+         *	@param lifes Le nombre de vies à faire gagner
+         */
+        void lifesup(int lifes);
 
         /**
-         * 	@brief Mutateur: fait gagner des points de vies à Babar
+         * 	@brief Mutateur: fait gagner des points de vies a Babar
          *	@param HP Le nombre de points de vies à faire gagner
          */
         void HPup(int HP);
+		
+		/**
+		 *	@brief Tue Babar (fait perdre une vie)
+		 */
+		void die();
 
         /**
          * 	@brief Accesseur

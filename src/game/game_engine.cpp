@@ -166,7 +166,7 @@ void Game_engine::update_babar_damage()
         } else {
             if ( m_spawn == 0) {
                 gBabar->set_last_pos();
-                gBabar->damage(1);
+                gBabar->die();
                 m_spawn = SPAWN_TIME;
             } else {
                 m_spawn--;
@@ -198,5 +198,5 @@ bool Game_engine::has_won()
 
 bool Game_engine::has_lost()
 {
-	return gBabar->HP() <= 0;
+	return gBabar->lifes() <= 0;
 }
