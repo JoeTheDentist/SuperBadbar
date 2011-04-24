@@ -36,6 +36,7 @@ protected:
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 	int m_life_span;
 	ouille_chan m_chan;
+	bool m_invincible;
 
 public:
     /*!
@@ -96,6 +97,11 @@ public:
 	 *	@brief Mutateur: "tue" le projectile
 	*/
 	virtual void kill();
+
+	/**
+	 *  @brief Acceseur
+	 */
+    bool invincible();
 };
 
 #endif

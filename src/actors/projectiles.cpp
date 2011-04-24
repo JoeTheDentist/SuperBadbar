@@ -45,6 +45,8 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
 
 	m_dead = false;
 	m_phase = 0;
+
+	m_invincible = false;
 }
 
 void Projectile::update_pos(Collisions_manager *collisions_manager)
@@ -136,4 +138,9 @@ void Projectile::kill()
 	m_dead = true;
 	m_sprite->set_to_delete();
 	m_sprite = NULL;
+}
+
+bool Projectile::invincible()
+{
+    return m_invincible;
 }

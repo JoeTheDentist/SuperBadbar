@@ -33,6 +33,8 @@ Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, 
 
 	m_dead = false;
 	m_phase = 0;
+
+	m_invincible = false;
 }
 
 Rocket::~Rocket()
