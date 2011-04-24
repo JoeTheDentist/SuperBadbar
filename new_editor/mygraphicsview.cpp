@@ -115,9 +115,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	}
 	analyser.find_string("#MovingPlatforms#");
 	int nbPlatforms = analyser.read_int();
-//~ 	QString platformNature;
 	for (int i = 0; i < nbPlatforms; i++) {
-//~ 		platformNature = QString::fromStdString(analyser.read_string());
 		MovingPlatformItem *temp = new MovingPlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser);
 		m_data->addItem(temp);
 	}

@@ -6,54 +6,90 @@ level1.png
 3400
 
 #Babar#
-135
-3197
+1716
+3208
 1
 
 #Sets#
-18
-butterfly/butterfly 173 3876
-butterfly/butterfly 0 2907
-butterfly/butterfly 33 2907
-butterfly/butterfly 66 2907
-butterfly/butterfly 95 2907
-butterfly/butterfly 121 2907
-butterfly/butterfly 161 2907
-butterfly/butterfly 220 2907
-butterfly/butterfly 275 2907
-butterfly/butterfly 315 2907
-butterfly/butterfly 341 2907
-butterfly/butterfly 279 2907
-butterfly/butterfly 174 2863
-butterfly/butterfly 269 2863
-butterfly/butterfly 269 2863
-butterfly/butterfly 338 2863
-butterfly/butterfly 357 2863
-butterfly/butterfly 236 2969
+1
+butterfly/butterfly 1513 3154
 !
 #Statics#
-11
-block6 2750 2000 0
-block4_3 700 1780 0
-block3 1700 2950 1
-soil 0 3300 1
-block7 1801 2204 0
-block5 2200 2650 0
-block5 1178 897 0
-block4_1 687 573 0
-block4_2 700 1200 0
-block2 838 2707 0
-block1 71 2952 0
+1
+soil 7 3289 1
 !
 #Monsters#
-0
+15
+following_flying_monster fubob 1638 1253
+following_flying_monster fubob 0 2307
+following_flying_monster fubob 148 2654
+following_flying_monster fubob -11 2824
+following_flying_monster fubob 810 2924
+following_flying_monster fubob 0 2105
+following_flying_monster fubob 784 2543
+following_flying_monster fubob 0 1843
+following_flying_monster fubob 904 2050
+following_flying_monster fubob 2761 2133
+following_flying_monster fubob 2698 2378
+following_flying_monster fubob 2132 1972
+following_flying_monster fubob 2787 1618
+following_flying_monster fubob 3007 1051
+following_flying_monster fubob 1694 1313
 !
 #Events#
-0
+30
+event shotgun 1609 3246
+event shotgun 1813 3255
+event peanut 2056 2045
+event peanut 1988 2094
+event peanut 1907 2103
+event peanut 1829 2100
+event peanut 1757 2069
+event peanut 1692 2040
+event peanut 1705 2138
+event peanut 1746 2203
+event peanut 1791 2262
+event peanut 1854 2285
+event peanut 1938 2286
+event peanut 2011 2229
+event peanut 2058 2169
+event peanut 2092 2091
+event peanut 1891 1866
+event peanut 1839 1933
+event peanut 1927 1945
+event peanut 1777 1745
+event peanut 1709 1767
+event peanut 1661 1718
+event peanut 1689 1656
+event peanut 1762 1679
+event peanut 1989 1711
+event peanut 2012 1649
+event peanut 2078 1662
+event peanut 2101 1720
+event peanut 2036 1753
+event victory 1912 1393
 !
+
 #MovingPlatforms#
-1
-block8 1514 2338 1554 1788
+18
+block8 2222 3645 2222 3645
+block8 626 2663 866 2459
+block8 168 2428 408 2224
+block8 1251 2677 1491 2473
+block8 1821 3145 1497 2823
+block8 2050 2869 1717 2452
+block8 2632 2990 2313 2609
+block8 2639 2674 2932 2365
+block8 2461 2317 2128 1900
+block8 2065 2641 1746 2260
+block8 1534 2024 1201 1607
+block8 1969 1947 1636 1530
+block8 2919 1867 2586 1450
+block8 2076 1552 1650 1838
+block8 2550 1914 2124 2200
+block8 187 230 558 207
+block8 141 2900 435 3126
+block8 -37 2914 246 3150
 !
 #Triggers#
 0
