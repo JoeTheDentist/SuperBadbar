@@ -106,9 +106,9 @@ void Projectile::update_state()
     m_sprite->change_anim(NONE, m_dir);
 }
 
-void Projectile::set_creator(std::list<Projectile*> * proj)
+void Projectile::set_chan(ouille_chan chan)
 {
-    m_proj = proj;
+    m_chan = chan;
 }
 
 Projectile::~Projectile()

@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-3856
-3874
+247
+3759
 1
 
 #Sets#
@@ -64,11 +64,12 @@ following_walking_monster gailapin 432 2777
 following_walking_monster sanglichon 4151 3753
 !
 #Events#
-4
+5
 event shotgun 592 2848
 event machinegun 1329 3610
-event shotgun 305 3925
 event machinegun 4497 3424
+event shotgun 305 3925
+event rocket_launcher 444 3949
 !
 #MovingPlatforms#
 5

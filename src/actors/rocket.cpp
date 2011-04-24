@@ -13,6 +13,7 @@
 #include "../util/globals.h"
 #include "../game/game_engine.h"
 #include "../actors/monsters_manager.h"
+#include "explosion.h"
 
 Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
@@ -37,8 +38,8 @@ Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, 
 Rocket::~Rocket()
 {
 	PRINT_CONSTR(3, "Destruction d'une rocket")
-	Sprite * test = gGraphics->get_sprites_manager()->add_anim("animations/boom/boom", ENDED, MIDDLEGROUND, true);
-	test->set_pos(m_pos);
+	Projectile * boom = new Explosion(m_pos,m_dir,m_damage);
+	gProj->add_proj(boom, m_chan);
 }
 
 void Rocket::update_speed()

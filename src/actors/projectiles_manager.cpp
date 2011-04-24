@@ -66,7 +66,7 @@ void Projectiles_manager::delete_old_projectiles()
 	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
             it != m_proj[i].end(); ) {
-            if ((*it)->dead()) {
+            if ( (*it)->dead() ) {
                 delete (*it);
                 it = m_proj[i].erase(it);
             } else {
@@ -78,6 +78,7 @@ void Projectiles_manager::delete_old_projectiles()
 
 void Projectiles_manager::add_proj(Projectile *proj, ouille_chan chan) {
 	m_proj[chan].push_back(proj);
+	proj->set_chan(chan);
 }
 
 void Projectiles_manager::add_proj(std::list<Projectile*> *proj, ouille_chan chan) {

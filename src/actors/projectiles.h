@@ -12,6 +12,7 @@
 #define _PROJECTILES_
 
 #include "actor.h"
+#include "projectiles_manager.h"
 
 #define PROJ_DAMAGE 1
 #define ROCKET_DAMAGE 10
@@ -34,7 +35,7 @@ protected:
     unsigned int m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 	int m_life_span;
-	std::list<Projectile*> * m_proj;
+	ouille_chan m_chan;
 
 public:
     /*!
@@ -71,7 +72,7 @@ public:
 	/*!
 	 * 	@brief Mutateur
 	*/
-	void set_creator(std::list<Projectile*> * proj);
+	void set_chan(ouille_chan chan);
 
 	/*!
 	 * 	@brief Accesseur
