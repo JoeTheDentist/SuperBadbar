@@ -27,7 +27,8 @@ water1 2501 3271 0
 water1 2857 3276 0
 !
 #Monsters#
-0
+1
+following_walking_monster sanglichon 765 2937
 !
 #Events#
 0
@@ -41,13 +42,6 @@ block8 1776 2841 1776 2841
 block8 770 2769 770 2769
 block8 944 2769 944 2769
 !
-
-#Falling Platforms#
-2
-block8 1000 3000
-block8 1200 3000
-!
-
 #Triggers#
 0
 !

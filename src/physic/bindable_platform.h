@@ -81,7 +81,7 @@ public:
 	/**
 	 * 	@brief lie Babar à la plateforme
 	 */
-	void bind();
+	virtual void bind();
 
 	/**
 	 * 	@brief delie Babar de la plateforme

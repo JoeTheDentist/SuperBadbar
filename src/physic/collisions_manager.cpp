@@ -16,6 +16,7 @@
 #include "../util/globals.h"
 #include "../video/camera.h"
 #include "../physic/moving_platform.h"
+#include "../physic/falling_platform.h"
 
 #include <iostream>
 #include <algorithm>
@@ -79,6 +80,13 @@ void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 			m_moving_platforms.push_back(new Moving_platform(analyser));
 		}
 	}
+    if (analyser.find_string("#FallingPlatforms#")) {
+		int platforms_number = analyser.read_int();
+		for (int i = 0; i  < platforms_number; i++) {
+			m_moving_platforms.push_back(new Falling_platform(analyser));
+		}
+	}
+	
 }
 
 bool Collisions_manager::check_collision(Rect A, Rect B)
