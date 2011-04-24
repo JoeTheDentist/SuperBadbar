@@ -136,9 +136,9 @@ void Game_engine::update_monsters_projectiles()
                     pos.x += pos.w;
                     img++;
                 }
-                /* TODO voir si on ne peut pas changer de place */
-                /*gAnims->add(PIC_R+"animations/blood_"+img+"_", pos, ENDED, speed, false);*/
-                (*it)->kill();
+                if ( !(*it)->invincible() ) {
+                    (*it)->kill();
+                }
 			}
         }
 		m_monsters_manager->next();
