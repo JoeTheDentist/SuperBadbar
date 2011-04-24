@@ -37,6 +37,8 @@ Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, 
 Rocket::~Rocket()
 {
 	PRINT_CONSTR(3, "Destruction d'une rocket")
+	Sprite * test = gGraphics->get_sprites_manager()->add_anim("animations/boom/boom", ENDED, MIDDLEGROUND, true);
+	test->set_pos(m_pos);
 }
 
 void Rocket::update_speed()

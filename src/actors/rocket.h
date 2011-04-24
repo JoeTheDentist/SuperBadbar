@@ -28,7 +28,7 @@ public:
 	/*!
 	 * 	@brief Destructeur
 	*/
-     ~Rocket();	
+     ~Rocket();
 
 
 	/*!

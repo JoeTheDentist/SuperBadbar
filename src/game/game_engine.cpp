@@ -120,8 +120,8 @@ void Game_engine::update_monsters_projectiles()
     m_monsters_manager->init();
     while (!m_monsters_manager->end()) {
 		Monster *monster = m_monsters_manager->element();
-        for (std::list<Projectile *>::iterator it = gProj->proj_friend_begin();
-				it != gProj->proj_friend_end(); it++){
+        for (std::list<Projectile *>::iterator it = gProj->proj_begin(PLAYER1);
+				it != gProj->proj_end(PLAYER1); it++){
 			if (monster->dead()) {
 			    gStats->kill();
 				break;
@@ -147,8 +147,8 @@ void Game_engine::update_monsters_projectiles()
 
 void Game_engine::update_babar_projectiles()
 {
-	for (std::list<Projectile *>::iterator it = gProj->proj_ennemy_begin();
-				it != gProj->proj_ennemy_end(); it++) {
+	for (std::list<Projectile *>::iterator it = gProj->proj_begin(MONSTERS);
+				it != gProj->proj_end(MONSTERS); it++) {
             if ( Collisions_manager::check_collision(gBabar->damage_box(),(*it)->position()) && !(*it)->dead()) {
                 gStats->hit();
 				gBabar->damage(1);

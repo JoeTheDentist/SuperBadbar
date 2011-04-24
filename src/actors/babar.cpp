@@ -40,6 +40,9 @@ Babar::Babar(Analyser *analyser)
 Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
+	if ( binded() ) {
+        unbind();
+	}
 }
 
 void Babar::load_anim(char age)
@@ -267,7 +270,7 @@ void Babar::update_state()
 
     if (can_fire()) {
         m_fire = true;
-		gProj->add_friend_proj(fire());
+		gProj->add_proj(fire(), PLAYER1);
         m_fire_phase = 0;
     } else {
         m_fire = false;
@@ -347,7 +350,7 @@ std::list<Projectile*> *Babar::fire()
 
 bool Babar::can_walk() const
 {
-    return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&& !m_jump && !m_double_jump && !m_crouch_time;
+    return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&& !m_jump && !m_double_jump;
 }
 
 bool Babar::can_crouch() const
@@ -358,9 +361,9 @@ bool Babar::can_crouch() const
 void Babar::crouch()
 {
     m_crouch_time = 1;
-    int h_last = m_sprite->curr_pic()->h();
+    int h_last = m_sprite->h();
     m_sprite->change_anim(CROUCH, m_dir);
-    int h = m_sprite->curr_pic()->h();
+    int h = m_sprite->h();
 	move(0, h_last - h);
 }
 

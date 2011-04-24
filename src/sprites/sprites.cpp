@@ -23,6 +23,7 @@ Sprite::Sprite()
 	m_to_delete = false;
 	m_lvl = BACKGROUND;
 	m_no_pic = false;
+	m_center = false;
 }
 
 Sprite::~Sprite()
@@ -73,4 +74,9 @@ void Sprite::set_pic()
 void Sprite::rand_pic()
 {
     /* Ne rien faire si non redef */
+}
+
+bool Sprite::center()
+{
+    return m_center;
 }

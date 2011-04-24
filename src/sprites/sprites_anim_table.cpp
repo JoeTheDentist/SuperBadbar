@@ -7,6 +7,7 @@ Sprite_anim_table::Sprite_anim_table(std::string anim_name, screen_level lvl)
     m_animt = new Anim_table(anim_name);
     m_lvl = lvl;
     m_no_pic = false;
+    m_center = false;
 }
 
 Sprite_anim_table::~Sprite_anim_table()

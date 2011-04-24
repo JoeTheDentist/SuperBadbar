@@ -112,7 +112,7 @@ void Monsters_manager::make_monsters_fire()
 			it != m_monsters.end(); it++) {
 		(*it)->update();
 		if ((*it)->can_fire())
-			gProj->add_ennemy_proj((*it)->fire());
+			gProj->add_proj((*it)->fire(), MONSTERS);
 	}
 }
 
@@ -192,6 +192,6 @@ Rect Monsters_manager::closer_monster_pos(Rect rect, int radius)
 			radius = norm_2((*it)->position(), rect);
 			res = (*it)->position();
 		}
-	}		
+	}
 	return res;
 }

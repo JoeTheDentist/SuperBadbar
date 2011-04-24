@@ -12,6 +12,11 @@
 
 #include <list>
 
+/* Canaux des groupes de dommage, on pourra utiliser la suite pour les différents joueurs */
+enum ouille_chan {
+    ALL, MONSTERS, PLAYER1, PLAYER2, PLAYER3, PLAYER4, LAST_OUILLE_CHAN
+};
+
 class Projectile;
 class Static_data;
 class Collisions_manager;
@@ -31,8 +36,7 @@ class Camera;
  */
 class Projectiles_manager {
 private:
-	std::list<Projectile*> m_projectiles_friend;
-	std::list<Projectile*> m_projectiles_ennemy;
+	std::list<Projectile*> m_proj[LAST_OUILLE_CHAN];
 public:
 
 	/*!
@@ -67,56 +71,29 @@ public:
 	void delete_old_projectiles();
 
 	/*!
-	 *	@brief Ajoute un projectile à la liste des projectiles amis
+	 *	@brief Ajoute un projectile à la liste des projectiles sur un channel
 	 *	@param proj un pointeur vers le projectile à ajouter
 	*/
-	void add_friend_proj(Projectile *proj);
+	void add_proj(Projectile *proj, ouille_chan chan);
 
 	/*!
-	 *	@brief Vide la liste passée en parametre dans la liste des projectiles amis
+	 *	@brief Vide la liste passée en parametre dans la liste des projectiles sur un channel
 	 *	@param proj un pointeur vers la liste de projectiles à ajouter
 	*/
-	void add_friend_proj(std::list<Projectile*> *proj);
-
-
-
-	/*!
-	 *	@brief Ajoute un projectile à la liste des projectiles ennemis
-	 *	@param proj un pointeur vers le projectile à ajouter
-	*/
-	void add_ennemy_proj(Projectile *proj);
-
-	/*!
-	 *	@brief Vide la liste passée en parametre dans la liste des projectiles ennemis
-	 *	@param proj un pointeur vers la liste de projectiles à ajouter
-	*/
-	void add_ennemy_proj(std::list<Projectile*> *proj);
+	void add_proj(std::list<Projectile*> *proj, ouille_chan chan);
 
 	/*!
 	 *	@brief Accesseur
 	 *	@return Iterator pointant sur le début de la liste de projectiles amis
 	 *	@todo voir si on peut rendre cette methode constante
 	*/
-	std::list<Projectile *>::iterator proj_friend_begin();
+	std::list<Projectile *>::iterator proj_begin(ouille_chan chan);
 
 	/*!
 	 *	@brief Accesseur
 	 *	@return Iterator pointant sur la fin de la liste de projectiles amis
 	*/
-	std::list<Projectile *>::iterator proj_friend_end();
-
-
-	/*!
-	 *	@brief Accesseur
-	 *	@return Iterator pointant sur le début de la liste de projectiles ennemis
-	*/
-	std::list<Projectile *>::iterator proj_ennemy_begin();
-
-	/*!
-	 *	@brief Accesseur
-	 *	@return Iterator pointant sur la fin de la liste de projectiles ennmis
-	*/
-	std::list<Projectile *>::iterator proj_ennemy_end();
+	std::list<Projectile *>::iterator proj_end(ouille_chan chan);
 };
 
 

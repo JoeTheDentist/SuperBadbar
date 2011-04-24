@@ -33,7 +33,7 @@ class Sprites_manager {
         /**
          * Abonne une table d'animation
          */
-        Sprite * add_anim(std::string anim_name, anim_type type, screen_level lvl);
+        Sprite * add_anim(std::string anim_name, anim_type type, screen_level lvl, bool center=false);
 
         /**
          * Pour un text animé

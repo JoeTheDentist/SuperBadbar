@@ -19,9 +19,9 @@ void Sprites_manager::add(Sprite * s)
     m_sprites->push_front(s);
 }
 
-Sprite * Sprites_manager::add_anim(std::string anim_name, anim_type type, screen_level lvl)
+Sprite * Sprites_manager::add_anim(std::string anim_name, anim_type type, screen_level lvl, bool center)
 {
-    Sprite * sprite = new Sprite_anim(anim_name, type, MIDDLEGROUND);
+    Sprite * sprite = new Sprite_anim(anim_name, type, MIDDLEGROUND, center);
     add(sprite);
     return sprite;
 }
@@ -75,7 +75,14 @@ void Sprites_manager::clear()
 void Sprites_manager::display_sprites(Camera * cam)
 {
     for (std::list<Sprite*>::iterator it=m_sprites->begin(); it!=m_sprites->end(); ++it) {
-        /* TODO faire éventuellement des positions fixe dans la structure de donnée de Sprite */
-        cam->display_picture( (*it)->curr_pic(), (*it)->pos() );
+        /* si on doit centrer l'image */
+        if ( (*it)->center() ) {
+            Rect pos = *(*it)->pos();
+            pos.x -= pos.w/2;
+            pos.y -= pos.h/2;
+            cam->display_picture( (*it)->curr_pic(), &pos ) ;
+        } else {
+            cam->display_picture( (*it)->curr_pic(), (*it)->pos() );
+        }
     }
 }

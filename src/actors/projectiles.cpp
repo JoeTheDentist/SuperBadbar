@@ -106,6 +106,11 @@ void Projectile::update_state()
     m_sprite->change_anim(NONE, m_dir);
 }
 
+void Projectile::set_creator(std::list<Projectile*> * proj)
+{
+    m_proj = proj;
+}
+
 Projectile::~Projectile()
 {
 	PRINT_CONSTR(3, "Destruction d'un projectile")

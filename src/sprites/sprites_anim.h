@@ -13,7 +13,7 @@ class Sprite_anim : public Sprite {
          * Constructeur pour des images
          * Chemin donné à partir de /pic/
          */
-        Sprite_anim(std::string anim_name, anim_type type, screen_level lvl);
+        Sprite_anim(std::string anim_name, anim_type type, screen_level lvl, bool center=false);
 
         /**
          * Constructeur pour du texte

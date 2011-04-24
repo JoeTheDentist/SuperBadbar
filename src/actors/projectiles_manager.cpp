@@ -20,128 +20,79 @@ Projectiles_manager::Projectiles_manager() {
 
 }
 
-Projectiles_manager::~Projectiles_manager() {
-	// suppression de projectiles amis
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-		it != m_projectiles_friend.end(); ) {
-		delete (*it);
-		it = m_projectiles_friend.erase(it);
-
-	}
-	// suppression de projectiles ennemis
-	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-		it != m_projectiles_ennemy.end(); it++) {
-		m_projectiles_ennemy.erase(it);
-		it--;
+Projectiles_manager::~Projectiles_manager()
+{
+	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
+        for (std::list<Projectile *>::iterator it = m_proj[i].begin();
+            it != m_proj[i].end(); it++) {
+            m_proj[i].erase(it);
+            it--;
+        }
 	}
 }
 
 
 void Projectiles_manager::update_pos()
 {
-	// position des projectiles amis
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-			it != m_projectiles_friend.end(); it++) {
-	    (*it)->update_pos(gCollision);
-	}
-	// position des projectiles ennemis
-	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-			it != m_projectiles_ennemy.end(); it++) {
-	    (*it)->update_pos(gCollision);
+    for (int i=0; i<LAST_OUILLE_CHAN; i++) {
+        for (std::list<Projectile *>::iterator it = m_proj[i].begin();
+            it != m_proj[i].end(); it++) {
+            (*it)->update_pos(gCollision);
+        }
 	}
 }
 
 void Projectiles_manager::update_speed()
 {
-	// vitesses des projectiles amis
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-			it != m_projectiles_friend.end(); it++) {
-	    (*it)->update_speed();
-	}
-	// vitesses des projectiles ennemis
-	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-			it != m_projectiles_ennemy.end(); it++) {
-	    (*it)->update_speed();
+	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
+        for (std::list<Projectile *>::iterator it = m_proj[i].begin();
+            it != m_proj[i].end(); it++) {
+            (*it)->update_speed();
+        }
 	}
 }
 
 void Projectiles_manager::update_state()
 {
-	// position des projectiles amis
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-			it != m_projectiles_friend.end(); it++) {
-	    (*it)->update_state();
-	}
-	// position des projectiles ennemis
-	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-			it != m_projectiles_ennemy.end(); it++) {
-	    (*it)->update_state();
+	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
+        for (std::list<Projectile *>::iterator it = m_proj[i].begin();
+            it != m_proj[i].end(); it++) {
+            (*it)->update_state();
+        }
 	}
 }
 
 void Projectiles_manager::delete_old_projectiles()
 {
-	// suppression de projectiles amis
-	for (std::list<Projectile *>::iterator it = m_projectiles_friend.begin();
-			it != m_projectiles_friend.end(); ) {
-		if ((*it)->dead()) {
-			delete (*it);
-			it = m_projectiles_friend.erase(it);
-		} else {
-			++it;
-		}
-	}
-	// suppression de projectiles ennemis
-	for (std::list<Projectile *>::iterator it = m_projectiles_ennemy.begin();
-			it != m_projectiles_ennemy.end(); ) {
-		if ((*it)->dead()) {
-			delete (*it);
-			it = m_projectiles_friend.erase(it);
-		} else {
-			++it;
-		}
+	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
+        for (std::list<Projectile *>::iterator it = m_proj[i].begin();
+            it != m_proj[i].end(); ) {
+            if ((*it)->dead()) {
+                delete (*it);
+                it = m_proj[i].erase(it);
+            } else {
+                ++it;
+            }
+        }
 	}
 }
 
-void Projectiles_manager::add_friend_proj(Projectile *proj) {
-	m_projectiles_friend.push_back(proj);
+void Projectiles_manager::add_proj(Projectile *proj, ouille_chan chan) {
+	m_proj[chan].push_back(proj);
 }
 
-void Projectiles_manager::add_friend_proj(std::list<Projectile*> *proj) {
+void Projectiles_manager::add_proj(std::list<Projectile*> *proj, ouille_chan chan) {
 	for (std::list<Projectile *>::iterator it = proj->begin();
 			it != proj->end(); it++) {
-		add_friend_proj(*it);
+		add_proj(*it, chan);
 	}
 	delete proj;
 }
 
-void Projectiles_manager::add_ennemy_proj(Projectile *proj) {
-	m_projectiles_ennemy.push_back(proj);
+std::list<Projectile *>::iterator Projectiles_manager::proj_begin(ouille_chan chan) {
+	return m_proj[chan].begin();
 }
 
-void Projectiles_manager::add_ennemy_proj(std::list<Projectile*> *proj) {
-	for (std::list<Projectile *>::iterator it = proj->begin();
-			it != proj->end(); it++) {
-		add_ennemy_proj(*it);
-	}
-	delete proj;
+std::list<Projectile *>::iterator Projectiles_manager::proj_end(ouille_chan chan) {
+	return m_proj[chan].end();
 }
-
-std::list<Projectile *>::iterator Projectiles_manager::proj_friend_begin() {
-	return m_projectiles_friend.begin();
-}
-
-std::list<Projectile *>::iterator Projectiles_manager::proj_friend_end() {
-	return m_projectiles_friend.end();
-}
-
-std::list<Projectile *>::iterator Projectiles_manager::proj_ennemy_begin() {
-	return m_projectiles_ennemy.begin();
-}
-
-std::list<Projectile *>::iterator Projectiles_manager::proj_ennemy_end() {
-	return m_projectiles_ennemy.end();
-}
-
-
-

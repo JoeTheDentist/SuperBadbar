@@ -31,6 +31,7 @@ class Sprite {
         screen_level m_lvl;     /* niveau du plan d'affichage */
         bool m_to_delete;       /* si le sprite est à détruire, ce booléen est mis à jour par son acteur */
         bool m_no_pic;          /* si on doit afficher l'image ce tour ci */
+        bool m_center;          /* si l'image doit être centrée sur la position */
 
     public:
         /**
@@ -109,6 +110,11 @@ class Sprite {
          *  @brief Mets l'image de départ aléatoirement, uniquement pour anim
          */
         virtual void rand_pic();
+
+        /**
+         *  @brief Accesseur, si l'image doit être centrée ou non
+         */
+        bool center();
 };
 
 #endif

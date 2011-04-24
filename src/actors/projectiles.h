@@ -34,6 +34,7 @@ protected:
     unsigned int m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 	int m_life_span;
+	std::list<Projectile*> * m_proj;
 
 public:
     /*!
@@ -66,6 +67,11 @@ public:
 	 * 	@brief Met à jour la position du Projectile
 	*/
 	virtual void update_speed();
+
+	/*!
+	 * 	@brief Mutateur
+	*/
+	void set_creator(std::list<Projectile*> * proj);
 
 	/*!
 	 * 	@brief Accesseur
