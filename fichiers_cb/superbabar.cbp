@@ -11,7 +11,6 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-menu" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -52,6 +51,7 @@
 		<Unit filename="..\src\actors\actor.h" />
 		<Unit filename="..\src\actors\babar.cpp" />
 		<Unit filename="..\src\actors\babar.h" />
+		<Unit filename="..\src\actors\explosion.h" />
 		<Unit filename="..\src\actors\flying_monster.cpp" />
 		<Unit filename="..\src\actors\flying_monster.h" />
 		<Unit filename="..\src\actors\following_flying_monsters.cpp" />
@@ -119,6 +119,8 @@
 		<Unit filename="..\src\menus\options_menu.h" />
 		<Unit filename="..\src\menus\pause_menu.cpp" />
 		<Unit filename="..\src\menus\pause_menu.h" />
+		<Unit filename="..\src\physic\bindable_platform.cpp" />
+		<Unit filename="..\src\physic\bindable_platform.h" />
 		<Unit filename="..\src\physic\collisions_manager.cpp" />
 		<Unit filename="..\src\physic\collisions_manager.h" />
 		<Unit filename="..\src\physic\collisions_matrix.cpp" />

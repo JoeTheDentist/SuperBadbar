@@ -24,9 +24,8 @@ Projectiles_manager::~Projectiles_manager()
 {
 	for (int i=0; i<LAST_OUILLE_CHAN; i++) {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
-            it != m_proj[i].end(); it++) {
-            m_proj[i].erase(it);
-            it--;
+            it != m_proj[i].end(); ) {
+            it = m_proj[i].erase(it);
         }
 	}
 }
