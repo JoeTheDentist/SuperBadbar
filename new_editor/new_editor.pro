@@ -18,7 +18,7 @@ HEADERS += analyser.h \
            mygraphicsview.h \
            myitem.h \
            paths.h \
-           platformitem.h \
+           movingplatformitem.h \
            setitem.h \
            staticitem.h \
            triggeritem.h
@@ -31,7 +31,7 @@ SOURCES += analyser.cpp \
            monsteritem.cpp \
            mygraphicsview.cpp \
            myitem.cpp \
-           platformitem.cpp \
+           movingplatformitem.cpp \
            setitem.cpp \
            staticitem.cpp \
            triggeritem.cpp

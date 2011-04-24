@@ -3,7 +3,7 @@
 #include <QGraphicsView>
 #include "paths.h"
 #include "babaritem.h"
-#include "platformitem.h"
+#include "movingplatformitem.h"
 
 #define CURS_BOX 0
 #define CURS_LINE 1
@@ -134,7 +134,7 @@ class MyGraphicsView : public QGraphicsView {
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
-	void addPlatform();
+	void addMovingPlatform();
 	
 	/*!
 	*	@brief Fonction d'ajout de monstre au niveau

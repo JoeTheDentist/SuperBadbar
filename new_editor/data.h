@@ -1,4 +1,4 @@
-#ifndef _EDITOR_DATA_H_
+ #ifndef _EDITOR_DATA_H_
 #define _EDITOR_DATA_H_
 
 #include <list>
@@ -93,9 +93,9 @@ class Data {
 	*	@param item L'item a ajouter
 	*
 	*	Cette méthode ne sera a priori appelée que par les items
-	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addPlatformItem
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addMovingPlatformItem
 	*/
-	void addPlatformItem(MyItem *item, bool push_front = false);
+	void addMovingPlatformItem(MyItem *item, bool push_front = false);
 		
 		
 		

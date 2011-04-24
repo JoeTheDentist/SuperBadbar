@@ -65,7 +65,7 @@ class MainWindow : public QMainWindow {
 	void addBabar();
 	void addSet();
 	void addStatic();
-	void addPlatform();
+	void addMovingPlatform();
 	void addMonster();
 	void addEvent();
 	void addTrigger();
@@ -94,7 +94,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_addBabar;
 	QAction *m_addSet;
 	QAction *m_addStatic;
-	QAction *m_addPlatform;
+	QAction *m_addMovingPlatform;
 	QAction *m_addMonster;
 	QAction *m_addEvent;
 	QAction *m_addTrigger;

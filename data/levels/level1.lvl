@@ -35,7 +35,6 @@ butterfly/butterfly 236 2969
 11
 block6 2750 2000 0
 block4_3 700 1780 0
-block2 838 2707 0
 block3 1700 2950 1
 soil 0 3300 1
 block7 1801 2204 0
@@ -43,114 +42,18 @@ block5 2200 2650 0
 block5 1178 897 0
 block4_1 687 573 0
 block4_2 700 1200 0
+block2 838 2707 0
 block1 71 2952 0
 !
 #Monsters#
-13
-following_walking_monster maphyar 741 1251
-following_walking_monster maphyar 1006 1795
-following_walking_monster maphyar 982 2089
-following_walking_monster maphyar 912 2713
-following_flying_monster fubob 700 900
-following_flying_monster fubob 133 631
-following_flying_monster fubob -8 947
-following_flying_monster fubob 394 994
-following_flying_monster fubob 2788 1092
-following_flying_monster fubob 2435 1176
-following_walking_monster gailapin 409 2944
-following_walking_monster maphyar 449 2957
-following_walking_monster gailapin 912 3212
+0
 !
 #Events#
-83
-event peanut 1394 2643
-event peanut 1189 2640
-event peanut 967 2632
-event peanut 1401 2539
-event peanut 1220 2590
-event peanut 1192 2538
-event peanut 1008 2589
-event peanut 967 2537
-event peanut 860 2753
-event peanut 757 2749
-event peanut 669 2787
-event peanut 606 2855
-event peanut 607 2994
-event peanut 322 3244
-event shotgun 2900 2250
-event peanut 372 3246
-event peanut 420 3248
-event peanut 346 3202
-event peanut 399 3201
-event peanut 345 3289
-event peanut 399 3292
-event peanut 1368 2589
-event peanut 1158 2587
-event peanut 929 2586
-event peanut 912 2084
-event peanut 967 1826
-event peanut 1243 1831
-event peanut 543 2994
-event shotgun 30 3222
-event peanut 1428 2594
-event peanut 1629 2750
-event peanut 1702 2750
-event peanut 1783 2753
-event peanut 1741 2701
-event peanut 1656 2702
-event peanut 1663 2802
-event peanut 1747 2804
-event peanut 2107 2980
-event peanut 2133 2865
-event peanut 2163 2766
-event peanut 2232 2657
-event peanut 2321 2606
-event peanut 2417 2635
-event peanut 2646 2563
-event peanut 2645 2493
-event peanut 2641 2422
-event peanut 2705 2459
-event peanut 2582 2462
-event peanut 2557 2119
-event peanut 2716 2207
-event peanut 2641 2156
-event peanut 2448 2099
-event peanut 2322 2107
-event peanut 1927 2161
-event peanut 1871 2085
-event peanut 1812 2004
-event peanut 1885 2017
-event peanut 1780 2064
-event peanut 1104 2085
-event peanut 1232 1753
-event peanut 1216 1656
-event peanut 1179 1564
-event peanut 1145 1440
-event peanut 1021 1336
-event peanut 974 1276
-event peanut 1070 1282
-event peanut 1023 1227
-event peanut 1059 1111
-event peanut 1101 1030
-event peanut 573 2939
-event victory 1588 789
-event peanut 1189 947
-event peanut 1312 906
-event peanut 1425 911
-event peanut 1423 851
-event peanut 1488 883
-event peanut 1906 787
-event peanut 1823 787
-event peanut 1805 859
-event peanut 1897 863
-event peanut 1856 823
-event machinegun 126 2946
-event rocket_launcher 367 3250
+0
 !
-#Platforms#
-2
-normal block8 296 752 727 1087
-normal block8 1555 1668 1552 1980
+#MovingPlatforms#
+1
+block8 1514 2338 1554 1788
 !
 #Triggers#
 0

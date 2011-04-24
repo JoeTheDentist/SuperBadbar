@@ -32,15 +32,22 @@ water1 2857 3276 0
 #Events#
 0
 !
-#Platforms#
+#MovingPlatforms#
 6
-falling block8 1101 2763 1101 2763
-falling block8 1295 2787 1295 2787
-falling block8 1475 2841 1475 2841
-falling block8 1776 2841 1776 2841
-falling block8 770 2769 770 2769
-falling block8 944 2769 944 2769
+block8 1101 2763 1101 2763
+block8 1295 2787 1295 2787
+block8 1475 2841 1475 2841
+block8 1776 2841 1776 2841
+block8 770 2769 770 2769
+block8 944 2769 944 2769
 !
+
+#Falling Platforms#
+2
+block8 1000 3000
+block8 1200 3000
+!
+
 #Triggers#
 0
 !

@@ -1,6 +1,6 @@
 #include "data.h"
 #include "myitem.h"
-#include "platformitem.h"
+#include "movingplatformitem.h"
 #include <iostream>
 #include <QTextStream>
 #include <QFile>
@@ -79,7 +79,7 @@ void Data::addStaticItem(MyItem *item, bool push_front)
 	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
 
-void Data::addPlatformItem(MyItem *item, bool push_front)
+void Data::addMovingPlatformItem(MyItem *item, bool push_front)
 {
 	if (push_front) {
 		m_platform_items.push_front(item);		
@@ -259,7 +259,7 @@ void Data::saveData(QString fileName)
 		(*it)->saveItem(out);	
 	out << "!" << endl;
 	// sauvegarde des platformes
-	out << "#Platforms#" << endl;
+	out << "#MovingPlatforms#" << endl;
 	out << m_platform_items.size() << endl;
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
 		(*it)->saveItem(out);		

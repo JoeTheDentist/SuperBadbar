@@ -14,13 +14,13 @@
 #include <stdint.h>
 #include <list>
 #include "collisions_matrix.h"
-#include "moving_platform.h"
+#include "bindable_platform.h"
 #include "../util/globals.h"
 #include "../util/analyser.h"
 #include "../util/debug.h"
 
 class Static;
-class Moving_platform;
+class Bindable_platform;
 class Babar;
 class Analyser;
 
@@ -54,7 +54,8 @@ class Analyser;
 class Collisions_manager {
 private:
 	Collisions_matrix *m_matrix; // la matrice de collision du niveau
-	std::list<Moving_platform *> m_moving_platforms;
+	std::list<Bindable_platform *> m_moving_platforms;
+//~ 	std::list<std::pair<Bindable_platform *, int> > m_waiting_moving_platforms; // plateformes avant respawn
 public:
 
 	/*!

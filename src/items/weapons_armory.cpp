@@ -81,9 +81,6 @@ void Weapons_armory::update()
 		it--;
 		m_armory.erase(m_current_weapon);
 		m_current_weapon = it;
-//~ 		if (it != m_armory.end()) {
-//~ 			m_current_weapon = it;
-//~ 		}
 	}
 }
 

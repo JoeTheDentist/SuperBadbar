@@ -137,7 +137,11 @@ public:
 	*	L'affichage réel n'est mis à jour que dans cette méthode
 	*/
 	void flip_camera();
-
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La surface SDL de l'ecran
+	*/
 	SDL_Surface *sdl_screen() { return m_screen; }
 
 	#ifdef DEBUG_COLL

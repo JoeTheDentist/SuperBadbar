@@ -11,7 +11,6 @@
 #define _BABAR_
 
 #include <list>
-
 #include "../sound/sonorisable.h"
 #include "../util/analyser.h"
 #include "../video/anim_pic.h"
@@ -30,7 +29,7 @@ class Projectiles_manager;
 class Analyser;
 class Gun;
 class Weapons_armory;
-class Moving_platform;
+class Bindable_platform;
 
 const int c_babar_hp_max = 5;
 const int c_babar_lifes = 3;
@@ -81,7 +80,7 @@ class Babar: public Actor, public Sonorisable {
         bool m_double_jump;		            /* vaut vrai si Babar est en cours de double saut */
 
         Weapons_armory m_weapons_armory;
-        Moving_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
+        Bindable_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
         Rect m_rel_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
         bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
         int m_peanuts;
@@ -299,7 +298,7 @@ class Babar: public Actor, public Sonorisable {
          * 	@brief Lie babar à la plateforme
          *	@param platform plateforme à lier
          */
-        void bind(Moving_platform *platform);
+        void bind(Bindable_platform *platform);
 
         /**
          * 	@brief Délie babar de sa plateforme

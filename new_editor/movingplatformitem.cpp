@@ -1,4 +1,4 @@
-#include "platformitem.h"
+#include "movingplatformitem.h"
 #include <QGraphicsPixmapItem>
 #include <iostream>
 #include "paths.h"
@@ -7,96 +7,88 @@
 #include <QInputDialog>
 #include <QStringList>
 
-PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father):
+MovingPlatformItem::MovingPlatformItem(QGraphicsScene *scene, QString fileName, MovingPlatformItem *father):
 	StaticItem(scene, fileName),
 	m_father(father),
-	m_son(NULL),
-	m_nature("normal")
+	m_son(NULL)
 {
 	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
-		this->setSon(new PlatformItem(scene, fileName, this)); // felicitations, c'est un garcon!
+		this->setSon(new MovingPlatformItem(scene, fileName, this)); // felicitations, c'est un garcon!
 	}
 }
 
-PlatformItem::PlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, PlatformItem *father):
+MovingPlatformItem::MovingPlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, MovingPlatformItem *father):
 	StaticItem(scene, fileName),
 	m_father(father),
-	m_son(NULL),
-	m_nature("normal")
+	m_son(NULL)
 {
-	if (isFather())
-		setNature(QString(analyser.read_string().c_str()));
 	int x = analyser.read_int();
 	int y = analyser.read_int();
 	setPos(x, y);
 	if (!father) { // si aucun pere n'est precise, c'est qu'on EST le pere
-		this->setSon(new PlatformItem(scene, fileName, analyser, this)); // felicitations, c'est un garcon!
+		this->setSon(new MovingPlatformItem(scene, fileName, analyser, this)); // felicitations, c'est un garcon!
 	}
 }
 
 
 
-PlatformItem::~PlatformItem()
+MovingPlatformItem::~MovingPlatformItem()
 {
 	if (isFather())
 		delete m_son;
 }
 
-void PlatformItem::setFather(PlatformItem *father)
+void MovingPlatformItem::setFather(MovingPlatformItem *father)
 {
 	m_father = father;
 }
 
-void PlatformItem::setSon(PlatformItem *son)
+void MovingPlatformItem::setSon(MovingPlatformItem *son)
 {
 	m_son = son;
 	son->setFather(this);
 }
 
-MyItem *PlatformItem::duplicate(QGraphicsScene *scene)
+MyItem *MovingPlatformItem::duplicate(QGraphicsScene *scene)
 {
 	if (isFather()) {
 		QPixmap image(m_item->pixmap());
-		PlatformItem *item = new PlatformItem(scene, m_file_name);
+		MovingPlatformItem *item = new MovingPlatformItem(scene, m_file_name);
 		item->m_son->moveItem(m_son->x() - x(), m_son->y() - y()); // on maintient le decalage
 		item->setVisible(false); 
 		item->m_zbuffer = m_zbuffer;
-		item->setNature(m_nature);
 		return item;	
 	} else {
 		return m_father->duplicate(scene);
 	}
 }
 
-void PlatformItem::saveItem(QTextStream &out)
+void MovingPlatformItem::saveItem(QTextStream &out)
 {
 	if (isFather()) {
-		out << m_nature << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << " ";
+		out << m_file_name << " " << m_item->x() << " " << m_item->y() << " ";
 		m_son->saveItem(out);
 	} else {
 		out << m_item->x() << " " << m_item->y() << endl;
 	}
 }
 
-void PlatformItem::addToData(Data *data, bool push_front)
+void MovingPlatformItem::addToData(Data *data, bool push_front)
 {
 	if (isFather()) // on ne doit jamais ajouter un fils dans data
-		data->addPlatformItem(this, push_front);
+		data->addMovingPlatformItem(this, push_front);
 }
 
-void PlatformItem::edit()
+void MovingPlatformItem::edit()
 {
-	QStringList choices;
-    choices << "normal" << "falling";
-    setNature(QInputDialog::getItem(NULL, "Plaform nature", "Indicate the nature of the platform", choices));
 }
 
-QString PlatformItem::picPathFromEditor(QString fileName)
+QString MovingPlatformItem::picPathFromEditor(QString fileName)
 {
 	return STATIC_DIR + fileName + ".png";
 }
 
-void PlatformItem::moveItem(int x, int y)
+void MovingPlatformItem::moveItem(int x, int y)
 {
 	StaticItem::moveItem(x, y);
 	if (isFather()) {
@@ -105,7 +97,7 @@ void PlatformItem::moveItem(int x, int y)
 	}
 }
 
-void PlatformItem::setPos(int x, int y)
+void MovingPlatformItem::setPos(int x, int y)
 {
 	StaticItem::setPos(x, y);
 	if (isFather()) {
@@ -114,7 +106,7 @@ void PlatformItem::setPos(int x, int y)
 	}
 }
 
-void PlatformItem::setStaticZBuffer(int buffer)
+void MovingPlatformItem::setStaticZBuffer(int buffer)
 {
 	m_zbuffer = buffer;
 	if (m_zbuffer == 0) {
@@ -127,7 +119,7 @@ void PlatformItem::setStaticZBuffer(int buffer)
 	}
 }
 
-MyItem *PlatformItem::selectItem(int x, int y)
+MyItem *MovingPlatformItem::selectItem(int x, int y)
 {
 	if (isFather()) {
 		if (m_son->selectItem(x, y))
@@ -141,7 +133,7 @@ MyItem *PlatformItem::selectItem(int x, int y)
 	return NULL;
 }
 
-void PlatformItem::removeFromScene(QGraphicsScene *scene)
+void MovingPlatformItem::removeFromScene(QGraphicsScene *scene)
 {
 	if (isFather()) {
 		scene->removeItem(m_son->getItem());
@@ -149,18 +141,11 @@ void PlatformItem::removeFromScene(QGraphicsScene *scene)
 	}
 }
 
-void PlatformItem::setVisible(bool visible)
+void MovingPlatformItem::setVisible(bool visible)
 {
 	if (isFather())
 		m_son->setVisible(visible);
 	MyItem::setVisible(visible);
 }
 
-void PlatformItem::setNature(QString nature)
-{
-	m_nature = nature;
-	if (isFather())
-		m_son->m_nature = nature;
-	else
-		m_father->m_nature = nature;
-}
+

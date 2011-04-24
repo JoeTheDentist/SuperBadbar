@@ -15,7 +15,7 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../physic/collisions_manager.h"
-#include "../physic/moving_platform.h"
+#include "../physic/bindable_platform.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
 #include "../actors/projectiles_manager.h"
@@ -509,7 +509,7 @@ bool Babar::binded() const
 	return m_bind;
 }
 
-void Babar::bind(Moving_platform *platform)
+void Babar::bind(Bindable_platform *platform)
 {
 	if (platform->can_bind()) {
 		unbind();

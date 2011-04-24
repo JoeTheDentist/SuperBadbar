@@ -15,6 +15,7 @@
 #include "../actors/babar.h"
 #include "../util/globals.h"
 #include "../video/camera.h"
+#include "../physic/moving_platform.h"
 
 #include <iostream>
 #include <algorithm>
@@ -26,7 +27,7 @@ Collisions_manager::Collisions_manager()
 
 Collisions_manager::~Collisions_manager()
 {
-	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		delete (*it);
 	}
@@ -72,12 +73,12 @@ void Collisions_manager::init_statics(Analyser &analyser)
 
 void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 {
-    analyser.find_string("#Platforms#");
-
-    int platforms_number = analyser.read_int();
-	for (int i = 0; i  < platforms_number; i++) {
-        m_moving_platforms.push_back(new Moving_platform(analyser));
-    }
+    if (analyser.find_string("#MovingPlatforms#")) {
+		int platforms_number = analyser.read_int();
+		for (int i = 0; i  < platforms_number; i++) {
+			m_moving_platforms.push_back(new Moving_platform(analyser));
+		}
+	}
 }
 
 bool Collisions_manager::check_collision(Rect A, Rect B)
@@ -93,7 +94,7 @@ bool Collisions_manager::check_collision(Rect A, Rect B)
 
 void Collisions_manager::display_platforms(Camera * const camera) const
 {
-	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		camera->display((*it));
 		#ifdef DEBUG_COLL
@@ -105,7 +106,7 @@ void Collisions_manager::display_platforms(Camera * const camera) const
 
 void Collisions_manager::update_platforms_pos()
 {
-	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		(*it)->update_pos();
 	}
@@ -113,7 +114,7 @@ void Collisions_manager::update_platforms_pos()
 
 void Collisions_manager::update_platforms_speed()
 {
-	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		(*it)->update_speed();
 	}
@@ -121,7 +122,7 @@ void Collisions_manager::update_platforms_speed()
 
 void Collisions_manager::update_babar_platforms()
 {
-	for(std::list<Moving_platform *>::const_iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		if((*it)->check_babar()) {
 			(*it)->bind();
@@ -132,7 +133,7 @@ void Collisions_manager::update_babar_platforms()
 
 void Collisions_manager::update_dead_platforms()
 {
-	for(std::list<Moving_platform *>::iterator it = m_moving_platforms.begin();
+	for(std::list<Bindable_platform *>::iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end();) {
 		if ((*it)->dead()) {
 			delete (*it);

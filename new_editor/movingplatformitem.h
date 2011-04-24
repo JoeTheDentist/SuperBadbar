@@ -9,11 +9,10 @@
 class MyGraphicsView;
 
 
-class PlatformItem: public StaticItem {
+class MovingPlatformItem: public StaticItem {
 	protected:
-	PlatformItem *m_father;
-	PlatformItem *m_son;
-	QString m_nature; // normal ou falling
+	MovingPlatformItem *m_father;
+	MovingPlatformItem *m_son;
 	public:
 	/*!
 	*	@brief Constructeur
@@ -21,7 +20,7 @@ class PlatformItem: public StaticItem {
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
 	*/
-	PlatformItem(QGraphicsScene *scene, QString fileName, PlatformItem *father = NULL);
+	MovingPlatformItem(QGraphicsScene *scene, QString fileName, MovingPlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Constructeur
@@ -30,15 +29,15 @@ class PlatformItem: public StaticItem {
 	*	@param analyser Un analyseur pret a donner les coordonnees de l'item
 	*	@param father Le pere du plateform (NULL si on souhaite creer le pere)
 	*/	
-	PlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, PlatformItem *father = NULL);
+	MovingPlatformItem(QGraphicsScene *scene, QString fileName, Analyser &analyser, MovingPlatformItem *father = NULL);
 	
 	/*!
 	*	@brief Destructeur
 	*/
-	~PlatformItem();
+	~MovingPlatformItem();
 	
-	void setFather(PlatformItem *father);
-	void setSon(PlatformItem *son);
+	void setFather(MovingPlatformItem *father);
+	void setSon(MovingPlatformItem *son);
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
@@ -72,7 +71,7 @@ class PlatformItem: public StaticItem {
 	
 	bool isFather() { return m_son; }
 	
-	PlatformItem *getSon() { return m_son; }
+	MovingPlatformItem *getSon() { return m_son; }
 
 	virtual void moveItem(int x, int y);
 	virtual void setPos(int x, int y);	
@@ -83,7 +82,6 @@ class PlatformItem: public StaticItem {
 	virtual void removeFromScene(QGraphicsScene *scene);
 	
 	virtual void setVisible(bool visible);
-	void setNature(QString nature);
 
 	protected:
 	virtual void setStaticZBuffer(int buffer);

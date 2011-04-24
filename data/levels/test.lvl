@@ -70,13 +70,13 @@ event machinegun 1329 3610
 event shotgun 305 3925
 event machinegun 4497 3424
 !
-#Platforms#
+#MovingPlatforms#
 5
-falling block8 3333 3240 3333 3240
-falling block8 1885 3963 1885 3963
-falling block8 2236 3948 2236 3948
-normal block8 3281 2127 3279 2494
-normal block8 3618 2202 4440 2220
+block8 3333 3240 3333 3240
+block8 1885 3963 1885 3963
+block8 2236 3948 2236 3948
+block8 3281 2127 3279 2494
+block8 3618 2202 4440 2220
 !
 #Triggers#
 0

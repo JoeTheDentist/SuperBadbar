@@ -113,14 +113,13 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
-	analyser.find_string("#Platforms#");
+	analyser.find_string("#MovingPlatforms#");
 	int nbPlatforms = analyser.read_int();
-	QString platformNature;
+//~ 	QString platformNature;
 	for (int i = 0; i < nbPlatforms; i++) {
-		platformNature = QString::fromStdString(analyser.read_string());
-		PlatformItem *temp = new PlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser);
+//~ 		platformNature = QString::fromStdString(analyser.read_string());
+		MovingPlatformItem *temp = new MovingPlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser);
 		m_data->addItem(temp);
-		temp->setNature(platformNature);
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
@@ -350,7 +349,7 @@ void MyGraphicsView::addStatic()
 	m_curr_item = new StaticItem(this->scene(), fileName);
 }
 
-void MyGraphicsView::addPlatform()
+void MyGraphicsView::addMovingPlatform()
 {
 	// TODO: factoriser avec addStatic
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de platform", STATIC_DIR);
@@ -366,7 +365,7 @@ void MyGraphicsView::addPlatform()
 //~ 	fileName.append("png");
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
-	m_curr_item = new PlatformItem(this->scene(), fileName);
+	m_curr_item = new MovingPlatformItem(this->scene(), fileName);
 }
 
 void MyGraphicsView::addMonster()

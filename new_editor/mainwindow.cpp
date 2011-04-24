@@ -29,7 +29,7 @@ MainWindow::MainWindow():
 	m_aboutBabarEditor(NULL),
 	m_addSet(NULL),
 	m_addStatic(NULL),
-	m_addPlatform(NULL),
+	m_addMovingPlatform(NULL),
 	m_addMonster(NULL),
 	m_addEvent(NULL),
 	m_addTrigger(NULL),
@@ -55,7 +55,7 @@ MainWindow::~MainWindow()
 	delete m_helpMenu;
 	delete m_addSet;
 	delete m_addStatic;
-	delete m_addPlatform;
+	delete m_addMovingPlatform;
 	delete m_addMonster;
 	delete m_addEvent;
 	delete m_addTrigger;
@@ -107,9 +107,9 @@ void MainWindow::createActions()
 	m_addStatic->setStatusTip(tr("Add a static to the level"));
 	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
 	
-	m_addPlatform = new QAction(QIcon("images/addplatform.png"),tr("AddPlatform"), this); 
-	m_addPlatform->setStatusTip(tr("Add a platform to the level"));
-	connect(m_addPlatform, SIGNAL(triggered()), this, SLOT(addPlatform()));	
+	m_addMovingPlatform = new QAction(QIcon("images/addmovingplatform.png"),tr("AddMovingPlatform"), this); 
+	m_addMovingPlatform->setStatusTip(tr("Add a moving moving platform to the level"));
+	connect(m_addMovingPlatform, SIGNAL(triggered()), this, SLOT(addMovingPlatform()));	
 
 	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
 	m_addMonster->setStatusTip(tr("Add a monster to the level"));
@@ -140,7 +140,7 @@ void MainWindow::createActions()
 	m_editMenu->addAction(m_addBabar);
 	m_editMenu->addAction(m_addSet);
 	m_editMenu->addAction(m_addStatic);
-	m_editMenu->addAction(m_addPlatform);
+	m_editMenu->addAction(m_addMovingPlatform);
 	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_addEvent);
 	m_editMenu->addAction(m_addTrigger);
@@ -160,7 +160,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_addBabar);
 	m_fileToolBar->addAction(m_addSet);
 	m_fileToolBar->addAction(m_addStatic);
-	m_fileToolBar->addAction(m_addPlatform);
+	m_fileToolBar->addAction(m_addMovingPlatform);
 	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_addEvent);
 	m_fileToolBar->addAction(m_addTrigger);
@@ -254,10 +254,10 @@ void MainWindow::addStatic()
 		m_graphic_view->addStatic();
 }
 
-void MainWindow::addPlatform()
+void MainWindow::addMovingPlatform()
 {
 	if (m_opened_file)
-		m_graphic_view->addPlatform();
+		m_graphic_view->addMovingPlatform();
 }
 
 void MainWindow::addMonster()
