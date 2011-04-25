@@ -56,7 +56,7 @@ Falling_platform::~Falling_platform()
 void Falling_platform::update_speed()
 {
 	if (m_is_falling) {
-		m_speed.y += 1;
+		m_speed.y += 3;
 	}
 }
 

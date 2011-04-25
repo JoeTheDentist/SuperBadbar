@@ -25,7 +25,7 @@ class Camera;
 
 /**
  * 	@class Bindable_platform
- * 	@brief Classe représentant une plateforme mobile
+ * 	@brief Classe représentant une plateforme de collision potentiellement mobile
  *
  *	Elle peut etre affichée, se déplace et contient des données de collision
  *	Babar est le seul sprite en intéraction avec la plateforme.
@@ -35,8 +35,6 @@ class Camera;
  *	ou pas à Babar.
  *	Une plateforme mobile est construite à partir du meme type de fichier qu'un
  *	static: un .col pour la matrice de collisions et une image
- *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
- *	il faudra remplacer Babar par une liste de Babar
  */
 class Bindable_platform : public Static, public Collisions_matrix
 {

@@ -28,16 +28,7 @@ class Camera;
  * 	@class Moving_platform
  * 	@brief Classe représentant une plateforme mobile
  *
- *	Elle peut etre affichée, se déplace et contient des données de collision
- *	Babar est le seul sprite en intéraction avec la plateforme.
- *	Lorsque Babar tombe sur la plateforme, il est liée à elle
- *	Dans ce cas, il suit ses déplacements jusqu'à son prochain son
- * 	ou sa chute de la plateforme. La plateforme "sait" si elle est liée
- *	ou pas à Babar.
- *	Une plateforme mobile est construite à partir du meme type de fichier qu'un
- *	static: un .col pour la matrice de collisions et une image
- *	Si, au cours de l'évolution du jeu on souhaite utiliser plusieurs joueurs,
- *	il faudra remplacer Babar par une liste de Babar
+ *	C'est une plateforme bindable qui se deplace
  */
 class Moving_platform : public Bindable_platform {
 protected:
