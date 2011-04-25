@@ -5,6 +5,8 @@
 #include "babaritem.h"
 #include "setitem.h"
 #include "staticitem.h"
+#include "movingplatformitem.h"
+#include "fallingplatformitem.h"
 #include "monsteritem.h"
 #include "eventitem.h"
 #include "triggeritem.h"
@@ -113,6 +115,20 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
+	if (analyser.find_string("#FallingPlatforms#")) {
+		int nbFPlatforms = analyser.read_int();
+		QString nameFPlatform;
+		for (int i = 0; i < nbFPlatforms; i ++) {
+			nameFPlatform = QString::fromStdString(analyser.read_string());
+			std::cout << nameFPlatform.toStdString() << std::endl;
+			x = analyser.read_int();
+			y = analyser.read_int();
+			myitem = new FallingPlatformItem(this->scene(), nameFPlatform);
+			myitem->setPos(x, y);
+			m_data->addItem(myitem);
+		}
+	}
+	
 	analyser.find_string("#MovingPlatforms#");
 	int nbPlatforms = analyser.read_int();
 	for (int i = 0; i < nbPlatforms; i++) {
@@ -340,8 +356,6 @@ void MyGraphicsView::addStatic()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
 		return;
 	}
-//~ 	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
-//~ 	fileName.append("png");
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(this->scene(), fileName);
@@ -349,7 +363,6 @@ void MyGraphicsView::addStatic()
 
 void MyGraphicsView::addMovingPlatform()
 {
-	// TODO: factoriser avec addStatic
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de platform", STATIC_DIR);
 	if (fileName.isEmpty()) {
 		return;
@@ -359,12 +372,26 @@ void MyGraphicsView::addMovingPlatform()
 		return;
 	}
 	QPixmap image;
-//~ 	fileName.chop(3); // Le fichier peut se terminer par col ou png mais on veut l'image
-//~ 	fileName.append("png");
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new MovingPlatformItem(this->scene(), fileName);
 }
+
+void MyGraphicsView::addFallingPlatform()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de falling platform", STATIC_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	if (!(fileName.endsWith(".col") || fileName.endsWith(".png"))) {
+	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
+		return;
+	}
+	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
+	fileName.chop(4);
+	m_curr_item = new FallingPlatformItem(this->scene(), fileName);
+}
+
 
 void MyGraphicsView::addMonster()
 {
@@ -380,7 +407,6 @@ void MyGraphicsView::addMonster()
 	fileName.chop(5);
 	m_curr_item = new MonsterItem(this->scene(), fileName);
 }
-
 
 void MyGraphicsView::addEvent()
 {

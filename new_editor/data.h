@@ -13,6 +13,7 @@ class Data {
 	std::list<MyItem *> m_set_items;
 	std::list<MyItem *> m_static_items;
 	std::list<MyItem *> m_platform_items;
+	std::list<MyItem *> m_falling_platform_items;
 	std::list<MyItem *> m_monsters_items;
 	std::list<MyItem *> m_event_items;
 	QString m_background_name;
@@ -96,6 +97,15 @@ class Data {
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addMovingPlatformItem
 	*/
 	void addMovingPlatformItem(MyItem *item, bool push_front = false);
+		
+	/*!
+	*	@brief Ajoute un item a la liste des fallingplatformItem
+	*	@param item L'item a ajouter
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addFallingPlatformItem
+	*/
+	void addFallingPlatformItem(MyItem *item, bool push_front = false);
 		
 		
 		

@@ -153,13 +153,13 @@ event heart 56 2890
 block8 296 752 727 1087
 block8 1555 1668 1552 1980
 !
-
 #FallingPlatforms#
-1
-block8 100 100
+4
+block8 193 2738 
+block8 360 2747 
+block8 214 2822 
+block8 386 2851 
 !
-
-
 #Triggers#
 0
 !

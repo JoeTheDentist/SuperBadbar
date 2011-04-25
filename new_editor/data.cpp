@@ -11,6 +11,8 @@ Data::Data():
 	m_babar_item(NULL),
 	m_set_items(),
 	m_static_items(),
+	m_platform_items(),
+	m_falling_platform_items(),
 	m_monsters_items(),
 	m_event_items(),
 	m_background_name(""),
@@ -89,6 +91,15 @@ void Data::addMovingPlatformItem(MyItem *item, bool push_front)
 	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
 
+void Data::addFallingPlatformItem(MyItem *item, bool push_front)
+{
+	if (push_front) {
+		m_falling_platform_items.push_front(item);		
+	} else {
+		m_falling_platform_items.push_back(item);
+	}
+	item->getItem()->setZValue(STATICS_0_ZBUFFER);
+}
 
 
 void Data::addMonsterItem(MyItem *item, bool push_front)
@@ -130,6 +141,11 @@ MyItem *Data::selectItem(int x, int y)
 			return (*it)->selectItem(x, y);	
 		}
 	}
+	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++) {
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
+		}	
+	}		
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
 		if ((*it)->selectItem(x, y)) {
 			return (*it)->selectItem(x, y);	
@@ -139,14 +155,12 @@ MyItem *Data::selectItem(int x, int y)
 		if ((*it)->selectItem(x, y)) {
 			return (*it)->selectItem(x, y);	
 		}
-	}
-	
+	}	
 	for (it = m_static_items.begin(); it != m_static_items.end(); it++) {
 		if ((*it)->selectItem(x, y)) {
 			return (*it)->selectItem(x, y);	
 		}
 	}
-
 	return NULL;
 }
 
@@ -187,6 +201,12 @@ void Data::deleteItem(MyItem *item)
 			m_platform_items.erase(it);
 			return;
 		}
+	}	
+	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end();it++) {
+		if (*it == item) {
+			m_platform_items.erase(it);
+			return;
+		}
 	}
 }
 
@@ -208,7 +228,9 @@ void Data::upInStack(MyItem *item)
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {
  		(*it)->getItem()->stackBefore(item->getItem());
 	}	
-	
+	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}	
 	deleteItem(item);
 	addItem(item, false);
 }
@@ -264,6 +286,11 @@ void Data::saveData(QString fileName)
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
 		(*it)->saveItem(out);		
 	out << "!" << endl;
+	out << "#FallingPlatforms#" << endl;
+	out << m_falling_platform_items.size() << endl;
+	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+		(*it)->saveItem(out);		
+	out << "!" << endl;
 	out << "#Triggers#" << endl;
 	out << 0 << endl;
 	out << "!" << endl;
@@ -302,6 +329,12 @@ void Data::removeItem(MyItem *item)
 	for (it = m_platform_items.begin(); it != m_platform_items.end(); it++) {	
 		if (item == (*it)) {
 			m_platform_items.erase(it);
+			return;
+		}
+	}
+	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++) {	
+		if (item == (*it)) {
+			m_falling_platform_items.erase(it);
 			return;
 		}
 	}

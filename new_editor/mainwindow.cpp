@@ -30,6 +30,7 @@ MainWindow::MainWindow():
 	m_addSet(NULL),
 	m_addStatic(NULL),
 	m_addMovingPlatform(NULL),
+	m_addFallingPlatform(NULL),
 	m_addMonster(NULL),
 	m_addEvent(NULL),
 	m_addTrigger(NULL),
@@ -56,6 +57,7 @@ MainWindow::~MainWindow()
 	delete m_addSet;
 	delete m_addStatic;
 	delete m_addMovingPlatform;
+	delete m_addFallingPlatform;
 	delete m_addMonster;
 	delete m_addEvent;
 	delete m_addTrigger;
@@ -110,7 +112,11 @@ void MainWindow::createActions()
 	m_addMovingPlatform = new QAction(QIcon("images/addmovingplatform.png"),tr("AddMovingPlatform"), this); 
 	m_addMovingPlatform->setStatusTip(tr("Add a moving moving platform to the level"));
 	connect(m_addMovingPlatform, SIGNAL(triggered()), this, SLOT(addMovingPlatform()));	
-
+ 	
+	m_addFallingPlatform = new QAction(QIcon("images/addfallingplatform.png"),tr("AddFallingPlatform"), this); 
+	m_addFallingPlatform->setStatusTip(tr("Add a falling moving platform to the level"));
+	connect(m_addFallingPlatform, SIGNAL(triggered()), this, SLOT(addFallingPlatform()));	
+	
 	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
 	m_addMonster->setStatusTip(tr("Add a monster to the level"));
 	connect(m_addMonster, SIGNAL(triggered()), this, SLOT(addMonster()));	
@@ -141,6 +147,7 @@ void MainWindow::createActions()
 	m_editMenu->addAction(m_addSet);
 	m_editMenu->addAction(m_addStatic);
 	m_editMenu->addAction(m_addMovingPlatform);
+	m_editMenu->addAction(m_addFallingPlatform);
 	m_editMenu->addAction(m_addMonster);
 	m_editMenu->addAction(m_addEvent);
 	m_editMenu->addAction(m_addTrigger);
@@ -161,6 +168,7 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_addSet);
 	m_fileToolBar->addAction(m_addStatic);
 	m_fileToolBar->addAction(m_addMovingPlatform);
+	m_fileToolBar->addAction(m_addFallingPlatform);
 	m_fileToolBar->addAction(m_addMonster);
 	m_fileToolBar->addAction(m_addEvent);
 	m_fileToolBar->addAction(m_addTrigger);
@@ -258,6 +266,12 @@ void MainWindow::addMovingPlatform()
 {
 	if (m_opened_file)
 		m_graphic_view->addMovingPlatform();
+}
+
+void MainWindow::addFallingPlatform()
+{
+	if (m_opened_file)
+		m_graphic_view->addFallingPlatform();
 }
 
 void MainWindow::addMonster()
