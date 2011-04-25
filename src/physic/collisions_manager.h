@@ -55,7 +55,7 @@ class Collisions_manager {
 private:
 	Collisions_matrix *m_matrix; // la matrice de collision du niveau
 	std::list<Bindable_platform *> m_moving_platforms;
-//~ 	std::list<std::pair<Bindable_platform *, int> > m_waiting_moving_platforms; // plateformes avant respawn
+	std::list<std::pair<Bindable_platform *, int> > m_waiting_platforms; // plateformes avant respawn
 public:
 
 	/*!
@@ -86,8 +86,14 @@ public:
 	 *	@param level_name Le chemin vers le fichier level à charger
 	*/
 	void init_collisions_manager(std::string level_name);
-
-
+	
+	/*!
+	 *	@brief Ajoute une plateforme au collisions_manager
+	 *	@param platform La plateform a ajouter
+	 *	@param wait Le temps d'attente avant l'apparition reelle de la plateforme
+	 *	
+	*/	
+	void addPlatform(Bindable_platform *platform, int wait = 0);
 
 	/*!
 	 *	@brief Controle la collision de deux rectangles
@@ -119,12 +125,15 @@ public:
 	*/
 	void update_babar_platforms();
 
-
-
 	/*!
 	 *	@brief Supprime les plateformes "mortes" (sorties de l'écran etc.)
 	*/
 	void update_dead_platforms();
+	
+	/*!
+	 *	@brief Met a jour la liste d'attente des plateformes
+	*/	
+	void update_waiting_list();
 
 
 	/*!

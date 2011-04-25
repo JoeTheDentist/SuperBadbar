@@ -77,17 +77,24 @@ void Collisions_manager::init_moving_plateforms(Analyser &analyser)
     if (analyser.find_string("#MovingPlatforms#")) {
 		int platforms_number = analyser.read_int();
 		for (int i = 0; i  < platforms_number; i++) {
-			m_moving_platforms.push_back(new Moving_platform(analyser));
+			addPlatform(new Moving_platform(analyser));
 		}
 	}
     if (analyser.find_string("#FallingPlatforms#")) {
 		int platforms_number = analyser.read_int();
 		for (int i = 0; i  < platforms_number; i++) {
-			m_moving_platforms.push_back(new Falling_platform(analyser));
+			addPlatform(new Falling_platform(analyser, this));
 		}
 	}
-	
 }
+
+void Collisions_manager::addPlatform(Bindable_platform *platform, int wait)
+{
+	if (wait == 0)
+		m_moving_platforms.push_back(platform);
+	else 
+		m_waiting_platforms.push_back(std::pair<Bindable_platform *, int>(platform, wait));
+}	
 
 bool Collisions_manager::check_collision(Rect A, Rect B)
 {
@@ -152,7 +159,19 @@ void Collisions_manager::update_dead_platforms()
 	}
 }
 
-
+void Collisions_manager::update_waiting_list()
+{
+	std::list<std::pair<Bindable_platform *, int> >::iterator it; 
+	for (it = m_waiting_platforms.begin(); it != m_waiting_platforms.end(); ) {
+		(*it).second--;
+		if ((*it).second <= 0) {
+			addPlatform((*it).first);
+			it = m_waiting_platforms.erase(it);
+		} else {
+			it++;
+		}
+	}
+}
 
 
 bool Collisions_manager::is_up_coll(uint32_t coll_number)

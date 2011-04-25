@@ -84,6 +84,7 @@ void Game_engine::update()
 	m_sets->update();
 	m_monsters_manager->babar_monsters_collision();
 	m_monsters_manager->make_monsters_fire();
+	gCollision->update_waiting_list();
 	gEvent->update();
 	update_monsters_projectiles();
 	update_babar_projectiles();
