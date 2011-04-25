@@ -128,8 +128,8 @@ bool Bindable_platform::check_babar()
 		return false;
 	if (m_babar != NULL)
 		return false;
-	if (gBabar->binded())
-		return false;
+//~ 	if (gBabar->binded())
+//~ 		return false;
 
 	Rect babar_speed = gBabar->speed();
 	Rect babar_pos = gBabar->position();

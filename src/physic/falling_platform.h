@@ -36,6 +36,7 @@ class Camera;
 class Falling_platform : public Bindable_platform {
 protected:
 	bool m_is_falling;
+	int m_counter;
 	Collisions_manager *m_collisions_manager;
 	std::string m_file_name; // nom du fichier depuis le dossier des statics sans extension
 public:

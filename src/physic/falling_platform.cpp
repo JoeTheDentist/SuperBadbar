@@ -23,6 +23,7 @@
 Falling_platform::Falling_platform(Analyser &analyserLevel, Collisions_manager *collisions_manager):
 	Bindable_platform(),
 	m_is_falling(false),
+	m_counter(-1),
 	m_collisions_manager(collisions_manager),
 	m_file_name(analyserLevel.read_string())
 {
@@ -38,6 +39,7 @@ Falling_platform::Falling_platform(Analyser &analyserLevel, Collisions_manager *
 Falling_platform::Falling_platform(int posx, int posy, std::string file_name, Collisions_manager *collisions_manager):
 	Bindable_platform(),
 	m_is_falling(false),
+	m_counter(-1),
 	m_collisions_manager(collisions_manager),
 	m_file_name(file_name)
 {
@@ -55,6 +57,9 @@ Falling_platform::~Falling_platform()
 
 void Falling_platform::update_speed()
 {
+	m_counter--;
+	if (m_counter == 0)
+		begin_fall();
 	if (m_is_falling) {
 		m_speed.y += 3;
 	}
@@ -63,8 +68,8 @@ void Falling_platform::update_speed()
 void Falling_platform::bind()
 {
 	Bindable_platform::bind();
-	if (!m_is_falling)
-		begin_fall();
+	if (m_counter < 0 && !m_is_falling)
+		m_counter = 10;
 }
 
 void Falling_platform::begin_fall()

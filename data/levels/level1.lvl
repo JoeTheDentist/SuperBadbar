@@ -154,11 +154,14 @@ block8 296 752 727 1087
 block8 1555 1668 1552 1980
 !
 #FallingPlatforms#
-4
-block8 193 2738 
-block8 360 2747 
-block8 214 2822 
-block8 386 2851 
+7
+block8 598 2775
+block8 363 2783
+block8 81 2759
+block8 421 2680
+block8 295 2715
+block8 0 2622
+block8 674 2634
 !
 #Triggers#
 0
