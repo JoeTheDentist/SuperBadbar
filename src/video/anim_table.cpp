@@ -17,6 +17,9 @@
 #include "anim_table.h"
 
 Anim_table::Anim_table(std::string anim_name) {
+    m_last_state = 0;
+    m_last_dir =0;
+
     /* On détermine si il y a un état en plus ou non (animation de tir) */
     if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
         m_fire = false;
