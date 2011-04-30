@@ -51,6 +51,7 @@
 		<Unit filename="..\src\actors\actor.h" />
 		<Unit filename="..\src\actors\babar.cpp" />
 		<Unit filename="..\src\actors\babar.h" />
+		<Unit filename="..\src\actors\explosion.cpp" />
 		<Unit filename="..\src\actors\explosion.h" />
 		<Unit filename="..\src\actors\flying_monster.cpp" />
 		<Unit filename="..\src\actors\flying_monster.h" />
@@ -125,6 +126,8 @@
 		<Unit filename="..\src\physic\collisions_manager.h" />
 		<Unit filename="..\src\physic\collisions_matrix.cpp" />
 		<Unit filename="..\src\physic\collisions_matrix.h" />
+		<Unit filename="..\src\physic\falling_platform.cpp" />
+		<Unit filename="..\src\physic\falling_platform.h" />
 		<Unit filename="..\src\physic\moving_platform.cpp" />
 		<Unit filename="..\src\physic\moving_platform.h" />
 		<Unit filename="..\src\sets\animated_nophysic_set.cpp" />

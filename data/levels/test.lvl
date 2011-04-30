@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-247
-3759
+1198
+1804
 1
 
 #Sets#
@@ -36,7 +36,7 @@ butterfly/butterfly 4258 2154
 butterfly/butterfly 4273 2083
 !
 #Statics#
-16
+26
 arbre_feuilles_front 961 3516 1
 water1 1683 4280 0
 water1 2038 4285 0
@@ -50,34 +50,54 @@ block6 4345 3194 0
 block4_3 2631 2597 0
 block4_1 2629 1319 0
 arbre_feuilles 1013 3455 0
-arbre_bord -2 506 0
 grass1 753 4194 0
 block4_2 2631 2018 0
+liana1 1666 -24 1
+liana2 545 -41 1
+liana1 3510 -19 1
+block6 4319 711 1
+liana2 4277 -28 1
+block9 1636 -59 0
+liana2 3009 -24 1
+arbre_bord -1 508 0
+block10 345 1452 0
+block11 752 1641 0
+block12 551 1319 0
 !
 #Monsters#
-6
+7
 following_walking_monster gailapin 833 4182
 following_walking_monster gailapin 1339 4179
 following_walking_monster maphyar 2835 3861
 following_walking_monster maphyar 4207 3917
 following_walking_monster gailapin 432 2777
 following_walking_monster sanglichon 4151 3753
+following_walking_monster sanglichon 3236 967
 !
 #Events#
-5
+7
 event shotgun 592 2848
 event machinegun 1329 3610
 event machinegun 4497 3424
 event shotgun 305 3925
 event rocket_launcher 444 3949
+event victory 4590 941
+event rocket_launcher 2013 2853
 !
 #MovingPlatforms#
-5
-block8 3333 3240 3333 3240
-block8 1885 3963 1885 3963
-block8 2236 3948 2236 3948
+3
 block8 3281 2127 3279 2494
 block8 3618 2202 4440 2220
+block8 3664 1091 4069 1096
+!
+#FallingPlatforms#
+6
+block8 3333 3240
+block8 1885 3963
+block8 2236 3948
+block8 2303 2256
+block8 1928 2253
+block8 1517 2255
 !
 #Triggers#
 0
