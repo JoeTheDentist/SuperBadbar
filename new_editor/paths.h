@@ -28,6 +28,7 @@
 #define MONSTERS_ZBUFFER 3
 #define STATICS_1_ZBUFFER 4
 #define EVENTS_ZBUFFER 5
-#define BABAR_ZBUFFER 6
+#define TRIGGERS_ZBUFFER 6
+#define BABAR_ZBUFFER 7
 
 #endif

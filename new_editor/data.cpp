@@ -123,6 +123,16 @@ void Data::addEventItem(MyItem *item, bool push_front)
 	item->getItem()->setZValue(EVENTS_ZBUFFER);	
 }
 
+void Data::addTriggerItem(MyItem *item, bool push_front)
+{
+	if (push_front) {
+		m_triggers_items.push_front(item);		
+	} else {
+		m_triggers_items.push_back(item);
+	}
+	item->getItem()->setZValue(TRIGGERS_ZBUFFER);	
+}
+
 
 
 MyItem *Data::selectItem(int x, int y)
@@ -130,6 +140,11 @@ MyItem *Data::selectItem(int x, int y)
 	std::list<MyItem *>::iterator it;
 	if (m_babar_item->selectItem(x, y)) {	
 		return m_babar_item->selectItem(x, y);	
+	}
+	for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++) {
+		if ((*it)->selectItem(x, y)) {
+			return (*it)->selectItem(x, y);	
+		}
 	}
 	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {
 		if ((*it)->selectItem(x, y)) {
@@ -178,6 +193,12 @@ void Data::deleteItem(MyItem *item)
 			return;
 		}
 	}
+ 	for (it = m_triggers_items.begin(); it != m_triggers_items.end();it++) {
+		if (*it == item) {
+			m_triggers_items.erase(it);
+			return;
+		}
+	}
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end();it++) {
 		if (*it == item) {
 			m_monsters_items.erase(it);
@@ -213,6 +234,9 @@ void Data::deleteItem(MyItem *item)
 void Data::upInStack(MyItem *item) 
 {
 	std::list<MyItem *>::iterator it;
+ 	for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++) {
+ 		(*it)->getItem()->stackBefore(item->getItem());
+	}
  	for (it = m_event_items.begin(); it != m_event_items.end(); it++) {
  		(*it)->getItem()->stackBefore(item->getItem());
 	}
@@ -335,6 +359,12 @@ void Data::removeItem(MyItem *item)
 	for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++) {	
 		if (item == (*it)) {
 			m_falling_platform_items.erase(it);
+			return;
+		}
+	}
+	for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++) {	
+		if (item == (*it)) {
+			m_triggers_items.erase(it);
 			return;
 		}
 	}

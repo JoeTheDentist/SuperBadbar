@@ -16,6 +16,7 @@ class Data {
 	std::list<MyItem *> m_falling_platform_items;
 	std::list<MyItem *> m_monsters_items;
 	std::list<MyItem *> m_event_items;
+	std::list<MyItem *> m_triggers_items;
 	QString m_background_name;
 	QGraphicsPixmapItem *m_background;
 	int m_xpix;
@@ -127,6 +128,16 @@ class Data {
 	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addEventItem
 	*/
 	void addEventItem(MyItem *item, bool push_front = true);
+				
+	/*!
+	*	@brief Ajoute un item a la liste des triggerItem
+	*	@param item L'item a ajouter
+	*	@param push_front Indique si l'item doit etre positionne en tete ou en queue
+	*
+	*	Cette méthode ne sera a priori appelée que par les items
+	*	On lui préférera dans les autres classes addItem qui appelera lui-meme addTriggerItem
+	*/
+	void addTriggerItem(MyItem *item, bool push_front = true);
 	
 	/*!
 	*	@brief Cherche le premier item contenant le pixel (x,y) et le retourne

@@ -200,7 +200,7 @@ class MyGraphicsView : public QGraphicsView {
 	QGraphicsPixmapItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel
 	QGraphicsItem *m_background; // Le fond d'écran
-	QStatusBar *m_statusBar;
+	QStatusBar *m_statusBar; // Pointeur vers la statusBar de mainwindow (a ne pas delete ici!!)
 };
 
 #endif

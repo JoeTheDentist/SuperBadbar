@@ -446,16 +446,7 @@ void MyGraphicsView::addEvent()
 
 void MyGraphicsView::addTrigger()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier event", EVENTS_DIR);
-	if (fileName.isEmpty()) {
-		return;
-	}
-	if (!(fileName.endsWith(TRIGGERS_EXT))) {
-	 QMessageBox::critical(this, "File opening", "filename must ends with \".trg\"");
-		return;
-	}
-
-	m_curr_item = new TriggerItem(this->scene(), fileName);	
+	m_curr_item = new TriggerItem(this->scene());	
 }
 
 void MyGraphicsView::activeDeleteItem()

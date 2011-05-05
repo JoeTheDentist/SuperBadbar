@@ -41,13 +41,13 @@ void TriggerItem::saveItem(QTextStream &out)
 
 void TriggerItem::addToData(Data *data, bool push_front)
 {
-//~ 	data->addTriggerItem(this, push_front);
+	data->addTriggerItem(this, push_front);
 }
 
 QString TriggerItem::picPathFromEditor(QString fileName)
 {
 	fileName = ""; //unused param
-	return QString::fromStdString("../neweditor/images/trigger.png");
+	return QString::fromStdString("../new_editor/images/trigger.png");
 }
 
 void TriggerItem::edit()

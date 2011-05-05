@@ -75,9 +75,7 @@ class MainWindow : public QMainWindow {
 	
 	private:
 	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view
-
 	MyGraphicsView *m_graphic_view; // objet principal de l'éditeur
-	
 	bool m_opened_file; // vaut vrai si un fichier est ouvert, faux sinon
 	QString m_file_name; // le nom du fichier en cours (si un fichier est ouvert)
 	

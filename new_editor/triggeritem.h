@@ -15,9 +15,9 @@ class TriggerItem: public MyItem {
 	/*!
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
-	*	@param fileName Le nom du fichier, contenant "monsters/chemindufichier"
+	*	@param fileName Pas de sens ici (mettre "")
 	*/
-	TriggerItem(QGraphicsScene *scene, QString fileName);
+	TriggerItem(QGraphicsScene *scene, QString fileName = "");
 	
 	/*!
 	*	@brief Destructeur
