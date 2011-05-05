@@ -25,6 +25,9 @@
 #include <QMessageBox>
 #include <QGraphicsColorizeEffect>
 #include <QProcess>
+#include <QGraphicsSimpleTextItem>
+#include <QStatusBar>
+
 
 #ifndef WIN32
 #include <stdio.h>
@@ -48,7 +51,8 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_copied_item(NULL),
 	m_del_curs(NULL),
 	m_zoom(1),
-	m_background(NULL)
+	m_background(NULL),
+	m_statusBar(NULL)
 {
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
 }
@@ -70,7 +74,9 @@ void MyGraphicsView::newFile(QString backgroundName)
 	m_opened = true;
 	m_babar_item = new BabarItem(this->scene());
 	m_data->addItem(m_babar_item);
+	m_ctrl_pressed = false;
 }
+
 
 void MyGraphicsView::loadFile(QString fileName)
 {
@@ -163,10 +169,9 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
-
+	m_ctrl_pressed = false;
 	analyser.close();
 }
-
 
 int MyGraphicsView::posClicX(QMouseEvent *event)
 {
@@ -240,9 +245,17 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 		} else if (m_curr_item) {
 			m_curr_item->setPos(posClicX(event), posClicY(event));
 		}
+		m_xprec = posClicX(event);
+		m_yprec = posClicY(event);
+		if (m_statusBar) {
+			QString s1;
+			QString s2;
+			s1.setNum(m_xprec);
+			s2.setNum(m_yprec);
+			m_statusBar->showMessage((s1 + " " + s2));
+		}
 	}
-	m_xprec = posClicX(event);
-	m_yprec = posClicY(event);
+
 }
 
 void MyGraphicsView::wheelEvent(QWheelEvent *event)
@@ -263,7 +276,7 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-    	QProcess::execute(QString("../src/babar ") + "-level " + level_name);
+	QProcess::execute(QString("../src/babar ") + "-level " + level_name);
 	#else
 	QProcess::execute(QString("../src/babar.exe"));
 	#endif
@@ -273,6 +286,7 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 {
 	switch (event->key()) {
 		case Qt::Key_Control:
+			std::cout << "BOUH" << std::endl;
 			m_ctrl_pressed = true;
 			break;
 		case Qt::Key_Delete:
@@ -344,6 +358,7 @@ void MyGraphicsView::addSet()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("animations/") + 11));
 
 	m_curr_item = new SetItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addStatic()
@@ -359,6 +374,7 @@ void MyGraphicsView::addStatic()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new StaticItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addMovingPlatform()
@@ -375,6 +391,7 @@ void MyGraphicsView::addMovingPlatform()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new MovingPlatformItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addFallingPlatform()
@@ -390,6 +407,7 @@ void MyGraphicsView::addFallingPlatform()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
 	fileName.chop(4);
 	m_curr_item = new FallingPlatformItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 
@@ -406,6 +424,7 @@ void MyGraphicsView::addMonster()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
 	fileName.chop(5);
 	m_curr_item = new MonsterItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addEvent()
@@ -422,6 +441,7 @@ void MyGraphicsView::addEvent()
 	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
 	fileName.chop(4);
 	m_curr_item = new EventItem(this->scene(), fileName);
+	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addTrigger()

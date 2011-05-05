@@ -11,6 +11,8 @@
 #include <QFileDialog>
 #include <QToolBar>
 #include <QScrollBar>
+#include <QStatusBar>
+
 //~ #include "qnewfilewindow.h"
 
 
@@ -135,7 +137,8 @@ void MainWindow::createActions()
 }
 
  void MainWindow::createMenus()
-{
+{	
+	statusBar()->showMessage(tr("Create or open a file"));
 	m_fileMenu = menuBar()->addMenu(tr("&File"));
 	m_fileMenu->addAction(m_newAct);
 	m_fileMenu->addAction(m_openAct);
@@ -211,6 +214,7 @@ void MainWindow::open()
 	setMaximumSize(	m_graphic_view->xsize() + m_graphic_view->verticalScrollBar()->width(), 
 		m_graphic_view->ysize() + m_graphic_view->horizontalScrollBar()->height() +
 		m_fileMenu->height() + m_fileToolBar->height());
+	m_graphic_view->setStatusBar(statusBar());
 }
 
 void MainWindow::save()

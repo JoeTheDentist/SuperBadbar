@@ -3,7 +3,6 @@
 #include <QGraphicsView>
 #include "paths.h"
 #include "babaritem.h"
-
 #define CURS_BOX 0
 #define CURS_LINE 1
 #define BOX_SIZE 5
@@ -11,11 +10,14 @@
 class QWidget;
 class QGraphicsScene;
 class QGraphicsPixmapItem;
+class QGraphicsSimpleTextItem;
+class QStatusBar;
 class Data;
 class MyItem;
 
 
 class MyGraphicsView : public QGraphicsView {
+
 	public:
 	/*!
 	*	@brief Constructeur
@@ -29,6 +31,12 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	~MyGraphicsView();
 
+	/*!
+	*	@brief Donne au mygraphicsview une barre de status 
+	*	@param status La barre de status
+	*/
+	void setStatusBar(QStatusBar *statusBar) {m_statusBar = statusBar;}
+	
 	/*!
 	*	@brief Calcule l'abscisse du clic par rapport a la scene
 	*	@param event L'evenement de la souris
@@ -192,6 +200,7 @@ class MyGraphicsView : public QGraphicsView {
 	QGraphicsPixmapItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel
 	QGraphicsItem *m_background; // Le fond d'écran
+	QStatusBar *m_statusBar;
 };
 
 #endif
