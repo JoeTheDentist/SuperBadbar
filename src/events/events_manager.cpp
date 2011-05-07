@@ -45,6 +45,8 @@ void Events_manager::init_events_manager(Static_data *static_data, Game_engine *
 	m_game_engine = game_engine;
 	m_static_data = static_data;
 	m_pictures_container = pictures_container;
+	m_level_name = static_data->level_name();
+	std::cout << "LEVEL NAME " << m_level_name << std::endl;
 }
 
 void Events_manager::load_events(Analyser *analyser)

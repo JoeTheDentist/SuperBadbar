@@ -42,7 +42,7 @@ Game::Game(int level, bool record_on, bool replay_on, std::string output_name, s
     gKeyboard = new Keyboard(record_on, replay_on, output_name, input_name);
     sprintf(str, "%d", level);
     str_lvl = str;
-	init_game(LEVELS_R + "level" + str_lvl + ".lvl");
+	init_game("level" + str_lvl + ".lvl");
 }
 
 Game::Game(std::string level_name)

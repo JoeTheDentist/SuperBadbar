@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		Main_menu *menu = new Main_menu();
 		delete menu;
 	} else {
-		Game *game = new Game(LEVELS_R + "test.lvl");
+		Game *game = new Game("test.lvl");
 		game->game_loop();
 		delete game;
 	}

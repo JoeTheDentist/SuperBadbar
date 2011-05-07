@@ -11,6 +11,7 @@
 #define _EVENTS_MANAGER_
 
 #include <list>
+#include <string>
 
 class Event;
 class Trigger;
@@ -38,6 +39,7 @@ private:
 	Game_engine *m_game_engine;
 	Static_data *m_static_data;
 	Pictures_container *m_pictures_container;
+	std::string m_level_name; 
 public:
 
 	/**

@@ -59,7 +59,7 @@ public:
 
 	/*!
 	 *	@brief Constructeur utilise par l'editeur
-	 *	@param level_name Chemin vers le niveau a ouvrir (depuis la racine)
+	 *	@param level_name nom du niveau a ouvrir (depuis le dossier des levels)
 	*/
 	Game(std::string level_name);
 

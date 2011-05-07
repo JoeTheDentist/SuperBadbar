@@ -27,7 +27,7 @@ private:
 	std::list<Static*> m_statics_back;				/* liste des statics derrière sprites */
 	std::list<Static*> m_statics_first;               /* liste des statics devant sprites */
 	Pictures_container *m_pictures_container;
-
+	std::string m_level_name;
 public:
 	Static_data();														/* Constructeur par défaut*/
 	~Static_data();														/* Destructeur */
@@ -41,6 +41,7 @@ public:
 	void display_statics_back(Camera *camera);	    /* fonction d'affichage des statics */
 	void add_static_first(Static *stat);		/* ajoute static devant sprites */
 	void add_static_back(Static *stat);			/* ajoute static derrière sprites */
+	std::string level_name() {return m_level_name;} /* retourne le chemin vers les level depuis le dossier de l'executable */
 
 };
 

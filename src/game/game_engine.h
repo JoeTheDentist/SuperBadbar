@@ -57,7 +57,7 @@ public:
 
 	/**
 	 * 	@brief Initialisation des données
-	 * 	@param level_name Le chemin depuis la racine vers le niveau a charger
+	 * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
 	 * 	@param camera La camera qui servira à afficher les images
 	 * 	@param static_data Données du niveau
 	 * 	@param keyboard Gestionnaire du clavier
