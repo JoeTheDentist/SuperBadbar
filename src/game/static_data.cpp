@@ -54,11 +54,11 @@ void Static_data::init_static_data(uint32_t lvl)
 void Static_data::init_static_data(std::string level_name)
 {
 	PRINT_CONSTR(1, "Construction d'un Static_data")
-	m_level_name = LEVELS_R + level_name;
+	m_level_name = level_name;
     Analyser analyser;
 	int level = 0;
     /*** Ouverture du fichier .lvl  ***/
-    analyser.open(m_level_name);
+    analyser.open(LEVELS_R + m_level_name);
 
 	/*** chargement du fond d'écran ***/
 	analyser.find_string("#Background#");

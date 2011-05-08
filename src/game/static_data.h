@@ -41,7 +41,7 @@ public:
 	void display_statics_back(Camera *camera);	    /* fonction d'affichage des statics */
 	void add_static_first(Static *stat);		/* ajoute static devant sprites */
 	void add_static_back(Static *stat);			/* ajoute static derrière sprites */
-	std::string level_name() {return m_level_name;} /* retourne le chemin vers les level depuis le dossier de l'executable */
+	std::string level_name() {return m_level_name;} /* retourne le chemin vers le level depuis le dossier de l'executable */
 
 };
 

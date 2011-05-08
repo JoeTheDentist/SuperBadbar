@@ -26,8 +26,7 @@ class Analyser;
  *	Format dans un .lvl:
  *	#Triggers#
  *	<nombre de triggers>
- *	chemin du trigger depuis le repertoire des levels 
- *	(en general: <nomlevel>triggers/fichiertrigger.trg)
+ *	numeros des trigger
  *	!
  *
  *	Format d'un .trg:
@@ -49,9 +48,10 @@ public:
 	
 	/**
 	 * 	@brief Constructeur
-	 *	@param filename Le chemin vers le fichier trigger depuis le repertoire des niveaux
+	 *	@param level_number le numero du trigger
+	 *	@param level_name le nom du niveau
 	*/
-	Trigger(std::string filename);
+	Trigger(int trigger_number, std::string level_name);
 
 	/**
 	 * 	@brief Destructeur

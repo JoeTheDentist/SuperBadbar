@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <stdint.h>
+#include <sstream>
 
 #include "trigger.h"
 #include "../util/debug.h"
@@ -18,12 +19,15 @@
 #include "../actors/babar.h"
 #include "../events/triggerable.h"
 
-Trigger::Trigger(std::string filename)
+Trigger::Trigger(int trigger_number, std::string level_name)
 {
 	PRINT_CONSTR(3, "Construction d'un trigger");
 	m_triggered = false;
 	Analyser analyser;
-	analyser.open(LEVELS_R + filename);
+	std::stringstream trig_ss;
+	trig_ss << trigger_number;
+	level_name.erase(level_name.size() - 4, 4);
+	analyser.open(LEVELS_R + level_name + "triggers/trig" + trig_ss.str() + ".trg" );
 	if (analyser.find_string("#zone#")) {
 		int nb_zone = analyser.read_int();
 		for (int i = 0; i < nb_zone; ++i) {

@@ -76,7 +76,7 @@ void Events_manager::load_triggers(Analyser *analyser)
 		return;
 	int triggers_number = analyser->read_int();
 	for (int i = 0; i < triggers_number; i++) {
-		m_list_triggers.push_back(new Trigger(analyser->read_string()));
+		m_list_triggers.push_back(new Trigger(analyser->read_int(), m_level_name));
 	}	
 }
 

@@ -59,6 +59,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
 	m_matrix_weight = gStatic->static_data_weight();
 	m_matrix_height = gStatic->static_data_height();
+
 	gCollision->init_collisions_manager(LEVELS_R + level_name);
 	Analyser analyser;
 	analyser.open(LEVELS_R + level_name);
@@ -67,9 +68,10 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
-	gEvent->load_triggers(&analyser);
 
 	m_sets->load_sets(&analyser);
+	gEvent->load_triggers(&analyser);
+
 	analyser.close();
 
 	m_spawn = SPAWN_TIME;
