@@ -169,6 +169,15 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem->setPos(x, y);
 		m_data->addItem(myitem);
 	}
+	
+	analyser.find_string("#Triggers#");
+	int nbTriggers = analyser.read_int();
+	for (int i = 0; i < nbTriggers; i ++) {
+		myitem = new TriggerItem(this->scene(), m_file_name, i);
+		m_data->addItem(myitem);
+	}
+	
+	
 	m_ctrl_pressed = false;
 	analyser.close();
 }
@@ -446,7 +455,7 @@ void MyGraphicsView::addEvent()
 
 void MyGraphicsView::addTrigger()
 {
-	m_curr_item = new TriggerItem(this->scene());	
+	m_curr_item = new TriggerItem(this->scene(), m_file_name);	
 }
 
 void MyGraphicsView::activeDeleteItem()

@@ -6,23 +6,44 @@ level1.png
 3400
 
 #Babar#
-156
-3214
+135
+3197
 1
 
+#Sets#
+18
+butterfly/butterfly 173 3876
+butterfly/butterfly 0 2907
+butterfly/butterfly 33 2907
+butterfly/butterfly 66 2907
+butterfly/butterfly 95 2907
+butterfly/butterfly 121 2907
+butterfly/butterfly 161 2907
+butterfly/butterfly 220 2907
+butterfly/butterfly 275 2907
+butterfly/butterfly 315 2907
+butterfly/butterfly 341 2907
+butterfly/butterfly 279 2907
+butterfly/butterfly 174 2863
+butterfly/butterfly 269 2863
+butterfly/butterfly 269 2863
+butterfly/butterfly 338 2863
+butterfly/butterfly 357 2863
+butterfly/butterfly 236 2969
+!
 #Statics#
 11
-block4_2 700 1200 0
 block6 2750 2000 0
 block4_3 700 1780 0
 block2 838 2707 0
 block3 1700 2950 1
-block1 70 2952 0
 soil 0 3300 1
 block7 1801 2204 0
 block5 2200 2650 0
-block4_1 699 503 0
 block5 1178 897 0
+block4_1 687 573 0
+block4_2 700 1200 0
+block1 71 2952 0
 !
 #Monsters#
 13
@@ -36,12 +57,12 @@ following_flying_monster fubob -8 947
 following_flying_monster fubob 394 994
 following_flying_monster fubob 2788 1092
 following_flying_monster fubob 2435 1176
-following_walking_monster gailapin 702 3195
 following_walking_monster gailapin 409 2944
 following_walking_monster maphyar 449 2957
+following_walking_monster gailapin 912 3212
 !
 #Events#
-83
+84
 event peanut 1394 2643
 event peanut 1189 2640
 event peanut 967 2632
@@ -71,7 +92,6 @@ event peanut 967 1826
 event peanut 1243 1831
 event peanut 543 2994
 event shotgun 30 3222
-event machinegun 132 2957
 event peanut 1428 2594
 event peanut 1629 2750
 event peanut 1702 2750
@@ -124,5 +144,26 @@ event peanut 1823 787
 event peanut 1805 859
 event peanut 1897 863
 event peanut 1856 823
-event talk_plop 51 2700
+event machinegun 126 2946
+event rocket_launcher 367 3250
+event heart 56 2890
+!
+#MovingPlatforms#
+2
+block8 296 752 727 1087
+block8 1555 1668 1552 1980
+!
+#FallingPlatforms#
+7
+block8 598 2775
+block8 363 2783
+block8 81 2759
+block8 421 2680
+block8 295 2715
+block8 0 2622
+block8 674 2634
+!
+#Triggers#
+1
+level1triggers/trig1.trg
 !

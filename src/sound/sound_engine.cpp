@@ -47,7 +47,7 @@ Sound_engine::~Sound_engine()
 
 void Sound_engine::play_music()
 {
-	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
+//~ 	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
 }
 
 void Sound_engine::play_sound(std::string key)

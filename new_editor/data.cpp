@@ -133,8 +133,6 @@ void Data::addTriggerItem(MyItem *item, bool push_front)
 	item->getItem()->setZValue(TRIGGERS_ZBUFFER);	
 }
 
-
-
 MyItem *Data::selectItem(int x, int y)
 {
 	std::list<MyItem *>::iterator it;
@@ -263,8 +261,8 @@ void Data::saveData(QString fileName)
 {
 
 	std::cout << "Saving " << std::endl;
-	QFile file(fileName);
 	std::list<MyItem *>::iterator it;
+	QFile file(fileName);
 	file.open( QIODevice::WriteOnly | QIODevice::Text );
 	QTextStream out(&file);
 	// sauvegarde du background  
@@ -316,7 +314,9 @@ void Data::saveData(QString fileName)
 		(*it)->saveItem(out);		
 	out << "!" << endl;
 	out << "#Triggers#" << endl;
-	out << 0 << endl;
+	out << m_triggers_items.size() << endl;
+	for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+		(*it)->saveItem(out);		
 	out << "!" << endl;
 	file.close();	
 	

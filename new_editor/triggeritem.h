@@ -4,20 +4,31 @@
 #include "myitem.h"
 #include "data.h"
 #include "eventitem.h"
+#include <QObject>
 
-class TriggerItem: public MyItem {
-	private:
-	QString m_class_name;
-	std::list<EventItem *> m_events;
-	QGraphicsScene *m_scene;
+class QTextEdit;
+
+class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour les slots
+	Q_OBJECT	
 	
+	private:
+	int m_trigger_id; // l'identifiant du trigger
+	QString m_class_name;
+	QString m_level_name; // le nom du level depuis le dossier des levels
+	std::list<EventItem *> m_events; // pour le moment remplace par m_text
+	QString m_script;
+	QGraphicsScene *m_scene;
+	QTextEdit *m_textEdit;	// en parametre pour etre utilise par un slot
 	public:
 	/*!
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
-	*	@param fileName Pas de sens ici (mettre "")
+	*	@param fileName Le nom du fichier level depuis au moins la racine du projet
 	*/
-	TriggerItem(QGraphicsScene *scene, QString fileName = "");
+	TriggerItem(QGraphicsScene *scene, QString fileName, int trigind = -1);
+
+	
+	
 	
 	/*!
 	*	@brief Destructeur
@@ -56,6 +67,9 @@ class TriggerItem: public MyItem {
 	*	@brief Edition de l'item
 	*/
 	virtual void edit();
+	
+	public slots:
+	void setScriptText();
 
 };
 

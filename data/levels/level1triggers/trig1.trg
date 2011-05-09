@@ -2,7 +2,7 @@
 #zone#
 1
 0 0 100 5000
-!
+
 
 #triggerables#
 1
@@ -13,4 +13,3 @@
 #endtriggerable#
 
 
-!

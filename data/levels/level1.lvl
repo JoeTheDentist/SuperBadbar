@@ -164,5 +164,6 @@ block8 0 2622
 block8 674 2634
 !
 #Triggers#
-0
+1
+level1triggers/trig1.trg
 !

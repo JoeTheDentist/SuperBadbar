@@ -41,7 +41,6 @@ arbre_feuilles_front 961 3516 1
 water1 1683 4280 0
 water1 2038 4285 0
 water1 2399 4291 0
-block7 3697 3130 0
 block1 3836 3931 0
 block3 2531 3870 0
 grass2 2806 4271 0
@@ -63,6 +62,7 @@ block11 752 1641 0
 block12 551 1319 0
 block6 4319 711 0
 liana2 4277 -28 1
+block7 3796 3216 0
 !
 #Monsters#
 17
@@ -85,7 +85,7 @@ following_walking_monster gailapin 713 1197
 following_walking_monster maphyar 842 1541
 !
 #Events#
-8
+41
 event shotgun 592 2848
 event machinegun 1329 3610
 event victory 4590 941
@@ -94,6 +94,39 @@ event machinegun 4504 2100
 event shotgun 4418 3416
 event machinegun 3022 2619
 event shotgun 857 1928
+event peanut 1356 3678
+event peanut 1294 3678
+event peanut 1420 3683
+event peanut 1230 3678
+event peanut 1273 3620
+event peanut 1326 3547
+event peanut 1393 3621
+event peanut 1919 3909
+event peanut 1981 3914
+event peanut 1956 3862
+event peanut 2279 3907
+event peanut 2343 3911
+event peanut 2316 3861
+event peanut 2105 3740
+event peanut 3564 4112
+event peanut 3605 4019
+event peanut 3646 3940
+event peanut 3734 3874
+event peanut 3830 3907
+event peanut 3912 3962
+event peanut 4178 3946
+event peanut 4182 3842
+event peanut 4202 3728
+event peanut 4228 3647
+event peanut 3689 3403
+event peanut 4255 3548
+event peanut 4338 3461
+event peanut 4358 2167
+event peanut 4359 2104
+event peanut 4299 2140
+event peanut 4236 2101
+event peanut 4245 2165
+event peanut 4160 2133
 !
 #MovingPlatforms#
 4
@@ -112,5 +145,6 @@ block8 1928 2253
 block8 1517 2255
 !
 #Triggers#
-0
+1
+1
 !

@@ -6,19 +6,44 @@
 #include "analyser.h"
 #include <QGraphicsScene>
 
+#include <QTextEdit>
 #include <QRadioButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
+#include <QDir>
 
-TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName):
+TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind):
 	MyItem(NULL, fileName),
+	m_trigger_id(0),
+	m_level_name(fileName),
 	m_class_name(""),
-	m_scene(scene)
+	m_scene(scene),
+	m_textEdit(NULL)
 {
+	static int id = 0;
+	if (trigind != -1) {
+		id = trigind;
+	}
+	m_level_name =  m_level_name.right(m_level_name.size() - (m_level_name.lastIndexOf("levels/") + 7));
+	m_level_name.chop(4); // on enleve .lvl
+	std::cout << "FILE NAME : " << m_level_name.toStdString() << std::endl;
+	m_trigger_id = id;
+	id++;
 	QPixmap image;
 	image.load(TriggerItem::picPathFromEditor(fileName));
 	setItem(scene->addPixmap(image));
 	m_class_name = "event";
+	m_script += "#zone#				\n";
+	m_script += "1					\n";
+	m_script += "0 0 100 5000		\n";
+	m_script += "\n";
+	m_script += "#triggerables#		\n";
+	m_script += "1					\n";
+	m_script += "#nature# monster	\n";
+	m_script += "#x# 130			\n";
+	m_script += "#y# 3100			\n";
+	m_script += "#text# \"fubob\"	\n";
+	m_script += "#endtriggerable#	\n";
 }                
 
 
@@ -29,14 +54,33 @@ TriggerItem::~TriggerItem()
 
 MyItem *TriggerItem::duplicate(QGraphicsScene *scene)
 {
-	MyItem *item = new TriggerItem(scene, m_file_name);
+	MyItem *item = new TriggerItem(scene, QString("../data/level/" + m_level_name + ".lvl"));
 	item->getItem()->setVisible(false);
 	return item;
 }
 
 void TriggerItem::saveItem(QTextStream &out)
 {
-	out << m_class_name << " " << m_file_name << " " << m_item->x() << " " << m_item->y() << endl;
+	//creatin du .trg
+	QString reldir = m_level_name + "triggers/";
+	QString dir = QString(LEVELS_DIR) + reldir;
+	std::cout << "Dir : " << dir.toStdString() << std::endl;
+	if (!QDir(dir).exists()) {
+		std::cout << "Creation du repertoire " << dir.toStdString() << std::endl;
+		QDir().mkdir(dir);	
+	}
+	QString trigfile;
+	QTextStream trigstream(&trigfile);
+	trigstream << dir << "trig" << m_trigger_id << ".trg";
+	QFile file(trigfile);
+	file.open( QIODevice::WriteOnly | QIODevice::Text );
+	QTextStream outtrig(&file);
+	outtrig << m_script;
+	file.close();
+	
+	//save dans le .lvl
+	out << reldir << "trig" << m_trigger_id << ".trg" << endl;
+
 }
 
 void TriggerItem::addToData(Data *data, bool push_front)
@@ -52,20 +96,34 @@ QString TriggerItem::picPathFromEditor(QString fileName)
 
 void TriggerItem::edit()
 {
-	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", NULL);
+	std::cerr << "edit de triggeritem" ;
+	
+	m_textEdit = new QTextEdit();
+	m_textEdit->show();    
+	m_textEdit->setPlainText(m_script);
+	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(setScriptText())); 
+	
+//~ 	connect(
+	
+//~ 	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", NULL);
 
-    QRadioButton *steacks = new QRadioButton("Les steacks");
-    QRadioButton *hamburgers = new QRadioButton("Les hamburgers");
-    QRadioButton *nuggets = new QRadioButton("Les nuggets");
+//~     QRadioButton *steacks = new QRadioButton("Les steacks");
+//~     QRadioButton *hamburgers = new QRadioButton("Les hamburgers");
+//~     QRadioButton *nuggets = new QRadioButton("Les nuggets");
 
-    steacks->setChecked(true);
+//~     steacks->setChecked(true);
 
-    QVBoxLayout *vbox = new QVBoxLayout;
-    vbox->addWidget(steacks);
-    vbox->addWidget(hamburgers);
-    vbox->addWidget(nuggets);
+//~     QVBoxLayout *vbox = new QVBoxLayout;
+//~     vbox->addWidget(steacks);
+//~     vbox->addWidget(hamburgers);
+//~     vbox->addWidget(nuggets);
 
-    groupbox->setLayout(vbox);
-    groupbox->move(5, 5);
+//~     groupbox->setLayout(vbox);
+//~     groupbox->move(5, 5);
 
+}
+
+void TriggerItem::setScriptText()
+{
+	m_script = m_textEdit->toPlainText();
 }
