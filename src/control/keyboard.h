@@ -49,6 +49,8 @@ class Keyboard {
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
+	int m_key_down_bis[k_fire + 1];		// tableau des touches enfoncees
+	int m_key_down_bis2[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vra
 	std::ofstream *m_record_file;
@@ -121,11 +123,22 @@ public:
 	void enable_key_repeat();
 
 	void disable_key_repeat();
+	
+	void update_plop();
+
 
 	
 private:
 	// auxilliaire de wait_menu_key et poll_menu_key
 	menu_key treat_menu_key(SDL_Event event);
+
+	// mutateur: affecte val enfonce a l'indice k dans le tableau des touches
+	void set_key(enum key k, int val);
+	void set_key(int k, int val);
+
+	// increment le temps d'appui sur k
+	void incr_key_down(enum key k);
+	void incr_key_down(int k);
 
 
 };

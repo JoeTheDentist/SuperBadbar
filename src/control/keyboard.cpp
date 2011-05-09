@@ -23,7 +23,7 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
 		m_key_config[i] = k_none;
 	for (uint32_t i = 0; i <= k_fire; i++)
-		m_key_down[i] = false;
+		set_key(i, 0);
 	m_key_config[SDLK_i] = k_up;
 	m_key_config[SDLK_k] = k_down;
 	m_key_config[SDLK_j] = k_left;
@@ -47,6 +47,9 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	} else {
 		m_record_file = NULL;
 	}
+	update_plop();
+	update_plop();
+	update_plop();
 }
 
 Keyboard::~Keyboard()
@@ -60,31 +63,32 @@ Keyboard::~Keyboard()
 
 void Keyboard::update_events()
 {
+	update_plop();
 	if (!m_replay_on) {
 		if (m_record_on)
 			*m_record_file << std::endl;
 		for (int i = k_none; i < k_fire + 1 ; i++)
 			if (key_down((enum key)i))
-				m_key_down[i]++;
+				incr_key_down(i);
 		SDL_Event event;
 		while(SDL_PollEvent(&event)) {
 			switch (event.type) {
 			case SDL_QUIT :
-				m_key_down[k_exit] = 1;
+				set_key(k_exit, 1);
 				if (m_record_on)
-					*m_record_file << k_exit << " " << m_key_down[k_exit] << " ";
+					*m_record_file << k_exit << " " << key_down(k_exit) << " ";
 				break;
 			case SDL_KEYDOWN:
-				m_key_down[m_key_config[event.key.keysym.sym]] = 1;
+				set_key(m_key_config[event.key.keysym.sym],  1);
 				if (m_record_on)
 					*m_record_file << m_key_config[event.key.keysym.sym] <<
-						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
+						" " << key_down(m_key_config[event.key.keysym.sym]) << " ";
 				break;
 			case SDL_KEYUP:
-				m_key_down[m_key_config[event.key.keysym.sym]] = 0;
+				set_key(m_key_config[event.key.keysym.sym], 0);
 				if (m_record_on)
 					 *m_record_file <<  m_key_config[event.key.keysym.sym] <<
-						" " << m_key_down[m_key_config[event.key.keysym.sym]] << " ";
+						" " << key_down(m_key_config[event.key.keysym.sym]) << " ";
 				break;
 			default:
 				break;
@@ -96,10 +100,18 @@ void Keyboard::update_events()
 		int x = m_analyser->read_int();
 		int y = m_analyser->read_int();
 		while (x != 666 && y != 666) {
-			m_key_down[x] = y;
+			set_key(x, y);
 			x = m_analyser->read_int();
 			y = m_analyser->read_int();
 		}
+	}
+}
+
+void Keyboard::update_plop() 
+{	
+	for (uint32_t i = 0; i <= k_fire; i++) {
+//~ 		m_key_down_bis[(enum key)i] = m_key_down_bis2[(enum key)i];
+		m_key_down[(enum key)i] = m_key_down_bis[(enum key)i];
 	}
 }
 
@@ -115,12 +127,12 @@ int Keyboard::time_pressed(enum key k) const
 
 bool Keyboard::key_dir_down() const
 {
-    return (m_key_down[k_left]||m_key_down[k_right]);
+    return (key_down(k_left)||key_down(k_right));
 }
 
 void Keyboard::disable_key(enum key k)
 {
-	m_key_down[k] = 0;
+	set_key(k, 0);
 }
 
 void Keyboard::disable_all_keys()
@@ -222,4 +234,23 @@ void Keyboard::enable_key_repeat()
 void Keyboard::disable_key_repeat()
 {
 	SDL_EnableKeyRepeat(0, 10);
+}
+
+void Keyboard::set_key(enum key k, int val) 
+{
+	m_key_down_bis[k] = val;
+}
+
+void Keyboard::set_key(int k, int val) 
+{
+	set_key((enum key) k, val);
+}
+
+void Keyboard::incr_key_down(enum key k)
+{
+	m_key_down_bis[k]++;
+}
+void Keyboard::incr_key_down(int k)
+{
+	incr_key_down((enum key)k);
 }
