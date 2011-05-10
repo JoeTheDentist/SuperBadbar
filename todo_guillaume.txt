@@ -1,5 +1,16 @@
-AI, etat d'arret
+-Dessins : tir
+-AI, etat d'arret
+-Sang des monstres
+-Vies dans dashboard
+-Sanglier class(déplacement)
+-Ecureil
+-Moutons ?
+-2 niveaux pour anims
+-Icone du jeu
 
-Sang des monstres
-Qq animations fixes
-Groupes de sons rand
+-Scénar
+-Dialogues
+- +tete dans dialogues
+
+P-e liste:
+-explosion vire monstres
