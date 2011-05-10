@@ -25,7 +25,7 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier level depuis au moins la racine du projet
 	*/
-	TriggerItem(QGraphicsScene *scene, QString fileName, int trigind = -1);
+	TriggerItem(QGraphicsScene *scene, QString fileName, int trigind = -1, int x = 0, int y = 0);
 
 	
 	

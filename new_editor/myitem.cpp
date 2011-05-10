@@ -4,6 +4,10 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPixmap>
+#include "mygraphicsview.h"
+
+MyGraphicsView *MyItem::m_view = NULL;
+
 
 MyItem::MyItem(QGraphicsPixmapItem *item, QString fileName):
 	m_item(item),
@@ -54,3 +58,12 @@ void MyItem::removeFromScene(QGraphicsScene *scene)
 	scene->removeItem(getItem());
 }
 
+void MyItem::setView(MyGraphicsView *view)
+{
+	m_view = view;
+}
+
+MyGraphicsView *MyItem::getView() 
+{
+	return m_view;
+}

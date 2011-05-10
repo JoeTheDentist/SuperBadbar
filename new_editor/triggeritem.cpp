@@ -1,22 +1,22 @@
 #include <QGraphicsPixmapItem>
 #include <iostream>
 #include "triggeritem.h"
-#include "paths.h"
+#include "mygraphicsview.h"
+#include "utils.h"
 #include <QFile>
-#include "analyser.h"
 #include <QGraphicsScene>
-
+#include "mainwindow.h"
 #include <QTextEdit>
 #include <QRadioButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QDir>
 
-TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind):
+TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, int x, int y):
 	MyItem(NULL, fileName),
 	m_trigger_id(0),
-	m_level_name(fileName),
 	m_class_name(""),
+	m_level_name(fileName),
 	m_scene(scene),
 	m_textEdit(NULL)
 {
@@ -25,7 +25,7 @@ TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind):
 		id = trigind;
 	}
 	m_level_name =  m_level_name.right(m_level_name.size() - (m_level_name.lastIndexOf("levels/") + 7));
-	m_level_name.chop(4); // on enleve .lvl
+	m_level_name = suppressExtension(m_level_name); // on enleve .lvl
 	std::cout << "FILE NAME : " << m_level_name.toStdString() << std::endl;
 	m_trigger_id = id;
 	id++;
@@ -44,6 +44,7 @@ TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind):
 	m_script += "#y# 3100			\n";
 	m_script += "#text# \"fubob\"	\n";
 	m_script += "#endtriggerable#	\n";
+	setPos(x, y);
 }                
 
 
@@ -79,7 +80,7 @@ void TriggerItem::saveItem(QTextStream &out)
 	file.close();
 	
 	//save dans le .lvl
-	out << reldir << "trig" << m_trigger_id << ".trg" << endl;
+	out << m_trigger_id << " " << x() << " " << y() << endl;
 
 }
 
@@ -96,16 +97,16 @@ QString TriggerItem::picPathFromEditor(QString fileName)
 
 void TriggerItem::edit()
 {
-	std::cerr << "edit de triggeritem" ;
-	
+	std::cerr << "edit de triggeritem" << std::endl ;
+//~ 	
 	m_textEdit = new QTextEdit();
 	m_textEdit->show();    
 	m_textEdit->setPlainText(m_script);
 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(setScriptText())); 
 	
-//~ 	connect(
-	
-//~ 	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", NULL);
+
+//~ 	
+//~ 	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", getView()->getWindow());
 
 //~     QRadioButton *steacks = new QRadioButton("Les steacks");
 //~     QRadioButton *hamburgers = new QRadioButton("Les hamburgers");

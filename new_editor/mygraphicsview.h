@@ -14,6 +14,7 @@ class QGraphicsSimpleTextItem;
 class QStatusBar;
 class Data;
 class MyItem;
+class MainWindow;
 
 
 class MyGraphicsView : public QGraphicsView {
@@ -24,7 +25,7 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param scene La scene a afficher
 	*	@param parent Le widget contenant le MyGraphicsView
 	*/
-	MyGraphicsView(QGraphicsScene *scene, QWidget *parent = NULL);
+	MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindow *mainWindow);
 	
 	/*!
 	*	@brief Destructeur
@@ -175,6 +176,8 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void zoom(qreal z);
 	
+	MainWindow *getWindow() {return m_main_window;}
+	
 	void selectItem(MyItem *item);
 	void deSelectItem();
 	void deleteFromEditor(MyItem *item);
@@ -183,6 +186,7 @@ class MyGraphicsView : public QGraphicsView {
 
 
 	private:
+	MainWindow *m_main_window;
 	QString m_file_name;
 	Data *m_data; // Toute les donnees a sauvegarder y sont stockees
 	bool m_opened; // vaut vrai si un fichier est ouvert

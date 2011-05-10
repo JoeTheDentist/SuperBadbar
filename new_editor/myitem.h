@@ -8,14 +8,18 @@
 
 class Data;
 class QGraphicsPixmapItem;
+class MyGraphicsView;
 
 class MyItem {
 	protected:
+	static MyGraphicsView *m_view;
 	QGraphicsPixmapItem *m_item;
 	QString m_file_name;
 	public:
 	MyItem(QGraphicsPixmapItem *item, QString);
 	~MyItem();
+	static void setView(MyGraphicsView *view);
+	static MyGraphicsView *getView();
 	virtual MyItem *duplicate(QGraphicsScene *scene) = 0;
 	QGraphicsPixmapItem *getItem();
 	int x() {return m_item->x();}

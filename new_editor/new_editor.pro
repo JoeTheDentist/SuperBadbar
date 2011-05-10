@@ -22,7 +22,8 @@ HEADERS += analyser.h \
            fallingplatformitem.h \
            setitem.h \
            staticitem.h \
-           triggeritem.h
+           triggeritem.h \
+           utils.h
 SOURCES += analyser.cpp \
            babaritem.cpp \
            data.cpp \
@@ -36,4 +37,5 @@ SOURCES += analyser.cpp \
 		   fallingplatformitem.cpp \
            setitem.cpp \
            staticitem.cpp \
-           triggeritem.cpp
+           triggeritem.cpp \
+           utils.cpp

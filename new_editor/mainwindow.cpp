@@ -12,13 +12,14 @@
 #include <QToolBar>
 #include <QScrollBar>
 #include <QStatusBar>
+#include "utils.h"
 
 //~ #include "qnewfilewindow.h"
 
 
 MainWindow::MainWindow():
 	m_graphic_scene(new QGraphicsScene()),
-	m_graphic_view(new MyGraphicsView(m_graphic_scene, this)),	
+	m_graphic_view(new MyGraphicsView(m_graphic_scene, this, this)),	
 	m_opened_file(false),
 	m_file_name(),
 	m_fileMenu(NULL),
@@ -180,7 +181,6 @@ void MainWindow::createToolBars()
 
 void MainWindow::newFile()
 {
-
 	QString backgroundName = QFileDialog::getOpenFileName(this, "Chose a background for your level", BACKGROUND_DIR);
 	if (backgroundName.isEmpty()) {
 		return;

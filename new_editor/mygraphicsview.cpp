@@ -10,7 +10,7 @@
 #include "monsteritem.h"
 #include "eventitem.h"
 #include "triggeritem.h"
-#include "analyser.h"
+#include "utils.h"
 
 #include <iostream>
 #include <QScrollBar>
@@ -27,6 +27,7 @@
 #include <QProcess>
 #include <QGraphicsSimpleTextItem>
 #include <QStatusBar>
+#include "mainwindow.h"
 
 
 #ifndef WIN32
@@ -37,8 +38,9 @@
 #include <sys/wait.h>
 #endif
 
-MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
+MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindow *mainWindow):
 	QGraphicsView(scene, parent),
+	m_main_window(mainWindow),
 	m_file_name(),
 	m_data(new Data()),
 	m_opened(false),
@@ -54,6 +56,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent):
 	m_background(NULL),
 	m_statusBar(NULL)
 {
+	MyItem::setView(this);
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
 }
 
@@ -173,7 +176,10 @@ void MyGraphicsView::loadFile(QString fileName)
 	analyser.find_string("#Triggers#");
 	int nbTriggers = analyser.read_int();
 	for (int i = 0; i < nbTriggers; i ++) {
-		myitem = new TriggerItem(this->scene(), m_file_name, i);
+		int ind = analyser.read_int();
+		int x = analyser.read_int();
+		int y = analyser.read_int();
+		myitem = new TriggerItem(this->scene(), m_file_name, ind, x, y);
 		m_data->addItem(myitem);
 	}
 	
@@ -285,7 +291,7 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-	QProcess::execute(QString("../src/babar ") + "-level " + level_name);
+	QProcess::execute(QString("../src/babar ") + "-level " + substringAfter(level_name, "levels/"));
 	#else
 	QProcess::execute(QString("../src/babar.exe"));
 	#endif
@@ -364,7 +370,7 @@ void MyGraphicsView::addSet()
 			std::cerr << "Erreur dans le format d'une animation: doit contenir '_'" << std::endl;		
 	}
 	fileName = fileName.left(cutRight);
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("animations/") + 11));
+	fileName = substringAfter(fileName, "animations/");
 
 	m_curr_item = new SetItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
@@ -380,8 +386,8 @@ void MyGraphicsView::addStatic()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
 		return;
 	}
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
-	fileName.chop(4);
+	fileName = substringAfter(fileName, "statics/");
+	fileName = suppressExtension(fileName);
 	m_curr_item = new StaticItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
 }
@@ -397,8 +403,8 @@ void MyGraphicsView::addMovingPlatform()
 		return;
 	}
 	QPixmap image;
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
-	fileName.chop(4);
+	fileName = substringAfter(fileName, "statics/");
+	fileName = suppressExtension(fileName);
 	m_curr_item = new MovingPlatformItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
 }
@@ -413,8 +419,8 @@ void MyGraphicsView::addFallingPlatform()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".col\" or \".png\"");
 		return;
 	}
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("statics/") + 8));
-	fileName.chop(4);
+	fileName = substringAfter(fileName, "statics/");
+	fileName = suppressExtension(fileName);
 	m_curr_item = new FallingPlatformItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
 }
@@ -430,8 +436,8 @@ void MyGraphicsView::addMonster()
 	 QMessageBox::critical(this, "File opening", "filename must ends with \".mstr\"");
 		return;
 	}
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("monsters/") + 9));
-	fileName.chop(5);
+	fileName = substringAfter(fileName, "monsters/");
+	fileName = suppressExtension(fileName);
 	m_curr_item = new MonsterItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
 }
@@ -447,8 +453,8 @@ void MyGraphicsView::addEvent()
 		return;
 	}
 
-	fileName = fileName.right(fileName.size() - (fileName.lastIndexOf("events/") + 7));
-	fileName.chop(4);
+	fileName = substringAfter(fileName, "events/");
+	fileName = suppressExtension(fileName);
 	m_curr_item = new EventItem(this->scene(), fileName);
 	m_ctrl_pressed = false;
 }
