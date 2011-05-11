@@ -6,11 +6,14 @@
 #include <QFile>
 #include <QGraphicsScene>
 #include "mainwindow.h"
+#include <QWidget>
 #include <QTextEdit>
 #include <QRadioButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QDir>
+#include <QMenu>
+#include <QAction>
 
 TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, int x, int y):
 	MyItem(NULL, fileName),
@@ -99,32 +102,57 @@ void TriggerItem::edit()
 {
 	std::cerr << "edit de triggeritem" << std::endl ;
 //~ 	
-	m_textEdit = new QTextEdit();
-	m_textEdit->show();    
-	m_textEdit->setPlainText(m_script);
-	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(setScriptText())); 
-	
-
+//~ 	m_textEdit = new QTextEdit();
+//~ 	m_textEdit->show();    
+//~ 	m_textEdit->setPlainText(m_script);
+//~ 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 //~ 	
-//~ 	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", getView()->getWindow());
 
-//~     QRadioButton *steacks = new QRadioButton("Les steacks");
-//~     QRadioButton *hamburgers = new QRadioButton("Les hamburgers");
-//~     QRadioButton *nuggets = new QRadioButton("Les nuggets");
+	QWidget *fenetre = new QWidget();
+	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", fenetre);//getView()->getWindow());
 
-//~     steacks->setChecked(true);
+    QRadioButton *steacks = new QRadioButton("Les steacks");
+    QRadioButton *hamburgers = new QRadioButton("Les hamburgers");
+    QRadioButton *nuggets = new QRadioButton("Les nuggets");
 
-//~     QVBoxLayout *vbox = new QVBoxLayout;
-//~     vbox->addWidget(steacks);
-//~     vbox->addWidget(hamburgers);
-//~     vbox->addWidget(nuggets);
+    steacks->setChecked(true);
 
-//~     groupbox->setLayout(vbox);
-//~     groupbox->move(5, 5);
+    QVBoxLayout *vbox = new QVBoxLayout;
+    vbox->addWidget(steacks);
+    vbox->addWidget(hamburgers);
+    vbox->addWidget(nuggets);
+
+    groupbox->setLayout(vbox);
+    groupbox->move(5, 5);
+	fenetre->show();
 
 }
 
-void TriggerItem::setScriptText()
+void TriggerItem::slotSetScriptText()
 {
 	m_script = m_textEdit->toPlainText();
 }
+
+void TriggerItem::rightClic(int x, int y)
+{
+	QPoint pos(x, y);
+	QMenu *menu = new QMenu(NULL);
+	QAction *actionAddPos = new QAction("Add position", NULL);
+	connect(actionAddPos, SIGNAL(triggered()), this, SLOT(slotAddPosition()));	
+	QAction *actionAddTriggerable = new QAction("Add triggerable", NULL);
+	menu->addAction(actionAddPos);
+	menu->addAction(actionAddTriggerable);
+	menu->move(m_view->getWindow()->mapToGlobal(pos));
+	menu->show();
+}
+
+void TriggerItem::slotAddPosition()
+{
+	std::cout << "Add POsition" << std::endl;
+}
+
+void TriggerItem::slotAddTriggerable()
+{
+	
+}
+

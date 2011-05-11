@@ -38,6 +38,9 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void setStatusBar(QStatusBar *statusBar) {m_statusBar = statusBar;}
 	
+
+	
+	
 	/*!
 	*	@brief Calcule l'abscisse du clic par rapport a la scene
 	*	@param event L'evenement de la souris
@@ -46,9 +49,9 @@ class MyGraphicsView : public QGraphicsView {
 	int posClicX(QMouseEvent *event);
 	
 	/*!
-	*	@brief Calcule l'abscisse du clic par rapport a la scene
+	*	@brief Calcule l'ordonnee du clic par rapport a la scene
 	*	@param event L'evenement de la souris
-	*	@return L'abscisse entiere
+	*	@return L'ordonnee entiere
 	*/
 	int posClicY(QMouseEvent *event);	
 	

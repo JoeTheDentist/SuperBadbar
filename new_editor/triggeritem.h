@@ -68,8 +68,18 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*/
 	virtual void edit();
 	
+	/*!
+	*	@brief Methode appelee quand on clique droit sur l'item
+	*	@param x Abcisse du clic par rapport a la fenetre
+	*	@param y Ordonnee du clic par rapport a la fenetre
+	*/
+	virtual void rightClic(int x, int y);
+	
+	
 	public slots:
-	void setScriptText();
+	void slotSetScriptText();
+	void slotAddPosition();
+	void slotAddTriggerable();
 
 };
 

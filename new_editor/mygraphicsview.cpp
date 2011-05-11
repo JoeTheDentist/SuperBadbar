@@ -218,7 +218,9 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 			delete m_curr_item->getItem();
 			delete m_curr_item;
 			m_curr_item = NULL;
-		}
+		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
+			m_data->selectItem(posClicX(event), posClicY(event))->rightClic(event->x(), event->y());
+		}                                                 
 	}
 }
 

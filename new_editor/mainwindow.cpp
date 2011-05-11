@@ -71,8 +71,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::createActions()
-{
-	m_newAct = new QAction(QIcon("images/new.png"), tr("&New"), this);
+{m_newAct = new QAction(QIcon("images/new.png"), tr("&New"), this);
 	m_newAct->setShortcuts(QKeySequence::New);
 	m_newAct->setStatusTip(tr("Create a new file"));
 	connect(m_newAct, SIGNAL(triggered()), this, SLOT(newFile()));

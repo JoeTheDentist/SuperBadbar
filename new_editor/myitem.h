@@ -5,6 +5,7 @@
 #include <QString>
  #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <iostream>
 
 class Data;
 class QGraphicsPixmapItem;
@@ -27,6 +28,7 @@ class MyItem {
 	virtual void saveItem(QTextStream &out) = 0;
 	virtual void addToData(Data *data, bool push_front = true) = 0;
 	virtual void edit();
+	virtual void rightClic(int x, int y) { x = 0; y = 0; std::cout << "right clic" << std::endl; }
 	virtual void moveItem(int x, int y);
 	virtual void setPos(int x, int y);
 	virtual MyItem* selectItem(int x, int y);
