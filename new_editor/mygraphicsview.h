@@ -167,6 +167,8 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void addTrigger();
 	
+	void addItem(MyItem *item);
+
 	
 	/*!
 	*	@brief Lance la possibilité de détruire un item au prochain clic

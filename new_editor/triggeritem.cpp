@@ -1,6 +1,7 @@
 #include <QGraphicsPixmapItem>
 #include <iostream>
 #include "triggeritem.h"
+#include "triggerableitem.h"
 #include "mygraphicsview.h"
 #include "utils.h"
 #include <QFile>
@@ -56,6 +57,21 @@ TriggerItem::~TriggerItem()
 	
 }
 
+MyItem* TriggerItem::selectItem(int x, int y)
+{
+	MyItem *res = MyItem::selectItem(x, y);
+	if (res)
+		return res;
+	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); it++) {
+		res = (*it)->selectItem(x, y);
+		if (res)
+			return res;
+	}
+	return NULL;
+}
+
+
 MyItem *TriggerItem::duplicate(QGraphicsScene *scene)
 {
 	MyItem *item = new TriggerItem(scene, QString("../data/level/" + m_level_name + ".lvl"));
@@ -108,29 +124,16 @@ void TriggerItem::edit()
 //~ 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 //~ 	
 
-	QWidget *fenetre = new QWidget();
-	QGroupBox *groupbox = new QGroupBox("Votre plat préféré", fenetre);//getView()->getWindow());
-
-    QRadioButton *steacks = new QRadioButton("Les steacks");
-    QRadioButton *hamburgers = new QRadioButton("Les hamburgers");
-    QRadioButton *nuggets = new QRadioButton("Les nuggets");
-
-    steacks->setChecked(true);
-
-    QVBoxLayout *vbox = new QVBoxLayout;
-    vbox->addWidget(steacks);
-    vbox->addWidget(hamburgers);
-    vbox->addWidget(nuggets);
-
-    groupbox->setLayout(vbox);
-    groupbox->move(5, 5);
-	fenetre->show();
-
 }
 
 void TriggerItem::slotSetScriptText()
 {
 	m_script = m_textEdit->toPlainText();
+}
+
+void TriggerItem::addTriggerableItem(TriggerableItem *item)
+{
+	m_triggerables.push_front(item);
 }
 
 void TriggerItem::rightClic(int x, int y)
@@ -140,6 +143,7 @@ void TriggerItem::rightClic(int x, int y)
 	QAction *actionAddPos = new QAction("Add position", NULL);
 	connect(actionAddPos, SIGNAL(triggered()), this, SLOT(slotAddPosition()));	
 	QAction *actionAddTriggerable = new QAction("Add triggerable", NULL);
+	connect(actionAddTriggerable, SIGNAL(triggered()), this, SLOT(slotAddTriggerable()));	
 	menu->addAction(actionAddPos);
 	menu->addAction(actionAddTriggerable);
 	menu->move(m_view->getWindow()->mapToGlobal(pos));
@@ -152,7 +156,9 @@ void TriggerItem::slotAddPosition()
 }
 
 void TriggerItem::slotAddTriggerable()
-{
-	
+{	
+	std::cout << "Add triggerable" << std::endl;
+	TriggerableItem *newItem = new TriggerableItem(m_scene, this);
+	m_view->addItem(newItem);
 }
 

@@ -6,6 +6,7 @@
 #include "eventitem.h"
 #include <QObject>
 
+class TriggerableItem;
 class QTextEdit;
 
 class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour les slots
@@ -15,7 +16,7 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	int m_trigger_id; // l'identifiant du trigger
 	QString m_class_name;
 	QString m_level_name; // le nom du level depuis le dossier des levels
-	std::list<EventItem *> m_events; // pour le moment remplace par m_text
+	std::list<TriggerableItem *> m_triggerables; // pour le moment remplace par m_text
 	QString m_script;
 	QGraphicsScene *m_scene;
 	QTextEdit *m_textEdit;	// en parametre pour etre utilise par un slot
@@ -34,6 +35,14 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@brief Destructeur
 	*/
 	~TriggerItem();
+	
+	/*!
+	*	@brief Retourne l'item selectionne
+	*
+	*	Ici il peut s'agire du triggeritem ou de ses fils
+	*/
+	virtual MyItem* selectItem(int x, int y);
+
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
@@ -74,6 +83,13 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@param y Ordonnee du clic par rapport a la fenetre
 	*/
 	virtual void rightClic(int x, int y);
+	
+	
+	/*!
+	*	@brief Acheve l'ajout de item a au trigger 
+	*	@param item L'item a ajouter
+	*/
+	virtual void addTriggerableItem(TriggerableItem *item);
 	
 	
 	public slots:

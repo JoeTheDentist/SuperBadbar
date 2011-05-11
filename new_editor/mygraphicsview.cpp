@@ -374,7 +374,7 @@ void MyGraphicsView::addSet()
 	fileName = fileName.left(cutRight);
 	fileName = substringAfter(fileName, "animations/");
 
-	m_curr_item = new SetItem(this->scene(), fileName);
+	addItem(new SetItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -390,7 +390,7 @@ void MyGraphicsView::addStatic()
 	}
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	m_curr_item = new StaticItem(this->scene(), fileName);
+	addItem(new StaticItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -407,7 +407,7 @@ void MyGraphicsView::addMovingPlatform()
 	QPixmap image;
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	m_curr_item = new MovingPlatformItem(this->scene(), fileName);
+	addItem(new MovingPlatformItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -423,7 +423,7 @@ void MyGraphicsView::addFallingPlatform()
 	}
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	m_curr_item = new FallingPlatformItem(this->scene(), fileName);
+	addItem(new FallingPlatformItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -440,7 +440,7 @@ void MyGraphicsView::addMonster()
 	}
 	fileName = substringAfter(fileName, "monsters/");
 	fileName = suppressExtension(fileName);
-	m_curr_item = new MonsterItem(this->scene(), fileName);
+	addItem(new MonsterItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -457,13 +457,18 @@ void MyGraphicsView::addEvent()
 
 	fileName = substringAfter(fileName, "events/");
 	fileName = suppressExtension(fileName);
-	m_curr_item = new EventItem(this->scene(), fileName);
+	addItem(new EventItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
 void MyGraphicsView::addTrigger()
 {
-	m_curr_item = new TriggerItem(this->scene(), m_file_name);	
+	addItem(new TriggerItem(this->scene(), m_file_name));	
+}
+
+void MyGraphicsView::addItem(MyItem *item) 
+{
+	m_curr_item = item;
 }
 
 void MyGraphicsView::activeDeleteItem()
