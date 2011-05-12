@@ -25,6 +25,9 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier level depuis au moins la racine du projet
+	*	@param trigind S'il est indique, le trigger est chargé depuis un fichier. Sinon, il est cree
+	*	@param x Position du trigger (utile seulement si on veut charger le trigger)
+	*	@param y Position du trigger (utile seulement si on veut charger le trigger)
 	*/
 	TriggerItem(QGraphicsScene *scene, QString fileName, int trigind = -1, int x = 0, int y = 0);
 
@@ -96,6 +99,12 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	void slotSetScriptText();
 	void slotAddPosition();
 	void slotAddTriggerable();
+	
+	protected:
+	// methodes auxilliaires du constructeur
+	void createTrigger(QGraphicsScene *scene, QString fileName);
+	void loadTrigger(QGraphicsScene *scene, QString fileName, int trigind, int x, int y);
+
 
 };
 

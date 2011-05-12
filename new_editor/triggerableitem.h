@@ -5,6 +5,7 @@
 #include "myitem.h"
 #include "data.h"
 #include <QObject>
+#include "utils.h"
 
 class QTextEdit;
 class TriggerItem;
@@ -22,6 +23,8 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*	@param scene La scene de l'editeur
 	*/
 	TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0);
+
+	TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser);
 
 	/*!
 	*	@brief Destructeur

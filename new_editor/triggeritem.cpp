@@ -1,5 +1,6 @@
 #include <QGraphicsPixmapItem>
 #include <iostream>
+#include <sstream>
 #include "triggeritem.h"
 #include "triggerableitem.h"
 #include "mygraphicsview.h"
@@ -16,6 +17,7 @@
 #include <QMenu>
 #include <QAction>
 
+
 TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, int x, int y):
 	MyItem(NULL, fileName),
 	m_trigger_id(0),
@@ -28,11 +30,19 @@ TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, i
 	if (trigind != -1) {
 		id = trigind;
 	}
-	m_level_name =  m_level_name.right(m_level_name.size() - (m_level_name.lastIndexOf("levels/") + 7));
-	m_level_name = suppressExtension(m_level_name); // on enleve .lvl
-	std::cout << "FILE NAME : " << m_level_name.toStdString() << std::endl;
 	m_trigger_id = id;
 	id++;
+	if (trigind == -1) {
+		createTrigger(scene, fileName);
+	} else {
+		loadTrigger(scene, fileName, trigind, x, y);
+	}
+}                
+
+void TriggerItem::createTrigger(QGraphicsScene *scene, QString fileName) 
+{
+	m_level_name =  substringAfter(fileName, "levels/");
+	m_level_name = suppressExtension(m_level_name); // on enleve .lvl
 	QPixmap image;
 	image.load(TriggerItem::picPathFromEditor(fileName));
 	setItem(scene->addPixmap(image));
@@ -41,16 +51,38 @@ TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, i
 	m_script += "1					\n";
 	m_script += "0 0 100 5000		\n";
 	m_script += "\n";
-	m_script += "#triggerables#		\n";
-	m_script += "1					\n";
-	m_script += "#nature# monster	\n";
-	m_script += "#x# 130			\n";
-	m_script += "#y# 3100			\n";
-	m_script += "#text# \"fubob\"	\n";
-	m_script += "#endtriggerable#	\n";
-	setPos(x, y);
-}                
+	setPos(0, 0);	
+}
 
+void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigind, int x, int y)
+{
+	std::cout << "Chargement de trigger item " << std::endl;
+	m_level_name =  substringAfter(fileName, "levels/");
+	m_level_name = suppressExtension(m_level_name); // on enleve .lvl
+	QString trigdir = LEVELS_DIR + m_level_name + "triggers/";
+	std::cout << "trigdir: " << trigdir.toStdString() << std::endl;
+	QPixmap image;
+	image.load(TriggerItem::picPathFromEditor(fileName));
+	setItem(scene->addPixmap(image));
+	// chargement des triggerablesitem
+	std::stringstream triggerFileName;
+	triggerFileName << trigdir.toStdString() << "trig" << trigind << ".trg";
+	Analyser analyser;
+	analyser.open(triggerFileName.str());
+	analyser.find_string("#triggerables#");
+	int nbTriggers = analyser.read_int();
+	for (int i = 0; i < nbTriggers; i++) {
+		TriggerableItem *newItem = new TriggerableItem(m_scene, this, analyser);
+		newItem->addToData(m_view->getData());
+	}
+	m_class_name = "event";
+	m_script += "#zone#				\n";
+	m_script += "1					\n";
+	m_script += "0 0 100 5000		\n";
+	m_script += "\n";
+	analyser.close();
+	setPos(x, y);	
+}
 
 TriggerItem::~TriggerItem()
 {
@@ -95,7 +127,15 @@ void TriggerItem::saveItem(QTextStream &out)
 	QFile file(trigfile);
 	file.open( QIODevice::WriteOnly | QIODevice::Text );
 	QTextStream outtrig(&file);
+	//ecriture dans le .trg
 	outtrig << m_script;
+	outtrig << "#triggerables#" << endl;
+	outtrig << m_triggerables.size() << endl;
+	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); it++) {
+		(*it)->saveItem(outtrig);
+	}
+	
 	file.close();
 	
 	//save dans le .lvl
@@ -116,13 +156,10 @@ QString TriggerItem::picPathFromEditor(QString fileName)
 
 void TriggerItem::edit()
 {
-	std::cerr << "edit de triggeritem" << std::endl ;
-//~ 	
-//~ 	m_textEdit = new QTextEdit();
-//~ 	m_textEdit->show();    
-//~ 	m_textEdit->setPlainText(m_script);
-//~ 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
-//~ 	
+	m_textEdit = new QTextEdit();
+	m_textEdit->show();    
+	m_textEdit->setPlainText(m_script);
+	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 
 }
 

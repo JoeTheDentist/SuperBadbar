@@ -226,11 +226,13 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 
 void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 {
-	MyItem *item = m_data->selectItem(posClicX(event), posClicY(event));
-	if (item) {
-		item->edit();
-	} else {
-		mousePressEvent(event);
+	if (m_opened) {
+		MyItem *item = m_data->selectItem(posClicX(event), posClicY(event));
+		if (item) {
+			item->edit();
+		} else {
+			mousePressEvent(event);
+		}
 	}
 }
 

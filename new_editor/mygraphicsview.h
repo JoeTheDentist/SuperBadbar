@@ -183,6 +183,9 @@ class MyGraphicsView : public QGraphicsView {
 	
 	MainWindow *getWindow() {return m_main_window;}
 	
+	Data *getData() {return m_data;}
+
+	
 	void selectItem(MyItem *item);
 	void deSelectItem();
 	void deleteFromEditor(MyItem *item);

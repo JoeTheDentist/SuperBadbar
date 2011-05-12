@@ -19,7 +19,6 @@
 #include <fstream>
 #include <stdint.h>
 
-
 #define COLL_EXT ".col"
 #define PICS_EXT ".png"
 
@@ -30,7 +29,7 @@
  * Utilisation: Utiliser open pour ouvrir un fichier.
  * 				L'interpréter avec les méthodes appropriées
  *				Le fermer avec close
- * Fonctionnement interne: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
+ * Fonctionnement: 	Lors de la lecture du fichier, m_current représente le prochain caractère à analyser
  *				Il est lu à chaque fois lu à l'avance par convention
 **/
 
@@ -71,7 +70,7 @@ public:
 	* @warning non fonctionnelle sous windows
 	*/
 	void jump_separators();
-	
+
 	/*!
 	* @brief Positionne le curseur après la première occurence de str à partir du début du fichier
 	* @return vrai si la chaine a été trouvée
@@ -107,6 +106,13 @@ public:
 	* @return le string lu
 	*/
 	std::string read_string();
+	
+	/*!
+	* @brief Lit la prochaine string entouree par un caractere (par ex # ou ") 
+	* @param delimitor Le caractere entourant la string a retrouver
+	* @return La string sans le delimiteur
+	*/
+	std::string read_between_char(char delimitor);
 
 	/*!
 	* @brief Lit et renvoie le prochain char du fichier

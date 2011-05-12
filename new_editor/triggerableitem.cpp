@@ -32,6 +32,36 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, int
 	setPos(x, y);
 }                
 
+TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser):
+	MyItem(NULL, ""),
+	m_textEdit(NULL),
+	m_parent(parent)
+{
+	QPixmap image;
+	image.load(TriggerableItem::picPathFromEditor(""));
+	setItem(scene->addPixmap(image));
+	
+	std::string keywork;
+	std::string nature, text;
+	int x = 0, y = 0;
+	while (true) {
+		keywork = analyser.read_between_char('#');
+		if (keywork == "nature")
+			m_script += QString::fromStdString("#nature# " + analyser.read_string() + "\n");
+		else if (keywork == "x")
+			x = analyser.read_int();
+		else if (keywork == "y") 
+			y = analyser.read_int();
+		else if (keywork == "text") 
+			m_script += QString::fromStdString("#text# " + analyser.read_string() + "\n");
+		else if (keywork == "endtriggerable")
+			break;
+		else {
+			break;
+		}
+	}	
+	setPos(x, y);
+}
 
 TriggerableItem::~TriggerableItem()
 {
@@ -48,13 +78,15 @@ MyItem *TriggerableItem::duplicate(QGraphicsScene *scene)
 
 void TriggerableItem::saveItem(QTextStream &out)
 {
-
+	out << "#x# " << x() << endl;
+	out << "#y# " << y() << endl;
+	out << m_script;
+	out << "#endtriggerable# " << endl;
 }
 
 void TriggerableItem::addToData(Data *data, bool push_front)
 {
 	m_parent->addTriggerableItem(this);
-//~ 	data->addTriggerableItem(this, push_front);
 }
 
 QString TriggerableItem::picPathFromEditor(QString fileName)
