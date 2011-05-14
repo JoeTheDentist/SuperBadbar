@@ -86,6 +86,7 @@ void TriggerableItem::saveItem(QTextStream &out)
 
 void TriggerableItem::addToData(Data *data, bool push_front)
 {
+	std::cout << "add to data triggerable " << std::endl;
 	m_parent->addTriggerableItem(this);
 }
 
@@ -102,6 +103,7 @@ void TriggerableItem::edit()
 	m_textEdit->setPlainText(m_script);
 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 }
+
 
 void TriggerableItem::slotSetScriptText()
 {

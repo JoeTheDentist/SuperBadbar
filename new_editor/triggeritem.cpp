@@ -199,3 +199,24 @@ void TriggerItem::slotAddTriggerable()
 	m_view->addItem(newItem);
 }
 
+void TriggerItem::removeFromScene(QGraphicsScene *scene)
+{
+	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); it++) {
+		(*it)->removeFromScene(scene);
+	}
+	MyItem::removeFromScene(scene);
+}
+
+bool TriggerItem::removeItem(MyItem *item)
+{
+	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); it++) {
+		if((*it) == item) {
+			std::cout << "erasing triggerable" << std::endl;
+			m_triggerables.erase(it);
+			return true;
+		}
+	}	
+	return false;
+}

@@ -34,7 +34,7 @@ class MyItem {
 	virtual MyItem* selectItem(int x, int y);
 	virtual void removeFromScene(QGraphicsScene *scene);
 	virtual void setVisible(bool visible) { m_item->setVisible(visible);}
-	
+	virtual void removeFromData(Data *data);
 	protected:
 	void setItem(QGraphicsPixmapItem *item) { m_item = item; }
 	

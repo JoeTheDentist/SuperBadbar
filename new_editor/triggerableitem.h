@@ -64,7 +64,7 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*/
 	virtual void edit();
 
-	
+
 	
 	public slots:
 	void slotSetScriptText();

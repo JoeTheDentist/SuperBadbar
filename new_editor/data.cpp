@@ -6,6 +6,8 @@
 #include <QFile>
 #include <QGraphicsPixmapItem>
 #include "paths.h"
+#include "triggeritem.h"
+
 
 Data::Data():
 	m_babar_item(NULL),
@@ -196,6 +198,8 @@ void Data::deleteItem(MyItem *item)
 			m_triggers_items.erase(it);
 			return;
 		}
+		if (((TriggerItem*)(*it))->removeItem(item))
+			return;
 	}
 	for (it = m_monsters_items.begin(); it != m_monsters_items.end();it++) {
 		if (*it == item) {
@@ -367,6 +371,8 @@ void Data::removeItem(MyItem *item)
 			m_triggers_items.erase(it);
 			return;
 		}
+		if (((TriggerItem*)(*it))->removeItem(item))
+			return;
 	}
 }
 

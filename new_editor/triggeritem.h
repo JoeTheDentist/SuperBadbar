@@ -93,7 +93,19 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@param item L'item a ajouter
 	*/
 	virtual void addTriggerableItem(TriggerableItem *item);
-	
+
+	/*!
+	*	@brief Supprime le trigger de la scene
+	*	@param La scene contenant le trigger
+	*/
+	virtual void removeFromScene(QGraphicsScene *scene);
+
+	/*!
+	*	@brief Supprime des donnees l'item en parametre
+	*	@param item L'item a supprimer
+	*	@return vrai si l'item a ete trouve
+	*/
+	virtual bool removeItem(MyItem *item);
 	
 	public slots:
 	void slotSetScriptText();

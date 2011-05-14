@@ -67,3 +67,8 @@ MyGraphicsView *MyItem::getView()
 {
 	return m_view;
 }
+
+void MyItem::removeFromData(Data *data) 
+{
+	data->removeItem(this);
+}
