@@ -3,6 +3,7 @@
 #include <sstream>
 #include "triggeritem.h"
 #include "triggerableitem.h"
+#include "zoneitem.h"
 #include "mygraphicsview.h"
 #include "utils.h"
 #include <QFile>
@@ -100,6 +101,12 @@ MyItem* TriggerItem::selectItem(int x, int y)
 		if (res)
 			return res;
 	}
+	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
+			it != m_zones.end(); it++) {
+		res = (*it)->selectItem(x, y);
+		if (res)
+			return res;
+	}
 	return NULL;
 }
 
@@ -173,6 +180,11 @@ void TriggerItem::addTriggerableItem(TriggerableItem *item)
 	m_triggerables.push_front(item);
 }
 
+void TriggerItem::addZoneItem(ZoneItem *item)
+{
+	m_zones.push_front(item);
+}
+
 void TriggerItem::rightClic(int x, int y)
 {
 	QPoint pos(x, y);
@@ -190,6 +202,8 @@ void TriggerItem::rightClic(int x, int y)
 void TriggerItem::slotAddPosition()
 {
 	std::cout << "Add POsition" << std::endl;
+	ZoneItem *newItem = new ZoneItem(m_scene, this);
+	m_view->setStateAddingItem(newItem);
 }
 
 void TriggerItem::slotAddTriggerable()

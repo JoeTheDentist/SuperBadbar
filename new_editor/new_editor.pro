@@ -24,7 +24,8 @@ HEADERS += analyser.h \
            staticitem.h \
            triggeritem.h \
            triggerableitem.h \
-           utils.h
+           utils.h \
+           zoneitem.h 
 SOURCES += analyser.cpp \
            babaritem.cpp \
            data.cpp \
@@ -40,4 +41,5 @@ SOURCES += analyser.cpp \
            staticitem.cpp \
            triggeritem.cpp \
            triggerableitem.cpp \
-           utils.cpp
+           utils.cpp \
+           zoneitem.cpp
