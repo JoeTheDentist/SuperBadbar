@@ -40,14 +40,14 @@
 
 MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindow *mainWindow):
 	QGraphicsView(scene, parent),
+	m_state(e_fileClosed),
 	m_main_window(mainWindow),
 	m_file_name(),
 	m_data(new Data()),
-	m_opened(false),
 	m_mouse_pressed(false),
 	m_ctrl_pressed(false),
 	m_babar_item(NULL),
-	m_curr_item(NULL),
+	m_item_being_added(NULL),
 	m_selected_item(NULL),
 	m_moved_item(NULL),
 	m_copied_item(NULL),
@@ -55,6 +55,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindo
 	m_zoom(1),
 	m_background(NULL),
 	m_statusBar(NULL)
+
 {
 	MyItem::setView(this);
 	setMouseTracking(true); // pour que mouseMoveEvent soit declenche sans que la souris soit pressee
@@ -74,10 +75,10 @@ void MyGraphicsView::newFile(QString backgroundName)
 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
-	m_opened = true;
 	m_babar_item = new BabarItem(this->scene());
 	m_data->addItem(m_babar_item);
 	m_ctrl_pressed = false;
+	setStateNone();
 }
 
 
@@ -87,7 +88,6 @@ void MyGraphicsView::loadFile(QString fileName)
 	Analyser analyser;
 	int x, y, zbuffer, age;
 	MyItem *myitem = NULL;
-	m_opened = true;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
 	newFile(QString::fromStdString(BACKGROUND_DIR + analyser.read_string()));
@@ -182,8 +182,6 @@ void MyGraphicsView::loadFile(QString fileName)
 		myitem = new TriggerItem(this->scene(), m_file_name, ind, x, y);
 		m_data->addItem(myitem);
 	}
-	
-	
 	m_ctrl_pressed = false;
 	analyser.close();
 }
@@ -203,21 +201,21 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 	if (event->button() == Qt::LeftButton) {
 		deSelectItem();
 		m_mouse_pressed = true;
-		if (m_opened && !m_del_curs) {
-			if (m_curr_item) {
-				m_data->addItem(m_curr_item);
-				m_curr_item = NULL;
+		if (fileOpened() && !m_del_curs) {
+			if (m_item_being_added) {
+				m_data->addItem(m_item_being_added);
+				m_item_being_added = NULL;
 			} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 				m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
 				selectItem(m_moved_item);
 			}
 		}
-	} else if (event->button() == Qt::RightButton) {
-		if (m_opened && !m_del_curs && m_curr_item) {
-			this->scene()->removeItem(m_curr_item->getItem());
-			delete m_curr_item->getItem();
-			delete m_curr_item;
-			m_curr_item = NULL;
+	} else if (event->button() == Qt::RightButton && fileOpened()) {
+		if (!m_del_curs && m_item_being_added) {
+			this->scene()->removeItem(m_item_being_added->getItem());
+			delete m_item_being_added->getItem();
+			delete m_item_being_added;
+			m_item_being_added = NULL;
 		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 			m_data->selectItem(posClicX(event), posClicY(event))->rightClic(event->x(), event->y());
 		}                                                 
@@ -226,7 +224,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 
 void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 {
-	if (m_opened) {
+	if (fileOpened()) {
 		MyItem *item = m_data->selectItem(posClicX(event), posClicY(event));
 		if (item) {
 			item->edit();
@@ -239,7 +237,7 @@ void MyGraphicsView::mouseDoubleClickEvent(QMouseEvent *event)
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	m_mouse_pressed = false;
-	if (m_opened) {
+	if (fileOpened()) {
 		if (m_del_curs) {
 			MyItem *item = NULL;
 			item = m_data->selectItem(posClicX(event), posClicY(event));
@@ -256,13 +254,13 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
-	if (m_opened) {
+	if (fileOpened()) {
 		if (m_del_curs) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
 		} else if (m_moved_item) {
 			m_moved_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
-		} else if (m_curr_item) {
-			m_curr_item->setPos(posClicX(event), posClicY(event));
+		} else if (m_item_being_added) {
+			m_item_being_added->setPos(posClicX(event), posClicY(event));
 		}
 		m_xprec = posClicX(event);
 		m_yprec = posClicY(event);
@@ -313,7 +311,7 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 				deleteFromEditor(m_selected_item);
 				m_selected_item = NULL;
 				m_moved_item = NULL;
-				m_curr_item = NULL;
+				m_item_being_added = NULL;
 				break;
 		case Qt::Key_C:
 			copyItem(m_selected_item);
@@ -353,12 +351,12 @@ void MyGraphicsView::save(QString str)
 	m_data->saveData(str);
 }
 
-void MyGraphicsView::addBabar()
+void MyGraphicsView::createNewBabar()
 {
-	m_curr_item = m_data->selectBabar();
+	m_item_being_added = m_data->selectBabar();
 }
 
-void MyGraphicsView::addSet()
+void MyGraphicsView::createNewSet()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de set", SET_DIR);
 	if (fileName.isEmpty()) {
@@ -376,11 +374,11 @@ void MyGraphicsView::addSet()
 	fileName = fileName.left(cutRight);
 	fileName = substringAfter(fileName, "animations/");
 
-	addItem(new SetItem(this->scene(), fileName));
+	setStateAddingItem(new SetItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
-void MyGraphicsView::addStatic()
+void MyGraphicsView::createNewStatic()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de static", STATIC_DIR);
 	if (fileName.isEmpty()) {
@@ -392,7 +390,7 @@ void MyGraphicsView::addStatic()
 	}
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	addItem(new StaticItem(this->scene(), fileName));
+	setStateAddingItem(new StaticItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -409,7 +407,7 @@ void MyGraphicsView::addMovingPlatform()
 	QPixmap image;
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	addItem(new MovingPlatformItem(this->scene(), fileName));
+	setStateAddingItem(new MovingPlatformItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
@@ -425,12 +423,11 @@ void MyGraphicsView::addFallingPlatform()
 	}
 	fileName = substringAfter(fileName, "statics/");
 	fileName = suppressExtension(fileName);
-	addItem(new FallingPlatformItem(this->scene(), fileName));
+	setStateAddingItem(new FallingPlatformItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
-
-void MyGraphicsView::addMonster()
+void MyGraphicsView::createNewMonster()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de monstre", MONSTERS_DIR);
 	if (fileName.isEmpty()) {
@@ -442,11 +439,11 @@ void MyGraphicsView::addMonster()
 	}
 	fileName = substringAfter(fileName, "monsters/");
 	fileName = suppressExtension(fileName);
-	addItem(new MonsterItem(this->scene(), fileName));
+	setStateAddingItem(new MonsterItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
-void MyGraphicsView::addEvent()
+void MyGraphicsView::createNewEvent()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier event", EVENTS_DIR);
 	if (fileName.isEmpty()) {
@@ -459,18 +456,13 @@ void MyGraphicsView::addEvent()
 
 	fileName = substringAfter(fileName, "events/");
 	fileName = suppressExtension(fileName);
-	addItem(new EventItem(this->scene(), fileName));
+	setStateAddingItem(new EventItem(this->scene(), fileName));
 	m_ctrl_pressed = false;
 }
 
-void MyGraphicsView::addTrigger()
+void MyGraphicsView::createNewTrigger()
 {
-	addItem(new TriggerItem(this->scene(), m_file_name));	
-}
-
-void MyGraphicsView::addItem(MyItem *item) 
-{
-	m_curr_item = item;
+	setStateAddingItem(new TriggerItem(this->scene(), m_file_name));	
 }
 
 void MyGraphicsView::activeDeleteItem()
@@ -479,6 +471,14 @@ void MyGraphicsView::activeDeleteItem()
 	image.load("images/deleteitem.png");
 	m_del_curs = this->scene()->addPixmap(image);
 }
+
+void MyGraphicsView::setStateAddingItem(MyItem *item)
+{
+	m_state = e_addingItem;
+	m_item_being_added = item;
+	m_item_being_added->setStateBeingAdded();
+}
+
 
 void MyGraphicsView::zoom(qreal z)
 {
@@ -490,14 +490,14 @@ void MyGraphicsView::selectItem(MyItem *item)
 {
 	deSelectItem();
 	m_selected_item = item;
-	m_selected_item->getItem()->setGraphicsEffect(new QGraphicsColorizeEffect());
+	m_selected_item->setStateSelected();
 	m_data->upInStack(item);
 }
 
 void MyGraphicsView::deSelectItem()
 {
 	if (m_selected_item) {
-		m_selected_item->getItem()->setGraphicsEffect(NULL);
+		m_selected_item->setStateNothing();
 	}
 	m_selected_item = NULL;
 }

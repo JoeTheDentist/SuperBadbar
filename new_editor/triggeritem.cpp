@@ -196,7 +196,7 @@ void TriggerItem::slotAddTriggerable()
 {	
 	std::cout << "Add triggerable" << std::endl;
 	TriggerableItem *newItem = new TriggerableItem(m_scene, this);
-	m_view->addItem(newItem);
+	m_view->setStateAddingItem(newItem);
 }
 
 void TriggerItem::removeFromScene(QGraphicsScene *scene)

@@ -16,6 +16,10 @@ class Data;
 class MyItem;
 class MainWindow;
 
+enum mgvState {
+	e_fileClosed, e_addingItem, e_movingItem, e_erasingItem, e_none
+};
+
 
 class MyGraphicsView : public QGraphicsView {
 
@@ -130,17 +134,17 @@ class MyGraphicsView : public QGraphicsView {
 	/*!
 	*	@brief Fonction d'ajout de la position de babar
 	*/
-	void addBabar();
+	void createNewBabar();
 	
 	/*!
 	*	@brief Fonction d'ajout de set (decor) au niveau
 	*/
-	void addSet();	
+	void createNewSet();	
 	
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
 	*/
-	void addStatic();		
+	void createNewStatic();		
 	
 	/*!
 	*	@brief Fonction d'ajout de static au niveau
@@ -155,25 +159,40 @@ class MyGraphicsView : public QGraphicsView {
 	/*!
 	*	@brief Fonction d'ajout de monstre au niveau
 	*/
-	void addMonster();
+	void createNewMonster();
 	
 	/*!
 	*	@brief Fonction d'ajout d'un event au niveau
 	*/
-	void addEvent();
+	void createNewEvent();
 	
 	/*!
 	*	@brief Fonction d'ajout d'un Trigger au niveau
 	*/
-	void addTrigger();
+	void createNewTrigger();
 	
-	void addItem(MyItem *item);
+	
+//~ 	void addItem(MyItem *item);
 
 	
 	/*!
 	*	@brief Lance la possibilité de détruire un item au prochain clic
 	*/
 	void activeDeleteItem();
+	
+	
+	/*!
+	*	@brief Met l'etat a e_addingItem sur l'item specifie
+	*	@param item l'item a ajouter
+	*/
+	void setStateAddingItem(MyItem *item);
+	void setStateMovingItem() {m_state = e_movingItem;}
+	void setStateErasingItem() {m_state = e_erasingItem;}
+	/*!
+	*	@brief Met l'etat a e_none
+	*/
+	void setStateNone() {m_state = e_none;}
+	
 	
 	/*!
 	*	@brief Effectue un zoom sur le niveau de rapport z
@@ -184,6 +203,8 @@ class MyGraphicsView : public QGraphicsView {
 	MainWindow *getWindow() {return m_main_window;}
 	
 	Data *getData() {return m_data;}
+	
+	bool fileOpened() const {return m_state != e_fileClosed;}
 
 	
 	void selectItem(MyItem *item);
@@ -194,10 +215,10 @@ class MyGraphicsView : public QGraphicsView {
 
 
 	private:
+	mgvState m_state;
 	MainWindow *m_main_window;
 	QString m_file_name;
 	Data *m_data; // Toute les donnees a sauvegarder y sont stockees
-	bool m_opened; // vaut vrai si un fichier est ouvert
 	bool m_mouse_pressed;	// vaut vrai si un bouton de la souris est enfoncé
 	bool m_ctrl_pressed; // vaut vrai quand la touche controle est pressee
 	qreal m_xsize; // largeur en pixel du niveau
@@ -205,7 +226,7 @@ class MyGraphicsView : public QGraphicsView {
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	BabarItem *m_babar_item; // l'item correspondant à la position actuelle de babar
-	MyItem *m_curr_item; // l'item en cours d'ajout
+	MyItem *m_item_being_added; // l'item en cours d'ajout
 	MyItem *m_selected_item; // l'item selectionne
 	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)
 	MyItem *m_copied_item;

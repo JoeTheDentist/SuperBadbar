@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPixmap>
+#include <QGraphicsColorizeEffect>
 #include "mygraphicsview.h"
 
 MyGraphicsView *MyItem::m_view = NULL;
@@ -11,6 +12,7 @@ MyGraphicsView *MyItem::m_view = NULL;
 
 MyItem::MyItem(QGraphicsPixmapItem *item, QString fileName):
 	m_item(item),
+	m_state(e_nothing),
 	m_file_name(fileName)
 {
 	
@@ -31,6 +33,15 @@ void MyItem::edit()
 	
 }
 
+void MyItem::mouseMoved(int x, int y)
+{
+	if (isBeingAdded()) {
+		moveItem(x, y);
+	} else if (isBeingMoved()){
+		moveItem(x, y);
+	}
+}
+
 void MyItem::moveItem(int x, int y)
 {
 	QGraphicsPixmapItem *item = this->getItem();
@@ -48,10 +59,32 @@ MyItem *MyItem::selectItem(int x, int y)
 	QGraphicsPixmapItem *item = this->getItem();
 	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
 		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
+		setStateSelected();
 		return this;	
 	}
 	return NULL;
 }
+
+void MyItem::signalEndOfAdding()
+{
+	m_view->setStateNone();
+	setStateNothing();
+}
+
+void MyItem::setStateSelected()
+{
+	getItem()->setGraphicsEffect(new QGraphicsColorizeEffect());
+	m_state = e_selected;
+}
+
+void MyItem::setStateNothing()
+{
+	if (isSelected()) {
+		getItem()->setGraphicsEffect(NULL);
+	}
+	m_state = e_nothing;
+}
+
 
 void MyItem::removeFromScene(QGraphicsScene *scene)
 {

@@ -62,14 +62,14 @@ class MainWindow : public QMainWindow {
 	void save();
 	void saveAs();
 	void aboutBabarEditor();
-	void addBabar();
-	void addSet();
-	void addStatic();
+	void createNewBabar();
+	void createNewSet();
+	void createNewStatic();
 	void addMovingPlatform();
 	void addFallingPlatform();
-	void addMonster();
-	void addEvent();
-	void addTrigger();
+	void createNewMonster();
+	void createNewEvent();
+	void createNewTrigger();
 	void deleteItem();
 	
 	
@@ -90,14 +90,14 @@ class MainWindow : public QMainWindow {
 	QAction *m_saveAct;
 	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
-	QAction *m_addBabar;
-	QAction *m_addSet;
-	QAction *m_addStatic;
+	QAction *m_createNewBabar;
+	QAction *m_createNewSet;
+	QAction *m_createNewStatic;
 	QAction *m_addMovingPlatform;
 	QAction *m_addFallingPlatform;
-	QAction *m_addMonster;
-	QAction *m_addEvent;
-	QAction *m_addTrigger;
+	QAction *m_createNewMonster;
+	QAction *m_createNewEvent;
+	QAction *m_createNewTrigger;
 	QAction *m_deleteItem;
 	//barre d'outils
 	QToolBar *m_fileToolBar;

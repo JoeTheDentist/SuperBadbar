@@ -30,13 +30,13 @@ MainWindow::MainWindow():
 	m_exitAct(NULL),
 	m_saveAct(NULL),
 	m_aboutBabarEditor(NULL),
-	m_addSet(NULL),
-	m_addStatic(NULL),
+	m_createNewSet(NULL),
+	m_createNewStatic(NULL),
 	m_addMovingPlatform(NULL),
 	m_addFallingPlatform(NULL),
-	m_addMonster(NULL),
-	m_addEvent(NULL),
-	m_addTrigger(NULL),
+	m_createNewMonster(NULL),
+	m_createNewEvent(NULL),
+	m_createNewTrigger(NULL),
 	m_fileToolBar(NULL)
 {
 	setCentralWidget(m_graphic_view);
@@ -57,14 +57,14 @@ MainWindow::~MainWindow()
 	delete m_fileMenu;
 	delete m_editMenu;
 	delete m_helpMenu;
-	delete m_addSet;
-	delete m_addStatic;
+	delete m_createNewSet;
+	delete m_createNewStatic;
 	delete m_addMovingPlatform;
 	delete m_addFallingPlatform;
-	delete m_addMonster;
-	delete m_addEvent;
-	delete m_addTrigger;
-	delete m_addBabar;
+	delete m_createNewMonster;
+	delete m_createNewEvent;
+	delete m_createNewTrigger;
+	delete m_createNewBabar;
 	delete m_graphic_scene;
 	delete m_graphic_view;
 
@@ -99,17 +99,17 @@ void MainWindow::createActions()
 	m_saveAsAct->setStatusTip(tr("Save as"));
 	connect(m_saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));	
 		
-	m_addBabar = new QAction(QIcon("images/addbabar.png"),tr("addBabar"), this); 
-	m_addBabar->setStatusTip(tr("Change the Babar's start position"));
-	connect(m_addBabar, SIGNAL(triggered()), this, SLOT(addBabar()));	
+	m_createNewBabar = new QAction(QIcon("images/addbabar.png"),tr("createNewBabar"), this); 
+	m_createNewBabar->setStatusTip(tr("Change the Babar's start position"));
+	connect(m_createNewBabar, SIGNAL(triggered()), this, SLOT(createNewBabar()));	
 		
-	m_addSet = new QAction(QIcon("images/addset.png"),tr("AddSet"), this); 
-	m_addSet->setStatusTip(tr("Add a set to the level"));
-	connect(m_addSet, SIGNAL(triggered()), this, SLOT(addSet()));	
+	m_createNewSet = new QAction(QIcon("images/createNewSet.png"),tr("createNewSet"), this); 
+	m_createNewSet->setStatusTip(tr("Add a set to the level"));
+	connect(m_createNewSet, SIGNAL(triggered()), this, SLOT(createNewSet()));	
 
-	m_addStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
-	m_addStatic->setStatusTip(tr("Add a static to the level"));
-	connect(m_addStatic, SIGNAL(triggered()), this, SLOT(addStatic()));	
+	m_createNewStatic = new QAction(QIcon("images/addstatic.png"),tr("AddStatic"), this); 
+	m_createNewStatic->setStatusTip(tr("Add a static to the level"));
+	connect(m_createNewStatic, SIGNAL(triggered()), this, SLOT(createNewStatic()));	
 	
 	m_addMovingPlatform = new QAction(QIcon("images/addmovingplatform.png"),tr("AddMovingPlatform"), this); 
 	m_addMovingPlatform->setStatusTip(tr("Add a moving moving platform to the level"));
@@ -119,17 +119,17 @@ void MainWindow::createActions()
 	m_addFallingPlatform->setStatusTip(tr("Add a falling moving platform to the level"));
 	connect(m_addFallingPlatform, SIGNAL(triggered()), this, SLOT(addFallingPlatform()));	
 	
-	m_addMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
-	m_addMonster->setStatusTip(tr("Add a monster to the level"));
-	connect(m_addMonster, SIGNAL(triggered()), this, SLOT(addMonster()));	
+	m_createNewMonster = new QAction(QIcon("images/addmonster.png"),tr("AddMonster"), this); 
+	m_createNewMonster->setStatusTip(tr("Add a monster to the level"));
+	connect(m_createNewMonster, SIGNAL(triggered()), this, SLOT(createNewMonster()));	
 	
-	m_addEvent = new QAction(QIcon("images/addevent.png"),tr("AddEvent"), this); 
-	m_addEvent->setStatusTip(tr("Add an event to the level"));
-	connect(m_addEvent, SIGNAL(triggered()), this, SLOT(addEvent()));	
+	m_createNewEvent = new QAction(QIcon("images/addevent.png"),tr("AddEvent"), this); 
+	m_createNewEvent->setStatusTip(tr("Add an event to the level"));
+	connect(m_createNewEvent, SIGNAL(triggered()), this, SLOT(createNewEvent()));	
 	
-	m_addTrigger = new QAction(QIcon("images/addtrigger.png"),tr("AddTrigger"), this); 
-	m_addTrigger->setStatusTip(tr("Add a trigger to the level"));
-	connect(m_addTrigger, SIGNAL(triggered()), this, SLOT(addTrigger()));	
+	m_createNewTrigger = new QAction(QIcon("images/addtrigger.png"),tr("AddTrigger"), this); 
+	m_createNewTrigger->setStatusTip(tr("Add a trigger to the level"));
+	connect(m_createNewTrigger, SIGNAL(triggered()), this, SLOT(createNewTrigger()));	
 	
 	m_deleteItem = new QAction(QIcon("images/deleteitem.png"),tr("Delete item"), this); // TODO changer image
 	m_deleteItem->setStatusTip(tr("Delete an item from the level"));
@@ -146,14 +146,14 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_saveAsAct);
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
-	m_editMenu->addAction(m_addBabar);
-	m_editMenu->addAction(m_addSet);
-	m_editMenu->addAction(m_addStatic);
+	m_editMenu->addAction(m_createNewBabar);
+	m_editMenu->addAction(m_createNewSet);
+	m_editMenu->addAction(m_createNewStatic);
 	m_editMenu->addAction(m_addMovingPlatform);
 	m_editMenu->addAction(m_addFallingPlatform);
-	m_editMenu->addAction(m_addMonster);
-	m_editMenu->addAction(m_addEvent);
-	m_editMenu->addAction(m_addTrigger);
+	m_editMenu->addAction(m_createNewMonster);
+	m_editMenu->addAction(m_createNewEvent);
+	m_editMenu->addAction(m_createNewTrigger);
 	m_editMenu->addAction(m_deleteItem);
 	menuBar()->addSeparator();
 	m_helpMenu = menuBar()->addMenu(tr("&Help"));
@@ -167,14 +167,14 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_openAct);
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
-	m_fileToolBar->addAction(m_addBabar);
-	m_fileToolBar->addAction(m_addSet);
-	m_fileToolBar->addAction(m_addStatic);
+	m_fileToolBar->addAction(m_createNewBabar);
+	m_fileToolBar->addAction(m_createNewSet);
+	m_fileToolBar->addAction(m_createNewStatic);
 	m_fileToolBar->addAction(m_addMovingPlatform);
 	m_fileToolBar->addAction(m_addFallingPlatform);
-	m_fileToolBar->addAction(m_addMonster);
-	m_fileToolBar->addAction(m_addEvent);
-	m_fileToolBar->addAction(m_addTrigger);
+	m_fileToolBar->addAction(m_createNewMonster);
+	m_fileToolBar->addAction(m_createNewEvent);
+	m_fileToolBar->addAction(m_createNewTrigger);
 	m_fileToolBar->addAction(m_deleteItem);
 }
 
@@ -248,21 +248,21 @@ void MainWindow::aboutBabarEditor()
 		<a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
 }
 
-void MainWindow::addBabar()
+void MainWindow::createNewBabar()
 {
-	m_graphic_view->addBabar();
+	m_graphic_view->createNewBabar();
 }
 
-void MainWindow::addSet()
+void MainWindow::createNewSet()
 {
 	if (m_opened_file)
-		m_graphic_view->addSet();
+		m_graphic_view->createNewSet();
 }
 
-void MainWindow::addStatic()
+void MainWindow::createNewStatic()
 {
 	if (m_opened_file)
-		m_graphic_view->addStatic();
+		m_graphic_view->createNewStatic();
 }
 
 void MainWindow::addMovingPlatform()
@@ -277,22 +277,22 @@ void MainWindow::addFallingPlatform()
 		m_graphic_view->addFallingPlatform();
 }
 
-void MainWindow::addMonster()
+void MainWindow::createNewMonster()
 {
 	if (m_opened_file)
-		m_graphic_view->addMonster();
+		m_graphic_view->createNewMonster();
 }
 
-void MainWindow::addEvent()
+void MainWindow::createNewEvent()
 {
 	if (m_opened_file)
-		m_graphic_view->addEvent();
+		m_graphic_view->createNewEvent();
 }
 
-void MainWindow::addTrigger()
+void MainWindow::createNewTrigger()
 {
 	if (m_opened_file)
-		m_graphic_view->addTrigger();
+		m_graphic_view->createNewTrigger();
 }
 
 void MainWindow::deleteItem()
