@@ -297,7 +297,7 @@ void MainWindow::createNewTrigger()
 
 void MainWindow::deleteItem()
 {
-	m_graphic_view->activeDeleteItem();
+	m_graphic_view->setStateErasingItem();
 }
 
 void MainWindow::warningSave()

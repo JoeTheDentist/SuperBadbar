@@ -37,7 +37,7 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	/*!
 	*	@brief Destructeur
 	*/
-	~TriggerItem();
+	virtual ~TriggerItem();
 	
 	/*!
 	*	@brief Retourne l'item selectionne

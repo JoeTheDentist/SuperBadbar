@@ -175,10 +175,6 @@ class MyGraphicsView : public QGraphicsView {
 //~ 	void addItem(MyItem *item);
 
 	
-	/*!
-	*	@brief Lance la possibilité de détruire un item au prochain clic
-	*/
-	void activeDeleteItem();
 	
 	
 	/*!
@@ -186,12 +182,18 @@ class MyGraphicsView : public QGraphicsView {
 	*	@param item l'item a ajouter
 	*/
 	void setStateAddingItem(MyItem *item);
-	void setStateMovingItem() {m_state = e_movingItem;}
-	void setStateErasingItem() {m_state = e_erasingItem;}
+	
+	void setStateMovingItem(MyItem *item); 
+	
+	/*!
+	*	@brief Met l'etat a e_erasingItem Le prochain clic supprime un objet
+	*/	
+	void setStateErasingItem();
+	
 	/*!
 	*	@brief Met l'etat a e_none
 	*/
-	void setStateNone() {m_state = e_none;}
+	void setStateNone();
 	
 	
 	/*!
@@ -226,7 +228,7 @@ class MyGraphicsView : public QGraphicsView {
 	int m_xprec; // position x du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	int m_yprec; // position y du dernier mouvement de souris (utile pour tracer en cliquer-glisser)
 	BabarItem *m_babar_item; // l'item correspondant à la position actuelle de babar
-	MyItem *m_item_being_added; // l'item en cours d'ajout
+	MyItem *m_curr_item; 
 	MyItem *m_selected_item; // l'item selectionne
 	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)
 	MyItem *m_copied_item;

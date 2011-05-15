@@ -47,7 +47,7 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindo
 	m_mouse_pressed(false),
 	m_ctrl_pressed(false),
 	m_babar_item(NULL),
-	m_item_being_added(NULL),
+	m_curr_item(NULL),
 	m_selected_item(NULL),
 	m_moved_item(NULL),
 	m_copied_item(NULL),
@@ -201,22 +201,29 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 	if (event->button() == Qt::LeftButton) {
 		deSelectItem();
 		m_mouse_pressed = true;
-		if (fileOpened() && !m_del_curs) {
-			if (m_item_being_added) {
-				m_data->addItem(m_item_being_added);
-				m_item_being_added = NULL;
+		if (fileOpened() && (m_state != e_erasingItem)) {
+			if (m_state == e_addingItem) {
+				// finalisation de l'ajout d'un item
+				m_data->addItem(m_curr_item);
+				setStateNone();
 			} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
+				// selection d'un item
 				m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
+				if (m_moved_item) {
+					setStateMovingItem(m_moved_item);
+				}
 				selectItem(m_moved_item);
 			}
 		}
 	} else if (event->button() == Qt::RightButton && fileOpened()) {
-		if (!m_del_curs && m_item_being_added) {
-			this->scene()->removeItem(m_item_being_added->getItem());
-			delete m_item_being_added->getItem();
-			delete m_item_being_added;
-			m_item_being_added = NULL;
+		if (!m_del_curs && (m_state == e_addingItem)) {
+			// annulation d'un ajout
+			this->scene()->removeItem(m_curr_item->getItem());
+			delete m_curr_item->getItem();
+			delete m_curr_item;
+			setStateNone();
 		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
+			// clic droit sur un objet
 			m_data->selectItem(posClicX(event), posClicY(event))->rightClic(event->x(), event->y());
 		}                                                 
 	}
@@ -238,16 +245,17 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
 	m_mouse_pressed = false;
 	if (fileOpened()) {
-		if (m_del_curs) {
+		if (m_state == e_erasingItem) {
+			// suppression definitive d'un objet pointe par la souris
 			MyItem *item = NULL;
 			item = m_data->selectItem(posClicX(event), posClicY(event));
 			deleteFromEditor(item);
 			this->scene()->removeItem(m_del_curs);
 			delete m_del_curs;
-			m_del_curs = NULL;
+			setStateNone();
 		}
-		if (m_moved_item) {
-			m_moved_item = NULL;
+		if (m_state == e_movingItem) {
+			setStateNone();
 		}
 	}
 }
@@ -255,16 +263,17 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
 	if (fileOpened()) {
-		if (m_del_curs) {
+		if (m_state == e_erasingItem) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
-		} else if (m_moved_item) {
+		} else if (m_state == e_movingItem) {
 			m_moved_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
-		} else if (m_item_being_added) {
-			m_item_being_added->setPos(posClicX(event), posClicY(event));
+		} else if (m_state == e_addingItem) {
+			m_curr_item->setPos(posClicX(event), posClicY(event));
 		}
 		m_xprec = posClicX(event);
 		m_yprec = posClicY(event);
 		if (m_statusBar) {
+			// affichage des coordonnees de la souris
 			QString s1;
 			QString s2;
 			s1.setNum(m_xprec);
@@ -309,9 +318,7 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 		case Qt::Key_Delete:
 			if (m_selected_item) {
 				deleteFromEditor(m_selected_item);
-				m_selected_item = NULL;
-				m_moved_item = NULL;
-				m_item_being_added = NULL;
+				setStateNone();
 				break;
 		case Qt::Key_C:
 			copyItem(m_selected_item);
@@ -353,7 +360,7 @@ void MyGraphicsView::save(QString str)
 
 void MyGraphicsView::createNewBabar()
 {
-	m_item_being_added = m_data->selectBabar();
+	m_curr_item = m_data->selectBabar();
 }
 
 void MyGraphicsView::createNewSet()
@@ -465,19 +472,38 @@ void MyGraphicsView::createNewTrigger()
 	setStateAddingItem(new TriggerItem(this->scene(), m_file_name));	
 }
 
-void MyGraphicsView::activeDeleteItem()
-{
-	QPixmap image;
-	image.load("images/deleteitem.png");
-	m_del_curs = this->scene()->addPixmap(image);
-}
-
 void MyGraphicsView::setStateAddingItem(MyItem *item)
 {
 	m_state = e_addingItem;
-	m_item_being_added = item;
-	m_item_being_added->setStateBeingAdded();
+	m_curr_item = item;
+	m_curr_item->setStateBeingAdded();
 }
+
+void MyGraphicsView::setStateMovingItem(MyItem *item)
+{
+	setStateNone();
+	m_state = e_movingItem;
+	m_moved_item = item;
+}
+
+void MyGraphicsView::setStateErasingItem()
+{
+	setStateNone();
+	QPixmap image;
+	image.load("images/deleteitem.png");
+	m_del_curs = this->scene()->addPixmap(image);
+	m_state = e_erasingItem;
+}
+
+
+void MyGraphicsView::setStateNone() 
+{
+	m_state = e_none;
+	m_curr_item = NULL;
+	m_del_curs = NULL;
+	m_moved_item = NULL;
+}
+
 
 
 void MyGraphicsView::zoom(qreal z)

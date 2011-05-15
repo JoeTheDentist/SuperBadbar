@@ -23,7 +23,7 @@ class MyItem {
 	QString m_file_name;
 	public:
 	MyItem(QGraphicsPixmapItem *item, QString);
-	~MyItem();
+	virtual ~MyItem();
 	static void setView(MyGraphicsView *view);
 	static MyGraphicsView *getView();
 	virtual MyItem *duplicate(QGraphicsScene *scene) = 0;
