@@ -12,7 +12,7 @@
 #include "walking_monsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
-#include "../sound/sound_manager.h"
+#include "../sound/sound_engine.h"
 #include "../video/pictures_container.h"
 #include "babar.h"
 

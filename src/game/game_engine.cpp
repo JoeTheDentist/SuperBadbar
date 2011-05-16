@@ -15,7 +15,7 @@
 #include "game_engine.h"
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
-#include "../sound/sound_manager.h"
+#include "../sound/sound_engine.h"
 #include "../control/keyboard.h"
 #include "../util/debug.h"
 #include "../actors/actor.h"

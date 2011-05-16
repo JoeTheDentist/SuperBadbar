@@ -15,7 +15,7 @@
 #include "../items/machinegun.h"
 #include "../items/rocket_launcher.h"
 #include "../video/pictures_container.h"
-#include "../sound/sound_manager.h"
+#include "../sound/sound_engine.h"
 
 
 Weapons_armory::Weapons_armory()

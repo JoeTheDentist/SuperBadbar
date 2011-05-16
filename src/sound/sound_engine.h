@@ -10,7 +10,7 @@
 #ifndef _SOUND_ENGINE_
 #define _SOUND_ENGINE_
 
-#include "../../lib/fmodapi375win/api/inc/fmod.h"
+//~ #include "../../lib/fmodapi375win/api/inc/fmod.h"
 
 #include <string>
 #include <map>
@@ -29,8 +29,8 @@ class Sonorisable;
  */
 class Sound_engine {
 private:
-	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
-	FSOUND_STREAM *m_music;
+//~ 	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
+//~ 	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
 

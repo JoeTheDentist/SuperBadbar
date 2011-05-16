@@ -9,7 +9,6 @@
 //~  
 #include <iostream>
 #include "sound.h"
-#include "../sound/sound_manager.h"
 
 Sound::Sound(std::string str) 
 {
