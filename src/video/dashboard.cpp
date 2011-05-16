@@ -22,8 +22,7 @@
 #include "../video/surface_text.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
-
-
+#include "../players/players_manager.h"
 
 Dashboard::Dashboard():
 	m_heart(NULL),
@@ -68,25 +67,25 @@ void Dashboard::draw_dashboard(Camera *camera)
 	/*
 		Affichage des vies
 	*/
-	if (gBabar->HP() < 0)
+	if (gPlayers->local_player()->HP() < 0)
 		return;
-	for (int i = 0; i < gBabar->HP(); i++) {
+	for (int i = 0; i < gPlayers->local_player()->HP(); i++) {
 		camera->display_picture(m_heart, &m_HP_pos, true);
 		m_HP_pos.x += 30;
 	}
-	m_HP_pos.x -= gBabar->HP() * 30;
+	m_HP_pos.x -= gPlayers->local_player()->HP() * 30;
 
 	/*
 		Affichage de l'arme et des munitions
 	*/
-	camera->display_picture(m_weapons_pictures[gBabar->type_of_weapon()], &m_weapons_pos, true);
+	camera->display_picture(m_weapons_pictures[gPlayers->local_player()->type_of_weapon()], &m_weapons_pos, true);
 	Rect pos_munitions;
     std::ostringstream ossmun;
-    ossmun <<  "x " << gBabar->munitions();
+    ossmun <<  "x " << gPlayers->local_player()->munitions();
     std::string munitions = ossmun.str();
 	Surface_text *munitions_picture = new Surface_text(munitions, m_font);
-	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gBabar->type_of_weapon()]->w() + 10;
-	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gBabar->type_of_weapon()]->h() - munitions_picture->h())/2;
+	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->w() + 10;
+	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->h() - munitions_picture->h())/2;
 	camera->display_picture(munitions_picture, &pos_munitions, true);
 	delete munitions_picture;
 
@@ -97,7 +96,7 @@ void Dashboard::draw_dashboard(Camera *camera)
 	Rect pos_peanut;
 	Rect pos_peanuts_number;
 	std::ostringstream osspeanut;
-	osspeanut << "x " << gBabar->peanuts();
+	osspeanut << "x " << gPlayers->local_player()->peanuts();
 	std::string peanuts_number = osspeanut.str();
 	Surface_text *peanuts_number_picture = new Surface_text(peanuts_number, m_font);
 	Rect pos_camera = camera->frame();

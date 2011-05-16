@@ -18,6 +18,7 @@
 #include "../game/static_data.h"
 #include "../video/surface.h"
 #include "../sprites/sprites_manager.h"
+#include "../players/players_manager.h"
 
 Graphic_engine::Graphic_engine()
 {
@@ -44,7 +45,7 @@ Graphic_engine::~Graphic_engine()
 void Graphic_engine::init_graphic_engine(bool game)
 {
 	if (game) {
-		m_camera->init_camera(gBabar);
+		m_camera->init_camera(gPlayers->local_player());
 		m_talks->init_talks(m_camera, m_pictures_container);
 		m_dashboard->init_dashboard(m_pictures_container);
 	} else {

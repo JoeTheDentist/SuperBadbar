@@ -2,7 +2,9 @@
 #define PLAYERS_MANAGER_H_INCLUDED
 
 #include "player.h"
-#include "../video/camera.h"
+
+class Analyser;
+class Camera;
 
 /**
  *  @class Player_manager
@@ -26,12 +28,13 @@ class Players_manager {
 
         /**
          *  @brief Initialisation du manager suivant des règles
+         *  @param analyser : analyseur ouvert sur le fichier .lvl correstpondant
          *  TODO : Si on veut des modes de jeux, il faudrait changer ici.
          *  TODO : Par exemple on pourrait faire un joueur allié avec les
          *  TODO : monstres contre les autres etc etc...
          *  TODO : On pourra mettre les règles dans un fichier xml...
          */
-        void init_players_manager();
+        void init_players_manager(Analyser * analyser);
 
         /**
          *  @brief Mise à jour des joueurs

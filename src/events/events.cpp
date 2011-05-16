@@ -19,7 +19,7 @@
 #include "../actors/monsters_manager.h"
 #include "../items/weapons.h"
 #include "../video/talks.h"
-
+#include "../players/players_manager.h"
 
 Event::Event(std::string event_name, int x, int y):
 	m_can_be_destroyed(false),
@@ -61,7 +61,7 @@ void Event::update()
 
 bool Event::can_start() const
 {
-	return Collisions_manager::check_collision(m_pos, gBabar->position());
+	return Collisions_manager::check_collision(m_pos, gPlayers->local_player()->position());
 }
 
 void Event::start()
@@ -82,7 +82,7 @@ void Event::start()
 		} else if (action == "peanut") {
 			process_peanut();
 		} else if (action == "talk") {
-			process_dialog(); 
+			process_dialog();
 		} else if (action == "monster") {
 			process_monster();
 		} else {
@@ -128,12 +128,12 @@ void Event::process_weapon()
 		PRINT_DEBUG(1, "nom d'arme inconnu dans l'event weapon, choix du gun par defaut");
 		weapon_type = GUN;
 	}
-	gBabar->add_weapon(weapon_type);
+	gPlayers->local_player()->add_weapon(weapon_type);
 }
 
 void Event::process_HPup()
 {
-	gBabar->HPup(m_analyser->read_int());
+	gPlayers->local_player()->HPup(m_analyser->read_int());
 }
 
 void Event::process_playsound()
@@ -148,7 +148,7 @@ void Event::process_victory()
 
 void Event::process_peanut()
 {
-	gBabar->incr_peanuts(m_analyser->read_int());
+	gPlayers->local_player()->incr_peanuts(m_analyser->read_int());
 }
 
 void Event::process_dialog()

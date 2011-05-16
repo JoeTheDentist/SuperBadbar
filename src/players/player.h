@@ -3,6 +3,8 @@
 
 #include "../events/stats.h"
 
+class Analyser;
+
 /**
  *  @class Player
  *  @brief Classe représentant un joueur
@@ -25,7 +27,7 @@ class Player {
          *  TODO : Quelque chose pour pouvoir choisir son skin... A faire
          *  TODO : descendre jusqu'à Babar sans doute...
          */
-        Player(int id, bool local=false);
+        Player(int id, Analyser * analyser, bool local=false);
 
         /**
          *  @brief Destructeur

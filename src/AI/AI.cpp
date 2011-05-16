@@ -4,6 +4,7 @@
 #include "AI.h"
 #include "../actors/projectiles.h"
 #include "../actors/babar.h"
+#include "../players/players_manager.h"
 
 AI::AI(Rect * pos)
 {
@@ -70,7 +71,7 @@ double AI::eval_up()
         }
     }
 
-    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
+    weight += DIST_WEIGHT/dist(gPlayers->local_player()->position(), zone);
 
     return weight;
 }
@@ -94,7 +95,7 @@ double AI::eval_down()
     }
 
     // 2/3 pour favoriser sauter /r descendre
-    weight += DIST_WEIGHT/dist(gBabar->position(), zone) ;
+    weight += DIST_WEIGHT/dist(gPlayers->local_player()->position(), zone) ;
 
     return weight;
 }
@@ -105,7 +106,7 @@ double AI::eval_left()
 
     Rect zone=*m_pos;
     zone.x-=m_pos->w;
-    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
+    weight += DIST_WEIGHT/dist(gPlayers->local_player()->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin(PLAYER1);
 				it != gProj->proj_begin(PLAYER1); it++) {
@@ -127,7 +128,7 @@ double AI::eval_right()
 
     Rect zone=*m_pos;
     zone.x+=m_pos->w;
-    weight += DIST_WEIGHT/dist(gBabar->position(), zone);
+    weight += DIST_WEIGHT/dist(gPlayers->local_player()->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin(PLAYER1);
 				it != gProj->proj_end(PLAYER1); it++) {

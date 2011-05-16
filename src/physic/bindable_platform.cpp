@@ -18,7 +18,7 @@
 #include "../physic/collisions_manager.h"
 #include "../physic/collisions_matrix.h"
 #include "../video/displayable.h"
-
+#include "../players/players_manager.h"
 
 Bindable_platform::Bindable_platform()
 {
@@ -26,7 +26,7 @@ Bindable_platform::Bindable_platform()
 	m_babar = NULL;
 }
 
-Bindable_platform::~Bindable_platform() 
+Bindable_platform::~Bindable_platform()
 {
 	PRINT_DEBUG(1, "Suppression de moving plateforme");
 	if (m_babar) {
@@ -44,7 +44,7 @@ void Bindable_platform::init_bindable_platform(int posx, int posy, std::string f
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
 	Analyser analyser;
-	analyser.open(file_name + ".col");	
+	analyser.open(file_name + ".col");
 	m_collisions_matrix_w = analyser.read_int();
 	m_collisions_matrix_h = analyser.read_int();
 	m_collisions_matrix = new unsigned int*[m_collisions_matrix_w];
@@ -67,7 +67,7 @@ void Bindable_platform::update_pos()
 	/* descend */
 	for (int32_t speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE){
 		if (check_babar())
-			gBabar->bind(this);
+			gPlayers->local_player()->bind(this);
 		m_pos.y += BOX_SIZE;
 		if (m_babar)
 			m_babar->check_unbind();
@@ -102,7 +102,7 @@ void Bindable_platform::update_speed()
 void Bindable_platform::bind()
 {
 	PRINT_DEBUG(1, "bind");
-	m_babar = gBabar;
+	m_babar = gPlayers->local_player();
 }
 
 void Bindable_platform::unbind()
@@ -131,11 +131,11 @@ bool Bindable_platform::check_babar()
 //~ 	if (gBabar->binded())
 //~ 		return false;
 
-	Rect babar_speed = gBabar->speed();
-	Rect babar_pos = gBabar->position();
+	Rect babar_speed = gPlayers->local_player()->speed();
+	Rect babar_pos = gPlayers->local_player()->position();
 	if (babar_speed.y < m_speed.y)
 		return false;
-	Rect babar_rel_pos = gBabar->position();
+	Rect babar_rel_pos = gPlayers->local_player()->position();
 	babar_pos.x -= m_pos.x;
 	babar_pos.y -= m_pos.y;
 	return Collisions_manager::is_down_coll(this->down_collision_type(babar_pos));

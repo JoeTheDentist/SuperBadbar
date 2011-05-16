@@ -35,7 +35,7 @@
 #include "../sets/animated_set_manager.h"
 #include "../sprites/sprites_manager.h"
 #include "../events/stats.h"
-
+#include "../players/players_manager.h"
 
 Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
@@ -64,7 +64,8 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Analyser analyser;
 	analyser.open(LEVELS_R + level_name);
 
-    gBabar = new Babar(&analyser);
+    gPlayers = new Players_manager();
+    gPlayers->init_players_manager(&analyser);
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);
@@ -81,7 +82,7 @@ void Game_engine::update()
 {
 	update_pos();
 	update_speed();
-	gBabar->update_state();
+	gPlayers->update();
 	gStats->update();
 	m_sets->update();
 	m_monsters_manager->babar_monsters_collision();
@@ -96,7 +97,7 @@ void Game_engine::update()
 
 void Game_engine::update_pos()
 {
-	gBabar->update_pos();
+//	gBabar->update_pos();
 	gCollision->update_platforms_pos();
 	gProj->update_pos();
 	gProj->update_state();
@@ -105,7 +106,7 @@ void Game_engine::update_pos()
 
 void Game_engine::update_speed()
 {
-	gBabar->update_speed();
+//	gBabar->update_speed();
 	m_monsters_manager->monsters_update_speed();
 	gCollision->update_platforms_speed();
 	gProj->update_speed();
@@ -152,9 +153,9 @@ void Game_engine::update_babar_projectiles()
 {
 	for (std::list<Projectile *>::iterator it = gProj->proj_begin(MONSTERS);
 				it != gProj->proj_end(MONSTERS); it++) {
-            if ( Collisions_manager::check_collision(gBabar->damage_box(),(*it)->position()) && !(*it)->dead()) {
+            if ( Collisions_manager::check_collision(gPlayers->local_player()->damage_box(),(*it)->position()) && !(*it)->dead()) {
                 gStats->hit();
-				gBabar->damage(1);
+				gPlayers->local_player()->damage(1);
 				(*it)->kill();
 			}
 	}
@@ -163,11 +164,11 @@ void Game_engine::update_babar_projectiles()
 void Game_engine::update_babar_damage()
 {
     /* Si Babar sort de l'écran => on lui fait perdre des vie et on le remet à la bonne place */
-    if ( gBabar->position().y + gBabar->position().h >= (int)gStatic->static_data_height() ) {
+    if ( gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->static_data_height() ) {
         if ( m_spawn == SPAWN_TIME ) {
-            m_sets->add_set("splash/splash",gBabar->position().x, (int)gStatic->static_data_height()-100, false, true, true);
-			gBabar->set_last_pos();
-			gBabar->die();
+            m_sets->add_set("splash/splash",gPlayers->local_player()->position().x, (int)gStatic->static_data_height()-100, false, true, true);
+			gPlayers->local_player()->set_last_pos();
+			gPlayers->local_player()->die();
             m_spawn--;
         } else {
             if ( m_spawn == 0) {
@@ -187,7 +188,7 @@ void Game_engine::display_events(Camera *camera)
 void Game_engine::play_sounds()
 {
 	m_monsters_manager->play_sounds();
-	gSound->play_sound(gBabar);
+	gSound->play_sound(gPlayers->local_player());
 }
 
 void Game_engine::set_victory()
@@ -202,5 +203,5 @@ bool Game_engine::has_won()
 
 bool Game_engine::has_lost()
 {
-	return gBabar->lifes() <= 0;
+	return gPlayers->local_player()->lifes() <= 0;
 }

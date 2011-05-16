@@ -12,13 +12,16 @@ Players_manager::~Players_manager()
 {
     delete m_players;
     delete m_local_player;
+    delete gLocal_id;
 }
 
-void Players_manager::init_players_manager()
+void Players_manager::init_players_manager(Analyser * analyser)
 {
     /* création du joueur local */
     delete m_local_player;
-    m_local_player = new Player(*gLocal_id, true);
+    gLocal_id = new int;
+    *gLocal_id = 0;
+    m_local_player = new Player(*gLocal_id, analyser, true);
 }
 
 void Players_manager::update()

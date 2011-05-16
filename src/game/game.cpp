@@ -59,7 +59,7 @@ void Game::init_game(std::string level_name)
     gEvent = new Events_manager();
     gStats = new Stats();
 
-	gBabar = NULL;
+	gPlayers = NULL;
 	gGame_engine = new Game_engine();
     gStatic = new Static_data();
 	gStatic->init_static_data(level_name);
@@ -75,8 +75,8 @@ Game::~Game()
 	PRINT_CONSTR(1, "Destruction de la classe Game")
 	delete gGame_engine;
 	gGame_engine = NULL;
-    delete gBabar;
-    gBabar = NULL;
+    delete gPlayers;
+    gPlayers = NULL;
     delete gStats;
     gStats = NULL;
 	delete gCollision;

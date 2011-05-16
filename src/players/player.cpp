@@ -2,14 +2,14 @@
 #include "player.h"
 #include "../actors/babar.h"
 
-Player::Player(int id, bool local)
+Player::Player(int id, Analyser * analyser, bool local)
 {
     m_dmgs = new std::list<dmg_chan>();
 
     m_id = id;
 
     if ( local ) {
-        m_actor = NULL; /* ...l'init plus tard */
+        m_actor = new Babar(analyser);
     } else {
         /*m_actor = new Another_Babar();*/
     }

@@ -22,8 +22,7 @@
 #include "../sound/sound_engine.h"
 #include "../actors/projectiles_manager.h"
 #include "../util/globals.h"
-
-
+#include "../players/players_manager.h"
 
 Monsters_manager::Monsters_manager()
 {
@@ -118,12 +117,12 @@ void Monsters_manager::make_monsters_fire()
 
 void Monsters_manager::babar_monsters_collision()
 {
-	Rect babar_pos = gBabar->damage_box();
+	Rect babar_pos = gPlayers->local_player()->damage_box();
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); it++){
 		if (!(*it)->dead()) {
 			if (Collisions_manager::check_collision((*it)->damage_box(), babar_pos)) {
-				gBabar->damage(1);
+				gPlayers->local_player()->damage(1);
 			}
 		}
 	}

@@ -18,6 +18,7 @@
 #include "../util/repertories.h"
 #include "../actors/babar.h"
 #include "../events/triggerable.h"
+#include "../players/players_manager.h"
 
 Trigger::Trigger(int trigger_number, std::string level_name)
 {
@@ -56,7 +57,7 @@ Trigger::~Trigger()
 
 void Trigger::update()
 {
-	
+
 }
 
 bool Trigger::can_start() const
@@ -64,7 +65,7 @@ bool Trigger::can_start() const
 	if (m_triggered)
 		return false;
 	for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it) {
-		if (Collisions_manager::check_collision((*it), gBabar->position()))
+		if (Collisions_manager::check_collision((*it), gPlayers->local_player()->position()))
 			return true;
 	}
 	return false;
@@ -82,14 +83,14 @@ void Trigger::start()
 bool Trigger::can_be_destroyed() const
 {
 	return m_triggered;
-	
+
 }
 
 void Trigger::destroy()
 {
 }
 
-void Trigger::addPos(Rect pos) 
+void Trigger::addPos(Rect pos)
 {
 	m_zone.push_back(pos);
 }

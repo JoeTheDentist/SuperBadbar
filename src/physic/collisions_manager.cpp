@@ -17,6 +17,7 @@
 #include "../video/camera.h"
 #include "../physic/moving_platform.h"
 #include "../physic/falling_platform.h"
+#include "../players/players_manager.h"
 
 #include <iostream>
 #include <algorithm>
@@ -92,9 +93,9 @@ void Collisions_manager::addPlatform(Bindable_platform *platform, int wait)
 {
 	if (wait == 0)
 		m_moving_platforms.push_back(platform);
-	else 
+	else
 		m_waiting_platforms.push_back(std::pair<Bindable_platform *, int>(platform, wait));
-}	
+}
 
 bool Collisions_manager::check_collision(Rect A, Rect B)
 {
@@ -141,7 +142,7 @@ void Collisions_manager::update_babar_platforms()
 			it != m_moving_platforms.end(); it++) {
 		if((*it)->check_babar()) {
 			(*it)->bind();
-			gBabar->bind((*it));
+			gPlayers->local_player()->bind((*it));
 		}
 	}
 }
@@ -161,7 +162,7 @@ void Collisions_manager::update_dead_platforms()
 
 void Collisions_manager::update_waiting_list()
 {
-	std::list<std::pair<Bindable_platform *, int> >::iterator it; 
+	std::list<std::pair<Bindable_platform *, int> >::iterator it;
 	for (it = m_waiting_platforms.begin(); it != m_waiting_platforms.end(); ) {
 		(*it).second--;
 		if ((*it).second <= 0) {

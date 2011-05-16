@@ -22,6 +22,7 @@
 #include "../items/monster_basic_weapon.h"
 #include "babar.h"
 #include "../sprites/sprites_manager.h"
+#include "../players/players_manager.h"
 
 class Animated_set_manager;
 
@@ -88,7 +89,7 @@ void Monster::initFromMonsterFile(std::string file)
 
 void Monster::update_speed()
 {
-	if ( dist(m_pos, gBabar->position()) > SWITCH_DIST ) {
+	if ( dist(m_pos, gPlayers->local_player()->position()) > SWITCH_DIST ) {
 	    update_speed_simple();
 	} else {
 	    update_speed_ai();
