@@ -4,7 +4,7 @@
 #include "../control/keyboard.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include "../../lib/fmodapi375win/api/inc/fmod.h"
+#include <fmodex/fmod.h>
 
 #include "../util/globals.h"
 
@@ -17,8 +17,6 @@ bool Game_initializer::init_game()
 	freopen("CON", "w", stderr);
 	#endif
 	srand(time(NULL));
-	PRINT_TRACE(1, "Initialisation de FMOD")
-	FSOUND_Init(44100, 32, 0);
 	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
@@ -46,7 +44,5 @@ bool Game_initializer::close_game()
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de SDL")
 	SDL_Quit();
-	PRINT_TRACE(1, "Fermeture de FMOD")
-	FSOUND_Close();
 	return true;
 }
