@@ -2,7 +2,6 @@
 -AI, etat d'arret
 -Sang des monstres
 -Vies dans dashboard
--Sanglier class(déplacement)
 -Ecureil
 -Moutons ?
 -2 niveaux pour anims
