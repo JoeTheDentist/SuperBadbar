@@ -35,7 +35,7 @@ Shotgun::~Shotgun()
 	PRINT_CONSTR(2, "Destruction d'une Shotgun")
 }
 
-std::list<Projectile*> *Shotgun::fire(Rect pos, direction h)
+std::list<Projectile*> *Shotgun::fire(Rect pos, direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {
@@ -62,15 +62,15 @@ std::list<Projectile*> *Shotgun::fire(Rect pos, direction h)
 
 
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
+			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
+			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1);
+			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
 			proj_list->push_back(proj[i]);
 		}
 		m_munitions --;

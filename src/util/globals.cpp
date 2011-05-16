@@ -14,6 +14,9 @@ Graphic_engine * gGraphics = NULL;
 Game_engine * gGame_engine = NULL;
 Keyboard * gKeyboard = NULL;
 Stats * gStats = NULL;
+Players_manager * gPlayers = NULL;
+
+int * gLocal_id = NULL;
 
 
 double dist(Rect A, Rect B)

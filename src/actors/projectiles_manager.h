@@ -13,8 +13,8 @@
 #include <list>
 
 /* Canaux des groupes de dommage, on pourra utiliser la suite pour les différents joueurs */
-enum ouille_chan {
-    ALL, MONSTERS, PLAYER1, PLAYER2, PLAYER3, PLAYER4, LAST_OUILLE_CHAN
+enum dmg_chan {
+    ALL, MONSTERS, PLAYER1, PLAYER2, PLAYER3, PLAYER4, LAST_dmg_chan
 };
 
 class Projectile;
@@ -36,7 +36,7 @@ class Camera;
  */
 class Projectiles_manager {
 private:
-	std::list<Projectile*> m_proj[LAST_OUILLE_CHAN];
+	std::list<Projectile*> m_proj[LAST_dmg_chan];
 public:
 
 	/*!
@@ -74,26 +74,26 @@ public:
 	 *	@brief Ajoute un projectile à la liste des projectiles sur un channel
 	 *	@param proj un pointeur vers le projectile à ajouter
 	*/
-	void add_proj(Projectile *proj, ouille_chan chan);
+	void add_proj(Projectile *proj, dmg_chan chan);
 
 	/*!
 	 *	@brief Vide la liste passée en parametre dans la liste des projectiles sur un channel
 	 *	@param proj un pointeur vers la liste de projectiles à ajouter
 	*/
-	void add_proj(std::list<Projectile*> *proj, ouille_chan chan);
+	void add_proj(std::list<Projectile*> *proj, dmg_chan chan);
 
 	/*!
 	 *	@brief Accesseur
 	 *	@return Iterator pointant sur le début de la liste de projectiles amis
 	 *	@todo voir si on peut rendre cette methode constante
 	*/
-	std::list<Projectile *>::iterator proj_begin(ouille_chan chan);
+	std::list<Projectile *>::iterator proj_begin(dmg_chan chan);
 
 	/*!
 	 *	@brief Accesseur
 	 *	@return Iterator pointant sur la fin de la liste de projectiles amis
 	*/
-	std::list<Projectile *>::iterator proj_end(ouille_chan chan);
+	std::list<Projectile *>::iterator proj_end(dmg_chan chan);
 };
 
 

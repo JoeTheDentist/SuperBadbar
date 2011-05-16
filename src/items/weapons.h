@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include <list>
 #include "../util/globals.h"
+#include "../actors/projectiles_manager.h"
 
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
 
@@ -29,7 +30,7 @@
 #define RELOAD_ROCKET_LAUNCHER 5
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN, ROCKET_LAUNCHER, 
+    GUN, MACHINEGUN, SHOTGUN, ROCKET_LAUNCHER,
 	MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
@@ -72,7 +73,7 @@ public:
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	virtual std::list<Projectile*> * fire(Rect pos, direction h) = 0;
+	virtual std::list<Projectile*> * fire(Rect pos, direction h, dmg_chan type) = 0;
 
 	/**
 	 * 	@brief Accesseur

@@ -35,7 +35,7 @@ protected:
     unsigned int m_damage;      /* Nombre de pt des vies que le projectile va faire perdre */
 	bool m_dead;				/* Indique si le projectile est à supprimer */
 	int m_life_span;
-	ouille_chan m_chan;
+	dmg_chan m_chan;
 	bool m_invincible;
 
 public:
@@ -47,7 +47,7 @@ public:
 	/*!
 	 *	@brief Constructeur
 	*/
-    Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
+    Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type = ALL);
 
 	/*!
 	 * 	@brief Destructeur
@@ -73,7 +73,7 @@ public:
 	/*!
 	 * 	@brief Mutateur
 	*/
-	void set_chan(ouille_chan chan);
+	void set_chan(dmg_chan chan);
 
 	/*!
 	 * 	@brief Accesseur

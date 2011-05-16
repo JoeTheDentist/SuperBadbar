@@ -22,6 +22,7 @@ class Animated_set_manager;
 class Graphic_engine;
 class Keyboard;
 class Stats;
+class Players_manager;
 
 #include "../util/repertories.h"
 #include "../actors/actor.h"
@@ -51,13 +52,16 @@ class Stats;
 extern Sound_engine * gSound;
 extern Collisions_manager * gCollision;
 extern Static_data * gStatic;
-extern Projectiles_manager * gProj; /* liste si multi */
+extern Projectiles_manager * gProj;
 extern Events_manager * gEvent;
 extern Babar * gBabar; /* liste si multi */
 extern Graphic_engine * gGraphics;
 extern Game_engine * gGame_engine;
 extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
+extern Players_manager * gPlayers;
+
+extern int * gLocal_id;
 
 double dist(Rect A, Rect B);
 

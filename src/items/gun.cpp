@@ -31,10 +31,10 @@ Gun::~Gun()
 	PRINT_CONSTR(2, "Destruction d'un Gun")
 }
 
-std::list<Projectile*> *Gun::fire(Rect pos, direction h)
+std::list<Projectile*> *Gun::fire(Rect pos, direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
-	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1));
+	proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1, type));
 	gSound->play_sound(FIRE_SOUNDS_R + "gun.wav");
 	return proj_list;
 }

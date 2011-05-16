@@ -43,7 +43,7 @@ public:
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	std::list<Projectile*> *fire(Rect pos, direction h);
+	std::list<Projectile*> *fire(Rect pos, direction h, dmg_chan type);
 
 	/**
 	 * 	@brief Accesseur

@@ -25,7 +25,7 @@
 
 Projectile::Projectile() {}
 
-Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
+Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
 	PRINT_CONSTR(3, "Construction d'un projectile")
     m_pos = pos;
@@ -47,6 +47,8 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
 	m_phase = 0;
 
 	m_invincible = false;
+
+	m_chan = type;
 }
 
 void Projectile::update_pos(Collisions_manager *collisions_manager)
@@ -108,7 +110,7 @@ void Projectile::update_state()
     m_sprite->change_anim(NONE, m_dir);
 }
 
-void Projectile::set_chan(ouille_chan chan)
+void Projectile::set_chan(dmg_chan chan)
 {
     m_chan = chan;
 }

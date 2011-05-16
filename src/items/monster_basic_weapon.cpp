@@ -6,7 +6,7 @@
  * 	@date mars 2011
  *
  */
- 
+
 #include <iostream>
 #include <stdint.h>
 #include <stdlib.h>
@@ -33,11 +33,11 @@ Monster_basic_weapon::~Monster_basic_weapon()
 	PRINT_CONSTR(2, "Destruction d'un Monster_basic_weapon")
 }
 
-std::list<Projectile*> *Monster_basic_weapon::fire(Rect pos, direction h)
+std::list<Projectile*> *Monster_basic_weapon::fire(Rect pos, direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
-	if (rand() % m_fire_frequency == 0) { 
-		proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1));
+	if (rand() % m_fire_frequency == 0) {
+		proj_list->push_back(new Projectile(pos, h, (2*h-1)*PROJ_SPEED, 0,1, type) );
 		gSound->play_sound(FIRE_SOUNDS_R + "monster_basic_weapon.wav");
 	}
 	return proj_list;
@@ -51,5 +51,5 @@ weapon_type Monster_basic_weapon::type_of_weapon() const
 
 void Monster_basic_weapon::add_munitions()
 {
-	
+
 }

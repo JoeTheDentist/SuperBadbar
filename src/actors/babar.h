@@ -17,6 +17,7 @@
 #include "../video/anim_table.h"
 #include "../items/weapons_armory.h"
 #include "actor.h"
+#include "../actors/projectiles_manager.h"
 
 
 #define BABAR_SPEED 15
@@ -47,7 +48,7 @@ const int c_babar_lifes = 3;
  *	## 	Gestion de la position ##
  *	#############################
  *	Babar possede deux attributs de position: m_pos et m_rel_pos, selon qu'il soit
- *	sur une plateforme mobile. On utilisera tant que possible les accesseurs (position()) 
+ *	sur une plateforme mobile. On utilisera tant que possible les accesseurs (position())
  *	et mutateurs (move(int x, int y)) et le moins possible des acces directs au champs de position.
  *
  *	Quand Babar n'est pas sur une plateforme mobile, sa position est m_pos. Sinon, sa position vaut
@@ -58,11 +59,11 @@ const int c_babar_lifes = 3;
  *	## 	Gestion des vies  ##
  *	########################
  *	Babar possede des points de vies (HP). Quand il n'a plus de HP, il perd une vie (life).
- *	Quand il perd une vie, on attend un certain temps puis babar respawn sur le dernier static 
+ *	Quand il perd une vie, on attend un certain temps puis babar respawn sur le dernier static
  *	sur lequel il etait. Quand il n'a plus de vies, Game over!
  *	Il ne faut pas confondre HP (petites vies) et lifes (grandes vies)
  *	Babar peut recuperer des HP avec les coeurs
- *	
+ *
  *
  *	@warning Dans cette classe, m_pos ne represente pas toujours la position (cf m_rel_pos)
  *
@@ -163,7 +164,7 @@ class Babar: public Actor, public Sonorisable {
          * 	@brief Fait tirer Babar
          *	@return La liste de projectiles tirés
          */
-        std::list<Projectile*> *fire();
+        std::list<Projectile*> *fire(int num_player = 1);
 
         /**
          *  @brief si le joueur demande a marcher et qu'il n'y a rien d'autre
@@ -263,7 +264,7 @@ class Babar: public Actor, public Sonorisable {
          *	@param damages Le nombre de points de vies à faire perdre
          */
         void damage(int damages);
-		
+
         /**
          * 	@brief Mutateur: fait gagner des vies a Babar
          *	@param lifes Le nombre de vies à faire gagner
@@ -275,7 +276,7 @@ class Babar: public Actor, public Sonorisable {
          *	@param HP Le nombre de points de vies à faire gagner
          */
         void HPup(int HP);
-		
+
 		/**
 		 *	@brief Tue Babar (fait perdre une vie)
 		 */
@@ -336,7 +337,7 @@ class Babar: public Actor, public Sonorisable {
 		 *	@param h La nouvelle hauteur de babar
 		 */
 		virtual void set_h(int h) { m_pos.h = h; m_rel_pos.h = h;}
-		
+
 		/**!
 		 * 	@brief Mutateur
 		 *	@param h La nouvelle hauteur de babar

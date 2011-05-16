@@ -32,12 +32,12 @@ Machinegun::~Machinegun()
 	PRINT_CONSTR(2, "Destruction d'un Machinegun")
 }
 
-std::list<Projectile*> *Machinegun::fire(Rect pos, direction h)
+std::list<Projectile*> *Machinegun::fire(Rect pos, direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {
 		int dir_h = (2*h-1)*PROJ_SPEED;
-		proj_list->push_back(new Projectile(pos, h, dir_h, 0,1));
+		proj_list->push_back(new Projectile(pos, h, dir_h, 0,1, type));
 		m_munitions --;
 	}
 	gSound->play_sound(FIRE_SOUNDS_R + "gun.wav");

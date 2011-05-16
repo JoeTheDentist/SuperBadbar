@@ -336,7 +336,7 @@ bool Babar::can_fire()
 	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
 }
 
-std::list<Projectile*> *Babar::fire()
+std::list<Projectile*> *Babar::fire(int num_player)
 {
 	PRINT_TRACE(2, "Tir de Babar")
 	/* Calcul de la position de la source du tir */
@@ -345,7 +345,7 @@ std::list<Projectile*> *Babar::fire()
 	if ( m_dir == RIGHT ) {
 	    fire_pos.x += position().w;
 	}
-    return m_weapons_armory.get_current_weapon()->fire(fire_pos,m_dir);
+    return m_weapons_armory.get_current_weapon()->fire(fire_pos,m_dir, (dmg_chan)(num_player+1) );
 }
 
 bool Babar::can_walk() const
