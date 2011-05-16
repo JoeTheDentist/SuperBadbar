@@ -52,7 +52,6 @@ void MovingPlatformItem::setSon(MovingPlatformItem *son)
 MyItem *MovingPlatformItem::duplicate(QGraphicsScene *scene)
 {
 	if (isFather()) {
-		QPixmap image(m_item->pixmap());
 		MovingPlatformItem *item = new MovingPlatformItem(scene, m_file_name);
 		item->m_son->moveItem(m_son->x() - x(), m_son->y() - y()); // on maintient le decalage
 		item->setVisible(false); 

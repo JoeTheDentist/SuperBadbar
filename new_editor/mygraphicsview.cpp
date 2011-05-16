@@ -49,7 +49,6 @@ MyGraphicsView::MyGraphicsView(QGraphicsScene *scene, QWidget *parent, MainWindo
 	m_babar_item(NULL),
 	m_curr_item(NULL),
 	m_selected_item(NULL),
-	m_moved_item(NULL),
 	m_copied_item(NULL),
 	m_del_curs(NULL),
 	m_zoom(1),
@@ -76,7 +75,7 @@ void MyGraphicsView::newFile(QString backgroundName)
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
 	m_babar_item = new BabarItem(this->scene());
-	m_data->addItem(m_babar_item);
+	addToData(m_babar_item);
 	m_ctrl_pressed = false;
 	setStateNone();
 }
@@ -102,12 +101,11 @@ void MyGraphicsView::loadFile(QString fileName)
 		QString nameSet;
 		for (int i = 0; i < nbSets; i ++) {
 			nameSet = QString::fromStdString(analyser.read_string());
-			std::cout << nameSet.toStdString() << std::endl;
 			x = analyser.read_int();
 			y = analyser.read_int();
 			myitem = new SetItem(this->scene(), nameSet);
 			myitem->setPos(x, y);
-			m_data->addItem(myitem);
+			addToData(myitem);
 		}
 	}
 	
@@ -122,7 +120,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		zbuffer = analyser.read_int();
 		myitem = new StaticItem(this->scene(), nameStatic, zbuffer);
 		myitem->setPos(x, y);
-		m_data->addItem(myitem);
+		addToData(myitem);
 	}
 	if (analyser.find_string("#FallingPlatforms#")) {
 		int nbFPlatforms = analyser.read_int();
@@ -134,7 +132,7 @@ void MyGraphicsView::loadFile(QString fileName)
 			y = analyser.read_int();
 			myitem = new FallingPlatformItem(this->scene(), nameFPlatform);
 			myitem->setPos(x, y);
-			m_data->addItem(myitem);
+			addToData(myitem);
 		}
 	}
 	
@@ -142,7 +140,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	int nbPlatforms = analyser.read_int();
 	for (int i = 0; i < nbPlatforms; i++) {
 		MovingPlatformItem *temp = new MovingPlatformItem(this->scene(), QString::fromStdString(analyser.read_string()), analyser);
-		m_data->addItem(temp);
+		addToData(temp);
 	}
 	analyser.find_string("#Monsters#");
 	int nbMonsters = analyser.read_int();
@@ -154,7 +152,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		y = analyser.read_int();
 		myitem = new MonsterItem(this->scene(), nameMonster);
 		myitem->setPos(x, y);
-		m_data->addItem(myitem);
+		addToData(myitem);
 	}
 	analyser.find_string("#Events#");
 	int nbEvents = analyser.read_int();
@@ -170,7 +168,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		y = analyser.read_int();
 		myitem = new EventItem(this->scene(), nameEvent);
 		myitem->setPos(x, y);
-		m_data->addItem(myitem);
+		addToData(myitem);
 	}
 	
 	analyser.find_string("#Triggers#");
@@ -180,7 +178,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		int x = analyser.read_int();
 		int y = analyser.read_int();
 		myitem = new TriggerItem(this->scene(), m_file_name, ind, x, y);
-		m_data->addItem(myitem);
+		addToData(myitem);
 	}
 	m_ctrl_pressed = false;
 	analyser.close();
@@ -204,15 +202,15 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 		if (fileOpened() && (m_state != e_erasingItem)) {
 			if (m_state == e_addingItem) {
 				// finalisation de l'ajout d'un item
-				m_data->addItem(m_curr_item);
+				addToData(m_curr_item);
 				setStateNone();
 			} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 				// selection d'un item
-				m_moved_item = m_data->selectItem(posClicX(event), posClicY(event));
-				if (m_moved_item) {
-					setStateMovingItem(m_moved_item);
+				m_curr_item = m_data->selectItem(posClicX(event), posClicY(event));
+				if (m_curr_item) {
+					setStateMovingItem(m_curr_item);
 				}
-				selectItem(m_moved_item);
+				selectItem(m_curr_item);
 			}
 		}
 	} else if (event->button() == Qt::RightButton && fileOpened()) {
@@ -266,7 +264,7 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 		if (m_state == e_erasingItem) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
 		} else if (m_state == e_movingItem) {
-			m_moved_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
+			m_curr_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
 		} else if (m_state == e_addingItem) {
 			m_curr_item->setPos(posClicX(event), posClicY(event));
 		}
@@ -483,7 +481,7 @@ void MyGraphicsView::setStateMovingItem(MyItem *item)
 {
 	setStateNone();
 	m_state = e_movingItem;
-	m_moved_item = item;
+	m_curr_item = item;
 }
 
 void MyGraphicsView::setStateErasingItem()
@@ -501,7 +499,7 @@ void MyGraphicsView::setStateNone()
 	m_state = e_none;
 	m_curr_item = NULL;
 	m_del_curs = NULL;
-	m_moved_item = NULL;
+	m_curr_item = NULL;
 }
 
 
@@ -555,6 +553,11 @@ void MyGraphicsView::pastItem()
 		MyItem *item = m_copied_item->duplicate(this->scene());
 		item->setVisible(true);
 		item->moveItem(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
-		m_data->addItem(item);
+		addToData(item);
 	}
+}
+
+void MyGraphicsView::addToData(MyItem *item)
+{
+	m_data->addItem(item);
 }

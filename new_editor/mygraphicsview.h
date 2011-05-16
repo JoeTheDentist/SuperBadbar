@@ -208,6 +208,7 @@ class MyGraphicsView : public QGraphicsView {
 	
 	bool fileOpened() const {return m_state != e_fileClosed;}
 
+	void addToData(MyItem *item);
 	
 	void selectItem(MyItem *item);
 	void deSelectItem();
@@ -230,7 +231,6 @@ class MyGraphicsView : public QGraphicsView {
 	BabarItem *m_babar_item; // l'item correspondant à la position actuelle de babar
 	MyItem *m_curr_item; 
 	MyItem *m_selected_item; // l'item selectionne
-	MyItem *m_moved_item; // l'item selectionne (pour un deplacement)
 	MyItem *m_copied_item;
 	QGraphicsPixmapItem *m_del_curs; // l'image au bout du curseur quand on veut supprimer un item
 	qreal m_zoom; // le niveau de zoom actuel

@@ -22,9 +22,7 @@ ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y):
 	m_parent(parent)
 {
 
-	QPixmap image;
-	image.load(ZoneItem::picPathFromEditor(""));
-	setItem(scene->addPixmap(image));
+//~ 	setItem(scene->addRect(x, y, x + 10, y + 10));
 
 	m_script += "#nature# monster	\n";
 	m_script += "#text# \"fubob\"	\n";

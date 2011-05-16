@@ -6,8 +6,8 @@ level1.png
 3400
 
 #Babar#
-1716
-3208
+199
+3169
 1
 
 #Sets#
@@ -22,15 +22,17 @@ soil 7 3289 1
 0
 !
 #Events#
-0
+1
+event rocket_launcher 158 3017
 !
 #MovingPlatforms#
-0
+1
+block8 303 3041 681 3047
 !
 #FallingPlatforms#
 0
 !
 #Triggers#
 1
-level2triggers/trig0.trg
+0 548 3195
 !

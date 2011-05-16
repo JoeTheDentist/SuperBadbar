@@ -21,9 +21,11 @@ class MyItem {
 	QGraphicsPixmapItem *m_item;
 	miState m_state;
 	QString m_file_name;
+	
+	
 	public:
 	MyItem(QGraphicsPixmapItem *item, QString);
-	virtual ~MyItem();
+	~MyItem();
 	static void setView(MyGraphicsView *view);
 	static MyGraphicsView *getView();
 	virtual MyItem *duplicate(QGraphicsScene *scene) = 0;
@@ -44,8 +46,8 @@ class MyItem {
 	virtual void removeFromData(Data *data);
 	virtual void setStateBeingAdded() {m_state = e_beingAdded;}
 	virtual void setStateBeingMoved() {m_state = e_beingMoved;}
-	virtual void setStateSelected();
-	virtual void setStateNothing(); 
+	virtual void setStateSelected(); 
+	virtual void setStateNothing();
 	bool isBeingAdded() const {return m_state == e_beingAdded ;}
 	bool isBeingMoved() const {return m_state == e_beingMoved ;}
 	bool isSelected() const {return m_state == e_selected ;}

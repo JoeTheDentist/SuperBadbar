@@ -11,6 +11,7 @@
 #define _SOUND_ENGINE_
 
 //~ #include "../../lib/fmodapi375win/api/inc/fmod.h"
+#include <fmodex/fmod.h>
 
 #include <string>
 #include <map>
@@ -33,6 +34,7 @@ private:
 //~ 	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
+FMOD_SYSTEM *system;
 
 
 public:
