@@ -109,10 +109,10 @@ void Keyboard::update_events()
 
 void Keyboard::update_plop() 
 {	
-	for (uint32_t i = 0; i <= k_fire; i++) {
+//~ 	for (uint32_t i = 0; i <= k_fire; i++) {
 //~ 		m_key_down_bis[(enum key)i] = m_key_down_bis2[(enum key)i];
-		m_key_down[(enum key)i] = m_key_down_bis[(enum key)i];
-	}
+//~ 		m_key_down[(enum key)i] = m_key_down_bis[(enum key)i];
+//~ 	}
 }
 
 bool Keyboard::key_down(enum key k) const
@@ -238,7 +238,7 @@ void Keyboard::disable_key_repeat()
 
 void Keyboard::set_key(enum key k, int val) 
 {
-	m_key_down_bis[k] = val;
+	m_key_down[k] = val;
 }
 
 void Keyboard::set_key(int k, int val) 
@@ -248,7 +248,7 @@ void Keyboard::set_key(int k, int val)
 
 void Keyboard::incr_key_down(enum key k)
 {
-	m_key_down_bis[k]++;
+	m_key_down[k]++;
 }
 void Keyboard::incr_key_down(int k)
 {

@@ -49,8 +49,8 @@ class Keyboard {
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
-	int m_key_down_bis[k_fire + 1];		// tableau des touches enfoncees
-	int m_key_down_bis2[k_fire + 1];		// tableau des touches enfoncees
+//~ 	int m_key_down_bis[k_fire + 1];		// tableau des touches enfoncees
+//~ 	int m_key_down_bis2[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vra
 	std::ofstream *m_record_file;
