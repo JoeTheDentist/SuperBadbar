@@ -77,10 +77,13 @@ void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigi
 		newItem->addToData(m_view->getData());
 	}
 	m_class_name = "event";
-	m_script += "#zone#				\n";
-	m_script += "1					\n";
-	m_script += "0 0 100 5000		\n";
-	m_script += "\n";
+	
+	analyser.find_string("#zone#");
+	int nbZones = analyser.read_int();
+	for (int i = 0; i < nbZones; i++) {
+		ZoneItem *newItem = new ZoneItem(m_scene, this, analyser);
+		newItem->addToData(m_view->getData());
+	}
 	analyser.close();
 	setPos(x, y);	
 }
@@ -135,8 +138,14 @@ void TriggerItem::saveItem(QTextStream &out)
 	file.open( QIODevice::WriteOnly | QIODevice::Text );
 	QTextStream outtrig(&file);
 	//ecriture dans le .trg
-	outtrig << m_script;
-	outtrig << "#triggerables#" << endl;
+	outtrig << "#zone#" << endl;
+	outtrig << m_zones.size() << endl;
+	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
+			it != m_zones.end(); it++) {
+		(*it)->saveItem(outtrig);
+	}
+	outtrig << endl;
+		outtrig << "#triggerables#" << endl;
 	outtrig << m_triggerables.size() << endl;
 	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
 			it != m_triggerables.end(); it++) {
@@ -219,6 +228,10 @@ void TriggerItem::removeFromScene(QGraphicsScene *scene)
 			it != m_triggerables.end(); it++) {
 		(*it)->removeFromScene(scene);
 	}
+	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
+			it != m_zones.end(); it++) {
+		(*it)->removeFromScene(scene);
+	}
 	MyItem::removeFromScene(scene);
 }
 
@@ -231,6 +244,15 @@ bool TriggerItem::removeItem(MyItem *item)
 			m_triggerables.erase(it);
 			return true;
 		}
-	}	
+	}
+	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
+			it != m_zones.end(); it++) {
+		if((*it) == item) {
+			std::cout << "erasing zone" << std::endl;
+			m_zones.erase(it);
+			return true;
+		}
+	}
+	
 	return false;
 }

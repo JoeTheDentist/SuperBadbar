@@ -47,11 +47,8 @@ void MyItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 	QGraphicsItem *item = this->getItem();
 	if (m_state == e_beingAdded) {
 		setPos(xabs, yabs);
-		std::cout << "beingAdded" << std::endl;
 	} else {
 		item->setPos(item->x() + xrel, item->y() + yrel);
-		std::cout << "beingMoved" << std::endl;
-
 	}
 }
 

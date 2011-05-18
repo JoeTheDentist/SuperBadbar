@@ -104,7 +104,6 @@ void TriggerableItem::edit()
 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 }
 
-
 void TriggerableItem::slotSetScriptText()
 {
 	m_script = m_textEdit->toPlainText();

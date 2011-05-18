@@ -35,8 +35,8 @@ ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyse
 	y = analyser.read_int();
 	m_width = analyser.read_int();
 	m_height = analyser.read_int();
-	setPos(x, y);
 	setItem(scene->addRect(x, y, m_width, m_height));
+	setPos(x, y);
 }
 
 ZoneItem::~ZoneItem()
@@ -54,7 +54,7 @@ MyItem *ZoneItem::duplicate(QGraphicsScene *scene)
 
 void ZoneItem::saveItem(QTextStream &out)
 {
-	out << x() << " " << y() << " " << m_width << " " << m_height << endl;
+	out << x() << " " << y() << " " << x() + m_width << " " << y() + m_height << endl;
 }
 
 void ZoneItem::addToData(Data *data, bool push_front)
@@ -77,7 +77,6 @@ void ZoneItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 {
 	if (m_state == e_beingResized) {
 		changeCoordinates(x(), y(), xabs, yabs);
-		std::cout << "beingResized" << std::endl;
 	} else {
 		MyItem::moveItem(xrel, yrel, xabs, yabs);
 		changeCoordinates(x(), y(), m_width + x(), m_height + y());
@@ -100,7 +99,6 @@ void ZoneItem::changeCoordinates(int x, int y, int x2, int y2)
 {
 	m_width = x2- this->x();
 	m_height = y2 - this->y();
-	std::cout << x << " " << y << " " << m_width << " " << m_height << std::endl;
 	removeFromScene(m_view->scene());
 	setItem(m_view->scene()->addRect(0, 0, m_width, m_height));
 	setPos(x, y);
