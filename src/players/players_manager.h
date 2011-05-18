@@ -2,6 +2,7 @@
 #define PLAYERS_MANAGER_H_INCLUDED
 
 #include "player.h"
+#include "../video/surface.h"
 
 class Analyser;
 class Camera;
@@ -52,6 +53,14 @@ class Players_manager {
          * @brief Nombre de joueurs
          */
         int nb_players();
+		
+		/**
+		 *	@brief Cherche le joueur le plus proche d'une position (aggro!)
+		 *	@param pos La position 
+		 *	@return Le babar de distance minimale avec la position
+		 *	@todo Pour l'instant renvoie local_player
+		 */
+		Babar *closer_babar(Rect pos);
 };
 
 #endif // PLAYERS_MANAGER_H_INCLUDED

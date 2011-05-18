@@ -27,12 +27,12 @@ event rocket_launcher 158 3017
 !
 #MovingPlatforms#
 1
-block8 303 3041 681 3047
+block8 396 3040 681 3047
 !
 #FallingPlatforms#
 0
 !
 #Triggers#
 1
-0 548 3195
+4 574 3101
 !

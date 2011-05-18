@@ -40,3 +40,17 @@ int Players_manager::nb_players()
 {
     return m_players->size();
 }
+
+Babar *Players_manager::closer_babar(Rect pos)
+{
+	Babar * best_babar = local_player();
+//~ 	Babar *best_babar = (*(m_players->begin()))->get_actor();
+//~ 	int best_dist = norm_2(pos, best_babar->position());
+//~ 	for (std::list<Player*>::iterator it = m_players->begin(); it != m_players->end(); ++it) {
+//~ 		if (best_dist > norm_2(pos, (*it)->get_actor()->position())) {
+//~ 			best_babar = (*it)->get_actor();
+//~ 			best_dist = norm_2(pos, best_babar->position());
+//~ 		}
+//~ 	}
+	return best_babar;
+}

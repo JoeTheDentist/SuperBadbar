@@ -20,9 +20,20 @@ class ZoneItem: public MyItem {
 	/*!
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
+	*	@param parent L'item parent 
+	*	@param x l'abscisse de depart
+	*	@param y l'ordonnee de depart
+	*	@param w epaisseur de la zone
+	*	@param h hauteur de la zone
 	*/
-	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0);
+	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0, int w = 0, int h = 0);
 
+	/*!
+	*	@brief Constructeur
+	*	@param scene La scene de l'editeur
+	*	@param parent L'item parent 
+	*	@param analyser L'analyser avec le curseur devant les 4 coordoonnees du rectangle
+	*/
 	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser);
 
 	/*!
@@ -73,7 +84,11 @@ class ZoneItem: public MyItem {
 	*/
 	virtual void moveItem(int xrel, int yrel, int xabs = 0, int yabs = 0);
 	
+	/*!
+	*	@brief Methode appelee apres la fin d'ajout a la souris d'un item
+	*/
 	virtual void signalEndOfAdding();
+	
 	
 	virtual void changeCoordinates(int x, int y, int x2, int y2) ;
 	

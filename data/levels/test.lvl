@@ -48,7 +48,6 @@ arbre_feuilles_racines 3530 4200 0
 block6 4345 3194 0
 block4_3 2631 2597 0
 block4_1 2629 1319 0
-arbre_feuilles 1013 3455 0
 grass1 753 4194 0
 block4_2 2631 2018 0
 liana1 1666 -24 1
@@ -63,16 +62,15 @@ block12 551 1319 0
 block6 4319 711 0
 liana2 4277 -28 1
 block7 3796 3216 0
+arbre_feuilles 1013 3455 0
 !
 #Monsters#
-17
-following_walking_monster gailapin 833 4182
-following_walking_monster gailapin 1339 4179
+15
 following_walking_monster maphyar 2835 3861
 following_walking_monster maphyar 4207 3917
 following_walking_monster gailapin 432 2777
-following_walking_monster sanglichon 4151 3753
-following_walking_monster sanglichon 3236 967
+charging_monster sanglichon 4151 3753
+charging_monster sanglichon 3236 967
 following_flying_monster fubob 217 67
 following_flying_monster fubob 1935 100
 following_flying_monster fubob 4347 181
@@ -145,5 +143,6 @@ block8 1928 2253
 block8 1517 2255
 !
 #Triggers#
-0
+1
+0 848 4091
 !

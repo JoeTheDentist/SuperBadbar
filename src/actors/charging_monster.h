@@ -24,9 +24,7 @@ class AI;
  *
  */
 class Charging_monster : public Walking_monster {
-private:
-    AI * m_ai;
-
+	const int m_speed_max;
 public:
 	
 	/*!
@@ -47,6 +45,11 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Charging_monster();
+
+	/**
+	 * 	@brief Mise à jour de la vitesse du monstre (non ai)
+	 */
+	void virtual update_speed_simple();
 
 	/**
 	 * 	@brief Met à jour la vitesse du monstre

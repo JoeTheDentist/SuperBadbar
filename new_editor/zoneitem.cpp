@@ -16,12 +16,12 @@
 
 
 
-ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y):
+ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y, int w, int h):
 	MyItem(NULL, ""),
 	m_parent(parent)
 {
-	m_width = 10;
-	m_height = 10;
+	m_width = w;
+	m_height = h;
 	setItem(scene->addRect(0, 0, m_width, m_height));
 	setPos(x, y);
 }                

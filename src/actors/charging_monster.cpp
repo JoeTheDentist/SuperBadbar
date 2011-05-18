@@ -11,61 +11,54 @@
 
 #include "charging_monster.h"
 #include "../util/debug.h"
+#include "../util/globals.h"
 #include "../util/analyser.h"
 #include "../items/gun.h"
 #include "../items/monster_basic_weapon.h"
-#include "babar.h"
+#include "../actors/babar.h"
+#include "../players/players_manager.h"
 #include "../AI/AI.h"
 
 
 Charging_monster::Charging_monster(std::string name, int posx, int posy):
-	Walking_monster(name, posx, posy)
+	Walking_monster(name, posx, posy),
+	m_speed_max(BABAR_SPEED * 2)
 {
-    m_ai = new AI(&m_pos);
+	m_state = WALKING;
+	Rect babarpos = gPlayers->closer_babar(position())->position();
+	if (babarpos.x > position().x) {
+		m_dir = RIGHT;
+		m_speed.x = m_speed_max; 
+	} else {
+		m_dir = LEFT;
+		m_speed.x = -m_speed_max;
+	}
 }
 
 Charging_monster::Charging_monster(Analyser *analyserLevel):
-	Walking_monster(analyserLevel)
+	Walking_monster(analyserLevel),
+	m_speed_max(BABAR_SPEED * 2)
 {
-    m_ai = new AI(&m_pos);
+	m_state = WALKING;
 }
 
 Charging_monster::~Charging_monster()
 {
-    delete m_ai;
+}
+
+void Charging_monster::update_speed_simple()
+{
+	m_speed.y += GRAVITE;	
 }
 
 void Charging_monster::update_speed_ai()
 {
-    direction d = m_ai->dir();
-    m_state = WALKING;
-
-    switch ( d ) {
-        case LEFT:
-            m_dir = LEFT;
-            m_speed.x = -m_speed_def;
-            break;
-        case RIGHT:
-            m_dir = RIGHT;
-            m_speed.x = m_speed_def;
-            break;
-        case UP:
-            /* pour ne pas avoir de vitesse trop rapides */
-            if ( m_speed.y >= 0 ) {
-                m_speed.y -= 70;
-            }
-            break;
-        case DOWN:
-            m_pos.y += 10;
-            break;
-        case NOPE:
-            /* où le monstre ne doit rien faire => state = WAIT */
-            m_state = WAIT;
-            break;
-    }
+	if (m_dir == LEFT) {
+		m_speed.x = -m_speed_max;
+	} else {
+		m_speed.x = m_speed_max;
+	}
 	m_speed.y += GRAVITE;
-
-
 }
 
 
