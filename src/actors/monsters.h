@@ -88,7 +88,7 @@ public:
 
 	/**
 	 * 	@brief Fait perdre des vies au monstre
-	 *	@param damage Le nombre de viesà faire perdre
+	 *	@param damage Le nombre de vies a faire perdre
 	 */
 	void damage(unsigned int damage);
 

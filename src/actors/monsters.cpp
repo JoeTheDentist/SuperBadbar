@@ -52,13 +52,10 @@ Monster::Monster(Analyser *analyserLevel):
 	initFromMonsterFile(m_nom);
 }
 
-
 Monster::~Monster()
 {
 	PRINT_CONSTR(3, "destruction d'un monstre")
 }
-
-
 
 void Monster::initFromMonsterFile(std::string file)
 {
