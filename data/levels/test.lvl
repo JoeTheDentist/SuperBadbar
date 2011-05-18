@@ -55,7 +55,6 @@ liana2 545 -41 1
 liana1 3510 -19 1
 block9 1636 -59 0
 liana2 3009 -24 1
-arbre_bord -1 508 0
 block10 345 1452 0
 block11 752 1641 0
 block12 551 1319 0
@@ -63,6 +62,7 @@ block6 4319 711 0
 liana2 4277 -28 1
 block7 3796 3216 0
 arbre_feuilles 1013 3455 0
+arbre_bord -1 508 0
 !
 #Monsters#
 15
@@ -143,6 +143,8 @@ block8 1928 2253
 block8 1517 2255
 !
 #Triggers#
-1
-0 848 4091
+3
+0 847 4084
+1 1280 3578
+2 3376 4194
 !

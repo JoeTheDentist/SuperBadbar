@@ -1,11 +1,27 @@
-#zone#				
-1					
-3200 4100 3400 5000		
+#zone#
+2
+1126 3569 1581 3722
+1126 3569 1581 3722
 
-#triggerables#		
-1					
+#triggerables#
+4
+#x# 1794
+#y# 3655
 #nature# monster	
-#x# 3000			
-#y# 4100			
-#text# "sanglichon"	
-#endtriggerable#	
+#text# "fubob"	
+#endtriggerable# 
+#x# 1780
+#y# 3523
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 879
+#y# 3507
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 862
+#y# 3685
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
