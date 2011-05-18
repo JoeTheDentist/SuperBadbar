@@ -1,5 +1,5 @@
 #include "movingplatformitem.h"
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <iostream>
 #include "paths.h"
 #include "mygraphicsview.h"
@@ -124,7 +124,7 @@ MyItem *MovingPlatformItem::selectItem(int x, int y)
 		if (m_son->selectItem(x, y))
 			return m_son->selectItem(x, y);
 	}
-	QGraphicsPixmapItem *item = this->getItem();
+	QGraphicsItem *item = this->getItem();
 	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
 		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
 		return this;	

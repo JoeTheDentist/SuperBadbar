@@ -3,42 +3,42 @@
 
 #include <QTextStream>
 #include <QString>
- #include <QGraphicsPixmapItem>
+ #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <iostream>
 
 class Data;
-class QGraphicsPixmapItem;
+class QGraphicsItem;
 class MyGraphicsView;
 
 enum miState {
-	e_beingAdded, e_beingMoved, e_selected, e_nothing
+	e_beingAdded, e_beingMoved, e_selected, e_beingResized, e_nothing
 };
 
 class MyItem {
 	protected:
 	static MyGraphicsView *m_view;
-	QGraphicsPixmapItem *m_item;
+	QGraphicsItem *m_item;
 	miState m_state;
 	QString m_file_name;
 	
 	
 	public:
-	MyItem(QGraphicsPixmapItem *item, QString);
+	MyItem(QGraphicsItem *item, QString);
 	~MyItem();
 	static void setView(MyGraphicsView *view);
 	static MyGraphicsView *getView();
 	virtual MyItem *duplicate(QGraphicsScene *scene) = 0;
-	QGraphicsPixmapItem *getItem();
-	int x() {return m_item->x();}
-	int y() {return m_item->y();}
+	QGraphicsItem *getItem();
+	virtual int x() {return m_item->x();}
+	virtual int y() {return m_item->y();}
 	virtual void saveItem(QTextStream &out) = 0;
 	virtual void addToData(Data *data, bool push_front = true) = 0;
 	virtual void signalEndOfAdding();
 	virtual void edit();
 	virtual void mouseMoved(int x, int y);
 	virtual void rightClic(int x, int y) { x = 0; y = 0; std::cout << "right clic" << std::endl; }
-	virtual void moveItem(int x, int y);
+	virtual void moveItem(int xrel, int yrel, int xabs = 0, int yabs = 0);
 	virtual void setPos(int x, int y);
 	virtual MyItem* selectItem(int x, int y);
 	virtual void removeFromScene(QGraphicsScene *scene);
@@ -53,7 +53,7 @@ class MyItem {
 	bool isSelected() const {return m_state == e_selected ;}
 	bool isNothing() const {return m_state == e_nothing ;}
 	protected:
-	void setItem(QGraphicsPixmapItem *item) { m_item = item; }
+	void setItem(QGraphicsItem *item) { m_item = item; }
 	
 };
 

@@ -1,4 +1,4 @@
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <iostream>
 #include "triggerableitem.h"
 #include "triggeritem.h"

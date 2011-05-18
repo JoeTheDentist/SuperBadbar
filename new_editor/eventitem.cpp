@@ -1,4 +1,4 @@
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <iostream>
 #include "eventitem.h"
 #include "paths.h"

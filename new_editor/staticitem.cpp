@@ -1,5 +1,5 @@
 #include "staticitem.h"
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <iostream>
 #include "paths.h"
 #include <QGraphicsScene>

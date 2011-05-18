@@ -202,8 +202,11 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 		if (fileOpened() && (m_state != e_erasingItem)) {
 			if (m_state == e_addingItem) {
 				// finalisation de l'ajout d'un item
-				addToData(m_curr_item);
+				MyItem *curr = m_curr_item;
 				setStateNone();
+				addToData(curr);
+				curr->signalEndOfAdding();
+			
 			} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 				// selection d'un item
 				m_curr_item = m_data->selectItem(posClicX(event), posClicY(event));
@@ -263,11 +266,9 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event)
 	if (fileOpened()) {
 		if (m_state == e_erasingItem) {
 			m_del_curs->setPos(posClicX(event), posClicY(event));
-		} else if (m_state == e_movingItem) {
-			m_curr_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec);
-		} else if (m_state == e_addingItem) {
-			m_curr_item->setPos(posClicX(event), posClicY(event));
-		}
+		} else if (m_state == e_movingItem || m_state == e_addingItem) {
+			m_curr_item->moveItem(posClicX(event) - m_xprec, posClicY(event) - m_yprec, posClicX(event), posClicY(event));
+		} 
 		m_xprec = posClicX(event);
 		m_yprec = posClicY(event);
 		if (m_statusBar) {

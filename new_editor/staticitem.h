@@ -13,7 +13,7 @@ class StaticItem: public MyItem {
 	*	@param item L'objet à encapsuler
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-//~ 	StaticItem(QGraphicsPixmapItem *item, QString fileName, int buffer = 0);
+//~ 	StaticItem(QGraphicsItem *item, QString fileName, int buffer = 0);
 	StaticItem(QGraphicsScene *scene, QString fileName, int buffer = 0);
 	
 	/*!

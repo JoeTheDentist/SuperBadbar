@@ -10,13 +10,12 @@
 class QTextEdit;
 class TriggerItem;
 
-class ZoneItem:  public QObject, public MyItem { // on herite de QObject pour les slots
-	Q_OBJECT	
+class ZoneItem: public MyItem {
 	
 	private:
-	QString m_script;
-	QTextEdit *m_textEdit;	// en parametre pour etre utilise par un slot
 	TriggerItem *m_parent;
+	int m_width;
+	int m_height;
 	public:
 	/*!
 	*	@brief Constructeur
@@ -64,10 +63,25 @@ class ZoneItem:  public QObject, public MyItem { // on herite de QObject pour le
 	*/
 	virtual void edit();
 
-
+	/*!
+	*	@brief Deplacement de l'item 
+	*	@param xrel Deplacement horizontal relatif
+	*	@param yrel Deplacement vertical relatif
+	*	@param xabs Deplacement horizontal absolu
+	*	@param yabs Deplacement vertical absolu
 	
-	public slots:
-	void slotSetScriptText();
+	*/
+	virtual void moveItem(int xrel, int yrel, int xabs = 0, int yabs = 0);
+	
+	virtual void signalEndOfAdding();
+	
+	virtual void changeCoordinates(int x, int y, int x2, int y2) ;
+	
+	virtual int x() {return m_item->x();}
+	virtual int y() {return m_item->y();}
+
+
+
 
 };
 

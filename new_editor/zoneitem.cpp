@@ -18,46 +18,25 @@
 
 ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y):
 	MyItem(NULL, ""),
-	m_textEdit(NULL),
 	m_parent(parent)
 {
-
-//~ 	setItem(scene->addRect(x, y, x + 10, y + 10));
-
-	m_script += "#nature# monster	\n";
-	m_script += "#text# \"fubob\"	\n";
+	m_width = 10;
+	m_height = 10;
+	setItem(scene->addRect(0, 0, m_width, m_height));
 	setPos(x, y);
 }                
 
 ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser):
 	MyItem(NULL, ""),
-	m_textEdit(NULL),
 	m_parent(parent)
 {
-	QPixmap image;
-	image.load(ZoneItem::picPathFromEditor(""));
-	setItem(scene->addPixmap(image));
-	
-	std::string keywork;
-	std::string nature, text;
-	int x = 0, y = 0;
-	while (true) {
-		keywork = analyser.read_between_char('#');
-		if (keywork == "nature")
-			m_script += QString::fromStdString("#nature# " + analyser.read_string() + "\n");
-		else if (keywork == "x")
-			x = analyser.read_int();
-		else if (keywork == "y") 
-			y = analyser.read_int();
-		else if (keywork == "text") 
-			m_script += QString::fromStdString("#text# " + analyser.read_string() + "\n");
-		else if (keywork == "endtriggerable")
-			break;
-		else {
-			break;
-		}
-	}	
+	int x, y;
+	x = analyser.read_int();
+	y = analyser.read_int();
+	m_width = analyser.read_int();
+	m_height = analyser.read_int();
 	setPos(x, y);
+	setItem(scene->addRect(x, y, m_width, m_height));
 }
 
 ZoneItem::~ZoneItem()
@@ -75,15 +54,12 @@ MyItem *ZoneItem::duplicate(QGraphicsScene *scene)
 
 void ZoneItem::saveItem(QTextStream &out)
 {
-	out << "#x# " << x() << endl;
-	out << "#y# " << y() << endl;
-	out << m_script;
-	out << "#endtriggerable# " << endl;
+	out << x() << " " << y() << " " << m_width << " " << m_height << endl;
 }
 
 void ZoneItem::addToData(Data *data, bool push_front)
 {
-	std::cout << "add to data triggerable " << std::endl;
+	std::cout << "add to data position " << std::endl;
 	m_parent->addZoneItem(this);
 }
 
@@ -95,17 +71,38 @@ QString ZoneItem::picPathFromEditor(QString fileName)
 
 void ZoneItem::edit()
 {
-	m_textEdit = new QTextEdit();
-	m_textEdit->show();    
-	m_textEdit->setPlainText(m_script);
-	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 }
 
-
-void ZoneItem::slotSetScriptText()
+void ZoneItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 {
-	m_script = m_textEdit->toPlainText();
+	if (m_state == e_beingResized) {
+		changeCoordinates(x(), y(), xabs, yabs);
+		std::cout << "beingResized" << std::endl;
+	} else {
+		MyItem::moveItem(xrel, yrel, xabs, yabs);
+		changeCoordinates(x(), y(), m_width + x(), m_height + y());
+	}
 }
 
+void ZoneItem::signalEndOfAdding()
+{
+	std::cout << "signal" << std::endl;
+	if (m_state == e_beingAdded) {
+		m_view->setStateAddingItem(this);
+		m_state = e_beingResized;
+	} else {
+		MyItem::signalEndOfAdding();
+	}
 
+}
 
+void ZoneItem::changeCoordinates(int x, int y, int x2, int y2) 
+{
+	m_width = x2- this->x();
+	m_height = y2 - this->y();
+	std::cout << x << " " << y << " " << m_width << " " << m_height << std::endl;
+	removeFromScene(m_view->scene());
+	setItem(m_view->scene()->addRect(0, 0, m_width, m_height));
+	setPos(x, y);
+	
+}

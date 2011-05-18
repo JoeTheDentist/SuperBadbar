@@ -1,6 +1,6 @@
 #include "myitem.h"
 #include "data.h"
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPixmap>
@@ -10,9 +10,9 @@
 MyGraphicsView *MyItem::m_view = NULL;
 
 
-MyItem::MyItem(QGraphicsPixmapItem *item, QString fileName):
+MyItem::MyItem(QGraphicsItem *item, QString fileName):
 	m_item(item),
-	m_state(e_nothing),
+	m_state(e_beingAdded),
 	m_file_name(fileName)
 {
 	
@@ -23,7 +23,7 @@ MyItem::~MyItem()
 	// TODO liberer??
 }
 
-QGraphicsPixmapItem *MyItem::getItem()
+QGraphicsItem *MyItem::getItem()
 {
 	return m_item;
 }
@@ -42,21 +42,28 @@ void MyItem::mouseMoved(int x, int y)
 	}
 }
 
-void MyItem::moveItem(int x, int y)
+void MyItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 {
-	QGraphicsPixmapItem *item = this->getItem();
-	item->setPos(item->x() + x, item->y() + y);
+	QGraphicsItem *item = this->getItem();
+	if (m_state == e_beingAdded) {
+		setPos(xabs, yabs);
+		std::cout << "beingAdded" << std::endl;
+	} else {
+		item->setPos(item->x() + xrel, item->y() + yrel);
+		std::cout << "beingMoved" << std::endl;
+
+	}
 }
 
 void MyItem::setPos(int x, int y)
 {
-	QGraphicsPixmapItem *item = this->getItem();
+	QGraphicsItem *item = this->getItem();
 	item->setPos(x, y);	
 }
 
 MyItem *MyItem::selectItem(int x, int y)
 {
-	QGraphicsPixmapItem *item = this->getItem();
+	QGraphicsItem *item = this->getItem();
 	if (item->x() <= x && x <= item->x() + item->boundingRect().width()
 		&& item->y() <= y && y <= item->y() + item->boundingRect().height()) {	
 		setStateSelected();
