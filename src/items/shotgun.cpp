@@ -10,7 +10,6 @@
 #include <iostream>
 #include <stdint.h>
 #include <stdlib.h>
-#include <stdlib.h>
 
 
 #include "shotgun.h"
@@ -18,6 +17,7 @@
 #include "../actors/projectiles.h"
 #include "../util/globals.h"
 #include "../util/repertories.h"
+#include "../util/random_generator.h"
 
 
 
@@ -62,15 +62,18 @@ std::list<Projectile*> *Shotgun::fire(Rect pos, direction h, dmg_chan type)
 
 
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
+			proj[i] = new Projectile(pos, h, (2*h-1)*x[i] + Random_generator::irand(-1, 1), 
+						Random_generator::irand(-1, 1),1, type);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
+			proj[i] = new Projectile(pos2, h, (2*h-1)*x[i] + Random_generator::irand(-1, 1),
+						Random_generator::irand(-1, 1),1, type);
 			proj_list->push_back(proj[i]);
 		}
 		for(int i = 0;i<5;i++) {
-			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + rand()%3-1, rand()%3-1,1, type);
+			proj[i] = new Projectile(pos3, h, (2*h-1)*x[i] + Random_generator::irand(-1, 1), 
+						Random_generator::irand(-1, 1),1, type);
 			proj_list->push_back(proj[i]);
 		}
 		m_munitions --;

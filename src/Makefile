@@ -1,9 +1,8 @@
-  #~ gprof ./babar | ./gprof2dot.py | dot -Tpng -o output.png
 
 export OBJ_DIR=obj/
 export CC = g++
-export CFLAGS=-g -Wall #$(LIB_INC) 
-LDFLAGS= -g -pg -lfreetype -lSDL_image -lSDL_ttf #-lfmodex-4.34.03 # $(LIB_DYN)
+export CFLAGS= -g -Wall #$(LIB_INC) 
+LDFLAGS= -g -lfreetype -lSDL_image -lSDL_ttf #-lfmodex-4.34.03 # $(LIB_DYN)
 LIBCOMP= ../lib/fmodex/lib/libfmodex-4.34.03.so  #../lib/gcc/libfmod.so #../lib/gcc/libSDL_ttf.so
 
 DIR = actors control events game items menus players physic sound sprites util video AI sets
