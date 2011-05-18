@@ -17,12 +17,18 @@ void Random_generator::init()
 	srand(time(NULL));
 }
 
+int Random_generator::irand(int min, int max)
+{
+	return (rand() % (max + min + 1)) + min;
+}
+
 float Random_generator::frand(float min, float max)
 {
 	return ((float)rand() / (float)RAND_MAX) * (max - min) + min;
 }
 
-int Random_generator::irand(int min, int max)
+double Random_generator::drand(double min, double max)
 {
-	return (rand() % (max + min + 1)) + min;
+	return ((double)rand() / (double)RAND_MAX) * (max - min) + min;
 }
+
