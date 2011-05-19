@@ -221,7 +221,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 			// annulation d'un ajout
 			this->scene()->removeItem(m_curr_item->getItem());
 			delete m_curr_item->getItem();
-			delete m_curr_item;
+			delete m_curr_item; // ligne a debugger
 			setStateNone();
 		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 			// clic droit sur un objet

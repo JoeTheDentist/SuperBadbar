@@ -33,9 +33,9 @@ ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyse
 	int x, y;
 	x = analyser.read_int();
 	y = analyser.read_int();
-	m_width = analyser.read_int();
-	m_height = analyser.read_int();
-	setItem(scene->addRect(x, y, m_width, m_height));
+	m_width = analyser.read_int() - x;
+	m_height = analyser.read_int() - y;
+	setItem(scene->addRect(0, 0, m_width, m_height));
 	setPos(x, y);
 }
 

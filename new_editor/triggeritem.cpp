@@ -90,7 +90,7 @@ void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigi
 
 TriggerItem::~TriggerItem()
 {
-	
+	std::cerr << "ça va crasher" << std::endl;
 }
 
 MyItem* TriggerItem::selectItem(int x, int y)
