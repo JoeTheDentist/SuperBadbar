@@ -10,9 +10,9 @@
 MyGraphicsView *MyItem::m_view = NULL;
 
 
-MyItem::MyItem(QGraphicsItem *item, QString fileName):
+MyItem::MyItem(QGraphicsItem *item, QString fileName, miState state):
 	m_item(item),
-	m_state(e_beingAdded),
+	m_state(state),
 	m_file_name(fileName)
 {
 	

@@ -37,6 +37,7 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 	m_textEdit(NULL),
 	m_parent(parent)
 {
+	// chargement du qgraphicsitem
 	QPixmap image;
 	image.load(TriggerableItem::picPathFromEditor(""));
 	setItem(scene->addPixmap(image));
@@ -63,6 +64,19 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 	setPos(x, y);
 }
 
+TriggerableItem::TriggerableItem(TriggerableItem &original):
+	QObject(),
+	MyItem(NULL, "", e_nothing),
+	m_script(original.m_script),
+	m_textEdit(NULL),
+	m_parent(original.m_parent)	
+{
+	// chargement du qgraphicsitem
+	QPixmap image;
+	image.load(TriggerableItem::picPathFromEditor(""));
+	setItem(m_view->scene()->addPixmap(image));	
+}
+
 TriggerableItem::~TriggerableItem()
 {
 	
@@ -70,10 +84,10 @@ TriggerableItem::~TriggerableItem()
 
 MyItem *TriggerableItem::duplicate(QGraphicsScene *scene)
 {
-//~ 	MyItem *item = new TriggerableItem(scene, QString("../data/level/" + m_level_name + ".lvl"));
-//~ 	item->getItem()->setVisible(false);
-//~ 	return item;
-	return NULL;
+
+	MyItem *newitem = new TriggerableItem(*this);
+	newitem->getItem()->setVisible(false);
+	return newitem;
 }
 
 void TriggerableItem::saveItem(QTextStream &out)

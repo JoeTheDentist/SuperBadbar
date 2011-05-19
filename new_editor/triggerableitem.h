@@ -21,10 +21,25 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	/*!
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
+	*	@param parent L'item parent
+	*	@param x L'abscisse de depart du triggerable
+	*	@param y L'ordonnee de depart du triggerable
 	*/
 	TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0);
 
+	/*!
+	*	@brief Constructeur
+	*	@param scene La scene de l'editeur
+	*	@param parent L'item parent
+	*	@param analyser L'analyser pret a lire les donnees du triggerable
+	*/	
 	TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser);
+
+	/*!
+	*	@brief Constructeur de copie
+	*	@param original L'objet a copier
+	*/
+	TriggerableItem(TriggerableItem &original);
 
 	/*!
 	*	@brief Destructeur
@@ -32,7 +47,7 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	~TriggerableItem();
 	
 	/*!
-	*	@brief Cree une instance identique a l'instance actuelle
+	*	@brief Cree une instance identique a l'instance actuelle mais dont l'item est invisible
 	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
 	*/

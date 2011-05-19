@@ -24,7 +24,7 @@ class MyItem {
 	
 	
 	public:
-	MyItem(QGraphicsItem *item, QString);
+	MyItem(QGraphicsItem *item, QString fileName, miState state = e_beingAdded);
 	virtual ~MyItem();
 	static void setView(MyGraphicsView *view);
 	static MyGraphicsView *getView();
