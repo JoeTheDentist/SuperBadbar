@@ -13,9 +13,12 @@
 #include <stdint.h>
 
 #include "keyboard.h"
+#include "../util/analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
 #include "../util/analyser.h"
+
+void display_config();
 
 Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
 {
@@ -34,6 +37,8 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_key_config[SDLK_SPACE] = k_action;
 	m_key_config[SDLK_a] = k_prev_weapon;
 	m_key_config[SDLK_z] = k_next_weapon;
+	display_config();
+	load_config("defaultkey.cfg");
 	m_record_on = record_on;
 	m_replay_on = replay_on;
 	if (m_replay_on) {
@@ -59,6 +64,37 @@ Keyboard::~Keyboard()
 		delete m_record_file;
 	if (m_analyser)
 		delete m_analyser;
+}
+
+void Keyboard::load_config(std::string config_name)
+{
+	Analyser analyser;
+	analyser.open(CONFIG_R + config_name);
+	PRINT_DEBUG(1, "1");
+	analyser.find_string("#k_up#");
+	m_key_config[analyser.read_int()] = k_up;
+	PRINT_DEBUG(1, "1");
+	analyser.find_string("#k_down#");
+	m_key_config[analyser.read_int()] = k_down;
+	analyser.find_string("#k_left#");
+	m_key_config[analyser.read_int()] = k_left;
+	analyser.find_string("#k_right#");
+	m_key_config[analyser.read_int()] = k_right;
+	analyser.find_string("#k_jump#");
+	m_key_config[analyser.read_int()] = k_jump;
+	PRINT_DEBUG(1, "1");
+	analyser.find_string("#k_fire#");
+	m_key_config[analyser.read_int()] = k_fire;
+	analyser.find_string("#k_escape#");
+	m_key_config[analyser.read_int()] = k_escape;
+	analyser.find_string("#k_prev_weapon#");
+	m_key_config[analyser.read_int()] = k_prev_weapon;
+	analyser.find_string("#k_next_weapon#");
+	m_key_config[analyser.read_int()] = k_next_weapon;
+	analyser.find_string("#k_action#");
+	m_key_config[analyser.read_int()] = k_action;
+	PRINT_DEBUG(1, "1");
+	analyser.close();	
 }
 
 void Keyboard::update_events()
@@ -253,4 +289,18 @@ void Keyboard::incr_key_down(enum key k)
 void Keyboard::incr_key_down(int k)
 {
 	incr_key_down((enum key)k);
+}
+
+void display_config()
+{
+	std::cout << "#k_up# " << SDLK_i << std::endl;
+	std::cout << "#k_down# " << SDLK_k << std::endl;
+	std::cout << "#k_left# " << SDLK_j << std::endl;
+	std::cout << "#k_right# " << SDLK_l << std::endl;
+	std::cout << "#k_jump# " << SDLK_q << std::endl;
+	std::cout << "#k_fire# " << SDLK_d << std::endl;
+	std::cout << "#k_escape# " << SDLK_ESCAPE << std::endl;
+	std::cout << "#k_action# " << SDLK_SPACE << std::endl;
+	std::cout << "#k_prev_weapon# " << SDLK_a << std::endl;
+	std::cout << "#k_next_weapon# " << SDLK_z << std::endl;	
 }

@@ -37,6 +37,7 @@
 	#define PIC_MAINMENU_R			PIC_R + "mainmenu/"
 	#define PIC_TRANSITIONS_R		PIC_R + "transitions/"
 	#define PIC_DEBUG_R				PIC_R + "debug/"
+#define CONFIG_R RACINE_R + "data/config/"
 #define LEVELS_R RACINE_R + "data/levels/"
 #define EVENTS_R RACINE_R + "data/events/"
 #define TALKS_R RACINE_R + "data/talks/texts/"

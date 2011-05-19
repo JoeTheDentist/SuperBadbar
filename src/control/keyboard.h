@@ -69,6 +69,12 @@ public:
 	~Keyboard();
 
 	/*!
+	* 	@brief Charge La configuration des touches depuis un fichier
+	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration	
+	*/
+	void load_config(std::string config_name);
+
+	/*!
 	* 	@brief Met à jour le tableau des touches enfoncees
 	*/
 	void update_events();
