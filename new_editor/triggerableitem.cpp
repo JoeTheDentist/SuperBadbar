@@ -72,7 +72,7 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 
 TriggerableItem::TriggerableItem(TriggerableItem &original):
 	QObject(),
-	MyItem(NULL, "", e_nothing),
+	MyItem(NULL, "", e_beingAdded),
 	m_script(original.m_script),
 	m_textEdit(NULL),
 	m_parent(original.m_parent)	

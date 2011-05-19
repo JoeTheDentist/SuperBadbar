@@ -26,7 +26,7 @@ class ZoneItem: public MyItem {
 	*	@param w epaisseur de la zone
 	*	@param h hauteur de la zone
 	*/
-	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0, int w = 0, int h = 0);
+	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x = 0, int y = 0, int w = 10, int h = 10);
 
 	/*!
 	*	@brief Constructeur
@@ -35,6 +35,12 @@ class ZoneItem: public MyItem {
 	*	@param analyser L'analyser avec le curseur devant les 4 coordoonnees du rectangle
 	*/
 	ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyser);
+	
+	/*!
+	*	@brief Constructeur de copie
+	*	@param original L'objet a copier
+	*/	
+	ZoneItem(ZoneItem &original);
 
 	/*!
 	*	@brief Destructeur
@@ -92,8 +98,14 @@ class ZoneItem: public MyItem {
 	
 	virtual void changeCoordinates(int x, int y, int x2, int y2) ;
 	
-	virtual int x() {return m_item->x();}
-	virtual int y() {return m_item->y();}
+	/*!
+	*	@brief Creation d'un rectangle (et ajout a la scene)
+	*	@param x1 abscisse du premier coin
+	*	@param y1 ordonnee du premier coin
+	*	@param w largeur
+	*	@param h hauteur
+	*/	
+	QGraphicsItem *addRect(int x1, int y1, int w, int h);
 
 
 
