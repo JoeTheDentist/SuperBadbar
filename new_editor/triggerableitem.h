@@ -53,7 +53,6 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*/
 	virtual MyItem *duplicate(QGraphicsScene *scene);
 	
-	
 	/*!
 	*	@brief Sauvegarde l'objet dans out
 	*	@param out Le flux dans lequel on doit sauvegarder
@@ -79,9 +78,10 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*/
 	virtual void edit();
 
-
-	
 	public slots:
+	/*!
+	*	@brief Met a jour le champ m_script en fonction des entrees de l'utilisateur dans m_textEdit
+	*/
 	void slotSetScriptText();
 
 };

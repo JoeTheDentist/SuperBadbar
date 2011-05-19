@@ -553,8 +553,9 @@ void MyGraphicsView::pastItem()
 	if (m_copied_item && (m_copied_item != m_babar_item)) {
 		MyItem *item = m_copied_item->duplicate(this->scene());
 		item->setVisible(true);
-		item->moveItem(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
-		addToData(item);
+		setStateAddingItem(item);
+//~ 		item->moveItem(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
+//~ 		addToData(item);
 	}
 }
 

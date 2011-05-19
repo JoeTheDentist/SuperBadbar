@@ -22,13 +22,16 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, int
 	m_textEdit(NULL),
 	m_parent(parent)
 {
-
+	// chargement du qgraphicsitem
 	QPixmap image;
 	image.load(TriggerableItem::picPathFromEditor(""));
 	setItem(scene->addPixmap(image));
 
+	// valeur par defaut du m_script
 	m_script += "#nature# monster	\n";
 	m_script += "#text# \"fubob\"	\n";
+	
+	// maj de la position
 	setPos(x, y);
 }                
 
@@ -42,6 +45,7 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 	image.load(TriggerableItem::picPathFromEditor(""));
 	setItem(scene->addPixmap(image));
 	
+	// chargement du m_script
 	std::string keywork;
 	std::string nature, text;
 	int x = 0, y = 0;
@@ -61,6 +65,8 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 			break;
 		}
 	}	
+	
+	// maj de la position
 	setPos(x, y);
 }
 
