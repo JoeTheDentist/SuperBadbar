@@ -32,6 +32,7 @@ class Players_manager;
 #include "../video/graphic_engine.h"
 #include "../game/game_engine.h"
 #include "../sets/animated_set_manager.h"
+#include "../players/players_manager.h"
 
 #define BOX_SIZE 5
 

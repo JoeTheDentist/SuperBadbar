@@ -48,6 +48,8 @@ double AI::eval(direction d) {
         case DOWN :
             weight += eval_down();
             break;
+		default:
+			break;
     }
 
     return weight;

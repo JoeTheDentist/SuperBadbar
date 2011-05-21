@@ -143,6 +143,8 @@ public:
 	*	@return La surface SDL de l'ecran
 	*/
 	SDL_Surface *sdl_screen() { return m_screen; }
+	
+	void set_colors_normal();
 
 	#ifdef DEBUG_COLL
 	void display_green_coll(Rect pos);

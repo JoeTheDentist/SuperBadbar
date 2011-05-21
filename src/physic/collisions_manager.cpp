@@ -17,6 +17,7 @@
 #include "../video/camera.h"
 #include "../physic/moving_platform.h"
 #include "../physic/falling_platform.h"
+#include "../physic/chained_platform.h"
 #include "../players/players_manager.h"
 
 #include <iostream>
@@ -87,6 +88,7 @@ void Collisions_manager::init_moving_plateforms(Analyser &analyser)
 			addPlatform(new Falling_platform(analyser, this));
 		}
 	}
+//~ 	addPlatform(new Chained_platform(analyser));
 }
 
 void Collisions_manager::addPlatform(Bindable_platform *platform, int wait)

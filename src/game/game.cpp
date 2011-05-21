@@ -156,6 +156,7 @@ result_game Game::game_loop()
 		m_time = SDL_GetTicks();
 		if (m_time - m_previous_time > TIME_LOOP) {
 			m_previous_time = m_time;
+			//** DEBUT DE LA BOUCLE DE JEU **//
 			update_keyboard();
 			if (gKeyboard->key_down(k_escape)) {
 				Pause_menu *pause = new Pause_menu(end); // end va etre modifie
@@ -174,6 +175,7 @@ result_game Game::game_loop()
 			} else if (gGame_engine->has_lost()) {
 				return defeat;
 			}
+			//** FIN DE LA BOUCLE DE JEU **//
 			m_time = SDL_GetTicks();
 		} else  {
 		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));

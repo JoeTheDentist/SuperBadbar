@@ -29,6 +29,10 @@ enum result_game {
 	victory, defeat, leave
 };
 
+enum game_state {
+	gs_playing, gs_pause
+};
+
 /**
  * 	@class Game
  * 	@brief Classe gérant l'exécution d'un niveau complet
