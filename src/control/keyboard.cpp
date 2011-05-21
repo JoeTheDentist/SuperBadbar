@@ -291,6 +291,27 @@ void Keyboard::incr_key_down(int k)
 	incr_key_down((enum key)k);
 }
 
+
+void Keyboard::reset_menu_keys() 
+{
+	while (is_next_menu_key()) {
+		m_menu_input.pop();
+	}
+}
+
+bool Keyboard::is_next_menu_key() const
+{
+	return m_menu_input.empty();
+}
+
+menu_key Keyboard::pop_menu_key()
+{
+	menu_key res = m_menu_input.front();
+	m_menu_input.pop();
+	return res;
+}
+
+// Fonction pour aider au debug, n'est pas utile au vrai programme
 void display_config()
 {
 	std::cout << "#k_up# " << SDLK_i << std::endl;

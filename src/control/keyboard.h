@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <queue>
 
 enum key {
 	k_none = 0, k_exit, k_escape, k_up, k_down, k_right, k_left, k_next_weapon, k_prev_weapon, k_action, k_jump, k_fire //k_fire doit etre le dernier
@@ -52,8 +52,9 @@ private:
 //~ 	int m_key_down_bis[k_fire + 1];		// tableau des touches enfoncees
 //~ 	int m_key_down_bis2[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
-	Analyser *m_analyser;			// analyser si m_replay_on vaut vra
+	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
 	std::ofstream *m_record_file;
+	std::queue<menu_key> m_menu_input; 
 public:
 	/*!
 	* 	@brief Constructeur
@@ -123,16 +124,43 @@ public:
 	*/	
 	menu_key poll_menu_key();
 	
-	
+	/*!
+	*	@brief Met le jeu en pause jusqu'a l'enfoncement de la touche k
+	*	@param k La touche attendue
+	*/
 	void wait_key(enum key k);
 	
+	/*!
+	*	@brief Autorise la repetition des touches (typiquement pour le menu)
+	*/
 	void enable_key_repeat();
 
+	/*!
+	*	@brief Interdit la repetition des touches (typiquement pour le jeu normal)
+	*/
 	void disable_key_repeat();
 	
+	// utilisee pour tester le lag des touches
+	// toutes les occurences peuvent etre enlevees a tout moment
 	void update_plop();
 
-
+	
+	/*!
+	*	@brief Vide la liste des touches menu recemment enfoncees
+	*/
+	void reset_menu_keys();
+	
+	/*!
+	*	@brief Teste s'il reste des touches menu enfoncees non traitees
+	*	@return Vrai s'il reste au moins une touche non traitee
+	*/
+	bool is_next_menu_key() const;
+	
+	/*!
+	*	@brief Supprime la derniere touche menu enfoncee de la liste
+	*	@return La derniere touche menu enfoncee 
+	*/
+	menu_key pop_menu_key();
 	
 private:
 	// auxilliaire de wait_menu_key et poll_menu_key
