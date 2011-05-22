@@ -1,9 +1,10 @@
 #ifndef PLAYER_H_INCLUDED
 #define PLAYER_H_INCLUDED
 
-#include "../events/stats.h"
-
+#include "../actors/projectiles_manager.h"
 class Analyser;
+class Stats;
+class Babar;
 
 /**
  *  @class Player

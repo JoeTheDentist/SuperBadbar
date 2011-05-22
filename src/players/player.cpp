@@ -1,6 +1,7 @@
 
 #include "player.h"
 #include "../actors/babar.h"
+#include "../events/stats.h"
 
 Player::Player(int id, Analyser * analyser, bool local)
 {

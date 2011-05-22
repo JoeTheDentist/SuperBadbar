@@ -30,10 +30,6 @@ Chained_platform::Chained_platform(Analyser &analyserLevel):
 	int endx = analyserLevel.read_int();
 	int endy = analyserLevel.read_int();
 	init_bindable_platform(beginx, beginy, file_name);
-	m_begin.x = std::min(beginx, endx);
-	m_begin.y = std::min(beginy, endy);
-	m_end.x = std::max(beginx, endx);
-	m_end.y = std::max(beginy, endy);
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
 
@@ -53,11 +49,11 @@ Chained_platform::~Chained_platform()
 
 void Chained_platform::update_speed()
 {
-	if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
-		m_speed.x *= -1;
-	}
-	if (m_pos.y < m_begin.y || m_pos.y > m_end.y ) {
-		m_speed.y *= -1;
-	}
+//~ 	if (m_pos.x < m_begin.x || m_pos.x > m_end.x ) {
+//~ 		m_speed.x *= -1;
+//~ 	}
+//~ 	if (m_pos.y < m_begin.y || m_pos.y > m_end.y ) {
+//~ 		m_speed.y *= -1;
+//~ 	}
 }
 
