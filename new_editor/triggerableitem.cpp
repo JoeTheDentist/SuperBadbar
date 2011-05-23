@@ -58,7 +58,7 @@ TriggerableItem::TriggerableItem(QGraphicsScene *scene, TriggerItem *parent, Ana
 		else if (keywork == "y") 
 			y = analyser.read_int();
 		else if (keywork == "text") 
-			m_script += QString::fromStdString("#text# " + analyser.read_string() + "\n");
+			m_script += QString::fromStdString("#text# \"" + analyser.read_between_char('"') + "\""+ "\n");
 		else if (keywork == "endtriggerable")
 			break;
 		else {

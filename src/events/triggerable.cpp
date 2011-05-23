@@ -18,6 +18,7 @@
 #include "../actors/babar.h"
 #include "../actors/monsters_manager.h"
 #include "../video/talks.h"
+#include "../video/graphic_engine.h"
 
 
 Triggerable::Triggerable(Analyser &analyser)
@@ -51,8 +52,11 @@ void Triggerable::start()
 {
 	PRINT_DEBUG(1,"START TRIGGERABLE");
 	if (m_nature == "monster") {
-		PRINT_DEBUG(1, "A FAIRE: APPARITION D'UN MONSTRE %s en %d %d", m_text.c_str(), m_x, m_y);
 		process_monster();
+	} else if (m_nature == "dialog") {
+		process_dialog();
+	} else if (m_nature == "alert") {
+		process_alert();
 	} else {
 		PRINT_DEBUG(1, "Erreur: trigger non reconnu");
 	}
@@ -61,4 +65,14 @@ void Triggerable::start()
 void Triggerable::process_monster()
 {
 	gGame_engine->get_monsters_manager()->load_monster(m_text, m_x, m_y);	
+}
+
+void Triggerable::process_dialog()
+{
+	gGraphics->get_talks()->display_text(m_text);	
+}
+
+void Triggerable::process_alert()
+{
+	gGraphics->alert(m_text);
 }

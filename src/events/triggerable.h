@@ -67,6 +67,29 @@ protected:
 	*/
 	void process_monster();
 
+
+	/*!
+	* @brief Lancement d'un dialogue
+	*
+	* Le champ nature vaut "dialog"
+	* Les champs de positions n'ont aucun sens
+	* Le champ text indique le dialogue a ecrire
+	*
+	*/
+	void process_dialog();
+
+	/*!
+	* @brief Lancement d'une alerte (le monster kill)
+	*
+	* Le champ nature vaut "alert"
+	* Les champs de positions n'ont aucun sens
+	* Le champ text indique l'alerte a ecrire
+	*
+	*/
+	void process_alert();
+
+
+
 };
 
 

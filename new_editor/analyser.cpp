@@ -133,6 +133,7 @@ std::string Analyser::read_between_char(char delimitor)
 		res += current_char;
 		m_file->get(current_char);
 	}
+	std::cout << res << std::endl;
 	return res;
 }
 

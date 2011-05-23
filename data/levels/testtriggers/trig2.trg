@@ -7,6 +7,6 @@
 1
 #x# 2862
 #y# 4189
-#nature# monster	
-#text# "sanglichon"	
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
