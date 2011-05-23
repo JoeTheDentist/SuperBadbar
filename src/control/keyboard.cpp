@@ -99,46 +99,29 @@ void Keyboard::load_config(std::string config_name)
 
 void Keyboard::update_events()
 {
-	update_plop();
-	if (!m_replay_on) {
-		if (m_record_on)
-			*m_record_file << std::endl;
-		for (int i = k_none; i < k_fire + 1 ; i++)
-			if (key_down((enum key)i))
-				incr_key_down(i);
-		SDL_Event event;
-		while(SDL_PollEvent(&event)) {
-			switch (event.type) {
-			case SDL_QUIT :
-				set_key(k_exit, 1);
-				if (m_record_on)
-					*m_record_file << k_exit << " " << key_down(k_exit) << " ";
-				break;
-			case SDL_KEYDOWN:
-				set_key(m_key_config[event.key.keysym.sym],  1);
-				if (m_record_on)
-					*m_record_file << m_key_config[event.key.keysym.sym] <<
-						" " << key_down(m_key_config[event.key.keysym.sym]) << " ";
-				break;
-			case SDL_KEYUP:
-				set_key(m_key_config[event.key.keysym.sym], 0);
-				if (m_record_on)
-					 *m_record_file <<  m_key_config[event.key.keysym.sym] <<
-						" " << key_down(m_key_config[event.key.keysym.sym]) << " ";
-				break;
-			default:
-				break;
+	for (int i = k_none; i < k_fire + 1 ; i++)
+		if (key_down((enum key)i))
+			incr_key_down(i);
+	SDL_Event event;
+	menu_key mk;
+	while(SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_QUIT :
+			set_key(k_exit, 1);
+			m_menu_input.push(mk_exit);
+			break;
+		case SDL_KEYDOWN:
+			set_key(m_key_config[event.key.keysym.sym],  1);
+			mk = treat_menu_key(event);
+			if (mk != mk_none) {
+				m_menu_input.push(mk);
 			}
-		}
-		if (m_record_on)
-			*m_record_file << "666 666";
-	} else {
-		int x = m_analyser->read_int();
-		int y = m_analyser->read_int();
-		while (x != 666 && y != 666) {
-			set_key(x, y);
-			x = m_analyser->read_int();
-			y = m_analyser->read_int();
+			break;
+		case SDL_KEYUP:
+			set_key(m_key_config[event.key.keysym.sym], 0);
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -294,6 +277,7 @@ void Keyboard::incr_key_down(int k)
 
 void Keyboard::reset_menu_keys() 
 {
+	PRINT_DEBUG(1, "Reset de menu keys")
 	while (is_next_menu_key()) {
 		m_menu_input.pop();
 	}
@@ -301,7 +285,7 @@ void Keyboard::reset_menu_keys()
 
 bool Keyboard::is_next_menu_key() const
 {
-	return m_menu_input.empty();
+	return !m_menu_input.empty();
 }
 
 menu_key Keyboard::pop_menu_key()

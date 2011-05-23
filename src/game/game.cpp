@@ -34,7 +34,8 @@
 
 
 
-Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name)
+Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):
+	m_pause(NULL)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
     char str[3];
@@ -68,6 +69,8 @@ void Game::init_game(std::string level_name)
 	gGraphics->init_graphic_engine();
 	m_time = SDL_GetTicks();
 	m_previous_time = SDL_GetTicks();
+	m_pause = NULL;
+	set_state_playing();
 }
 
 Game::~Game()
@@ -138,9 +141,15 @@ void Game::update_graphic()
 
 	/* affichage du tableau de board */
 	gGraphics->draw_dashboard(camera);
+	
+	if (m_pause) {
+		m_pause->update_graphics();
+	}
 
 	/* mise à jour */
 	camera->flip_camera();
+	
+
 }
 
 void Game::play_victory()
@@ -158,15 +167,25 @@ result_game Game::game_loop()
 			m_previous_time = m_time;
 			//** DEBUT DE LA BOUCLE DE JEU **//
 			update_keyboard();
-			if (gKeyboard->key_down(k_escape)) {
-				Pause_menu *pause = new Pause_menu(end); // end va etre modifie
-				delete pause;
+			if (m_state == gs_playing) {
+				if (gKeyboard->key_down(k_exit)) {
+					end = true;
+					break;
+				}
+				update_game();
+				if (gKeyboard->key_down(k_escape)) {
+					set_state_pause();
+				}
+			} else if (m_state == gs_pause) {
+				m_pause->update();
+				if (m_pause->end_game()) {
+					end = true;
+					break;
+				}
+				if (m_pause->end_menu()) {
+					set_state_playing();
+				}
 			}
-			if (gKeyboard->key_down(k_exit)) {
-				end = true;
-				break;
-			}
-			update_game();
 			update_graphic();
 			play_sounds();
 			if (gGame_engine->has_won()) {
@@ -184,3 +203,18 @@ result_game Game::game_loop()
 	return leave;
 }
 
+	
+void Game::set_state_playing()
+{
+	m_state = gs_playing;
+	if (m_pause) {
+		delete m_pause;
+		m_pause = NULL;
+	}
+}
+	
+void Game::set_state_pause()
+{
+	m_state = gs_pause;
+	m_pause = new Pause_menu();
+}

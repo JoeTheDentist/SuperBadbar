@@ -67,7 +67,7 @@ class List_menu_actions {
 	*	@param camera La camera chargee de de l'affichage
 	*	@param pos La position du menu
 	*/
-	void display(Camera *camera, Rect pos); // NE PAS METTRE DE REFERENCE (effets de bord)
+	void display(Camera *camera, Rect pos) const; // NE PAS METTRE DE REFERENCE (effets de bord)
 	
 	/*!
 	*	@brief Accesseur
@@ -81,13 +81,13 @@ class List_menu_actions {
 	*	@brief Accesseur
 	*	@return La largeur de la Surface_text de la plus large action
 	*/
-	int width();
+	int width() const;
 	
 	/*!
 	*	@brief Accesseur
 	*	@return La somme des hautes des Surface_text des actions
 	*/
-	int height();
+	int height() const;
 	
 	
 }; // end class

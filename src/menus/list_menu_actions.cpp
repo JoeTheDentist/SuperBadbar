@@ -51,10 +51,10 @@ void List_menu_actions::incr_value(int value)
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 }
 
-void List_menu_actions::display(Camera *camera, Rect pos)
+void List_menu_actions::display(Camera *camera, Rect pos) const
 {
 	Surface *surf;
-	for(std::list<Menu_action*>::iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
 		surf = (*it)->get_surface(it == m_iterator);
 		camera->display_picture(surf, &pos, true);
 		pos.y += surf->h();
@@ -79,19 +79,19 @@ int List_menu_actions::get_selected_action_value()
 	return (*m_iterator)->get_value();
 }
 
-int List_menu_actions::width()
+int List_menu_actions::width() const
 {
 	int res = 0;
-	for(std::list<Menu_action*>::iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
 		res = std::max(res, (*it)->get_surface()->w());
 	}
 	return res;
 }
 
-int List_menu_actions::height()
+int List_menu_actions::height() const
 {
 	int res = 0;
-	for(std::list<Menu_action*>::iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
 		res += (*it)->get_surface()->h();
 	}
 	return res;

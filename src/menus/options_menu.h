@@ -16,9 +16,10 @@ class Options_menu: public Menu {
 	Options_menu(Menu *parent = NULL);
 	~Options_menu();
 	virtual void aux_loop();
+	virtual void update();
 	
 	protected:
-	virtual bool treat_choice(int choice);
+	virtual void treat_choice(int choice);
 };
 
 

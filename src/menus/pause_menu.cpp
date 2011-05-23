@@ -10,14 +10,12 @@
 #include "../menus/options_menu.h"
 #include "../video/surface_text.h"
 
-Pause_menu::Pause_menu(bool &leave) :
-	Menu(),
-	m_leave(leave)
+Pause_menu::Pause_menu() :
+	Menu()
 {
 	m_menu_actions.add_action("Resume Game", 1);
 	m_menu_actions.add_action("Options", 2);
 	m_menu_actions.add_action("Leave Game", 3);
-	loop();
 }
 
 Pause_menu::~Pause_menu()
@@ -29,19 +27,20 @@ void Pause_menu::refresh_screen(bool flip)
 	Menu::refresh_screen(flip);
 }
 
-bool Pause_menu::treat_choice(int choice)
+void Pause_menu::treat_choice(int choice)
 {
 	switch(choice) {
-		case 1:
-			return false;
-		case 2:
+		case 1: // resume game
+			set_leave_menu_true();
+			break;
+		case 2: // options
 			launch_options();
-			return true;
-		case 3:
-			m_leave = true;
-			return false;
+			break;
+		case 3: // leave game
+			set_leave_game_true();
+			break;
 		default:
-			return true;
+			break;
 		
 	}
 }
@@ -49,6 +48,5 @@ bool Pause_menu::treat_choice(int choice)
 
 void Pause_menu::launch_options()
 {
-	Options_menu *om = new Options_menu(this);
-	delete om;	
+	set_son(new Options_menu(this));
 }

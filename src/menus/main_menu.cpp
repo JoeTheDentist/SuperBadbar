@@ -35,20 +35,27 @@ void Main_menu::refresh_screen(bool flip)
 	Menu::refresh_screen(flip);
 }
 
-bool Main_menu::treat_choice(int choice)
+void Main_menu::update_graphics()
+{
+	Camera *camera = gGraphics->get_camera();
+	camera->display_picture(m_menu_background, &m_pos_background, true);
+	Menu::update_graphics();	
+}
+
+void Main_menu::treat_choice(int choice)
 {
 	switch(choice) {
-		case 1:
+		case 1: // nouvelle partie
 			launch_game();
-			return true;
-		case 2:
+			break;
+		case 2: // options
 			launch_options();
-			return true;
-		case 3:
-			return false;
+			break;
+		case 3: // quitter le jeu
+			set_leave_game_true();
+			break;
 		default:
-			return true;
-		
+			break;
 	}
 }
 

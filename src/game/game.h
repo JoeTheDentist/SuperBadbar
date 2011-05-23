@@ -24,6 +24,7 @@ class Game_engine;
 class Static_data;
 class Sound_engine;
 class Keyboard;
+class Menu;
 
 enum result_game {
 	victory, defeat, leave
@@ -45,7 +46,8 @@ class Game {
 private:
 	unsigned int m_time;			/* temps actuel */
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
-
+	Menu *m_pause;
+	game_state m_state;
 public:
 
 	/**
@@ -82,6 +84,10 @@ public:
 	 * @brief check les collisions monstres/projectiles
 	*/
 	void check_monsters();
+	
+	void set_state_playing();
+	
+	void set_state_pause();
 
 private:
 	void init_game(std::string level_name);

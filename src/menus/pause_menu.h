@@ -10,14 +10,13 @@
 class Pause_menu: public Menu {
 
 	public:
-	Pause_menu(bool &leave);
+	Pause_menu();
 	~Pause_menu();
 	
 	protected:
-	bool &m_leave;
 	virtual void refresh_screen(bool flip = true);
 	void launch_options();
-	virtual bool treat_choice(int choice);
+	virtual void treat_choice(int choice);
 };
 
 

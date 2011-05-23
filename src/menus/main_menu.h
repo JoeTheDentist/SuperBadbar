@@ -17,12 +17,13 @@ class Main_menu: public Menu {
 	public:
 	Main_menu();
 	~Main_menu();
+	virtual void update_graphics();
 	
 	protected:
 	virtual void refresh_screen(bool flip = true);
 	void launch_game();
 	void launch_options();
-	virtual bool treat_choice(int choice);
+	virtual void treat_choice(int choice);
 };
 
 
