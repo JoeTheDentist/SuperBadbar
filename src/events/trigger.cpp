@@ -35,8 +35,8 @@ Trigger::Trigger(int trigger_number, std::string level_name)
 			Rect rec;
 			rec.x = analyser.read_int();
 			rec.y = analyser.read_int();
-			rec.w = analyser.read_int();
-			rec.h = analyser.read_int();
+			rec.w = analyser.read_int() - rec.x;
+			rec.h = analyser.read_int() - rec.y;
 			addPos(rec);
 		}
 	}
@@ -65,8 +65,11 @@ bool Trigger::can_start() const
 	if (m_triggered)
 		return false;
 	for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it) {
-		if (Collisions_manager::check_collision((*it), gPlayers->local_player()->position()))
+		if (Collisions_manager::check_collision((*it), gPlayers->local_player()->position())) {
+			std::cout << gPlayers->local_player()->position().y << " " << gPlayers->local_player()->position().h << std::endl;
+			std::cout << (*it).y << " " << (*it).h << std::endl;
 			return true;
+		}
 	}
 	return false;
 }
