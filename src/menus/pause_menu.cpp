@@ -22,11 +22,6 @@ Pause_menu::~Pause_menu()
 {
 }
 
-void Pause_menu::refresh_screen(bool flip)
-{
-	Menu::refresh_screen(flip);
-}
-
 void Pause_menu::treat_choice(int choice)
 {
 	switch(choice) {

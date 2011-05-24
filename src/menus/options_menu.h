@@ -15,7 +15,6 @@ class Options_menu: public Menu {
 	public:
 	Options_menu(Menu *parent = NULL);
 	~Options_menu();
-	virtual void aux_loop();
 	virtual void update();
 	
 	protected:

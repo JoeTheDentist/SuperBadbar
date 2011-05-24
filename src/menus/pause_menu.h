@@ -14,7 +14,6 @@ class Pause_menu: public Menu {
 	~Pause_menu();
 	
 	protected:
-	virtual void refresh_screen(bool flip = true);
 	void launch_options();
 	virtual void treat_choice(int choice);
 };

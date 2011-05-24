@@ -25,47 +25,13 @@ Menu::Menu(Menu *parent) :
 	m_pos_menu.y = 300;
 	gKeyboard->disable_all_keys();
 	gKeyboard->reset_menu_keys();
-
+	gKeyboard->enable_key_repeat();
 }
 
 Menu::~Menu()
 {
 	gKeyboard->disable_all_keys();
-}
-
-void Menu::loop()
-{
-	bool go_on = true;
-	Keyboard *keyboard = gKeyboard;
-	keyboard->enable_key_repeat();
-	while (go_on) {
-		aux_loop();
-		this->refresh_screen();
-		menu_key key = keyboard->wait_menu_key();
-		switch (key) {
-		case mk_exit: case mk_escape:
-			go_on = false;
-			break;
-		case mk_down:
-			m_menu_actions.incr_curs(1);
-			break;
-		case mk_up:
-			m_menu_actions.incr_curs(-1);
-			break;
-		case mk_left:
-			m_menu_actions.incr_value(-1);
-			break;
-		case mk_right:
-			m_menu_actions.incr_value(1);
-			break;
-		case mk_enter:
-			treat_choice(m_menu_actions.get_selected_action());
-			break;
-		default:
-			break;		
-		}
-	}
-	keyboard->disable_key_repeat();
+	gKeyboard->disable_key_repeat();
 }
 
 void Menu::update()
@@ -74,13 +40,11 @@ void Menu::update()
 		if (m_son->end_menu()) {
 			delete m_son;
 			m_son = NULL;
-			std::cout <<"yeapea" << std::endl;
 			return;
 		}
 		m_son->update();
 	} else {
 		while (gKeyboard->is_next_menu_key()) {
-			std::cout << "key pressed" << std::endl;
 			menu_key key = gKeyboard->pop_menu_key();
 			switch (key) {
 			case mk_exit: 
@@ -122,18 +86,6 @@ void Menu::update_graphics() const
 	// le rafraichissement de mon fils
 	if (m_son)
 		m_son->update_graphics();
-}
-
-void Menu::refresh_screen(bool flip) 
-{
-	if (m_parent)
-		m_parent->refresh_screen(false);
-	Camera *camera = gGraphics->get_camera();
-	Surface_uniform *frame = new Surface_uniform(m_menu_actions.width(), m_menu_actions.height(), 255, 0, 255);
-	camera->display_picture(frame, &m_pos_menu, true);
-	m_menu_actions.display(camera, m_pos_menu);
-	if (flip)
-		camera->flip_camera();
 }
 
 void Menu::set_leave_menu_true()

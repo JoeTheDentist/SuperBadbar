@@ -20,7 +20,6 @@ class Menu {
 	public:
 	Menu(Menu *parent = NULL);
 	virtual ~Menu();
-	virtual void loop();
 	
 	/*!
 	*	@brief Mise a jour du menu (sauf affichage)
@@ -37,14 +36,11 @@ class Menu {
 	
 
 	
-	// appelee a chaque tour de loop
-	// ne fait rien a priori mais peut etre redefinie
-	virtual void aux_loop() {}
+
 	
 	protected:
 	virtual void set_leave_menu_true();
 	virtual void set_leave_game_true();
-	virtual void refresh_screen(bool flip = true);
 	virtual void treat_choice(int choice) = 0;
 	virtual void set_son(Menu *menu);
 };

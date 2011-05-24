@@ -105,6 +105,11 @@ public:
      *  @brief Raz de sprites_manager
      */
     void clean();
+	
+	/*!
+	*	@brief Flip la camera
+	*/
+	void flip_camera();
 };
 
 

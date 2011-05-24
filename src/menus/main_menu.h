@@ -20,7 +20,7 @@ class Main_menu: public Menu {
 	virtual void update_graphics();
 	
 	protected:
-	virtual void refresh_screen(bool flip = true);
+	void loop();
 	void launch_game();
 	void launch_options();
 	virtual void treat_choice(int choice);

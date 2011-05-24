@@ -71,6 +71,9 @@ void Game::init_game(std::string level_name)
 	m_previous_time = SDL_GetTicks();
 	m_pause = NULL;
 	set_state_playing();
+	
+	gKeyboard->disable_all_keys();
+	gKeyboard->disable_key_repeat();
 }
 
 Game::~Game()
@@ -91,6 +94,9 @@ Game::~Game()
     delete gStatic;
 	gStatic = NULL;
 	gGraphics->clean();
+	gKeyboard->disable_all_keys();
+	gKeyboard->reset_menu_keys();
+
 }
 
 void Game::update_keyboard()

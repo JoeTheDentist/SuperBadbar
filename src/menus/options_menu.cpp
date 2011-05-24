@@ -23,22 +23,6 @@ Options_menu::~Options_menu()
 {
 }
 
-void Options_menu::aux_loop()
-{
-	switch(m_menu_actions.get_selected_action()) {
-	case 1:
-		gSound->set_sounds_volume(m_menu_actions.get_selected_action_value());
-		break;
-	case 2:
-		gSound->set_music_volume(m_menu_actions.get_selected_action_value());
-		break;
-	default:
-		break;
-		
-	
-	}
-}
-
 void Options_menu::update()
 {
 	Menu::update();

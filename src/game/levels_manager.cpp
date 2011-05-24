@@ -35,10 +35,8 @@ void Levels_manager::play()
 {
 	result_game res;
 	while(1) {
-	    if ( m_game != NULL ) {
-            delete m_game;
-            m_game = NULL;
-        }
+		delete m_game;
+		m_game = NULL;
 		m_game = new Game(m_level);
 		switch(res = m_game->game_loop()) {
 		case victory:
@@ -48,6 +46,8 @@ void Levels_manager::play()
 			play_defeat();
 			return;
 		case leave:
+			delete m_game;
+			m_game = NULL;
 			return;
 		default:
 			break;

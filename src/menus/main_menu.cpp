@@ -28,18 +28,22 @@ Main_menu::~Main_menu()
 //~ 	delete m_menu_background;
 }
 
-void Main_menu::refresh_screen(bool flip)
-{
-	Camera *camera = gGraphics->get_camera();
-	camera->display_picture(m_menu_background, &m_pos_background, true);
-	Menu::refresh_screen(flip);
-}
-
 void Main_menu::update_graphics()
 {
 	Camera *camera = gGraphics->get_camera();
 	camera->display_picture(m_menu_background, &m_pos_background, true);
 	Menu::update_graphics();	
+	gGraphics->flip_camera();
+}
+
+void Main_menu::loop()
+{
+	while(!end_menu() &	 !end_game()) {
+		std::cout << "plop" << std::endl;
+		gKeyboard->update_events();
+		update();
+		update_graphics();
+	}
 }
 
 void Main_menu::treat_choice(int choice)
@@ -68,6 +72,6 @@ void Main_menu::launch_game()
 
 void Main_menu::launch_options()
 {
-	Options_menu *om = new Options_menu(this);
-	delete om;	
+	set_son(new Options_menu(this));
 }
+

@@ -76,7 +76,6 @@ void Graphic_engine::alert(std::string text)
     m_dashboard->alert(text);
 }
 
-
 Camera *Graphic_engine::get_camera()
 {
 	return m_camera;
@@ -100,4 +99,9 @@ Sprites_manager * Graphic_engine::get_sprites_manager()
 void Graphic_engine::clean()
 {
     m_sprites->clear();
+}
+
+void Graphic_engine::flip_camera()
+{
+	m_camera->flip_camera();
 }
