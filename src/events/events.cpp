@@ -153,7 +153,6 @@ void Event::process_peanut()
 
 void Event::process_dialog()
 {
-	std::cout << "plop" << std::endl;
 	gGraphics->get_talks()->load_and_display_text(m_analyser->read_string());
 }
 

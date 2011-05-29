@@ -23,7 +23,7 @@
 #define POSX 15
 #define POSW 770
 #define POSH 50
-#define POSY 400
+#define POSY 410
 #define LINES_NUMBER 3
 #define DISPLAY_SPEED 20
 
@@ -49,8 +49,10 @@ struct cell_string {
 class Talks {
 private:
 	Surface *m_text_background;
+	Surface *m_talker;
 	Surface_text *m_text_surface[LINES_NUMBER];
 	Rect m_pos_background;
+	Rect m_pos_talker;
 	Rect m_pos_text[LINES_NUMBER];
 	Font m_font;
 	Camera *m_camera;
@@ -96,6 +98,10 @@ public:
 	 *	dus à la configuration du clavier avant l'appel
 	 */
 	void load_and_display_text(std::string filename);
+	
+	void update();
+	
+	bool isActive();
 
 };
 

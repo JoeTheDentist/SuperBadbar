@@ -40,9 +40,14 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	m_text_background = new Surface(PIC_TALKS_R + background_name);
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
+	m_talker = new Surface(PIC_TALKS_R + "babar.png");
+	m_pos_talker.x = POSX;
+	m_pos_talker.y = POSY;
+	m_pos_talker.w = m_talker->w();
+	m_pos_talker.h = m_talker->h();
 	for (int i = 0; i < LINES_NUMBER; i++){
 		m_text_surface[i] = NULL;
-		m_pos_text[i].x = POSX;
+		m_pos_text[i].x = m_pos_talker.x + m_pos_talker.w + 10;
 		m_pos_text[i].y = POSY + i * POSH;
 	}
 	m_font.set_color(0, 0, 0);
@@ -51,6 +56,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 void Talks::display_background()
 {
 	m_camera->display_picture(m_text_background, &m_pos_background, true);
+	m_camera->display_picture(m_talker, &m_pos_talker, true);
 }
 
 struct cell_string *Talks::cut_text(std::string text)
@@ -64,7 +70,7 @@ struct cell_string *Talks::cut_text(std::string text)
 	while (!text.empty()) {
 		str = "M";
 		surface = new Surface_text(str, m_font);
-		while( (surface->w() < POSW) && !text.empty()) {
+		while( (surface->w() + m_pos_text[0].x < POSW) && !text.empty()) {
 			if (text[0] == '\n') {
 				text = text.substr(1, text.size() - 1);
 				str+= ' ';
@@ -171,4 +177,14 @@ void Talks::load_and_display_text(std::string filename)
 
 void Talks::clear_talks()
 {
+}
+
+void Talks::update()
+{
+	
+}
+
+bool Talks::isActive()
+{
+	return false;
 }
