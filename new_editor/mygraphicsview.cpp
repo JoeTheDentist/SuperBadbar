@@ -80,7 +80,6 @@ void MyGraphicsView::newFile(QString backgroundName)
 	setStateNone();
 }
 
-
 void MyGraphicsView::loadFile(QString fileName)
 {
 	m_file_name = fileName;
@@ -494,7 +493,6 @@ void MyGraphicsView::setStateErasingItem()
 	m_state = e_erasingItem;
 }
 
-
 void MyGraphicsView::setStateNone() 
 {
 	m_state = e_none;
@@ -502,8 +500,6 @@ void MyGraphicsView::setStateNone()
 	m_del_curs = NULL;
 	m_curr_item = NULL;
 }
-
-
 
 void MyGraphicsView::zoom(qreal z)
 {

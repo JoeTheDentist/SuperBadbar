@@ -22,9 +22,9 @@
 
 #define POSX 15
 #define POSW 770
-#define POSH 50
+#define POSH 30
 #define POSY 410
-#define LINES_NUMBER 3
+#define LINES_NUMBER 4
 #define DISPLAY_SPEED 20
 
 
@@ -50,12 +50,17 @@ class Talks {
 private:
 	Surface *m_text_background;
 	Surface *m_talker;
-	Surface_text *m_text_surface[LINES_NUMBER];
+	std::list<Surface_text *> m_text_surface[LINES_NUMBER];
 	Rect m_pos_background;
 	Rect m_pos_talker;
 	Rect m_pos_text[LINES_NUMBER];
+	int m_curr_line;
+	unsigned int m_string_curs;
 	Font m_font;
 	Camera *m_camera;
+	bool m_active;
+	std::string m_text;
+	bool m_waiting_for_enter;
 
 
 	void display_background();
@@ -63,6 +68,7 @@ private:
 	void instant_display(std::string str, int line);
 	void progressive_display(std::string str, int line);
 	void move_up();
+	void end_move_up();
 	void display_line(int line);
 	void clear_talks();
 public:
@@ -102,6 +108,13 @@ public:
 	void update();
 	
 	bool isActive();
+	
+	void display();
+	
+	//return vrai si doit move_up
+	bool write_letter();
+	
+	bool end_of_text();
 
 };
 

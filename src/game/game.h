@@ -31,7 +31,7 @@ enum result_game {
 };
 
 enum game_state {
-	gs_playing, gs_pause
+	gs_playing, gs_pause, gs_talks
 };
 
 /**
@@ -88,6 +88,8 @@ public:
 	void set_state_playing();
 	
 	void set_state_pause();
+	
+	void set_state_talks();
 
 private:
 	void init_game(std::string level_name);

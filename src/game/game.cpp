@@ -23,6 +23,7 @@
 #include "../actors/projectiles_manager.h"
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
+#include "../video/talks.h"
 #include "../sound/sound_engine.h"
 #include "../menus/pause_menu.h"
 #include "../game/game_engine.h"
@@ -150,6 +151,8 @@ void Game::update_graphic()
 	
 	if (m_pause) {
 		m_pause->update_graphics();
+	} else if (m_state == gs_talks) {
+		gGraphics->get_talks()->display();
 	}
 
 	/* mise à jour */
@@ -182,6 +185,9 @@ result_game Game::game_loop()
 				if (gKeyboard->key_down(k_escape)) {
 					set_state_pause();
 				}
+				if (gGraphics->get_talks()->isActive()) {
+					set_state_talks();
+				}
 			} else if (m_state == gs_pause) {
 				m_pause->update();
 				if (m_pause->end_game()) {
@@ -189,6 +195,11 @@ result_game Game::game_loop()
 					break;
 				}
 				if (m_pause->end_menu()) {
+					set_state_playing();
+				}
+			} else if (m_state == gs_talks) {
+				gGraphics->get_talks()->update();
+				if (!gGraphics->get_talks()->isActive()) {
 					set_state_playing();
 				}
 			}
@@ -212,6 +223,8 @@ result_game Game::game_loop()
 	
 void Game::set_state_playing()
 {
+	gKeyboard->reset_menu_keys();
+	gKeyboard->disable_all_keys();
 	m_state = gs_playing;
 	if (m_pause) {
 		delete m_pause;
@@ -223,4 +236,10 @@ void Game::set_state_pause()
 {
 	m_state = gs_pause;
 	m_pause = new Pause_menu();
+}
+
+void Game::set_state_talks()
+{
+	m_state = gs_talks;
+	gKeyboard->reset_menu_keys();
 }

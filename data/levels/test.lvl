@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-212
-3899
+437
+4026
 1
 
 #Sets#
@@ -41,7 +41,6 @@ arbre_feuilles_front 961 3516 1
 water1 1683 4280 0
 water1 2038 4285 0
 water1 2399 4291 0
-block3 2531 3870 0
 block6 4345 3194 0
 block4_3 2631 2597 0
 block4_1 2629 1319 0
@@ -49,7 +48,6 @@ block4_2 2631 2018 0
 liana1 1666 -24 1
 liana2 545 -41 1
 liana1 3510 -19 1
-block9 1636 -59 0
 liana2 3009 -24 1
 block10 345 1452 0
 block11 752 1641 0
@@ -57,20 +55,21 @@ block12 551 1319 0
 block6 4319 711 0
 liana2 4277 -28 1
 arbre_feuilles 1013 3455 0
-arbre_bord -1 508 0
 grass1 753 4194 0
 block7 3796 3216 0
 block1 3836 3931 0
 grass2 2806 4271 0
 arbre_feuilles_racines 3530 4200 0
+block3 2531 3870 0
+arbre_bord -1 508 0
+block9 1652 -15 0
 !
 #Monsters#
-15
+14
 following_walking_monster maphyar 2835 3861
 following_walking_monster maphyar 4207 3917
 following_walking_monster gailapin 432 2777
 charging_monster sanglichon 4151 3753
-charging_monster sanglichon 3236 967
 following_flying_monster fubob 217 67
 following_flying_monster fubob 1935 100
 following_flying_monster fubob 4347 181
@@ -143,9 +142,11 @@ block8 1928 2253
 block8 1517 2255
 !
 #Triggers#
-4
-0 847 4084
-2 3376 4194
+6
 3 573 2821
 1 1280 3578
+2 1934 3835
+2 3376 4194
+3 2416 1054
+4 771 4169
 !

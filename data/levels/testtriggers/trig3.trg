@@ -1,16 +1,13 @@
 #zone#
-6
-73 2645 675 2984
-73 2645 675 2984
-615 2794 799 2962
-615 2794 799 2962
-73 2645 675 2984
-73 2645 675 2984
+3
+2366 934 2401 1017
+2364 842 2557 1213
+2364 842 2557 1213
 
 #triggerables#
 1
-#x# 732
-#y# 2825
-#nature# dialog
-#text# "Oh, a secret area!"
+#x# 3213
+#y# 896
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
