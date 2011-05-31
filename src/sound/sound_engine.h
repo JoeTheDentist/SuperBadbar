@@ -18,7 +18,6 @@
 #include "../items/weapons.h"
 
 #define MUSIC_CANAL 1
-#define BABAR_FIRE_CANAL 2
 
 class Sound;
 class Sonorisable;
@@ -35,6 +34,7 @@ private:
 	int m_sounds_volume;
 	int m_music_volume;
 	FMOD_SYSTEM *m_system;
+	FMOD_CHANNEL *m_music_channel;
 
 
 public:
@@ -48,6 +48,8 @@ public:
 	 * @brief Destructeur
 	*/
 	~Sound_engine();
+
+	void update();
 
 	/**
 	 * @brief Joue la musique

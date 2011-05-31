@@ -20,19 +20,14 @@
 
 Sound_engine::Sound_engine():
 	m_sounds_volume(99),
-	m_music_volume(99)
+	m_music_volume(99),
+	m_music_channel(NULL)
 {
 
 	PRINT_CONSTR(1, "Construction du Sound_engine")
 	FMOD_System_Create(&m_system);
 	FMOD_System_Init(m_system, 2, FMOD_INIT_NORMAL, NULL);
 	FMOD_System_CreateSound(m_system, (RACINE_R+"/sound/music/level1.mp3").c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_music);
-//~ 	m_music = FSOUND_Stream_Open((RACINE_R+"/sound/music/level1.mp3").c_str(), 0, 0, 0);
-	play_music();
-
-//~ 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
-//~ 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
-	
 }
 
 
@@ -44,11 +39,18 @@ Sound_engine::~Sound_engine()
 	FMOD_System_Release(m_system);
 }
 
+void Sound_engine::update()
+{
+	FMOD_CHANNELGROUP *channels;
+	FMOD_System_GetMasterChannelGroup(m_system, &channels);
+	FMOD_ChannelGroup_SetVolume(channels, m_sounds_volume / 100.0);
+	if (m_music_channel) 
+		FMOD_Channel_SetVolume(m_music_channel, m_music_volume / 100.0);
+}
 
 void Sound_engine::play_music()
 {
-//~ 	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
-	FMOD_System_PlaySound(m_system, FMOD_CHANNEL_FREE, m_music, 0, NULL);
+	FMOD_System_PlaySound(m_system, FMOD_CHANNEL_FREE, m_music, 0, &m_music_channel);
 }
 
 void Sound_engine::play_sound(std::string key)
@@ -68,9 +70,6 @@ void Sound_engine::play_sound(std::string key)
 	}
 	PRINT_TRACE(3, "JEU DU SON %s",key.c_str());
 	FMOD_System_PlaySound(m_system, FMOD_CHANNEL_FREE, to_play, 0, NULL);
-
-//~ 	FSOUND_SetVolume(channel, m_sounds_volume);
-
 }
 
 
@@ -85,15 +84,11 @@ void Sound_engine::play_sound(Sonorisable *sonorisable)
 void Sound_engine::set_sounds_volume(int v)
 {	
 	m_sounds_volume = v;
-//~ 	FSOUND_SetVolume(FSOUND_ALL, (255.0 * (double)m_sounds_volume / 100.0));	
-//~ 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
-
 }
 
 void Sound_engine::set_music_volume(int v)
 {
 	m_music_volume = v;
-//~ 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));	
 }
 
 int Sound_engine::get_sounds_volume() const
