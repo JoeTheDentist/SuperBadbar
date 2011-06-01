@@ -27,7 +27,7 @@ Sound_engine::Sound_engine():
 	PRINT_CONSTR(1, "Construction du Sound_engine")
 	FMOD_System_Create(&m_system);
 	FMOD_System_Init(m_system, 2, FMOD_INIT_NORMAL, NULL);
-	FMOD_System_CreateSound(m_system, (RACINE_R+"/sound/music/level1.mp3").c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_music);
+	FMOD_System_CreateSound(m_system, (RACINE_R+"/sound/music/music.mp3").c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_music);
 }
 
 
@@ -44,13 +44,13 @@ void Sound_engine::update()
 	FMOD_CHANNELGROUP *channels;
 	FMOD_System_GetMasterChannelGroup(m_system, &channels);
 	FMOD_ChannelGroup_SetVolume(channels, m_sounds_volume / 100.0);
-	if (m_music_channel) 
-		FMOD_Channel_SetVolume(m_music_channel, m_music_volume / 100.0);
+//~ 	if (m_music_channel) 
+//~ 		FMOD_Channel_SetVolume(m_music_channel, m_music_volume / 100.0);
 }
 
 void Sound_engine::play_music()
 {
-	FMOD_System_PlaySound(m_system, FMOD_CHANNEL_FREE, m_music, 0, &m_music_channel);
+	FMOD_System_PlaySound(m_system, FMOD_CHANNEL_FREE, m_music, 0, NULL);
 }
 
 void Sound_engine::play_sound(std::string key)

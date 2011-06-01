@@ -8,10 +8,13 @@
  */
 #include <iostream>
 #include <stdint.h>
+#include <cmath>
 
 #include "charging_monster.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
+#include "../video/camera.h"
+#include "../video/graphic_engine.h"
 #include "../util/analyser.h"
 #include "../items/gun.h"
 #include "../items/monster_basic_weapon.h"
@@ -48,17 +51,37 @@ Charging_monster::~Charging_monster()
 
 void Charging_monster::update_speed_simple()
 {
-	m_speed.y += GRAVITE;	
+	Rect babarpos = gPlayers->closer_babar(position())->position();
+	if (m_time_end_charge == 0) {
+		if (babarpos.x > position().x) {
+			m_dir = RIGHT;
+			m_speed.x = m_speed_max; 
+		} else {
+			m_dir = LEFT;
+			m_speed.x = -m_speed_max;
+		}	
+	}
+	m_speed.y += GRAVITE;
+	m_time_end_charge--;
 }
 
 void Charging_monster::update_speed_ai()
 {
-	if (m_dir == LEFT) {
-		m_speed.x = -m_speed_max;
-	} else {
-		m_speed.x = m_speed_max;
-	}
 	m_speed.y += GRAVITE;
+	Rect babarpos = gPlayers->closer_babar(position())->position();
+	if (m_time_end_charge == 0) {
+		if (babarpos.x > position().x) {
+			m_dir = RIGHT;
+			m_speed.x = m_speed_max; 
+		} else {
+			m_dir = LEFT;
+			m_speed.x = -m_speed_max;
+		}
+	}
+	if (abs(babarpos.x - m_pos.x) < 20 && m_time_end_charge <= 0) {
+		m_time_end_charge = 20;
+	}
+	m_time_end_charge--;
 }
 
 

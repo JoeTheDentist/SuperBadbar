@@ -23,8 +23,11 @@ class AI;
  * 	@brief Monstre qui suit babar en marchant
  *
  */
+
 class Charging_monster : public Walking_monster {
+private:
 	const int m_speed_max;
+	int m_time_end_charge;
 public:
 	
 	/*!
