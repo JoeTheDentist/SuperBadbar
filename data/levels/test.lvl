@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-437
-4026
+2675
+3889
 1
 
 #Sets#
@@ -65,11 +65,9 @@ arbre_bord -1 508 0
 block9 1652 -15 0
 !
 #Monsters#
-14
-following_walking_monster maphyar 2835 3861
+13
 following_walking_monster maphyar 4207 3917
 following_walking_monster gailapin 432 2777
-charging_monster sanglichon 4151 3753
 following_flying_monster fubob 217 67
 following_flying_monster fubob 1935 100
 following_flying_monster fubob 4347 181
@@ -80,6 +78,7 @@ following_walking_monster gailapin 813 1885
 following_walking_monster gailapin 1257 1190
 following_walking_monster gailapin 713 1197
 following_walking_monster maphyar 842 1541
+following_walking_monster maphyar 2467 3873
 !
 #Events#
 41

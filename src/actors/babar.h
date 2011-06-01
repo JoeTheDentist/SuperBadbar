@@ -23,6 +23,7 @@
 #define BABAR_SPEED 15
 #define JUMP_TIME 6
 #define SOURCE_Y 30  /* décalage en y de la source, par rapport au haut */
+#define BABAR_RESU_TIME 50
 
 class Actor;
 class Collisions_manager;
@@ -85,7 +86,7 @@ class Babar: public Actor, public Sonorisable {
         Rect m_rel_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
         bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
         int m_peanuts;
-
+		int m_lock;
         Rect m_last_pos;                    /* dernière position sur qqch */
 
         /**
@@ -122,6 +123,11 @@ class Babar: public Actor, public Sonorisable {
         */
         virtual Rect position() const;
 
+		/*!
+		 *	@brief Mutateur: augmente la position de babar de x et y sans tenir compte des collisions
+		 *	@param x Le deplacement x
+		 *	@param y Le deplacement y
+		*/
         virtual void move(int x, int y);
 
         /*!
@@ -281,6 +287,11 @@ class Babar: public Actor, public Sonorisable {
 		 *	@brief Tue Babar (fait perdre une vie)
 		 */
 		void die();
+		
+		void lock(int time);
+		void unlock();
+		
+		bool locked();
 
         /**
          * 	@brief Accesseur
@@ -318,13 +329,26 @@ class Babar: public Actor, public Sonorisable {
          */
         void incr_peanuts(int peanuts);
 
+		/*!
+		*	@brief Accesseur
+		*	@return L'etat de babar
+		*/		
         state_player get_state() const;
 
+		/*!
+		*	@brief Interromp le saut
+		*/
         void interrupt_jump();
 
+		/*!
+		*	@brief Interromp l'accroupissement
+		*/
         void interrupt_crouch();
 
-        // check et fait l'unbind
+		/*!
+		*	@brief Unbind babar d'une plateforme s'il doit l'etre
+		*	@return vrai si babar a été unbinded
+		*/
         bool check_unbind();
 
         /**

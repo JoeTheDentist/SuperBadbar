@@ -5,8 +5,8 @@
 
 #triggerables#
 1
-#x# 2862
-#y# 4189
+#x# 2856
+#y# 4174
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 

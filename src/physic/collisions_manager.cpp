@@ -107,13 +107,6 @@ bool Collisions_manager::check_collision(Rect A, Rect B)
 	uint16_t B_bottom = B.y + B.h;
 	bool A_in_B = ((B.x < A.x && A.x < B_right) || (B.x < A_right && A_right < B_right )) && ((B.y < A.y && A.y < B_bottom) || (B.y < A_bottom && A_bottom < B_bottom ));
 	bool B_in_A = ((A.x < B.x && B.x < A_right) || (A.x < B_right && B_right < A_right )) && ((A.y < B.y && B.y < A_bottom) || (A.y < B_bottom && B_bottom < A_bottom ));
-	if (B_in_A) {
-		if ((A.y < B.y && B.y < A_bottom)) {
-			PRINT_DEBUG(1, "A_IN_B");
-		} else if (A.y < B_bottom && B_bottom < A_bottom ) {
-			 PRINT_DEBUG(1, "B_in_A");
-		}
-	}
 	return A_in_B || B_in_A;
 }
 

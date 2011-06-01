@@ -164,19 +164,18 @@ void Game_engine::update_babar_projectiles()
 void Game_engine::update_babar_damage()
 {
     /* Si Babar sort de l'écran => on lui fait perdre des vie et on le remet à la bonne place */
-    if ( gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->static_data_height() ) {
-        if ( m_spawn == SPAWN_TIME ) {
+    if ( !gPlayers->local_player()->locked() && gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->static_data_height() ) {
+//~         if ( m_spawn == SPAWN_TIME ) {
             m_sets->add_set("splash/splash",gPlayers->local_player()->position().x, (int)gStatic->static_data_height()-100, false, true, true);
-			gPlayers->local_player()->set_last_pos();
 			gPlayers->local_player()->die();
-            m_spawn--;
-        } else {
-            if ( m_spawn == 0) {
-                m_spawn = SPAWN_TIME;
-            } else {
-                m_spawn--;
-            }
-        }
+//~             m_spawn--;
+//~         } else {
+//~             if ( m_spawn == 0) {
+//~                 m_spawn = SPAWN_TIME;
+//~             } else {
+//~                 m_spawn--;
+//~             }
+//~         }
     }
 }
 

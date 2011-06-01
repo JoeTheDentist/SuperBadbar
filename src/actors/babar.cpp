@@ -88,6 +88,7 @@ void Babar::init_babar(Analyser * a)
 	m_crouch_time = 0;
 	interrupt_jump();
 	m_bind = NULL;
+	m_lock = -1;
 }
 
 Rect Babar::position() const
@@ -129,6 +130,8 @@ bool Babar::is_on_something()
 
 void Babar::update_pos()
 {
+	if (locked())
+		return;
 	m_phase++;
 	unsigned int coll;
 	/* cas où le sprite descend */
@@ -224,6 +227,8 @@ void Babar::update_pos()
 
 void Babar::update_speed()
 {
+	if (locked())
+		return;
     m_speed.y += GRAVITE;
     m_speed.x = 0;
 
@@ -250,6 +255,11 @@ void Babar::update_speed()
 
 void Babar::update_state()
 {
+	if (locked())
+		m_lock--;
+	if (m_lock == 0) {
+		unlock();
+	}
 	if (!gKeyboard->time_pressed(k_jump))
 		m_jump = false;
 	if (m_jump) {
@@ -297,13 +307,15 @@ void Babar::update_state()
 
 	if (m_invincible > 0) {
 		m_invincible --;
-
-		if ( m_invincible%2 ) {
-            m_sprite->no_pic();
-        } else {
-            m_sprite->set_pic();
-        }
+		if (!locked()) {
+			if ( m_invincible%2) {
+				m_sprite->no_pic();
+			} else {
+				m_sprite->set_pic();
+			}
+		}
 	}
+
 
 
 
@@ -490,6 +502,27 @@ void Babar::die()
 {
 	m_lifes--;
 	m_hp = c_babar_hp_max;
+	lock(BABAR_RESU_TIME);
+	m_sprite->no_pic();
+	prepare_sound(BABAR_SOUNDS_R + "die.wav");
+}
+
+void Babar::lock(int time)
+{
+	m_lock += time;
+}
+
+void Babar::unlock()
+{
+	m_sprite->set_pic();
+	m_lock = -1;
+	m_invincible = 20;
+	set_last_pos();
+}
+
+bool Babar::locked()
+{
+	return m_lock > 0;
 }
 
 int Babar::munitions()
