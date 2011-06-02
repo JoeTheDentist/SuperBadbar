@@ -2,7 +2,7 @@
 export OBJ_DIR=obj/
 export CC = g++
 export CFLAGS= -g -Wall #$(LIB_INC) 
-LDFLAGS= -g -lfreetype -lSDL_image -lSDL_ttf #-lfmodex-4.34.03 # $(LIB_DYN)
+LDFLAGS= -g -lprofiler -lfreetype -lSDL_image -lSDL_ttf #-lfmodex-4.34.03 # $(LIB_DYN)
 LIBCOMP= ../lib/fmodex/lib/libfmodex-4.34.03.so  #../lib/gcc/libfmod.so #../lib/gcc/libSDL_ttf.so
 
 DIR = actors control events game items menus players physic sound sprites util video AI sets
@@ -32,8 +32,12 @@ val:
 valfull: 
 	valgrind --leak-check=full --show-reachable=yes --track-origins=yes $(VAL_SUPRESS_FLAG) ./$(EXEC_NAME)
 	
-profile:
-	valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar 
+#~ profile:
+	#~ valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes ./babar 
+	
+prof: $(EXEC_NAME)
+	@CPUPROFILE=$(EXEC_NAME).profile ./$(EXEC_NAME)
+	@./pprof --gv $(EXEC_NAME) $(EXEC_NAME).profile
 
 gdb:
 	gdb ./$(EXEC_NAME)

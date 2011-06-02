@@ -3,6 +3,7 @@
 #include "../actors/babar.h"
 #include "../events/stats.h"
 
+
 Player::Player(int id, Analyser * analyser, bool local)
 {
     m_dmgs = new std::list<dmg_chan>();
