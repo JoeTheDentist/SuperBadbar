@@ -80,6 +80,8 @@ void Game::init_game(std::string level_name)
 	
 	gKeyboard->disable_all_keys();
 	gKeyboard->disable_key_repeat();
+	
+	plop->wait_for_player();
 }
 
 Game::~Game()

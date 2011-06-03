@@ -131,6 +131,11 @@ public:
 	void wait_key(enum key k);
 	
 	/*!
+	*	@brief Met le jeu en pause jusqu'a l'enfoncement d'une touche 
+	*/	
+	void wait_for_any_key();
+	
+	/*!
 	*	@brief Autorise la repetition des touches (typiquement pour le menu)
 	*/
 	void enable_key_repeat();

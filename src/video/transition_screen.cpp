@@ -10,8 +10,10 @@
 #include "transition_screen.h"
 #include "../video/surface_text.h"
 #include "../video/camera.h"
+#include "../video/graphic_engine.h"
 #include "../util/repertories.h"
 #include "../util/globals.h"
+#include "../control/keyboard.h"
 
 	
 Transition_screen::Transition_screen(std::string picture_path, std::string text1, std::string text2):
@@ -53,9 +55,11 @@ void Transition_screen::display(Camera *camera)
 	camera->flip_camera();
 }
 
-void Transition_screen::set_skipable()
+void Transition_screen::wait_for_player()
 {
 	m_skipable = true;
+	display(gGraphics->get_camera());
+	gKeyboard->wait_for_any_key();
 }
 
 bool Transition_screen::ended()

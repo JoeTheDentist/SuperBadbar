@@ -59,9 +59,9 @@ class Transition_screen {
 	void display(Camera *camera);
 	
 	/*!
-	*	@brief Autorise le joueur à passer la fenetre
+	*	@brief Demande au joueur d'appuyer sur une touche
 	*/
-	void set_skipable();
+	void wait_for_player();
 	
 	/*!
 	*	@brief Accesseur

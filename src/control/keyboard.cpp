@@ -245,6 +245,17 @@ void Keyboard::wait_key(enum key k)
 	}	
 }
 
+void Keyboard::wait_for_any_key() 
+{
+	SDL_Event event;
+	bool leave = false;
+	while(!leave){
+		SDL_WaitEvent(&event);
+		if(event.type == SDL_KEYDOWN)
+			leave = true;
+	}
+}
+
 void Keyboard::enable_key_repeat()
 {
 	SDL_EnableKeyRepeat(500, 10);
