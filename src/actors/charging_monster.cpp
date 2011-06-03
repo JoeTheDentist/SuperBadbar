@@ -25,7 +25,8 @@
 
 Charging_monster::Charging_monster(std::string name, int posx, int posy):
 	Walking_monster(name, posx, posy),
-	m_speed_max(BABAR_SPEED * 2)
+	m_speed_max(BABAR_SPEED * 2),
+	m_time_end_charge(0)
 {
 	m_state = WALKING;
 	Rect babarpos = gPlayers->closer_babar(position())->position();
@@ -40,7 +41,8 @@ Charging_monster::Charging_monster(std::string name, int posx, int posy):
 
 Charging_monster::Charging_monster(Analyser *analyserLevel):
 	Walking_monster(analyserLevel),
-	m_speed_max(BABAR_SPEED * 2)
+	m_speed_max(BABAR_SPEED * 2),
+	m_time_end_charge(0)
 {
 	m_state = WALKING;
 }
@@ -60,6 +62,9 @@ void Charging_monster::update_speed_simple()
 			m_dir = LEFT;
 			m_speed.x = -m_speed_max;
 		}	
+	}
+	if (abs(babarpos.x - m_pos.x) < 20 && m_time_end_charge <= 0) {
+		m_time_end_charge = 20;
 	}
 	m_speed.y += GRAVITE;
 	m_time_end_charge--;
