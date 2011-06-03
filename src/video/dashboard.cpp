@@ -126,8 +126,6 @@ void Dashboard::draw_dashboard(Camera *camera)
 	pos_lifes.x = pos_text_lifes.x - DASH_DECALAGE - m_babar_head->w();
 	pos_lifes.y = 30; 
 	pos_text_lifes.y = pos_lifes.y - (lifes_number_picture->h() - m_babar_head->h()) / 2;
-
-	std::cout << pos_lifes.x << " " << pos_lifes.y << " " << m_babar_head->h() << std::endl;
 	camera->display_picture(lifes_number_picture, & pos_text_lifes, true);
 	camera->display_picture(m_babar_head, &pos_lifes, true);	
 	delete lifes_number_picture;

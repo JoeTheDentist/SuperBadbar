@@ -468,6 +468,8 @@ void Babar::damage(int damages)
 void Babar::lifesup(int lifes)
 {
 	m_lifes += lifes;
+	gGraphics->alert("Life up!!!");
+	prepare_sound(BABAR_SOUNDS_R + "lifeup.wav");
 }
 
 void Babar::HPup(int HP)
@@ -581,6 +583,10 @@ int Babar::peanuts()
 void Babar::incr_peanuts(int peanuts)
 {
 	m_peanuts += peanuts;
+	if (m_peanuts >= 100) {
+		lifesup(1);
+		m_peanuts -= 100;
+	}
 }
 
 state_player Babar::get_state() const
