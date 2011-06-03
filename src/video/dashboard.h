@@ -40,6 +40,7 @@ private:
 	Rect m_HP_pos;
 	Rect m_weapons_pos;
 	Surface *m_peanut;
+	Surface *m_babar_head;
 	Font m_font;
 	Anim_text * m_alert;
 

@@ -28,6 +28,7 @@ Dashboard::Dashboard():
 	m_heart(NULL),
 	m_weapons_pictures(NULL),
 	m_peanut(NULL),
+	m_babar_head(NULL),
 	m_font()
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
@@ -46,6 +47,7 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	clear_dashboard();
     std::string rac = RAC;
 	m_heart = new Surface(rac+"/pic/dashboard/heart.png");
+	m_babar_head = new Surface(rac + "/pic/dashboard/babarhead.png");
 	m_HP_pos.x = POS_HEART_X;
 	m_HP_pos.y = POS_HEART_Y;
 	m_weapons_pictures = new Surface*[LASTWEAPON];
@@ -64,8 +66,30 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 
 void Dashboard::draw_dashboard(Camera *camera)
 {
+	/********************************************************************************/
+	/*	HP																VIES		*/
+	/*	ARME															CACAHUETTES	*/
+	/*																				*/
+	/*																				*/
+	/*								ALERT											*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/*																				*/
+	/********************************************************************************/
+	
+	Rect pos_camera = camera->frame();
+	
 	/*
-		Affichage des vies
+		Affichage des hp
 	*/
 	if (gPlayers->local_player()->HP() < 0)
 		return;
@@ -89,6 +113,25 @@ void Dashboard::draw_dashboard(Camera *camera)
 	camera->display_picture(munitions_picture, &pos_munitions, true);
 	delete munitions_picture;
 
+	
+	/*
+		Affichage des vies
+	*/
+	Rect pos_lifes;
+	Rect pos_text_lifes;
+	std::ostringstream osslifes;
+	osslifes << "x " << gPlayers->local_player()->lifes();	
+	Surface_text *lifes_number_picture = new Surface_text(osslifes.str());
+	pos_text_lifes.x = pos_camera.w - lifes_number_picture->w() - 30;
+	pos_lifes.x = pos_text_lifes.x - DASH_DECALAGE - m_babar_head->w();
+	pos_lifes.y = 30; 
+	pos_text_lifes.y = pos_lifes.y - (lifes_number_picture->h() - m_babar_head->h()) / 2;
+
+	std::cout << pos_lifes.x << " " << pos_lifes.y << " " << m_babar_head->h() << std::endl;
+	camera->display_picture(lifes_number_picture, & pos_text_lifes, true);
+	camera->display_picture(m_babar_head, &pos_lifes, true);	
+	delete lifes_number_picture;
+	
 
 	/*
 		Affichage des cacahuetes
@@ -99,14 +142,15 @@ void Dashboard::draw_dashboard(Camera *camera)
 	osspeanut << "x " << gPlayers->local_player()->peanuts();
 	std::string peanuts_number = osspeanut.str();
 	Surface_text *peanuts_number_picture = new Surface_text(peanuts_number, m_font);
-	Rect pos_camera = camera->frame();
 	pos_peanuts_number.x = pos_camera.w - peanuts_number_picture->w() - 30;
-	pos_peanuts_number.y = 30;
 	pos_peanut.x = pos_peanuts_number.x - DASH_DECALAGE - m_peanut->w();
-	pos_peanut.y = pos_peanuts_number.y + (peanuts_number_picture->w() - m_peanut->w()) / 2;
+	pos_peanut.y = DASH_DECALAGE + pos_lifes.y + m_babar_head->h(); 
+	pos_peanuts_number.y = pos_peanut.y - (peanuts_number_picture->h() - m_peanut->h()) / 2;
+
 	camera->display_picture(peanuts_number_picture, &pos_peanuts_number, true);
 	camera->display_picture(m_peanut, &pos_peanut, true);
 	delete peanuts_number_picture;
+	
 
 	/* affichage de l'alert */
 	if ( m_alert ) {
@@ -145,22 +189,16 @@ void Dashboard::clear_dashboard()
 {
 	if (m_weapons_pictures) {
 		for (int i = 0; i < LASTWEAPON; i++)
-			if (m_weapons_pictures[i])
-				delete m_weapons_pictures[i];
+			delete m_weapons_pictures[i];
 		delete[] m_weapons_pictures;
 		m_weapons_pictures = NULL;
 	}
-	if (m_heart)
-		delete m_heart;
+	delete m_heart;
 	m_heart = NULL;
-	if (m_peanut)
-		delete m_peanut;
+	delete m_peanut;
 	m_peanut = NULL;
-
-	if ( m_alert ) {
-        delete m_alert;
-        m_alert = NULL;
-    }
-
-    delete m_alert;
+	delete m_alert;
+	m_alert = NULL;
+	delete m_babar_head;
+	m_babar_head = NULL;
 }

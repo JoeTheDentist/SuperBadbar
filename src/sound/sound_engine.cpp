@@ -27,7 +27,7 @@ Sound_engine::Sound_engine():
 	PRINT_CONSTR(1, "Construction du Sound_engine")
 	FMOD_System_Create(&m_system);
 	FMOD_System_Init(m_system, 2, FMOD_INIT_NORMAL, NULL);
-	FMOD_System_CreateSound(m_system, (RACINE_R+"/sound/music/music.mp3").c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_music);
+	FMOD_System_CreateSound(m_system, (RACINE_R+"/sound/music/level1.mp3").c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_music);
 }
 
 
