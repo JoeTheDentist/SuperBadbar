@@ -24,6 +24,7 @@
 #include "../video/camera.h"
 #include "../video/graphic_engine.h"
 #include "../video/talks.h"
+#include "../video/transition_screen.h"
 #include "../sound/sound_engine.h"
 #include "../menus/pause_menu.h"
 #include "../game/game_engine.h"
@@ -32,6 +33,7 @@
 #include "../sprites/sprites_manager.h"
 #include "../events/stats.h"
 #include "../sets/animated_set_manager.h"
+
 
 
 
@@ -56,6 +58,9 @@ Game::Game(std::string level_name)
 
 void Game::init_game(std::string level_name)
 {
+	std::cerr << "plop" << std::endl;
+	Transition_screen *plop = new Transition_screen("gameover.png");
+	plop->display(gGraphics->get_camera());
     gCollision = new Collisions_manager();
     gProj = new Projectiles_manager();
     gEvent = new Events_manager();

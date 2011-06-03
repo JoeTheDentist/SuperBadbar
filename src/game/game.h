@@ -90,6 +90,8 @@ public:
 	void set_state_pause();
 	
 	void set_state_talks();
+	
+
 
 private:
 	void init_game(std::string level_name);
