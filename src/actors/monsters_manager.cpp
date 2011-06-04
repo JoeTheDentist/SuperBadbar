@@ -16,6 +16,7 @@
 #include "../actors/charging_monster.h"
 #include "../actors/following_walking_monsters.h"
 #include "../actors/following_flying_monsters.h"
+#include "../actors/boss_elmer.h"
 #include "../video/camera.h"
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
@@ -66,6 +67,8 @@ void Monsters_manager::load_monster(std::string name, int posx, int posy)
 		add(new Following_flying_monster(name, posx, posy));
 	} else if (monsterClass == "charging_monster") {
 		add(new Charging_monster(name, posx, posy));
+	} else if (monsterClass == "boss_elmer") {
+		add(new Boss_elmer(name, posx, posy));
 	} else {
 		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
 	}
@@ -84,6 +87,9 @@ void Monsters_manager::load_monster(Analyser *analyser)
 		add(new Following_flying_monster(analyser));
 	} else if (monster_type == "charging_monster") {
 		add(new Charging_monster(analyser));
+	} else if (monster_type == "boss_elmer") {
+		add(new Boss_elmer(analyser));
+		
 	} else {
 		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
 	}
