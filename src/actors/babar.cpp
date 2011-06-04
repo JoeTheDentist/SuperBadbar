@@ -512,6 +512,7 @@ void Babar::die()
 void Babar::lock(int time)
 {
 	m_lock += time;
+	m_invincible = time;
 }
 
 void Babar::unlock()
