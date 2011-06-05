@@ -54,6 +54,8 @@
 		<Unit filename="..\src\actors\actor.h" />
 		<Unit filename="..\src\actors\babar.cpp" />
 		<Unit filename="..\src\actors\babar.h" />
+		<Unit filename="..\src\actors\charging_monster.cpp" />
+		<Unit filename="..\src\actors\charging_monster.h" />
 		<Unit filename="..\src\actors\explosion.cpp" />
 		<Unit filename="..\src\actors\explosion.h" />
 		<Unit filename="..\src\actors\flying_monster.cpp" />
@@ -70,6 +72,8 @@
 		<Unit filename="..\src\actors\projectiles.h" />
 		<Unit filename="..\src\actors\projectiles_manager.cpp" />
 		<Unit filename="..\src\actors\projectiles_manager.h" />
+		<Unit filename="..\src\actors\remote_babar.cpp" />
+		<Unit filename="..\src\actors\remote_babar.h" />
 		<Unit filename="..\src\actors\rocket.cpp" />
 		<Unit filename="..\src\actors\rocket.h" />
 		<Unit filename="..\src\actors\walking_monsters.cpp" />
@@ -125,6 +129,8 @@
 		<Unit filename="..\src\menus\pause_menu.h" />
 		<Unit filename="..\src\physic\bindable_platform.cpp" />
 		<Unit filename="..\src\physic\bindable_platform.h" />
+		<Unit filename="..\src\physic\chained_platform.cpp" />
+		<Unit filename="..\src\physic\chained_platform.h" />
 		<Unit filename="..\src\physic\collisions_manager.cpp" />
 		<Unit filename="..\src\physic\collisions_manager.h" />
 		<Unit filename="..\src\physic\collisions_matrix.cpp" />
@@ -151,8 +157,6 @@
 		<Unit filename="..\src\sound\sound.h" />
 		<Unit filename="..\src\sound\sound_engine.cpp" />
 		<Unit filename="..\src\sound\sound_engine.h" />
-		<Unit filename="..\src\sound\sound_manager.cpp" />
-		<Unit filename="..\src\sound\sound_manager.h" />
 		<Unit filename="..\src\sprites\sprites.cpp" />
 		<Unit filename="..\src\sprites\sprites.h" />
 		<Unit filename="..\src\sprites\sprites_anim.cpp" />
@@ -169,6 +173,8 @@
 		<Unit filename="..\src\util\globals.cpp" />
 		<Unit filename="..\src\util\globals.h" />
 		<Unit filename="..\src\util\lists.h" />
+		<Unit filename="..\src\util\random_generator.cpp" />
+		<Unit filename="..\src\util\random_generator.h" />
 		<Unit filename="..\src\util\repertories.h" />
 		<Unit filename="..\src\video\anim.h" />
 		<Unit filename="..\src\video\anim_pic.cpp" />
