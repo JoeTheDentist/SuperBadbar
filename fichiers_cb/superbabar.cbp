@@ -48,12 +48,14 @@
 		</Linker>
 		<Unit filename="..\src\AI\AI.cpp" />
 		<Unit filename="..\src\AI\AI.h" />
-		<Unit filename="..\src\actors\Remote_Babar.cpp" />
-		<Unit filename="..\src\actors\Remote_Babar.h" />
 		<Unit filename="..\src\actors\actor.cpp" />
 		<Unit filename="..\src\actors\actor.h" />
 		<Unit filename="..\src\actors\babar.cpp" />
 		<Unit filename="..\src\actors\babar.h" />
+		<Unit filename="..\src\actors\boss.cpp" />
+		<Unit filename="..\src\actors\boss.h" />
+		<Unit filename="..\src\actors\boss_elmer.cpp" />
+		<Unit filename="..\src\actors\boss_elmer.h" />
 		<Unit filename="..\src\actors\charging_monster.cpp" />
 		<Unit filename="..\src\actors\charging_monster.h" />
 		<Unit filename="..\src\actors\explosion.cpp" />
@@ -204,6 +206,8 @@
 		<Unit filename="..\src\video\surface_uniform.h" />
 		<Unit filename="..\src\video\talks.cpp" />
 		<Unit filename="..\src\video\talks.h" />
+		<Unit filename="..\src\video\transition_screen.cpp" />
+		<Unit filename="..\src\video\transition_screen.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
