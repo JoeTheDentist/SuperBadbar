@@ -31,7 +31,6 @@ Sound_engine::Sound_engine():
 	if (m_music == NULL) {
 		PRINT_DEBUG(1, "Impossible de charger la musique")
 	}
-
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
 	

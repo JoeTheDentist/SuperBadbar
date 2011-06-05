@@ -10,14 +10,15 @@
 #ifndef _SOUND_ENGINE_
 #define _SOUND_ENGINE_
 
-//~ #include "../../lib/fmodapi375win/api/inc/fmod.h"
-#include "../../lib/fmodex/include/fmod.h"
+#include "../../lib/fmodapi375win/api/inc/fmod.h"
 
 #include <string>
 #include <map>
 #include "../items/weapons.h"
 
 #define MUSIC_CANAL 1
+
+#define BABAR_FIRE_CANAL 2
 
 class Sound;
 class Sonorisable;
@@ -29,12 +30,10 @@ class Sonorisable;
  */
 class Sound_engine {
 private:
-	std::map<std::string, FMOD_SOUND*> m_sound_samples;
-	FMOD_SOUND *m_music;
+	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
+	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
-	FMOD_SYSTEM *m_system;
-	FMOD_CHANNEL *m_music_channel;
 
 
 public:
@@ -48,8 +47,6 @@ public:
 	 * @brief Destructeur
 	*/
 	~Sound_engine();
-
-	void update();
 
 	/**
 	 * @brief Joue la musique
