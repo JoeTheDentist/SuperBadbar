@@ -4,7 +4,7 @@ export CC = g++
 export CFLAGS= -g -Wall #$(LIB_INC) 
 export PROFILEFLAG= -lprofiler
 LDFLAGS= -g  -lfreetype -lSDL_image -lSDL_ttf #-lfmodex-4.34.03 # $(PROFILEFLAG) $(LIB_DYN)
-LIBCOMP= ../lib/fmodex/lib/libfmodex-4.34.03.so  #../lib/gcc/libfmod.so #../lib/gcc/libSDL_ttf.so
+LIBCOMP=  ../lib/gcc/libfmod.so #../lib/fmodex/lib/libfmodex-4.34.03.so   #../lib/gcc/libSDL_ttf.so
 
 DIR = actors control events game items menus players physic sound sprites util video AI sets
 EXEC_NAME = babar
