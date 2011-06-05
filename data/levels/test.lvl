@@ -6,8 +6,8 @@ leveltest.png
 4400
 
 #Babar#
-2772
-3865
+152
+3891
 1
 
 #Sets#
@@ -58,11 +58,11 @@ arbre_feuilles 1013 3455 0
 grass1 753 4194 0
 block7 3796 3216 0
 block1 3836 3931 0
-grass2 2806 4271 0
-arbre_feuilles_racines 3530 4200 0
-block3 2531 3870 0
 arbre_bord -1 508 0
 block9 1652 -15 0
+grass2 2806 4271 0
+block3 2531 3870 0
+arbre_feuilles_racines 3530 4200 0
 !
 #Monsters#
 13
