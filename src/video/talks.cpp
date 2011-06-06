@@ -61,71 +61,9 @@ void Talks::display_background()
 	m_camera->display_picture(m_talker, &m_pos_talker, true);
 }
 
-struct cell_string *Talks::cut_text(std::string text)
-{
-//~ 	std::string str;
-	cell_string *list_string = NULL, *curs_list;
-//~ 	Surface_text *surface;
-//~ 	list_string = new cell_string;
-//~ 	curs_list = list_string;
-//~ 	text+= ' '; // necessaire pour eviter une boucle infinie avec text == "-"
-//~ 	while (!text.empty()) {
-//~ 		str = "M";
-//~ 		surface = new Surface_text(str, m_font);
-//~ 		while( (surface->w() + m_pos_text[0].x < POSW) && !text.empty()) {
-//~ 			if (text[0] == '\n') {
-//~ 				text = text.substr(1, text.size() - 1);
-//~ 				str+= ' ';
-//~ 				break;
-//~ 			}
-//~ 			str+= text[0];
-//~ 			text = text.substr(1, text.size() - 1);
-//~ 			delete surface;
-//~ 			surface = new Surface_text(str, m_font);
-//~ 		}
-//~ 		str = str.substr(1, str.size() - 1);
-//~ 		if (text[0] != ' ' && str[str.size()-1] != ' ') {
-//~ 			str += '-';
-//~ 			text.insert(0, "-");
-//~ 		}
-//~ 		std::cout << str << std::endl;
-//~ 		curs_list->next = new cell_string;
-//~ 		curs_list = curs_list->next;
-//~ 		curs_list->str = str;
-//~ 		curs_list->next = NULL;
-//~ 		delete surface;
-//~ 	}
-	return list_string->next;
-}
-
-void Talks::instant_display(std::string str, int line)
-{
-//~ 	if (m_text_surface[line] != NULL)
-//~ 		delete m_text_surface[line];
-//~ 	m_text_surface[line] = new Surface_text(str, m_font);
-//~ 	m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
-//~ 	m_camera->flip_camera();
-}
-
-void Talks::progressive_display(std::string str, int line)
-{
-//~ 	std::string curr_text;
-//~ 	for (uint32_t i = 0; i < str.size(); i++){
-//~ 		SDL_Delay(DISPLAY_SPEED);
-//~ 		curr_text += str[i];
-//~ 		m_text_surface[line] = new Surface_text(curr_text, m_font);
-//~ 		m_camera->display_picture(m_text_surface[line], &(m_pos_text[line]), true);
-//~ 		m_camera->flip_camera();
-//~ 		if (gKeyboard->poll_menu_key() == mk_enter) {
-//~ 			instant_display(str, line);
-//~ 			return;	
-//~ 		}
-//~ 	}
-}
 
 void Talks::move_up()
 {
-	std::cout << "MOVE UUUUUUUUUUUUUUUP" << std::endl;
 	m_curr_line++;
 	if (m_curr_line >= LINES_NUMBER) {
 		m_waiting_for_enter = true;

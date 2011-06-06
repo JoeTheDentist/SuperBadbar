@@ -42,9 +42,6 @@ struct cell_string {
 /**
  * 	@class Talks
  * 	@brief Gestionnaire graphique de dialogues
- *
- *
- *
  */
 class Talks {
 private:
@@ -64,12 +61,8 @@ private:
 
 
 	void display_background();
-	struct cell_string *cut_text(std::string text);
-	void instant_display(std::string str, int line);
-	void progressive_display(std::string str, int line);
 	void move_up();
 	void end_move_up();
-	void display_line(int line);
 	void clear_talks();
 public:
 	/**
@@ -105,15 +98,32 @@ public:
 	 */
 	void load_and_display_text(std::string filename);
 	
+	/**
+	 *	@brief Mise a jour de talks
+	*/
 	void update();
 	
+	/**
+	 *	@brief Indique si la fenetre est active
+	 *	@return Vrai si la fenetre est active
+	*/
 	bool isActive();
 	
+	/**
+	 *	@brief Affichage a l'ecran du dialogue
+	*/	
 	void display();
 	
-	//return vrai si doit move_up
+	/*!
+	*	@brief Rajoute une lettre au texte affiche, sauf s'il faut move_up
+	*	@return Vrai s'il faut move_up
+	*/
 	bool write_letter();
 	
+	/*!
+	*	@brief Retourne vrai si on a fini d'afficher le texte
+	*	@return vrai si on a fini d'afficher le texte
+	*/
 	bool end_of_text();
 
 };
