@@ -68,14 +68,6 @@ class Transition_screen {
 	*	@return Vrai si l'ecran de transition doit disparaitre
 	*/
 	bool ended();
-	
-	
-	
-	
-	
-	
-	
-	
 };
 
 

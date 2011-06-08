@@ -36,7 +36,6 @@ Transition_screen::~Transition_screen()
 	delete m_text2;
 }
 	
-
 void Transition_screen::update()
 {
 }

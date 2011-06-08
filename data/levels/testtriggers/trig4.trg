@@ -8,8 +8,5 @@
 #x# 949
 #y# 4107
 #nature# dialog
-#text# "Salut man! Content que tu aies reussi a faire marcher fmodex!
-Tu me diras si la forme de dialogue te plait.
-Amicalement,
-Little Joe"
+#text# "<babar>Yo man, ca mousse? <rataxes> stfu noob!"
 #endtriggerable# 

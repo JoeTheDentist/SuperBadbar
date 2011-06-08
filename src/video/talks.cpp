@@ -29,13 +29,11 @@ Talks::Talks():
 Talks::~Talks()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Talks")
-	clear_talks();
 }
 
 void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
 	PRINT_CONSTR(1, "Initialisation de la classe Talks")
-	clear_talks();
 	m_camera = camera;
 	std::string background_name = "talks_background.png";
 	m_text_background = new Surface(PIC_TALKS_R + background_name);
@@ -55,64 +53,16 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	m_active = false;
 }
 
-void Talks::display_background()
-{
-	m_camera->display_picture(m_text_background, &m_pos_background, true);
-	m_camera->display_picture(m_talker, &m_pos_talker, true);
-}
-
-
-void Talks::move_up()
-{
-	m_curr_line++;
-	if (m_curr_line >= LINES_NUMBER) {
-		m_waiting_for_enter = true;
-		m_curr_line = LINES_NUMBER - 1;
-		return;
-	} 
-}
-
-void Talks::end_move_up()
-{
-	m_text_surface[0].clear();
-	for (int i = 0; i < LINES_NUMBER - 1; i++){
-		m_text_surface[i] = m_text_surface[i+1];
-	}
-	m_text_surface[LINES_NUMBER - 1].clear();
-	m_pos_text[LINES_NUMBER -1].w = 0;	
-}
-
-
 void Talks::display_text(std::string str)
 {
 	m_waiting_for_enter = false;
 	m_curr_line = 0;
 	m_string_curs = 0;
 	m_active = true;
+	aux_cut_text(str);
+	aux_display_cell(m_cells.front());
+	m_cells.pop();
 	PRINT_TRACE(2, "Affichage d'un texte par Talks")
-	m_text = str;
-	for (int i = 0; i < LINES_NUMBER; i++){
-		m_pos_text[i].x = m_pos_talker.x + m_pos_talker.w + 10;
-		m_pos_text[i].y = POSY + i * POSH;
-		m_pos_text[i].w = 0;
-	}
-//~ 	std::string curr_text;
-//~ 	cell_string *list_string = cut_text(str);
-//~ 	cell_string *curr_list = list_string;
-//~ 	/* affichage des premieres lignes (tant qu'on a pas besoin de décaler vers le haut) */
-//~ 	for (int i = 0; (i < LINES_NUMBER) && (curr_list!=NULL); i++) {
-//~ 		progressive_display(curr_list->str, i);
-//~ 		curr_list = curr_list->next;
-//~ 	}
-
-//~ 	while (curr_list!=NULL) {
-//~ 		while (gKeyboard->wait_menu_key() != mk_enter) {}
-//~ 		move_up();
-//~ 		progressive_display(curr_list->str, LINES_NUMBER - 1);
-//~ 		curr_list = curr_list->next;
-//~ 	}
-//~ 	while (gKeyboard->wait_menu_key() != mk_enter) {}
-
 }
 
 void Talks::load_and_display_text(std::string filename)
@@ -134,25 +84,23 @@ void Talks::load_and_display_text(std::string filename)
 	display_text(str);
 }
 
-void Talks::clear_talks()
-{
-}
-
 void Talks::update()
 {
-	// ecrire deux lettres
-//~ 	if (m_text_surface[m_curr_line]->w() + m_pos_text[m_curr_line].x < POSW - 20) {
-//~ 		move_up();
-//~ 	}
-	if (!end_of_text() && !m_waiting_for_enter) {
+	if (end_of_talks()) {
+		std::cout << "mtext " << m_text << std::endl;
+		m_active = false;
+		return;
+	}
+	if (!aux_end_of_cell() && !m_waiting_for_enter) {
 		bool temp = write_letter();
 		if (temp) 
 			move_up();
 	}
 	if (gKeyboard->is_next_menu_key()) {
 		if (gKeyboard->pop_menu_key() == mk_enter) {
-			if (end_of_text()) {
-				m_active = false;
+			if (aux_end_of_cell()) {
+				aux_display_cell(m_cells.front());
+				m_cells.pop();
 			} else if (m_waiting_for_enter) {
 				m_waiting_for_enter = false;
 				end_move_up();
@@ -169,11 +117,6 @@ bool Talks::isActive()
 	return m_active;
 }
 
-bool Talks::end_of_text()
-{
-	return m_string_curs >= m_text.size();
-}
-
 void Talks::display()
 {
 	display_background();
@@ -188,9 +131,90 @@ void Talks::display()
 	}
 }
 
+
+/************************************************/
+/**			Fonctionnement interne				*/
+/************************************************/
+
+
+void Talks::aux_cut_text(std::string str)
+{
+	unsigned int curs = 0;
+	
+	while (curs < str.size()) {
+		std::string newString, newTalker;
+		if (str[curs] == '<') {
+			curs++;
+			while (str[curs] != '>' && curs < str.size()) {
+				newTalker += str[curs];
+				curs++;
+			}
+			curs++;
+			while (str[curs] != '<' && curs < str.size()) {
+				newString += str[curs];
+				curs++;
+			}
+			cell_string newCell;
+			newCell.str = newString;
+			newCell.talker = newTalker;
+			std::cout << "talker: " << newTalker << std::endl << "text: " << newString << std::endl;
+			m_cells.push(newCell);
+		}
+	}
+}
+
+void Talks::aux_display_cell(cell_string cell)
+{
+	m_talker = new Surface(PIC_TALKS_R + cell.talker + ".png");
+	std::cout << "affichage de " << cell.str << std::endl;
+	m_text = cell.str;
+	m_pos_talker.x = POSX;
+	m_pos_talker.y = POSY;
+	m_pos_talker.w = m_talker->w();
+	m_pos_talker.h = m_talker->h();
+	m_string_curs = 0;
+	clear_lines();
+	for (int i = 0; i < LINES_NUMBER; i++){
+		m_pos_text[i].x = m_pos_talker.x + m_pos_talker.w + 10;
+		m_pos_text[i].y = POSY + i * POSH;
+		m_pos_text[i].w = 0;
+	}
+}	
+
+bool Talks::aux_end_of_cell()
+{
+	return m_string_curs >= m_text.size();
+}
+
+void Talks::display_background()
+{
+	m_camera->display_picture(m_text_background, &m_pos_background, true);
+	m_camera->display_picture(m_talker, &m_pos_talker, true);
+}
+
+void Talks::move_up()
+{
+	m_curr_line++;
+	if (m_curr_line >= LINES_NUMBER) {
+		m_waiting_for_enter = true;
+		m_curr_line = LINES_NUMBER - 1;
+		return;
+	} 
+}
+
+void Talks::end_move_up()
+{
+	m_text_surface[0].clear();
+	for (int i = 0; i < LINES_NUMBER - 1; i++){
+		m_text_surface[i] = m_text_surface[i+1];
+	}
+	m_text_surface[LINES_NUMBER - 1].clear();
+	m_pos_text[LINES_NUMBER -1].w = 0;	
+}
+
 bool Talks::write_letter()
 {
-	if (end_of_text())
+	if (aux_end_of_cell())
 		return true;
 	std::string temp;
 	if (m_text[m_string_curs] == '\n') {
@@ -213,4 +237,16 @@ bool Talks::write_letter()
 	}
 }
 
+bool Talks::end_of_talks()
+{
+	return aux_end_of_cell() && m_cells.empty();
+}
+
+void Talks::clear_lines()
+{
+	for (int i = 0; i < LINES_NUMBER; ++i) {
+		m_text_surface[i].clear();
+	}
+	m_curr_line = 0;
+}
 

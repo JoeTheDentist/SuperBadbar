@@ -15,6 +15,7 @@
 #include "util/arg_analyser.h"
 #include "menus/main_menu.h"
 #include "game/game_initializer.h"
+#include "video/talks.h"
 
 int main(int argc, char *argv[])
 {
@@ -37,5 +38,7 @@ int main(int argc, char *argv[])
 	}
 	Game_initializer::close_game();
 	PRINT_TRACE(1, "Fermeture du jeu")
+//~ 	Talks talks;
+//~ 	talks.aux_cut_text("<plop> bla bla bla \n<plip> blibli bli");
 	return 0;
 }
