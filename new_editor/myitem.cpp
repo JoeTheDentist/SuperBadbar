@@ -48,7 +48,7 @@ void MyItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 	if (m_state == e_beingAdded) {
 		setPos(xabs, yabs);
 	} else {
-		item->setPos(item->x() + xrel, item->y() + yrel);
+		setPos(item->x() + xrel, item->y() + yrel);
 	}
 }
 

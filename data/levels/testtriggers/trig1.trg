@@ -5,6 +5,11 @@
 
 #triggerables#
 7
+#x# 1770
+#y# 3409
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
 #x# 1228
 #y# 3572
 #nature# alert
@@ -12,11 +17,6 @@
 #endtriggerable# 
 #x# 879
 #y# 3507
-#nature# monster
-#text# "fubob"
-#endtriggerable# 
-#x# 1758
-#y# 3410
 #nature# monster
 #text# "fubob"
 #endtriggerable# 

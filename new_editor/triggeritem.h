@@ -82,6 +82,8 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*/
 	virtual void edit();
 	
+	virtual void setPos(int x, int y);
+
 	/*!
 	*	@brief Methode appelee quand on clique droit sur l'item
 	*	@param x Abcisse du clic par rapport a la fenetre
@@ -114,6 +116,8 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@return vrai si l'item a ete trouve
 	*/
 	virtual bool removeItem(MyItem *item);
+	
+	virtual void updateLines();
 	
 	public slots:
 	void slotSetScriptText();

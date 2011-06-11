@@ -28,6 +28,7 @@ TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, i
 	m_textEdit(NULL)
 {
 	static int id = 0;
+	id++;
 	if (trigind != -1) {
 		id = trigind;
 	}
@@ -72,6 +73,8 @@ void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigi
 	analyser.open(triggerFileName.str());
 	analyser.find_string("#triggerables#");
 	int nbTriggers = analyser.read_int();
+	setPos(x, y);	
+
 	for (int i = 0; i < nbTriggers; i++) {
 		TriggerableItem *newItem = new TriggerableItem(m_scene, this, analyser);
 		newItem->addToData(m_view->getData());
@@ -85,7 +88,6 @@ void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigi
 		newItem->addToData(m_view->getData());
 	}
 	analyser.close();
-	setPos(x, y);	
 }
 
 TriggerItem::~TriggerItem()
@@ -179,6 +181,13 @@ void TriggerItem::edit()
 
 }
 
+void TriggerItem::setPos(int x, int y)
+{
+	MyItem::setPos(x, y);
+	updateLines();
+}
+
+
 void TriggerItem::slotSetScriptText()
 {
 	m_script = m_textEdit->toPlainText();
@@ -255,4 +264,16 @@ bool TriggerItem::removeItem(MyItem *item)
 	}
 	
 	return false;
+}
+
+void TriggerItem::updateLines()
+{
+	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); it++) {
+		(*it)->updateLine();
+	}
+	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
+			it != m_zones.end(); it++) {
+				
+	}
 }

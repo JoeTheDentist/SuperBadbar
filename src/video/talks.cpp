@@ -86,11 +86,7 @@ void Talks::load_and_display_text(std::string filename)
 
 void Talks::update()
 {
-	if (end_of_talks()) {
-		std::cout << "mtext " << m_text << std::endl;
-		m_active = false;
-		return;
-	}
+
 	if (!aux_end_of_cell() && !m_waiting_for_enter) {
 		bool temp = write_letter();
 		if (temp) 
@@ -98,6 +94,11 @@ void Talks::update()
 	}
 	if (gKeyboard->is_next_menu_key()) {
 		if (gKeyboard->pop_menu_key() == mk_enter) {
+			if (end_of_talks()) {
+				std::cout << "mtext " << m_text << std::endl;
+				m_active = false;
+				return;
+			}
 			if (aux_end_of_cell()) {
 				aux_display_cell(m_cells.front());
 				m_cells.pop();
@@ -153,6 +154,9 @@ void Talks::aux_cut_text(std::string str)
 			while (str[curs] != '<' && curs < str.size()) {
 				newString += str[curs];
 				curs++;
+			}
+			while (newString[newString.size() - 1] == '\n') {
+				newString.erase(newString.size() - 1, 1);
 			}
 			cell_string newCell;
 			newCell.str = newString;

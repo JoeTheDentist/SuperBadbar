@@ -9,6 +9,7 @@
 
 class QTextEdit;
 class TriggerItem;
+class QGraphicsLineItem;
 
 class TriggerableItem:  public QObject, public MyItem { // on herite de QObject pour les slots
 	Q_OBJECT	
@@ -17,6 +18,7 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	QString m_script;
 	QTextEdit *m_textEdit;	// en parametre pour etre utilise par un slot
 	TriggerItem *m_parent;
+	QGraphicsLineItem *m_itemSegment;
 	public:
 	/*!
 	*	@brief Constructeur
@@ -77,12 +79,22 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*	@brief Edition de l'item
 	*/
 	virtual void edit();
+	
+	virtual void setPos(int x, int y);
+
 
 	public slots:
 	/*!
 	*	@brief Met a jour le champ m_script en fonction des entrees de l'utilisateur dans m_textEdit
 	*/
 	void slotSetScriptText();
+	
+	void updateLine();
+
+	
+	private:
+		
+	void addLine();
 
 };
 
