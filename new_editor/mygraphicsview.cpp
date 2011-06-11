@@ -70,7 +70,6 @@ void MyGraphicsView::newFile(QString backgroundName)
 	m_data->initData(backgroundName);
 	m_xsize = m_data->levelWidth();
 	m_ysize = m_data->levelHeight();
-	std::cout << "OGH " << m_xsize << " " << m_ysize << std::endl;
 	this->scene()->setSceneRect(0, 0, m_xsize, m_ysize);
 	this->resize(m_xsize, m_ysize);
 	m_background = this->scene()->addRect(0, 0, m_xsize, m_ysize, QPen(), QBrush(QColor(255, 100, 100)));
@@ -310,7 +309,6 @@ void MyGraphicsView::keyPressEvent(QKeyEvent *event)
 {
 	switch (event->key()) {
 		case Qt::Key_Control:
-			std::cout << "BOUH" << std::endl;
 			m_ctrl_pressed = true;
 			break;
 		case Qt::Key_Delete:

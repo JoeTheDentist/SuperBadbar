@@ -15,7 +15,7 @@ MyItem::MyItem(QGraphicsItem *item, QString fileName, miState state):
 	m_state(state),
 	m_file_name(fileName)
 {
-	
+	std::cout << "filename : "<< fileName.toStdString() << std::endl;
 }
 
 MyItem::~MyItem()
@@ -88,7 +88,6 @@ void MyItem::setStateNothing()
 	}
 	m_state = e_nothing;
 }
-
 
 void MyItem::removeFromScene(QGraphicsScene *scene)
 {

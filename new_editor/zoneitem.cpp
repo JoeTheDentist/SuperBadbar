@@ -20,6 +20,7 @@ ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y, int
 	MyItem(NULL, ""),
 	m_parent(parent)
 {
+	Q_UNUSED(scene);
 	m_width = w;
 	m_height = h;
 	setItem(addRect(0, 0, m_width, m_height));
@@ -30,6 +31,7 @@ ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, Analyser &analyse
 	MyItem(NULL, ""),
 	m_parent(parent)
 {
+	Q_UNUSED(scene);
 	int x, y;
 	x = analyser.read_int();
 	y = analyser.read_int();
@@ -57,6 +59,7 @@ ZoneItem::~ZoneItem()
 
 MyItem *ZoneItem::duplicate(QGraphicsScene *scene)
 {
+	Q_UNUSED(scene);
 	MyItem *newitem = new ZoneItem(*this);
 	newitem->getItem()->setVisible(false);
 	return newitem;
@@ -69,7 +72,8 @@ void ZoneItem::saveItem(QTextStream &out)
 
 void ZoneItem::addToData(Data *data, bool push_front)
 {
-	std::cout << "add to data position " << std::endl;
+	Q_UNUSED(data);
+	Q_UNUSED(push_front);
 	m_parent->addZoneItem(this);
 }
 

@@ -132,6 +132,13 @@ void TriggerableItem::edit()
 	connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(slotSetScriptText())); 
 }
 
+void TriggerableItem::removeFromScene(QGraphicsScene *scene)
+{
+	scene->removeItem(m_itemSegment);
+	MyItem::removeFromScene(scene);
+}
+
+
 void TriggerableItem::slotSetScriptText()
 {
 	m_script = m_textEdit->toPlainText();
@@ -144,14 +151,12 @@ void TriggerableItem::setPos(int x, int y)
 	updateLine();
 }
 
-
 void TriggerableItem::updateLine()
 {
 	if (m_parent && m_itemSegment)
 		m_itemSegment->setLine(x(), y(), m_parent->x(), m_parent->y());
 	std::cout << m_parent->x() << m_parent->y() << std::endl;
 }
-
 
 void TriggerableItem::addLine()
 {

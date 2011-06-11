@@ -80,8 +80,14 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*/
 	virtual void edit();
 	
+	/*!
+	*	@brief Mutateur de position
+	*	@param x Nouvelle position x
+	*	@param y Nouvelle position y
+	*/
 	virtual void setPos(int x, int y);
-
+	
+	virtual void removeFromScene(QGraphicsScene *scene);
 
 	public slots:
 	/*!
@@ -89,11 +95,17 @@ class TriggerableItem:  public QObject, public MyItem { // on herite de QObject 
 	*/
 	void slotSetScriptText();
 	
+	
+	/*!
+	*	@brief Mise a jour de la ligne reliant l'item a son parent
+	*/
 	void updateLine();
 
-	
 	private:
 		
+	/*!
+	*	@brief Ajout de la ligne reliant l'item a son parent
+	*/
 	void addLine();
 
 };
