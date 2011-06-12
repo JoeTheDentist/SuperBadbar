@@ -107,8 +107,6 @@ public:
 	*/	
 	void display();
 	
-protected:
-public:
 	/*!
 	*	@brief Coupe le texte en parallele et le stocke dans la liste de celllules
 	*	@param str Le texte a couper

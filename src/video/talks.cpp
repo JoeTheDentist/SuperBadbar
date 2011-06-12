@@ -95,7 +95,6 @@ void Talks::update()
 	if (gKeyboard->is_next_menu_key()) {
 		if (gKeyboard->pop_menu_key() == mk_enter) {
 			if (end_of_talks()) {
-				std::cout << "mtext " << m_text << std::endl;
 				m_active = false;
 				return;
 			}

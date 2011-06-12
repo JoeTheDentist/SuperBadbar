@@ -52,9 +52,6 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	} else {
 		m_record_file = NULL;
 	}
-	update_plop();
-	update_plop();
-	update_plop();
 }
 
 Keyboard::~Keyboard()
@@ -124,14 +121,6 @@ void Keyboard::update_events()
 			break;
 		}
 	}
-}
-
-void Keyboard::update_plop() 
-{	
-//~ 	for (uint32_t i = 0; i <= k_fire; i++) {
-//~ 		m_key_down_bis[(enum key)i] = m_key_down_bis2[(enum key)i];
-//~ 		m_key_down[(enum key)i] = m_key_down_bis[(enum key)i];
-//~ 	}
 }
 
 bool Keyboard::key_down(enum key k) const
@@ -306,17 +295,4 @@ menu_key Keyboard::pop_menu_key()
 	return res;
 }
 
-// Fonction pour aider au debug, n'est pas utile au vrai programme
-void display_config()
-{
-	std::cout << "#k_up# " << SDLK_i << std::endl;
-	std::cout << "#k_down# " << SDLK_k << std::endl;
-	std::cout << "#k_left# " << SDLK_j << std::endl;
-	std::cout << "#k_right# " << SDLK_l << std::endl;
-	std::cout << "#k_jump# " << SDLK_q << std::endl;
-	std::cout << "#k_fire# " << SDLK_d << std::endl;
-	std::cout << "#k_escape# " << SDLK_ESCAPE << std::endl;
-	std::cout << "#k_action# " << SDLK_SPACE << std::endl;
-	std::cout << "#k_prev_weapon# " << SDLK_a << std::endl;
-	std::cout << "#k_next_weapon# " << SDLK_z << std::endl;	
-}
+

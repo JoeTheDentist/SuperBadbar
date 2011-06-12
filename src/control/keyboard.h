@@ -145,11 +145,6 @@ public:
 	*/
 	void disable_key_repeat();
 	
-	// utilisee pour tester le lag des touches
-	// toutes les occurences peuvent etre enlevees a tout moment
-	void update_plop();
-
-	
 	/*!
 	*	@brief Vide la liste des touches menu recemment enfoncees
 	*/
