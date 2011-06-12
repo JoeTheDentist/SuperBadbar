@@ -37,7 +37,6 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_key_config[SDLK_SPACE] = k_action;
 	m_key_config[SDLK_a] = k_prev_weapon;
 	m_key_config[SDLK_z] = k_next_weapon;
-	display_config();
 //~ 	load_config("defaultkey.cfg");
 	m_record_on = record_on;
 	m_replay_on = replay_on;
