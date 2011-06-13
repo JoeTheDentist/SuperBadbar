@@ -18,6 +18,7 @@
 #include "../video/camera.h"
 #include "../actors/babar.h"
 #include "../video/pictures_container.h"
+#include <sstream>
 
 
 Events_manager::Events_manager()
@@ -76,10 +77,10 @@ void Events_manager::load_triggers(Analyser *analyser)
 		return;
 	int triggers_number = analyser->read_int();
 	for (int i = 0; i < triggers_number; i++) {
-		m_list_triggers.push_back(new Trigger(analyser->read_int(), m_level_name));
-		// on zappe ce qui ne sert qu'à l'editeur
-		analyser->read_int();
-		analyser->read_int();
+//~ 		analyser->push_curs();
+		analyser->find_next_string("#trig#");
+		m_list_triggers.push_back(new Trigger(analyser));
+//~ 		analyser->pop_curs();
 	}	
 }
 

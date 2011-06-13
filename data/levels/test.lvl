@@ -146,5 +146,33 @@ block8 1928 2253
 block8 1517 2255
 !
 #Triggers#
-0
+2
+#trig#
+#editor pos#
+3200 3900
+#zone#
+1
+3261 3981 3524 4357
+#triggerables#
+1
+#x# 2801
+#y# 4199
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3300 3900
+#zone#
+1
+3261 3981 3524 4357
+#triggerables#
+1
+#x# 2901
+#y# 4199
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
 !

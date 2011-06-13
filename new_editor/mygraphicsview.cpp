@@ -172,10 +172,8 @@ void MyGraphicsView::loadFile(QString fileName)
 	analyser.find_string("#Triggers#");
 	int nbTriggers = analyser.read_int();
 	for (int i = 0; i < nbTriggers; i ++) {
-		int ind = analyser.read_int();
-		int x = analyser.read_int();
-		int y = analyser.read_int();
-		myitem = new TriggerItem(this->scene(), m_file_name, ind, x, y);
+		analyser.find_next_string("#trig#");
+		myitem = new TriggerItem(this->scene(), m_file_name, &analyser);
 		addToData(myitem);
 	}
 	m_ctrl_pressed = false;

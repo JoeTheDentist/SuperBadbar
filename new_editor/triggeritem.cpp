@@ -19,25 +19,17 @@
 #include <QAction>
 
 
-TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, int trigind, int x, int y):
+TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, Analyser *analyser):
 	MyItem(NULL, fileName),
-	m_trigger_id(0),
 	m_class_name(""),
 	m_level_name(fileName),
 	m_scene(scene),
 	m_textEdit(NULL)
 {
-	static int id = 0;
-	id++;
-	if (trigind != -1) {
-		id = trigind;
-	}
-	m_trigger_id = id;
-	id++;
-	if (trigind == -1) {
+	if (analyser == NULL) {
 		createTrigger(scene, fileName);
 	} else {
-		loadTrigger(scene, fileName, trigind, x, y);
+		loadTrigger(scene, fileName, analyser);
 	}
 }                
 
@@ -56,38 +48,35 @@ void TriggerItem::createTrigger(QGraphicsScene *scene, QString fileName)
 	setPos(0, 0);	
 }
 
-void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, int trigind, int x, int y)
+void TriggerItem::loadTrigger(QGraphicsScene *scene, QString fileName, Analyser *analyser)
 {
-	std::cout << "Chargement de trigger item " << std::endl;
 	m_level_name =  substringAfter(fileName, "levels/");
 	m_level_name = suppressExtension(m_level_name); // on enleve .lvl
-	QString trigdir = LEVELS_DIR + m_level_name + "triggers/";
-	std::cout << "trigdir: " << trigdir.toStdString() << std::endl;
 	QPixmap image;
 	image.load(TriggerItem::picPathFromEditor(fileName));
 	setItem(scene->addPixmap(image));
-	// chargement des triggerablesitem
-	std::stringstream triggerFileName;
-	triggerFileName << trigdir.toStdString() << "trig" << trigind << ".trg";
-	Analyser analyser;
-	analyser.open(triggerFileName.str());
-	analyser.find_string("#triggerables#");
-	int nbTriggers = analyser.read_int();
+	analyser->find_next_string("#editor pos#");
+	int x = analyser->read_int();
+	int y = analyser->read_int();
+	std::cout << x << " " << y << std::endl;
 	setPos(x, y);	
-
+	//chargement des zoneitem
+	analyser->find_next_string("#zone#");
+	int nbZones = analyser->read_int();
+	for (int i = 0; i < nbZones; i++) {
+		ZoneItem *newItem = new ZoneItem(m_scene, this, *analyser);
+		newItem->addToData(m_view->getData());
+	}
+	// chargement des triggerablesitem
+	analyser->find_next_string("#triggerables#");
+	int nbTriggers = analyser->read_int();
 	for (int i = 0; i < nbTriggers; i++) {
-		TriggerableItem *newItem = new TriggerableItem(m_scene, this, analyser);
+		TriggerableItem *newItem = new TriggerableItem(m_scene, this, *analyser);
 		newItem->addToData(m_view->getData());
 	}
 	m_class_name = "event";
 	
-	analyser.find_string("#zone#");
-	int nbZones = analyser.read_int();
-	for (int i = 0; i < nbZones; i++) {
-		ZoneItem *newItem = new ZoneItem(m_scene, this, analyser);
-		newItem->addToData(m_view->getData());
-	}
-	analyser.close();
+
 }
 
 TriggerItem::~TriggerItem()
@@ -124,40 +113,22 @@ MyItem *TriggerItem::duplicate(QGraphicsScene *scene)
 
 void TriggerItem::saveItem(QTextStream &out)
 {
-	//creatin du .trg
-	QString reldir = m_level_name + "triggers/";
-	QString dir = QString(LEVELS_DIR) + reldir;
-	std::cout << "Dir : " << dir.toStdString() << std::endl;
-	if (!QDir(dir).exists()) {
-		std::cout << "Creation du repertoire " << dir.toStdString() << std::endl;
-		QDir().mkdir(dir);	
-	}
-	QString trigfile;
-	QTextStream trigstream(&trigfile);
-	trigstream << dir << "trig" << m_trigger_id << ".trg";
-	QFile file(trigfile);
-	file.open( QIODevice::WriteOnly | QIODevice::Text );
-	QTextStream outtrig(&file);
-	//ecriture dans le .trg
-	outtrig << "#zone#" << endl;
-	outtrig << m_zones.size() << endl;
+	out << "#trig#" << endl;
+	out << "#editor pos#" << endl;
+	out << x() << " " << y() << endl;
+	out << "#zone#" << endl;
+	out << m_zones.size() << endl;
 	for (std::list<ZoneItem *>::iterator it = m_zones.begin();
 			it != m_zones.end(); it++) {
-		(*it)->saveItem(outtrig);
+		(*it)->saveItem(out);
 	}
-	outtrig << endl;
-		outtrig << "#triggerables#" << endl;
-	outtrig << m_triggerables.size() << endl;
+	out << "#triggerables#" << endl;
+	out << m_triggerables.size() << endl;
 	for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
 			it != m_triggerables.end(); it++) {
-		(*it)->saveItem(outtrig);
+		(*it)->saveItem(out);
 	}
-	
-	file.close();
-	
-	//save dans le .lvl
-	out << m_trigger_id << " " << x() << " " << y() << endl;
-
+	out << endl;
 }
 
 void TriggerItem::addToData(Data *data, bool push_front)
@@ -276,3 +247,5 @@ void TriggerItem::updateLines()
 				
 	}
 }
+
+

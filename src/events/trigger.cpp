@@ -20,34 +20,13 @@
 #include "../events/triggerable.h"
 #include "../players/players_manager.h"
 
-Trigger::Trigger(int trigger_number, std::string level_name)
+
+
+Trigger::Trigger(Analyser *analyser):
+	m_triggered(false)
 {
-	PRINT_CONSTR(3, "Construction d'un trigger");
-	m_triggered = false;
-	Analyser analyser;
-	std::stringstream trig_ss;
-	trig_ss << trigger_number;
-	level_name.erase(level_name.size() - 4, 4);
-	analyser.open(LEVELS_R + level_name + "triggers/trig" + trig_ss.str() + ".trg" );
-	if (analyser.find_string("#zone#")) {
-		int nb_zone = analyser.read_int();
-		for (int i = 0; i < nb_zone; ++i) {
-			Rect rec;
-			rec.x = analyser.read_int();
-			rec.y = analyser.read_int();
-			rec.w = analyser.read_int() - rec.x;
-			rec.h = analyser.read_int() - rec.y;
-			addPos(rec);
-		}
-	}
-	if (analyser.find_string("#triggerables#")) {
-		int nb_triggerables = analyser.read_int();
-		for (int i = 0; i < nb_triggerables; ++i) {
-			PRINT_DEBUG(1, "YEAH");
-			addTriggerable(new Triggerable(analyser));
-		}
-	}
-	analyser.close();
+	initZones(analyser);
+	initTriggerables(analyser);
 }
 
 Trigger::~Trigger()
@@ -101,4 +80,33 @@ void Trigger::addPos(Rect pos)
 void Trigger::addTriggerable(Triggerable *triggerable)
 {
 	m_triggerables.push_back(triggerable);
+}
+
+/*************************************************************/
+/*******					PRIVATE					*********/
+/*************************************************************/
+
+void Trigger::initZones(Analyser *analyser)
+{
+	if (analyser->find_next_string("#zone#")) {
+		int nb_zone = analyser->read_int();
+		for (int i = 0; i < nb_zone; ++i) {
+			Rect rec;
+			rec.x = analyser->read_int();
+			rec.y = analyser->read_int();
+			rec.w = analyser->read_int() - rec.x;
+			rec.h = analyser->read_int() - rec.y;
+			addPos(rec);
+		}
+	}	
+}
+
+void Trigger::initTriggerables(Analyser *analyser)
+{
+	if (analyser->find_next_string("#triggerables#")) {
+		int nb_triggerables = analyser->read_int();
+		for (int i = 0; i < nb_triggerables; ++i) {
+			addTriggerable(new Triggerable(*analyser));
+		}
+	}	
 }

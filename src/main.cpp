@@ -14,7 +14,7 @@
 #include "game/game.h"
 #include "util/arg_analyser.h"
 #include "menus/main_menu.h"
-#include "game/game_initializer.h"l
+#include "game/game_initializer.h"
 #include "video/talks.h"
 
 int main(int argc, char *argv[])

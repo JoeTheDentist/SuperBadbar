@@ -44,10 +44,15 @@ void Analyser::close()
 
 bool Analyser::find_string(std::string str)
 {
+	m_file->seekg(0);
+	return find_next_string(str);
+}
+
+bool Analyser::find_next_string(std::string str)
+{
 	uint32_t char_found = 0;
 	uint32_t size = str.size();
 	char current = '*';
-	m_file->seekg(0);
 	while (!m_file->eof() && char_found < size){
 		m_file->get(current);
 		if (current == str[char_found])
@@ -55,8 +60,7 @@ bool Analyser::find_string(std::string str)
 		else
 			char_found = 0;
 	}
-	return char_found == size;
-
+	return char_found == size;	
 }
 
 bool Analyser::end_of_section()
@@ -133,7 +137,6 @@ std::string Analyser::read_between_char(char delimitor)
 		res += current_char;
 		m_file->get(current_char);
 	}
-	std::cout << res << std::endl;
 	return res;
 }
 
@@ -146,4 +149,13 @@ char Analyser::read_char()
 	return res;	
 }
 
+void Analyser::push_curs()
+{
+	m_curs_stack.push(m_file->tellg());
+}
 
+void Analyser::pop_curs()
+{
+	m_file->seekg(m_curs_stack.top(), std::ios::beg);
+	m_curs_stack.pop();
+}

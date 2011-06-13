@@ -9,12 +9,12 @@
 class TriggerableItem;
 class ZoneItem;
 class QTextEdit;
+class Analyser;
 
 class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour les slots
 	Q_OBJECT	
 	
 	private:
-	int m_trigger_id; // l'identifiant du trigger
 	QString m_class_name;
 	QString m_level_name; // le nom du level depuis le dossier des levels
 	std::list<TriggerableItem *> m_triggerables; 
@@ -27,11 +27,10 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	*	@brief Constructeur
 	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier level depuis au moins la racine du projet
-	*	@param trigind S'il est indique, le trigger est chargé depuis un fichier. Sinon, il est cree
-	*	@param x Position du trigger (utile seulement si on veut charger le trigger)
-	*	@param y Position du trigger (utile seulement si on veut charger le trigger)
+	*	@param analyser Un analyser de level place au debut du trigger (juste apres #trig#), ou null si on ne
+	le charge pas depuis un fichier
 	*/
-	TriggerItem(QGraphicsScene *scene, QString fileName, int trigind = -1, int x = 0, int y = 0);
+	TriggerItem(QGraphicsScene *scene, QString fileName, Analyser *analyser = NULL);
 
 	
 	
@@ -127,7 +126,7 @@ class TriggerItem:  public QObject, public MyItem { // on herite de QObject pour
 	protected:
 	// methodes auxilliaires du constructeur
 	void createTrigger(QGraphicsScene *scene, QString fileName);
-	void loadTrigger(QGraphicsScene *scene, QString fileName, int trigind, int x, int y);
+	void loadTrigger(QGraphicsScene *scene, QString fileName, Analyser *analyser);
 
 
 };

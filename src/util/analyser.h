@@ -18,6 +18,7 @@
 #include <string>
 #include <fstream>
 #include <stdint.h>
+#include <stack>
 
 #define COLL_EXT ".col"
 #define PICS_EXT ".png"
@@ -39,7 +40,7 @@ private:
 	bool m_opened;
 	std::ifstream *m_file;
 	std::string m_filename;
-
+	std::stack<std::streamoff> m_curs_stack;
 public:
 	/*!
 	* @brief Constructeur par défaut
@@ -81,6 +82,15 @@ public:
 	bool find_string(std::string str);
 
 	/*!
+	* @brief Positionne le curseur après la première occurence de str à partir du curseur actuel
+	* @return vrai si la chaine a été trouvée
+	* Si la chaine n'est pas trouvée, le curseur est positionné à la fin du fichier.
+	*
+	* @param str La chaine cherchée
+	*/
+	bool find_next_string(std::string str);
+
+	/*!
 	* @return vrai si on est à la fin d'une section (si le caractère suivant est un '!'
 	* @warning non fonctionnelle sur windows (à cause de jump_separators)
 	*/
@@ -120,6 +130,19 @@ public:
 	* @return le char lu
 	*/
 	char read_char();
+	
+	
+	/*!
+	*	@brief Sauvegarde la position du curseur actuelle dans une pile
+	*/
+	void push_curs();
+	
+	/*!
+	*	@brief Repositionne le curseur dans la valeur la plus haute de la pile 
+	*
+	* 	(la pile est depilee)
+	*/
+	void pop_curs();
 
 };
 

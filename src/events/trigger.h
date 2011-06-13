@@ -21,15 +21,16 @@ class Analyser;
  * 	@class Trigger
  * 	@brief Ensemble d'triggerables declenchables lorsqu'on entre dans une zone
  *
- * Il n'est pas affichable
  *
  *	Format dans un .lvl:
  *	#Triggers#
  *	<nombre de triggers>
  *	numeros des trigger
  *	!
+ *	
+ *	puis plus loin, par exemple pour le trigger 42:
  *
- *	Format d'un .trg:
+ *	#trig42#
  *	#zone#
  *	<nombre de positions>
  *	x y w h
@@ -46,12 +47,13 @@ protected:
 	bool m_triggered;
 public:
 	
+	Trigger(Analyser *analyser);
+	
 	/**
 	 * 	@brief Constructeur
 	 *	@param level_number le numero du trigger
 	 *	@param level_name le nom du niveau
 	*/
-	Trigger(int trigger_number, std::string level_name);
 
 	/**
 	 * 	@brief Destructeur
@@ -97,6 +99,11 @@ public:
 	 */
 	void addTriggerable(Triggerable *triggerable);
 	
+	
+	private:
+	
+	void initZones(Analyser *analyser);
+	void initTriggerables(Analyser *analyser);
 
 };
 
