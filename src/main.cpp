@@ -14,7 +14,7 @@
 #include "game/game.h"
 #include "util/arg_analyser.h"
 #include "menus/main_menu.h"
-#include "game/game_initializer.h"
+#include "game/game_initializer.h"l
 #include "video/talks.h"
 
 int main(int argc, char *argv[])
@@ -26,10 +26,10 @@ int main(int argc, char *argv[])
 		Game *game = new Game(arg_analyser.get_level_name());
 		game->game_loop();
 		delete game;
-		
+
 	} else if(arg_analyser.menu_on()) {
 		Main_menu *menu = new Main_menu();
-		
+
 		delete menu;
 	} else {
 		Game *game = new Game("test.lvl");

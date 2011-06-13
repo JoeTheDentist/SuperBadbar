@@ -6,12 +6,12 @@ leveltest.png
 4400
 
 #Babar#
-2665
-3727
+1894
+2593
 1
 
 #Sets#
-25
+26
 butterfly/butterfly 173 3876
 butterfly/butterfly 3751 4144
 butterfly/butterfly 3977 3139
@@ -36,10 +36,11 @@ mushroom/mushroom 1000 3152
 mushroom/mushroom 896 3675
 mushroom/mushroom 2025 3809
 mushroom/mushroom 2055 3819
-butterfly/butterfly 2863 3659
+mushroom/mushroom 2800 3817
+drum_flower/drum_flower 2105 2615
 !
 #Statics#
-49
+50
 block6 4345 3194 0
 block4_3 2631 2597 0
 block4_1 2629 1319 0
@@ -89,6 +90,7 @@ jungle_block_8 2653 3831 0
 grass2 2806 4271 0
 jungle_set_5 1927 3622 0
 jungle_set_5 3076 3586 0
+jungle_set_2 2733 3725 0
 !
 #Monsters#
 5
