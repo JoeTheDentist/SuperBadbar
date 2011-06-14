@@ -158,6 +158,7 @@ std::list<Projectile*> *Monster::fire()
 	}
 	fire_pos.y += fire_pos.h/2;
 	m_fire_phase = 0;
+	std::cout << "fire " << std::endl;
 	return m_weapon->fire(fire_pos,m_dir, MONSTERS);
 }
 
