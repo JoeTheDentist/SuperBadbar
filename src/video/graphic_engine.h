@@ -100,6 +100,12 @@ public:
 	 *  @return Pointeur sur le sprites_manager
 	 */
     Sprites_manager * get_sprites_manager();
+	
+	/**
+	 * 	@brief Accesseur
+	 *  @return Pointeur sur le dashboard
+	 */	
+	Dashboard *get_dashboard() {return m_dashboard;}
 
     /**
      *  @brief Raz de sprites_manager

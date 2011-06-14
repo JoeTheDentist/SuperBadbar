@@ -12,7 +12,7 @@
 
 
 #include "../actors/monsters.h"
-
+#include "../video/life_bar_possessor.h"
 
 /**
  * 	@class Boss
@@ -20,9 +20,7 @@
  *
  */
 
-class Boss : public Monster {
-private:
-	
+class Boss : public Monster, public Life_bar_possessor {
 public:
 	
 	/*!
@@ -50,8 +48,13 @@ public:
 	virtual void update_speed_ai();
 	
 	virtual void update();
-
-
+	
+	virtual double life_bar_status() { return double(m_life) / double(m_life_max);}
+	
+	virtual void kill();
+	
+private:
+	void initBoss();
 };
 
 

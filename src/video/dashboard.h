@@ -26,6 +26,7 @@ class Camera;
 class Babar;
 class Pictures_container;
 class Surface;
+class Life_bar_possessor;
 
 /**
  * 	@class Dashboard
@@ -43,6 +44,7 @@ private:
 	Surface *m_babar_head;
 	Font m_font;
 	Anim_text * m_alert;
+	Life_bar_possessor *m_life_bar_possessor;
 
 public:
 
@@ -80,6 +82,10 @@ public:
      *  @brief Mets à jour l'animation de texte et la suppr si besoin
      */
     void update();
+	
+	void set_life_bar_possessor(Life_bar_possessor *lfb) {m_life_bar_possessor = lfb;}
+	
+	void remove_life_bar_possessor() {m_life_bar_possessor = NULL;}
 
 private:
 	void clear_dashboard();

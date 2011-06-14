@@ -38,6 +38,7 @@ protected:
 	std::string m_nom;				/* sa nature (peut-etre à enlever) */
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
+	int m_life_max;                 /* vies max */
 	bool m_fire;
 	unsigned int m_fire_phase;
 	Weapon *m_weapon;
@@ -103,7 +104,7 @@ public:
 	 */
 	bool dead() const;
 
-	void kill();
+	virtual void kill();
 
 	/*!
 	 *	@brief Accesseur: indique si on peut tirer

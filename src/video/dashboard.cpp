@@ -23,18 +23,21 @@
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
 #include "../players/players_manager.h"
+#include "../video/life_bar_possessor.h"
 
 Dashboard::Dashboard():
 	m_heart(NULL),
 	m_weapons_pictures(NULL),
 	m_peanut(NULL),
 	m_babar_head(NULL),
-	m_font()
+	m_font(),
+	m_life_bar_possessor(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
 	m_alert = NULL;
+	// Abonnement aux life_bar_possessors
+	Life_bar_possessor::setDashboard(this);
 }
-
 
 Dashboard::~Dashboard()
 {
@@ -59,7 +62,6 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	m_weapons_pictures[ROCKET_LAUNCHER] = new Surface(PIC_DASHBOARD_R + "weapon/rocket_launcher.png");
 	m_weapons_pos.x = POS_WEAPON_X;
 	m_weapons_pos.y = POS_WEAPON_Y;
-
 	m_peanut = new Surface(PIC_DASHBOARD_R + "peanut.png");
 }
 
@@ -83,7 +85,7 @@ void Dashboard::draw_dashboard(Camera *camera)
 	/*																				*/
 	/*																				*/
 	/*																				*/
-	/*																				*/
+	/*																status_bar		*/
 	/********************************************************************************/
 	
 	Rect pos_camera = camera->frame();
@@ -160,6 +162,11 @@ void Dashboard::draw_dashboard(Camera *camera)
         pos_alert.x -= img_alert->w()/2-100;
         pos_alert.y -= img_alert->h()/2+100;
         camera->display_picture(img_alert,&pos_alert,true);
+	}
+	
+	/* affichage de le life bar */
+	if (m_life_bar_possessor) {
+		
 	}
 }
 

@@ -16,6 +16,7 @@
 #include "../actors/charging_monster.h"
 #include "../actors/following_walking_monsters.h"
 #include "../actors/following_flying_monsters.h"
+#include "../actors/boss.h"
 #include "../actors/boss_elmer.h"
 #include "../video/camera.h"
 #include "../game/static_data.h"
@@ -78,7 +79,8 @@ void Monsters_manager::load_monster(Analyser *analyser)
 {
 	std::string monster_type = analyser->read_string();
 	if (monster_type == "following_walking_monster") {
-		add(new Following_walking_monster(analyser));
+//~ 		add(new Following_walking_monster(analyser));
+		add(new Boss(analyser));
 	} else if (monster_type == "walking_monster") {
 		add(new Walking_monster(analyser));
 	} else if (monster_type == "flying_monster") {
