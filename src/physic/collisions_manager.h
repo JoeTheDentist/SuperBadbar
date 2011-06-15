@@ -18,7 +18,6 @@
 #include "../util/globals.h"
 #include "../util/analyser.h"
 #include "../util/debug.h"
-
 class Static;
 class Bindable_platform;
 class Babar;
@@ -166,7 +165,6 @@ public:
 	#ifdef DEBUG_COLL
 	void display_coll(Camera *camera);
 	#endif
-	
 private:
 	void init_statics(Analyser &analyser);
 	void init_moving_plateforms(Analyser &analyser);

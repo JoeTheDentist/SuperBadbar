@@ -120,6 +120,7 @@ void Collisions_manager::display_platforms(Camera * const camera) const
 		#endif
 	}
 
+
 }
 
 void Collisions_manager::update_platforms_pos()
@@ -197,21 +198,10 @@ bool Collisions_manager::is_right_coll(uint32_t coll_number)
 	return ((coll_number & 0x1) == 0x1);
 }
 
-//~ #ifdef DEBUG_COLL
-//~ void Collisions_manager::display_coll(Camera *camera)
-//~ {
-//~ 	Rect plop;
-//~ 	for (int i = 0; i < m_collisions_matrix_w; i ++) {
-//~ 		plop.x = i * BOX_SIZE;
-//~ 		for (int j = 0; j < m_collisions_matrix_h; j++) {
-//~ 			if (m_collisions_matrix[i][j] == 4) {
-//~ 				plop.y = j * BOX_SIZE;
-//~ 				camera->display_green_coll(plop);
-//~ 			} else if (m_collisions_matrix[i][j] == 15) {
-//~ 				plop.y = j*BOX_SIZE;
-//~ 				camera->display_red_coll(plop);
-//~ 			}
-//~ 		}
-//~ 	}
-//~ }
-//~ #endif
+#ifdef DEBUG_COLL
+void Collisions_manager::display_coll(Camera *camera)
+{
+	m_matrix->display_coll(camera);
+}
+#endif
+

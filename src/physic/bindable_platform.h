@@ -22,7 +22,6 @@ class Surface;
 class Babar;
 class Camera;
 
-
 /**
  * 	@class Bindable_platform
  * 	@brief Classe représentant une plateforme de collision potentiellement mobile

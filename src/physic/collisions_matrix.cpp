@@ -55,11 +55,14 @@ void Collisions_matrix::addStatic(int x, int y, std::string static_name)
 	analyser_static.open((PIC_STATICS_R + static_name + COLL_EXT));
 	int static_weight = analyser_static.read_int();
 	int static_height = analyser_static.read_int();
-	int j_min = std::max(0, y/BOX_SIZE), j_max = std::min((int)(y / BOX_SIZE + static_height), (int)m_collisions_matrix_h);
-	int i_min = std::max(0, x/BOX_SIZE), i_max = std::min((int)(x / BOX_SIZE + static_weight), (int)m_collisions_matrix_w);
+	int j_min = y/BOX_SIZE, j_max = int(y / BOX_SIZE + static_height);
+	int i_min = x/BOX_SIZE, i_max = int(x / BOX_SIZE + static_weight);
 	for (int j = j_min ; j < j_max; j++) {
 		for (int i = i_min; i < i_max; i++) {
-			m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
+			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0) 
+				analyser_static.read_uint32_t();
+			else 
+				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 		}
 	}
 	analyser_static.close();
@@ -167,15 +170,6 @@ bool Collisions_matrix::can_fall(Rect pos) {
     return ret;
 }
 
-//~ Rect Collisions_matrix::position()
-//~ {
-//~ 	Rect rec;
-//~ 	rec.x = 0;
-//~ 	rec.y = 0;
-//~ 	return rec;
-//~ }
-
-
 void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 {
     int coll;
@@ -224,4 +218,23 @@ void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 	}
 }
 
+
+#ifdef DEBUG_COLL
+void Collisions_matrix::display_coll(Camera *camera)
+{
+	Rect plop;
+	for (int i = 0; i < m_collisions_matrix_w; i ++) {
+		plop.x = i * BOX_SIZE;
+		for (int j = 0; j < m_collisions_matrix_h; j++) {
+			if (m_collisions_matrix[i][j] == 4) {
+				plop.y = j * BOX_SIZE;
+				camera->display_green_coll(plop);
+			} else if (m_collisions_matrix[i][j] == 15) {
+				plop.y = j*BOX_SIZE;
+				camera->display_red_coll(plop);
+			}
+		}
+	}
+}
+#endif
 

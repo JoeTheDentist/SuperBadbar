@@ -43,7 +43,8 @@
 //~  *	@warning Beaucoup de vérifications sont faites pour éviter les dépassements de tableaux. On peut donc optimiser ici
  */
 
- struct Rect;
+struct Rect;
+class Camera;
 
 class Collisions_matrix {
 protected:
@@ -173,7 +174,10 @@ public:
 	
 //~ 	virtual Rect position();
 
-
+	#ifdef DEBUG_COLL
+	void display_coll(Camera *camera);
+	#endif
+	
 	void update_pos( Rect &pos, Rect &speed );
 };
 

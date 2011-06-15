@@ -154,18 +154,6 @@ bool Bindable_platform::can_bind()
 #ifdef DEBUG_COLL
 void Bindable_platform::display_coll(Camera *camera)
 {
-	Rect plop;
-	for (int i = 0; i < m_collisions_matrix_w; i ++) {
-		plop.x = i * BOX_SIZE + m_pos.x;
-		for (int j = 0; j < m_collisions_matrix_h; j++) {
-			if (m_collisions_matrix[i][j] == 4) {
-				plop.y = j * BOX_SIZE + m_pos.y;
-				camera->display_green_coll(plop);
-			} else if (m_collisions_matrix[i][j] == 15) {
-				plop.y = j*BOX_SIZE;
-				camera->display_red_coll(plop);
-			}
-		}
-	}
+
 }
 #endif
