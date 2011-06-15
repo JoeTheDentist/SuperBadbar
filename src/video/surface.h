@@ -95,6 +95,8 @@ public:
 	*	@return La hauteur de l'image
 	*/
 	void set_h(int h);
+	
+	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
 
 };
 

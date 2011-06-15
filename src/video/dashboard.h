@@ -15,6 +15,8 @@
 #define POS_WEAPON_X 50
 #define POS_WEAPON_Y 60
 #define DASH_DECALAGE 10
+#define LIFE_BAR_W 200
+#define LIFE_BAR_H 30
 
 #include "../video/surface_text.h"
 
@@ -45,6 +47,11 @@ private:
 	Font m_font;
 	Anim_text * m_alert;
 	Life_bar_possessor *m_life_bar_possessor;
+	Surface *m_green_rect;
+	Surface *m_red_rect;
+	Surface *m_life_bar;
+	Rect m_frame_life_bar;
+	Rect m_rect_null;
 
 public:
 

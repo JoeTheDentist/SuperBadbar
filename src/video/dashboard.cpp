@@ -20,6 +20,7 @@
 #include "../video/talks.h"
 #include "../video/surface.h"
 #include "../video/surface_text.h"
+#include "../video/surface_uniform.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
 #include "../players/players_manager.h"
@@ -31,7 +32,10 @@ Dashboard::Dashboard():
 	m_peanut(NULL),
 	m_babar_head(NULL),
 	m_font(),
-	m_life_bar_possessor(NULL)
+	m_life_bar_possessor(NULL),
+	m_green_rect(NULL),
+	m_red_rect(NULL),
+	m_life_bar(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
 	m_alert = NULL;
@@ -61,8 +65,19 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	m_weapons_pictures[SHOTGUN] = new Surface(PIC_DASHBOARD_R + "weapon/shotgun.png");
 	m_weapons_pictures[ROCKET_LAUNCHER] = new Surface(PIC_DASHBOARD_R + "weapon/rocket_launcher.png");
 	m_weapons_pos.x = POS_WEAPON_X;
-	m_weapons_pos.y = POS_WEAPON_Y;
+	m_weapons_pos.y = POS_WEAPON_Y;                        
 	m_peanut = new Surface(PIC_DASHBOARD_R + "peanut.png");
+	m_green_rect = new Surface_uniform(LIFE_BAR_W, LIFE_BAR_H, 0, 255, 0);
+	m_red_rect = new Surface_uniform(LIFE_BAR_W, LIFE_BAR_H, 255, 0, 0);
+	m_life_bar = new Surface_uniform(LIFE_BAR_W, LIFE_BAR_H, 0, 255, 0);
+	m_frame_life_bar.x = WINDOW_WIDTH - m_life_bar->w() - 20;
+	m_frame_life_bar.y = WINDOW_HEIGHT -100 - DASH_DECALAGE;
+	m_frame_life_bar.w = m_life_bar->w();
+	m_frame_life_bar.h = m_life_bar->h();
+	m_rect_null.x = 0;
+	m_rect_null.y = 0;
+	m_rect_null.w = 0;
+	m_rect_null.h = 0;
 }
 
 
@@ -166,7 +181,16 @@ void Dashboard::draw_dashboard(Camera *camera)
 	
 	/* affichage de le life bar */
 	if (m_life_bar_possessor) {
-		
+		Rect rect1;
+		rect1.x = 0;
+		rect1.y = 0;
+		rect1.w = m_life_bar->w();
+		rect1.h = m_life_bar->h();
+		m_green_rect->blit_surface(m_life_bar, rect1, rect1);
+		rect1.x = double(m_life_bar->w()) * m_life_bar_possessor->life_bar_status();
+		std::cout << rect1.x << std::endl;
+		m_red_rect->blit_surface(m_life_bar, rect1, rect1);
+		camera->display_picture(m_life_bar, &m_frame_life_bar, true);
 	}
 }
 
@@ -206,4 +230,8 @@ void Dashboard::clear_dashboard()
 	m_alert = NULL;
 	delete m_babar_head;
 	m_babar_head = NULL;
+	delete m_green_rect;
+	m_green_rect = NULL;
+	delete m_red_rect;
+	m_green_rect = NULL;
 }

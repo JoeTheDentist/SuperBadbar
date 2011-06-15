@@ -79,8 +79,7 @@ void Monsters_manager::load_monster(Analyser *analyser)
 {
 	std::string monster_type = analyser->read_string();
 	if (monster_type == "following_walking_monster") {
-//~ 		add(new Following_walking_monster(analyser));
-		add(new Boss(analyser));
+		add(new Following_walking_monster(analyser));
 	} else if (monster_type == "walking_monster") {
 		add(new Walking_monster(analyser));
 	} else if (monster_type == "flying_monster") {

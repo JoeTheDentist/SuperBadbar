@@ -102,3 +102,18 @@ void Surface::set_h(int h)
 {
     m_surface->h = h;
 }
+
+void Surface::blit_surface(Surface *background, Rect pos, Rect rel_pos)
+{
+	SDL_Rect *sdl_pos = new SDL_Rect;
+	SDL_Rect *sdl_rel_pos = new SDL_Rect;
+	sdl_pos->x = pos.x;
+	sdl_pos->y = pos.y;
+	sdl_rel_pos->x = rel_pos.x;
+	sdl_rel_pos->y = rel_pos.y;
+	sdl_rel_pos->w = rel_pos.w;
+	sdl_rel_pos->h = rel_pos.h;
+	SDL_BlitSurface(this->get_surface(), sdl_rel_pos, background->get_surface(), sdl_pos);
+	delete sdl_pos;
+	delete sdl_rel_pos;
+}
