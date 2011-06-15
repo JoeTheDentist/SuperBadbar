@@ -17,3 +17,5 @@ all: $(OBJ)
 ../$(OBJ_DIR)%.o: %.cpp %.h
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
+$(CC) $(CFLAGS) $(INCLUDES) -o obj/main.o -c main.cpp;
+	$(CC) -o $(EXEC_NAME) $(OBJ_DIR)*.o $(LDFLAGS) $(LIBCOMP)
