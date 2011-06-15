@@ -12,7 +12,9 @@
 
 #include "../actors/boss.h"
 
-
+enum elmar_state {
+    ELMAR_FIRE, ELMAR_CHARGE, ELMAR_JUMP
+};
 
 /**
  * 	@class Boss_elmer
@@ -22,6 +24,8 @@
 
 class Boss_elmer : public Boss {
 private:
+    elmar_state m_elmar_state;
+    int m_fire;
 
 public:
 

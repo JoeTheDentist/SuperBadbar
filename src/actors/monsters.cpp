@@ -55,6 +55,9 @@ Monster::Monster(Analyser *analyserLevel):
 Monster::~Monster()
 {
 	PRINT_CONSTR(3, "destruction d'un monstre")
+	if ( m_weapon ) {
+        delete m_weapon;
+	}
 }
 
 void Monster::initFromMonsterFile(std::string file)
