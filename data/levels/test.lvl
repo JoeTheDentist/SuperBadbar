@@ -6,8 +6,8 @@ back_elmar.png
 1320
 
 #Babar#
-139
-1091
+327
+1124
 1
 
 #Sets#
@@ -38,10 +38,14 @@ jungle_set_3 828 292 0
 jungle_block_4 1609 771 0
 !
 #Monsters#
-0
+1
+boss_elmer elmar 16 978
 !
 #Events#
-0
+3
+event shotgun 338 701
+event machinegun 1088 406
+event elmar_machine_gun 729 1097
 !
 #MovingPlatforms#
 0

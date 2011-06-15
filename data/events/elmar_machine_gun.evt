@@ -1,0 +1,6 @@
+#picture# 
+elmar_machine_gun.png
+
+#start#
+weapon elmar_machine_gun
+playsound events/weapon_taken.wav

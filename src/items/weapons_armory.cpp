@@ -14,6 +14,7 @@
 #include "../items/shotgun.h"
 #include "../items/machinegun.h"
 #include "../items/rocket_launcher.h"
+#include "../items/elmar_machine_gun.h"
 #include "../video/pictures_container.h"
 #include "../sound/sound_engine.h"
 
@@ -64,6 +65,9 @@ void Weapons_armory::add_weapon(weapon_type type)
 			break;
 		case ROCKET_LAUNCHER:
 			m_armory.insert(it, new Rocket_launcher());
+			break;
+		case ELMAR_MACHINE_GUN:
+			m_armory.insert(it, new Elmar_machine_gun());
 			break;
 		default:
 			PRINT_DEBUG(1, "type d'arme inconnu dans add_weapon de weapon_armory");

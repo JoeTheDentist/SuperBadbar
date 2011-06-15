@@ -22,12 +22,12 @@
 
 class Boss_elmer : public Boss {
 private:
-	
+
 public:
-	
+
 	/*!
 	 *	@brief Constructeur
-	 *	@param name Le nom du monstre 
+	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
 	 *	@param posy Position initiale
 	*/
@@ -42,6 +42,8 @@ public:
 	~Boss_elmer();
 
 	void update_speed_simple();
+
+	void update_speed_ia();
 
 	void update();
 

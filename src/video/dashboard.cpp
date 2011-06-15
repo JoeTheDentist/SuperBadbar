@@ -61,11 +61,12 @@ void Dashboard::init_dashboard(Pictures_container *pictures_container)
 	for (int i = 0; i < LASTWEAPON; i++)
 		m_weapons_pictures[i] = NULL;
 	m_weapons_pictures[MACHINEGUN] = new Surface(PIC_DASHBOARD_R + "weapon/machinegun.png");
+	m_weapons_pictures[ELMAR_MACHINE_GUN] = new Surface(PIC_DASHBOARD_R + "weapon/elmar_machine_gun.png");
 	m_weapons_pictures[GUN] = new Surface(PIC_DASHBOARD_R + "weapon/gun.png");
 	m_weapons_pictures[SHOTGUN] = new Surface(PIC_DASHBOARD_R + "weapon/shotgun.png");
 	m_weapons_pictures[ROCKET_LAUNCHER] = new Surface(PIC_DASHBOARD_R + "weapon/rocket_launcher.png");
 	m_weapons_pos.x = POS_WEAPON_X;
-	m_weapons_pos.y = POS_WEAPON_Y;                        
+	m_weapons_pos.y = POS_WEAPON_Y;
 	m_peanut = new Surface(PIC_DASHBOARD_R + "peanut.png");
 	m_green_rect = new Surface_uniform(LIFE_BAR_W, LIFE_BAR_H, 0, 255, 0);
 	m_red_rect = new Surface_uniform(LIFE_BAR_W, LIFE_BAR_H, 255, 0, 0);
@@ -102,9 +103,9 @@ void Dashboard::draw_dashboard(Camera *camera)
 	/*																				*/
 	/*																status_bar		*/
 	/********************************************************************************/
-	
+
 	Rect pos_camera = camera->frame();
-	
+
 	/*
 		Affichage des hp
 	*/
@@ -130,23 +131,23 @@ void Dashboard::draw_dashboard(Camera *camera)
 	camera->display_picture(munitions_picture, &pos_munitions, true);
 	delete munitions_picture;
 
-	
+
 	/*
 		Affichage des vies
 	*/
 	Rect pos_lifes;
 	Rect pos_text_lifes;
 	std::ostringstream osslifes;
-	osslifes << "x " << gPlayers->local_player()->lifes();	
+	osslifes << "x " << gPlayers->local_player()->lifes();
 	Surface_text *lifes_number_picture = new Surface_text(osslifes.str());
 	pos_text_lifes.x = pos_camera.w - lifes_number_picture->w() - 30;
 	pos_lifes.x = pos_text_lifes.x - DASH_DECALAGE - m_babar_head->w();
-	pos_lifes.y = 30; 
+	pos_lifes.y = 30;
 	pos_text_lifes.y = pos_lifes.y - (lifes_number_picture->h() - m_babar_head->h()) / 2;
 	camera->display_picture(lifes_number_picture, & pos_text_lifes, true);
-	camera->display_picture(m_babar_head, &pos_lifes, true);	
+	camera->display_picture(m_babar_head, &pos_lifes, true);
 	delete lifes_number_picture;
-	
+
 
 	/*
 		Affichage des cacahuetes
@@ -159,13 +160,13 @@ void Dashboard::draw_dashboard(Camera *camera)
 	Surface_text *peanuts_number_picture = new Surface_text(peanuts_number, m_font);
 	pos_peanuts_number.x = pos_camera.w - peanuts_number_picture->w() - 30;
 	pos_peanut.x = pos_peanuts_number.x - DASH_DECALAGE - m_peanut->w();
-	pos_peanut.y = DASH_DECALAGE + pos_lifes.y + m_babar_head->h(); 
+	pos_peanut.y = DASH_DECALAGE + pos_lifes.y + m_babar_head->h();
 	pos_peanuts_number.y = pos_peanut.y - (peanuts_number_picture->h() - m_peanut->h()) / 2;
 
 	camera->display_picture(peanuts_number_picture, &pos_peanuts_number, true);
 	camera->display_picture(m_peanut, &pos_peanut, true);
 	delete peanuts_number_picture;
-	
+
 
 	/* affichage de l'alert */
 	if ( m_alert ) {
@@ -178,7 +179,7 @@ void Dashboard::draw_dashboard(Camera *camera)
         pos_alert.y -= img_alert->h()/2+100;
         camera->display_picture(img_alert,&pos_alert,true);
 	}
-	
+
 	/* affichage de le life bar */
 	if (m_life_bar_possessor) {
 		Rect rect1;

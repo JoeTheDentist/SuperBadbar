@@ -16,8 +16,11 @@
 
 #define PROJ_DAMAGE 1
 #define ROCKET_DAMAGE 10
+#define ELMAR_DAMAGE 1
+
+#define PROJ_LIFE_SPAN 15
 #define ROCKET_LIFE_SPAN 40
-#define PROJ_LIFE_SPAN 15   /* Durée de vie d'un projectile */
+#define ELMAR_LIFE_SPAN 30
 
 class Static_data;
 

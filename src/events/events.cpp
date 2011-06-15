@@ -124,6 +124,8 @@ void Event::process_weapon()
 		weapon_type = GUN;
 	} else if (weapon_name == "rocket_launcher") {
 		weapon_type = ROCKET_LAUNCHER;
+    } else if (weapon_name == "elmar_machine_gun") {
+		weapon_type = ELMAR_MACHINE_GUN;
 	} else {
 		PRINT_DEBUG(1, "nom d'arme inconnu dans l'event weapon, choix du gun par defaut");
 		weapon_type = GUN;

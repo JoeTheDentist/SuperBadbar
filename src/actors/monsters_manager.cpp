@@ -71,7 +71,7 @@ void Monsters_manager::load_monster(std::string name, int posx, int posy)
 	} else if (monsterClass == "boss_elmer") {
 		add(new Boss_elmer(name, posx, posy));
 	} else {
-		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
+		PRINT_DEBUG(1, "!!!!!! Erreur dans monstre manager, chargement monstre loupe")
 	}
 }
 
@@ -90,9 +90,9 @@ void Monsters_manager::load_monster(Analyser *analyser)
 		add(new Charging_monster(analyser));
 	} else if (monster_type == "boss_elmer") {
 		add(new Boss_elmer(analyser));
-		
+
 	} else {
-		PRINT_CONSTR(1, "Erreur dans monstre manager, chargement monstre loupe")
+		PRINT_CONSTR(1, "!!!!!! Erreur dans monstre manager, chargement monstre loupe")
 	}
 }
 

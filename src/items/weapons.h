@@ -22,6 +22,7 @@
 #define MUN_MACHINEGUN 100
 #define MUN_SHOTGUN 20
 #define MUN_ROCKET_LAUNCHER 10
+#define MUN_ELMAR_MACHINE_GUN 50
 
 /* temps de recharge des armes */
 #define RELOAD_GUN 2
@@ -30,7 +31,7 @@
 #define RELOAD_ROCKET_LAUNCHER 5
 
 enum weapon_type {
-    GUN, MACHINEGUN, SHOTGUN, ROCKET_LAUNCHER,
+    GUN, MACHINEGUN, SHOTGUN, ROCKET_LAUNCHER, ELMAR_MACHINE_GUN,
 	MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
