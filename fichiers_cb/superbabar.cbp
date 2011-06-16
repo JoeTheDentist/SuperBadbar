@@ -58,6 +58,8 @@
 		<Unit filename="..\src\actors\boss_elmer.h" />
 		<Unit filename="..\src\actors\charging_monster.cpp" />
 		<Unit filename="..\src\actors\charging_monster.h" />
+		<Unit filename="..\src\actors\elmar_tile.cpp" />
+		<Unit filename="..\src\actors\elmar_tile.h" />
 		<Unit filename="..\src\actors\explosion.cpp" />
 		<Unit filename="..\src\actors\explosion.h" />
 		<Unit filename="..\src\actors\flying_monster.cpp" />
@@ -102,6 +104,8 @@
 		<Unit filename="..\src\game\levels_manager.h" />
 		<Unit filename="..\src\game\static_data.cpp" />
 		<Unit filename="..\src\game\static_data.h" />
+		<Unit filename="..\src\items\elmar_machine_gun.cpp" />
+		<Unit filename="..\src\items\elmar_machine_gun.h" />
 		<Unit filename="..\src\items\gun.cpp" />
 		<Unit filename="..\src\items\gun.h" />
 		<Unit filename="..\src\items\machinegun.cpp" />
@@ -194,6 +198,8 @@
 		<Unit filename="..\src\video\font.h" />
 		<Unit filename="..\src\video\graphic_engine.cpp" />
 		<Unit filename="..\src\video\graphic_engine.h" />
+		<Unit filename="..\src\video\life_bar_possessor.cpp" />
+		<Unit filename="..\src\video\life_bar_possessor.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />
 		<Unit filename="..\src\video\pictures_container.h" />
 		<Unit filename="..\src\video\statics.cpp" />
