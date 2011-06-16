@@ -157,3 +157,8 @@ void Anim_table::set_rect(Rect &pos)
 {
     m_curr_anim->set_rect(pos);
 }
+
+void Anim_table::set_img(int i)
+{
+    m_curr_anim->set_img(i);
+}

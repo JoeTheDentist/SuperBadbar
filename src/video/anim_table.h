@@ -79,5 +79,7 @@ class Anim_table
          *  @param Rect a modifier
          */
         void set_rect(Rect &pos);
+
+        void set_img(int i);
 };
 #endif // ANIM_TABLE_H_INCLUDED

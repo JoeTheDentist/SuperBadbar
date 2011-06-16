@@ -46,6 +46,8 @@ class Sprite_anim_table : public Sprite {
          *  @return Largeur
          */
         int w();
+
+        void rand_pic();
 };
 
 #endif // SPRITES_ANIM_TABLE_H_INCLUDED

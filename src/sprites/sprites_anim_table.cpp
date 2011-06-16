@@ -1,3 +1,4 @@
+#include <stdlib.h>
 
 #include "sprites_anim_table.h"
 
@@ -43,4 +44,9 @@ int Sprite_anim_table::h()
 int Sprite_anim_table::w()
 {
     return m_animt->curr_pic()->h();
+}
+
+void Sprite_anim_table::rand_pic()
+{
+    m_animt->set_img( rand() );
 }
