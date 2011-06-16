@@ -160,7 +160,7 @@ std::list<Projectile*> *Monster::fire()
 	if ( m_dir == RIGHT ) {
 		fire_pos.x += m_pos.w;
 	}
-	fire_pos.y += fire_pos.h/2;
+	fire_pos.y += fire_pos.h/3;
 	m_fire_phase = 0;
 	return m_weapon->fire(fire_pos,m_dir, MONSTERS);
 }
