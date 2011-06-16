@@ -16,7 +16,7 @@
 #define POS_WEAPON_Y 60
 #define DASH_DECALAGE 10
 #define LIFE_BAR_W 200
-#define LIFE_BAR_H 30
+#define LIFE_BAR_H 20
 
 #include "../video/surface_text.h"
 
@@ -89,9 +89,9 @@ public:
      *  @brief Mets à jour l'animation de texte et la suppr si besoin
      */
     void update();
-	
+
 	void set_life_bar_possessor(Life_bar_possessor *lfb) {m_life_bar_possessor = lfb;}
-	
+
 	void remove_life_bar_possessor() {m_life_bar_possessor = NULL;}
 
 private:
