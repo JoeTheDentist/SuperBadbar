@@ -18,7 +18,7 @@
 #include "../control/keyboard.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
-
+#include "../video/surface_frame.h"
 
 
 Talks::Talks():
@@ -39,6 +39,8 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	m_text_background = new Surface(PIC_TALKS_R + background_name);
 	m_pos_background.x = 5;
 	m_pos_background.y = 400;
+	m_pos_background.w = m_text_background->w();
+	m_pos_background.h = m_text_background->h();
 	m_talker = new Surface(PIC_TALKS_R + "babar.png");
 	m_pos_talker.x = POSX;
 	m_pos_talker.y = POSY;
@@ -193,6 +195,9 @@ void Talks::display_background()
 {
 	m_camera->display_picture(m_text_background, &m_pos_background, true);
 	m_camera->display_picture(m_talker, &m_pos_talker, true);
+	Surface_frame *plop = new Surface_frame(m_pos_background, 100, 100, 100);
+	m_camera->display_picture(plop, &m_pos_background, true);
+	delete plop;
 }
 
 void Talks::move_up()

@@ -96,7 +96,15 @@ public:
 	*/
 	void set_h(int h);
 	
+	
+	/*!
+	*	@brief Blit l'image sur le background
+	*	@param background La surface sur laquelle on blit l'image
+	*	@param pos La position de blit par rapport au background (x et y comptent)
+	*	@param rel_pos La taille du rectangle copie (h et w comptent)
+	*/
 	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
+	void blit_surface(Surface *background, Rect pos);
 
 };
 

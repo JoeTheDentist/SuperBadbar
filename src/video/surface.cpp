@@ -117,3 +117,12 @@ void Surface::blit_surface(Surface *background, Rect pos, Rect rel_pos)
 	delete sdl_pos;
 	delete sdl_rel_pos;
 }
+
+void Surface::blit_surface(Surface *background, Rect pos)
+{
+	SDL_Rect *sdl_pos = new SDL_Rect;
+	sdl_pos->x = pos.x;
+	sdl_pos->y = pos.y;
+	SDL_BlitSurface(this->get_surface(), NULL, background->get_surface(), sdl_pos);
+	delete sdl_pos;
+}

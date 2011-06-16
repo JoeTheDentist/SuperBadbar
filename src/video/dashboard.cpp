@@ -21,6 +21,7 @@
 #include "../video/surface.h"
 #include "../video/surface_text.h"
 #include "../video/surface_uniform.h"
+#include "../video/surface_frame.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
 #include "../players/players_manager.h"
