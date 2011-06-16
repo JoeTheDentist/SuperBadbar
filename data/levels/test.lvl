@@ -6,8 +6,8 @@ back_elmar.png
 1320
 
 #Babar#
-327
-1124
+441
+1079
 1
 
 #Sets#
@@ -29,17 +29,17 @@ jungle_block_3 492 1212 0
 jungle_block_2 990 1187 0
 jungle_block_4 1490 1219 0
 jungle_block_4 263 811 0
-jungle_block_6 -183 557 0
 jungle_set_1 453 804 0
-jungle_set_2 229 654 0
 jungle_block_6 1161 518 0
 jungle_block_1 940 518 0
 jungle_set_3 828 292 0
 jungle_block_4 1609 771 0
+jungle_block_6 -183 562 0
+jungle_set_2 229 654 0
 !
 #Monsters#
 1
-boss_elmer elmar 16 978
+boss_elmer elmar 808 987
 !
 #Events#
 3

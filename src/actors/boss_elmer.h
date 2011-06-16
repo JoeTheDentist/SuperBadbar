@@ -13,7 +13,7 @@
 #include "../actors/boss.h"
 
 enum elmar_state {
-    ELMAR_WALK, ELMAR_FIRE, ELMAR_CHARGE, ELMAR_JUMP, ELMAR_WAIT
+    ELMAR_WALK, ELMAR_FIRE, ELMAR_CHARGE, ELMAR_JUMP
 };
 
 /**

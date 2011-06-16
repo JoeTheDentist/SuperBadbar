@@ -23,7 +23,7 @@ std::list<Projectile*> *Elmar_machine_gun::fire(Rect pos, direction h, dmg_chan 
 	if (m_munitions >= 0) {
 		int dir_h = (2*h-1)*PROJ_SPEED;
 		Rect other_pos = pos;
-		other_pos.y +=10*(rand()%5-2);
+		other_pos.y +=15*(rand()%5-2);
 		other_pos.x +=(2*h-1)*40;
 		proj_list->push_back(new Elmar_tile(other_pos, h, dir_h, 0,1, type));
 		proj_list->push_back(new Elmar_tile(pos, h, dir_h, 0,1, type));

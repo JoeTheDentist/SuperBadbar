@@ -155,7 +155,7 @@ bool Monster::can_fire()
 
 std::list<Projectile*> *Monster::fire()
 {
-	/* Calcul de la position de la source du tir */
+	// Calcul de la position de la source du tir
 	Rect fire_pos = m_pos;
 	if ( m_dir == RIGHT ) {
 		fire_pos.x += m_pos.w;

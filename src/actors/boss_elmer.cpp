@@ -22,7 +22,7 @@ Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
     m_weapon = new Elmar_machine_gun();
     m_fire = 0;
     m_elmar_state = ELMAR_FIRE;
-    m_dir = RIGHT;
+    m_dir = LEFT;
     m_speed.x = 0;
 }
 
@@ -32,7 +32,7 @@ Boss_elmer::Boss_elmer(Analyser *analyserLevel):
     m_weapon = new Elmar_machine_gun();
     m_fire = 0;
     m_elmar_state = ELMAR_FIRE;
-    m_dir = RIGHT;
+    m_dir = LEFT;
     m_speed.x = 0;
 }
 
@@ -188,17 +188,17 @@ void Boss_elmer::elmar_fire()
             --m_fire;
         } else {
             // qd on a fini de tirer
-            if ( babarpos.y < m_pos.y ) {
+            if ( babarpos.y < m_pos.y /*|| rand()%2==0*/ ) {
                 // si le joueur est sur une plateforme au dessus
                 // on saute si on est bien pas au millieu ni en haut
                 if ( in_bottom_left_corner() ) {
                     m_elmar_state = ELMAR_JUMP;
                     m_dir = RIGHT;
-                    m_speed.y = -80;
+                    m_speed.y = -90;
                 } else if ( in_bottom_right_corner() ) {
                     m_elmar_state = ELMAR_JUMP;
                     m_dir = LEFT;
-                    m_speed.y = -80;
+                    m_speed.y = -90;
                 }
             } else {
                 // sinon on le charge
@@ -218,6 +218,7 @@ void Boss_elmer::elmar_jump()
     if ( m_speed.y == 0 || !gCollision->get_matrix()->can_fall(m_pos) ) {
         m_elmar_state = ELMAR_CHARGE;
         m_speed.x = 30;
+        m_speed.y = 0;
         if ( m_dir == LEFT ) {
             m_speed.x *= -1;
         }
