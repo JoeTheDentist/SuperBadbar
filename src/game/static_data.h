@@ -35,7 +35,7 @@ public:
 	void init_static_data(std::string level_name); /* level name est un chemin vers le level */
 	Surface * background();  										/* Accesseur */
 	unsigned int static_data_height();  									/* Hauteur du niveau */
-	unsigned int static_data_weight();   				 					/* Largeur du niveau */
+	unsigned int static_data_width();   				 					/* Largeur du niveau */
 	Pictures_container *get_pictures_container(); /* accesseur */
 	void display_statics_first(Camera *camera);	    /* fonction d'affichage des statics */
 	void display_statics_back(Camera *camera);	    /* fonction d'affichage des statics */

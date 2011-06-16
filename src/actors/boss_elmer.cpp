@@ -86,12 +86,12 @@ void Boss_elmer::update()
 
 bool Boss_elmer::bottom()
 {
-    return ( m_pos.y + 4*m_pos.h > 2*gStatic->background()->h() - 600 );
+    return ( m_pos.y + 2*m_pos.h > gStatic->static_data_height() );
 }
 
 bool Boss_elmer::top()
 {
-    return ( m_pos.y + 4*m_pos.h < 2*gStatic->background()->h() - 600 );
+    return ( m_pos.y + 2*m_pos.h < gStatic->static_data_height() );
 }
 
 bool Boss_elmer::in_bottom_left_corner()
@@ -102,7 +102,7 @@ bool Boss_elmer::in_bottom_left_corner()
 
 bool Boss_elmer::in_bottom_right_corner()
 {
-    return  ( m_pos.x + (3*m_pos.w)/2 > 2*gStatic->background()->w() - 800 ) &&
+    return  ( m_pos.x + (5*m_pos.w)/4 > gStatic->static_data_width() ) &&
             bottom();
 }
 
@@ -114,14 +114,14 @@ bool Boss_elmer::in_top_left_corner()
 
 bool Boss_elmer::in_top_right_corner()
 {
-    return  ( m_pos.x + (3*m_pos.w)/2 > 2*gStatic->background()->w() - 800 ) &&
+    return  ( m_pos.x + (4*m_pos.w)/4 > gStatic->static_data_width() ) &&
             top();
 }
 
 bool Boss_elmer::in_bottom_middle()
 {
-    return ( m_pos.x + 30 > gStatic->background()->w() - 400 &&
-             m_pos.x - 30 < gStatic->background()->w() - 400 );
+    return ( m_pos.x + 30 > gStatic->static_data_width()/2 &&
+             m_pos.x - 30 < gStatic->static_data_width()/2 );
 }
 
 void Boss_elmer::update_state()

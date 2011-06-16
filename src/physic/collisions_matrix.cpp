@@ -59,9 +59,9 @@ void Collisions_matrix::addStatic(int x, int y, std::string static_name)
 	int i_min = x/BOX_SIZE, i_max = int(x / BOX_SIZE + static_weight);
 	for (int j = j_min ; j < j_max; j++) {
 		for (int i = i_min; i < i_max; i++) {
-			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0) 
+			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0)
 				analyser_static.read_uint32_t();
-			else 
+			else
 				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
 		}
 	}
@@ -204,8 +204,8 @@ void Collisions_matrix::update_pos( Rect &pos, Rect &speed )
 			if(!Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(pos)))
 				pos.y += BOX_SIZE;
 			pos.x += BOX_SIZE;
-			if (pos.x + pos.w > (int32_t)gStatic->static_data_weight())
-				pos.x = gStatic->static_data_weight() - pos.w;
+			if (pos.x + pos.w > (int32_t)gStatic->static_data_width())
+				pos.x = gStatic->static_data_width() - pos.w;
 	}
 	/* cas où le sprite va à gauche */
 	for (int32_t speed_x = speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){

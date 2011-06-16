@@ -57,7 +57,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Pictures_container *pictures_container)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
-	m_matrix_weight = gStatic->static_data_weight();
+	m_matrix_weight = gStatic->static_data_width();
 	m_matrix_height = gStatic->static_data_height();
 
 	gCollision->init_collisions_manager(LEVELS_R + level_name);

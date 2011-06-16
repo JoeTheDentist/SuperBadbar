@@ -197,8 +197,8 @@ void Babar::update_pos()
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
 
 
-//~ 		if (m_pos.x + m_pos.w > (int)gStatic->static_data_weight())
-//~ 			m_pos.x = gStatic->static_data_weight() - m_pos.w;
+//~ 		if (m_pos.x + m_pos.w > (int)gStatic->static_data_width())
+//~ 			m_pos.x = gStatic->static_data_width() - m_pos.w;
 	}
 	/* cas où le sprite va à gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
