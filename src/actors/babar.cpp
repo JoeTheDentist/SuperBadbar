@@ -126,8 +126,6 @@ bool Babar::is_on_something()
 
 }
 
-
-
 void Babar::update_pos()
 {
 	if (locked())
@@ -167,8 +165,6 @@ void Babar::update_pos()
 			m_speed.y = 0;
 		}
 		else {
-//~ 			if (m_pos.y < 0)
-//~ 				m_pos.y = 0;
 			move(0, -BOX_SIZE);
 		}
 	}
@@ -178,9 +174,6 @@ void Babar::update_pos()
 		gCollision->update_babar_platforms();
 		move(0, -BOX_SIZE);
 		coll = gCollision->get_matrix()->right_collision_type(position());
-//~ 		if (binded()) {
-//~ 			coll |= m_bind->right_collision_type(m_rel_pos);
-//~ 		}
 		if (Collisions_manager::is_right_coll(coll)){
 			PRINT_DEBUG(1, "ouch");
 
@@ -195,10 +188,6 @@ void Babar::update_pos()
 			move(0, BOX_SIZE);
 		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
-
-
-//~ 		if (m_pos.x + m_pos.w > (int)gStatic->static_data_width())
-//~ 			m_pos.x = gStatic->static_data_width() - m_pos.w;
 	}
 	/* cas où le sprite va à gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
@@ -221,8 +210,8 @@ void Babar::update_pos()
 			move(0, BOX_SIZE);
 		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
-
 	}
+	do_stay_in_level();
 }
 
 void Babar::update_speed()

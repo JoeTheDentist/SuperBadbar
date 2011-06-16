@@ -14,6 +14,7 @@
 #include "actor.h"
 #include "../util/debug.h"
 #include "../game/game.h"
+#include "../util/globals.h"
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
 #include "../video/surface.h"
@@ -88,4 +89,28 @@ Rect Actor::center() const
 	res.x = position().x + position().w / 2;
 	res.y = position().y + position().h / 2;
 	return res;
+}
+
+void Actor::move(int x, int y)
+{
+	m_pos.x += x;
+	m_pos.y += y;
+}
+
+void Actor::set_pos(int x, int y)
+{
+	m_pos.x = x;
+	m_pos.y = y;
+}
+
+void Actor::do_stay_in_level()
+{
+	if (position().x < 0) 
+		set_pos(0, position().y);
+	if (position().x > (int)gStatic->static_data_width()) 
+		set_pos(gStatic->static_data_width(), position().y);
+	if (position().y < 0) 
+		set_pos(position().x, 0);
+	if (position().y > (int)gStatic->static_data_height()) 
+		set_pos(position().x, gStatic->static_data_height());
 }

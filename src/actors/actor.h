@@ -94,6 +94,26 @@ public:
 	*/ 
 	Rect center() const;
 	
+	/*!
+	 *	@brief Mutateur: augmente la position de l'actor de x et y sans tenir compte des collisions
+	 *	@param x Le deplacement x
+	 *	@param y Le deplacement y
+	 *
+	 *	move et set_pos sont les seules methodes pouvant directement modifier la position de l'actor
+	*/
+	virtual void move(int x, int y);
+	
+	/*!
+	 *	@brief Mutateur: met a jour la position de l'actor de x et y sans tenir compte des collisions
+	 *	@param x Le nouveau x
+	 *	@param y Le nouveau y
+	 *
+	 *	move et set_pos sont les seules methodes pouvant directement modifier la position de l'actor
+	*/		
+	virtual void set_pos(int x, int y);
+	
+	virtual void do_stay_in_level();
+	
 };
 
 
