@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
 
 	} else if(arg_analyser.menu_on()) {
 		Main_menu *menu = new Main_menu();
-
 		delete menu;
 	} else {
 		Game *game = new Game("test.lvl");

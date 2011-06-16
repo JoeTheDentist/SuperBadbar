@@ -7,7 +7,7 @@ Elmar_tile::Elmar_tile(Rect pos, direction h, unsigned int speedx, unsigned int 
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
-	m_life_span = PROJ_LIFE_SPAN;
+	m_life_span = ELMAR_LIFE_SPAN;
     std::string rep = PIC_PROJ_R;
 
     m_sprite = gGraphics->get_sprites_manager()->add_table(rep+"elmar/elmar", MIDDLEGROUND);

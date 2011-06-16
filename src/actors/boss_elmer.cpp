@@ -149,12 +149,12 @@ void Boss_elmer::elmar_charge()
     Rect babarpos = gPlayers->closer_babar(position())->position();
 
     // on regarde si Elmar est arrivé dans un coin
-    if ( in_bottom_left_corner() && m_dir == LEFT ) {
+    if ( ( in_bottom_left_corner() || in_top_left_corner() ) && m_dir == LEFT ) {
         m_dir = RIGHT;
         m_speed.x = 0;
         m_elmar_state = ELMAR_FIRE;
         m_fire = rand()%10+5;
-    } else if ( in_bottom_right_corner() && m_dir == RIGHT ) {
+    } else if ( ( in_bottom_right_corner() || in_top_right_corner() ) && m_dir == RIGHT ) {
         m_dir = LEFT;
         m_speed.x = 0;
         m_fire = rand()%10+5;

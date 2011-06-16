@@ -20,7 +20,7 @@
 
 #define PROJ_LIFE_SPAN 15
 #define ROCKET_LIFE_SPAN 40
-#define ELMAR_LIFE_SPAN 30
+#define ELMAR_LIFE_SPAN 15
 
 class Static_data;
 
