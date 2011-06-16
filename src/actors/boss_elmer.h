@@ -51,6 +51,27 @@ public:
 
 	void update();
 
+    bool bottom();
+
+    bool top();
+
+    bool in_bottom_left_corner();
+
+    bool in_bottom_right_corner();
+
+    bool in_top_left_corner();
+
+    bool in_top_right_corner();
+
+    bool in_bottom_middle();
+
+    void update_state();
+
+    void elmar_charge();
+
+    void elmar_fire();
+
+    void elmar_jump();
 };
 
 

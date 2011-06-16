@@ -613,6 +613,7 @@ void Babar::interrupt_jump()
 
 void Babar::interrupt_crouch()
 {
+    m_sprite->set_pic();
     int h_last = m_sprite->curr_pic()->h();
     m_sprite->change_anim(STATIC, m_dir);
     int h = m_sprite->curr_pic()->h();
