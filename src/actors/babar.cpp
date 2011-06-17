@@ -316,7 +316,7 @@ void Babar::update_state()
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-    m_sprite->change_anim(get_state(), m_dir);
+    m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
     m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());

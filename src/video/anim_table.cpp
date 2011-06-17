@@ -20,6 +20,7 @@ Anim_table::Anim_table(std::string anim_name) {
     m_last_state = 0;
     m_last_dir = LEFT;
     m_fire = false;
+    m_last_fire = false;
 
     /* On détermine si il y a un état en plus ou non (animation de tir) */
     if ( FileExists(anim_name+"_0_0_0"+PICS_EXT) ) {
@@ -51,64 +52,47 @@ Anim_table::~Anim_table() {
 
 void Anim_table::init_fire(std::string anim_name)
 {
-//    char state = '0', dir = '0', num_img = '0';
-//    char k1;
-//    char k2;
-//
-//    /* calcul du nombre d'etat */
-//    m_nb_states = 0;
-//    while ( FileExists(anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT) ) {
-//        state++;
-//    }
-//    m_nb_states = state-'0'+1;
-//
-//    /* allocation du tableau d'animation 2x pour les états de tir */
-//    m_anim = new Anim_pic**[2*m_nb_states];
-//    for (int i=0;i<m_nb_states;i++) {
-//        m_anim[i] = new Anim_pic*[2];
-//    }
-//
-//    /* creation des animations */
-//    for (char i='0';i<'0'+m_nb_states;i++) {
-//        for (char j='0';j<'0'+2;j++) {
-//            /* calcul du nombre d'images */
-//            for (k1='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT); k1++) {}
-//            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT); k2++) {}
-//
-//            /* récurépration des noms */
-//            std::string * link1;
-//            std::string * link2;
-//            link1 = new std::string[k1-'0'];
-//            link2 = new std::string[k2-'0'];
-//            for (k1='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT); k1++) {
-//                link1[k1-'0'] = anim_name+"_"+i+"_"+j+"_"+k1+"_0"+PICS_EXT;
-//            }
-//            for (k2='0'; FileExists(anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT); k2++) {
-//                link1[k2-'0'] = anim_name+"_"+i+"_"+j+"_"+k2+"_1"+PICS_EXT;
-//            }
-//
-//            /* creation de l'animation */
-//            m_anim[i-'0'][j-'0'] = new Anim_pic(link1,k1-'0',CYCLE);
-//            m_anim[i-'0'+m_nb_states][j-'0'] = new Anim_pic(link2,k2-'0',ENDED);
-//			delete[] link1;
-//			delete[] link2;
-//        }
-//    }
-//
-//    m_nb_states *= 2;
-//    m_curr_anim = m_anim[0][0];
+    int state = 0;
+
+    /* calcul du nombre d'etat */
+    m_nb_states = 0;
+
+    while ( FileExists(anim_name+"_"+to_string(state)+"_0_0_0"+PICS_EXT) ) {
+        state++;
+    }
+    m_nb_states = state;
+
+    /* allocation du tableau d'animation */
+    m_anim = new Anim_pic**[2*m_nb_states];
+    for (int i=0;i<2*m_nb_states;i++) {
+        m_anim[i] = new Anim_pic*[2];
+    }
+
+    /* creation des animations */
+    for (int i=0 ; i<m_nb_states ; i++) {
+        for (int j=0 ; j<2 ; j++) {
+            for (int k=0 ; k<2 ; k++) {
+                std::string link = anim_name+"_"+to_string(i)+"_"+to_string(j)+"_"+to_string(k);
+                /* creation de l'animation */
+                m_anim[i+k*m_nb_states][j] = new Anim_pic(link,CYCLE);
+            }
+        }
+    }
+
+    m_curr_anim = m_anim[0][0];
 }
 
 void Anim_table::init_nfire(std::string anim_name)
 {
-    char state = '0', dir = '0', num_img = '0';
+    int state = 0;
 
     /* calcul du nombre d'etat */
     m_nb_states = 0;
-    while ( FileExists(anim_name+"_"+state+"_"+dir+"_"+num_img+PICS_EXT) ) {
+
+    while ( FileExists(anim_name+"_"+to_string(state)+"_0_0"+PICS_EXT) ) {
         state++;
     }
-    m_nb_states = state-'0';
+    m_nb_states = state;
 
     /* allocation du tableau d'animation */
     m_anim = new Anim_pic**[m_nb_states];
@@ -117,31 +101,33 @@ void Anim_table::init_nfire(std::string anim_name)
     }
 
     /* creation des animations */
-    for (char i='0';i<'0'+m_nb_states;i++) {
-        for (char j='0';j<'0'+2;j++) {
-            std::string link = anim_name+"_"+i+"_"+j;
+    for (int i=0 ; i<m_nb_states ; i++) {
+        for (int j=0 ; j<2 ; j++) {
+            std::string link = anim_name+"_"+to_string(i)+"_"+to_string(j);
             /* creation de l'animation */
-            m_anim[i-'0'][j-'0'] = new Anim_pic(link,CYCLE);
+            m_anim[i][j] = new Anim_pic(link,CYCLE);
         }
     }
 
     m_curr_anim = m_anim[0][0];
 }
 
-void Anim_table::change_anim(int s, direction dir, bool fire, bool phase_rand) {
-    if ( fire ) {
-        s += m_nb_states/2;
-    }
-
-    if ( s != m_last_state || dir != m_last_dir ) {
+void Anim_table::change_anim(int s, direction dir, bool fire, bool phase_rand)
+{
+    if ( s != m_last_state || dir != m_last_dir || fire != m_last_fire ) {
         if ( m_curr_anim->interruptable() ) {
-            m_curr_anim = m_anim[s][dir];
+            if ( fire ) {
+                m_curr_anim = m_anim[s+m_nb_states][dir];
+            } else {
+                m_curr_anim = m_anim[s][dir];
+            }
             if ( phase_rand ) {
                 m_curr_anim->set_img( rand()%3 );
             }
         }
         m_last_state = s;
         m_last_dir = dir;
+        m_last_fire = fire;
     }
 }
 

@@ -33,6 +33,7 @@ class Anim_table
         Anim_pic * m_curr_anim;    /* pointeur sur l'animation courante */
         Anim_pic ***m_anim;        /* tableau de pointeur vers les animations ; etat et gauche/droite */
         bool m_fire;                /* si il y a un état de tir dans les animations */
+        bool m_last_fire;
 
         /**
          * @brief TODO refaire !!!!!!!!!! Construction de l'animation pour un monstre ayant un état de tir (2x plus d'images)

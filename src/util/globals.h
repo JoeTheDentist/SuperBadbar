@@ -24,6 +24,8 @@ class Keyboard;
 class Stats;
 class Players_manager;
 
+#include <sstream>
+
 #include "../util/repertories.h"
 #include "../actors/actor.h"
 #include "../sound/sound_engine.h"
@@ -74,5 +76,13 @@ double dist(Rect A, Rect B);
  * Code de DPAK, http://www.techbytes.ca/techbyte103.html.
  */
 bool FileExists(std::string strFilename);
+
+template <class T>
+inline std::string to_string (const T& t)
+{
+    std::stringstream ss;
+    ss << t;
+    return ss.str();
+}
 
 #endif
