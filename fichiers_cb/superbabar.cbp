@@ -46,6 +46,9 @@
 			<Add library="..\lib\SDL\lib\libSDL.dll.a" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
+		<Unit filename="..\resources\resources.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="..\src\AI\AI.cpp" />
 		<Unit filename="..\src\AI\AI.h" />
 		<Unit filename="..\src\actors\actor.cpp" />
@@ -206,6 +209,8 @@
 		<Unit filename="..\src\video\statics.h" />
 		<Unit filename="..\src\video\surface.cpp" />
 		<Unit filename="..\src\video\surface.h" />
+		<Unit filename="..\src\video\surface_frame.cpp" />
+		<Unit filename="..\src\video\surface_frame.h" />
 		<Unit filename="..\src\video\surface_text.cpp" />
 		<Unit filename="..\src\video\surface_text.h" />
 		<Unit filename="..\src\video\surface_uniform.cpp" />
