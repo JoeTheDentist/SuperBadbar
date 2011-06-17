@@ -106,6 +106,11 @@ public:
 	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
 	void blit_surface(Surface *background, Rect pos);
 
+	/*!
+	*	@brief Mutateur de transparence
+	*	@param alpha une valeur entre 0 (transparent) et 255 (opaque)
+	*/
+	virtual void set_alpha(unsigned char alpha);
 };
 
 #endif

@@ -3,6 +3,8 @@
 
 #include "../video/surface.h"
 #include "../menus/list_menu_actions.h"
+#include "../param/param_menus.h"
+
 
 class Surface_uniform;
 
@@ -15,6 +17,7 @@ class Menu {
 	Menu *m_son;
 	bool m_leave_game;
 	bool m_leave_menu;
+	int m_size;
 
 	
 	public:

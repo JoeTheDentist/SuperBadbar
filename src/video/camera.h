@@ -121,6 +121,10 @@ public:
 	*	@return La position et le cadre de la caméra
 	*/
 	Rect frame() const;
+	
+	int width() const;
+	
+	int height() const;
 
 	/*!
 	* 	@brief Affiche pic à la position pos par rapport au cadre de la camera

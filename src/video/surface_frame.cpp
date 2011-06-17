@@ -12,13 +12,16 @@
 #include "surface_frame.h"
 #include "surface_uniform.h"
 
-Surface_frame::Surface_frame(Rect rect, int r, int g, int b)
+Surface_frame::Surface_frame(Rect rect, int r, int g, int b):
+	Surface(),
+	m_line_w(5),
+	m_line_h(5)
 {
 	Surface_uniform background(rect.w, rect.h, 0, 0xFF, 0xFF);
 	m_surface = background.get_surface();
 	SDL_SetColorKey( m_surface, SDL_RLEACCEL | SDL_SRCCOLORKEY,  SDL_MapRGB( m_surface->format, 0, 0xFF, 0xFF ) );
-	Surface_uniform vertical(10, rect.h, r, g, b);
-	Surface_uniform horizontal(rect.w, 10, r, g, b);
+	Surface_uniform vertical(m_line_w, rect.h, r, g, b);
+	Surface_uniform horizontal(rect.w, m_line_h, r, g, b);
 	Rect pos;
 	pos.x = 0;
 	pos.y = 0;

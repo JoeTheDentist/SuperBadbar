@@ -13,11 +13,13 @@
 #include <fstream>
 
 #include "talks.h"
+#include "../param/param_talks.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
 #include "../control/keyboard.h"
 #include "../video/pictures_container.h"
 #include "../util/globals.h"
+#include "../video/surface_uniform.h"
 #include "../video/surface_frame.h"
 
 
@@ -36,11 +38,15 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 	PRINT_CONSTR(1, "Initialisation de la classe Talks")
 	m_camera = camera;
 	std::string background_name = "talks_background.png";
-	m_text_background = new Surface(PIC_TALKS_R + background_name);
+	m_text_background = new Surface_uniform(camera->width() - 2 * TALKS_BACKGROUND_OFFSET_W, 
+											TALKS_BACKGROUND_SIZE_H, TALKS_BACKGROUND_R,
+											TALKS_BACKGROUND_G, TALKS_BACKGROUND_B);
+	m_text_background->set_alpha(ALPHA_TALKS_BACKGROUND);
 	m_pos_background.x = 5;
-	m_pos_background.y = 400;
+	m_pos_background.y = camera->height() - TALKS_BACKGROUND_OFFSET_H - m_text_background->h();
 	m_pos_background.w = m_text_background->w();
 	m_pos_background.h = m_text_background->h();
+	m_frame_background = new Surface_frame(m_pos_background, TALKS_FRAME_R, TALKS_FRAME_G, TALKS_FRAME_B);
 	m_talker = new Surface(PIC_TALKS_R + "babar.png");
 	m_pos_talker.x = POSX;
 	m_pos_talker.y = POSY;
@@ -51,7 +57,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 		m_pos_text[i].y = POSY + i * POSH;
 		m_pos_text[i].w = 0;
 	}
-	m_font.set_color(0, 0, 0);
+	m_font.set_color(TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
 	m_active = false;
 }
 
@@ -195,9 +201,7 @@ void Talks::display_background()
 {
 	m_camera->display_picture(m_text_background, &m_pos_background, true);
 	m_camera->display_picture(m_talker, &m_pos_talker, true);
-	Surface_frame *plop = new Surface_frame(m_pos_background, 100, 100, 100);
-	m_camera->display_picture(plop, &m_pos_background, true);
-	delete plop;
+	m_camera->display_picture(m_frame_background, &m_pos_background, true);
 }
 
 void Talks::move_up()

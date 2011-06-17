@@ -28,20 +28,30 @@ List_menu_actions::~List_menu_actions()
 	PRINT_CONSTR(2, "Destruction d'une liste d'actions (List_menu_actions)")
 }
 
+void List_menu_actions::update()
+{
+	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
+		(*it)->update();
+	}
+}
+
 void List_menu_actions::add_action(std::string action, int action_num, int action_value)
 {
 	m_actions.push_back(new Menu_action(action, action_num, action_value));
 	m_iterator = m_actions.begin();
+	(*m_iterator)->select();
 }
 
 void List_menu_actions::incr_curs(int dep)
 {
+	(*m_iterator)->deselect();
 	dep = (dep + m_actions.size()) % m_actions.size(); // si le deplacement est negatif..
 	for (int i = 0; i < dep; i++) {
 		m_iterator++;
 		if (m_iterator == m_actions.end()) 
 			m_iterator = m_actions.begin();
 	}
+	(*m_iterator)->select();
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 }
 
@@ -54,9 +64,12 @@ void List_menu_actions::incr_value(int value)
 void List_menu_actions::display(Camera *camera, Rect pos) const
 {
 	Surface *surf;
+	Rect temp;
 	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
-		surf = (*it)->get_surface(it == m_iterator);
-		camera->display_picture(surf, &pos, true);
+		surf = (*it)->get_surface();
+		temp = pos;
+		temp.x += (pos.w - (*it)->width()) / 2;
+		camera->display_picture(surf, &temp, true);
 		pos.y += surf->h();
 	}		
 }
@@ -83,7 +96,7 @@ int List_menu_actions::width() const
 {
 	int res = 0;
 	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
-		res = std::max(res, (*it)->get_surface()->w());
+		res = std::max(res, (*it)->width());
 	}
 	return res;
 }
@@ -92,7 +105,7 @@ int List_menu_actions::height() const
 {
 	int res = 0;
 	for(std::list<Menu_action*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++) {
-		res += (*it)->get_surface()->h();
+		res += (*it)->height();
 	}
 	return res;
 }

@@ -126,3 +126,8 @@ void Surface::blit_surface(Surface *background, Rect pos)
 	SDL_BlitSurface(this->get_surface(), NULL, background->get_surface(), sdl_pos);
 	delete sdl_pos;
 }
+
+void Surface::set_alpha(unsigned char alpha)
+{
+	SDL_SetAlpha(get_surface(), SDL_SRCALPHA, alpha);
+}

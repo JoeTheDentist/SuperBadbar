@@ -8,8 +8,8 @@
 #include "../game/game.h"
 #include "../game/levels_manager.h"
 #include "../menus/menu_action.h"
-#include "../video/surface_text.h"
 #include "../video/surface_uniform.h"
+#include "../video/surface_frame.h"
 
 
 Menu::Menu(Menu *parent) :
@@ -44,6 +44,7 @@ void Menu::update()
 		}
 		m_son->update();
 	} else {
+		m_menu_actions.update();
 		while (gKeyboard->is_next_menu_key()) {
 			menu_key key = gKeyboard->pop_menu_key();
 			switch (key) {
@@ -77,15 +78,36 @@ void Menu::update()
 
 void Menu::update_graphics() const
 {
-	// mon rafraichissement
-	Camera *camera = gGraphics->get_camera();
-	Surface_uniform *frame = new Surface_uniform(m_menu_actions.width(), m_menu_actions.height(), 255, 0, 255);
-	Rect pos = m_pos_menu; // variable intermediaire pour assurer le const
-	camera->display_picture(frame, &pos, true);
-	m_menu_actions.display(camera, m_pos_menu);
-	// le rafraichissement de mon fils
-	if (m_son)
+	// on n'affiche que le menu fils s'il y en a un
+	if (!m_son) {
+		Camera *camera = gGraphics->get_camera();
+		int w = 2 * MENU_OFFSET_W + m_menu_actions.width();
+		int h = 2 * MENU_OFFSET_H + m_menu_actions.height();
+		Surface_uniform *grey = new Surface_uniform(camera->width(), camera->height(), 
+				MENU_GREY_LEVEL, MENU_GREY_LEVEL, MENU_GREY_LEVEL);
+		grey->set_alpha(MENU_GREY_ALPHA);
+		Rect posNull; 
+		posNull.x = 0;
+		posNull.y = 0;
+		camera->display_picture(grey, &posNull, true);
+		Surface_uniform *background = new Surface_uniform(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B);
+		background->set_alpha(MENU_BACKGROUND_ALPHA);
+		Rect pos = m_pos_menu; // variable intermediaire pour assurer le const
+		 
+		pos.w = w;
+		pos.h = h;
+		pos.x = (camera->width() - pos.w) / 2;		
+		pos.y = (camera->height() - pos.h) / 2;		
+		camera->display_picture(background, &pos, true);
+
+		Surface_frame frame(pos,  MENU_FRAME_R, MENU_FRAME_G, MENU_FRAME_B);
+		camera->display_picture(&frame, &pos, true);
+//~ 		pos.x += MENU_OFFSET_W;
+		pos.y += MENU_OFFSET_H;
+		m_menu_actions.display(camera, pos);
+	} else {	
 		m_son->update_graphics();
+	}
 }
 
 void Menu::set_leave_menu_true()

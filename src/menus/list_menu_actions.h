@@ -43,6 +43,8 @@ class List_menu_actions {
 	*/
 	~List_menu_actions();
 	
+	void update();
+	
 	/*!
 	*	@brief Ajoute a la liste une action possible, a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action

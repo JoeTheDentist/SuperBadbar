@@ -10,6 +10,7 @@
 #ifndef _TALKS_
 #define _TALKS_
 
+#define ALPHA_TALKS_BACKGROUND 175
 #include <string>
 #include <queue>
 
@@ -44,6 +45,7 @@ struct cell_string {
 class Talks {
 private:
 	Surface *m_text_background; // le fond d'ecran du talks
+	Surface *m_frame_background; // le fond d'ecran du talks
 	Surface *m_talker;  // la surface du talker courant
 	std::list<Surface_text *> m_text_surface[LINES_NUMBER]; // les lignes de textes a afficher
 	std::queue<cell_string> m_cells; // les cellules a afficher

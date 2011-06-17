@@ -23,7 +23,7 @@ void Camera::display_event(Event *event) const{	Surface *picture = event->curr
     pos_temp.x = m_frame.x;
     pos_temp.y = m_frame.y;
     pos_temp.h = m_frame.h;
-    pos_temp.w = m_frame.w;	return pos_temp;}void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const{
+    pos_temp.w = m_frame.w;	return pos_temp;}int Camera::width() const{	return frame().w;}int Camera::height() const{	return frame().h;}void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const{
     if ( surf ) {
         if ( fixe ) {
             SDL_Rect * pos_sdl = new SDL_Rect;

@@ -46,7 +46,7 @@ void Sprites_manager::delete_dead_sprites()
         if ( (*it)->to_delete() ) {
             /* suppression du sprite */
             delete (*it);
-            (*it) = NULL;
+//~             (*it) = NULL;
 			it = m_sprites->erase(it);
         } else {
             ++it;
