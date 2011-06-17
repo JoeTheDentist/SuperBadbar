@@ -62,7 +62,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 }
 
 void Talks::display_text(std::string str)
-{
+{                   
 	m_waiting_for_enter = false;
 	m_curr_line = 0;
 	m_string_curs = 0;
@@ -100,6 +100,11 @@ void Talks::update()
 		if (temp) 
 			move_up();
 	}
+	if (!aux_end_of_cell() && !m_waiting_for_enter) {
+		bool temp = write_letter();
+		if (temp) 
+			move_up();
+	}
 	if (gKeyboard->is_next_menu_key()) {
 		if (gKeyboard->pop_menu_key() == mk_enter) {
 			if (end_of_talks()) {
@@ -113,9 +118,26 @@ void Talks::update()
 				m_waiting_for_enter = false;
 				end_move_up();
 			} else {
-				while (!write_letter()) {}
+				int temp = 0;
+				while (!write_letter()) {
+					if (temp++ % 2 == 0) {
+						update_letters();
+					}
+				}
 				move_up();
 			}
+		}
+	}
+	update_letters();
+}
+
+void Talks::update_letters()
+{
+	for (int i = 0; i < LINES_NUMBER; i++){
+		std::list<Special_letter *>::iterator it;
+		for (it = m_text_surface[i].begin(); it != m_text_surface[i].end(); ++it) {
+			if (*it)
+				(*it)->update();
 		}
 	}
 }
@@ -129,12 +151,14 @@ void Talks::display()
 {
 	display_background();
 	for (int i = 0; i < LINES_NUMBER; i++){
-		std::list<Surface_text *>::iterator it;
+		std::list<Special_letter *>::iterator it;
 		Rect pos = m_pos_text[i];
 		for (it = m_text_surface[i].begin(); it != m_text_surface[i].end(); ++it) {
+			pos.y = m_pos_text[i].y + ((*it)->fake_h() - (*it)->h()) / 2;
 			if (*it)
 				m_camera->display_picture((*it), &pos, true);
 			pos.x += (*it)->w();
+			
 		}
 	}
 }
@@ -228,23 +252,21 @@ bool Talks::write_letter()
 {
 	if (aux_end_of_cell())
 		return true;
-	std::string temp;
 	if (m_text[m_string_curs] == '\n') {
 		m_string_curs++;
 		std::cout << "true 1" << std::endl;
 
 		return true;
 	}
-	temp += m_text[m_string_curs];
-	Surface_text *surf = new Surface_text(temp, m_font);
+	Special_letter *surf = new Special_letter(m_text[m_string_curs], TALKS_TEXT_SIZE, 
+		TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
 	if ((m_pos_text[m_curr_line].x + m_pos_text[m_curr_line].w + surf->w()) > POSW) {
 		delete surf;
-		std::cout << "a" << temp << "a" << std::endl;
 		return true;
 	} else {
 		m_text_surface[m_curr_line].push_back(surf);
 		m_string_curs++;
-		m_pos_text[m_curr_line].w += surf->w();
+		m_pos_text[m_curr_line].w += surf->fake_w();
 		return false;
 	}
 }

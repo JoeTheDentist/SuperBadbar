@@ -29,6 +29,7 @@
 
 #include "../video/font.h"
 #include "../video/surface_text.h"
+#include "../video/special_letter.h"
 #include "../video/surface.h"
 
 struct cell_string {
@@ -47,7 +48,7 @@ private:
 	Surface *m_text_background; // le fond d'ecran du talks
 	Surface *m_frame_background; // le fond d'ecran du talks
 	Surface *m_talker;  // la surface du talker courant
-	std::list<Surface_text *> m_text_surface[LINES_NUMBER]; // les lignes de textes a afficher
+	std::list<Special_letter *> m_text_surface[LINES_NUMBER]; // les lignes de textes a afficher
 	std::queue<cell_string> m_cells; // les cellules a afficher
 	Rect m_pos_background; // la position du fond du talks 
 	Rect m_pos_talker; // la position de l'image du talker
@@ -163,6 +164,8 @@ public:
 	*	@brief Vide les lignes de texte
 	*/
 	void clear_lines();
+	
+	void update_letters();
 
 };
 

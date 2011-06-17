@@ -21,6 +21,8 @@ class Font;
 */
 class Surface_text: public Surface {
 	public:
+		
+	Surface_text();
 	/*!
 	*	@brief Constructeur
 	*	@param text Le texte a afficher
@@ -43,7 +45,10 @@ class Surface_text: public Surface {
 	*	@brief Destructeur
 	*/
 	~Surface_text();
-	
+
+protected:
+	virtual void init(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
+
 };
 
 #endif 

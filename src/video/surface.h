@@ -76,13 +76,13 @@ public:
 	*	@brief Accesseur
 	*	@return La largeur de l'image
 	*/
-	int w();
+	virtual int w();
 
 	/*!
 	*	@brief Accesseur
 	*	@return La hauteur de l'image
 	*/
-	int h();
+	virtual int h();
 
 	/*!
 	*	@brief Mutateur
