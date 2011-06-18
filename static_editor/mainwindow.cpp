@@ -160,7 +160,8 @@ void MainWindow::newFile()
 	if (m_opened_file) {
 		warningSave();
 	}
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png");
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png",
+			STATIC_DIR,  tr("Images (*.png *.xpm *.jpg)"));
 	if (fileName.isEmpty()) {
 		return;
 	}
