@@ -159,7 +159,7 @@ void Boss_elmer::elmar_charge()
         m_speed.x = 0;
         m_fire = rand()%10+5;
         m_elmar_state = ELMAR_FIRE;
-    } else if ( in_bottom_middle() ) {
+    } else if ( in_bottom_middle() && bottom() ) {
         if ( (rand()%5 == 0) && babarpos.y > m_pos.y - m_pos.h ) {
             if ( babarpos.x > m_pos.x ) {
                 m_dir = RIGHT;
