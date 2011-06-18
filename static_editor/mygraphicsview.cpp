@@ -173,7 +173,6 @@ qreal MyGraphicsView::ysize()
 	return m_ysize;
 }
 
-
 void MyGraphicsView::save(QString str)
 {
 	m_collisions_matrix->save(str);

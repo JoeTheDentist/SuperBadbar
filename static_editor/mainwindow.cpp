@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "mygraphicsview.h"
+#include "directories.h"
 #include <iostream>
 #include <QGraphicsScene>
 #include <QMenu>
@@ -56,7 +57,6 @@ MainWindow::~MainWindow()
 
 }
 
-
 void MainWindow::createActions()
 {
 
@@ -112,8 +112,8 @@ void MainWindow::createActions()
 	
 }
 
- void MainWindow::createMenus()
- {
+void MainWindow::createMenus()
+{
 	m_fileMenu = menuBar()->addMenu(tr("&File"));
 	m_fileMenu->addAction(m_newAct);
 	m_fileMenu->addAction(m_openAct);
@@ -155,7 +155,6 @@ void MainWindow::createToolBars()
 //~ 	editToolBar->addAction(pasteAct);	
 }
 
-
 void MainWindow::newFile()
 {
 	if (m_opened_file) {
@@ -182,7 +181,8 @@ void MainWindow::open()
 	if (m_opened_file) {
 		warningSave();
 	}
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png");
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier .png",
+			STATIC_DIR,  tr("Images (*.png *.xpm *.jpg)"));
 	if (fileName.isEmpty()) {
 		return;
 	}
