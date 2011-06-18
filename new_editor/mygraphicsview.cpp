@@ -381,7 +381,7 @@ void MyGraphicsView::createNewSet()
 
 void MyGraphicsView::createNewStatic()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de static", STATIC_DIR);
+	QString fileName = QFileDialog::getOpenFileName(this, "Ouverture d'un fichier de static", STATIC_DIR,  tr("Images (*.png)"));
 	if (fileName.isEmpty()) {
 		return;
 	}
