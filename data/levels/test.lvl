@@ -17,17 +17,13 @@ mushroom/mushroom 1224 1162
 butterfly/butterfly 654 695
 butterfly/butterfly 444 399
 butterfly/butterfly 125 75
-mushroom/mushroom 466 1166
 mushroom/mushroom 1528 700
 mushroom/mushroom 1190 476
 mushroom/mushroom 1231 494
+mushroom/mushroom 466 1166
 !
 #Statics#
 12
-jungle_block_2 -6 1186 0
-jungle_block_3 492 1212 0
-jungle_block_2 990 1187 0
-jungle_block_4 1490 1219 0
 jungle_block_4 263 811 0
 jungle_set_1 453 804 0
 jungle_block_6 1161 518 0
@@ -36,6 +32,10 @@ jungle_set_3 828 292 0
 jungle_block_4 1609 771 0
 jungle_block_6 -183 562 0
 jungle_set_2 229 654 0
+jungle_hard_block_2 -8 1186 0
+jungle_hard_block_3 492 1211 0
+jungle_hard_block_2 991 1186 0
+jungle_hard_block_4 1491 1218 0
 !
 #Monsters#
 1
@@ -71,6 +71,7 @@ event elmar_machine_gun 729 1097
 Je teste les dialogue, c'est cool non?
 Bla bla
 OOooooh Rataxes!! 
-<rataxes> yop, ca mousse? "#endtriggerable# 
+<rataxes> yop, ca mousse? "
+#endtriggerable# 
 
 !
