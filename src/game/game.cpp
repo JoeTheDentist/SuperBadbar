@@ -58,7 +58,6 @@ Game::Game(std::string level_name)
 
 void Game::init_game(std::string level_name)
 {
-	std::cerr << "plop" << std::endl;
 	Transition_screen *plop = new Transition_screen("gameover.png");
 	plop->display(gGraphics->get_camera());
     gCollision = new Collisions_manager();
@@ -81,7 +80,10 @@ void Game::init_game(std::string level_name)
 	gKeyboard->disable_all_keys();
 	gKeyboard->disable_key_repeat();
 	
+	gSound->init_level(level_name);
+	
 	plop->wait_for_player();
+	gSound->play_music();
 }
 
 Game::~Game()

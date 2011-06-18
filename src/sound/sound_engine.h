@@ -48,6 +48,14 @@ public:
 	*/
 	~Sound_engine();
 
+	void init_level(std::string level);
+
+	/**
+	*	@brief Charge la musique a jouer
+	*	@param str Le nom de la musique (avec l'extension, depuis le repertoire des musiques)
+	*/
+	void load_music(std::string str);
+
 	/**
 	 * @brief Joue la musique
 	*/

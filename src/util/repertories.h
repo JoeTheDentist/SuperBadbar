@@ -48,6 +48,7 @@
 	#define BABAR_SOUNDS_R SOUNDS_R + "babar/"
 	#define FIRE_SOUNDS_R SOUNDS_R + "fire/"
 	#define MENU_SOUNDS_R SOUNDS_R + "menu/"
+	#define MUSIC_R SOUNDS_R + "music/"
 
 
 

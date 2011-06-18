@@ -10,6 +10,8 @@
 #include <iostream>
 #include <stdint.h>
 #include <stdio.h>
+#include "../util/analyser.h"
+#include "../util/repertories.h"
 #include "sound_engine.h"
 #include "../sound/sound_engine.h"
 #include "../sound/sound.h"
@@ -19,6 +21,7 @@
 
 
 Sound_engine::Sound_engine():
+	m_music(NULL),
 	m_sounds_volume(99),
 	m_music_volume(99)
 {
@@ -26,11 +29,6 @@ Sound_engine::Sound_engine():
 	PRINT_CONSTR(1, "Construction du Sound_engine")
 	FSOUND_Init(44100, 32, 0);
 //~ 	m_fire = new FSOUND_SAMPLE*[SHOTGUN + 1];
-	m_music = FSOUND_Stream_Open((RACINE_R+"/sound/music/level1.mp3").c_str(), 0, 0, 0);
-	play_music();
-	if (m_music == NULL) {
-		PRINT_DEBUG(1, "Impossible de charger la musique")
-	}
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
 	
@@ -42,6 +40,24 @@ Sound_engine::~Sound_engine()
 {
 	PRINT_CONSTR(1, "Destruction du Sound_engine")
 	FSOUND_Close();
+}
+
+void Sound_engine::init_level(std::string level)
+{
+	Analyser analyser;
+	analyser.open(LEVELS_R + level);
+	analyser.find_string("#Music#");
+	load_music(analyser.read_string());
+}
+
+void Sound_engine::load_music(std::string str)
+{
+	if (m_music) {
+		FSOUND_Stream_Stop (m_music);
+		FSOUND_Stream_Close(m_music);
+		FSOUND_StopSound(MUSIC_CANAL);
+	}
+	m_music = FSOUND_Stream_Open((MUSIC_R + str).c_str(), 0, 0, 0);	
 }
 
 void Sound_engine::play_music()

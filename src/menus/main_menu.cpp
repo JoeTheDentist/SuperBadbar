@@ -20,6 +20,8 @@ Main_menu::Main_menu() :
 	m_menu_actions.add_action("New game", 1);
 	m_menu_actions.add_action("Options", 2);
 	m_menu_actions.add_action("Leave", 3);
+	gSound->load_music("main_menu.mp3");
+	gSound->play_music();
 	loop();
 }
 
