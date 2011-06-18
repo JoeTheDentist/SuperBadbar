@@ -26,6 +26,8 @@ Menu_action::~Menu_action()
 
 void Menu_action::update()
 {
+	delete m_surface_text;
+	delete m_surface_text_selected;
 	if (m_size_sup > (MENU_TEXT_OFFSET_ATTENUATION - 1))
 		m_size_sup -= MENU_TEXT_OFFSET_ATTENUATION;
 	else if (m_size_sup < -(MENU_TEXT_OFFSET_ATTENUATION - 1))

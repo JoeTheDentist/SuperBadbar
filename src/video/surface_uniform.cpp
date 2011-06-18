@@ -23,5 +23,5 @@ Surface_uniform::Surface_uniform(int width, int height, int r, int g, int b)
 
 Surface_uniform::~Surface_uniform()
 {
-
+	SDL_FreeSurface(m_surface);
 }

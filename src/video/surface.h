@@ -66,6 +66,11 @@ public:
 	SDL_Surface *get_surface();
 
 	/*!
+	*	@brief Duplique la SDL surface contenue et la renvoie
+	*	@return La copie
+	*/
+	SDL_Surface *get_copy_surface();
+	/*!
 	*	@brief Initialise le pictures_container des Surfaces
 	*	@warning A appeler seulement à l'initialisation du moteur graphic
 	*	@param pictures_container Le gestionnaire d'images

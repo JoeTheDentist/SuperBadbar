@@ -18,7 +18,7 @@ Surface_frame::Surface_frame(Rect rect, int r, int g, int b):
 	m_line_h(5)
 {
 	Surface_uniform background(rect.w, rect.h, 0, 0xFF, 0xFF);
-	m_surface = background.get_surface();
+	m_surface = background.get_copy_surface();
 	SDL_SetColorKey( m_surface, SDL_RLEACCEL | SDL_SRCCOLORKEY,  SDL_MapRGB( m_surface->format, 0, 0xFF, 0xFF ) );
 	Surface_uniform vertical(m_line_w, rect.h, r, g, b);
 	Surface_uniform horizontal(rect.w, m_line_h, r, g, b);
@@ -32,4 +32,9 @@ Surface_frame::Surface_frame(Rect rect, int r, int g, int b):
 	horizontal.blit_surface(this, pos);
 	pos.y = rect.h - horizontal.h();
 	horizontal.blit_surface(this, pos);
+}
+
+Surface_frame::~Surface_frame()
+{
+	delete m_surface;
 }

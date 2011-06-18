@@ -67,7 +67,8 @@ Surface::~Surface()
 {
 	/*
 		NE PAS DELETER m_surface !! Ce pointeur est partage
-		et sera deleted par le gestionnaire de surfaces
+		et sera PARFOIS deleted par le gestionnaire de surfaces
+		selon le type de surface
 	*/
 	PRINT_CONSTR(3, "Destruction d'une classe Surface");
 }
@@ -75,6 +76,11 @@ Surface::~Surface()
 SDL_Surface * Surface::get_surface()
 {
 	return m_surface;
+}
+
+SDL_Surface *Surface::get_copy_surface()
+{
+   return SDL_ConvertSurface(m_surface, m_surface->format, m_surface->flags);	
 }
 
 void Surface::set_pictures_container(Pictures_container *pictures_container)

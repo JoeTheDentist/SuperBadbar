@@ -29,6 +29,8 @@ public:
 	*	@param b La composante bleue de la couleur du cadre
 	*/
 	Surface_frame(Rect rect, int r, int g, int b);
+
+	~Surface_frame();
 };
  
  #endif

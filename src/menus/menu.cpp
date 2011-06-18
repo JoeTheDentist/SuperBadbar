@@ -83,26 +83,23 @@ void Menu::update_graphics() const
 		Camera *camera = gGraphics->get_camera();
 		int w = 2 * MENU_OFFSET_W + m_menu_actions.width();
 		int h = 2 * MENU_OFFSET_H + m_menu_actions.height();
-		Surface_uniform *grey = new Surface_uniform(camera->width(), camera->height(), 
+		Surface_uniform grey(camera->width(), camera->height(), 
 				MENU_GREY_LEVEL, MENU_GREY_LEVEL, MENU_GREY_LEVEL);
-		grey->set_alpha(MENU_GREY_ALPHA);
+		grey.set_alpha(MENU_GREY_ALPHA);
 		Rect posNull; 
 		posNull.x = 0;
 		posNull.y = 0;
-		camera->display_picture(grey, &posNull, true);
-		Surface_uniform *background = new Surface_uniform(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B);
-		background->set_alpha(MENU_BACKGROUND_ALPHA);
-		Rect pos = m_pos_menu; // variable intermediaire pour assurer le const
-		 
+		camera->display_picture(&grey, &posNull, true);
+		Surface_uniform background(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B);
+		background.set_alpha(MENU_BACKGROUND_ALPHA);
+		Rect pos;
 		pos.w = w;
 		pos.h = h;
 		pos.x = (camera->width() - pos.w) / 2;		
 		pos.y = (camera->height() - pos.h) / 2;		
-		camera->display_picture(background, &pos, true);
-
+		camera->display_picture(&background, &pos, true);
 		Surface_frame frame(pos,  MENU_FRAME_R, MENU_FRAME_G, MENU_FRAME_B);
 		camera->display_picture(&frame, &pos, true);
-//~ 		pos.x += MENU_OFFSET_W;
 		pos.y += MENU_OFFSET_H;
 		m_menu_actions.display(camera, pos);
 	} else {	

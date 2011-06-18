@@ -10,7 +10,6 @@
 #ifndef _TALKS_
 #define _TALKS_
 
-#define ALPHA_TALKS_BACKGROUND 175
 #include <string>
 #include <queue>
 

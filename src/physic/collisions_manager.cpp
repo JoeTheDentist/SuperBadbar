@@ -34,6 +34,7 @@ Collisions_manager::~Collisions_manager()
 			it != m_moving_platforms.end(); it++) {
 		delete (*it);
 	}
+	delete m_matrix;
 }
 
 void Collisions_manager::init_collisions_manager(int level)
