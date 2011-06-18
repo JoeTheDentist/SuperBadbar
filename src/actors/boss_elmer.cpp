@@ -121,7 +121,8 @@ bool Boss_elmer::in_top_right_corner()
 bool Boss_elmer::in_bottom_middle()
 {
     return ( m_pos.x + 30 > gStatic->static_data_width()/2 &&
-             m_pos.x - 30 < gStatic->static_data_width()/2 );
+             m_pos.x - 30 < gStatic->static_data_width()/2 ) &&
+             bottom();
 }
 
 void Boss_elmer::update_state()
@@ -159,7 +160,7 @@ void Boss_elmer::elmar_charge()
         m_speed.x = 0;
         m_fire = rand()%10+5;
         m_elmar_state = ELMAR_FIRE;
-    } else if ( in_bottom_middle() && bottom() ) {
+    } else if ( in_bottom_middle() ) {
         if ( (rand()%5 == 0) && babarpos.y > m_pos.y - m_pos.h ) {
             if ( babarpos.x > m_pos.x ) {
                 m_dir = RIGHT;
