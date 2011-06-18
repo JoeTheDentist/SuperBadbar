@@ -30,6 +30,8 @@ MainWindow::MainWindow():
 	m_exitAct(NULL),
 	m_saveAct(NULL),
 	m_aboutBabarEditor(NULL),
+	m_setMusic(NULL),
+	m_createNewBabar(NULL),
 	m_createNewSet(NULL),
 	m_createNewStatic(NULL),
 	m_addMovingPlatform(NULL),
@@ -54,6 +56,7 @@ MainWindow::~MainWindow()
 	delete m_exitAct;
 	delete m_saveAct;
 	delete m_aboutBabarEditor;
+	delete m_setMusic;
 	delete m_fileMenu;
 	delete m_editMenu;
 	delete m_helpMenu;
@@ -71,7 +74,8 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::createActions()
-{m_newAct = new QAction(QIcon("images/new.png"), tr("&New"), this);
+{
+	m_newAct = new QAction(QIcon("images/new.png"), tr("&New"), this);
 	m_newAct->setShortcuts(QKeySequence::New);
 	m_newAct->setStatusTip(tr("Create a new file"));
 	connect(m_newAct, SIGNAL(triggered()), this, SLOT(newFile()));
@@ -89,6 +93,10 @@ void MainWindow::createActions()
 	m_aboutBabarEditor = new QAction(tr("About"), this);
 	m_aboutBabarEditor->setStatusTip(tr("About Babar Editor"));
 	connect(m_aboutBabarEditor, SIGNAL(triggered()), this, SLOT(aboutBabarEditor()));
+		
+	m_setMusic = new QAction(QIcon("images/music.png"), tr("Music"), this);
+	m_setMusic->setStatusTip(tr("Chose a new music for this level"));
+	connect(m_setMusic, SIGNAL(triggered()), this, SLOT(setMusic()));
 	
 	m_saveAct = new QAction(QIcon("images/save.png"),tr("Save"), this);
 	m_saveAct->setShortcuts(QKeySequence::Save);
@@ -146,6 +154,7 @@ void MainWindow::createActions()
 	m_fileMenu->addAction(m_saveAsAct);
 	m_fileMenu->addAction(m_exitAct);
 	m_editMenu = menuBar()->addMenu(tr("&Edit"));
+	m_editMenu->addAction(m_setMusic);
 	m_editMenu->addAction(m_createNewBabar);
 	m_editMenu->addAction(m_createNewSet);
 	m_editMenu->addAction(m_createNewStatic);
@@ -167,6 +176,8 @@ void MainWindow::createToolBars()
 	m_fileToolBar->addAction(m_openAct);
 	m_fileToolBar->addAction(m_saveAct);
 	m_fileToolBar->addAction(m_saveAsAct);
+	m_fileToolBar->addAction(m_aboutBabarEditor);
+	m_fileToolBar->addAction(m_setMusic);
 	m_fileToolBar->addAction(m_createNewBabar);
 	m_fileToolBar->addAction(m_createNewSet);
 	m_fileToolBar->addAction(m_createNewStatic);
@@ -246,6 +257,11 @@ void MainWindow::aboutBabarEditor()
 	QMessageBox::information(this, "About us", "Babar Editor is a graphic editor using Qt to design SuperBabar levels. \
 		Read the manual for more informations. You can also visit our website: \
 		<a href=\"http://nalwarful.free.fr/Babar/jeu.php\"> SuperBabar </a>");
+}
+
+void MainWindow::setMusic()
+{
+	m_graphic_view->setMusic();
 }
 
 void MainWindow::createNewBabar()

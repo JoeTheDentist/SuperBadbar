@@ -132,6 +132,11 @@ class MyGraphicsView : public QGraphicsView {
 	void save(QString str);
 	
 	/*!
+	*	@brief Choix de la musique
+	*/
+	void setMusic();
+	
+	/*!
 	*	@brief Fonction d'ajout de la position de babar
 	*/
 	void createNewBabar();
@@ -170,6 +175,7 @@ class MyGraphicsView : public QGraphicsView {
 	*	@brief Fonction d'ajout d'un Trigger au niveau
 	*/
 	void createNewTrigger();
+
 	
 	
 //~ 	void addItem(MyItem *item);

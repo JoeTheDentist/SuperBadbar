@@ -4,6 +4,7 @@
 
 // definitions des chemins
 #define SET_DIR "../pic/animations/"
+#define MUSIC_DIR "../sound/music/"
 #define STATIC_DIR "../pic/statics/"
 #define BACKGROUND_DIR "../pic/backgrounds/"
 #define MONSTERS_DIR "../data/monsters/"

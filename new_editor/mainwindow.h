@@ -62,6 +62,7 @@ class MainWindow : public QMainWindow {
 	void save();
 	void saveAs();
 	void aboutBabarEditor();
+	void setMusic();
 	void createNewBabar();
 	void createNewSet();
 	void createNewStatic();
@@ -90,6 +91,7 @@ class MainWindow : public QMainWindow {
 	QAction *m_saveAct;
 	QAction *m_saveAsAct;
 	QAction *m_aboutBabarEditor;
+	QAction *m_setMusic;
 	QAction *m_createNewBabar;
 	QAction *m_createNewSet;
 	QAction *m_createNewStatic;

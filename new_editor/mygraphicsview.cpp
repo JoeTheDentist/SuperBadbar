@@ -94,6 +94,9 @@ void MyGraphicsView::loadFile(QString fileName)
 	age = analyser.read_int();
 	m_babar_item->setPos(x, y);
 	m_babar_item->setBabarAge(age);
+	if (analyser.find_string("#Music#")) {
+		m_data->setMusicName(QString::fromStdString(analyser.read_string()));
+	}
 	if (analyser.find_string("#Sets#")) {
 		int nbSets = analyser.read_int();
 		QString nameSet;
@@ -350,6 +353,17 @@ void MyGraphicsView::save(QString str)
 {
 	m_file_name = str;
 	m_data->saveData(str);
+}
+
+void MyGraphicsView::setMusic()
+{
+	QString fileName = QFileDialog::getOpenFileName(this, "Choix de la musique", MUSIC_DIR);
+	if (fileName.isEmpty()) {
+		return;
+	}
+	fileName = substringAfter(fileName, "music/");
+	m_data->setMusicName(fileName);
+	m_ctrl_pressed = false;	
 }
 
 void MyGraphicsView::createNewBabar()

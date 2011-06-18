@@ -278,8 +278,12 @@ void Data::saveData(QString fileName)
 	out << m_xpix << endl;
 	out << m_ypix << endl;
 	out << endl;
+	// sauvegarde de la musique du niveau
+	out << "#Music#" << endl;
+	out << m_music_name << endl;
 	// sauvegarde de la position de départ de babar 
 	out << "#Babar#" << endl;
+	out << endl;
 	m_babar_item->saveItem(out);
 	out << endl;
 	// sauvegarde des animations

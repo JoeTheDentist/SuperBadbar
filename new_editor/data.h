@@ -18,6 +18,7 @@ class Data {
 	std::list<MyItem *> m_event_items;
 	std::list<MyItem *> m_triggers_items;
 	QString m_background_name;
+	QString m_music_name;
 	QGraphicsPixmapItem *m_background;
 	int m_xpix;
 	int m_ypix;
@@ -52,6 +53,12 @@ class Data {
 	*	@return La hauteur du niveau
 	*/
 	int levelHeight();
+	
+	/*!
+	*	@brief Mutateur
+	*	@param str Le nom de la musique du level (depuis le repertoire des musiques)
+	*/
+	void setMusicName(QString str) { m_music_name = str; }
 	
 	/*!
 	*	@brief Ajoute un item aux donnees (attention, data ne se charge pas de l'affichage)
