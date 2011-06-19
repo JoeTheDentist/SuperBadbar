@@ -45,13 +45,15 @@ class List_menu_actions {
 	
 	void update();
 	
+	void add_action(Menu_action *action);
+	
 	/*!
-	*	@brief Ajoute a la liste une action possible, a la fin des actions deja existantes
+	*	@brief Ajoute a la liste une action classique (Menu_action_classic), a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action
 	*	@param action_num Le numero de l'action
-	*	@param action_value Une valeur donnee a l'action (-1 si on n'en veut pas)
 	*/
-	void add_action(std::string action_name, int action_num, int action_value = -1);
+	void add_action_classic(std::string action_name, int action_num);
+	void add_action_integer(std::string action_name, int action_num, int value);
 	
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)

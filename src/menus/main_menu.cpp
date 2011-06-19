@@ -17,9 +17,9 @@ Main_menu::Main_menu() :
 {
 	m_pos_background.x = 0;
 	m_pos_background.y = 0;
-	m_menu_actions.add_action("New game", 1);
-	m_menu_actions.add_action("Options", 2);
-	m_menu_actions.add_action("Leave", 3);
+	m_menu_actions.add_action_classic("New game", 1);
+	m_menu_actions.add_action_classic("Options", 2);
+	m_menu_actions.add_action_classic("Leave", 3);
 	gSound->load_music("main_menu.mp3");
 	gSound->play_music();
 	loop();

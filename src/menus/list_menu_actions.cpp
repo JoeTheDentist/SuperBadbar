@@ -9,6 +9,8 @@
  
 #include "list_menu_actions.h"
 #include "../menus/menu_action.h"
+#include "../menus/menu_action_classic.h"
+#include "../menus/menu_action_integer.h"
 #include "../video/camera.h"
 #include "../video/surface.h"
 #include "../video/surface_text.h"
@@ -35,11 +37,21 @@ void List_menu_actions::update()
 	}
 }
 
-void List_menu_actions::add_action(std::string action, int action_num, int action_value)
+void List_menu_actions::add_action(Menu_action *action)
 {
-	m_actions.push_back(new Menu_action(action, action_num, action_value));
+	m_actions.push_back(action);
 	m_iterator = m_actions.begin();
-	(*m_iterator)->select();
+	(*m_iterator)->select();	
+}
+
+void List_menu_actions::add_action_classic(std::string action, int num)
+{
+	add_action(new Menu_action_classic(action, num));
+}
+
+void List_menu_actions::add_action_integer(std::string action, int num, int val)
+{
+	add_action(new Menu_action_integer(action, num, val));
 }
 
 void List_menu_actions::incr_curs(int dep)

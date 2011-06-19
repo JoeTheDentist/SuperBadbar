@@ -13,10 +13,10 @@
 Options_menu::Options_menu(Menu *parent) :
 	Menu(parent)
 {
-	m_menu_actions.add_action("Sounds", 1, gSound->get_sounds_volume());
-	m_menu_actions.add_action("Music", 2, gSound->get_music_volume());
-	m_menu_actions.add_action("Keyboard", 3);
-	m_menu_actions.add_action("Return", 4);
+	m_menu_actions.add_action_integer("Sounds", 1, gSound->get_sounds_volume());
+	m_menu_actions.add_action_integer("Music", 2, gSound->get_music_volume());
+	m_menu_actions.add_action_classic("Keyboard", 3);
+	m_menu_actions.add_action_classic("Return", 4);
 }
 
 Options_menu::~Options_menu()

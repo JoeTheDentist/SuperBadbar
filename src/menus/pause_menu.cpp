@@ -13,9 +13,9 @@
 Pause_menu::Pause_menu() :
 	Menu()
 {
-	m_menu_actions.add_action("Resume Game", 1);
-	m_menu_actions.add_action("Options", 2);
-	m_menu_actions.add_action("Leave Game", 3);
+	m_menu_actions.add_action_classic("Resume Game", 1);
+	m_menu_actions.add_action_classic("Options", 2);
+	m_menu_actions.add_action_classic("Leave Game", 3);
 }
 
 Pause_menu::~Pause_menu()
