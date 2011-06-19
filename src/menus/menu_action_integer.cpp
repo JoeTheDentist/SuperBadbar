@@ -10,18 +10,19 @@
 #include "menu_action_integer.h"
 #include <sstream>
 
-Menu_action_integer::Menu_action_integer(std::string str, int i, int val, int valmin, int valmax):
+Menu_action_integer::Menu_action_integer(std::string str, int i, int val, int valmin, int valmax, int step):
 	Menu_action(str, i),
 	m_value(val),
 	m_valmin(valmin),
-	m_valmax(valmax)
+	m_valmax(valmax),
+	m_step(step)
 {
 	
 }
 
 void Menu_action_integer::incr_value(int value)
 {
-	m_value += value;
+	m_value += m_step * value;
 	if (m_value > m_valmax)
 		m_value = m_valmax;
 	if (m_value < m_valmin)

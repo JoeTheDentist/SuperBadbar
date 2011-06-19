@@ -18,6 +18,7 @@ protected:
 	int m_value;
 	int m_valmin;
 	int m_valmax;
+	int m_step;
 public:
 	/*!
 	*	@brief Constructeur
@@ -26,8 +27,9 @@ public:
 	*	@param val La valeur de depart 
 	*	@param valmin La valeur minimale
 	*	@param valmax La valeur maximale
+	*	@param step Le pas de valeur 
 	*/
-	Menu_action_integer(std::string str, int i, int val = -1, int valmin = 0, int valmax = 99);
+	Menu_action_integer(std::string str, int i, int val = -1, int valmin = 0, int valmax = 99, int step = 5);
 
 	virtual void incr_value(int value);
 	virtual int get_value() {return m_value;}

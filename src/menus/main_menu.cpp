@@ -53,6 +53,8 @@ void Main_menu::treat_choice(int choice)
 	switch(choice) {
 		case 1: // nouvelle partie
 			launch_game();
+			gSound->load_music("main_menu.mp3");
+			gSound->play_music();
 			break;
 		case 2: // options
 			launch_options();
