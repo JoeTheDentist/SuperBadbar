@@ -1,53 +1,38 @@
 #Background#
-back_elmar.png
+jungle.png
 
 #Level_dimensions#
-1634
-1320
+4756
+4400
 
-#Music#
-level1.mp3
 #Babar#
-441
-1089
+10
+4200
 1
 
 #Sets#
-9
-mushroom/mushroom 1255 1166
-mushroom/mushroom 1224 1162
-butterfly/butterfly 654 695
-butterfly/butterfly 444 399
-butterfly/butterfly 125 75
-mushroom/mushroom 1528 700
-mushroom/mushroom 1190 476
-mushroom/mushroom 1231 494
-mushroom/mushroom 466 1166
+0
 !
 #Statics#
 12
-jungle_block_4 263 811 0
-jungle_set_1 453 804 0
-jungle_block_6 1161 518 0
-jungle_block_1 940 518 0
-jungle_set_3 828 292 0
-jungle_block_4 1609 771 0
-jungle_block_6 -183 562 0
-jungle_set_2 229 654 0
-jungle_hard_block_2 -8 1186 0
-jungle_hard_block_3 492 1211 0
-jungle_hard_block_2 991 1186 0
-jungle_hard_block_4 1491 1218 0
+jungle_hard_block_2 985 4281 0
+water1 1746 4295 0
+jungle_hard_block_2 -11 4279 0
+jungle_hard_block_3 486 4306 0
+water1 2104 4301 0
+water1 2461 4307 0
+water1 2822 4313 0
+jungle_hard_block_5 1486 4060 0
+jungle_hard_block_1 3218 4271 0
+jungle_hard_block_4 1933 4060 0
+jungle_warning_board 84 4166 0
+jungle_warning_board 1981 3938 0
 !
 #Monsters#
-1
-boss_elmer elmar 808 987
+0
 !
 #Events#
-3
-event shotgun 338 701
-event machinegun 1088 406
-event elmar_machine_gun 729 1097
+0
 !
 #MovingPlatforms#
 0
@@ -56,24 +41,35 @@ event elmar_machine_gun 729 1097
 0
 !
 #Triggers#
-1
+2
 #trig#
 #editor pos#
-528 999
+2193 4010
 #zone#
 2
-375 1063 575 1206
-375 1063 575 1206
+1895 3883 2192 4127
+1895 3883 2192 4127
 #triggerables#
 1
-#x# 452
-#y# 999
+#x# 1936
+#y# 3783
 #nature# dialog
-#text# "<babar> Salut !
-Je teste les dialogue, c'est cool non?
-Bla bla
-OOooooh Rataxes!! 
-<rataxes> yop, ca mousse? "
+#text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur A pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
+#endtriggerable# 
+
+#trig#
+#editor pos#
+299 4216
+#zone#
+2
+-1 4100 298 4317
+-1 4100 298 4317
+#triggerables#
+1
+#x# 75
+#y# 3999
+#nature# dialog	
+#text# "<ex> Oh ! Je te vois bien impatient jeune éléphant à la dégaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se déplacer à gauche ou a droite il faut utiliser les touches J et L"
 #endtriggerable# 
 
 !
