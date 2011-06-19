@@ -41,7 +41,6 @@ void Main_menu::update_graphics()
 void Main_menu::loop()
 {
 	while(!end_menu() &	 !end_game()) {
-		std::cout << "plop" << std::endl;
 		gKeyboard->update_events();
 		update();
 		update_graphics();

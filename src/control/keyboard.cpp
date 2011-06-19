@@ -13,6 +13,8 @@
 #include <stdint.h>
 
 #include "keyboard.h"
+#include "../control/event_orderer.h"
+#include "../control/sdl_key_converter.h"
 #include "../util/analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
@@ -20,7 +22,8 @@
 
 void display_config();
 
-Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
+Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name):
+	m_event_orderer(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
 	for (uint32_t i = 0; i < SDLK_LAST; i++)
@@ -107,10 +110,14 @@ void Keyboard::update_events()
 			m_menu_input.push(mk_exit);
 			break;
 		case SDL_KEYDOWN:
-			set_key(m_key_config[event.key.keysym.sym],  1);
-			mk = treat_menu_key(event);
-			if (mk != mk_none) {
-				m_menu_input.push(mk);
+			if (event_ordered()) {
+				answer_event_order(event.key.keysym.sym);
+			} else {
+				set_key(m_key_config[event.key.keysym.sym],  1);
+				mk = treat_menu_key(event);
+				if (mk != mk_none) {
+					m_menu_input.push(mk);
+				}
 			}
 			break;
 		case SDL_KEYUP:
@@ -268,11 +275,11 @@ void Keyboard::incr_key_down(enum key k)
 {
 	m_key_down[k]++;
 }
+
 void Keyboard::incr_key_down(int k)
 {
 	incr_key_down((enum key)k);
 }
-
 
 void Keyboard::reset_menu_keys() 
 {
@@ -294,4 +301,39 @@ menu_key Keyboard::pop_menu_key()
 	return res;
 }
 
+void Keyboard::order_event(Event_orderer *event_orderer)
+{
+	m_event_orderer = event_orderer;
+}
 
+bool Keyboard::event_ordered()
+{
+	return m_event_orderer;
+}
+
+void Keyboard::answer_event_order(SDLKey event)
+{
+	m_event_orderer->answer_event_order(event);
+	m_event_orderer = NULL; // une fois qu'on a repondu une fois, on n'a plus d'orderer
+}
+
+void Keyboard::set_config_key(key k, std::string sdl_code)
+{
+	SDLKey new_sdlk = Sdl_key_converter::stdstring_to_sdlkey(sdl_code);
+	for (int i = 0; i <= (int)SDLK_LAST; ++i) {
+		if (m_key_config[i] == k) {
+			m_key_config[i] = k_none;
+		}
+	}
+	m_key_config[new_sdlk] = k;
+}
+
+std::string Keyboard::get_string_key(key k)
+{
+	for (int i = 0; i < (int)SDLK_LAST; ++i) {
+		if (m_key_config[i] == k) {
+			return Sdl_key_converter::sdlkey_to_stdstring((SDLKey(i)));
+		}
+	}
+	return "unknown";
+}

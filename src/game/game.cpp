@@ -43,7 +43,6 @@ Game::Game(int level, bool record_on, bool replay_on, std::string output_name, s
 	PRINT_CONSTR(1, "Construction de la classe Game")
     char str[3];
     std::string str_lvl;
-    gKeyboard = new Keyboard(record_on, replay_on, output_name, input_name);
     sprintf(str, "%d", level);
     str_lvl = str;
 	init_game("level" + str_lvl + ".lvl");
@@ -51,7 +50,6 @@ Game::Game(int level, bool record_on, bool replay_on, std::string output_name, s
 
 Game::Game(std::string level_name)
 {
-    gKeyboard = new Keyboard(false, false, "", "");
 	PRINT_CONSTR(1, "Construction de la classe Game")
 	init_game(level_name);
 }

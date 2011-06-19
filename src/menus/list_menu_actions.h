@@ -13,6 +13,8 @@
 #include <list>
 #include <string>
 
+#include "../control/keyboard.h"
+
 class Camera;
 class Menu_action;
 struct Rect;
@@ -53,7 +55,15 @@ class List_menu_actions {
 	*	@param action_num Le numero de l'action
 	*/
 	void add_action_classic(std::string action_name, int action_num);
+	
+	/*!
+	*	@brief Ajoute a la liste une action integer (Menu_action_integer), a la fin des actions deja existantes
+	*	@param action_name Le nom de l'action
+	*	@param action_num Le numero de l'action
+	*	@param value La valeur contenue dans l'action integer
+	*/
 	void add_action_integer(std::string action_name, int action_num, int value);
+	void add_action_keyconfig(std::string action_name, int action_num, std::string value, key k);
 	
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)
@@ -65,6 +75,8 @@ class List_menu_actions {
 	*	@param value Le deplacement de la valeur
 	*/
 	void incr_value(int value);
+	
+	void enter_pressed();
 	
 	/*!
 	*	@brief Affiche a l'ecran les actions

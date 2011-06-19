@@ -42,6 +42,10 @@ class Menu_action {
 	
 	virtual void incr_value(int value);
 	
+	virtual void enter_pressed() {}
+		
+	virtual std::string get_string() {return "";}
+	
 protected:
 	virtual void update_text();
 	virtual void update_pic(std::string str);

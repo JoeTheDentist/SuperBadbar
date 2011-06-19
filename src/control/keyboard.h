@@ -25,6 +25,7 @@ enum menu_key {
 };
 
 class Analyser;
+class Event_orderer;
 
 /**
  * 	@class Keyboard
@@ -49,12 +50,12 @@ class Keyboard {
 private:
 	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
-//~ 	int m_key_down_bis[k_fire + 1];		// tableau des touches enfoncees
-//~ 	int m_key_down_bis2[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
 	std::ofstream *m_record_file;
 	std::queue<menu_key> m_menu_input; 
+	Event_orderer *m_event_orderer;
+
 public:
 	/*!
 	* 	@brief Constructeur
@@ -161,6 +162,16 @@ public:
 	*	@return La derniere touche menu enfoncee 
 	*/
 	menu_key pop_menu_key();
+	
+	void order_event(Event_orderer *event_orderer);
+	
+	bool event_ordered();
+
+	void answer_event_order(SDLKey event);
+	
+	void set_config_key(key k, std::string sdl_code);
+	std::string get_string_key(key k);
+
 	
 private:
 	// auxilliaire de wait_menu_key et poll_menu_key

@@ -8,7 +8,10 @@
 #include "../game/game.h"
 #include "../game/levels_manager.h"
 #include "../menus/menu_action.h"
+#include "../menus/keyconfig_menu.h"
 #include "../video/surface_text.h"
+#include "../menus/list_menu_actions.h"
+
 
 Options_menu::Options_menu(Menu *parent) :
 	Menu(parent)
@@ -45,6 +48,7 @@ void Options_menu::treat_choice(int choice)
 		case 1: // son
 		case 2: // musique
 		case 3: // keyboard
+			launch_keyconfig();
 			break;
 		case 4: // return
 			set_leave_menu_true();
@@ -54,3 +58,8 @@ void Options_menu::treat_choice(int choice)
 	}
 }
 
+void Options_menu::launch_keyconfig()
+{
+		
+	set_son(new Keyconfig_menu(this));
+}

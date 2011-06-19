@@ -68,6 +68,7 @@ void Menu::update()
 				break;
 			case mk_enter:
 				treat_choice(m_menu_actions.get_selected_action());
+				m_menu_actions.enter_pressed();
 				break;
 			default:
 				break;		

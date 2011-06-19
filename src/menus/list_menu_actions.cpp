@@ -11,6 +11,7 @@
 #include "../menus/menu_action.h"
 #include "../menus/menu_action_classic.h"
 #include "../menus/menu_action_integer.h"
+#include "../menus/menu_action_keyconfig.h"
 #include "../video/camera.h"
 #include "../video/surface.h"
 #include "../video/surface_text.h"
@@ -54,6 +55,11 @@ void List_menu_actions::add_action_integer(std::string action, int num, int val)
 	add_action(new Menu_action_integer(action, num, val));
 }
 
+void List_menu_actions::add_action_keyconfig(std::string action, int num, std::string val, key k)
+{
+	add_action(new Menu_action_keyconfig(action, num, val, k));
+}
+
 void List_menu_actions::incr_curs(int dep)
 {
 	(*m_iterator)->deselect();
@@ -71,6 +77,11 @@ void List_menu_actions::incr_value(int value)
 {
 	(*m_iterator)->incr_value(value);
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
+}
+
+void List_menu_actions::enter_pressed()
+{
+	(*m_iterator)->enter_pressed();
 }
 
 void List_menu_actions::display(Camera *camera, Rect pos) const
