@@ -136,6 +136,8 @@
 		<Unit filename="..\src\menus\options_menu.h" />
 		<Unit filename="..\src\menus\pause_menu.cpp" />
 		<Unit filename="..\src\menus\pause_menu.h" />
+		<Unit filename="..\src\param\param_menus.h" />
+		<Unit filename="..\src\param\param_talks.h" />
 		<Unit filename="..\src\physic\bindable_platform.cpp" />
 		<Unit filename="..\src\physic\bindable_platform.h" />
 		<Unit filename="..\src\physic\chained_platform.cpp" />
@@ -205,6 +207,8 @@
 		<Unit filename="..\src\video\life_bar_possessor.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />
 		<Unit filename="..\src\video\pictures_container.h" />
+		<Unit filename="..\src\video\special_letter.cpp" />
+		<Unit filename="..\src\video\special_letter.h" />
 		<Unit filename="..\src\video\statics.cpp" />
 		<Unit filename="..\src\video\statics.h" />
 		<Unit filename="..\src\video\surface.cpp" />
