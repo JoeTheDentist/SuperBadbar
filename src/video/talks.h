@@ -59,7 +59,7 @@ private:
 	bool m_active; // vrai si le talks doit etre affiche
 	std::string m_text; // la replique courante
 	bool m_waiting_for_enter; // vrai si on doit attendre "entree" avant de continuer
-
+	bool m_have_to_leave;
 
 public:
 	/**
@@ -103,6 +103,12 @@ public:
 	 *	@return Vrai si la fenetre est active
 	*/
 	bool isActive();
+
+	/**
+	 *	@brief Indique si l'utilisateur veut quitter le jeu
+	 *	@return Vrai si l'utilisateur veut quitter le jeu
+	*/
+	bool have_to_leave() const {return m_have_to_leave;}
 	
 	/**
 	 *	@brief Affichage a l'ecran du dialogue

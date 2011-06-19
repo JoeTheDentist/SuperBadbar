@@ -209,6 +209,10 @@ result_game Game::game_loop()
 				}
 			} else if (m_state == gs_talks) {
 				gGraphics->get_talks()->update();
+				if (gGraphics->get_talks()->have_to_leave()) {
+					end = true;
+					break;
+				}
 				if (!gGraphics->get_talks()->isActive()) {
 					set_state_playing();
 				}

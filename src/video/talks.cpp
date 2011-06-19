@@ -36,6 +36,7 @@ Talks::~Talks()
 void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 {
 	PRINT_CONSTR(1, "Initialisation de la classe Talks")
+	m_have_to_leave = false;
 	m_camera = camera;
 	std::string background_name = "talks_background.png";
 	m_text_background = new Surface_uniform(camera->width() - 2 * TALKS_BACKGROUND_OFFSET_W, 
@@ -101,12 +102,14 @@ void Talks::update()
 			move_up();
 	}
 	if (!aux_end_of_cell() && !m_waiting_for_enter) {
-		bool temp = write_letter();
+		bool temp = write_letter();       
 		if (temp) 
 			move_up();
 	}
 	if (gKeyboard->is_next_menu_key()) {
-		if (gKeyboard->pop_menu_key() == mk_enter) {
+		menu_key key = gKeyboard->pop_menu_key();
+		switch(key) {
+		case mk_enter: 
 			if (end_of_talks()) {
 				m_active = false;
 				return;
@@ -126,6 +129,12 @@ void Talks::update()
 				}
 				move_up();
 			}
+			break;
+		case mk_exit:
+			m_have_to_leave = true;
+			break;
+		default:
+			break;
 		}
 	}
 	update_letters();
