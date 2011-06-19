@@ -63,6 +63,7 @@ void Sound_engine::load_music(std::string str)
 void Sound_engine::play_music()
 {
 	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
+	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));	
 }
 
 void Sound_engine::play_sound(std::string key)
