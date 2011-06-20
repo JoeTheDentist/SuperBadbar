@@ -3,7 +3,7 @@
     PRINT_CONSTR(1, "Construction de la camera")
 	m_frame.x = 0;	m_frame.y = 0;
 	if (target) {		set_target(target);	}
-	m_frame.h = WINDOW_HEIGHT;	m_frame.w = WINDOW_WIDTH;	PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.h, m_frame.w)	m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);	SDL_WM_SetCaption("SuperBabar", NULL);	m_target = target;	#ifdef DEBUG_COLL	m_green_coll = new Surface(PIC_DEBUG_R + "green_col.png");	m_red_coll = new Surface(PIC_DEBUG_R + "red_col.png");	#endif}void Camera::set_target(Actor *target){
+	m_frame.h = WINDOW_HEIGHT;	m_frame.w = WINDOW_WIDTH;	PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.h, m_frame.w)	m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);	SDL_WM_SetCaption("SuperBadbar", NULL);	m_target = target;	#ifdef DEBUG_COLL	m_green_coll = new Surface(PIC_DEBUG_R + "green_col.png");	m_red_coll = new Surface(PIC_DEBUG_R + "red_col.png");	#endif}void Camera::set_target(Actor *target){
     Rect pos_temp = target->position();
 	SDL_Rect position_target;
 	position_target.x = pos_temp.x;	position_target.y = pos_temp.y;	position_target.h = pos_temp.h;	position_target.w = pos_temp.w;	m_frame.x = position_target.x + (position_target.w / 2) - (m_frame.w / 2);	m_frame.y = position_target.y + (position_target.h / 2) - (m_frame.h / 2);

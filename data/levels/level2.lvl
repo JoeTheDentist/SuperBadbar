@@ -1,0 +1,181 @@
+#Background#
+jungle.png
+
+#Level_dimensions#
+4756
+4400
+
+#Music#
+level1.mp3
+
+#Babar#
+1894
+2593
+1
+
+#Sets#
+26
+butterfly/butterfly 173 3876
+butterfly/butterfly 3751 4144
+butterfly/butterfly 3977 3139
+butterfly/butterfly 4487 3909
+butterfly/butterfly 604 2809
+butterfly/butterfly 543 2852
+butterfly/butterfly 530 2789
+butterfly/butterfly 674 2851
+butterfly/butterfly 665 2772
+butterfly/butterfly 586 2739
+mushroom/mushroom 4209 4271
+butterfly/butterfly 3970 2166
+butterfly/butterfly 3861 2005
+butterfly/butterfly 4202 2050
+butterfly/butterfly 3740 2085
+butterfly/butterfly 4258 2154
+butterfly/butterfly 4273 2083
+mushroom/mushroom 1815 2796
+mushroom/mushroom 1845 2801
+mushroom/mushroom 1944 2784
+mushroom/mushroom 1000 3152
+mushroom/mushroom 896 3675
+mushroom/mushroom 2025 3809
+mushroom/mushroom 2055 3819
+mushroom/mushroom 2800 3817
+drum_flower/drum_flower 2110 2674
+!
+#Statics#
+50
+block6 4345 3194 0
+block4_3 2631 2597 0
+block4_1 2629 1319 0
+block4_2 2631 2018 0
+liana1 1666 -24 1
+liana1 3510 -19 1
+liana2 3009 -24 1
+block6 4319 711 0
+liana2 4277 -28 1
+block7 3796 3216 0
+block1 3836 3931 0
+block9 1652 -15 0
+arbre_feuilles_racines 3530 4200 0
+jungle_block_1 587 3339 0
+jungle_block_1 460 3603 0
+jungle_set_2 497 3456 0
+jungle_block_5 807 3087 0
+jungle_block_4 2201 2832 0
+jungle_set_2 1727 2679 0
+jungle_set_1 2389 2823 0
+jungle_set_3 666 3110 0
+jungle_block_6 681 3604 0
+jungle_block_5 1128 3603 0
+jungle_set_3 987 3628 0
+jungle_block_5 1254 2833 0
+jungle_set_1 1274 3074 0
+jungle_set_6 2002 2905 0
+jungle_set_7 2002 3306 0
+jungle_block_3 1701 2826 0
+jungle_block_3 703 4280 0
+jungle_block_7 44 3952 0
+jungle_block_2 204 4255 0
+jungle_block_1 -15 4286 0
+jungle_set_1 176 4271 0
+jungle_set_1 789 4012 0
+jungle_set_2 39 4146 0
+water1 1325 4279 0
+jungle_block_4 1202 4287 0
+water1 1687 4284 0
+water1 2049 4289 0
+water1 2408 4294 0
+jungle_block_6 1575 3602 0
+jungle_set_1 1601 3589 0
+jungle_set_4 1442 3575 0
+jungle_block_4 2023 3855 0
+jungle_block_8 2653 3831 0
+grass2 2806 4271 0
+jungle_set_5 1927 3622 0
+jungle_set_5 3076 3586 0
+jungle_set_2 2733 3725 0
+!
+#Monsters#
+5
+following_walking_monster maphyar 4207 3917
+following_walking_monster gailapin 432 2777
+following_flying_monster fubob 1935 100
+following_flying_monster fubob 4347 181
+following_walking_monster maphyar 2904 3739
+!
+#Events#
+28
+event shotgun 592 2848
+event victory 4590 941
+event machinegun 4504 2100
+event shotgun 4418 3416
+event machinegun 3022 2619
+event peanut 2279 3907
+event peanut 2343 3911
+event peanut 2316 3861
+event peanut 3564 4112
+event peanut 3605 4019
+event peanut 3646 3940
+event peanut 3734 3874
+event peanut 3830 3907
+event peanut 3912 3962
+event peanut 4178 3946
+event peanut 4182 3842
+event peanut 4202 3728
+event peanut 4228 3647
+event peanut 3689 3403
+event peanut 4255 3548
+event peanut 4338 3461
+event peanut 4358 2167
+event peanut 4359 2104
+event peanut 4299 2140
+event peanut 4236 2101
+event peanut 4245 2165
+event peanut 4160 2133
+event rocket_launcher 1646 2733
+!
+#MovingPlatforms#
+3
+block8 3281 2127 3279 2494
+block8 3618 2202 4440 2220
+block8 3664 1091 4069 1096
+!
+#FallingPlatforms#
+5
+block8 3333 3240
+block8 2236 3948
+block8 2303 2256
+block8 1928 2253
+block8 1517 2255
+!
+#Triggers#
+2
+#trig#
+#editor pos#
+3200 3900
+#zone#
+1
+3261 3981 3524 4357
+#triggerables#
+1
+#x# 2801
+#y# 4199
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3300 3900
+#zone#
+1
+3261 3981 3524 4357
+#triggerables#
+1
+#x# 2901
+#y# 4199
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+!

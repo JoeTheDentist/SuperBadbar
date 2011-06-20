@@ -26,6 +26,7 @@ class Boss_elmer : public Boss {
 private:
     elmar_state m_elmar_state;
     int m_fire;
+    int m_wait;
 
 public:
 
@@ -72,6 +73,8 @@ public:
     void elmar_fire();
 
     void elmar_jump();
+
+    bool wait(int cycles);
 };
 
 

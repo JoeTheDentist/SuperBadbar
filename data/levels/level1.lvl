@@ -7,175 +7,277 @@ jungle.png
 
 #Music#
 level1.mp3
-
 #Babar#
-1894
-2593
+
+10
+4200
 1
 
 #Sets#
-26
-butterfly/butterfly 173 3876
-butterfly/butterfly 3751 4144
-butterfly/butterfly 3977 3139
-butterfly/butterfly 4487 3909
-butterfly/butterfly 604 2809
-butterfly/butterfly 543 2852
-butterfly/butterfly 530 2789
-butterfly/butterfly 674 2851
-butterfly/butterfly 665 2772
-butterfly/butterfly 586 2739
-mushroom/mushroom 4209 4271
-butterfly/butterfly 3970 2166
-butterfly/butterfly 3861 2005
-butterfly/butterfly 4202 2050
-butterfly/butterfly 3740 2085
-butterfly/butterfly 4258 2154
-butterfly/butterfly 4273 2083
-mushroom/mushroom 1815 2796
-mushroom/mushroom 1845 2801
-mushroom/mushroom 1944 2784
-mushroom/mushroom 1000 3152
-mushroom/mushroom 896 3675
-mushroom/mushroom 2025 3809
-mushroom/mushroom 2055 3819
-mushroom/mushroom 2800 3817
-drum_flower/drum_flower 2110 2674
+24
+mushroom/mushroom 447 4264
+mushroom/mushroom 859 4257
+butterfly/butterfly 175 4168
+butterfly/butterfly 1584 4096
+drum_flower/drum_flower 1290 4166
+butterfly/butterfly 1173 3996
+mushroom/mushroom 150 4251
+butterfly/butterfly 678 4191
+butterfly/butterfly 579 3923
+mushroom/mushroom 3972 4218
+butterfly/butterfly 4588 3675
+mushroom/mushroom 3187 3516
+butterfly/butterfly 1500 2859
+butterfly/butterfly 1605 2918
+butterfly/butterfly 1584 2396
+mushroom/mushroom 2994 1936
+butterfly/butterfly 2636 1022
+butterfly/butterfly 613 1007
+mushroom/mushroom 2759 1165
+mushroom/mushroom 1984 963
+mushroom/mushroom 839 1110
+mushroom/mushroom 291 1501
+mushroom/mushroom 337 1498
+mushroom/mushroom 162 1494
 !
 #Statics#
-50
-block6 4345 3194 0
-block4_3 2631 2597 0
-block4_1 2629 1319 0
-block4_2 2631 2018 0
-liana1 1666 -24 1
-liana1 3510 -19 1
-liana2 3009 -24 1
-block6 4319 711 0
-liana2 4277 -28 1
-block7 3796 3216 0
-block1 3836 3931 0
-block9 1652 -15 0
-arbre_feuilles_racines 3530 4200 0
-jungle_block_1 587 3339 0
-jungle_block_1 460 3603 0
-jungle_set_2 497 3456 0
-jungle_block_5 807 3087 0
-jungle_block_4 2201 2832 0
-jungle_set_2 1727 2679 0
-jungle_set_1 2389 2823 0
-jungle_set_3 666 3110 0
-jungle_block_6 681 3604 0
-jungle_block_5 1128 3603 0
-jungle_set_3 987 3628 0
-jungle_block_5 1254 2833 0
-jungle_set_1 1274 3074 0
-jungle_set_6 2002 2905 0
-jungle_set_7 2002 3306 0
-jungle_block_3 1701 2826 0
-jungle_block_3 703 4280 0
-jungle_block_7 44 3952 0
-jungle_block_2 204 4255 0
-jungle_block_1 -15 4286 0
-jungle_set_1 176 4271 0
-jungle_set_1 789 4012 0
-jungle_set_2 39 4146 0
-water1 1325 4279 0
-jungle_block_4 1202 4287 0
-water1 1687 4284 0
-water1 2049 4289 0
-water1 2408 4294 0
-jungle_block_6 1575 3602 0
-jungle_set_1 1601 3589 0
-jungle_set_4 1442 3575 0
-jungle_block_4 2023 3855 0
-jungle_block_8 2653 3831 0
-grass2 2806 4271 0
-jungle_set_5 1927 3622 0
-jungle_set_5 3076 3586 0
-jungle_set_2 2733 3725 0
+62
+water1 1746 4295 0
+water1 2104 4301 0
+water1 2461 4307 0
+water1 2822 4313 0
+jungle_hard_block_1 3218 4271 0
+jungle_hard_block_5 1486 4059 0
+jungle_hard_block_4 1933 4059 0
+jungle_set_1 2120 4052 0
+jungle_warning_board 1966 3984 0
+jungle_hard_block_3 3438 4265 0
+jungle_set_3 3103 4047 0
+jungle_hard_block_3 3938 4265 0
+water1 4467 4321 0
+jungle_hard_block_5 4438 4019 0
+jungle_block_4 4193 3827 0
+jungle_block_6 3745 3573 0
+jungle_warning_board 3462 4190 0
+jungle_block_2 3244 3540 0
+jungle_block_3 2744 3566 0
+jungle_block_6 2298 3317 0
+jungle_warning_board 3716 3497 0
+jungle_block_1 1633 3063 0
+jungle_block_6 1851 3063 0
+jungle_block_1 1732 2605 0
+jungle_block_5 2844 1843 0
+jungle_warning_board 1900 2527 0
+jungle_block_4 3626 1202 0
+jungle_block_2 3126 1170 0
+jungle_block_3 2626 1196 0
+jungle_block_6 2180 948 0
+jungle_block_5 1733 947 0
+jungle_block_3 1235 1194 0
+jungle_block_1 1947 484 0
+jungle_block_4 2166 483 0
+jungle_block_2 737 1167 0
+jungle_hard_block_4 179 1544 0
+jungle_block_2 -264 1166 0
+jungle_block_3 236 1193 0
+jungle_block_3 -320 1537 0
+jungle_warning_board 305 1125 0
+jungle_warning_board 3643 1124 0
+jungle_hard_block_2 -11 4279 0
+jungle_hard_block_3 490 4306 0
+jungle_hard_block_2 985 4281 0
+jungle_warning_board 77 4203 0
+jungle_set_2 516 4156 0
+jungle_set_1 3889 3606 0
+jungle_set_5 4178 3590 0
+jungle_set_4 2631 3528 0
+jungle_set_7 2271 2516 0
+jungle_set_7 2415 2419 0
+jungle_block_5 1948 2351 0
+jungle_block_5 2396 2097 0
+jungle_set_2 2253 3159 0
+jungle_set_2 2561 2078 0
+jungle_set_3 3145 1617 0
+jungle_set_1 3442 1185 0
+jungle_set_4 3639 1181 0
+jungle_block_4 3738 1589 0
+jungle_block_5 3292 1588 0
+jungle_set_1 3770 1577 0
+jungle_set_5 1978 704 0
 !
 #Monsters#
-5
-following_walking_monster maphyar 4207 3917
-following_walking_monster gailapin 432 2777
-following_flying_monster fubob 1935 100
-following_flying_monster fubob 4347 181
-following_walking_monster maphyar 2904 3739
+0
 !
 #Events#
-28
-event shotgun 592 2848
-event victory 4590 941
-event machinegun 4504 2100
-event shotgun 4418 3416
-event machinegun 3022 2619
-event peanut 2279 3907
-event peanut 2343 3911
-event peanut 2316 3861
-event peanut 3564 4112
-event peanut 3605 4019
-event peanut 3646 3940
-event peanut 3734 3874
-event peanut 3830 3907
-event peanut 3912 3962
-event peanut 4178 3946
-event peanut 4182 3842
-event peanut 4202 3728
-event peanut 4228 3647
-event peanut 3689 3403
-event peanut 4255 3548
-event peanut 4338 3461
-event peanut 4358 2167
-event peanut 4359 2104
-event peanut 4299 2140
-event peanut 4236 2101
-event peanut 4245 2165
-event peanut 4160 2133
-event rocket_launcher 1646 2733
+4
+event machinegun 2255 2266
+event shotgun 2784 1994
+event rocket_launcher 2143 372
+event victory 19 1427
 !
 #MovingPlatforms#
-3
-block8 3281 2127 3279 2494
-block8 3618 2202 4440 2220
-block8 3664 1091 4069 1096
+0
 !
 #FallingPlatforms#
-5
-block8 3333 3240
-block8 2236 3948
-block8 2303 2256
-block8 1928 2253
-block8 1517 2255
+2
+block8 2409 4045
+block8 2789 4040
 !
 #Triggers#
-2
+8
 #trig#
 #editor pos#
-3200 3900
+299 4216
 #zone#
 1
-3261 3981 3524 4357
+0 4098 299 4315
 #triggerables#
 1
-#x# 2801
-#y# 4199
+#x# 75
+#y# 3999
+#nature# dialog
+#text# "<ex> Oh ! Je te vois bien impatient jeune éléphant à la dégaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se déplacer à gauche ou a droite il faut utiliser les touches J et L"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3693 4183
+#zone#
+2
+3459 4111 3692 4302
+3459 4111 3692 4302
+#triggerables#
+1
+#x# 3596
+#y# 4013
+#nature# dialog
+#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie à nouveau sur A lorsque tu es dans les airs - tous les éléphants devraient savoir ça..."
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3774 3467
+#zone#
+3
+3637 3430 3774 3601
+3643 3316 3772 3599
+3643 3316 3772 3599
+#triggerables#
+2
+#x# 2974
+#y# 3397
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 3734
+#y# 3218
+#nature# dialog
+#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert à tirer. Je te fais confiance quant à son utilisation."
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1740 2412
+#zone#
+2
+1846 2197 1997 2587
+1846 2197 1997 2587
+#triggerables#
+1
+#x# 1748
+#y# 2254
+#nature# dialog
+#text# "<ex> Bon j'imagine que t'es pas un débile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur Q ou W"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+414 951
+#zone#
+2
+258 951 414 1236
+258 951 414 1236
+#triggerables#
+1
+#x# 256
+#y# 853
+#nature# dialog
+#text# "<ex> Une dernière chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux accéder à la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanément. <ex> Entre nous... je comrpends pas pourquoi on donne le permis éléphant à des gens si peu cultivés."
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3742 988
+#zone#
+2
+3593 864 3716 1183
+3593 864 3716 1183
+#triggerables#
+5
+#x# 2362
+#y# 893
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+#x# 3581
+#y# 815
+#nature# dialog
+#text# "<ex> Un petit cadeau, massacre les tous !!!"
+#endtriggerable# 
+#x# 3324
+#y# 758
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 3160
+#y# 1061
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 3912
+#y# 1088
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1730 1017
+#zone#
+2
+1594 990 1729 1186
+1594 990 1729 1186
+#triggerables#
+3
+#x# 634
+#y# 1090
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+#x# 18
+#y# 1077
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+#x# 794
+#y# 1062
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
 
 #trig#
 #editor pos#
-3300 3900
+2193 4010
 #zone#
-1
-3261 3981 3524 4357
+2
+1921 3832 2218 4076
+1921 3832 2218 4076
 #triggerables#
 1
-#x# 2901
-#y# 4199
-#nature# monster
-#text# "sanglichon"
+#x# 1936
+#y# 3783
+#nature# dialog
+#text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur A pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
 #endtriggerable# 
 
 !
