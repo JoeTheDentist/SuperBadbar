@@ -11,44 +11,97 @@ jungle.png
 1
 
 #Sets#
-0
+9
+mushroom/mushroom 447 4264
+mushroom/mushroom 859 4257
+butterfly/butterfly 175 4168
+butterfly/butterfly 1584 4096
+drum_flower/drum_flower 1290 4166
+butterfly/butterfly 1173 3996
+mushroom/mushroom 150 4251
+butterfly/butterfly 678 4191
+butterfly/butterfly 579 3923
 !
 #Statics#
-12
-jungle_hard_block_2 985 4281 0
+50
 water1 1746 4295 0
-jungle_hard_block_2 -11 4279 0
-jungle_hard_block_3 486 4306 0
 water1 2104 4301 0
 water1 2461 4307 0
 water1 2822 4313 0
-jungle_hard_block_5 1486 4060 0
 jungle_hard_block_1 3218 4271 0
-jungle_hard_block_4 1933 4060 0
-jungle_warning_board 84 4166 0
-jungle_warning_board 1981 3938 0
+jungle_hard_block_5 1486 4059 0
+jungle_hard_block_4 1933 4059 0
+jungle_set_1 2120 4052 0
+jungle_warning_board 1966 3984 0
+jungle_set_2 516 4156 0
+jungle_hard_block_3 3438 4265 0
+jungle_set_3 3103 4047 0
+jungle_hard_block_3 3938 4265 0
+water1 4467 4321 0
+jungle_hard_block_5 4438 4019 0
+jungle_block_4 4193 3827 0
+jungle_block_6 3745 3573 0
+jungle_warning_board 3462 4190 0
+jungle_block_2 3244 3540 0
+jungle_block_3 2744 3566 0
+jungle_block_6 2298 3317 0
+jungle_warning_board 3716 3497 0
+jungle_block_1 1633 3063 0
+jungle_block_6 1851 3063 0
+jungle_block_1 1732 2605 0
+jungle_block_5 1948 2351 0
+jungle_block_5 2396 2097 0
+jungle_block_5 2844 1843 0
+jungle_block_5 3291 1589 0
+jungle_block_4 3738 1589 0
+jungle_warning_board 1900 2527 0
+jungle_block_4 3626 1202 0
+jungle_block_2 3126 1170 0
+jungle_block_3 2626 1196 0
+jungle_block_6 2180 948 0
+jungle_block_5 1733 947 0
+jungle_block_3 1235 1194 0
+jungle_block_1 1947 484 0
+jungle_block_4 2166 483 0
+jungle_block_2 737 1167 0
+jungle_hard_block_4 179 1544 0
+jungle_block_2 -264 1166 0
+jungle_block_3 236 1193 0
+jungle_block_3 -320 1537 0
+jungle_warning_board 305 1125 0
+jungle_warning_board 3643 1124 0
+jungle_hard_block_2 -11 4279 0
+jungle_hard_block_3 490 4306 0
+jungle_hard_block_2 985 4281 0
+jungle_warning_board 77 4203 0
 !
 #Monsters#
 0
 !
 #Events#
-0
+4
+event machinegun 2255 2266
+event shotgun 2784 1994
+event rocket_launcher 2143 372
+event victory 19 1427
 !
 #MovingPlatforms#
 0
 !
 #FallingPlatforms#
-0
+2
+block8 2409 4045
+block8 2789 4040
 !
 #Triggers#
-2
+8
 #trig#
 #editor pos#
 2193 4010
 #zone#
 2
-1895 3883 2192 4127
-1895 3883 2192 4127
+1921 3832 2218 4076
+1921 3832 2218 4076
 #triggerables#
 1
 #x# 1936
@@ -61,15 +114,140 @@ jungle_warning_board 1981 3938 0
 #editor pos#
 299 4216
 #zone#
-2
--1 4100 298 4317
--1 4100 298 4317
+1
+0 4098 299 4315
 #triggerables#
 1
 #x# 75
 #y# 3999
-#nature# dialog	
+#nature# dialog
 #text# "<ex> Oh ! Je te vois bien impatient jeune éléphant à la dégaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se déplacer à gauche ou a droite il faut utiliser les touches J et L"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3693 4183
+#zone#
+2
+3459 4111 3692 4302
+3459 4111 3692 4302
+#triggerables#
+1
+#x# 3596
+#y# 4013
+#nature# dialog
+#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie à nouveau sur A lorsque tu es dans les airs - tous les éléphants devraient savoir ça..."	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3774 3467
+#zone#
+3
+3643 3316 3772 3599
+3643 3316 3772 3599
+3637 3430 3774 3601
+#triggerables#
+2
+#x# 3734
+#y# 3218
+#nature# dialog
+#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert à tirer. Je te fais confiance quant à son utilisation."	
+#endtriggerable# 
+#x# 2974
+#y# 3397
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1740 2412
+#zone#
+2
+1846 2197 1997 2587
+1846 2197 1997 2587
+#triggerables#
+1
+#x# 1748
+#y# 2254
+#nature# dialog
+#text# "<ex> Bon j'imagine que t'es pas un débile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur Q ou W"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+414 951
+#zone#
+2
+258 951 414 1236
+258 951 414 1236
+#triggerables#
+1
+#x# 256
+#y# 853
+#nature# dialog
+#text# "<ex> Une dernière chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux accéder à la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanément. <ex> Entre nous... je comrpends pas pourquoi on donne le permis éléphant à des gens si peu cultivés."	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3742 988
+#zone#
+2
+3593 864 3716 1183
+3593 864 3716 1183
+#triggerables#
+5
+#x# 3912
+#y# 1088
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 3160
+#y# 1061
+#nature# monster	
+#text# "gailapin"	
+#endtriggerable# 
+#x# 3324
+#y# 758
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 3581
+#y# 815
+#nature# dialog
+#text# "<ex> Un petit cadeau, massacre les tous !!!"	
+#endtriggerable# 
+#x# 2362
+#y# 893
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1730 1017
+#zone#
+2
+1594 990 1729 1186
+1594 990 1729 1186
+#triggerables#
+3
+#x# 18
+#y# 1077
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+#x# 634
+#y# 1090
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+#x# 794
+#y# 1062
+#nature# monster	
+#text# "sanglichon"	
 #endtriggerable# 
 
 !

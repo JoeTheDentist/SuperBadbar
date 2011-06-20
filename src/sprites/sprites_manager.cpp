@@ -14,9 +14,13 @@ Sprites_manager::~Sprites_manager()
     delete m_sprites;
 }
 
-void Sprites_manager::add(Sprite * s)
+void Sprites_manager::add(Sprite * s, bool back)
 {
-    m_sprites->push_front(s);
+    if ( back ) {
+        m_sprites->push_back(s);
+    } else {
+        m_sprites->push_front(s);
+    }
 }
 
 Sprite * Sprites_manager::add_anim(std::string anim_name, anim_type type, screen_level lvl, bool center)
@@ -36,7 +40,7 @@ Sprite * Sprites_manager::add_anim(std::string text, int begin_size, int end_siz
 Sprite * Sprites_manager::add_table(std::string anim_name, screen_level lvl)
 {
     Sprite * sprite = new Sprite_anim_table(anim_name, MIDDLEGROUND);
-    add(sprite);
+    add(sprite, true);
     return sprite;
 }
 

@@ -132,6 +132,10 @@
 		<Unit filename="..\src\menus\menu.h" />
 		<Unit filename="..\src\menus\menu_action.cpp" />
 		<Unit filename="..\src\menus\menu_action.h" />
+		<Unit filename="..\src\menus\menu_action_classic.cpp" />
+		<Unit filename="..\src\menus\menu_action_classic.h" />
+		<Unit filename="..\src\menus\menu_action_integer.cpp" />
+		<Unit filename="..\src\menus\menu_action_integer.h" />
 		<Unit filename="..\src\menus\options_menu.cpp" />
 		<Unit filename="..\src\menus\options_menu.h" />
 		<Unit filename="..\src\menus\pause_menu.cpp" />

@@ -18,7 +18,7 @@ class Sprites_manager {
         /**
          *  @brief Ajoute du sprite dans la liste
          */
-        void add(Sprite * s);
+        void add(Sprite * s, bool back=false);
     public:
         /**
          * Constructeur
