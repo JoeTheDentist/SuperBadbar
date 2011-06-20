@@ -31,9 +31,17 @@
 #include "../video/special_letter.h"
 #include "../video/surface.h"
 
+
+
 struct cell_string {
 	std::string str;
 	std::string talker;
+};
+
+struct word_and_length {
+	int length;
+	std::list <Special_letter *> letters;
+	bool newline;
 };
 
 
@@ -60,6 +68,7 @@ private:
 	std::string m_text; // la replique courante
 	bool m_waiting_for_enter; // vrai si on doit attendre "entree" avant de continuer
 	bool m_have_to_leave;
+	std::queue < std::queue < Special_letter * > > m_cell_letters;
 
 public:
 	/**
@@ -171,6 +180,12 @@ public:
 	void clear_lines();
 	
 	void update_letters();
+	
+	static std::list< std::string > string_to_list_words(std::string str);
+	
+	static std::list< word_and_length > words_to_words_and_length(std::list < std::string > words);
+
+	void prepare_cell_string(cell_string cell);
 
 };
 

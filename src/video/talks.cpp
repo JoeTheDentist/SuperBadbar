@@ -24,7 +24,8 @@
 
 
 Talks::Talks():
-	m_font(POSH - 10, 0, 0, 0)
+	m_font(POSH - 10, 0, 0, 0),
+	m_cell_letters()
 {
 }
 
@@ -223,11 +224,13 @@ void Talks::aux_display_cell(cell_string cell)
 		m_pos_text[i].y = POSY + i * POSH;
 		m_pos_text[i].w = 0;
 	}
+	prepare_cell_string(cell);
 }	
 
 bool Talks::aux_end_of_cell()
 {
-	return m_string_curs >= m_text.size();
+//~ 	return m_string_curs >= m_text.size();
+	return m_cell_letters.empty();
 }
 
 void Talks::display_background()
@@ -261,28 +264,20 @@ bool Talks::write_letter()
 {
 	if (aux_end_of_cell())
 		return true;
-	if (m_text[m_string_curs] == '\n') {
-		m_string_curs++;
-		std::cout << "true 1" << std::endl;
-
+	if (m_cell_letters.front().empty()) {
+		m_cell_letters.pop();
 		return true;
 	}
-	Special_letter *surf = new Special_letter(m_text[m_string_curs], TALKS_TEXT_SIZE, 
-		TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
-	if ((m_pos_text[m_curr_line].x + m_pos_text[m_curr_line].w + surf->w()) > POSW) {
-		delete surf;
-		return true;
-	} else {
-		m_text_surface[m_curr_line].push_back(surf);
-		m_string_curs++;
-		m_pos_text[m_curr_line].w += surf->fake_w();
-		return false;
-	}
+	Special_letter *surf = m_cell_letters.front().front();
+	m_cell_letters.front().pop();
+	m_text_surface[m_curr_line].push_back(surf);
+	return false;
 }
 
 bool Talks::end_of_talks()
 {
-	return aux_end_of_cell() && m_cells.empty();
+//~ 	return aux_end_of_cell() && m_cells.empty();
+	return m_cell_letters.empty();
 }
 
 void Talks::clear_lines()
@@ -293,3 +288,73 @@ void Talks::clear_lines()
 	m_curr_line = 0;
 }
 
+std::list< std::string > Talks::string_to_list_words(std::string str)
+{
+	std::list < std::string > words;
+	unsigned int i = 0;
+	while (i < str.size()) {
+		std::string newword;
+		while (i < str.size() && str[i] != ' ' && str[i] != '\n') {
+			newword += str[i];
+			i++;
+		}			
+		words.push_back(newword);
+		if (str[i] == '\n') {
+			words.push_back("\n");
+		}
+		i++;
+	}
+	return words;
+}
+
+ std::list< word_and_length > Talks::words_to_words_and_length(std::list < std::string > words)
+{
+	std::list< word_and_length > res;
+	for (std::list<std::string>::iterator it = words.begin(); it != words.end(); ++it) {
+		std::string str = (*it);
+		word_and_length newword;
+		newword.newline = (str == "\n");
+		if (!newword.newline) {
+			newword.length = 0;
+			for (unsigned int i = 0; i < str.length(); i++) {
+				Special_letter *newletter =  new Special_letter(str[i], TALKS_TEXT_SIZE, 
+						TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
+				newword.length += newletter->fake_w();
+				(newword.letters).push_back(newletter);
+			}
+		}
+		res.push_back(newword);
+	}
+	return res;
+}
+
+void Talks::prepare_cell_string(cell_string cell)
+{
+	std::list < word_and_length > words = Talks::words_to_words_and_length(Talks::string_to_list_words(cell.str));
+
+	std::list < word_and_length >::iterator it = words.begin();
+	while (it != words.end()) {
+		std::queue <Special_letter *> newline;
+		int linelength = (*it).length;
+		while(it != words.end() && !(*it).newline && (m_pos_text[0].x + linelength + POSX) < POSW) {
+			for (std::list<Special_letter *>::iterator it2 = (*it).letters.begin(); it2 != (*it).letters.end(); it2++) {
+				newline.push((*it2));
+			}
+			Special_letter *spaceletter = new Special_letter(' ', TALKS_TEXT_SIZE, 
+					TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
+			newline.push(spaceletter);
+			linelength += spaceletter->fake_w();
+			it++;
+			linelength += (*it).length;
+			std::cerr << linelength << std::endl;
+		}
+		newline.push(new Special_letter(' ', TALKS_TEXT_SIZE, 
+					TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B));
+		m_cell_letters.push(newline);
+		if (it == words.end())
+			break;
+		if ((*it).newline)
+			++it;
+		
+	}
+}
