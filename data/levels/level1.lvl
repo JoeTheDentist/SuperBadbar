@@ -9,8 +9,8 @@ jungle.png
 level1.mp3
 #Babar#
 
-500
-3920
+3393
+4018
 1
 
 #Sets#
@@ -41,32 +41,22 @@ mushroom/mushroom 337 1498
 mushroom/mushroom 162 1494
 !
 #Statics#
-63
-water1 1746 4295 0
+51
 water1 2104 4301 0
 water1 2461 4307 0
 water1 2822 4313 0
-jungle_hard_block_1 3218 4271 0
 jungle_hard_block_5 1486 4059 0
 jungle_hard_block_4 1933 4059 0
 jungle_set_1 2120 4052 0
 jungle_warning_board 1966 3984 0
-jungle_hard_block_3 3438 4265 0
-jungle_set_3 3103 4047 0
-jungle_hard_block_3 3938 4265 0
 water1 4467 4321 0
 jungle_hard_block_5 4438 4019 0
 jungle_block_4 4193 3827 0
-jungle_block_6 3745 3573 0
 jungle_warning_board 3462 4190 0
-jungle_block_2 3244 3540 0
-jungle_block_3 2744 3566 0
 jungle_block_6 2298 3317 0
-jungle_warning_board 3716 3497 0
 jungle_block_1 1633 3063 0
 jungle_block_6 1851 3063 0
 jungle_block_1 1732 2605 0
-jungle_block_5 2844 1843 0
 jungle_warning_board 1900 2527 0
 jungle_block_4 3626 1202 0
 jungle_block_2 3126 1170 0
@@ -85,7 +75,6 @@ jungle_warning_board 305 1125 0
 jungle_warning_board 3643 1124 0
 jungle_hard_block_2 -11 4279 0
 jungle_hard_block_2 985 4281 0
-jungle_set_1 3889 3606 0
 jungle_set_5 4178 3590 0
 jungle_set_4 2631 3528 0
 jungle_set_7 2271 2516 0
@@ -96,15 +85,14 @@ jungle_set_2 2253 3159 0
 jungle_set_2 2561 2078 0
 jungle_set_1 3442 1185 0
 jungle_set_4 3639 1181 0
-jungle_block_4 3738 1589 0
-jungle_block_5 3292 1588 0
 jungle_set_1 3770 1577 0
 jungle_set_5 1978 704 0
 jungle_block_7 249 3993 0
 jungle_hard_block_3 490 4306 0
 jungle_set_2 516 4156 0
 jungle_warning_board 575 3918 0
-jungle_set_3 3145 1617 0
+jungle_hard_block_3 3939 4265 0
+water1 1746 4295 0
 !
 #Monsters#
 0
@@ -120,12 +108,15 @@ event victory 19 1427
 0
 !
 #FallingPlatforms#
-2
-block8 2409 4045
-block8 2789 4040
+5
+block8 2495 4207
+block8 3270 4258
+block8 3442 4260
+block8 3514 4304
+block8 3630 4276
 !
 #Triggers#
-8
+7
 #trig#
 #editor pos#
 3693 4183
@@ -139,27 +130,6 @@ block8 2789 4040
 #y# 4013
 #nature# dialog
 #text# "<ex> Bien. Si tu veux sauter encore plus haut appuie a nouveau sur A lorsque tu es dans les airs - tous les elephants devraient savoir ca..."
-#endtriggerable# 
-
-#trig#
-#editor pos#
-3774 3467
-#zone#
-3
-3637 3430 3774 3601
-3643 3316 3772 3599
-3643 3316 3772 3599
-#triggerables#
-2
-#x# 2974
-#y# 3397
-#nature# monster
-#text# "fubob"
-#endtriggerable# 
-#x# 3734
-#y# 3218
-#nature# dialog
-#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert a tirer. Je te fais confiance quant a son utilisation."
 #endtriggerable# 
 
 #trig#
@@ -201,18 +171,8 @@ block8 2789 4040
 3593 864 3716 1183
 #triggerables#
 5
-#x# 2362
-#y# 893
-#nature# monster
-#text# "sanglichon"
-#endtriggerable# 
-#x# 3581
-#y# 815
-#nature# dialog
-#text# "<ex> Un petit cadeau, massacre les tous !!!"
-#endtriggerable# 
-#x# 3324
-#y# 758
+#x# 3912
+#y# 1088
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -221,10 +181,20 @@ block8 2789 4040
 #nature# monster
 #text# "gailapin"
 #endtriggerable# 
-#x# 3912
-#y# 1088
+#x# 3324
+#y# 758
 #nature# monster
 #text# "fubob"
+#endtriggerable# 
+#x# 3581
+#y# 815
+#nature# dialog
+#text# "<ex> Un petit cadeau, massacre les tous !!!"
+#endtriggerable# 
+#x# 2362
+#y# 893
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
 
 #trig#
@@ -236,8 +206,8 @@ block8 2789 4040
 1594 990 1729 1186
 #triggerables#
 3
-#x# 634
-#y# 1090
+#x# 794
+#y# 1062
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
@@ -246,8 +216,8 @@ block8 2789 4040
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
-#x# 794
-#y# 1062
+#x# 634
+#y# 1090
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
@@ -261,8 +231,8 @@ block8 2789 4040
 1921 3832 2218 4076
 #triggerables#
 1
-#x# 1936
-#y# 3783
+#x# 2022
+#y# 3866
 #nature# dialog
 #text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur A pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
 #endtriggerable# 
@@ -272,8 +242,8 @@ block8 2789 4040
 747 3876
 #zone#
 2
-446 3858 746 4088
-446 3858 746 4088
+-71 3832 229 4062
+28 3880 328 4110
 #triggerables#
 1
 #x# 495

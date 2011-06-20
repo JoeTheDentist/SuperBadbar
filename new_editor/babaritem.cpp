@@ -6,11 +6,11 @@
 #include <QInputDialog>
 
 BabarItem::BabarItem(QGraphicsScene *scene, int age):
-	MyItem(NULL, QString(BABAR_PIC_DIR) + "1/babar_0_0_0.png"),
+	MyItem(NULL, QString(BABAR_PIC_DIR) + "1/babar_0_0_0_0.png"),
 	m_age(age)
 {
 	QPixmap babarpix;
-	babarpix.load(QString(BABAR_PIC_DIR) + "1/babar_0_0_0.png");
+	babarpix.load(QString(BABAR_PIC_DIR) + "1/babar_0_0_0_0.png");
 	setItem(scene->addPixmap(babarpix));	
 }
 
