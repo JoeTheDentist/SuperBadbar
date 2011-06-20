@@ -291,7 +291,7 @@ class Babar: public Actor, public Sonorisable {
 		void lock(int time);
 		void unlock();
 		
-		bool locked();
+		bool locked() const;
 
         /**
          * 	@brief Accesseur

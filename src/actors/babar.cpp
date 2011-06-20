@@ -334,7 +334,7 @@ void Babar::update_direction()
 
 bool Babar::can_fire()
 {
-	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time());
+	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time() && !locked());
 }
 
 std::list<Projectile*> *Babar::fire(int num_player)
@@ -356,7 +356,7 @@ bool Babar::can_walk() const
 
 bool Babar::can_crouch() const
 {
-    return gKeyboard->key_down(k_down);
+    return gKeyboard->key_down(k_down) & !locked();
 }
 
 void Babar::crouch()
@@ -370,7 +370,7 @@ void Babar::crouch()
 
 bool Babar::can_jump() const
 {
-    return !can_go_down() && gKeyboard->key_down(k_jump) && m_ready_jump && !gKeyboard->key_down(k_down);
+    return !can_go_down() && gKeyboard->key_down(k_jump) && m_ready_jump && !gKeyboard->key_down(k_down) && !locked();
 }
 
 void Babar::jump()
@@ -512,7 +512,7 @@ void Babar::unlock()
 	set_last_pos();
 }
 
-bool Babar::locked()
+bool Babar::locked() const
 {
 	return m_lock > 0;
 }
