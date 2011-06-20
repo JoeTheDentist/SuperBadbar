@@ -36,7 +36,7 @@
 
 
 
-
+//~ #define DEBUG_COLL
 
 
 #ifdef WIN32
