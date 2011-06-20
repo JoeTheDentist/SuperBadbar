@@ -7,10 +7,10 @@ jungle.png
 
 #Music#
 level1.mp3
-
 #Babar#
-10
-4200
+
+500
+3920
 1
 
 #Sets#
@@ -41,7 +41,7 @@ mushroom/mushroom 337 1498
 mushroom/mushroom 162 1494
 !
 #Statics#
-62
+63
 water1 1746 4295 0
 water1 2104 4301 0
 water1 2461 4307 0
@@ -84,10 +84,7 @@ jungle_block_3 -320 1537 0
 jungle_warning_board 305 1125 0
 jungle_warning_board 3643 1124 0
 jungle_hard_block_2 -11 4279 0
-jungle_hard_block_3 490 4306 0
 jungle_hard_block_2 985 4281 0
-jungle_warning_board 77 4203 0
-jungle_set_2 516 4156 0
 jungle_set_1 3889 3606 0
 jungle_set_5 4178 3590 0
 jungle_set_4 2631 3528 0
@@ -97,13 +94,17 @@ jungle_block_5 1948 2351 0
 jungle_block_5 2396 2097 0
 jungle_set_2 2253 3159 0
 jungle_set_2 2561 2078 0
-jungle_set_3 3145 1617 0
 jungle_set_1 3442 1185 0
 jungle_set_4 3639 1181 0
 jungle_block_4 3738 1589 0
 jungle_block_5 3292 1588 0
 jungle_set_1 3770 1577 0
 jungle_set_5 1978 704 0
+jungle_block_7 249 3993 0
+jungle_hard_block_3 490 4306 0
+jungle_set_2 516 4156 0
+jungle_warning_board 575 3918 0
+jungle_set_3 3145 1617 0
 !
 #Monsters#
 0
@@ -125,20 +126,6 @@ block8 2789 4040
 !
 #Triggers#
 8
-#trig#
-#editor pos#
-299 4216
-#zone#
-1
-0 4098 299 4315
-#triggerables#
-1
-#x# 75
-#y# 3999
-#nature# dialog
-#text# "<ex> Oh ! Je te vois bien impatient jeune elephant a la degaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se deplacer a gauche ou a droite il faut utiliser les touches J et L"
-#endtriggerable# 
-
 #trig#
 #editor pos#
 3693 4183
@@ -278,6 +265,21 @@ block8 2789 4040
 #y# 3783
 #nature# dialog
 #text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur A pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
+#endtriggerable# 
+
+#trig#
+#editor pos#
+747 3876
+#zone#
+2
+446 3858 746 4088
+446 3858 746 4088
+#triggerables#
+1
+#x# 495
+#y# 3759
+#nature# dialog
+#text# "<ex> Oh ! Je te vois bien impatient jeune elephant a la degaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se deplacer a gauche ou a droite il faut utiliser les touches J et L"
 #endtriggerable# 
 
 !
