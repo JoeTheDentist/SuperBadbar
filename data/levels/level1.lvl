@@ -7,8 +7,8 @@ jungle.png
 
 #Music#
 level1.mp3
-#Babar#
 
+#Babar#
 10
 4200
 1
@@ -136,7 +136,7 @@ block8 2789 4040
 #x# 75
 #y# 3999
 #nature# dialog
-#text# "<ex> Oh ! Je te vois bien impatient jeune éléphant à la dégaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se déplacer à gauche ou a droite il faut utiliser les touches J et L"
+#text# "<ex> Oh ! Je te vois bien impatient jeune elephant a la degaine douteuse. Je ne pense pas qu'il soit de trop de te rappeler que pour se deplacer a gauche ou a droite il faut utiliser les touches J et L"
 #endtriggerable# 
 
 #trig#
@@ -151,7 +151,7 @@ block8 2789 4040
 #x# 3596
 #y# 4013
 #nature# dialog
-#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie à nouveau sur A lorsque tu es dans les airs - tous les éléphants devraient savoir ça..."
+#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie a nouveau sur A lorsque tu es dans les airs - tous les elephants devraient savoir ca..."
 #endtriggerable# 
 
 #trig#
@@ -172,7 +172,7 @@ block8 2789 4040
 #x# 3734
 #y# 3218
 #nature# dialog
-#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert à tirer. Je te fais confiance quant à son utilisation."
+#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert a tirer. Je te fais confiance quant a son utilisation."
 #endtriggerable# 
 
 #trig#
@@ -187,7 +187,7 @@ block8 2789 4040
 #x# 1748
 #y# 2254
 #nature# dialog
-#text# "<ex> Bon j'imagine que t'es pas un débile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur Q ou W"
+#text# "<ex> Bon j'imagine que t'es pas un debile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur Q ou W"
 #endtriggerable# 
 
 #trig#
@@ -202,7 +202,7 @@ block8 2789 4040
 #x# 256
 #y# 853
 #nature# dialog
-#text# "<ex> Une dernière chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux accéder à la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanément. <ex> Entre nous... je comrpends pas pourquoi on donne le permis éléphant à des gens si peu cultivés."
+#text# "<ex> Une derniere chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux acceder a la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanement. <ex> Entre nous... je comrpends pas pourquoi on donne le permis elephant a des gens si peu cultives."
 #endtriggerable# 
 
 #trig#
