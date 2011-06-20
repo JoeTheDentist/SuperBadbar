@@ -107,8 +107,8 @@ void Actor::do_stay_in_level()
 {
 	if (position().x < 0) 
 		set_pos(0, position().y);
-	if (position().x > (int)gStatic->static_data_width()) 
-		set_pos(gStatic->static_data_width(), position().y);
+	if (position().x + position().w> (int)gStatic->static_data_width()) 
+		set_pos(gStatic->static_data_width() - position().w, position().y);
 	if (position().y < 0) 
 		set_pos(position().x, 0);
 	if (position().y > (int)gStatic->static_data_height()) 

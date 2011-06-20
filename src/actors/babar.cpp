@@ -174,13 +174,14 @@ void Babar::update_pos()
 		gCollision->update_babar_platforms();
 		move(0, -BOX_SIZE);
 		coll = gCollision->get_matrix()->right_collision_type(position());
+		if (binded()) {
+			coll |= m_bind->right_collision_type(m_rel_pos);
+		}
 		if (Collisions_manager::is_right_coll(coll)){
-			PRINT_DEBUG(1, "ouch");
-
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
-			move(BOX_SIZE, 0); // On avance!
+			move(+BOX_SIZE, 0); // On avance!
 		}
 		if(!is_on_something()) // s'il n'y avait pas de pente montante, on revient
 			move(0, BOX_SIZE);
@@ -188,6 +189,7 @@ void Babar::update_pos()
 			move(0, BOX_SIZE);
 		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
+	do_stay_in_level();
 	}
 	/* cas où le sprite va à gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){

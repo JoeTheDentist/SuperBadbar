@@ -196,6 +196,13 @@ bool Collisions_manager::is_left_coll(uint32_t coll_number)
 
 bool Collisions_manager::is_right_coll(uint32_t coll_number)
 {
+	if (((coll_number & 0x1) == 0x1)) {
+		PRINT_DEBUG(1, "RIGHT COOOOOOOOL");
+//~ 		Surface *pic = new Surface("plop");
+//~ 		int plop = pic->w();
+//~ 		int yop = plop;
+//~ 		return plop;
+	}
 	return ((coll_number & 0x1) == 0x1);
 }
 
