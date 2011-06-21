@@ -1,79 +1,280 @@
 #Background#
-back_elmar.png
+jungle.png
 
 #Level_dimensions#
-1634
-1320
+4756
+4400
 
 #Music#
 level1.mp3
 #Babar#
-441
-1089
+
+80
+4050
 1
 
 #Sets#
-9
-mushroom/mushroom 1255 1166
-mushroom/mushroom 1224 1162
-butterfly/butterfly 654 695
-butterfly/butterfly 444 399
-butterfly/butterfly 125 75
-mushroom/mushroom 1528 700
-mushroom/mushroom 1190 476
-mushroom/mushroom 1231 494
-mushroom/mushroom 466 1166
+20
+mushroom/mushroom 4104 4235
+mushroom/mushroom 4578 4232
+mushroom/mushroom 1242 4241
+mushroom/mushroom 1272 4247
+mushroom/mushroom 2328 3980
+mushroom/mushroom 4556 3359
+butterfly/butterfly 258 3916
+butterfly/butterfly 964 3607
+butterfly/butterfly 1354 4105
+butterfly/butterfly 2562 3857
+butterfly/butterfly 3982 4135
+butterfly/butterfly 4391 3360
+butterfly/butterfly 4323 3374
+butterfly/butterfly 4437 3540
+butterfly/butterfly 4608 818
+butterfly/butterfly 4669 933
+butterfly/butterfly 4554 879
+butterfly/butterfly 4613 1030
+butterfly/butterfly 4234 1946
+mushroom/mushroom 4638 2009
 !
 #Statics#
-12
-jungle_block_4 263 811 0
-jungle_set_1 453 804 0
-jungle_block_6 1161 518 0
-jungle_block_1 940 518 0
-jungle_set_3 828 292 0
-jungle_block_4 1609 771 0
-jungle_block_6 -183 562 0
-jungle_set_2 229 654 0
-jungle_hard_block_2 -8 1186 0
-jungle_hard_block_3 492 1211 0
-jungle_hard_block_2 991 1186 0
-jungle_hard_block_4 1491 1218 0
+41
+water1 -29 4301 0
+water1 421 4307 0
+water1 779 4311 0
+jungle_hard_block_1 1185 4289 0
+water1 2009 4301 0
+water1 2359 4307 0
+jungle_hard_block_6 2351 4037 0
+jungle_hard_block_5 1904 4036 0
+jungle_hard_block_2 2797 4257 0
+jungle_hard_block_3 3298 4282 0
+jungle_hard_block_3 3799 4283 0
+jungle_hard_block_3 4293 4282 0
+jungle_block_1 4352 3830 0
+jungle_block_2 4571 3799 0
+jungle_block_1 4548 3412 0
+jungle_set_2 2494 3976 0
+jungle_set_5 3137 4040 0
+jungle_set_4 4292 3809 0
+jungle_set_1 3908 4280 0
+jungle_set_1 2088 4148 0
+jungle_set_4 2696 4248 0
+jungle_block_1 4280 2059 0
+jungle_block_4 4497 2059 0
+jungle_block_4 3747 2049 0
+jungle_block_6 3302 1796 0
+jungle_block_1 3287 2443 0
+jungle_block_4 3507 2442 0
+jungle_block_2 2805 1764 0
+jungle_block_5 2359 1796 0
+jungle_block_5 1913 2049 0
+jungle_block_2 1413 2270 0
+jungle_block_3 914 2296 0
+jungle_block_1 193 2302 0
+jungle_block_8 958 3831 0
+jungle_hard_block_2 1403 4257 0
+jungle_set_4 1379 3794 0
+jungle_set_1 1628 3834 0
+jungle_set_1 1072 3866 0
+jungle_set_1 1338 3864 0
+arbre_bord -15 637 0
+jungle_block_2 412 2271 0
 !
 #Monsters#
-1
-boss_elmer elmar 808 987
+0
 !
 #Events#
-3
-event shotgun 338 701
-event machinegun 1088 406
-event elmar_machine_gun 729 1097
+101
+event peanut 684 3858
+event peanut 804 3790
+event peanut 918 3719
+event peanut 1061 3707
+event peanut 2333 3696
+event peanut 2338 3747
+event peanut 2391 3694
+event peanut 2336 3632
+event peanut 2268 3693
+event machinegun 4638 3271
+event peanut 4464 3680
+event peanut 4415 3636
+event peanut 4521 3722
+event peanut 4524 3630
+event peanut 4417 3733
+event rocket_launcher 4613 704
+event shotgun 3480 2319
+event peanut 4170 2960
+event peanut 4109 2832
+event peanut 4046 2705
+event peanut 3936 2606
+event peanut 3982 2470
+event peanut 4043 2338
+event peanut 4135 2245
+event peanut 4112 2110
+event peanut 4094 1951
+event peanut 3032 1458
+event peanut 3033 1578
+event peanut 3038 1689
+event heart 3038 1241
+event peanut 3027 1324
+event peanut 965 2774
+event peanut 1018 2774
+event peanut 1070 2774
+event peanut 965 2829
+event peanut 1068 2831
+event peanut 961 2885
+event peanut 1016 2891
+event peanut 1066 2892
+event peanut 962 2936
+event peanut 964 2990
+event peanut 1013 2990
+event peanut 1064 2991
+event peanut 1069 2942
+event peanut 1213 2897
+event peanut 1167 2947
+event peanut 1258 2940
+event peanut 1206 2984
+event peanut 1359 2993
+event peanut 1370 2942
+event peanut 1359 2894
+event peanut 1367 2834
+event peanut 1416 2876
+event peanut 1460 2921
+event peanut 1498 2973
+event peanut 1504 2903
+event peanut 1503 2847
+event peanut 1702 2964
+event peanut 1740 2906
+event peanut 1755 2849
+event peanut 1781 2784
+event peanut 1835 2840
+event peanut 1866 2900
+event peanut 1894 2965
+event peanut 1804 2911
+event peanut 1978 2960
+event peanut 1979 2896
+event peanut 1980 2831
+event peanut 1978 2768
+event peanut 2121 2945
+event peanut 2112 2882
+event peanut 2110 2816
+event peanut 2106 2756
+event peanut 2228 2954
+event peanut 2222 2905
+event peanut 2033 2818
+event peanut 2070 2868
+event peanut 2212 2846
+event peanut 2201 2769
+event peanut 2263 2819
+event peanut 2299 2862
+event peanut 2336 2751
+event peanut 2338 2800
+event peanut 2346 2865
+event peanut 2347 2926
+event peanut 2454 2752
+event peanut 2459 2806
+event peanut 2461 2861
+event peanut 2463 2913
+event peanut 2560 2747
+event peanut 2569 2801
+event peanut 2581 2852
+event peanut 2580 2905
+event peanut 2629 2840
+event peanut 2615 2740
+event peanut 2680 2738
+event peanut 2850 2704
+event peanut 2847 2750
+event peanut 2851 2793
+event peanut 2851 2834
+event peanut 2849 2949
 !
 #MovingPlatforms#
-0
+1
+block8 4547 1723 4547 1159
 !
 #FallingPlatforms#
-0
+10
+block8 538 3999
+block8 4089 3073
+block8 3829 2753
+block8 4104 2416
+block8 104 2651
+block8 1037 3073
+block8 1459 3078
+block8 1825 3086
+block8 2206 3092
+block8 2616 3107
 !
 #Triggers#
-1
+4
 #trig#
 #editor pos#
-528 999
+2857 4114
 #zone#
 2
-375 1063 575 1206
-375 1063 575 1206
+2663 3874 3038 4293
+2663 3874 3038 4293
 #triggerables#
 1
-#x# 452
-#y# 999
-#nature# dialog
-#text# "<babar> Salut !
-Je teste les dialogue, c'est cool non?
-Bla bla
-OOooooh Rataxes!! 
-<rataxes> yop, ca mousse? "
+#x# 3575
+#y# 4139
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3927 1896
+#zone#
+2
+3618 1794 3926 2073
+3618 1794 3926 2073
+#triggerables#
+3
+#x# 4316
+#y# 1941
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 3345
+#y# 1592
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+#x# 4461
+#y# 1844
+#nature# monster	
+#text# "fubob"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1938 2095
+#zone#
+2
+1826 1954 1937 2322
+1826 1954 1937 2322
+#triggerables#
+1
+#x# 1279
+#y# 2140
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1630 2104
+#zone#
+3
+1697 2028 1751 2050
+1529 1950 1628 2307
+1529 1950 1628 2307
+#triggerables#
+1
+#x# 2212
+#y# 1930
+#nature# monster	
+#text# "sanglichon"	
 #endtriggerable# 
 
 !

@@ -497,6 +497,7 @@ void Babar::die()
 	m_hp = c_babar_hp_max;
 	lock(BABAR_RESU_TIME);
 	m_sprite->no_pic();
+	gGame_engine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
 	prepare_sound(BABAR_SOUNDS_R + "die.wav");
 }
 
