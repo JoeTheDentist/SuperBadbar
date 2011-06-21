@@ -385,7 +385,6 @@ void Talks::treat_special_words(std::string specialword, std::list < word_and_le
 	if (specialword == #param) { \
 		auxres = gKeyboard->get_string_key(param); \
 	} \
-std::cout << "macro : " << " param " << std::endl; \
 
 
 std::list<std::string> Talks::convert_special_word(std::string specialword) 

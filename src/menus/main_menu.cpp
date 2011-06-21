@@ -9,11 +9,13 @@
 #include "../menus/menu_action.h"
 #include "../menus/options_menu.h"
 #include "../video/surface_text.h"
+#include "../video/maintitle.h"
 
 Main_menu::Main_menu() :
 	Menu(),
 	m_menu_background(new Surface(PIC_MAINMENU_R + "mainmenu.png")),
-	m_pos_background()
+	m_pos_background(),
+	m_main_title(new Main_title("Super Badbar"))
 {
 	m_pos_background.x = 0;
 	m_pos_background.y = 0;
@@ -34,7 +36,9 @@ void Main_menu::update_graphics()
 {
 	Camera *camera = gGraphics->get_camera();
 	camera->display_picture(m_menu_background, &m_pos_background, true);
-	Menu::update_graphics();	
+	m_main_title->update();
+	m_main_title->display(camera);
+	Menu::update_graphics();
 	gGraphics->flip_camera();
 }
 

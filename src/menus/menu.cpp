@@ -90,7 +90,8 @@ void Menu::update_graphics() const
 		Rect posNull; 
 		posNull.x = 0;
 		posNull.y = 0;
-		camera->display_picture(&grey, &posNull, true);
+		if (can_display_grey_background())
+			camera->display_picture(&grey, &posNull, true);
 		Surface_uniform background(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B);
 		background.set_alpha(MENU_BACKGROUND_ALPHA);
 		Rect pos;

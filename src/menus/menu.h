@@ -37,6 +37,8 @@ class Menu {
 	bool end_menu() const {return m_leave_menu;}
 	bool end_game() const {return m_leave_game;}
 	
+	virtual bool can_display_grey_background() const {return true;}
+	
 
 	
 
