@@ -55,10 +55,10 @@ Game::Game(std::string level_name)
 }
 
 void Game::init_game(std::string level_name)
-{	
-	Transition_screen *plop = new Transition_screen("gameover.png");
+{
+	Transition_screen * loading = new Transition_screen("loading.png");
 	gSound->init_level(level_name);
-	plop->display(gGraphics->get_camera());
+	loading->display(gGraphics->get_camera());
     gCollision = new Collisions_manager();
     gProj = new Projectiles_manager();
     gEvent = new Events_manager();
@@ -75,12 +75,12 @@ void Game::init_game(std::string level_name)
 	m_previous_time = SDL_GetTicks();
 	m_pause = NULL;
 	set_state_playing();
-	
+
 	gKeyboard->disable_all_keys();
 	gKeyboard->disable_key_repeat();
-	
-	
-	plop->wait_for_player();
+
+
+	loading->wait_for_player();
 	gSound->play_music();
 }
 
@@ -156,7 +156,7 @@ void Game::update_graphic()
 
 	/* affichage du tableau de board */
 	gGraphics->draw_dashboard(camera);
-	
+
 	if (m_pause) {
 		m_pause->update_graphics();
 	} else if (m_state == gs_talks) {
@@ -165,7 +165,7 @@ void Game::update_graphic()
 
 	/* mise à jour */
 	camera->flip_camera();
-	
+
 
 }
 
@@ -232,7 +232,7 @@ result_game Game::game_loop()
 	return leave;
 }
 
-	
+
 void Game::set_state_playing()
 {
 	gKeyboard->reset_menu_keys();
@@ -243,7 +243,7 @@ void Game::set_state_playing()
 		m_pause = NULL;
 	}
 }
-	
+
 void Game::set_state_pause()
 {
 	m_state = gs_pause;

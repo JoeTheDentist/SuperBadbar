@@ -15,6 +15,7 @@
 #include "../video/surface.h"
 #include "../video/surface_text.h"
 #include "../control/keyboard.h"
+#include "../video/transition_screen.h"
 
 
 Levels_manager::Levels_manager() :
@@ -57,18 +58,11 @@ void Levels_manager::play()
 
 void Levels_manager::play_defeat()
 {
-	Camera *camera = gGraphics->get_camera();
-	Surface *game_over_surface = new Surface(PIC_TRANSITIONS_R + "gameover.png");
-	Rect game_over_pos;
-	game_over_pos.x = 0;
-	game_over_pos.y = 0;
-	camera->display_picture(game_over_surface, &game_over_pos, true);
-	Surface_text *text = new Surface_text("GAME OVER", 70, 0, 0, 0);
-	game_over_pos.x = 300;
-	game_over_pos.y = 200;
-	camera->display_picture(text, &game_over_pos, true);
-	camera->flip_camera();
-	gKeyboard->wait_key(k_fire);
-	delete game_over_surface;
-	delete text;
+    Transition_screen * game_over = new Transition_screen("gameover.png", "GAMEOVER", "GAME OVER !!!");
+	game_over->display(gGraphics->get_camera());
+
+	game_over->wait_for_player();
+	gSound->play_music();
+
+	delete game_over;
 }

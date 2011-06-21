@@ -12,6 +12,7 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="-menu" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -85,8 +86,12 @@
 		<Unit filename="..\src\actors\rocket.h" />
 		<Unit filename="..\src\actors\walking_monsters.cpp" />
 		<Unit filename="..\src\actors\walking_monsters.h" />
+		<Unit filename="..\src\control\event_orderer.cpp" />
+		<Unit filename="..\src\control\event_orderer.h" />
 		<Unit filename="..\src\control\keyboard.cpp" />
 		<Unit filename="..\src\control\keyboard.h" />
+		<Unit filename="..\src\control\sdl_key_converter.cpp" />
+		<Unit filename="..\src\control\sdl_key_converter.h" />
 		<Unit filename="..\src\events\events.cpp" />
 		<Unit filename="..\src\events\events.h" />
 		<Unit filename="..\src\events\events_manager.cpp" />
@@ -124,6 +129,8 @@
 		<Unit filename="..\src\items\weapons_armory.cpp" />
 		<Unit filename="..\src\items\weapons_armory.h" />
 		<Unit filename="..\src\main.cpp" />
+		<Unit filename="..\src\menus\keyconfig_menu.cpp" />
+		<Unit filename="..\src\menus\keyconfig_menu.h" />
 		<Unit filename="..\src\menus\list_menu_actions.cpp" />
 		<Unit filename="..\src\menus\list_menu_actions.h" />
 		<Unit filename="..\src\menus\main_menu.cpp" />
@@ -136,6 +143,8 @@
 		<Unit filename="..\src\menus\menu_action_classic.h" />
 		<Unit filename="..\src\menus\menu_action_integer.cpp" />
 		<Unit filename="..\src\menus\menu_action_integer.h" />
+		<Unit filename="..\src\menus\menu_action_keyconfig.cpp" />
+		<Unit filename="..\src\menus\menu_action_keyconfig.h" />
 		<Unit filename="..\src\menus\options_menu.cpp" />
 		<Unit filename="..\src\menus\options_menu.h" />
 		<Unit filename="..\src\menus\pause_menu.cpp" />
