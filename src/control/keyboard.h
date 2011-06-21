@@ -170,6 +170,7 @@ public:
 	void answer_event_order(SDLKey event);
 	
 	void set_config_key(key k, std::string sdl_code);
+	
 	std::string get_string_key(key k);
 
 	

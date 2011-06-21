@@ -186,7 +186,10 @@ public:
 	static std::list< word_and_length > words_to_words_and_length(std::list < std::string > words);
 
 	void prepare_cell_string(cell_string cell);
-
+	
+	static void treat_special_words(std::string specialword, std::list < word_and_length > &words_list);
+	
+	static std::list<std::string> convert_special_word(std::string specialword); 
 };
 
 

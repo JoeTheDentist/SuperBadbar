@@ -202,7 +202,6 @@ void Talks::aux_cut_text(std::string str)
 			cell_string newCell;
 			newCell.str = newString;
 			newCell.talker = newTalker;
-			std::cout << "talker: " << newTalker << std::endl << "text: " << newString << std::endl;
 			m_cells.push(newCell);
 		}
 	}
@@ -211,7 +210,6 @@ void Talks::aux_cut_text(std::string str)
 void Talks::aux_display_cell(cell_string cell)
 {
 	m_talker = new Surface(PIC_TALKS_R + cell.talker + ".png");
-	std::cout << "affichage de " << cell.str << std::endl;
 	m_text = cell.str;
 	m_pos_talker.x = POSX;
 	m_pos_talker.y = POSY;
@@ -312,6 +310,11 @@ std::list< std::string > Talks::string_to_list_words(std::string str)
 	std::list< word_and_length > res;
 	for (std::list<std::string>::iterator it = words.begin(); it != words.end(); ++it) {
 		std::string str = (*it);
+		std::cout << str << std::endl;
+		if (str[0] == '{') {
+			treat_special_words(str, res);
+			continue;
+		}
 		word_and_length newword;
 		newword.newline = (str == "\n");
 		if (!newword.newline) {
@@ -357,4 +360,62 @@ void Talks::prepare_cell_string(cell_string cell)
 			++it;
 		
 	}
+}
+
+void Talks::treat_special_words(std::string specialword, std::list < word_and_length > &words_list)
+{
+	specialword.erase(0, 1); // on enleve le '{'
+	specialword.erase(specialword.length() - 1, 1); // on enleve le '}'
+	std::list < std::string > newwords = Talks::convert_special_word(specialword);
+	for (std::list<std::string>::iterator it = newwords.begin(); it != newwords.end(); ++it) {
+		word_and_length temp;
+		temp.newline = false;
+		temp.length = 0;
+		for (unsigned int i = 0; i < (*it).length(); ++i) {
+			Special_letter *l = new Special_letter((*it)[i], TALKS_TEXT_SIZE, TALKS_TEXTSPECIAL_R,
+					TALKS_TEXTSPECIAL_G, TALKS_TEXTSPECIAL_B);
+			temp.letters.push_back(l);
+			temp.length += l->fake_w();
+		}
+		words_list.push_back(temp);
+	}
+}
+
+#define MACRO_TALKS_KEYBOARD(param) \
+	if (specialword == #param) { \
+		auxres = gKeyboard->get_string_key(param); \
+	} \
+std::cout << "macro : " << " param " << std::endl; \
+
+
+std::list<std::string> Talks::convert_special_word(std::string specialword) 
+{
+	std::list < std::string > res;
+	std::string auxres;
+	MACRO_TALKS_KEYBOARD(k_left)
+	MACRO_TALKS_KEYBOARD(k_right)
+	MACRO_TALKS_KEYBOARD(k_up)
+	MACRO_TALKS_KEYBOARD(k_down)
+	MACRO_TALKS_KEYBOARD(k_fire)
+	MACRO_TALKS_KEYBOARD(k_jump)
+	MACRO_TALKS_KEYBOARD(k_next_weapon)
+	MACRO_TALKS_KEYBOARD(k_prev_weapon)
+	MACRO_TALKS_KEYBOARD(k_escape)
+	MACRO_TALKS_KEYBOARD(k_jump)
+	MACRO_TALKS_KEYBOARD(k_exit)
+	MACRO_TALKS_KEYBOARD(k_action)
+	
+	std::cout << "YAAAA " << auxres << std::endl;
+	std::string newword;
+	for (unsigned int i = 0; i < auxres.length(); ++i) {
+		if (auxres[i] == ' ') {
+			res.push_back(newword);
+			newword = "";
+		} else {
+			newword += auxres[i];
+		}
+	}
+	if (auxres[auxres.length()] != ' ')
+		res.push_back(newword);
+	return res;
 }
