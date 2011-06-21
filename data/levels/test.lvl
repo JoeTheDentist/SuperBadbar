@@ -14,7 +14,7 @@ level1.mp3
 1
 
 #Sets#
-20
+28
 mushroom/mushroom 4104 4235
 mushroom/mushroom 4578 4232
 mushroom/mushroom 1242 4241
@@ -33,11 +33,19 @@ butterfly/butterfly 4608 818
 butterfly/butterfly 4669 933
 butterfly/butterfly 4554 879
 butterfly/butterfly 4613 1030
-butterfly/butterfly 4234 1946
 mushroom/mushroom 4638 2009
+butterfly/butterfly 4557 1849
+butterfly/butterfly 4234 1946
+butterfly/butterfly 4625 1718
+butterfly/butterfly 4557 1664
+butterfly/butterfly 4636 1583
+butterfly/butterfly 4568 1540
+butterfly/butterfly 4653 1483
+butterfly/butterfly 4576 1421
+butterfly/butterfly 4652 1365
 !
 #Statics#
-41
+50
 water1 -29 4301 0
 water1 421 4307 0
 water1 779 4311 0
@@ -79,12 +87,21 @@ jungle_set_1 1072 3866 0
 jungle_set_1 1338 3864 0
 arbre_bord -15 637 0
 jungle_block_2 412 2271 0
+jungle_block_1 1129 1301 0
+jungle_block_4 1347 1302 0
+jungle_block_1 1207 913 0
+jungle_block_4 1423 912 0
+jungle_block_1 1600 561 0
+jungle_block_5 1818 306 0
+jungle_block_3 2266 299 0
+jungle_block_3 2767 299 0
+jungle_block_4 3266 306 0
 !
 #Monsters#
 0
 !
 #Events#
-101
+102
 event peanut 684 3858
 event peanut 804 3790
 event peanut 918 3719
@@ -186,10 +203,13 @@ event peanut 2847 2750
 event peanut 2851 2793
 event peanut 2851 2834
 event peanut 2849 2949
+event victory 3327 202
 !
 #MovingPlatforms#
-1
+3
 block8 4547 1723 4547 1159
+block8 166 1953 178 1484
+block8 433 1320 881 1324
 !
 #FallingPlatforms#
 10
@@ -205,7 +225,7 @@ block8 2206 3092
 block8 2616 3107
 !
 #Triggers#
-4
+8
 #trig#
 #editor pos#
 2857 4114
@@ -275,6 +295,71 @@ block8 2616 3107
 #y# 1930
 #nature# monster	
 #text# "sanglichon"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1175 2170
+#zone#
+2
+1060 1976 1182 2325
+1060 1976 1182 2325
+#triggerables#
+1
+#x# 393
+#y# 2151
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+887 2136
+#zone#
+2
+752 1969 885 2316
+752 1969 885 2316
+#triggerables#
+1
+#x# 1400
+#y# 2177
+#nature# monster	
+#text# "sanglichon"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1274 1176
+#zone#
+2
+985 1043 1273 1354
+985 1043 1273 1354
+#triggerables#
+1
+#x# 1384
+#y# 796
+#nature# monster	
+#text# "gailapin"	
+#endtriggerable# 
+
+#trig#
+#editor pos#
+2280 187
+#zone#
+2
+2295 59 2542 333
+2295 59 2542 333
+#triggerables#
+2
+#x# 2832
+#y# 187
+#nature# monster	
+#text# "gailapin"	
+#endtriggerable# 
+#x# 3043
+#y# 183
+#nature# monster	
+#text# "gailapin"	
 #endtriggerable# 
 
 !
