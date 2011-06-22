@@ -17,7 +17,7 @@
 #include "../items/elmar_machine_gun.h"
 #include "../video/talks.h"
 #include "../util/globals.h"
-#include "../events_manager.h"
+#include "../events/events_manager.h"
 
 Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
 	Boss(name, posx, posy)
@@ -43,10 +43,10 @@ Boss_elmer::Boss_elmer(Analyser *analyserLevel):
 
 Boss_elmer::~Boss_elmer()
 {
-	
+
 	std::string text;
-	text = "<babar> plop!";
-	gGraphics->get_talks()->display_text(text);	
+	text = "<elmar> Aah...! Tu penses m'avoir vaincu ? Haha. Non loin de la salopette. Je ne suis qu'un pion... Hehe. Je... ne suis... pas...";
+	gGraphics->get_talks()->display_text(text);
 }
 
 void Boss_elmer::update_speed_simple()
@@ -255,7 +255,7 @@ bool Boss_elmer::wait(int cycles)
 
 void Boss_elmer::kill()
 {
-	gEvents->add_end_level(1540, 1146);
+	gEvent->add_end_level(1540, 1146);
 	Boss::kill();
 }
 
