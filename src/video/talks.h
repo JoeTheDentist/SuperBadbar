@@ -21,7 +21,7 @@
 #define POSX 15
 #define POSW 770
 #define POSH 30
-#define POSY 410
+#define POSY 450
 #define LINES_NUMBER 4
 #define DISPLAY_SPEED 20
 
@@ -57,7 +57,7 @@ private:
 	Surface *m_talker;  // la surface du talker courant
 	std::list<Special_letter *> m_text_surface[LINES_NUMBER]; // les lignes de textes a afficher
 	std::queue<cell_string> m_cells; // les cellules a afficher
-	Rect m_pos_background; // la position du fond du talks 
+	Rect m_pos_background; // la position du fond du talks
 	Rect m_pos_talker; // la position de l'image du talker
 	Rect m_pos_text[LINES_NUMBER]; // les positions des lignes de text
 	int m_curr_line; // le numero de ligne courante (par rapport au move_up)
@@ -106,7 +106,7 @@ public:
 	 *	@brief Mise a jour de talks
 	*/
 	void update();
-	
+
 	/**
 	 *	@brief Indique si la fenetre est active
 	 *	@return Vrai si la fenetre est active
@@ -118,24 +118,24 @@ public:
 	 *	@return Vrai si l'utilisateur veut quitter le jeu
 	*/
 	bool have_to_leave() const {return m_have_to_leave;}
-	
+
 	/**
 	 *	@brief Affichage a l'ecran du dialogue
-	*/	
+	*/
 	void display();
-	
+
 	/*!
 	*	@brief Coupe le texte en parallele et le stocke dans la liste de celllules
 	*	@param str Le texte a couper
 	*/
 	void aux_cut_text(std::string str);
-	
+
 	/*!
 	*	@brief Lance l'affichage d'une cellule
 	*	@param cell La cellule a afficher
 	*/
 	void aux_display_cell(cell_string cell);
-	
+
 	/*!
 	*	@brief Indique si on a fini d'afficher la cellule courante
 	*	@return Vrai si on a fini
@@ -149,8 +149,8 @@ public:
 	void display_background();
 
 	/*!
-	 *	@brief Fait remonter les lignes de dialogue 
-	 *	
+	 *	@brief Fait remonter les lignes de dialogue
+	 *
 	 *	Si la boite est pleine, il faudra ensuite appuyer sur entrer pour que
 	 *	end_move_up() soit appelé et finisse le move_up
 	*/
@@ -166,30 +166,30 @@ public:
 	*	@return Vrai s'il faut move_up
 	*/
 	bool write_letter();
-	
+
 	/*!
 	*	@brief Retourne vrai si on a fini l'affichage
 	*	@return vrai si on a fini l'affichage
 	*/
 	bool end_of_talks();
-	
-	
+
+
 	/*!
 	*	@brief Vide les lignes de texte
 	*/
 	void clear_lines();
-	
+
 	void update_letters();
-	
+
 	static std::list< std::string > string_to_list_words(std::string str);
-	
+
 	static std::list< word_and_length > words_to_words_and_length(std::list < std::string > words);
 
 	void prepare_cell_string(cell_string cell);
-	
+
 	static void treat_special_words(std::string specialword, std::list < word_and_length > &words_list);
-	
-	static std::list<std::string> convert_special_word(std::string specialword); 
+
+	static std::list<std::string> convert_special_word(std::string specialword);
 };
 
 
