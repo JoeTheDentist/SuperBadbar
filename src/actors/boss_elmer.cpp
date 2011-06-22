@@ -255,7 +255,7 @@ bool Boss_elmer::wait(int cycles)
 
 void Boss_elmer::kill()
 {
-	gEvent->add_end_level(1540, 1146);
+	gEvent->add_end_level(1540, 1100);
 	Boss::kill();
 }
 
