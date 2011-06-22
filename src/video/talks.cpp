@@ -64,7 +64,7 @@ void Talks::init_talks(Camera *camera, Pictures_container *pictures_container)
 }
 
 void Talks::display_text(std::string str)
-{                   
+{              
 	m_waiting_for_enter = false;
 	m_curr_line = 0;
 	m_string_curs = 0;

@@ -22,6 +22,7 @@ public:
 	~Levels_manager();
 	void play();
 	void play_defeat();
+	void the_end();
 };
 
 

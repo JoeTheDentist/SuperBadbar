@@ -122,4 +122,8 @@ void Events_manager::display_events(Camera const * camera)
 	}
 }
 
-
+void Events_manager::add_end_level(int x, int y)
+{
+	Event *event = new Event("victory", x, y);
+	m_list_events.push_back(event);
+}

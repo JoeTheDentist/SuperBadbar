@@ -87,6 +87,8 @@ public:
 	 *	@param camera La camera pour afficher les événements
 	*/
 	void display_events(Camera const * camera);
+	
+	void add_end_level(int x, int y);
 
 };
 

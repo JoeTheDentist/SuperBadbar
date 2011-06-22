@@ -122,6 +122,8 @@ private:
 	 *	TODO a faire!
 	*/
 	void play_victory();
+
+
 };
 
 

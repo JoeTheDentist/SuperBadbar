@@ -15,9 +15,9 @@
 #include "../video/surface.h"
 #include "../actors/babar.h"
 #include "../items/elmar_machine_gun.h"
-#include "../video/transition_screen.h"
 #include "../video/talks.h"
 #include "../util/globals.h"
+#include "../events_manager.h"
 
 Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
 	Boss(name, posx, posy)
@@ -43,15 +43,10 @@ Boss_elmer::Boss_elmer(Analyser *analyserLevel):
 
 Boss_elmer::~Boss_elmer()
 {
-    /* dialogues */
-
-    Transition_screen * game_over = new Transition_screen("end.png", "END", "Le combat commence seulement !");
-	game_over->display(gGraphics->get_camera());
-
-	game_over->wait_for_player();
-	gSound->play_music();
-
-	delete game_over;
+	
+	std::string text;
+	text = "<babar> plop!";
+	gGraphics->get_talks()->display_text(text);	
 }
 
 void Boss_elmer::update_speed_simple()
@@ -260,8 +255,7 @@ bool Boss_elmer::wait(int cycles)
 
 void Boss_elmer::kill()
 {
+	gEvents->add_end_level(1540, 1146);
 	Boss::kill();
-	std::string text;
-	gGraphics->get_talks()->display_text(text);	
 }
 

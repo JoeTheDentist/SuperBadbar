@@ -35,7 +35,7 @@ Levels_manager::~Levels_manager()
 void Levels_manager::play()
 {
 	result_game res;
-	while(1) {
+	while(m_level != 6) {
 		delete m_game;
 		m_game = NULL;
 		m_game = new Game(m_level);
@@ -54,11 +54,23 @@ void Levels_manager::play()
 			break;
 		}
 	}
+	the_end();
 }
 
 void Levels_manager::play_defeat()
 {
     Transition_screen * game_over = new Transition_screen("gameover.png", "GAMEOVER", "GAME OVER !!!");
+	game_over->display(gGraphics->get_camera());
+
+	game_over->wait_for_player();
+	gSound->play_music();
+
+	delete game_over;
+}
+
+void Levels_manager::the_end()
+{
+    Transition_screen * game_over = new Transition_screen("end.png", "END", "Le combat commence seulement !");
 	game_over->display(gGraphics->get_camera());
 
 	game_over->wait_for_player();
