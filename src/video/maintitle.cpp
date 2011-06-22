@@ -25,7 +25,7 @@ Main_title::~Main_title()
 
 void Main_title::update()
 {
-	m_offset -= 8;
+	m_offset -= (m_offset / 3) + 1;
 	if (m_offset <= 0)
 		m_offset = 0;
 	else {

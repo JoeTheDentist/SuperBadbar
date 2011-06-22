@@ -75,6 +75,9 @@ public:
     void elmar_jump();
 
     bool wait(int cycles);
+	
+	virtual void kill();
+
 };
 
 

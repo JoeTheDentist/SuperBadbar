@@ -16,6 +16,8 @@
 #include "../actors/babar.h"
 #include "../items/elmar_machine_gun.h"
 #include "../video/transition_screen.h"
+#include "../video/talks.h"
+#include "../util/globals.h"
 
 Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
 	Boss(name, posx, posy)
@@ -255,3 +257,11 @@ bool Boss_elmer::wait(int cycles)
         return false;
     }
 }
+
+void Boss_elmer::kill()
+{
+	Boss::kill();
+	std::string text;
+	gGraphics->get_talks()->display_text(text);	
+}
+

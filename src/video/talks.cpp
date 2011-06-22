@@ -116,6 +116,7 @@ void Talks::update()
 				return;
 			}
 			if (aux_end_of_cell()) {
+				std::cout << "baaaaaaaaaaaaaaaaaaaa"<< std::endl;
 				aux_display_cell(m_cells.front());
 				m_cells.pop();
 			} else if (m_waiting_for_enter) {
@@ -275,7 +276,7 @@ bool Talks::write_letter()
 bool Talks::end_of_talks()
 {
 //~ 	return aux_end_of_cell() && m_cells.empty();
-	return m_cell_letters.empty();
+	return m_cells.empty() && aux_end_of_cell();
 }
 
 void Talks::clear_lines()
