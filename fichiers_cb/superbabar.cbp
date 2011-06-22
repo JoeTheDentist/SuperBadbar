@@ -218,6 +218,8 @@
 		<Unit filename="..\src\video\graphic_engine.h" />
 		<Unit filename="..\src\video\life_bar_possessor.cpp" />
 		<Unit filename="..\src\video\life_bar_possessor.h" />
+		<Unit filename="..\src\video\maintitle.cpp" />
+		<Unit filename="..\src\video\maintitle.h" />
 		<Unit filename="..\src\video\pictures_container.cpp" />
 		<Unit filename="..\src\video\pictures_container.h" />
 		<Unit filename="..\src\video\special_letter.cpp" />
