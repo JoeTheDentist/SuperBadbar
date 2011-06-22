@@ -10,6 +10,7 @@ Players_manager::Players_manager()
 
 Players_manager::~Players_manager()
 {
+    last_peanuts = m_local_player->get_actor()->peanuts();
     delete m_players;
     delete m_local_player;
     delete gLocal_id;

@@ -14,7 +14,7 @@ level1.mp3
 1
 
 #Sets#
-28
+50
 mushroom/mushroom 4104 4235
 mushroom/mushroom 4578 4232
 mushroom/mushroom 1242 4241
@@ -43,9 +43,31 @@ butterfly/butterfly 4568 1540
 butterfly/butterfly 4653 1483
 butterfly/butterfly 4576 1421
 butterfly/butterfly 4652 1365
+mushroom/mushroom 1386 1254
+butterfly/butterfly 458 1959
+butterfly/butterfly 1678 1879
+butterfly/butterfly 1837 2049
+butterfly/butterfly 2457 1883
+butterfly/butterfly 2584 1716
+butterfly/butterfly 3462 1731
+butterfly/butterfly 3144 1572
+butterfly/butterfly 652 2933
+butterfly/butterfly 535 2923
+butterfly/butterfly 625 2918
+butterfly/butterfly 225 1305
+butterfly/butterfly 500 1179
+butterfly/butterfly 712 1389
+butterfly/butterfly 1314 695
+butterfly/butterfly 1954 252
+butterfly/butterfly 3360 108
+mushroom/mushroom 2709 247
+mushroom/mushroom 1688 513
+mushroom/mushroom 529 2222
+butterfly/butterfly 2647 195
+butterfly/butterfly 1007 2217
 !
 #Statics#
-50
+58
 water1 -29 4301 0
 water1 421 4307 0
 water1 779 4311 0
@@ -77,7 +99,6 @@ jungle_block_2 2805 1764 0
 jungle_block_5 2359 1796 0
 jungle_block_5 1913 2049 0
 jungle_block_2 1413 2270 0
-jungle_block_3 914 2296 0
 jungle_block_1 193 2302 0
 jungle_block_8 958 3831 0
 jungle_hard_block_2 1403 4257 0
@@ -85,24 +106,32 @@ jungle_set_4 1379 3794 0
 jungle_set_1 1628 3834 0
 jungle_set_1 1072 3866 0
 jungle_set_1 1338 3864 0
-arbre_bord -15 637 0
-jungle_block_2 412 2271 0
 jungle_block_1 1129 1301 0
-jungle_block_4 1347 1302 0
 jungle_block_1 1207 913 0
 jungle_block_4 1423 912 0
 jungle_block_1 1600 561 0
-jungle_block_5 1818 306 0
 jungle_block_3 2266 299 0
 jungle_block_3 2767 299 0
 jungle_block_4 3266 306 0
+jungle_set_2 1243 765 0
+jungle_set_4 1437 882 0
+jungle_block_4 1347 1302 0
+jungle_set_1 1526 1293 0
+jungle_set_1 2342 290 0
+jungle_block_5 1818 306 0
+jungle_set_1 1816 542 0
+jungle_set_3 2058 89 0
+jungle_set_5 1312 2025 0
+jungle_block_3 914 2296 0
+jungle_block_2 412 2271 0
+jungle_warning_board 205 4059 0
+arbre_bord -17 625 0
 !
 #Monsters#
 0
 !
 #Events#
-102
-event peanut 684 3858
+103
 event peanut 804 3790
 event peanut 918 3719
 event peanut 1061 3707
@@ -135,7 +164,6 @@ event heart 3038 1241
 event peanut 3027 1324
 event peanut 965 2774
 event peanut 1018 2774
-event peanut 1070 2774
 event peanut 965 2829
 event peanut 1068 2831
 event peanut 961 2885
@@ -144,7 +172,6 @@ event peanut 1066 2892
 event peanut 962 2936
 event peanut 964 2990
 event peanut 1013 2990
-event peanut 1064 2991
 event peanut 1069 2942
 event peanut 1213 2897
 event peanut 1167 2947
@@ -204,6 +231,10 @@ event peanut 2851 2793
 event peanut 2851 2834
 event peanut 2849 2949
 event victory 3327 202
+event peanut 684 3858
+event heart 1751 1149
+event machinegun 1337 1216
+event machinegun 1207 3718
 !
 #MovingPlatforms#
 3
@@ -213,7 +244,6 @@ block8 433 1320 881 1324
 !
 #FallingPlatforms#
 10
-block8 538 3999
 block8 4089 3073
 block8 3829 2753
 block8 4104 2416
@@ -223,9 +253,10 @@ block8 1459 3078
 block8 1825 3086
 block8 2206 3092
 block8 2616 3107
+block8 538 3999
 !
 #Triggers#
-8
+9
 #trig#
 #editor pos#
 2857 4114
@@ -252,18 +283,18 @@ block8 2616 3107
 3
 #x# 4316
 #y# 1941
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 #x# 3345
 #y# 1592
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 #x# 4461
 #y# 1844
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 #trig#
@@ -277,8 +308,8 @@ block8 2616 3107
 1
 #x# 1279
 #y# 2140
-#nature# monster	
-#text# "sanglichon"	
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
 
 #trig#
@@ -293,38 +324,8 @@ block8 2616 3107
 1
 #x# 2212
 #y# 1930
-#nature# monster	
-#text# "sanglichon"	
-#endtriggerable# 
-
-#trig#
-#editor pos#
-1175 2170
-#zone#
-2
-1060 1976 1182 2325
-1060 1976 1182 2325
-#triggerables#
-1
-#x# 393
-#y# 2151
-#nature# monster	
-#text# "sanglichon"	
-#endtriggerable# 
-
-#trig#
-#editor pos#
-887 2136
-#zone#
-2
-752 1969 885 2316
-752 1969 885 2316
-#triggerables#
-1
-#x# 1400
-#y# 2177
-#nature# monster	
-#text# "sanglichon"	
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
 
 #trig#
@@ -338,8 +339,38 @@ block8 2616 3107
 1
 #x# 1384
 #y# 796
-#nature# monster	
-#text# "gailapin"	
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+887 2136
+#zone#
+2
+752 1969 885 2316
+752 1969 885 2316
+#triggerables#
+1
+#x# 1400
+#y# 2177
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1175 2170
+#zone#
+2
+1061 1967 1183 2316
+1061 1967 1183 2316
+#triggerables#
+1
+#x# 393
+#y# 2151
+#nature# monster
+#text# "sanglichon"
 #endtriggerable# 
 
 #trig#
@@ -353,13 +384,28 @@ block8 2616 3107
 2
 #x# 2832
 #y# 187
-#nature# monster	
-#text# "gailapin"	
+#nature# monster
+#text# "gailapin"
 #endtriggerable# 
 #x# 3043
 #y# 183
-#nature# monster	
-#text# "gailapin"	
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+131 3947
+#zone#
+2
+160 3906 413 4214
+160 3906 413 4214
+#triggerables#
+1
+#x# 376
+#y# 3958
+#nature# dialog
+#text# "<ex> C'est parti ! A toi la grande vie et la liberte ! - pov' tache"
 #endtriggerable# 
 
 !

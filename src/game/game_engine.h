@@ -44,6 +44,7 @@ private:
 	Animated_set_manager * m_sets;
 	int m_spawn;                                    /* temps d'attente avant respawn */
 	bool m_victory;
+
 public:
 	/**
 	 * 	@brief Constructeur

@@ -497,7 +497,9 @@ void Babar::die()
 	m_hp = c_babar_hp_max;
 	lock(BABAR_RESU_TIME);
 	m_sprite->no_pic();
-	gGame_engine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
+	if ( !(gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->static_data_height()) ) {
+        gGame_engine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
+	}
 	prepare_sound(BABAR_SOUNDS_R + "die.wav");
 }
 
@@ -643,4 +645,9 @@ void Babar::set_last_pos()
     m_pos = m_last_pos;
     m_speed.x = 0;
     m_speed.y = 0;
+}
+
+void Babar::set_peanuts(int pean)
+{
+    m_peanuts = pean;
 }

@@ -37,14 +37,14 @@
 #include "../events/stats.h"
 #include "../players/players_manager.h"
 
+int Players_manager::last_peanuts = 0;
+
 Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
 	m_sets(new Animated_set_manager()),
 	m_victory(false)
 {
 }
-
-
 
 Game_engine::~Game_engine()
 {
@@ -56,6 +56,7 @@ Game_engine::~Game_engine()
 void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 	Pictures_container *pictures_container)
 {
+
 	PRINT_CONSTR(1, "Construction de la classe Game_engine")
 	m_matrix_weight = gStatic->static_data_width();
 	m_matrix_height = gStatic->static_data_height();
@@ -66,6 +67,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
 
     gPlayers = new Players_manager();
     gPlayers->init_players_manager(&analyser);
+    gPlayers->local_player()->set_peanuts(Players_manager::last_peanuts);
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);

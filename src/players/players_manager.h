@@ -17,6 +17,8 @@ class Players_manager {
         Player * m_local_player;
 
     public :
+        static int last_peanuts;
+
         /**
          *  @brief Constructeur
          */
@@ -53,10 +55,10 @@ class Players_manager {
          * @brief Nombre de joueurs
          */
         int nb_players();
-		
+
 		/**
 		 *	@brief Cherche le joueur le plus proche d'une position (aggro!)
-		 *	@param pos La position 
+		 *	@param pos La position
 		 *	@return Le babar de distance minimale avec la position
 		 *	@todo Pour l'instant renvoie local_player
 		 */

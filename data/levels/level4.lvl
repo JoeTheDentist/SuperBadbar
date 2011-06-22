@@ -38,7 +38,7 @@ jungle_block_3 4658 983 0
 0
 !
 #Events#
-100
+102
 event rocket_launcher 53 176
 event shotgun 459 4203
 event machinegun 360 4201
@@ -139,6 +139,8 @@ event peanut 1946 3259
 event peanut 2671 2285
 event peanut 2764 2257
 event peanut 3905 1540
+event rocket_launcher 4336 4201
+event heart 4244 4213
 !
 #MovingPlatforms#
 0
@@ -210,8 +212,8 @@ block8 4170 1315
 179 1822 648 2125
 #triggerables#
 3
-#x# 670
-#y# 1738
+#x# 81
+#y# 2149
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -220,8 +222,8 @@ block8 4170 1315
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 81
-#y# 2149
+#x# 670
+#y# 1738
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -235,13 +237,13 @@ block8 4170 1315
 1163 3744 1373 3978
 #triggerables#
 2
-#x# 993
-#y# 3745
+#x# 1588
+#y# 3974
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 1588
-#y# 3974
+#x# 993
+#y# 3745
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -255,13 +257,8 @@ block8 4170 1315
 346 4130 565 4315
 #triggerables#
 4
-#x# 1153
-#y# 4177
-#nature# monster
-#text# "gailapin"
-#endtriggerable# 
-#x# 15
-#y# 4154
+#x# 908
+#y# 4190
 #nature# monster
 #text# "gailapin"
 #endtriggerable# 
@@ -270,8 +267,13 @@ block8 4170 1315
 #nature# monster
 #text# "gailapin"
 #endtriggerable# 
-#x# 908
-#y# 4190
+#x# 15
+#y# 4154
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 1153
+#y# 4177
 #nature# monster
 #text# "gailapin"
 #endtriggerable# 
@@ -285,13 +287,13 @@ block8 4170 1315
 515 2835 764 3112
 #triggerables#
 2
-#x# 848
-#y# 2922
+#x# 180
+#y# 2719
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 180
-#y# 2719
+#x# 848
+#y# 2922
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -306,18 +308,8 @@ block8 4170 1315
 1718 1753 1969 1958
 #triggerables#
 5
-#x# 2279
-#y# 1710
-#nature# monster
-#text# "fubob"
-#endtriggerable# 
-#x# 1349
-#y# 1930
-#nature# monster
-#text# "fubob"
-#endtriggerable# 
-#x# 1272
-#y# 1566
+#x# 2224
+#y# 1960
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -326,8 +318,18 @@ block8 4170 1315
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 2224
-#y# 1960
+#x# 1272
+#y# 1566
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 1349
+#y# 1930
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 2279
+#y# 1710
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -341,8 +343,8 @@ block8 4170 1315
 1706 429 1987 660
 #triggerables#
 3
-#x# 2181
-#y# 429
+#x# 1474
+#y# 290
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -351,8 +353,8 @@ block8 4170 1315
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 1474
-#y# 290
+#x# 2181
+#y# 429
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -366,13 +368,8 @@ block8 4170 1315
 3 70 238 345
 #triggerables#
 4
-#x# 561
-#y# 31
-#nature# monster
-#text# "fubob"
-#endtriggerable# 
-#x# 636
-#y# 225
+#x# 555
+#y# 131
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -381,8 +378,13 @@ block8 4170 1315
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 555
-#y# 131
+#x# 636
+#y# 225
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 561
+#y# 31
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -397,13 +399,13 @@ block8 4170 1315
 233 836 577 1224
 #triggerables#
 2
-#x# 691
-#y# 1016
+#x# 757
+#y# 858
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
-#x# 757
-#y# 858
+#x# 691
+#y# 1016
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -417,20 +419,20 @@ block8 4170 1315
 2819 3195 3076 3418
 #triggerables#
 3
-#x# 3388
-#y# 3051
-#nature# monster	
-#text# "fubob"	
+#x# 3177
+#y# 3325
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 #x# 2639
 #y# 3355
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
-#x# 3177
-#y# 3325
-#nature# monster	
-#text# "fubob"	
+#x# 3388
+#y# 3051
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 #trig#
@@ -442,15 +444,15 @@ block8 4170 1315
 3729 3335 3973 3563
 #triggerables#
 2
-#x# 4066
-#y# 3514
-#nature# monster	
-#text# "fubob"	
-#endtriggerable# 
 #x# 3488
 #y# 3331
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 4066
+#y# 3514
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 #trig#
@@ -462,15 +464,15 @@ block8 4170 1315
 3663 1923 3943 2162
 #triggerables#
 2
-#x# 3357
-#y# 1999
-#nature# monster	
-#text# "fubob"	
-#endtriggerable# 
 #x# 4063
 #y# 2103
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 3357
+#y# 1999
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 #trig#
@@ -482,20 +484,20 @@ block8 4170 1315
 4154 1138 4386 1345
 #triggerables#
 3
-#x# 3846
-#y# 1071
-#nature# monster	
-#text# "fubob"	
+#x# 4593
+#y# 1262
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 #x# 3825
 #y# 1330
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
-#x# 4593
-#y# 1262
-#nature# monster	
-#text# "fubob"	
+#x# 3846
+#y# 1071
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 #trig#
@@ -507,15 +509,15 @@ block8 4170 1315
 2955 760 3252 957
 #triggerables#
 2
-#x# 2745
-#y# 864
-#nature# monster	
-#text# "fubob"	
-#endtriggerable# 
 #x# 3407
 #y# 793
-#nature# monster	
-#text# "fubob"	
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 2745
+#y# 864
+#nature# monster
+#text# "fubob"
 #endtriggerable# 
 
 !

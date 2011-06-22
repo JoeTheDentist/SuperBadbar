@@ -138,7 +138,7 @@ block8 2789 4040
 #x# 3596
 #y# 4013
 #nature# dialog
-#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie a nouveau sur A lorsque tu es dans les airs - tous les elephants devraient savoir ca..."
+#text# "<ex> Bien. Si tu veux sauter encore plus haut appuie a nouveau sur {k_jump} lorsque tu es dans les airs - tous les elephants devraient savoir ca..."
 #endtriggerable# 
 
 #trig#
@@ -146,15 +146,15 @@ block8 2789 4040
 3774 3467
 #zone#
 3
-3643 3316 3772 3599
-3643 3316 3772 3599
 3637 3430 3774 3601
+3643 3316 3772 3599
+3643 3316 3772 3599
 #triggerables#
 2
 #x# 3734
 #y# 3218
 #nature# dialog
-#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche D sert a tirer. Je te fais confiance quant a son utilisation."
+#text# "<ex> Tiens, un truc que tu devrais comprendre vite, la touche {k_fire} sert a tirer. Je te fais confiance quant a son utilisation."
 #endtriggerable# 
 #x# 2974
 #y# 3397
@@ -174,7 +174,7 @@ block8 2789 4040
 #x# 1748
 #y# 2254
 #nature# dialog
-#text# "<ex> Bon j'imagine que t'es pas un debile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur Q ou W"
+#text# "<ex> Bon j'imagine que t'es pas un debile. Il suffit de prendre ces caisses pour avoir de nouvelles armes. Pour changer d'arme, tu peux appuyer sur {k_prev_weapon} ou {k_next_weapon}"
 #endtriggerable# 
 
 #trig#
@@ -189,7 +189,7 @@ block8 2789 4040
 #x# 256
 #y# 853
 #nature# dialog
-#text# "<ex> Une derniere chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux acceder a la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanement. <ex> Entre nous... je comrpends pas pourquoi on donne le permis elephant a des gens si peu cultives."
+#text# "<ex> Une derniere chose, tu vois le panneau en dessous, c'est la fin d'un niveau. Pour l'atteindre tu peux acceder a la plateforme plus bas en appuyant sur K (s'accroupir) et A simultanement. Entre nous... je comrpends pas pourquoi on donne le permis elephant a des gens si peu cultives."
 #endtriggerable# 
 
 #trig#
@@ -201,8 +201,18 @@ block8 2789 4040
 3593 864 3716 1183
 #triggerables#
 5
-#x# 3912
-#y# 1088
+#x# 2362
+#y# 893
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+#x# 3581
+#y# 815
+#nature# dialog
+#text# "<ex> Un petit cadeau, massacre les tous !!!"
+#endtriggerable# 
+#x# 3324
+#y# 758
 #nature# monster
 #text# "fubob"
 #endtriggerable# 
@@ -211,20 +221,10 @@ block8 2789 4040
 #nature# monster
 #text# "gailapin"
 #endtriggerable# 
-#x# 3324
-#y# 758
+#x# 3912
+#y# 1088
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
-#x# 3581
-#y# 815
-#nature# dialog
-#text# "<ex> Un petit cadeau, massacre les tous !!!"
-#endtriggerable# 
-#x# 2362
-#y# 893
-#nature# monster
-#text# "sanglichon"
 #endtriggerable# 
 
 #trig#
@@ -236,8 +236,8 @@ block8 2789 4040
 1594 990 1729 1186
 #triggerables#
 3
-#x# 794
-#y# 1062
+#x# 634
+#y# 1090
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
@@ -246,8 +246,8 @@ block8 2789 4040
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
-#x# 634
-#y# 1090
+#x# 794
+#y# 1062
 #nature# monster
 #text# "sanglichon"
 #endtriggerable# 
@@ -264,7 +264,7 @@ block8 2789 4040
 #x# 1936
 #y# 3783
 #nature# dialog
-#text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur A pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
+#text# "<ex> Attention, il y a de l'eau juste en dessous, et je te rappelle que tu ne sais pas nager... Appuie sur {k_jump} pour sauter. Fais gaffe, certains blocs de terre peuvent tomber lorsque tu es dessus."
 #endtriggerable# 
 
 #trig#

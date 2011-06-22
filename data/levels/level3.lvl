@@ -1,0 +1,436 @@
+#Background#
+jungle.png
+
+#Level_dimensions#
+4756
+4400
+
+#Music#
+level1.mp3
+#Babar#
+
+0
+4000
+1
+
+#Sets#
+32
+butterfly/butterfly 2477 3513
+butterfly/butterfly 2158 3437
+butterfly/butterfly 2557 3669
+butterfly/butterfly 2600 3620
+butterfly/butterfly 2513 3633
+butterfly/butterfly 2582 3874
+butterfly/butterfly 2525 3828
+mushroom/mushroom 1610 4224
+mushroom/mushroom 1533 3906
+mushroom/mushroom 1793 3762
+mushroom/mushroom 3776 3542
+mushroom/mushroom 3718 3210
+mushroom/mushroom 4580 3237
+mushroom/mushroom 4540 3235
+mushroom/mushroom 3929 815
+mushroom/mushroom 4303 400
+mushroom/mushroom 2746 696
+mushroom/mushroom 1907 731
+mushroom/mushroom 1081 569
+mushroom/mushroom 508 1499
+mushroom/mushroom 416 1930
+butterfly/butterfly 4149 2957
+butterfly/butterfly 4590 69
+butterfly/butterfly 4536 53
+butterfly/butterfly 4515 177
+butterfly/butterfly 3040 308
+butterfly/butterfly 2627 514
+butterfly/butterfly 792 514
+butterfly/butterfly 907 430
+butterfly/butterfly 285 1018
+butterfly/butterfly 471 1836
+butterfly/butterfly 302 1753
+!
+#Statics#
+67
+water1 -93 4299 0
+jungle_hard_block_6 -22 4070 0
+jungle_hard_block_2 424 4292 0
+jungle_hard_block_5 1366 3818 0
+water1 1940 4282 0
+water1 1164 4270 0
+jungle_hard_block_1 1578 4276 0
+jungle_hard_block_4 1799 4275 0
+jungle_hard_block_5 920 4070 0
+water1 2301 4286 0
+block7 2432 3071 0
+water1 2896 4277 0
+jungle_hard_block_4 2769 4268 0
+jungle_hard_block_1 2550 4270 0
+jungle_hard_block_1 2964 3547 0
+jungle_hard_block_5 3184 3293 0
+water1 3257 4282 0
+water1 3609 4286 0
+water1 3967 4292 0
+jungle_hard_block_1 3758 3591 0
+jungle_block_3 4132 3288 0
+jungle_block_2 3632 3261 0
+jungle_hard_block_3 3979 3584 0
+jungle_hard_block_4 4472 3591 0
+jungle_block_4 4632 3295 0
+jungle_set_1 377 4296 0
+jungle_set_3 789 4095 0
+jungle_set_2 506 4143 0
+jungle_set_1 1354 4049 0
+jungle_hard_block_5 1809 3563 0
+jungle_set_4 2043 3564 0
+jungle_hard_block_4 2256 3563 0
+jungle_set_5 2784 3314 0
+jungle_set_1 3205 3518 0
+jungle_set_2 4145 3140 0
+jungle_block_1 1595 1744 0
+jungle_block_4 1813 1744 0
+jungle_block_4 3967 875 0
+jungle_block_6 3519 621 0
+jungle_block_1 4054 450 0
+jungle_block_4 4274 450 0
+jungle_block_3 3020 615 0
+jungle_block_5 2573 620 0
+jungle_block_3 2072 866 0
+jungle_block_6 1628 617 0
+jungle_block_2 1129 584 0
+jungle_block_5 683 616 0
+jungle_block_1 462 870 0
+jungle_block_2 -14 1181 0
+jungle_block_4 884 1342 0
+jungle_block_5 440 1341 0
+jungle_block_1 221 1597 0
+jungle_block_6 -8 1728 0
+jungle_block_4 438 1981 0
+jungle_set_1 3504 600 0
+jungle_set_1 4105 440 0
+jungle_set_1 4455 443 0
+jungle_set_2 4371 298 0
+jungle_set_3 4002 652 0
+jungle_set_5 2382 628 0
+jungle_set_4 601 835 0
+jungle_block_4 483 1214 0
+jungle_set_1 3000 599 0
+jungle_set_2 2897 496 0
+jungle_set_1 183 1187 0
+jungle_set_2 916 1191 0
+jungle_warning_board 4257 372 0
+!
+#Monsters#
+0
+!
+#Events#
+49
+event shotgun 1776 4175
+event peanut 1927 4141
+event peanut 2023 4086
+event peanut 2129 4083
+event peanut 2220 4151
+event peanut 2343 4134
+event peanut 2441 4087
+event peanut 2544 4081
+event peanut 2633 4153
+event peanut 2366 3285
+event peanut 2445 3156
+event peanut 2552 3033
+event peanut 2689 3034
+event peanut 2327 3417
+event peanut 3854 3504
+event peanut 3954 3507
+event peanut 4074 3505
+event peanut 4188 3499
+event peanut 4317 3502
+event peanut 4464 3503
+event machinegun 2255 3455
+event rocket_launcher 1782 1641
+event victory 540 1880
+event heart 4595 3507
+event heart 4269 310
+event heart 1363 961
+event peanut 3231 520
+event peanut 3224 435
+event peanut 3223 335
+event peanut 3218 230
+event machinegun 3217 90
+event peanut 3730 582
+event peanut 3798 503
+event peanut 3881 431
+event peanut 3994 357
+event peanut 4105 346
+event peanut 1804 551
+event peanut 1707 510
+event peanut 1584 494
+event peanut 1459 491
+event peanut 1336 496
+event peanut 1253 491
+event peanut 1082 493
+event peanut 968 536
+event peanut 867 1125
+event peanut 121 1509
+event peanut 734 1833
+event peanut 366 768
+event shotgun 4696 3
+!
+#MovingPlatforms#
+8
+block8 2633 3593 2660 3975
+block8 4520 2561 4530 3009
+block8 4509 2281 3946 2261
+block8 4525 1610 4508 2024
+block8 4000 1733 4025 2008
+block8 3790 1642 3349 1642
+block8 4260 1087 4524 1327
+block8 3143 1636 2724 1630
+!
+#FallingPlatforms#
+3
+block8 2203 4264
+block8 2393 1741
+block8 1277 1031
+!
+#Triggers#
+12
+#trig#
+#editor pos#
+617 4156
+#zone#
+2
+704 4022 1073 4367
+704 4022 1073 4367
+#triggerables#
+3
+#x# 1941
+#y# 3537
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 1585
+#y# 3753
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 1200
+#y# 3977
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+2785 2930
+#zone#
+2
+2551 2887 2956 3206
+2551 2887 2956 3206
+#triggerables#
+4
+#x# 3106
+#y# 2744
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 3163
+#y# 2939
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 2379
+#y# 2984
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 2392
+#y# 2786
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1840 4051
+#zone#
+2
+1749 4118 1889 4285
+1749 4118 1889 4285
+#triggerables#
+1
+#x# 2655
+#y# 4144
+#nature# monster
+#text# "maphyar"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+210 3890
+#zone#
+2
+1 3851 242 4172
+1 3851 242 4172
+#triggerables#
+1
+#x# 212
+#y# 3785
+#nature# dialog
+#text# "<elmar> Ahah ! Alors comme ça tu rentres dans mon territoire ? Toi et ta salopette n'etes pas les bienvenus ! Et si tu cherches à te venger vous devrez en subir les consequences !"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+4365 2156
+#zone#
+2
+4349 2050 4742 2445
+4349 2050 4742 2445
+#triggerables#
+2
+#x# 4146
+#y# 1673
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 3699
+#y# 1994
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+4362 202
+#zone#
+2
+4130 236 4433 488
+4130 236 4433 488
+#triggerables#
+4
+#x# 3561
+#y# 495
+#nature# monster
+#text# "maphyar"
+#endtriggerable# 
+#x# 3874
+#y# 236
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 4586
+#y# 333
+#nature# monster
+#text# "fubob"
+#endtriggerable# 
+#x# 4305
+#y# 141
+#nature# dialog
+#text# "<elmar> Ahah tu y as cru hein ? Ah l'attaque !!"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+3484 423
+#zone#
+3
+3438 411 3588 649
+3438 411 3588 649
+3438 411 3588 649
+#triggerables#
+1
+#x# 2952
+#y# 492
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+2957 439
+#zone#
+2
+2890 373 3099 669
+2890 373 3099 669
+#triggerables#
+4
+#x# 2561
+#y# 697
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 2082
+#y# 762
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 2276
+#y# 756
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+#x# 3448
+#y# 511
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+1208 442
+#zone#
+2
+1161 398 1371 677
+1161 398 1371 677
+#triggerables#
+1
+#x# 1644
+#y# 491
+#nature# monster
+#text# "sanglichon"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+604 701
+#zone#
+2
+466 685 640 936
+466 685 640 936
+#triggerables#
+1
+#x# 302
+#y# 1093
+#nature# monster
+#text# "maphyar"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+469 1095
+#zone#
+2
+548 1064 676 1247
+548 1064 676 1247
+#triggerables#
+1
+#x# 930
+#y# 1232
+#nature# monster
+#text# "maphyar"
+#endtriggerable# 
+
+#trig#
+#editor pos#
+318 1470
+#zone#
+2
+234 1446 387 1645
+234 1446 387 1645
+#triggerables#
+1
+#x# 44
+#y# 1633
+#nature# monster
+#text# "gailapin"
+#endtriggerable# 
+
+!

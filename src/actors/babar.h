@@ -287,10 +287,10 @@ class Babar: public Actor, public Sonorisable {
 		 *	@brief Tue Babar (fait perdre une vie)
 		 */
 		void die();
-		
+
 		void lock(int time);
 		void unlock();
-		
+
 		bool locked() const;
 
         /**
@@ -332,7 +332,7 @@ class Babar: public Actor, public Sonorisable {
 		/*!
 		*	@brief Accesseur
 		*	@return L'etat de babar
-		*/		
+		*/
         state_player get_state() const;
 
 		/*!
@@ -367,6 +367,8 @@ class Babar: public Actor, public Sonorisable {
 		 *	@param h La nouvelle hauteur de babar
 		 */
 		virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}
+
+		void set_peanuts(int pean);
 };
 
 #endif
