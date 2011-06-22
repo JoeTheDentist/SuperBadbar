@@ -369,6 +369,8 @@ class Babar: public Actor, public Sonorisable {
 		virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}
 
 		void set_peanuts(int pean);
+
+		void set_lifes(int life);
 };
 
 #endif

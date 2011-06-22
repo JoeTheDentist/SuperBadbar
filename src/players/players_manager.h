@@ -18,6 +18,7 @@ class Players_manager {
 
     public :
         static int last_peanuts;
+        static int last_lifes;
 
         /**
          *  @brief Constructeur

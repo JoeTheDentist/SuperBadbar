@@ -38,6 +38,7 @@
 #include "../players/players_manager.h"
 
 int Players_manager::last_peanuts = 0;
+int Players_manager::last_lifes = 3;
 
 Game_engine::Game_engine() :
 	m_monsters_manager(new Monsters_manager()),
@@ -68,6 +69,7 @@ void Game_engine::init_game_engine(std::string level_name, Camera *camera,
     gPlayers = new Players_manager();
     gPlayers->init_players_manager(&analyser);
     gPlayers->local_player()->set_peanuts(Players_manager::last_peanuts);
+    gPlayers->local_player()->set_lifes(Players_manager::last_lifes);
 	m_monsters_manager->init_monsters_manager(&analyser);
 	gEvent->init_events_manager(gStatic, this, pictures_container);
 	gEvent->load_events(&analyser);

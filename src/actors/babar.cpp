@@ -651,3 +651,8 @@ void Babar::set_peanuts(int pean)
 {
     m_peanuts = pean;
 }
+
+void Babar::set_lifes(int life)
+{
+    m_lifes = life;
+}
