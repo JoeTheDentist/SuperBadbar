@@ -15,6 +15,7 @@
 #include "../video/surface.h"
 #include "../actors/babar.h"
 #include "../items/elmar_machine_gun.h"
+#include "../video/transition_screen.h"
 
 Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
 	Boss(name, posx, posy)
@@ -40,6 +41,15 @@ Boss_elmer::Boss_elmer(Analyser *analyserLevel):
 
 Boss_elmer::~Boss_elmer()
 {
+    /* dialogues */
+
+    Transition_screen * game_over = new Transition_screen("end.png", "END", "Le combat commence seulement !");
+	game_over->display(gGraphics->get_camera());
+
+	game_over->wait_for_player();
+	gSound->play_music();
+
+	delete game_over;
 }
 
 void Boss_elmer::update_speed_simple()
