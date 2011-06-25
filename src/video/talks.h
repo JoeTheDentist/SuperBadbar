@@ -67,7 +67,7 @@ private:
 	bool m_active; // vrai si le talks doit etre affiche
 	std::string m_text; // la replique courante
 	bool m_waiting_for_enter; // vrai si on doit attendre "entree" avant de continuer
-	bool m_have_to_leave;
+	bool m_have_to_leave; // vrai si le jeu doit etre quitte
 	std::queue < std::queue < Special_letter * > > m_cell_letters;
 
 public:
@@ -125,7 +125,7 @@ public:
 	void display();
 
 	/*!
-	*	@brief Coupe le texte en parallele et le stocke dans la liste de celllules
+	*	@brief Coupe le texte et le stocke dans la liste de celllules
 	*	@param str Le texte a couper
 	*/
 	void aux_cut_text(std::string str);
@@ -179,8 +179,16 @@ public:
 	*/
 	void clear_lines();
 
+	/*!
+	* 	@brief Mise a jour de la taille des lettres
+	*/
 	void update_letters();
 
+	/*!
+	*	@brief Convertit une chaine (dialogue) en liste de chaines (mots) 
+	*	@param str La chaine correspondant aux paroles d'un personnage
+	*	@return La liste de mots
+	*/
 	static std::list< std::string > string_to_list_words(std::string str);
 
 	static std::list< word_and_length > words_to_words_and_length(std::list < std::string > words);
