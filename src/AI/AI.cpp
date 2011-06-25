@@ -5,6 +5,7 @@
 #include "../actors/projectiles.h"
 #include "../actors/babar.h"
 #include "../players/players_manager.h"
+#include "../util/rect.h"
 
 AI::AI(Rect * pos)
 {

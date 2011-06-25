@@ -22,6 +22,7 @@
 #include "../game/static_data.h"
 #include "../physic/collisions_manager.h"
 #include "../util/analyser.h"
+#include "../util/rect.h"
 #include "../sound/sound_engine.h"
 #include "../actors/projectiles_manager.h"
 #include "../util/globals.h"
@@ -195,12 +196,11 @@ void Monsters_manager::delete_dead_monsters()
 Rect Monsters_manager::closer_monster_pos(Rect rect, int radius)
 {
 	Rect res;
-	res.x = 0;
-	res.y = 0;
 	radius *= radius; // on regarde des normes au carre
 	for (std::list<Monster *>::iterator it = m_monsters.begin(); it != m_monsters.end(); it++) {
-		if (norm_2((*it)->position(), rect) < radius) {
-			radius = norm_2((*it)->position(), rect);
+		int newradius = ((*it)->position() - rect).norm_2();
+		if (newradius < radius) {
+			radius = newradius;
 			res = (*it)->position();
 		}
 	}

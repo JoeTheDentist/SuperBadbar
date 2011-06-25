@@ -36,5 +36,5 @@ Surface_frame::Surface_frame(Rect rect, int r, int g, int b):
 
 Surface_frame::~Surface_frame()
 {
-	delete m_surface;
+//~ 	delete m_surface;
 }

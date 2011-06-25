@@ -51,7 +51,7 @@ void Rocket::update_speed()
 		Projectile::update_speed();
 	} else {
 		PRINT_DEBUG(1, "YOP")
-		if (det(monsterPos - position(), m_speed) > 0)
+		if ((monsterPos - position()).det(m_speed) > 0)
 			changeDirDirect();
 		else
 			changeDirIndirect();

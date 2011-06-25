@@ -29,6 +29,7 @@
 #include <stdio.h>
 
 //~ #define DEBUG_COLL 1
+#define ARG_ANALYSER_ON
 #define DEBUG 2
 #define TRACE 2
 #define TRACE_CONSTR 2 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */

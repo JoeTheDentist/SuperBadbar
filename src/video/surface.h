@@ -10,24 +10,14 @@
 #ifndef _SURFACE_
 #define _SURFACE_
 
+#include "../util/rect.h"
 #include <string>
 
 class Pictures_container;
 struct SDL_Surface;
 
-struct Rect {
-    int x;
-    int y;
-    int w;
-    int h;
-};
 
-int norm_2(const Rect rect1, const Rect rect2);
-int det(const Rect rect1, const Rect rect2);
-// les h et w sont ceux du rect1
-Rect operator+(const Rect &rect1, const Rect &rect2);
-Rect operator-(const Rect &rect1, const Rect &rect2);
-int operator*(const Rect &rect1, const Rect &rect2);
+
 
 /*!
 *	@class Surface

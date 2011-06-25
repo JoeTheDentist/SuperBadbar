@@ -19,36 +19,7 @@
 
 Pictures_container *Surface::m_pictures_container = NULL;
 
-int norm_2(const Rect rect1, const Rect rect2)
-{
-	return (rect1 - rect2) * (rect1 - rect2);
-}
 
-int det(const Rect rect1, const Rect rect2)
-{
-	return rect1.x * rect2.y - rect2.x * rect1.y;
-}
-
-Rect operator+ (const Rect &rect1, const Rect &rect2)
-{
-	Rect res = rect1;
-	res.x += rect2.x;
-	res.y += rect2.y;
-	return res;
-}
-
-Rect operator- (const Rect &rect1, const Rect &rect2)
-{
-	Rect res = rect1;
-	res.x -= rect2.x;
-	res.y -= rect2.y;
-	return res;
-}
-
-int operator* (const Rect &rect1, const Rect &rect2)
-{
-	return rect1.x * rect2.x + rect1.y * rect2.y;
-}
 
 Surface::Surface(std::string filename)
 {
