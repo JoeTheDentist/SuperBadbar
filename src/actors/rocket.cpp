@@ -11,7 +11,7 @@
 #include "../util/debug.h"
 #include "../sprites/sprites_manager.h"
 #include "../util/globals.h"
-#include "../game/game_engine.h"
+#include "../game/GameEngine.h"
 #include "../actors/monsters_manager.h"
 #include "explosion.h"
 
@@ -46,7 +46,7 @@ Rocket::~Rocket()
 
 void Rocket::update_speed()
 {
-    Rect monsterPos = gGame_engine->get_monsters_manager()->closer_monster_pos(position(), 1000);
+    Rect monsterPos = gGameEngine->get_monsters_manager()->closer_monster_pos(position(), 1000);
 	if (monsterPos.x == 0 && monsterPos.y == 0) {
 		Projectile::update_speed();
 	} else {

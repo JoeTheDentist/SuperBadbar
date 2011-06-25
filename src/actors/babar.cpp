@@ -14,16 +14,16 @@
 #include "babar.h"
 #include "../util/debug.h"
 #include "../game/game.h"
-#include "../physic/collisions_manager.h"
-#include "../physic/bindable_platform.h"
+#include "../physic/CollisionsManager.h"
+#include "../physic/BindablePlatform.h"
 #include "../control/keyboard.h"
 #include "../game/static_data.h"
-#include "../actors/projectiles_manager.h"
+#include "../actors/ProjectilesManager.h"
 #include "../video/surface.h"
 #include "../util/globals.h"
-#include "../sprites/sprites_manager.h"
+#include "../sprites/SpritesManager.h"
 
-class Sprites_manager;
+class SpritesManager;
 
 /*********************************
 **	Méthodes de Babar 	**
@@ -119,9 +119,9 @@ void Babar::move(int x, int y)
 bool Babar::is_on_something()
 {
 	if (binded()) {
-		return Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos));
+		return CollisionsManager::is_down_coll(m_bind->down_collision_type(m_rel_pos));
 	} else {
-		return Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()));
+		return CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()));
 	}
 
 }
@@ -140,7 +140,7 @@ void Babar::update_pos()
 		if (binded()) {
 			coll |= m_bind->down_collision_type(m_rel_pos);
 		}
-		if (Collisions_manager::is_down_coll(coll)){
+		if (CollisionsManager::is_down_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
 			if ( !binded() ) {
@@ -160,7 +160,7 @@ void Babar::update_pos()
 		if (binded()) {
 			coll |= m_bind->up_collision_type(m_rel_pos);
 		}
-		if (Collisions_manager::is_up_coll(coll)){
+		if (CollisionsManager::is_up_coll(coll)){
 			speed_y = 0;
 			m_speed.y = 0;
 		}
@@ -177,7 +177,7 @@ void Babar::update_pos()
 		if (binded()) {
 			coll |= m_bind->right_collision_type(m_rel_pos);
 		}
-		if (Collisions_manager::is_right_coll(coll)){
+		if (CollisionsManager::is_right_coll(coll)){
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
@@ -200,7 +200,7 @@ void Babar::update_pos()
 		if (binded()) {
 			coll |= m_bind->left_collision_type(m_rel_pos);
 		}
-		if (Collisions_manager::is_left_coll(coll)){
+		if (CollisionsManager::is_left_coll(coll)){
 			speed_x = 0;
 			m_speed.x = 0;
 		} else {
@@ -265,7 +265,7 @@ void Babar::update_state()
 
 	update_direction();
 
-    if ( Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position())) ) {
+    if ( CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position())) ) {
         interrupt_jump();
     }
 
@@ -403,7 +403,7 @@ void Babar::double_jump()
 
 bool Babar::can_go_down() const
 {
-	Collisions_matrix *plop;
+	CollisionsMatrix *plop;
 	Rect pos;
 	if (binded()) {
 		plop = m_bind;
@@ -413,7 +413,7 @@ bool Babar::can_go_down() const
 		pos = m_pos;
 	}
 	return (gKeyboard->key_down(k_jump) && gKeyboard->key_down(k_down)
-				&& Collisions_manager::is_down_coll(plop->down_collision_type(pos)))
+				&& CollisionsManager::is_down_coll(plop->down_collision_type(pos)))
 				&& !plop->double_collision(pos);
 }
 
@@ -422,7 +422,7 @@ void Babar::go_down()
 	m_pos.y += 2*BOX_SIZE;
 	m_speed.y += BOX_SIZE;
 	if (binded()) {
-		while (Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos))){
+		while (CollisionsManager::is_down_coll(m_bind->down_collision_type(m_rel_pos))){
 			if (m_bind->double_collision(m_rel_pos)) {
 				m_rel_pos.y -= BOX_SIZE;
 				break;
@@ -432,7 +432,7 @@ void Babar::go_down()
 			}
 		}
 	} else {
-		while (Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(m_pos))){
+		while (CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(m_pos))){
 			if (gCollision->get_matrix()->double_collision(m_pos)) {
 				m_pos.y -= BOX_SIZE;
 				break;
@@ -498,7 +498,7 @@ void Babar::die()
 	lock(BABAR_RESU_TIME);
 	m_sprite->no_pic();
 	if ( !(gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->static_data_height()) ) {
-        gGame_engine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
+        gGameEngine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
 	}
 	prepare_sound(BABAR_SOUNDS_R + "die.wav");
 }
@@ -542,7 +542,7 @@ bool Babar::binded() const
 	return m_bind;
 }
 
-void Babar::bind(Bindable_platform *platform)
+void Babar::bind(BindablePlatform *platform)
 {
 	if (platform->can_bind()) {
 		unbind();
@@ -621,14 +621,14 @@ bool Babar::check_unbind()
 	rectdown.y += 1;
 
 	if (binded()) {
-		if (!Collisions_manager::is_down_coll(m_bind->down_collision_type(m_rel_pos))
-			&& !Collisions_manager::is_down_coll(m_bind->down_collision_type(rectdown))) {
+		if (!CollisionsManager::is_down_coll(m_bind->down_collision_type(m_rel_pos))
+			&& !CollisionsManager::is_down_coll(m_bind->down_collision_type(rectdown))) {
 			PRINT_DEBUG(1, "AIUYGFSGDF");
 			unbind();
 			return true;
 		}
 		// si on descend et qu'on rencontre un static, on s'y arrete
-		if (m_bind->is_going_down() && Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()))) {
+		if (m_bind->is_going_down() && CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()))) {
 			unbind();
 			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
 			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")

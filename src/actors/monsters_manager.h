@@ -24,10 +24,10 @@
 class Monster;
 class Camera;
 class Babar;
-class Static_data;
+class StaticData;
 class Analyser;
-class Collisions_manager;
-class Sound_engine;
+class CollisionsManager;
+class SoundEngine;
 
 /**
  * 	@class Monsters_manager
@@ -60,7 +60,7 @@ public:
 
 
 	/*!
-	*	@brief Charge un monstre depuis l'analyser 
+	*	@brief Charge un monstre depuis l'analyser
 	*	@param analyser L'analyser avec le curseur place avant un monstre
 	*/
 	void load_monster(Analyser *analyser);
@@ -80,8 +80,8 @@ public:
 
 	/*!
 	* 	@brief Met à jour la position des monstres
-	*	@param static_data DOnnées du niveau
-	*	@param collisions_manager Gestionnaire de collisions
+	*	@param StaticData DOnnées du niveau
+	*	@param CollisionsManager Gestionnaire de collisions
 	*/
 	void monsters_update_pos();
 
@@ -104,7 +104,7 @@ public:
 
 	/*!
 	 * 	@brief Joue les sons à jouer ce cycle
-	 *	@param sound_engine Gestionnaire de son
+	 *	@param SoundEngine Gestionnaire de son
 	*/
 	void play_sounds();
 
@@ -145,7 +145,7 @@ public:
 	* 	@brief Supprime les monstres qui n'ont plus de vies
 	*/
 	void delete_dead_monsters();
-	
+
 	/*!
 	*	@brief Cherche le monstre le plus proche de la position donnee
 	*	@param rect La position dont le monstre doit etre proche

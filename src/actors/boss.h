@@ -12,7 +12,7 @@
 
 
 #include "../actors/monsters.h"
-#include "../video/life_bar_possessor.h"
+#include "../video/LifeBarPossessor.h"
 
 /**
  * 	@class Boss
@@ -20,7 +20,7 @@
  *
  */
 
-class Boss : public Monster, public Life_bar_possessor {
+class Boss : public Monster, public LifeBarPossessor {
 public:
 
 	/*!

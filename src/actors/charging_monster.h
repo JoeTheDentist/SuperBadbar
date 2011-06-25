@@ -1,17 +1,17 @@
 /**
- * 	@file charging_monster.h
- * 	@brief Header de la classe Charging_monster
+ * 	@file ChargingMonster.h
+ * 	@brief Header de la classe ChargingMonster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date mai 2011
  *
  */
 
-#ifndef _CHARGING_MONSTER_
-#define _CHARGING_MONSTER_
+#ifndef _ChargingMonster_
+#define _ChargingMonster_
 
 #include "../actors/monsters.h"
-#include "../actors/walking_monsters.h"
+#include "../actors/WalkingMonsters.h"
 #include "../AI/AI.h"
 
 class Analyser;
@@ -19,35 +19,35 @@ class AI;
 
 
 /**
- * 	@class Charging_monster
+ * 	@class ChargingMonster
  * 	@brief Monstre qui suit babar en marchant
  *
  */
 
-class Charging_monster : public Walking_monster {
+class ChargingMonster : public WalkingMonster {
 private:
 	const int m_speed_max;
 	int m_time_end_charge;
 public:
-	
+
 	/*!
 	 *	@brief Constructeur
-	 *	@param name Le nom du monstre 
+	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
 	 *	@param posy Position initiale
 	*/
 
-	Charging_monster(std::string name, int posx, int posy);
+	ChargingMonster(std::string name, int posx, int posy);
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	*/
-	Charging_monster(Analyser *analyserLevel);
+	ChargingMonster(Analyser *analyserLevel);
 
 	/**
 	 * 	@brief Destructeur
 	 */
-	~Charging_monster();
+	~ChargingMonster();
 
 	/**
 	 * 	@brief Mise à jour de la vitesse du monstre (non ai)

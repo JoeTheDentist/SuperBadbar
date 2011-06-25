@@ -23,9 +23,9 @@ enum direction {
 #include "../sprites/sprites.h"
 #include "../video/displayable.h"
 
-class Static_data;
+class StaticData;
 class Keyboard;
-class Collisions_manager;
+class CollisionsManager;
 class Sprite;
 
 /**
@@ -52,8 +52,8 @@ public:
 
 	/*!
 	 *	@brief Met à jour la position du sprite
-	 *	@param static_data Données du jeu
-	 *	@param collisions_manager Gestionnaire de collisions
+	 *	@param StaticData Données du jeu
+	 *	@param CollisionsManager Gestionnaire de collisions
 	*/
     void update_pos();
 
@@ -85,15 +85,15 @@ public:
 	*	@return La direction du sprite
 	*/
 	direction dir() const;
-	
+
 	/*!
 	*	@brief Accesseur
 	*	@return La position du centre du rectangle de l'acteur
 	*
 	*	Les champs h et w du retour n'ont pas de sens
-	*/ 
+	*/
 	Rect center() const;
-	
+
 	/*!
 	 *	@brief Mutateur: augmente la position de l'actor de x et y sans tenir compte des collisions
 	 *	@param x Le deplacement x
@@ -102,18 +102,18 @@ public:
 	 *	move et set_pos sont les seules methodes pouvant directement modifier la position de l'actor
 	*/
 	virtual void move(int x, int y);
-	
+
 	/*!
 	 *	@brief Mutateur: met a jour la position de l'actor de x et y sans tenir compte des collisions
 	 *	@param x Le nouveau x
 	 *	@param y Le nouveau y
 	 *
 	 *	move et set_pos sont les seules methodes pouvant directement modifier la position de l'actor
-	*/		
+	*/
 	virtual void set_pos(int x, int y);
-	
+
 	virtual void do_stay_in_level();
-	
+
 };
 
 

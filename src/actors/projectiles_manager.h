@@ -1,14 +1,14 @@
 /**
- * 	@file projectiles_manager.h
- * 	@brief Header de la classe Projectiles_manager
+ * 	@file ProjectilesManager.h
+ * 	@brief Header de la classe ProjectilesManager
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
  *
  */
 
-#ifndef _PROJECTILES_MANAGER
-#define _PROJECTILES_MANAGER
+#ifndef _ProjectilesManager
+#define _ProjectilesManager
 
 #include <list>
 
@@ -18,12 +18,12 @@ enum dmg_chan {
 };
 
 class Projectile;
-class Static_data;
-class Collisions_manager;
+class StaticData;
+class CollisionsManager;
 class Camera;
 
 /**
- * 	@class Projectiles_manager
+ * 	@class ProjectilesManager
  * 	@brief Gestionnaire de projectiles
  *
  *	@warning pour le moment on ne dispose que des projectiles de babar
@@ -34,7 +34,7 @@ class Camera;
  *
  *	Le héros est sensible aux projectiles de ses ennemis et vice versa
  */
-class Projectiles_manager {
+class ProjectilesManager {
 private:
 	std::list<Projectile*> m_proj[LAST_dmg_chan];
 public:
@@ -42,12 +42,12 @@ public:
 	/*!
 	 *	@brief Constructeur
 	*/
-	Projectiles_manager();
+	ProjectilesManager();
 
 	/*!
 	 *	@brief Destructeur
 	*/
-	~Projectiles_manager();
+	~ProjectilesManager();
 
 	/*!
 	 *	@brief Met à jour la position de l'ensemble des projectiles
@@ -66,7 +66,7 @@ public:
 
 	/*!
 	 *	@brief Supprime les projectiles à supprimer
-	 *	@param static_data Les données du niveau
+	 *	@param StaticData Les données du niveau
 	*/
 	void delete_old_projectiles();
 

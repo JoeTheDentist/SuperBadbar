@@ -1,34 +1,34 @@
-#ifndef ELMAR_TILE_H
-#define ELMAR_TILE_H
+#ifndef ElmarTile_H
+#define ElmarTile_H
 
 #include "projectiles.h"
 
-class Elmar_tile : public Projectile
+class ElmarTile : public Projectile
 {
     public:
         /**
          *  @brief Constructeur
          */
-        Elmar_tile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type = ALL);
+        ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type = ALL);
 
         /*!
          * 	@brief Destructeur
         */
-         ~Elmar_tile();
+         ~ElmarTile();
 
         /*!
-         * 	@brief Met à jour la position du Elmar_tile
-         *	@param collisions_manager Gestionnaire de collisions
+         * 	@brief Met à jour la position du ElmarTile
+         *	@param CollisionsManager Gestionnaire de collisions
         */
-        virtual void update_pos(Collisions_manager *collisions_manager);
+        virtual void update_pos(CollisionsManager *CollisionsManager);
 
         /*!
-         * 	@brief Met à jour de la direction du Elmar_tile
+         * 	@brief Met à jour de la direction du ElmarTile
         */
         virtual void update_state();
 
         /*!
-         * 	@brief Met à jour la position du Elmar_tile
+         * 	@brief Met à jour la position du ElmarTile
         */
         virtual void update_speed();
 
@@ -39,13 +39,13 @@ class Elmar_tile : public Projectile
 
         /*!
          * 	@brief Accesseur
-         *	@return Le nombre de points de vies que fait perdre le Elmar_tile
+         *	@return Le nombre de points de vies que fait perdre le ElmarTile
         */
         virtual unsigned int damage() const;
 
         /*!
          * 	@brief Accesseur
-         *	@return La vitesse du Elmar_tile
+         *	@return La vitesse du ElmarTile
         */
         virtual Rect speed() const;   /* Accesseur */
 
@@ -56,7 +56,7 @@ class Elmar_tile : public Projectile
         virtual bool dead() const;
 
         /*!
-         *	@brief Mutateur: "tue" le Elmar_tile
+         *	@brief Mutateur: "tue" le ElmarTile
         */
         virtual void kill();
 
@@ -66,4 +66,4 @@ class Elmar_tile : public Projectile
         bool invincible();
 };
 
-#endif // ELMAR_TILE_H
+#endif // ElmarTile_H

@@ -1,6 +1,6 @@
 /**
- * 	@file charging_monster.cpp
- * 	@brief Implementation de la classe Charging_monster
+ * 	@file ChargingMonster.cpp
+ * 	@brief Implementation de la classe ChargingMonster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date mai 2011
@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <cmath>
 
-#include "charging_monster.h"
+#include "ChargingMonster.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
 #include "../video/camera.h"
@@ -23,8 +23,8 @@
 #include "../AI/AI.h"
 
 
-Charging_monster::Charging_monster(std::string name, int posx, int posy):
-	Walking_monster(name, posx, posy),
+ChargingMonster::ChargingMonster(std::string name, int posx, int posy):
+	WalkingMonster(name, posx, posy),
 	m_speed_max(BABAR_SPEED * 2),
 	m_time_end_charge(0)
 {
@@ -32,36 +32,36 @@ Charging_monster::Charging_monster(std::string name, int posx, int posy):
 	Rect babarpos = gPlayers->closer_babar(position())->position();
 	if (babarpos.x > position().x) {
 		m_dir = RIGHT;
-		m_speed.x = m_speed_max; 
+		m_speed.x = m_speed_max;
 	} else {
 		m_dir = LEFT;
 		m_speed.x = -m_speed_max;
 	}
 }
 
-Charging_monster::Charging_monster(Analyser *analyserLevel):
-	Walking_monster(analyserLevel),
+ChargingMonster::ChargingMonster(Analyser *analyserLevel):
+	WalkingMonster(analyserLevel),
 	m_speed_max(BABAR_SPEED * 2),
 	m_time_end_charge(0)
 {
 	m_state = WALKING;
 }
 
-Charging_monster::~Charging_monster()
+ChargingMonster::~ChargingMonster()
 {
 }
 
-void Charging_monster::update_speed_simple()
+void ChargingMonster::update_speed_simple()
 {
 	Rect babarpos = gPlayers->closer_babar(position())->position();
 	if (m_time_end_charge == 0) {
 		if (babarpos.x > position().x) {
 			m_dir = RIGHT;
-			m_speed.x = m_speed_max; 
+			m_speed.x = m_speed_max;
 		} else {
 			m_dir = LEFT;
 			m_speed.x = -m_speed_max;
-		}	
+		}
 	}
 	if (abs(babarpos.x - m_pos.x) < 20 && m_time_end_charge <= 0) {
 		m_time_end_charge = 20;
@@ -70,14 +70,14 @@ void Charging_monster::update_speed_simple()
 	m_time_end_charge--;
 }
 
-void Charging_monster::update_speed_ai()
+void ChargingMonster::update_speed_ai()
 {
 	m_speed.y += GRAVITE;
 	Rect babarpos = gPlayers->closer_babar(position())->position();
 	if (m_time_end_charge == 0) {
 		if (babarpos.x > position().x) {
 			m_dir = RIGHT;
-			m_speed.x = m_speed_max; 
+			m_speed.x = m_speed_max;
 		} else {
 			m_dir = LEFT;
 			m_speed.x = -m_speed_max;

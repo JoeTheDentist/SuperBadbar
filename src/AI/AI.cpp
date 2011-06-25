@@ -4,7 +4,7 @@
 #include "AI.h"
 #include "../actors/projectiles.h"
 #include "../actors/babar.h"
-#include "../players/players_manager.h"
+#include "../players/PlayersManager.h"
 #include "../util/rect.h"
 
 AI::AI(Rect * pos)
@@ -58,7 +58,7 @@ double AI::eval(direction d) {
 
 double AI::eval_up()
 {
-    if ( !Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos)) ) {
+    if ( !CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos)) ) {
         return -1000000;
     }
 
@@ -81,7 +81,7 @@ double AI::eval_up()
 
 double AI::eval_down()
 {
-    if ( Collisions_manager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos))
+    if ( CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(*m_pos))
 				&& !gCollision->get_matrix()->double_collision(*m_pos) ) {
         return -1000000;
     }

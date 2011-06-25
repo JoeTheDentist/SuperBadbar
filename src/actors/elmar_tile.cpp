@@ -1,7 +1,7 @@
-#include "elmar_tile.h"
-#include "../sprites/sprites_manager.h"
+#include "ElmarTile.h"
+#include "../sprites/SpritesManager.h"
 
-Elmar_tile::Elmar_tile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
+ElmarTile::ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
 	PRINT_CONSTR(3, "Construction d'un elmar _tile")
     m_pos = pos;
@@ -28,7 +28,7 @@ Elmar_tile::Elmar_tile(Rect pos, direction h, unsigned int speedx, unsigned int 
 	m_chan = type;
 }
 
-void Elmar_tile::update_pos(Collisions_manager *collisions_manager)
+void ElmarTile::update_pos(CollisionsManager *CollisionsManager)
 {
     m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
@@ -37,8 +37,8 @@ void Elmar_tile::update_pos(Collisions_manager *collisions_manager)
 	unsigned int coll;
 	/* cas où le sprite descend */
 	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE) {
-		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
-		if (Collisions_manager::is_down_coll(coll)){
+		coll = CollisionsManager->get_matrix()->down_collision_type(m_pos);
+		if (CollisionsManager::is_down_coll(coll)){
 			m_dead = true;
 		} else {
 			m_pos.y += BOX_SIZE;
@@ -47,7 +47,7 @@ void Elmar_tile::update_pos(Collisions_manager *collisions_manager)
 
 	/* cas où le sprite monte */
 	for (int speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (Collisions_manager::is_up_coll(collisions_manager->get_matrix()->up_collision_type(m_pos))){
+		if (CollisionsManager::is_up_coll(CollisionsManager->get_matrix()->up_collision_type(m_pos))){
 			m_dead = true;
 		} else {
 			m_pos.y -= BOX_SIZE;
@@ -56,14 +56,14 @@ void Elmar_tile::update_pos(Collisions_manager *collisions_manager)
 
 	/* cas où le sprite va à droite */
 	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos)))
+			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
 	/* cas où le sprite va à gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos))) {
+			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;
 			}
 			m_pos.x -= BOX_SIZE;
@@ -72,12 +72,12 @@ void Elmar_tile::update_pos(Collisions_manager *collisions_manager)
 		m_dead = true;
 }
 
-void Elmar_tile::update_speed()
+void ElmarTile::update_speed()
 {
 
 }
 
-void Elmar_tile::update_state()
+void ElmarTile::update_state()
 {
     if ( m_speed.x > 0 ) {
         m_dir = LEFT;
@@ -88,32 +88,32 @@ void Elmar_tile::update_state()
     m_sprite->rand_pic();
 }
 
-void Elmar_tile::set_chan(dmg_chan chan)
+void ElmarTile::set_chan(dmg_chan chan)
 {
     m_chan = chan;
 }
 
-Elmar_tile::~Elmar_tile()
+ElmarTile::~ElmarTile()
 {
-	PRINT_CONSTR(3, "Destruction d'un Elmar_tile")
+	PRINT_CONSTR(3, "Destruction d'un ElmarTile")
 }
 
-unsigned int Elmar_tile::damage() const
+unsigned int ElmarTile::damage() const
 {
     return m_damage;
 }
 
-Rect Elmar_tile::speed() const
+Rect ElmarTile::speed() const
 {
     return m_speed;
 }
 
-bool Elmar_tile::dead() const
+bool ElmarTile::dead() const
 {
 	return m_dead;
 }
 
-void Elmar_tile::kill()
+void ElmarTile::kill()
 {
 	m_dead = true;
 	if ( !m_invincible ) {
@@ -122,7 +122,7 @@ void Elmar_tile::kill()
 	m_sprite = NULL;
 }
 
-bool Elmar_tile::invincible()
+bool ElmarTile::invincible()
 {
     return m_invincible;
 }

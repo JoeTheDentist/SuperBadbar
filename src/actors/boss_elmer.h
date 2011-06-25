@@ -1,14 +1,14 @@
 /**
- * 	@file boss_elmer.h
- * 	@brief Header de la classe Boss_elmer
+ * 	@file BossElmar.h
+ * 	@brief Header de la classe BossElmar
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date juin 2011
  *
  */
 
-#ifndef _BABAR_BOSS_ELMER_
-#define _BABAR_BOSS_ELMER_
+#ifndef _BABAR_BossElmar_
+#define _BABAR_BossElmar_
 
 #include "../actors/boss.h"
 
@@ -17,12 +17,12 @@ enum elmar_state {
 };
 
 /**
- * 	@class Boss_elmer
+ * 	@class BossElmar
  * 	@brief Elmer (premier boss)
  *
  */
 
-class Boss_elmer : public Boss {
+class BossElmar : public Boss {
 private:
     elmar_state m_elmar_state;
     int m_fire;
@@ -37,14 +37,14 @@ public:
 	 *	@param posy Position initiale
 	*/
 
-	Boss_elmer(std::string name, int posx, int posy);
+	BossElmar(std::string name, int posx, int posy);
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
 	*/
-	Boss_elmer(Analyser *analyserLevel);
+	BossElmar(Analyser *analyserLevel);
 
-	~Boss_elmer();
+	~BossElmar();
 
 	void update_speed_simple();
 
@@ -75,7 +75,7 @@ public:
     void elmar_jump();
 
     bool wait(int cycles);
-	
+
 	virtual void kill();
 
 };

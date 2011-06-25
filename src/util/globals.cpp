@@ -4,17 +4,17 @@
 
 #include "globals.h"
 
-Sound_engine * gSound = NULL;
-Collisions_manager * gCollision = NULL;
-Static_data * gStatic = NULL;
-Projectiles_manager * gProj = NULL;
-Events_manager * gEvent = NULL;
+SoundEngine * gSound = NULL;
+CollisionsManager * gCollision = NULL;
+StaticData * gStatic = NULL;
+ProjectilesManager * gProj = NULL;
+EventsManager * gEvent = NULL;
 //Babar * gBabar = NULL;
-Graphic_engine * gGraphics = NULL;
-Game_engine * gGame_engine = NULL;
+GraphicEngine * gGraphics = NULL;
+GameEngine * gGameEngine = NULL;
 Keyboard * gKeyboard = NULL;
 Stats * gStats = NULL;
-Players_manager * gPlayers = NULL;
+PlayersManager * gPlayers = NULL;
 
 int * gLocal_id = NULL;
 

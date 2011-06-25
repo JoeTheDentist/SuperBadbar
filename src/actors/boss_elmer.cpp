@@ -1,6 +1,6 @@
 /**
  * 	@file boss.cpp
- * 	@brief Implementation de la classe Boss_elmer
+ * 	@brief Implementation de la classe BossElmar
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date mai 2011
@@ -11,18 +11,18 @@
 #include <cmath>
 #include <stdlib.h>
 
-#include "boss_elmer.h"
+#include "BossElmar.h"
 #include "../video/surface.h"
 #include "../actors/babar.h"
-#include "../items/elmar_machine_gun.h"
+#include "../items/ElmarMachineGun.h"
 #include "../video/talks.h"
 #include "../util/globals.h"
 #include "../events/events_manager.h"
 
-Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
+BossElmar::BossElmar(std::string name, int posx, int posy):
 	Boss(name, posx, posy)
 {
-    m_weapon = new Elmar_machine_gun();
+    m_weapon = new ElmarMachineGun();
     m_fire = 0;
     m_elmar_state = ELMAR_FIRE;
     m_dir = LEFT;
@@ -30,10 +30,10 @@ Boss_elmer::Boss_elmer(std::string name, int posx, int posy):
     m_wait = 0;
 }
 
-Boss_elmer::Boss_elmer(Analyser *analyserLevel):
+BossElmar::BossElmar(Analyser *analyserLevel):
 	Boss(analyserLevel)
 {
-    m_weapon = new Elmar_machine_gun();
+    m_weapon = new ElmarMachineGun();
     m_fire = 0;
     m_elmar_state = ELMAR_FIRE;
     m_dir = LEFT;
@@ -41,7 +41,7 @@ Boss_elmer::Boss_elmer(Analyser *analyserLevel):
     m_wait = 0;
 }
 
-Boss_elmer::~Boss_elmer()
+BossElmar::~BossElmar()
 {
 
 	std::string text;
@@ -49,7 +49,7 @@ Boss_elmer::~Boss_elmer()
 	gGraphics->get_talks()->display_text(text);
 }
 
-void Boss_elmer::update_speed_simple()
+void BossElmar::update_speed_simple()
 {
     /*if ( gCollision->get_matrix()->can_fall(m_pos) ) {
         m_speed.x *= -1;
@@ -63,7 +63,7 @@ void Boss_elmer::update_speed_simple()
     m_speed.y += GRAVITE;
 }
 
-void Boss_elmer::update_speed_ia()
+void BossElmar::update_speed_ia()
 {
     /*if ( gCollision->get_matrix()->can_fall(m_pos) ) {
         m_speed.x *= -1;
@@ -78,7 +78,7 @@ void Boss_elmer::update_speed_ia()
 }
 
 
-void Boss_elmer::update()
+void BossElmar::update()
 {
     update_state();
 
@@ -93,48 +93,48 @@ void Boss_elmer::update()
     m_sprite->set_pos(m_pos);
 }
 
-bool Boss_elmer::bottom()
+bool BossElmar::bottom()
 {
     return ( m_pos.y + 2*m_pos.h > gStatic->static_data_height() );
 }
 
-bool Boss_elmer::top()
+bool BossElmar::top()
 {
     return ( m_pos.y + 2*m_pos.h < gStatic->static_data_height() );
 }
 
-bool Boss_elmer::in_bottom_left_corner()
+bool BossElmar::in_bottom_left_corner()
 {
     return  ( m_pos.x < 1 ) &&
             bottom();
 }
 
-bool Boss_elmer::in_bottom_right_corner()
+bool BossElmar::in_bottom_right_corner()
 {
     return  ( m_pos.x + (5*m_pos.w)/4 > gStatic->static_data_width() ) &&
             bottom();
 }
 
-bool Boss_elmer::in_top_left_corner()
+bool BossElmar::in_top_left_corner()
 {
     return  ( m_pos.x < m_pos.w/2 ) &&
             top();
 }
 
-bool Boss_elmer::in_top_right_corner()
+bool BossElmar::in_top_right_corner()
 {
     return  ( m_pos.x + (4*m_pos.w)/4 > gStatic->static_data_width() ) &&
             top();
 }
 
-bool Boss_elmer::in_bottom_middle()
+bool BossElmar::in_bottom_middle()
 {
     return ( m_pos.x + 30 > gStatic->static_data_width()/2 &&
              m_pos.x - 30 < gStatic->static_data_width()/2 ) &&
              bottom();
 }
 
-void Boss_elmer::update_state()
+void BossElmar::update_state()
 {
 	// comprotement d'Elmar
 	// De façon générale Elmar se met dans les coins et en fonction
@@ -154,7 +154,7 @@ void Boss_elmer::update_state()
 	}
 }
 
-void Boss_elmer::elmar_charge()
+void BossElmar::elmar_charge()
 {
     Rect babarpos = gPlayers->closer_babar(position())->position();
 
@@ -183,7 +183,7 @@ void Boss_elmer::elmar_charge()
     }
 }
 
-void Boss_elmer::elmar_fire()
+void BossElmar::elmar_fire()
 {
     if ( wait(10) ) {
         Rect babarpos = gPlayers->closer_babar(position())->position();
@@ -227,7 +227,7 @@ void Boss_elmer::elmar_fire()
     }
 }
 
-void Boss_elmer::elmar_jump()
+void BossElmar::elmar_jump()
 {
     Rect babarpos = gPlayers->closer_babar(position())->position();
     if ( m_speed.y == 0 || !gCollision->get_matrix()->can_fall(m_pos) ) {
@@ -240,7 +240,7 @@ void Boss_elmer::elmar_jump()
     }
 }
 
-bool Boss_elmer::wait(int cycles)
+bool BossElmar::wait(int cycles)
 {
     if ( m_wait == 0) {
         m_wait = cycles;
@@ -253,7 +253,7 @@ bool Boss_elmer::wait(int cycles)
     }
 }
 
-void Boss_elmer::kill()
+void BossElmar::kill()
 {
 	gEvent->add_end_level(1540, 1100);
 	Boss::kill();

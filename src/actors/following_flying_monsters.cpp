@@ -1,6 +1,6 @@
 /**
- * 	@file flying_monster.cpp
- * 	@brief Source de la classe Flying_monster
+ * 	@file FlyingMonster.cpp
+ * 	@brief Source de la classe FlyingMonster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
@@ -9,30 +9,30 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "following_flying_monsters.h"
+#include "following_FlyingMonsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "babar.h"
 #include "../players/players_manager.h"
 
-Following_flying_monster::Following_flying_monster(std::string name, int posx, int posy):
-	Flying_monster(name, posx, posy)
+Following_FlyingMonster::Following_FlyingMonster(std::string name, int posx, int posy):
+	FlyingMonster(name, posx, posy)
 {
 }
 
-Following_flying_monster::Following_flying_monster(Analyser *analyserLevel):
-	Flying_monster(analyserLevel)
-{
-
-}
-
-Following_flying_monster::~Following_flying_monster()
+Following_FlyingMonster::Following_FlyingMonster(Analyser *analyserLevel):
+	FlyingMonster(analyserLevel)
 {
 
 }
 
+Following_FlyingMonster::~Following_FlyingMonster()
+{
 
-void Following_flying_monster::update_speed_simple()
+}
+
+
+void Following_FlyingMonster::update_speed_simple()
 {
 	if ( (m_pos.x<gPlayers->local_player()->position().x)&&(m_dir != RIGHT) ) {
 	    m_dir = RIGHT;

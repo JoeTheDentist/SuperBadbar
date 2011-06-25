@@ -13,11 +13,11 @@
 #include <list>
 #include "../sound/sonorisable.h"
 #include "../util/analyser.h"
-#include "../video/anim_pic.h"
-#include "../video/anim_table.h"
-#include "../items/weapons_armory.h"
+#include "../video/AnimPic.h"
+#include "../video/AnimTable.h"
+#include "../items/WeaponsArmory.h"
 #include "actor.h"
-#include "../actors/projectiles_manager.h"
+#include "../actors/ProjectilesManager.h"
 
 
 #define BABAR_SPEED 15
@@ -26,12 +26,12 @@
 #define BABAR_RESU_TIME 50
 
 class Actor;
-class Collisions_manager;
-class Projectiles_manager;
+class CollisionsManager;
+class ProjectilesManager;
 class Analyser;
 class Gun;
-class Weapons_armory;
-class Bindable_platform;
+class WeaponsArmory;
+class BindablePlatform;
 
 const int c_babar_hp_max = 5;
 const int c_babar_lifes = 3;
@@ -81,8 +81,8 @@ class Babar: public Actor, public Sonorisable {
         bool m_jump;						/* indique que le joueur est en cours de saut (sa vitesse augment) */
         bool m_double_jump;		            /* vaut vrai si Babar est en cours de double saut */
 
-        Weapons_armory m_weapons_armory;
-        Bindable_platform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
+        WeaponsArmory m_weapons_armory;
+        BindablePlatform *m_bind;			/* plateforme à laquelle est lié Babar (s'il y en a une) */
         Rect m_rel_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
         bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
         int m_peanuts;
@@ -133,7 +133,7 @@ class Babar: public Actor, public Sonorisable {
         /*!
          *	@brief Met à jour la position du sprite
          *	@param static_data Données du jeu
-         *	@param collisions_manager Gestionnaire de collisions
+         *	@param CollisionsManager Gestionnaire de collisions
         */
         void update_pos();
 
@@ -146,8 +146,8 @@ class Babar: public Actor, public Sonorisable {
         /**
          * 	@brief Met à jour l'état et la direction de Babar
          *	@param static_data Données du niveau
-         *	@param collisions_manager Gestionnaire de collision
-         *	@param projectiles_manager Gestionnaire des projectiles
+         *	@param CollisionsManager Gestionnaire de collision
+         *	@param ProjectilesManager Gestionnaire des projectiles
          */
 
         void update_state();
@@ -225,7 +225,7 @@ class Babar: public Actor, public Sonorisable {
 
         /**
          * 	@brief Effectue la traversee d'une surface de collision bas si elle repond aux criteres de traversee
-         *	@param collisions_manager Le gestionnaire de collisions
+         *	@param CollisionsManager Le gestionnaire de collisions
          */
         void go_down();
 
@@ -310,7 +310,7 @@ class Babar: public Actor, public Sonorisable {
          * 	@brief Lie babar à la plateforme
          *	@param platform plateforme à lier
          */
-        void bind(Bindable_platform *platform);
+        void bind(BindablePlatform *platform);
 
         /**
          * 	@brief Délie babar de sa plateforme

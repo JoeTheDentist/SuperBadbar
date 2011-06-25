@@ -22,7 +22,7 @@
 #define ROCKET_LIFE_SPAN 40
 #define ELMAR_LIFE_SPAN 15
 
-class Static_data;
+class StaticData;
 
 enum state_p {
     NONE
@@ -59,9 +59,9 @@ public:
 
 	/*!
 	 * 	@brief Met à jour la position du Projectile
-	 *	@param collisions_manager Gestionnaire de collisions
+	 *	@param CollisionsManager Gestionnaire de collisions
 	*/
-	virtual void update_pos(Collisions_manager *collisions_manager);
+	virtual void update_pos(CollisionsManager *CollisionsManager);
 
 	/*!
 	 * 	@brief Met à jour de la direction du Projectile

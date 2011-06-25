@@ -14,8 +14,8 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../game/static_data.h"
-#include "../physic/collisions_manager.h"
-#include "../sprites/sprites_manager.h"
+#include "../physic/CollisionsManager.h"
+#include "../sprites/SpritesManager.h"
 
 
 /**************************
@@ -51,7 +51,7 @@ Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int 
 	m_chan = type;
 }
 
-void Projectile::update_pos(Collisions_manager *collisions_manager)
+void Projectile::update_pos(CollisionsManager *CollisionsManager)
 {
     m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
@@ -60,8 +60,8 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 	unsigned int coll;
 	/* cas où le sprite descend */
 	for (int speed_y = m_speed.y ; speed_y > 0 ; speed_y -= BOX_SIZE) {
-		coll = collisions_manager->get_matrix()->down_collision_type(m_pos);
-		if (Collisions_manager::is_down_coll(coll)){
+		coll = CollisionsManager->get_matrix()->down_collision_type(m_pos);
+		if (CollisionsManager::is_down_coll(coll)){
 			m_dead = true;
 		} else {
 			m_pos.y += BOX_SIZE;
@@ -70,7 +70,7 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 
 	/* cas où le sprite monte */
 	for (int speed_y = m_speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
-		if (Collisions_manager::is_up_coll(collisions_manager->get_matrix()->up_collision_type(m_pos))){
+		if (CollisionsManager::is_up_coll(CollisionsManager->get_matrix()->up_collision_type(m_pos))){
 			m_dead = true;
 		} else {
 			m_pos.y -= BOX_SIZE;
@@ -79,14 +79,14 @@ void Projectile::update_pos(Collisions_manager *collisions_manager)
 
 	/* cas où le sprite va à droite */
 	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos)))
+			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
 	/* cas où le sprite va à gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
-			if(Collisions_manager::is_down_coll(collisions_manager->get_matrix()->down_collision_type(m_pos))) {
+			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;
 			}
 			m_pos.x -= BOX_SIZE;

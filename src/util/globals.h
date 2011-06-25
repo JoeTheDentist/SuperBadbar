@@ -11,30 +11,30 @@
 #ifndef _GLOBALS_
 #define _GLOBALS_
 
-class Sound_engine;
-class Collisions_manager;
-class Static_data;
-class Projectiles_manager;
-class Events_manager;
+class SoundEngine;
+class CollisionsManager;
+class StaticData;
+class ProjectilesManager;
+class EventsManager;
 class Babar;
-class Sprites_manager;
-class Animated_set_manager;
-class Graphic_engine;
+class SpritesManager;
+class AnimatedSetManager;
+class GraphicEngine;
 class Keyboard;
 class Stats;
-class Players_manager;
+class PlayersManager;
 
 #include <sstream>
 
 #include "../util/repertories.h"
 #include "../actors/actor.h"
-#include "../sound/sound_engine.h"
-#include "../physic/collisions_manager.h"
-#include "../game/static_data.h"
-#include "../video/graphic_engine.h"
-#include "../game/game_engine.h"
-#include "../sets/animated_set_manager.h"
-#include "../players/players_manager.h"
+#include "../sound/SoundEngine.h"
+#include "../physic/CollisionsManager.h"
+#include "../game/StaticData.h"
+#include "../video/GraphicEngine.h"
+#include "../game/GameEngine.h"
+#include "../sets/AnimatedSetManager.h"
+#include "../players/PlayersManager.h"
 
 #define BOX_SIZE 5
 
@@ -52,17 +52,17 @@ class Players_manager;
     #define RAC ".."
 #endif
 
-extern Sound_engine * gSound;
-extern Collisions_manager * gCollision;
-extern Static_data * gStatic;
-extern Projectiles_manager * gProj;
-extern Events_manager * gEvent;
+extern SoundEngine * gSound;
+extern CollisionsManager * gCollision;
+extern StaticData * gStatic;
+extern ProjectilesManager * gProj;
+extern EventsManager * gEvent;
 //extern Babar * gBabar; /* liste si multi */
-extern Graphic_engine * gGraphics;
-extern Game_engine * gGame_engine;
+extern GraphicEngine * gGraphics;
+extern GameEngine * gGameEngine;
 extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
-extern Players_manager * gPlayers;
+extern PlayersManager * gPlayers;
 
 extern int * gLocal_id;
 

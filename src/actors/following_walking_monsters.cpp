@@ -1,6 +1,6 @@
 /**
- * 	@file following_walking_monsters.cpp
- * 	@brief Source de la classe Following_walking_monster
+ * 	@file FollowingWalkingMonsters.cpp
+ * 	@brief Source de la classe FollowingWalkingMonster
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
@@ -9,7 +9,7 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "following_walking_monsters.h"
+#include "FollowingWalkingMonsters.h"
 #include "../util/debug.h"
 #include "../util/analyser.h"
 #include "../items/gun.h"
@@ -18,24 +18,24 @@
 #include "../AI/AI.h"
 
 
-Following_walking_monster::Following_walking_monster(std::string name, int posx, int posy):
-	Walking_monster(name, posx, posy)
+FollowingWalkingMonster::FollowingWalkingMonster(std::string name, int posx, int posy):
+	WalkingMonster(name, posx, posy)
 {
     m_ai = new AI(&m_pos);
 }
 
-Following_walking_monster::Following_walking_monster(Analyser *analyserLevel):
-	Walking_monster(analyserLevel)
+FollowingWalkingMonster::FollowingWalkingMonster(Analyser *analyserLevel):
+	WalkingMonster(analyserLevel)
 {
     m_ai = new AI(&m_pos);
 }
 
-Following_walking_monster::~Following_walking_monster()
+FollowingWalkingMonster::~FollowingWalkingMonster()
 {
     delete m_ai;
 }
 
-void Following_walking_monster::update_speed_ai()
+void FollowingWalkingMonster::update_speed_ai()
 {
     direction d = m_ai->dir();
     m_state = WALKING;
