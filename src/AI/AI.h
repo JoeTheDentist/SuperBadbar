@@ -1,10 +1,10 @@
 #ifndef AI_H_INCLUDED
 #define AI_H_INCLUDED
 
-#include "../actors/projectiles_manager.h"
-#include "../physic/collisions_manager.h"
-#include "../physic/collisions_matrix.h"
-#include "../items/weapons.h" /* pour enum */
+#include "../actors/ProjectilesManager.h"
+#include "../physic/CollisionsManager.h"
+#include "../physic/CollisionsMatrix.h"
+#include "../items/Weapon.h" /* pour enum */
 
 #define ESTIM_SPEED 10
 #define WEIGHT_PROJ 100

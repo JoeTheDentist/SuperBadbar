@@ -33,7 +33,7 @@ class PlayersManager;
 #include "../game/StaticData.h"
 #include "../video/GraphicEngine.h"
 #include "../game/GameEngine.h"
-#include "../sets/AnimatedSetManager.h"
+#include "../sets/AnimatedSetsManager.h"
 #include "../players/PlayersManager.h"
 
 #define BOX_SIZE 5

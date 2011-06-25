@@ -2,10 +2,10 @@
 #include <cmath>
 
 #include "AI.h"
-#include "../actors/projectiles.h"
-#include "../actors/babar.h"
+#include "../actors/Projectile.h"
+#include "../actors/Babar.h"
 #include "../players/PlayersManager.h"
-#include "../util/rect.h"
+#include "../util/Rect.h"
 
 AI::AI(Rect * pos)
 {

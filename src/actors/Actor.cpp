@@ -15,9 +15,9 @@
 #include "../util/debug.h"
 #include "../game/game.h"
 #include "../util/globals.h"
-#include "../game/static_data.h"
-#include "../physic/collisions_manager.h"
-#include "../video/surface.h"
+#include "../game/StaticData.h"
+#include "../physic/CollisionsManager.h"
+#include "../video/Surface.h"
 
 
 /*********************************
@@ -103,10 +103,10 @@ void Actor::do_stay_in_level()
 {
 	if (position().x < 0)
 		set_pos(0, position().y);
-	if (position().x + position().w> (int)gStatic->static_data_width())
-		set_pos(gStatic->static_data_width() - position().w, position().y);
+	if (position().x + position().w> (int)gStatic->StaticData_width())
+		set_pos(gStatic->StaticData_width() - position().w, position().y);
 	if (position().y < 0)
 		set_pos(position().x, 0);
-	if (position().y > (int)gStatic->static_data_height())
-		set_pos(position().x, gStatic->static_data_height());
+	if (position().y > (int)gStatic->StaticData_height())
+		set_pos(position().x, gStatic->StaticData_height());
 }
