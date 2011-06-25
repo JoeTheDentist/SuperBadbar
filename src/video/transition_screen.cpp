@@ -6,7 +6,7 @@
  * 	@date juin 2011
  *
  */
- 
+
 #include "transition_screen.h"
 #include "../video/surface_text.h"
 #include "../video/camera.h"
@@ -15,7 +15,7 @@
 #include "../util/globals.h"
 #include "../control/keyboard.h"
 
-	
+
 Transition_screen::Transition_screen(std::string picture_path, std::string text1, std::string text2):
 	m_skipable(false),
 	m_ended(false),
@@ -35,7 +35,7 @@ Transition_screen::~Transition_screen()
 	delete m_text1;
 	delete m_text2;
 }
-	
+
 void Transition_screen::update()
 {
 }
@@ -43,13 +43,11 @@ void Transition_screen::update()
 void Transition_screen::display(Camera *camera)
 {
 	Rect pos;
-	pos.x = 0;
-	pos.y = 0;
-	camera->display_picture(m_background, &pos, true);	
+	camera->display_picture(m_background, &pos, true);
 	if (!m_skipable) {
-		camera->display_picture(m_text1, &m_pos_text1, true);	
+		camera->display_picture(m_text1, &m_pos_text1, true);
 	} else {
-		camera->display_picture(m_text2, &m_pos_text2, true);	
+		camera->display_picture(m_text2, &m_pos_text2, true);
 	}
 	camera->flip_camera();
 }

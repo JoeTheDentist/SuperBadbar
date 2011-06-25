@@ -15,9 +15,6 @@ Explosion::Explosion(Rect pos, direction h, unsigned int damage)
 	m_pos.h = m_sprite->h();
 	m_pos.w = m_sprite->w();
 
-    m_speed.x = 0;
-    m_speed.y = 0;
-
 	m_dead = false;
 	m_phase = 0;
 	m_invincible = true;

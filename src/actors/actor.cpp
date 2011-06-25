@@ -26,10 +26,6 @@
 Actor::Actor()
 {
 	m_sprite = NULL;
-	m_pos.x = 0;
-	m_pos.y = 0;
-	m_pos.h = 0;
-	m_pos.w = 0;
 	m_speed = m_pos;
 	m_dir = LEFT;
 	m_phase = 0;
@@ -105,12 +101,12 @@ void Actor::set_pos(int x, int y)
 
 void Actor::do_stay_in_level()
 {
-	if (position().x < 0) 
+	if (position().x < 0)
 		set_pos(0, position().y);
-	if (position().x + position().w> (int)gStatic->static_data_width()) 
+	if (position().x + position().w> (int)gStatic->static_data_width())
 		set_pos(gStatic->static_data_width() - position().w, position().y);
-	if (position().y < 0) 
+	if (position().y < 0)
 		set_pos(position().x, 0);
-	if (position().y > (int)gStatic->static_data_height()) 
+	if (position().y > (int)gStatic->static_data_height())
 		set_pos(position().x, gStatic->static_data_height());
 }

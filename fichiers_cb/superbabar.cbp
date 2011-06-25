@@ -199,6 +199,8 @@
 		<Unit filename="..\src\util\lists.h" />
 		<Unit filename="..\src\util\random_generator.cpp" />
 		<Unit filename="..\src\util\random_generator.h" />
+		<Unit filename="..\src\util\rect.cpp" />
+		<Unit filename="..\src\util\rect.h" />
 		<Unit filename="..\src\util\repertories.h" />
 		<Unit filename="..\src\video\anim.h" />
 		<Unit filename="..\src\video\anim_pic.cpp" />

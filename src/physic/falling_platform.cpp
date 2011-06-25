@@ -30,8 +30,6 @@ Falling_platform::Falling_platform(Analyser &analyserLevel, Collisions_manager *
 	int posx = analyserLevel.read_int();
 	int posy = analyserLevel.read_int();
 	init_bindable_platform(posx, posy, m_file_name);
-	m_speed.x = 0;
-	m_speed.y = 0;
 	m_pos.h = m_image->h();
 	m_pos.w = m_image->w();
 }
@@ -44,14 +42,12 @@ Falling_platform::Falling_platform(int posx, int posy, std::string file_name, Co
 	m_file_name(file_name)
 {
 	init_bindable_platform(posx, posy, m_file_name);
-	m_speed.x = 0;
-	m_speed.y = 0;
 	m_pos.h = m_image->h();
-	m_pos.w = m_image->w();	
+	m_pos.w = m_image->w();
 }
 
 
-Falling_platform::~Falling_platform() 
+Falling_platform::~Falling_platform()
 {
 }
 

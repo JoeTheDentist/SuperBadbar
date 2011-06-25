@@ -6,7 +6,7 @@
  * 	@date juin 2011
  *
  */
- 
+
 #include "../../lib/SDL/include/SDL/SDL.h"
 
 #include "surface_frame.h"
@@ -23,8 +23,6 @@ Surface_frame::Surface_frame(Rect rect, int r, int g, int b):
 	Surface_uniform vertical(m_line_w, rect.h, r, g, b);
 	Surface_uniform horizontal(rect.w, m_line_h, r, g, b);
 	Rect pos;
-	pos.x = 0;
-	pos.y = 0;
 	vertical.blit_surface(this, pos);
 	pos.x = rect.w - vertical.w();
 	vertical.blit_surface(this, pos);

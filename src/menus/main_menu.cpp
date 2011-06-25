@@ -17,8 +17,6 @@ Main_menu::Main_menu() :
 	m_pos_background(),
 	m_main_title(new Main_title("Super Badbar"))
 {
-	m_pos_background.x = 0;
-	m_pos_background.y = 0;
 	m_menu_actions.add_action_classic("New game", 1);
 	m_menu_actions.add_action_classic("Options", 2);
 	m_menu_actions.add_action_classic("Leave", 3);
@@ -74,7 +72,7 @@ void Main_menu::launch_game()
 {
 	Levels_manager *levels_manager = new Levels_manager();
 	levels_manager->play();
-	delete levels_manager;	
+	delete levels_manager;
 }
 
 void Main_menu::launch_options()

@@ -6,8 +6,6 @@ Animated_nophysic_set::Animated_nophysic_set(std::string anim_name, int x, int y
 {
     m_pos.x = x;
     m_pos.y = y;
-    m_speed.x = 0;
-    m_speed.y = 0;
     m_sprite = NULL;
     m_to_delete = to_delete;
     if ( ended ) {
