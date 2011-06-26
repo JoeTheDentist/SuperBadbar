@@ -53,10 +53,10 @@ void CollisionsMatrix::addStatic(int x, int y, std::string static_name)
 {
 	Analyser analyser_static;
 	analyser_static.open((PIC_STATICS_R + static_name + COLL_EXT));
-	int static_weight = analyser_static.read_int();
+	int static_width = analyser_static.read_int();
 	int static_height = analyser_static.read_int();
 	int j_min = y/BOX_SIZE, j_max = int(y / BOX_SIZE + static_height);
-	int i_min = x/BOX_SIZE, i_max = int(x / BOX_SIZE + static_weight);
+	int i_min = x/BOX_SIZE, i_max = int(x / BOX_SIZE + static_width);
 	for (int j = j_min ; j < j_max; j++) {
 		for (int i = i_min; i < i_max; i++) {
 			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0)
