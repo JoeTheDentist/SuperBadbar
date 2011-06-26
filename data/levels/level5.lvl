@@ -42,7 +42,7 @@ jungle_hard_block_4 1491 1218 0
 !
 #Monsters#
 1
-boss_elmer elmar 808 987
+BossElmar elmar 808 987
 !
 #Events#
 4
