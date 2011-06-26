@@ -8,7 +8,7 @@
 #define _StaticData_
 
 #include <list>
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../util/globals.h"
 
 class Static;

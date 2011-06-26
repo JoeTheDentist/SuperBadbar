@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 
-#include "analyser.h"
+#include "Analyser.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
 

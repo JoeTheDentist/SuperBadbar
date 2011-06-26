@@ -1,11 +1,11 @@
-#include "menu.h"
+#include "Menu.h"
 
 
 #include "../video/Camera.h"
 #include "../util/repertories.h"
 #include "../util/globals.h"
 #include "../control/Keyboard.h"
-#include "../game/game.h"
+#include "../game/Game.h"
 #include "../game/LevelsManager.h"
 #include "../menus/MenuAction.h"
 #include "../video/SurfaceUniform.h"

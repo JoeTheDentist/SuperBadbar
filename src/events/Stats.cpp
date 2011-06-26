@@ -1,5 +1,5 @@
 
-#include "stats.h"
+#include "Stats.h"
 #include "../util/globals.h"
 #include "../sprites/SpritesManager.h"
 

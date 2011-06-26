@@ -21,7 +21,7 @@
 #include "../video/SurfaceText.h"
 
 #include "../items/Weapon.h"
-#include "../video/font.h"
+#include "../video/Font.h"
 #include "../video/AnimText.h"
 
 class Camera;

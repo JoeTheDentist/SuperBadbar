@@ -6,7 +6,7 @@
 #include "../sprites/Sprite.h"
 
 /**
- * Classe associée à un Babar, s'occupe de ses statistiques.
+ * Classe associee a un Babar, s'occupe de ses statistiques.
  */
 
 class Stats {
@@ -15,7 +15,7 @@ class Stats {
         int m_date_last_kill;   /* date de dernier kill */
         int m_kills;            /* kills successifs, limite temps */
         int m_frenzy;           /* kills successifs, sans se faire toucher */
-        bool m_msg_sent;        /* si un message vient d'être émi */
+        bool m_msg_sent;        /* si un message vient d'etre emi */
         Sprite * m_sprite;      /* pour affichage */
 
         /**
@@ -27,7 +27,7 @@ class Stats {
         ~Stats();
 
         /**
-         * Mise à jour : compte un cycle, raz si besoin
+         * Mise a jour : compte un cycle, raz si besoin
          */
         void update();
 

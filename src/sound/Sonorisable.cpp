@@ -7,7 +7,7 @@
  *
  */
 
-#include "sonorisable.h"
+#include "Sonorisable.h"
 
 Sonorisable::Sonorisable()
 {

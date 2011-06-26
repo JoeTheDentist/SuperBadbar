@@ -13,7 +13,7 @@
 
 #include "../../lib/SDL/include/SDL/SDL.h"
 
-#include "surface.h"
+#include "Surface.h"
 #include "../video/PicturesContainer.h"
 #include "../util/debug.h"
 

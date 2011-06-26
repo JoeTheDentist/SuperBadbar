@@ -10,7 +10,7 @@
 #ifndef _SURFACE_TEXT_
 #define _SURFACE_TEXT_
 
-#include "surface.h"
+#include "Surface.h"
 #include <string>
 
 class Font;

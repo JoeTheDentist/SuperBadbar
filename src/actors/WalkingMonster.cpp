@@ -11,10 +11,10 @@
 
 #include "WalkingMonster.h"
 #include "../util/debug.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../sound/SoundEngine.h"
 #include "../video/PicturesContainer.h"
-#include "babar.h"
+#include "Babar.h"
 
 
 WalkingMonster::WalkingMonster(std::string name, int posx, int posy):

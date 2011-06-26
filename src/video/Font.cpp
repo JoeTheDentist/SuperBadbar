@@ -7,7 +7,7 @@
  *
  */
  
-#include "font.h"
+#include "Font.h"
 #include "../util/repertories.h"
 #include "../util/debug.h"
 

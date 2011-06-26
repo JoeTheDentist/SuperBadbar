@@ -1,7 +1,7 @@
 #ifndef _BABAR_MENU_H
 #define _BABAR_MENU_H
 
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../menus/ListMenuActions.h"
 #include "../param/param_menus.h"
 

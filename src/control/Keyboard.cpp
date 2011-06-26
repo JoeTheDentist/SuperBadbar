@@ -15,10 +15,9 @@
 #include "Keyboard.h"
 #include "../control/EventOrderer.h"
 #include "../control/SdlKeyConverter.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
-#include "../util/analyser.h"
 
 void display_config();
 

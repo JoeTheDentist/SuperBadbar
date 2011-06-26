@@ -7,10 +7,6 @@
  *
  */
 
-
-
-
-
 #ifndef _MONSTERS_MANAGER_
 #define _MONSTERS_MANAGER_
 
@@ -20,7 +16,7 @@
 #include <string>
 
 #include "../actors/ProjectilesManager.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 class Monster;
 class Camera;
 class Babar;

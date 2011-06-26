@@ -13,12 +13,12 @@
 #include "Event.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/repertories.h"
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../actors/MonstersManager.h"
 #include "../items/Weapon.h"
-#include "../video/talks.h"
+#include "../video/Talks.h"
 #include "../players/PlayersManager.h"
 
 Event::Event(std::string event_name, int x, int y):

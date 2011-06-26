@@ -13,12 +13,12 @@
 #include <sstream>
 
 
-#include "dashboard.h"
+#include "Dashboard.h"
 #include "../video/Camera.h"
 #include "../util/debug.h"
-#include "../actors/babar.h"
-#include "../video/talks.h"
-#include "../video/surface.h"
+#include "../actors/Babar.h"
+#include "../video/Talks.h"
+#include "../video/Surface.h"
 #include "../video/SurfaceText.h"
 #include "../video/SurfaceUniform.h"
 #include "../video/SurfaceFrame.h"

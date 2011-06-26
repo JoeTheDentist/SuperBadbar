@@ -11,8 +11,8 @@
 
 #include "FlyingMonster.h"
 #include "../util/debug.h"
-#include "../util/analyser.h"
-#include "babar.h"
+#include "../util/Analyser.h"
+#include "Babar.h"
 
 
 FlyingMonster::FlyingMonster(std::string name, int posx, int posy):

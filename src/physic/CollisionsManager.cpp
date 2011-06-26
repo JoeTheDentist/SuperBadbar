@@ -9,10 +9,10 @@
 
 #include "CollisionsManager.h"
 #include "stdint.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../util/globals.h"
 #include "../video/Camera.h"
 #include "../physic/MovingPlatform.h"

@@ -1,7 +1,7 @@
 
-#include "player.h"
-#include "../actors/babar.h"
-#include "../events/stats.h"
+#include "Player.h"
+#include "../actors/Babar.h"
+#include "../events/Stats.h"
 
 
 Player::Player(int id, Analyser * analyser, bool local)

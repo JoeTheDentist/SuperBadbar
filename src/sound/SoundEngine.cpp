@@ -10,12 +10,12 @@
 #include <iostream>
 #include <stdint.h>
 #include <stdio.h>
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/repertories.h"
 #include "SoundEngine.h"
 #include "../sound/SoundEngine.h"
-#include "../sound/sound.h"
-#include "../sound/sonorisable.h"
+#include "../sound/Sound.h"
+#include "../sound/Sonorisable.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
 

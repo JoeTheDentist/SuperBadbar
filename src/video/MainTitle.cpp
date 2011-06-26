@@ -1,4 +1,4 @@
-#include "maintitle.h"
+#include "MainTitle.h"
 #include "../video/SurfaceText.h"
 #include "../video/SurfaceUniform.h"
 #include "../video/SurfaceFrame.h"

@@ -2,7 +2,7 @@
 #define SPRITES_ANIM_H_INCLUDED
 
 #include "Sprite.h"
-#include "../video/anim.h"
+#include "../video/Anim.h"
 
 class SpriteAnim : public Sprite {
     private:
@@ -11,7 +11,7 @@ class SpriteAnim : public Sprite {
     public:
         /**
          * Constructeur pour des images
-         * Chemin donné à partir de /pic/
+         * Chemin donne a partir de /pic/
          */
         SpriteAnim(std::string anim_name, anim_type type, screen_level lvl, bool center=false);
 
@@ -26,7 +26,7 @@ class SpriteAnim : public Sprite {
         ~SpriteAnim();
 
         /**
-         * Image à afficher
+         * Image a afficher
          *  +maj de m_pos
          */
         Surface * curr_pic();

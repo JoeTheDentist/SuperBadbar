@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <cmath>
 
-#include "boss.h"
+#include "Boss.h"
 
 
 Boss::Boss(std::string name, int posx, int posy):

@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 
-#include "talks.h"
+#include "Talks.h"
 #include "../param/param_talks.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"

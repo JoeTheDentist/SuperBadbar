@@ -11,8 +11,8 @@
 #ifndef _SPRITES_
 #define _SPRITES_
 
-#include "../actors/actor.h"
-#include "../video/surface.h"
+#include "../actors/Actor.h"
+#include "../video/Surface.h"
 
 class Surface;
 

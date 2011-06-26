@@ -11,8 +11,8 @@
 #include <stdint.h>
 #include <string>
 
-#include "statics.h"
-#include "surface.h"
+#include "Statics.h"
+#include "Surface.h"
 #include "../util/debug.h"
 
 Static::Static()

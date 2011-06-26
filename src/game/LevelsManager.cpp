@@ -8,11 +8,11 @@
  */
 
 #include "LevelsManager.h"
-#include "../game/game.h"
+#include "../game/Game.h"
 #include "../util/globals.h"
 #include "../util/debug.h"
 #include "../video/Camera.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../video/SurfaceText.h"
 #include "../control/Keyboard.h"
 #include "../video/TransitionScreen.h"

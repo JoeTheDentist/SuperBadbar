@@ -12,12 +12,12 @@
 #include "BindablePlatform.h"
 #include "../game/StaticData.h"
 #include "../video/Camera.h"
-#include "../video/surface.h"
-#include "../actors/babar.h"
-#include "../util/analyser.h"
+#include "../video/Surface.h"
+#include "../actors/Babar.h"
+#include "../util/Analyser.h"
 #include "../physic/CollisionsManager.h"
 #include "../physic/CollisionsMatrix.h"
-#include "../video/displayable.h"
+#include "../video/Displayable.h"
 #include "../players/PlayersManager.h"
 
 BindablePlatform::BindablePlatform()

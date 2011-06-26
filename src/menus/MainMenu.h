@@ -1,9 +1,9 @@
 #ifndef _MAIN_MENU_H
 #define _MAIN_MENU_H
 
-#include "../menus/menu.h"
+#include "../menus/Menu.h"
 
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../menus/ListMenuActions.h"
 
 class MainTitle;

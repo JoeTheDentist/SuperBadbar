@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 
-#include "shotgun.h"
+#include "Shotgun.h"
 #include "../util/debug.h"
 #include "../actors/Projectile.h"
 #include "../util/globals.h"

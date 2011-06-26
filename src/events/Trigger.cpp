@@ -11,13 +11,13 @@
 #include <stdint.h>
 #include <sstream>
 
-#include "trigger.h"
+#include "Trigger.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/repertories.h"
-#include "../actors/babar.h"
-#include "../events/triggerable.h"
+#include "../actors/Babar.h"
+#include "../events/Triggerable.h"
 #include "../players/PlayersManager.h"
 
 

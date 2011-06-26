@@ -5,14 +5,14 @@
 
 #include "StaticData.h"
 #include "../util/debug.h"
-#include "../util/analyser.h"
-#include "../game/game.h"
-#include "../actors/actor.h"
+#include "../util/Analyser.h"
+#include "../game/Game.h"
+#include "../actors/Actor.h"
 #include "../actors/Monster.h"
 #include "../video/Camera.h"
-#include "../video/statics.h"
+#include "../video/Statics.h"
 #include "../video/PicturesContainer.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../util/globals.h"
 
 

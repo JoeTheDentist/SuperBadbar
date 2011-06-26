@@ -11,9 +11,9 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "babar.h"
+#include "Babar.h"
 #include "../util/debug.h"
-#include "../game/game.h"
+#include "../game/Game.h"
 #include "../physic/CollisionsManager.h"
 #include "../physic/BindablePlatform.h"
 #include "../control/Keyboard.h"

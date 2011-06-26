@@ -27,7 +27,7 @@ class PlayersManager;
 #include <sstream>
 
 #include "../util/repertories.h"
-#include "../actors/actor.h"
+#include "../actors/Actor.h"
 #include "../sound/SoundEngine.h"
 #include "../physic/CollisionsManager.h"
 #include "../game/StaticData.h"

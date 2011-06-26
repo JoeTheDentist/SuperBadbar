@@ -13,7 +13,7 @@
 
 #include "Sprite.h"
 #include "../util/debug.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 
 
 Sprite::Sprite()

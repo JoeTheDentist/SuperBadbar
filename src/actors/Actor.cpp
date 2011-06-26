@@ -11,9 +11,9 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "actor.h"
+#include "Actor.h"
 #include "../util/debug.h"
-#include "../game/game.h"
+#include "../game/Game.h"
 #include "../util/globals.h"
 #include "../game/StaticData.h"
 #include "../physic/CollisionsManager.h"

@@ -11,11 +11,11 @@
 
 #include "util/debug.h"
 #include "util/repertories.h"
-#include "game/game.h"
+#include "game/Game.h"
 #include "util/ArgAnalyser.h"
 #include "menus/MainMenu.h"
 #include "game/GameInitializer.h"
-#include "video/talks.h"
+#include "video/Talks.h"
 #include "util/debug.h"
 
 int main(int argc, char *argv[])

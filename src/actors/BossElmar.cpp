@@ -12,10 +12,10 @@
 #include <stdlib.h>
 
 #include "BossElmar.h"
-#include "../video/surface.h"
-#include "../actors/babar.h"
+#include "../video/Surface.h"
+#include "../actors/Babar.h"
 #include "../items/ElmarMachineGun.h"
-#include "../video/talks.h"
+#include "../video/Talks.h"
 #include "../util/globals.h"
 #include "../events/EventsManager.h"
 

@@ -10,13 +10,13 @@
 
 #include "GraphicEngine.h"
 #include "../util/debug.h"
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../video/Camera.h"
-#include "../video/talks.h"
-#include "../video/dashboard.h"
+#include "../video/Talks.h"
+#include "../video/Dashboard.h"
 #include "../video/PicturesContainer.h"
 #include "../game/StaticData.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include "../sprites/SpritesManager.h"
 #include "../players/PlayersManager.h"
 

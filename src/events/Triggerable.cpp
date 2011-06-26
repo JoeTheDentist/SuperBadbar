@@ -10,14 +10,14 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "triggerable.h"
+#include "Triggerable.h"
 #include "../util/debug.h"
 #include "../util/globals.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../util/repertories.h"
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../actors/MonstersManager.h"
-#include "../video/talks.h"
+#include "../video/Talks.h"
 #include "../video/GraphicEngine.h"
 
 

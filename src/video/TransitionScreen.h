@@ -10,7 +10,7 @@
 #ifndef _BABAR_TransitionScreen_H
 #define _BABAR_TransitionScreen_H
 
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include <string>
 
 class Camera;

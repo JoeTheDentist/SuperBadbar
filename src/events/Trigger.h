@@ -12,8 +12,8 @@
 
 #include <list>
 #include <string>
-#include "../video/surface.h"
-#include "../events/triggerable.h"
+#include "../video/Surface.h"
+#include "../events/Triggerable.h"
 
 class Analyser;
 

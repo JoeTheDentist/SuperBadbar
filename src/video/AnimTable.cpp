@@ -12,7 +12,7 @@
 #include <iostream>
 #include <stdint.h>
 #include <string>
-#include "../video/surface.h"
+#include "../video/Surface.h"
 #include <stdlib.h>
 #include "AnimTable.h"
 

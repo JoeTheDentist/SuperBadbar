@@ -8,7 +8,7 @@
  */
 //~  
 #include <iostream>
-#include "sound.h"
+#include "Sound.h"
 
 Sound::Sound(std::string str) 
 {

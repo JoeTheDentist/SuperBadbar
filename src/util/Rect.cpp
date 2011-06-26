@@ -6,7 +6,7 @@
  * 	@date juin 2011
  */
 
-#include "rect.h"
+#include "Rect.h"
 
 
 Rect::Rect(int x_, int y_, int w_, int h_ ):

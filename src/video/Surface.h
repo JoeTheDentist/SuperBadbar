@@ -10,7 +10,7 @@
 #ifndef _SURFACE_
 #define _SURFACE_
 
-#include "../util/rect.h"
+#include "../util/Rect.h"
 #include <string>
 
 class PicturesContainer;

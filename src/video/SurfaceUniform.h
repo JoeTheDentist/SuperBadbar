@@ -10,7 +10,7 @@
 #ifndef _SURFACE_UNIFORM_
 #define _SURFACE_UNIFORM_
 
-#include "surface.h"
+#include "Surface.h"
 
 
 /*!

@@ -4,7 +4,7 @@
 #include "../util/repertories.h"
 #include "../util/globals.h"
 #include "../control/Keyboard.h"
-#include "../game/game.h"
+#include "../game/Game.h"
 #include "../game/LevelsManager.h"
 #include "../menus/MenuAction.h"
 #include "../menus/OptionsMenu.h"

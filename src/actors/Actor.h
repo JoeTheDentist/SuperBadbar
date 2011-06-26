@@ -1,15 +1,15 @@
 #ifndef ACTOR_H_INCLUDED
 #define ACTOR_H_INCLUDED
 
-#define GRAVITE 7           /* Constante pour la décélération de saut */
+#define GRAVITE 7           /* Constante pour la deceletion de saut */
 #define DAMAGE_BOX_RATIO 5
 
-/* Différents états du joueur */
+/* Differents ets du joueur */
 enum state_player {
     STATIC, WALK, JUMP, CROUCH, CROUCH_WALKING
 };
 
-/* Différents états des monstres */
+/* Diffents etats des monstres */
 enum state_m {
     WALKING, WAIT, DEATH
 };

@@ -10,7 +10,7 @@
 #include "SurfaceText.h"
 #include "../util/repertories.h"
 #include "../util/debug.h"
-#include "../video/font.h"
+#include "../video/Font.h"
 #include <iostream>
 
 #include "../../lib/SDL/include/SDL/SDL.h"

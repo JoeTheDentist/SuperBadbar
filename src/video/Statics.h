@@ -10,8 +10,8 @@
 #ifndef STATICS_H_INCLUDED
 #define STATICS_H_INCLUDED
 
-#include "surface.h"
-#include "displayable.h"
+#include "Surface.h"
+#include "Displayable.h"
 
 class Surface;
 struct Rect;

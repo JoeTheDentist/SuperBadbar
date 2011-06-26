@@ -13,17 +13,17 @@
 **/
 
 
-#include "../sound/sound.h"
-#include "game.h"
+#include "../sound/Sound.h"
+#include "Game.h"
 #include "../util/debug.h"
 #include "../control/Keyboard.h"
 
 
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../actors/ProjectilesManager.h"
 #include "../video/Camera.h"
 #include "../video/GraphicEngine.h"
-#include "../video/talks.h"
+#include "../video/Talks.h"
 #include "../video/TransitionScreen.h"
 #include "../sound/SoundEngine.h"
 #include "../menus/PauseMenu.h"
@@ -31,7 +31,7 @@
 #include "../game/StaticData.h"
 #include "../events/EventsManager.h"
 #include "../sprites/SpritesManager.h"
-#include "../events/stats.h"
+#include "../events/Stats.h"
 #include "../sets/AnimatedSetsManager.h"
 
 

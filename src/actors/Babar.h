@@ -11,12 +11,12 @@
 #define _BABAR_
 
 #include <list>
-#include "../sound/sonorisable.h"
-#include "../util/analyser.h"
+#include "../sound/Sonorisable.h"
+#include "../util/Analyser.h"
 #include "../video/AnimPic.h"
 #include "../video/AnimTable.h"
 #include "../items/WeaponsArmory.h"
-#include "actor.h"
+#include "Actor.h"
 #include "../actors/ProjectilesManager.h"
 
 

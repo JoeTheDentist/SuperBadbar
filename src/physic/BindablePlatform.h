@@ -13,9 +13,9 @@
 #include <string>
 #include <stdint.h>
 
-#include "../video/statics.h"
+#include "../video/Statics.h"
 #include "../util/debug.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../physic/CollisionsMatrix.h"
 
 class Surface;

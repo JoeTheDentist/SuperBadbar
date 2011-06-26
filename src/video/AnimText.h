@@ -1,7 +1,7 @@
 #ifndef ANIM_TEXT_H_INCLUDED
 #define ANIM_TEXT_H_INCLUDED
 
-#include "../video/anim.h"
+#include "../video/Anim.h"
 #include "../video/SurfaceText.h"
 
 class Anim;

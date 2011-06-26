@@ -10,7 +10,7 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "gun.h"
+#include "Gun.h"
 #include "../util/debug.h"
 #include "../actors/Projectile.h"
 #include "../util/globals.h"

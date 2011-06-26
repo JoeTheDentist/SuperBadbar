@@ -10,7 +10,7 @@
 #ifndef _BABAR_BossElmar_
 #define _BABAR_BossElmar_
 
-#include "../actors/boss.h"
+#include "../actors/Boss.h"
 
 enum elmar_state {
     ELMAR_WALK, ELMAR_FIRE, ELMAR_CHARGE, ELMAR_JUMP

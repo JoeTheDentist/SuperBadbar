@@ -8,15 +8,15 @@
  */
 
  #include "EventsManager.h"
-#include "../events/trigger.h"
+#include "../events/Trigger.h"
 #include "../events/Event.h"
 #include "../game/GameEngine.h"
 #include "../game/StaticData.h"
 #include "../util/debug.h"
-#include "../util/analyser.h"
+#include "../util/Analyser.h"
 #include "../events/Event.h"
 #include "../video/Camera.h"
-#include "../actors/babar.h"
+#include "../actors/Babar.h"
 #include "../video/PicturesContainer.h"
 #include <sstream>
 

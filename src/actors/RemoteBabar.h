@@ -1,7 +1,7 @@
 #ifndef REMOTE_BABAR_H_INCLUDED
 #define REMOTE_BABAR_H_INCLUDED
 
-#include "babar.h"
+#include "Babar.h"
 
 class Remote_Babar : public Babar {
     public :

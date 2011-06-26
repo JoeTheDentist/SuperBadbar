@@ -2,7 +2,7 @@
 #define SPRITES_MANAGER_H_INCLUDED
 
 #include "Sprite.h"
-#include "../video/anim.h"
+#include "../video/Anim.h"
 #include "../video/Camera.h"
 
 /**

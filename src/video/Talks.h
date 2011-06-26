@@ -26,10 +26,10 @@
 #define DISPLAY_SPEED 20
 
 
-#include "../video/font.h"
+#include "../video/Font.h"
 #include "../video/SurfaceText.h"
 #include "../video/SpecialLetter.h"
-#include "../video/surface.h"
+#include "../video/Surface.h"
 
 
 

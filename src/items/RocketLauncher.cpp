@@ -12,7 +12,7 @@
 
 #include "RocketLauncher.h"
 #include "../util/debug.h"
-#include "../actors/rocket.h"
+#include "../actors/Rocket.h"
 #include "../actors/Projectile.h"
 #include "../util/globals.h"
 #include "../util/repertories.h"

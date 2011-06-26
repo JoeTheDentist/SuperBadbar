@@ -16,7 +16,7 @@
 
 #include <string>
 
-#include "../video/surface.h"
+#include "../video/Surface.h"
 
 class Camera;
 class Surface;
