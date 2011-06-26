@@ -29,10 +29,10 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 		m_key_config[i] = k_none;
 	for (uint32_t i = 0; i <= k_fire; i++)
 		set_key(i, 0);
-	m_key_config[SDLK_i] = k_up;
-	m_key_config[SDLK_k] = k_down;
-	m_key_config[SDLK_j] = k_left;
-	m_key_config[SDLK_l] = k_right;
+	m_key_config[SDLK_UP] = k_up;
+	m_key_config[SDLK_DOWN] = k_down;
+	m_key_config[SDLK_LEFT] = k_left;
+	m_key_config[SDLK_RIGHT] = k_right;
 	m_key_config[SDLK_q] = k_jump;
 	m_key_config[SDLK_d] = k_fire;
 	m_key_config[SDLK_ESCAPE] = k_escape;

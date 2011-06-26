@@ -44,6 +44,7 @@ void Explosion::update_state()
         Rect pos = m_pos;
         pos.x += pos.w/2;
         pos.y += pos.h/2;
+        // pas compris pq il faut pas div par deux ici...
         pos.x -= smoke->w();
         pos.y -= smoke->h()/2;
         smoke->set_pos(pos);

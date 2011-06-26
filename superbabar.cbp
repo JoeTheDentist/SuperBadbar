@@ -22,6 +22,7 @@
 				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option parameters="-menu" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
