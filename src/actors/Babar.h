@@ -93,7 +93,7 @@ class Babar: public Actor, public Sonorisable {
          * 	@brief Charge les images de babar
          *	@param age	L'age de Babar
          */
-        void load_anim(char age);
+        void load_anim(int age);
         bool is_on_something();
     public:
 

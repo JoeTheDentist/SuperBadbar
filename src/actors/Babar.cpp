@@ -45,17 +45,14 @@ Babar::~Babar()
 	}
 }
 
-void Babar::load_anim(char age)
+void Babar::load_anim(int age)
 {
-    char age_c = '0';
-    age_c += age;
 	#ifdef DEBUG_COLL
-	age_c = '0';
+	age = 0;
 	#endif
-	std::string babar_pic_dir = PIC_BABAR_R;
 
     /* TODO ici fuite de mémoire si rechargement... */
-	m_sprite = gGraphics->get_sprites_manager()->add_table(babar_pic_dir+age_c+"/"+"babar", MIDDLEGROUND);
+	m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());
@@ -498,7 +495,7 @@ void Babar::die()
 	lock(BABAR_RESU_TIME);
 	m_sprite->no_pic();
 	if ( !(gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->StaticData_height()) ) {
-        gGameEngine->get_sets()->add_set("babar/"+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
+        gGameEngine->get_sets()->add_set(PIC_BABAR_R+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
 	}
 	prepare_sound(BABAR_SOUNDS_R + "die.wav");
 }

@@ -37,7 +37,7 @@ public:
 	*
 	* @param noms des images à charger, supporte : x0.png, x_0.png ou x.png
 	*   , où x nom de l'anim et 0 un nombre. Si x.png : une seule image.
-	*   Le chemin donné se fait à partir du dossier pic ?
+	*   Le chemin donné se fait à partir de l'exe
 	* @param force si on doit attendre la terminaison
 	*
 	*/

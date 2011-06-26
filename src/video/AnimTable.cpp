@@ -29,7 +29,7 @@ AnimTable::AnimTable(std::string anim_name) {
         m_fire = true;
     } else {
         /* si aucun fichier de ce nom n'existe */
-        PRINT_DEBUG(1, "Fichier inexistant %s", (anim_name+"_0_0_0"+PICS_EXT).c_str());
+        PRINT_DEBUG(1, "!!! AnimTable : Fichier inexistant %s", (anim_name+"_0_0_0"+PICS_EXT).c_str());
     }
 
     /* on choisit la fonction d'initialisation en fonction du fait si il y a une animation de tir */

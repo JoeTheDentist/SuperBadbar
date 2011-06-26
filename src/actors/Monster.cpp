@@ -145,7 +145,7 @@ void Monster::kill()
 	if (m_speed.y < 0)
 		m_speed.y = 0;
 	gSound->play_sound(MONSTERS_SOUNDS_R + "hit.mp3");
-	gGameEngine->get_sets()->add_set("monsters/"+m_nom+"/death/"+m_nom+"_"+to_string(m_dir)+"_", m_pos, m_speed);
+	gGameEngine->get_sets()->add_set(PIC_MONSTERS_R+m_nom+"/death/"+m_nom+"_"+to_string(m_dir)+"_", m_pos, m_speed);
 	m_sprite->set_to_delete();
 	m_sprite = NULL;
 }

@@ -69,6 +69,6 @@ void AnimatedSetManager::load_sets(Analyser * a)
 		std::string name = a->read_string();
 		int x = a->read_int();
 		int y = a->read_int();
-		add_set(name, x, y, true);
+		add_set(PIC_ANIMATIONS_R+name, x, y, true);
 	}
 }

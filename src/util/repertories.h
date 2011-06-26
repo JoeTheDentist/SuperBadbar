@@ -17,7 +17,7 @@
 #define _REPERTORIES_
 
 #ifdef WIN32
-    #define RACINE_R std::string("../")
+    #define RACINE_R std::string("")
 #else
    #define RACINE_R std::string("../")
 #endif
@@ -36,6 +36,7 @@
 	#define PIC_TALKS_R				PIC_R + "talks/"
 	#define PIC_MAINMENU_R			PIC_R + "mainmenu/"
 	#define PIC_TRANSITIONS_R		PIC_R + "transitions/"
+	#define PIC_ANIMATIONS_R        PIC_R + "animations/"
 	#define PIC_DEBUG_R				PIC_R + "debug/"
 #define CONFIG_R RACINE_R + "data/config/"
 #define LEVELS_R RACINE_R + "data/levels/"

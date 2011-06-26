@@ -17,17 +17,17 @@
 
 AnimPic::AnimPic(std::string anim_name, anim_type type) {
     std::string sup;
-    if ( FileExists(PIC_R+anim_name+"_"+"0"+PICS_EXT) ) {
+    if ( FileExists(anim_name+"_"+"0"+PICS_EXT) ) {
         sup = "_";
-    } else if ( FileExists(PIC_R+anim_name+"0"+PICS_EXT) ) {
+    } else if ( FileExists(anim_name+"0"+PICS_EXT) ) {
         sup = "";
-    } else if ( FileExists(PIC_R+anim_name+PICS_EXT) ) {
+    } else if ( FileExists(anim_name+PICS_EXT) ) {
         /* si on a juste une image avec le nom stipulé */
         m_images = new Surface*[1];
         m_size = 1;
         m_curr = 0;
         m_phase = 0;
-        m_images[0] = new Surface(PIC_R+anim_name+PICS_EXT);
+        m_images[0] = new Surface(anim_name+PICS_EXT);
 
         m_type = type;
         if ( type == CYCLE ) {
@@ -44,13 +44,8 @@ AnimPic::AnimPic(std::string anim_name, anim_type type) {
     std::string test = anim_name;
 
     /* calcul du nombre d'images */
-    char num[3];
     int size = 0;
-    sprintf(num,"%d",size);
-    for (size=0; FileExists(PIC_R+anim_name+sup+num+PICS_EXT); size++ ) {
-        sprintf(num,"%d",size);
-    }
-    size -= 1;
+    for (size=0; FileExists(anim_name+sup+to_string(size)+PICS_EXT); size++ ) {}
 
     m_images = new Surface*[size];
     m_size = size;
@@ -58,8 +53,7 @@ AnimPic::AnimPic(std::string anim_name, anim_type type) {
     m_phase = 0;
 
     for (int i=0;i<size;i++) {
-        sprintf(num,"%d",i);
-        m_images[i] = new Surface(PIC_R+anim_name+sup+num+PICS_EXT);
+        m_images[i] = new Surface(anim_name+sup+to_string(i)+PICS_EXT);
     }
 
     m_type = type;

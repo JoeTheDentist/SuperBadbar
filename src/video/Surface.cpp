@@ -25,6 +25,9 @@ Surface::Surface(std::string filename)
 {
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
 	m_surface = m_pictures_container->load_IMG(filename);
+	if ( !m_surface ) {
+        PRINT_CONSTR(1, "Impossible de charger l'image : %s", filename.c_str());
+	}
 
 }
 

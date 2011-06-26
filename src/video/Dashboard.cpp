@@ -54,8 +54,8 @@ void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 {
 	clear_dashboard();
     std::string rac = RACINE_R;
-	m_heart = new Surface(rac+"/pic/dashboard/heart.png");
-	m_babar_head = new Surface(rac + "/pic/dashboard/babarhead.png");
+	m_heart = new Surface(PIC_DASHBOARD_R + "heart.png");
+	m_babar_head = new Surface(PIC_DASHBOARD_R + "babarhead.png");
 	m_HP_pos.x = POS_HEART_X;
 	m_HP_pos.y = POS_HEART_Y;
 	m_weapons_pictures = new Surface*[LASTWEAPON];

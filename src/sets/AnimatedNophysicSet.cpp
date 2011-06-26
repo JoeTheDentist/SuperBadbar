@@ -9,9 +9,9 @@ AnimatedNophysicSet::AnimatedNophysicSet(std::string anim_name, int x, int y, bo
     m_sprite = NULL;
     m_to_delete = to_delete;
     if ( ended ) {
-        m_sprite = gGraphics->get_sprites_manager()->add_anim("animations/"+anim_name, ENDED, MIDDLEGROUND);
+        m_sprite = gGraphics->get_sprites_manager()->add_anim(anim_name, ENDED, MIDDLEGROUND);
     } else {
-        m_sprite = gGraphics->get_sprites_manager()->add_anim("animations/"+anim_name, CYCLE, MIDDLEGROUND);
+        m_sprite = gGraphics->get_sprites_manager()->add_anim(anim_name, CYCLE, MIDDLEGROUND);
     }
     m_sprite->set_pos(m_pos);
 	m_pos.h = m_sprite->h();
