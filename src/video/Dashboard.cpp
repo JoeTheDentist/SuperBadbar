@@ -53,7 +53,7 @@ Dashboard::~Dashboard()
 void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 {
 	clear_dashboard();
-    std::string rac = RAC;
+    std::string rac = RACINE_R;
 	m_heart = new Surface(rac+"/pic/dashboard/heart.png");
 	m_babar_head = new Surface(rac + "/pic/dashboard/babarhead.png");
 	m_HP_pos.x = POS_HEART_X;
