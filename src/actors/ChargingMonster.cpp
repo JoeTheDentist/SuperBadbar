@@ -28,6 +28,7 @@ ChargingMonster::ChargingMonster(std::string name, int posx, int posy):
 	m_speed_max(BABAR_SPEED * 2),
 	m_time_end_charge(0)
 {
+    PRINT_CONSTR(2, "Construction de ChargingMonster");
 	m_state = WALKING;
 	Rect babarpos = gPlayers->closer_babar(position())->position();
 	if (babarpos.x > position().x) {
@@ -44,11 +45,13 @@ ChargingMonster::ChargingMonster(Analyser *analyserLevel):
 	m_speed_max(BABAR_SPEED * 2),
 	m_time_end_charge(0)
 {
+    PRINT_CONSTR(2, "Construction de ChargingMonster");
 	m_state = WALKING;
 }
 
 ChargingMonster::~ChargingMonster()
 {
+    PRINT_CONSTR(2, "Destruction de ChargingMonster");
 }
 
 void ChargingMonster::update_speed_simple()

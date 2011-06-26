@@ -4,6 +4,7 @@
 
 Explosion::Explosion(Rect pos, direction h, unsigned int damage)
 {
+    PRINT_CONSTR(2, "Construction de Explosion");
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
@@ -22,6 +23,7 @@ Explosion::Explosion(Rect pos, direction h, unsigned int damage)
 
 Explosion::~Explosion()
 {
+    PRINT_CONSTR(2, "Destruction de Explosion");
 //    Sprite * smoke = gGraphics->get_sprites_manager()->add_anim("animations/end_boom/end_boom", ENDED, MIDDLEGROUND, true);
 //    smoke->set_pos(m_pos);
 }

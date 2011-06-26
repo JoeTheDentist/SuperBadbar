@@ -17,6 +17,7 @@
 
 Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
+    PRINT_CONSTR(2, "Construction de Rocket");
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
@@ -39,7 +40,7 @@ Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, 
 
 Rocket::~Rocket()
 {
-	PRINT_CONSTR(3, "Destruction d'une rocket")
+	PRINT_CONSTR(2, "Destruction de Projectile");
 	Projectile * boom = new Explosion(m_pos,m_dir,m_damage);
 	gProj->add_proj(boom, m_chan);
 }

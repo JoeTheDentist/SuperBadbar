@@ -37,6 +37,7 @@ Monster::Monster(std::string name, int posx, int posy):
 	m_nom(name),
 	m_weapon(NULL)
 {
+    PRINT_CONSTR(2, "Construction de Monster");
 	m_pos.x = posx;
 	m_pos.y = posy;
 	initFromMonsterFile(m_nom);
@@ -45,6 +46,7 @@ Monster::Monster(std::string name, int posx, int posy):
 Monster::Monster(Analyser *analyserLevel):
 	m_weapon(NULL)
 {
+    PRINT_CONSTR(2, "Construction de Monster");
     m_nom = analyserLevel->read_string();
 	// donnees contenues dans le level
 	m_pos.x = analyserLevel->read_int();
@@ -54,7 +56,7 @@ Monster::Monster(Analyser *analyserLevel):
 
 Monster::~Monster()
 {
-	PRINT_CONSTR(3, "destruction d'un monstre")
+	PRINT_CONSTR(2, "Destruction de Monster");
 	if ( m_weapon ) {
         delete m_weapon;
 	}

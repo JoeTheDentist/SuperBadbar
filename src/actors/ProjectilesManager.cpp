@@ -16,12 +16,14 @@
 #include "../util/debug.h"
 
 
-ProjectilesManager::ProjectilesManager() {
-
+ProjectilesManager::ProjectilesManager()
+{
+    PRINT_CONSTR(1, "Construction de ProjectilesManager");
 }
 
 ProjectilesManager::~ProjectilesManager()
 {
+    PRINT_CONSTR(1, "Destruction de ProjectilesManager");
 	for (int i=0; i<LAST_dmg_chan; i++) {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
             it != m_proj[i].end(); ) {

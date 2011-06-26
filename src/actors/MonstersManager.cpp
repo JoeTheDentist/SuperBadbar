@@ -30,11 +30,12 @@
 
 Monsters_manager::Monsters_manager()
 {
-
+    PRINT_CONSTR(1, "Construction de MonstersManager");
 }
 
 Monsters_manager::~Monsters_manager()
 {
+    PRINT_CONSTR(1, "Destruction de MonstersManager");
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
 			it != m_monsters.end(); ){
 		delete (*it);

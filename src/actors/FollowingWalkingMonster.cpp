@@ -21,17 +21,20 @@
 FollowingWalkingMonster::FollowingWalkingMonster(std::string name, int posx, int posy):
 	WalkingMonster(name, posx, posy)
 {
+    PRINT_CONSTR(2, "Construction de FollowingWalkingMonster");
     m_ai = new AI(&m_pos);
 }
 
 FollowingWalkingMonster::FollowingWalkingMonster(Analyser *analyserLevel):
 	WalkingMonster(analyserLevel)
 {
+    PRINT_CONSTR(2, "Construction de FollowingWalkingMonster");
     m_ai = new AI(&m_pos);
 }
 
 FollowingWalkingMonster::~FollowingWalkingMonster()
 {
+    PRINT_CONSTR(2, "Destruction de FollowingWalkingMonster");
     delete m_ai;
 }
 

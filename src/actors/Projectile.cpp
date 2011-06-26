@@ -23,11 +23,14 @@
 **************************/
 
 
-Projectile::Projectile() {}
+Projectile::Projectile()
+{
+    PRINT_CONSTR(2, "Construction de Projectile");
+}
 
 Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
-	PRINT_CONSTR(3, "Construction d'un projectile")
+	PRINT_CONSTR(2, "Construction de Projectile");
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
@@ -117,7 +120,7 @@ void Projectile::set_chan(dmg_chan chan)
 
 Projectile::~Projectile()
 {
-	PRINT_CONSTR(3, "Destruction d'un projectile")
+	PRINT_CONSTR(2, "Destruction de Projectile");
 }
 
 unsigned int Projectile::damage() const

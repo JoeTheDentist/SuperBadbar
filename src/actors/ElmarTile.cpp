@@ -3,7 +3,7 @@
 
 ElmarTile::ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
-	PRINT_CONSTR(3, "Construction d'un elmar _tile")
+	PRINT_CONSTR(2, "Construction de ElmarTile");
     m_pos = pos;
     m_dir = h;
     m_damage = damage;
@@ -26,6 +26,11 @@ ElmarTile::ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int sp
 	m_invincible = false;
 
 	m_chan = type;
+}
+
+ElmarTile::~ElmarTile()
+{
+    PRINT_CONSTR(2, "Destruction de ElmarTile");
 }
 
 void ElmarTile::update_pos(CollisionsManager *CollisionsManager)
@@ -91,11 +96,6 @@ void ElmarTile::update_state()
 void ElmarTile::set_chan(dmg_chan chan)
 {
     m_chan = chan;
-}
-
-ElmarTile::~ElmarTile()
-{
-	PRINT_CONSTR(3, "Destruction d'un ElmarTile")
 }
 
 unsigned int ElmarTile::damage() const

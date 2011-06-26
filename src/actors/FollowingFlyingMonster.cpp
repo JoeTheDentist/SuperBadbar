@@ -18,17 +18,18 @@
 FollowingFlyingMonster::FollowingFlyingMonster(std::string name, int posx, int posy):
 	FlyingMonster(name, posx, posy)
 {
+    PRINT_CONSTR(2, "Construction de FollowingFlyingMonster");
 }
 
 FollowingFlyingMonster::FollowingFlyingMonster(Analyser *analyserLevel):
 	FlyingMonster(analyserLevel)
 {
-
+    PRINT_CONSTR(2, "Construction de FollowingFlyingMonster");
 }
 
 FollowingFlyingMonster::~FollowingFlyingMonster()
 {
-
+    PRINT_CONSTR(2, "Destruction de FollowingFlyingMonster");
 }
 
 
