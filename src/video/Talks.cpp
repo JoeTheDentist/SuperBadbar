@@ -36,6 +36,7 @@ Talks::~Talks()
 
 void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 {
+	#ifndef DISABLE_TALKS
 	PRINT_CONSTR(1, "Initialisation de la classe Talks")
 	m_have_to_leave = false;
 	m_camera = camera;
@@ -61,10 +62,12 @@ void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 	}
 	m_font.set_color(TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
 	m_active = false;
+	#endif
 }
 
 void Talks::display_text(std::string str)
 {
+	#ifndef DISABLE_TALKS
 	m_waiting_for_enter = false;
 	m_curr_line = 0;
 	m_string_curs = 0;
@@ -73,6 +76,7 @@ void Talks::display_text(std::string str)
 	aux_display_cell(m_cells.front());
 	m_cells.pop();
 	PRINT_TRACE(2, "Affichage d'un texte par Talks")
+	#endif
 }
 
 void Talks::load_and_display_text(std::string filename)
@@ -96,7 +100,7 @@ void Talks::load_and_display_text(std::string filename)
 
 void Talks::update()
 {
-
+	#ifndef DISABLE_TALKS
 	if (!aux_end_of_cell() && !m_waiting_for_enter) {
 		bool temp = write_letter();
 		if (temp)
@@ -140,6 +144,7 @@ void Talks::update()
 		}
 	}
 	update_letters();
+	#endif
 }
 
 void Talks::update_letters()
@@ -155,11 +160,16 @@ void Talks::update_letters()
 
 bool Talks::isActive()
 {
+	#ifndef DISABLE_TALKS
 	return m_active;
+	#else
+	return false;
+	#endif
 }
 
 void Talks::display()
 {
+	#ifndef DISABLE_TALKS
 	display_background();
 	for (int i = 0; i < LINES_NUMBER; i++){
 		std::list<SpecialLetter *>::iterator it;
@@ -172,6 +182,7 @@ void Talks::display()
 
 		}
 	}
+	#endif
 }
 
 

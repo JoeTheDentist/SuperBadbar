@@ -52,6 +52,7 @@ Dashboard::~Dashboard()
 
 void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 {
+	#ifndef DISABLE_DASHBOARD
 	clear_dashboard();
     std::string rac = RACINE_R;
 	m_heart = new Surface(PIC_DASHBOARD_R + "heart.png");
@@ -80,11 +81,13 @@ void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 	m_rect_null.y = 0;
 	m_rect_null.w = 0;
 	m_rect_null.h = 0;
+	#endif
 }
 
 
 void Dashboard::draw_dashboard(Camera *camera)
 {
+	#ifndef DISABLE_DASHBOARD
 	/********************************************************************************/
 	/*	HP																VIES		*/
 	/*	ARME															CACAHUETTES	*/
@@ -194,18 +197,23 @@ void Dashboard::draw_dashboard(Camera *camera)
 		m_red_rect->blit_surface(m_life_bar, rect1, rect1);
 		camera->display_picture(m_life_bar, &m_frame_life_bar, true);
 	}
+	
+	#endif
 }
 
 void Dashboard::alert(std::string text)
 {
+	#ifndef DISABLE_DASHBOARD
     if ( m_alert ) {
         delete m_alert;
     }
     m_alert = new AnimText(text, 150, 10, 30);
+	#endif
 }
 
 void Dashboard::update()
 {
+	#ifndef DISABLE_DASHBOARD
     if ( m_alert ) {
         if ( m_alert->deletable() ) {
             delete m_alert;
@@ -214,6 +222,7 @@ void Dashboard::update()
             m_alert->next_pic();
         }
     }
+	#endif
 }
 
 void Dashboard::clear_dashboard()

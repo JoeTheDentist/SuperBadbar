@@ -19,6 +19,10 @@
 #include "../video/Surface.h"
 #include "../sprites/SpritesManager.h"
 #include "../players/PlayersManager.h"
+#ifdef _OPENGL_ACTIVE_
+#include "../video/TexturesManager.h"
+#include "../video/Texture.h"
+#endif
 
 GraphicEngine::GraphicEngine()
 {
@@ -30,6 +34,10 @@ GraphicEngine::GraphicEngine()
 	m_pictures_container = new PicturesContainer();
 	m_sprites = new SpritesManager;
 	Surface::set_pictures_container(m_pictures_container);
+	#ifdef _OPENGL_ACTIVE_
+	m_texturesManager = new TexturesManager;
+	Surface::setTexturesManager(m_texturesManager);
+	#endif
 }
 
 GraphicEngine::~GraphicEngine()

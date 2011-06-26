@@ -19,7 +19,7 @@
 #define LIFE_BAR_H 20
 
 #include "../video/SurfaceText.h"
-
+#include "../util/debug.h"
 #include "../items/Weapon.h"
 #include "../video/Font.h"
 #include "../video/AnimText.h"

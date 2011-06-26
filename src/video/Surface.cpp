@@ -18,13 +18,20 @@
 #include "../util/debug.h"
 
 PicturesContainer *Surface::m_pictures_container = NULL;
-
+#ifdef _OPENGL_ACTIVE_
+#include "../video/TexturesManager.h"
+#include "../video/Texture.h"
+TexturesManager *Surface::m_texturesManager = NULL;
+#endif
 
 
 Surface::Surface(std::string filename)
 {
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
 	m_surface = m_pictures_container->load_IMG(filename);
+	#ifdef _OPENGL_ACTIVE_
+	m_texture = m_texturesManager->load_IMG(filename);
+	#endif
 	if ( !m_surface ) {
         PRINT_CONSTR(1, "Impossible de charger l'image : %s", filename.c_str());
 	}
@@ -57,11 +64,18 @@ SDL_Surface *Surface::get_copy_surface()
    return SDL_ConvertSurface(m_surface, m_surface->format, m_surface->flags);
 }
 
-void Surface::set_pictures_container(PicturesContainer *PicturesContainer)
+void Surface::set_pictures_container(PicturesContainer *picturesContainer)
 {
-	m_pictures_container = PicturesContainer;
+	m_pictures_container = picturesContainer;
 	PRINT_TRACE(1,"Ajout du PicturesContainer aux surfaces");
 }
+#ifdef _OPENGL_ACTIVE_
+void Surface::setTexturesManager(TexturesManager *texturesManager)
+{
+	m_texturesManager = texturesManager;
+	PRINT_TRACE(1,"Ajout du texturesManager aux surfaces");
+}
+#endif
 
 int Surface::w()
 {
