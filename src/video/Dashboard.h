@@ -44,7 +44,11 @@ private:
 	Rect m_weapons_pos;
 	Surface *m_peanut;
 	Surface *m_babar_head;
-	Font m_font;
+	int m_sizeFont;
+	int m_rFont;
+	int m_gFont;
+	int m_bFont;
+	std::string m_nameFont;
 	AnimText * m_alert;
 	LifeBarPossessor *m_life_bar_possessor;
 	Surface *m_green_rect;

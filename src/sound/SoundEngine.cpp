@@ -34,8 +34,6 @@ SoundEngine::SoundEngine():
 
 }
 
-
-
 SoundEngine::~SoundEngine()
 {
 	PRINT_CONSTR(1, "Destruction du SoundEngine")
@@ -48,6 +46,7 @@ void SoundEngine::init_level(std::string level)
 	analyser.open(LEVELS_R + level);
 	analyser.find_string("#Music#");
 	load_music(analyser.read_string());
+	analyser.close();
 }
 
 void SoundEngine::load_music(std::string str)
@@ -86,7 +85,6 @@ void SoundEngine::play_sound(std::string key)
 	FSOUND_SetVolume(channel, m_sounds_volume);
 
 }
-
 
 void SoundEngine::play_sound(Sonorisable *sonorisable)
 {

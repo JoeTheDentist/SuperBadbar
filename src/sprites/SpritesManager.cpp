@@ -2,6 +2,7 @@
 #include "SpritesManager.h"
 #include "SpriteAnim.h"
 #include "SpriteAnimTable.h"
+#include "../util/debug.h"
 
 SpritesManager::SpritesManager()
 {
@@ -10,6 +11,7 @@ SpritesManager::SpritesManager()
 
 SpritesManager::~SpritesManager()
 {
+	PRINT_CONSTR(1, "Suppression du sprite manager");
     clear();
     delete m_sprites;
 }

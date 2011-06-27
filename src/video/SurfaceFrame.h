@@ -30,7 +30,7 @@ public:
 	*/
 	SurfaceFrame(Rect rect, int r, int g, int b);
 
-	~SurfaceFrame();
+	virtual ~SurfaceFrame();
 };
 
  #endif

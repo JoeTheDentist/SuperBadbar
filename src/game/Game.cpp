@@ -82,6 +82,7 @@ void Game::init_game(std::string level_name)
 
 	loading->wait_for_player();
 	gSound->play_music();
+	delete loading;
 }
 
 Game::~Game()

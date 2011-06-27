@@ -17,7 +17,7 @@ class SpriteAnimTable : public Sprite {
         /**
          * Destructeur
          */
-        ~SpriteAnimTable();
+		virtual ~SpriteAnimTable();
 
         /**
          * Image à afficher

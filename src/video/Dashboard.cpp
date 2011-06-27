@@ -16,6 +16,7 @@
 #include "Dashboard.h"
 #include "../video/Camera.h"
 #include "../util/debug.h"
+#include "../param/param_dashboard.h"
 #include "../actors/Babar.h"
 #include "../video/Talks.h"
 #include "../video/Surface.h"
@@ -32,14 +33,18 @@ Dashboard::Dashboard():
 	m_weapons_pictures(NULL),
 	m_peanut(NULL),
 	m_babar_head(NULL),
-	m_font(),
+	m_sizeFont(DASH_TEXT_SIZE), 
+	m_rFont(DASH_TEXT_R),
+	m_gFont(DASH_TEXT_G),
+	m_bFont(DASH_TEXT_B),
+	m_nameFont(DASH_TEXT_FONT),
+	m_alert(NULL),
 	m_life_bar_possessor(NULL),
 	m_green_rect(NULL),
 	m_red_rect(NULL),
 	m_life_bar(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
-	m_alert = NULL;
 	// Abonnement aux life_bar_possessors
 	LifeBarPossessor::setDashboard(this);
 }
@@ -129,7 +134,7 @@ void Dashboard::draw_dashboard(Camera *camera)
     std::ostringstream ossmun;
     ossmun <<  "x " << gPlayers->local_player()->munitions();
     std::string munitions = ossmun.str();
-	SurfaceText *munitions_picture = new SurfaceText(munitions, m_font);
+	SurfaceText *munitions_picture = new SurfaceText(munitions, m_sizeFont, m_rFont, m_gFont, m_bFont, m_nameFont);
 	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->w() + 10;
 	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->h() - munitions_picture->h())/2;
 	camera->display_picture(munitions_picture, &pos_munitions, true);
@@ -161,7 +166,7 @@ void Dashboard::draw_dashboard(Camera *camera)
 	std::ostringstream osspeanut;
 	osspeanut << "x " << gPlayers->local_player()->peanuts();
 	std::string peanuts_number = osspeanut.str();
-	SurfaceText *peanuts_number_picture = new SurfaceText(peanuts_number, m_font);
+	SurfaceText *peanuts_number_picture = new SurfaceText(peanuts_number,  m_sizeFont, m_rFont, m_gFont, m_bFont, m_nameFont);
 	pos_peanuts_number.x = pos_camera.w - peanuts_number_picture->w() - 30;
 	pos_peanut.x = pos_peanuts_number.x - DASH_DECALAGE - m_peanut->w();
 	pos_peanut.y = DASH_DECALAGE + pos_lifes.y + m_babar_head->h();
@@ -245,4 +250,6 @@ void Dashboard::clear_dashboard()
 	m_green_rect = NULL;
 	delete m_red_rect;
 	m_green_rect = NULL;
+	delete m_life_bar;
+	m_life_bar = NULL;
 }

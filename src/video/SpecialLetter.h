@@ -10,23 +10,55 @@
 #include "../video/SurfaceText.h"
 #include <string>
 
+#ifndef _BABAR_SPECIAL_LETTER_H_	
+#define _BABAR_SPECIAL_LETTER_H_
+
+/*!
+*	@class SpecialLetter 
+*	@brief Une surface representant une lettre et pouvant etre redimensionnee
+*/
 class SpecialLetter : public SurfaceText {
 private:
-	char m_letter;
-	int m_offset_size;
-	int m_size;
-	int m_r;
-	int m_g;
-	int m_b;
-	std::string m_font_name;
+	char m_letter;		// la lettre
+	int m_offset_size;	// l'offset de la taille de la police
+	int m_size;			// taille de la police
+	int m_r;			// composante rouge
+	int m_g;			// composante verte
+	int m_b;			// composante bleue
+	std::string m_font_name;	// le nom de la police
 public:
+	/*!
+	*	@brief Constructeur
+	*	@param letter La lettre
+	*	@param size La taille de la police (sans l'offset)
+	*	@param r Composante rouge
+	*	@param g Composante verte
+	*	@param b Composante bleue
+	*	@param font_name Le nom de la police a utiliser
+	*/
 	SpecialLetter(char letter, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
-	~SpecialLetter();
-	void update();
+
+	/*!
+	*	@brief Destructeur
+	*/
+	virtual ~SpecialLetter();
+
+	/*!
+	*	@brief appelee a chaque tour, resize la lettre
+	*/
+	virtual void update();
+
+	/*!
+	*	@brief Accesseur
+	*	@return La largeur de la surface SANS l'offset (dimension finale, pas actuelle)
+	*/
 	virtual int fake_w();
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La hauteur de la surface SANS l'offset (dimension finale, pas actuelle)
+	*/	
 	virtual int fake_h();
-protected:
-//~ 	virtual void init(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
-
-
 };
+
+#endif

@@ -31,6 +31,10 @@ Trigger::Trigger(Analyser *analyser):
 
 Trigger::~Trigger()
 {
+	for (std::list<Triggerable *>::iterator it = m_triggerables.begin();
+			it != m_triggerables.end(); ++it) {
+		delete (*it);
+	}
 	PRINT_CONSTR(3, "Destruction d'un trigger");
 }
 

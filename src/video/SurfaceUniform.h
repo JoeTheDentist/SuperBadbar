@@ -32,7 +32,7 @@ class SurfaceUniform: public Surface {
 	/*!
 	*	@brief Destructeur
 	*/
-	~SurfaceUniform();
+	virtual ~SurfaceUniform();
 
 };
 

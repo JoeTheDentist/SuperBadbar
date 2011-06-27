@@ -34,5 +34,5 @@ SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
 
 SurfaceFrame::~SurfaceFrame()
 {
-//~ 	delete m_surface;
+	SDL_FreeSurface(m_surface);
 }

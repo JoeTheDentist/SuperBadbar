@@ -23,7 +23,7 @@ class SpriteAnim : public Sprite {
         /**
          * Destructeur
          */
-        ~SpriteAnim();
+		virtual ~SpriteAnim();
 
         /**
          * Image a afficher

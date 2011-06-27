@@ -42,11 +42,18 @@ AnimTable::AnimTable(std::string anim_name) {
 
 
 AnimTable::~AnimTable() {
+
     for (int i=0;i<m_nb_states;i++) {
-        delete m_anim[i][0];
-        delete m_anim[i][1];
-        delete[] m_anim[i];
+        for (int j=0 ; j<2 ; j++) {
+            for (int k=0 ; k<2 ; k++) {
+                delete m_anim[i+k*m_nb_states][j];
+            }
+        }
+	}
+    for (int i=0;i<2*m_nb_states;i++) {
+		delete[] m_anim[i];
     }
+
     delete[] m_anim;
 }
 

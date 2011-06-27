@@ -173,6 +173,7 @@ public:
 	*/
 	bool end_of_talks();
 
+	void clear_line(int i);
 
 	/*!
 	*	@brief Vide les lignes de texte

@@ -44,7 +44,7 @@ class SurfaceText: public Surface {
 	/*!
 	*	@brief Destructeur
 	*/
-	~SurfaceText();
+	virtual ~SurfaceText();
 
 protected:
 	virtual void init(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");

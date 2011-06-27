@@ -8,12 +8,12 @@
 /**
  *  @class SpritesManager
  *  @brief Classe manageant les sprites.
- *  ATTENTION la création et la destruction des sprites se fait ici et nul part ailleurs !
+ *  ATTENTION la creation et la destruction des sprites se fait ici et nul part ailleurs !
  */
 
 class SpritesManager {
     private:
-        std::list<Sprite*> * m_sprites;    /* liste à trier, le tri ne se fait qu'à l'ajout : booleen to_sort=true */
+        std::list<Sprite*> * m_sprites;    /* liste a trier, le tri ne se fait qu'a l'ajout : booleen to_sort=true */
 
         /**
          *  @brief Ajoute du sprite dans la liste

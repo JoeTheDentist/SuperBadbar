@@ -42,7 +42,7 @@ class Sprite {
         /**
          *	@brief Destructeur
          */
-        ~Sprite();
+		virtual ~Sprite();
 
         /**
          *	@brief Accesseur

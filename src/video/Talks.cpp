@@ -31,6 +31,10 @@ Talks::Talks():
 
 Talks::~Talks()
 {
+	clear_lines();
+	delete m_text_background;
+	delete m_frame_background;
+	delete m_talker;
 	PRINT_CONSTR(1, "Destruction de la classe Talks")
 }
 
@@ -86,7 +90,7 @@ void Talks::load_and_display_text(std::string filename)
 	std::ifstream file((TALKS_R + filename).c_str(), std::ios::in);
 	std::string str;
 	if(!file) {
-		std::cout << "Erreur lors de l'ouverture du fichier de dialogue " << filename << std::endl;
+		std::cerr << "Erreur lors de l'ouverture du fichier de dialogue " << filename << std::endl;
 		return;
 	}
 	while (!file.eof()) {
@@ -116,11 +120,11 @@ void Talks::update()
 		switch(key) {
 		case mk_enter:
 			if (end_of_talks()) {
+				clear_lines();
 				m_active = false;
 				return;
 			}
 			if (aux_end_of_cell()) {
-				std::cout << "baaaaaaaaaaaaaaaaaaaa"<< std::endl;
 				aux_display_cell(m_cells.front());
 				m_cells.pop();
 			} else if (m_waiting_for_enter) {
@@ -221,6 +225,7 @@ void Talks::aux_cut_text(std::string str)
 
 void Talks::aux_display_cell(cell_string cell)
 {
+	delete m_talker;
 	m_talker = new Surface(PIC_TALKS_R + cell.talker + ".png");
 	m_text = cell.str;
 	m_pos_talker.x = POSX;
@@ -263,6 +268,7 @@ void Talks::move_up()
 void Talks::end_move_up()
 {
 	m_text_surface[0].clear();
+	clear_line(0);
 	for (int i = 0; i < LINES_NUMBER - 1; i++){
 		m_text_surface[i] = m_text_surface[i+1];
 	}
@@ -290,9 +296,18 @@ bool Talks::end_of_talks()
 	return m_cells.empty() && aux_end_of_cell();
 }
 
+void Talks::clear_line(int i)
+{
+	for (std::list<SpecialLetter *>::iterator it = m_text_surface[i].begin(); 
+			it != m_text_surface[i].end(); ++it) {
+		delete (*it);
+	}
+}
+
 void Talks::clear_lines()
 {
 	for (int i = 0; i < LINES_NUMBER; ++i) {
+		clear_line(i);
 		m_text_surface[i].clear();
 	}
 	m_curr_line = 0;
@@ -322,7 +337,6 @@ std::list< std::string > Talks::string_to_list_words(std::string str)
 	std::list< word_and_length > res;
 	for (std::list<std::string>::iterator it = words.begin(); it != words.end(); ++it) {
 		std::string str = (*it);
-		std::cout << str << std::endl;
 		if (str[0] == '{') {
 			treat_special_words(str, res);
 			continue;
@@ -416,7 +430,6 @@ std::list<std::string> Talks::convert_special_word(std::string specialword)
 	MACRO_TALKS_KEYBOARD(k_exit)
 	MACRO_TALKS_KEYBOARD(k_action)
 
-	std::cout << "YAAAA " << auxres << std::endl;
 	std::string newword;
 	for (unsigned int i = 0; i < auxres.length(); ++i) {
 		if (auxres[i] == ' ') {

@@ -60,13 +60,15 @@ public:
 	/*!
 	*	@brief Destructeur
 	*/
-	~Surface();
+	virtual ~Surface();
 
 	/*!
 	*	@brief Accesseur
 	*	@return L'image SDL
 	*/
 	SDL_Surface *get_surface();
+	
+	virtual void setSurface(SDL_Surface *surface) {m_surface = surface;}
 	
 	#ifdef _OPENGL_ACTIVE_
 	Texture *getTexture() { return m_texture;}
