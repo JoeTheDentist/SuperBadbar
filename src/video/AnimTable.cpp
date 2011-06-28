@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include "AnimTable.h"
 
-AnimTable::AnimTable(std::string anim_name) {
+AnimTable::AnimTable(std::string anim_name) 
+{
     m_last_state = 0;
     m_last_dir = LEFT;
     m_fire = false;
@@ -41,19 +42,29 @@ AnimTable::AnimTable(std::string anim_name) {
 }
 
 
-AnimTable::~AnimTable() {
-
-    for (int i=0;i<m_nb_states;i++) {
-        for (int j=0 ; j<2 ; j++) {
-            for (int k=0 ; k<2 ; k++) {
-                delete m_anim[i+k*m_nb_states][j];
-            }
-        }
+AnimTable::~AnimTable() 
+{
+	if (m_fire) {
+		for (int i = 0; i < m_nb_states; i++) {
+			for (int j = 0; j < 2; j++) {
+				for (int k = 0; k < 2; k++) {
+					delete m_anim[i + k * m_nb_states][j];
+				}
+			}
+		}
+		for (int i = 0; i < 2 * m_nb_states; i++) {
+			delete[] m_anim[i];
+		}
+	} else {
+		for (int i = 0 ; i < m_nb_states ; i++) {
+			for (int j = 0; j < 2 ;j++) {
+				delete m_anim[i][j];
+			}
+		}
+		for (int i = 0; i < m_nb_states; i++) {
+			delete[] m_anim[i];
+		}
 	}
-    for (int i=0;i<2*m_nb_states;i++) {
-		delete[] m_anim[i];
-    }
-
     delete[] m_anim;
 }
 
@@ -70,15 +81,15 @@ void AnimTable::init_fire(std::string anim_name)
     m_nb_states = state;
 
     /* allocation du tableau d'animation */
-    m_anim = new AnimPic**[2*m_nb_states];
-    for (int i=0;i<2*m_nb_states;i++) {
+    m_anim = new AnimPic**[2 * m_nb_states];
+    for (int i = 0; i < 2 * m_nb_states; i++) {
         m_anim[i] = new AnimPic*[2];
     }
 
     /* creation des animations */
-    for (int i=0 ; i<m_nb_states ; i++) {
-        for (int j=0 ; j<2 ; j++) {
-            for (int k=0 ; k<2 ; k++) {
+    for (int i = 0; i < m_nb_states; i++) {
+        for (int j = 0; j < 2; j++) {
+            for (int k = 0; k < 2; k++) {
                 std::string link = anim_name+"_"+to_string(i)+"_"+to_string(j)+"_"+to_string(k);
                 /* creation de l'animation */
                 m_anim[i+k*m_nb_states][j] = new AnimPic(link,CYCLE);
@@ -96,21 +107,21 @@ void AnimTable::init_nfire(std::string anim_name)
     /* calcul du nombre d'etat */
     m_nb_states = 0;
 
-    while ( FileExists(anim_name+"_"+to_string(state)+"_0_0"+PICS_EXT) ) {
+    while ( FileExists(anim_name + "_" + to_string(state) + "_0_0" + PICS_EXT) ) {
         state++;
     }
     m_nb_states = state;
 
     /* allocation du tableau d'animation */
     m_anim = new AnimPic**[m_nb_states];
-    for (int i=0;i<m_nb_states;i++) {
+    for (int i = 0; i < m_nb_states; i++) {
         m_anim[i] = new AnimPic*[2];
     }
 
     /* creation des animations */
-    for (int i=0 ; i<m_nb_states ; i++) {
-        for (int j=0 ; j<2 ; j++) {
-            std::string link = anim_name+"_"+to_string(i)+"_"+to_string(j);
+    for (int i = 0 ; i < m_nb_states ; i++) {
+        for (int j = 0; j < 2 ;j++) {
+            std::string link = anim_name + "_" + to_string(i) + "_" + to_string(j);
             /* creation de l'animation */
             m_anim[i][j] = new AnimPic(link,CYCLE);
         }

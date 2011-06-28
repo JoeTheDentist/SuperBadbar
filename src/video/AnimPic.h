@@ -46,7 +46,7 @@ public:
     /*!
 	* @brief Destructeur
 	*/
-    ~AnimPic();
+    virtual ~AnimPic();
 
     /*!
     * @brief Image a afficher.

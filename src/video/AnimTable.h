@@ -23,6 +23,7 @@ class Surface;
 /**
  * 	@class AnimTable
  * 	@brief Automatise l'utilisation des animations
+ *	@todo Finir la doc, et il y a un todo dans init_fire
  */
 class AnimTable
 {
@@ -32,26 +33,26 @@ class AnimTable
         direction m_last_dir;         /* dernier etat directionnelle */
         AnimPic * m_curr_anim;    /* pointeur sur l'animation courante */
         AnimPic ***m_anim;        /* tableau de pointeur vers les animations ; etat et gauche/droite */
-        bool m_fire;                /* si il y a un état de tir dans les animations */
+        bool m_fire;                /* si il y a un etat de tir dans les animations */
         bool m_last_fire;
 
         /**
-         * @brief TODO refaire !!!!!!!!!! Construction de l'animation pour un monstre ayant un état de tir (2x plus d'images)
+         * @brief TODO refaire !!!!!!!!!! Construction de l'animation pour un monstre ayant un etat de tir (2x plus d'images)
          */
         void init_fire(std::string anim_name);
 
         /**
-         * @brief Construction de l'animation pour un monstre sans état de tir
+         * @brief Construction de l'animation pour un monstre sans etat de tir
          */
         void init_nfire(std::string anim_name);
 
     public:
         /**
-         * @brief Constructeur intelligent, savant charger toutes les images propres au nom donné.
+         * @brief Constructeur intelligent, savant charger toutes les images propres au nom donne.
          *
          * A partir de la chaine de caractere : lien de l'image sans l'extension ni etat/dir, il sait
-         * charger toutes les bonnes images... Check des fichier peut-être un peu longs.
-         * /!\\ Les num des images doivent correspondrent à l'enum de l'état correspondant...
+         * charger toutes les bonnes images... Check des fichier peut-etre un peu longs.
+         * /!\\ Les num des images doivent correspondre a l'enum de l'etat correspondant...
          *
          *  @param string donnant l'adresse du paquet d'image a charger
          */
@@ -60,7 +61,7 @@ class AnimTable
         /**
          * @brief Destructeur, liberation du tableau des animations.
          */
-        ~AnimTable();
+		virtual ~AnimTable();
 
         /**
          * @brief change l'animation courrante, en prenant en compte si l'animation est stoppable.

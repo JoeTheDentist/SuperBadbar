@@ -15,7 +15,8 @@
 #include "../video/Surface.h"
 
 
-AnimPic::AnimPic(std::string anim_name, anim_type type) {
+AnimPic::AnimPic(std::string anim_name, anim_type type) 
+{
     std::string sup;
     if ( FileExists(anim_name+"_"+"0"+PICS_EXT) ) {
         sup = "_";
@@ -52,8 +53,8 @@ AnimPic::AnimPic(std::string anim_name, anim_type type) {
     m_curr = 0;
     m_phase = 0;
 
-    for (int i=0;i<size;i++) {
-        m_images[i] = new Surface(anim_name+sup+to_string(i)+PICS_EXT);
+    for (int i = 0; i < size; i++) {
+        m_images[i] = new Surface(anim_name + sup + to_string(i) + PICS_EXT);
     }
 
     m_type = type;
@@ -65,11 +66,12 @@ AnimPic::AnimPic(std::string anim_name, anim_type type) {
     }
 }
 
-AnimPic::~AnimPic() {
-    for (int i=0;i<m_size;i++) {
-        delete m_images[i];
-    }
-    delete[] m_images;
+AnimPic::~AnimPic()
+{
+//~     for (int i = 0; i < m_size; i++) {
+//~         delete m_images[i];
+//~     }
+//~     delete[] m_images;
 }
 
 Surface * AnimPic::curr_pic()

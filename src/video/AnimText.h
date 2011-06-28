@@ -22,10 +22,10 @@ class AnimText: public Anim {
         *
         * Rq : Pour avoir un cardre fixe, on prend le max de la taille et la chaque surface a cette taille
         *
-        * @param text : texte à afficher
-        * @param begin_size : taille de début
+        * @param text : texte a afficher
+        * @param begin_size : taille de debut
         * @param end_size : taille de fin
-        * @param nb_pic : nombre d'images à jouer
+        * @param nb_pic : nombre d'images a jouer
         *
         */
         AnimText(std::string text, int begin_size, int end_size, int nb_pic);
@@ -33,7 +33,7 @@ class AnimText: public Anim {
         /*!
         * @brief Destructeur
         */
-        ~AnimText();
+		virtual ~AnimText();
 
         /*!
         * @brief Image a afficher.
@@ -42,7 +42,7 @@ class AnimText: public Anim {
         Surface * curr_pic();
 
         /*!
-        * @brief Passe à l'image suivante
+        * @brief Passe a l'image suivante
         */
         void next_pic();
 
@@ -61,7 +61,7 @@ class AnimText: public Anim {
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
          *
-         *  @param pos Rect à modifier
+         *  @param pos Rect a modifier
          */
         void set_rect(Rect &pos);
 

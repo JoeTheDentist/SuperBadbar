@@ -5,7 +5,7 @@
 
 class Surface;
 
-/* Cyclique, à supprimer à la fin, à laisser sur la dernière image */
+/* Cyclique, a supprimer a la fin, a laisser sur la derniere image */
 enum anim_type {
     CYCLE, ENDED, NOEND
 };
@@ -20,6 +20,8 @@ class Anim {
 
 
     public:
+		
+		virtual ~Anim() {}
         /*!
         * @brief Image a afficher.
         * @return l'image de l'animation a afficher, et MET A JOUR !!! l'image suivante.
@@ -27,7 +29,7 @@ class Anim {
         virtual Surface * curr_pic()=0;
 
         /*!
-        * @brief Passe à l'image suivante
+        * @brief Passe a l'image suivante
         */
         virtual void next_pic()=0;
 
