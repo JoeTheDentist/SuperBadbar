@@ -38,9 +38,7 @@ class EventOrderer;
  *	Elle permet egalement de forcer la desactivation d'une ou plusieurs
  *	touches part l'appel d'une methode (disable_key, disable_all)
  *
- * 	@todo Enlever les touches inutiles, charger les touches depuis
- *	un fichier de configuration, donner la possibilite au joueur
- * 	de choisir ses touches avec un menu
+ * 	@todo Charger les touches depuis un fichier de config
  *
  *	@warning Si trop de touches sont appuyees simultanement, certaines ne sont pas detectees.\n
  *	Solution: changer la configuration des touches (eviter en particulier les fleches directionnelles)
@@ -163,14 +161,38 @@ public:
 	*/
 	menu_key pop_menu_key();
 
-	void order_event(EventOrderer *EventOrderer);
+	/*!
+	*	@brief Demande au Keyboard un event clavier depuis l'EventOrderer en param
+	*	@param eventOrderer Le demandeur
+	*
+	* 	Le prochain event recupere ne sera pas traite et sera envoye a l'eventOrderer
+	*/
+	void order_event(EventOrderer *eventOrderer);
 
+	/*!
+	*	@brief Retourne vrai si un EventOrderer attend un evenement du Keyboard
+	*/
 	bool event_ordered();
 
+	/*!
+	*	@brief Envoie event a l'eventOrderer client (s'il n'existe pas, comportement indefini)
+	*
+	*	Doit etre precede de if (eventdered())
+	*/
 	void answer_event_order(SDLKey event);
 
+	/*!
+	*	@brief Change la configuration de la touche k pour sdl_code
+	*	@param k La touche a modifier
+	*	@param sdl_code Le code string sdl de la nouvelle touche (cf SdlKeyConverter)
+	*/
 	void set_config_key(key k, std::string sdl_code);
 
+	/*!
+	*	@brief Renvoie le code string sdl de la touche correspondant a k
+	*	@param k La touche dont on veut l'info
+	*	@return le code string sdl de la touche correspondant a k
+	*/
 	std::string get_string_key(key k);
 
 
