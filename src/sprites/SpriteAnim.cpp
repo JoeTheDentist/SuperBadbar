@@ -26,7 +26,7 @@ SpriteAnim::SpriteAnim(std::string text, int begin_size, int end_size, int nb_pi
 
 SpriteAnim::~SpriteAnim()
 {
-    PRINT_CONSTR(1, "destruction de SpriteAnimTable")
+    PRINT_CONSTR(3, "destruction de SpriteAnim")
     delete m_anim;
 }
 

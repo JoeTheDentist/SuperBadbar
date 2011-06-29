@@ -31,11 +31,13 @@ Talks::Talks():
 
 Talks::~Talks()
 {
+	#ifndef DISABLE_TALKS
 	clear_lines();
 	delete m_text_background;
 	delete m_frame_background;
 	delete m_talker;
-	PRINT_CONSTR(1, "Destruction de la classe Talks")
+	PRINT_CONSTR(1, "Destruction de la classe Talks"
+	#endif
 }
 
 void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)

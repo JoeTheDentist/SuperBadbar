@@ -23,6 +23,7 @@ Analyser::Analyser()
 	m_opened = false;
 	m_file = NULL;
 }
+
 Analyser::~Analyser()
 {
    	PRINT_CONSTR(3, "Destruction d'un Analyser")
@@ -31,7 +32,7 @@ Analyser::~Analyser()
 uint32_t Analyser::open(std::string file)
 {
 	m_filename = file;
-	PRINT_TRACE(2, "Ouverture du fichier %s", file.c_str())
+	PRINT_TRACE(3, "Ouverture du fichier %s", file.c_str())
 	m_file = new std::ifstream(file.c_str(), std::ios::in);
 	if (m_file == NULL){
 		PRINT_DEBUG(1, "Impossible d'ouvrir le fichier %s", file.c_str())
@@ -43,7 +44,7 @@ uint32_t Analyser::open(std::string file)
 
 void Analyser::close()
 {
-	PRINT_TRACE(2, "Fermeture du fichier %s", m_filename.c_str())	
+	PRINT_TRACE(3, "Fermeture du fichier %s", m_filename.c_str())	
 	m_file->close();
 	delete m_file;
 	m_opened = false;
@@ -72,12 +73,10 @@ bool Analyser::find_next_string(std::string str)
 
 bool Analyser::end_of_section()
 {
-//~ 	jump_separators();
 	char temp = read_char();
 	m_file->seekg(-1, std::ios::cur);
 	return temp == '!';
 }
-                                      
 
 void Analyser::jump_separators()
 {
@@ -87,10 +86,8 @@ void Analyser::jump_separators()
 		m_file->get(current);
 		switch (current){
 		case ' ': 
-			PRINT_DEBUG(1, "espace ");
 			break;
 		case '\n':
-			PRINT_DEBUG(1, "retour chariot ");
 			break;
 //~ 		case '/':
 //~ 			m_file->get(current);
