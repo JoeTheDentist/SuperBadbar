@@ -36,7 +36,7 @@ Talks::~Talks()
 	delete m_text_background;
 	delete m_frame_background;
 	delete m_talker;
-	PRINT_CONSTR(1, "Destruction de la classe Talks"
+	PRINT_CONSTR(1, "Destruction de la classe Talks");
 	#endif
 }
 
@@ -300,7 +300,7 @@ bool Talks::end_of_talks()
 
 void Talks::clear_line(int i)
 {
-	for (std::list<SpecialLetter *>::iterator it = m_text_surface[i].begin(); 
+	for (std::list<SpecialLetter *>::iterator it = m_text_surface[i].begin();
 			it != m_text_surface[i].end(); ++it) {
 		delete (*it);
 	}

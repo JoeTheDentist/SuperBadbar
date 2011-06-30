@@ -150,6 +150,7 @@
 		<Unit filename="src\menus\OptionsMenu.h" />
 		<Unit filename="src\menus\PauseMenu.cpp" />
 		<Unit filename="src\menus\PauseMenu.h" />
+		<Unit filename="src\param\param_dashboard.h" />
 		<Unit filename="src\param\param_menus.h" />
 		<Unit filename="src\param\param_talks.h" />
 		<Unit filename="src\physic\BindablePlatform.cpp" />
@@ -219,8 +220,12 @@
 		<Unit filename="src\video\Font.h" />
 		<Unit filename="src\video\GraphicEngine.cpp" />
 		<Unit filename="src\video\GraphicEngine.h" />
+		<Unit filename="src\video\KeyMapSurfaceText.cpp" />
+		<Unit filename="src\video\KeyMapSurfaceText.h" />
 		<Unit filename="src\video\LifeBarPossessor.cpp" />
 		<Unit filename="src\video\LifeBarPossessor.h" />
+		<Unit filename="src\video\MainTitle.cpp" />
+		<Unit filename="src\video\MainTitle.h" />
 		<Unit filename="src\video\Maintitle.cpp" />
 		<Unit filename="src\video\Maintitle.h" />
 		<Unit filename="src\video\PicturesContainer.cpp" />
@@ -239,6 +244,10 @@
 		<Unit filename="src\video\SurfaceUniform.h" />
 		<Unit filename="src\video\Talks.cpp" />
 		<Unit filename="src\video\Talks.h" />
+		<Unit filename="src\video\Texture.cpp" />
+		<Unit filename="src\video\Texture.h" />
+		<Unit filename="src\video\TexturesManager.cpp" />
+		<Unit filename="src\video\TexturesManager.h" />
 		<Unit filename="src\video\TransitionScreen.cpp" />
 		<Unit filename="src\video\TransitionScreen.h" />
 		<Extensions>

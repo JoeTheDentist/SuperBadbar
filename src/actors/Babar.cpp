@@ -51,7 +51,9 @@ void Babar::load_anim(int age)
 	age = 0;
 	#endif
 
-    /* TODO ici fuite de mémoire si rechargement... */
+    if ( m_sprite ) {
+        m_sprite->to_delete();
+    }
 	m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());

@@ -33,8 +33,6 @@ direction AI::dir()
 
 double AI::eval(direction d) {
     Rect zone = *m_pos;
-    // ici faire en fonction de la vitesse des projectiles TODO
-
     double weight = 0;
     switch ( d ) {
         case LEFT :
