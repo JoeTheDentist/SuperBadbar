@@ -72,6 +72,7 @@ public:
 	
 	#ifdef _OPENGL_ACTIVE_
 	Texture *getTexture() { return m_texture;}
+	void setTexture(Texture *texture) {m_texture = texture;}
 	#endif
 	
 	/*!

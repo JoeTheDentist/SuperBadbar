@@ -16,6 +16,7 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include "../video/KeyMapSurfaceText.h"
 
 
 
@@ -29,6 +30,7 @@ class Texture;
 class TexturesManager {
 private:
 	std::map<std::string, Texture *> m_container;
+	std::map<KeyMapSurfaceText, Texture *> m_textContainer;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -47,8 +49,26 @@ public:
 	 */
 	Texture *load_IMG(std::string key);
 
-private:
-	Texture *forceLoadImg(std::string str);
+	/*!
+	*	@brief Retourne un pointeur vers la texture de texte demandee
+	*	@param text Le texte de la surface
+	*	@param size La taille du texte de la surface
+	*	@param r La composante rouge du texte
+	*	@param g La composante verte du texte
+	*	@param b La composante bleue du texte
+	*	@param fontNameLe nom de la police (qui sera charge dans le repertoire des polices)
+	*	@return Un pointeur vers la texture demandee
+	*/
+	Texture *loadTextureText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
+	
+	
+	/*!
+	*	@brief Transforme une SDL_Surface en Texture 
+	*	@param surface La surface a transformer
+	*	@return La texture
+	*/
+	static Texture *SDLSurfaceToTexture(SDL_Surface *surface);
+
 };
 
 #endif // #idef _OPENGL_ACTIVE_

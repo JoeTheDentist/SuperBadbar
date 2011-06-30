@@ -79,12 +79,20 @@ void Surface::setTexturesManager(TexturesManager *texturesManager)
 
 int Surface::w()
 {
+	#ifdef _OPENGL_ACTIVE_
+	return getTexture()->w();
+	#else
 	return m_surface->w;
+	#endif
 }
 
 int Surface::h()
 {
+	#ifdef _OPENGL_ACTIVE_
+	return getTexture()->h();
+	#else
 	return m_surface->h;
+	#endif
 }
 
 void Surface::set_w(int w)

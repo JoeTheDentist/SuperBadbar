@@ -28,7 +28,7 @@
 
 #include <stdio.h>
 
-//~ #define _OPENGL_ACTIVE_ 1
+#define _OPENGL_ACTIVE_ 1
 #ifdef _OPENGL_ACTIVE_
 	#define DISABLE_DASHBOARD
 	#define DISABLE_TALKS
