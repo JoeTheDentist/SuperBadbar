@@ -75,6 +75,7 @@ void Monsters_manager::load_monster(std::string name, int posx, int posy)
 	} else {
 		PRINT_DEBUG(1, "!!! MonsterManager type %s n'existe pas", name.c_str());
 	}
+	analyserMonster.close();
 }
 
 void Monsters_manager::load_monster(Analyser *analyser)

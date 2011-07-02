@@ -43,6 +43,9 @@ GraphicEngine::GraphicEngine()
 GraphicEngine::~GraphicEngine()
 {
 	PRINT_CONSTR(1, "Destruction de GraphicEngine")
+	#ifdef _OPENGL_ACTIVE_
+	delete m_texturesManager;
+	#endif
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;

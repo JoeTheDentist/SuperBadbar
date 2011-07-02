@@ -1,15 +1,15 @@
-
+#valgrind --leak-check=full --show-reachable=yes --track-origins=yes --gen-suppressions=all ./babar 2>&1 | egrep "^[{}]|^   [^ \t]" > last.supr
 export OBJ_DIR=obj/
 export CC = g++
 export CFLAGS= -g -Wall #$(LIB_INC) 
 export PROFILEFLAG= -lprofiler
-LDFLAGS= -g  -lfreetype -lSDL_image -lSDL_ttf -lglut -lGLU #-lfmodex-4.34.03 # $(PROFILEFLAG) $(LIB_DYN)
+LDFLAGS= -g  -lfreetype -lSDL_image -lSDL_ttf -lglut #-lfmodex-4.34.03 # $(PROFILEFLAG) $(LIB_DYN)
 LIBCOMP=  ../lib/gcc/libfmod.so #../lib/fmodex/lib/libfmodex-4.34.03.so   #../lib/gcc/libSDL_ttf.so
 
 DIR = actors control events game items menus players physic sound sprites util video AI sets
 EXEC_NAME = babar
 DOC_REP = ../doc/doxydoc/
-VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/BABAR_SDL.supp  --suppressions=../utils/valgrind_suppress/SDL.supp   --suppressions=../utils/valgrind_suppress/other_SDL.supp --suppressions=../utils/valgrind_suppress/fmod.supp  --workaround-gcc296-bugs=yes
+VAL_SUPRESS_FLAG = --suppressions=../utils/valgrind_suppress/BABAR_SDL.supp  --suppressions=../utils/valgrind_suppress/SDL.supp   --suppressions=../utils/valgrind_suppress/other_SDL.supp --suppressions=../utils/valgrind_suppress/fmod.supp  --suppressions=../utils/valgrind_suppress/opengl.supp  --workaround-gcc296-bugs=yes
 
 all:
 	@for i in $(DIR); do \

@@ -41,7 +41,6 @@ StaticData::~StaticData()
 void StaticData::init_StaticData(uint32_t lvl)
 {
     std::string rep;
-	PRINT_CONSTR(1, "Construction d'un StaticData")
     char str[3];
     std::string str_lvl;
     sprintf(str, "%d", lvl);
