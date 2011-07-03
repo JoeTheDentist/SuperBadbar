@@ -153,21 +153,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Addr8
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Addr8
-   obj:/usr/lib/fglrx/dri/fglrx_dri.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Addr8
-   obj:/usr/lib/fglrx/dri/fglrx_dri.so
-}
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Addr8
-   obj:/usr/lib/fglrx/dri/fglrx_dri.so
    obj:*
 }
 {
@@ -182,6 +167,11 @@
 }
 {
    <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
    Memcheck:Addr4
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
@@ -224,7 +214,6 @@
    <insert_a_suppression_name_here>
    Memcheck:Addr8
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
-   obj:*
 }
 {
    <insert_a_suppression_name_here>
@@ -247,7 +236,7 @@
 }
 {
    <insert_a_suppression_name_here>
-   Memcheck:Addr4
+   Memcheck:Addr8
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
 {
@@ -258,7 +247,7 @@
 }
 {
    <insert_a_suppression_name_here>
-   Memcheck:Cond
+   Memcheck:Addr4
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
 {
@@ -274,6 +263,636 @@
 {
    <insert_a_suppression_name_here>
    Memcheck:Cond
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/home/gloups/projets/superbabar/lib/gcc/libfmod.so
+   fun:FSOUND_Mpeg_Synth
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN16TransitionScreen7displayEP6Camera
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   obj:/usr/lib/libSDL-1.2.so.0.11.3
+   obj:/usr/lib/libSDL-1.2.so.0.11.3
+   obj:/usr/lib/libSDL-1.2.so.0.11.3
+   fun:SDL_PumpEvents
+   fun:SDL_WaitEvent
+   fun:_ZN8Keyboard16wait_for_any_keyEv
+   fun:_ZN16TransitionScreen15wait_for_playerEv
+   fun:_ZN4Game9init_gameESs
+   fun:_ZN4GameC1ESs
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN6Camera18display_backgroundEP7Surface
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN6Camera18display_backgroundEP7Surface
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZN6Camera18display_backgroundEP7Surface
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr2
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZNK6Camera7displayEP11Displayable
+   fun:_ZN10StaticData20display_statics_backEP6Camera
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZNK6Camera7displayEP11Displayable
+   fun:_ZN10StaticData20display_statics_backEP6Camera
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr4
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+   fun:_ZNK6Camera15display_pictureEP7SurfaceP4Rectb
+   fun:_ZNK6Camera7displayEP11Displayable
+   fun:_ZN10StaticData20display_statics_backEP6Camera
+   fun:_ZN4Game14update_graphicEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr1
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
 {
@@ -819,6 +1438,38 @@
    obj:/usr/lib/fglrx/libatiadlxx.so
    fun:ADL_Main_Control_Create
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:local_strdup
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.1
+   fun:SDL_LoadObject
+   fun:IMG_InitPNG
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.1
+   fun:SDL_LoadObject
 }
 {
    <insert_a_suppression_name_here>
@@ -2133,6 +2784,22 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    fun:malloc
+   fun:_dl_map_object_deps
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.1
+   fun:SDL_LoadObject
+   fun:IMG_InitPNG
+   fun:IMG_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
@@ -2704,6 +3371,22 @@
    fun:_dl_catch_error
    fun:_dlerror_run
    fun:dlopen@@GLIBC_2.1
+   fun:SDL_LoadObject
+   fun:IMG_InitPNG
+   fun:IMG_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:_dl_check_map_versions
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.1
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
 }
 {
@@ -2876,6 +3559,14 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    fun:malloc
+   fun:__fopen_internal
+   fun:fopen@@GLIBC_2.1
+   fun:FSOUND_File_Open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
    obj:/usr/lib/libX11.so.6.3.0
    obj:/usr/lib/libX11.so.6.3.0
    fun:_XlcCreateLocaleDataBase
@@ -2887,6 +3578,32 @@
    fun:_XrmInitParseInfo
    obj:/usr/lib/libX11.so.6.3.0
    fun:XrmGetStringDatabase
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwj
+   fun:_ZN7Shotgun4fireE4Rect9direction8dmg_chan
+   fun:_ZN5Babar4fireEi
+   fun:_ZN5Babar12update_stateEv
+   fun:_ZN14PlayersManager6updateEv
+   fun:_ZN10GameEngine6updateEv
+   fun:_ZN4Game11update_gameEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwj
+   fun:_ZN7Shotgun4fireE4Rect9direction8dmg_chan
+   fun:_ZN5Babar4fireEi
+   fun:_ZN5Babar12update_stateEv
+   fun:_ZN14PlayersManager6updateEv
+   fun:_ZN10GameEngine6updateEv
+   fun:_ZN4Game11update_gameEv
+   fun:_ZN4Game9game_loopEv
+   fun:main
 }
 {
    <insert_a_suppression_name_here>
@@ -2935,6 +3652,22 @@
    obj:/usr/lib/fglrx/libatiadlxx.so
    fun:ADL_Main_Control_Create
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.1
+   fun:SDL_LoadObject
 }
 {
    <insert_a_suppression_name_here>
@@ -3329,6 +4062,13 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    fun:malloc
+   fun:F_Malloc
+   obj:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
    obj:/usr/lib/libX11.so.6.3.0
    fun:_XrmInternalStringToQuark
    fun:XStringToKeysym
@@ -3390,6 +4130,18 @@
    Memcheck:Leak
    fun:malloc
    obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/fglrx/dri/fglrx_dri.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:F_Malloc
 }
 {
    <insert_a_suppression_name_here>

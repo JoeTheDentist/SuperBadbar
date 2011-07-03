@@ -68,10 +68,10 @@ AnimPic::AnimPic(std::string anim_name, anim_type type)
 
 AnimPic::~AnimPic()
 {
-//~     for (int i = 0; i < m_size; i++) {
-//~         delete m_images[i];
-//~     }
-//~     delete[] m_images;
+    for (int i = 0; i < m_size; i++) {
+        delete m_images[i];
+    }
+    delete[] m_images;
 }
 
 Surface * AnimPic::curr_pic()

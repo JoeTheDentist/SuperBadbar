@@ -52,7 +52,7 @@ public:
 	/**
 	 * 	@brief Destructeur
 	 */
-	~BindablePlatform();
+	virtual ~BindablePlatform();
 
 	/**
 	 * 	@brief Initialise le BindablePlatform

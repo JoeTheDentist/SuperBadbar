@@ -29,9 +29,17 @@ TexturesManager::TexturesManager()
 
 TexturesManager::~TexturesManager()
 {
-	std::map<std::string, Texture*>::iterator it;
-	for (it = m_container.begin(); it != m_container.end(); it++) {
-		delete(it->second);
+	{
+		std::map<std::string, Texture*>::iterator it;
+		for (it = m_container.begin(); it != m_container.end(); it++) {
+			delete(it->second);
+		}
+	}
+	{
+		std::map<KeyMapSurfaceText, Texture *>::iterator it;
+		for (it = m_textContainer.begin(); it != m_textContainer.end(); it++) {
+			delete(it->second);
+		}
 	}
 	PRINT_CONSTR(1, "Destruction d'un TexturesManager");
 }

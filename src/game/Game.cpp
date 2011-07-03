@@ -131,7 +131,6 @@ void Game::update_graphic()
 	Camera *camera = gGraphics->get_camera();
 	/* affichage du fond */
 	camera->update_pos();
-	std::cout << "plop" << std::endl;
 	camera->display_background(gStatic->background());
 
 	/* affichage des statics du deuxieme plan */

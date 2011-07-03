@@ -33,6 +33,10 @@ CollisionsManager::~CollisionsManager()
 	for(std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		delete (*it);
+	}	
+	for(std::list<std::pair<BindablePlatform *, int> > ::const_iterator it = m_waiting_platforms.begin();
+			it != m_waiting_platforms.end(); it++) {
+		delete (*it).first;
 	}
 	delete m_matrix;
 }
