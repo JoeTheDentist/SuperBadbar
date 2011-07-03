@@ -28,11 +28,8 @@
 
 #include <stdio.h>
 
-#define _OPENGL_ACTIVE_ 1
-#ifdef _OPENGL_ACTIVE_
-	#define DISABLE_DASHBOARD
-	#define DISABLE_TALKS
-#endif
+#define _OPENGL_ACTIVE_ 
+
 //~ #define DEBUG_COLL 1
 #define ARG_ANALYSER_ON
 #define DEBUG 2

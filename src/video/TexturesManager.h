@@ -68,6 +68,9 @@ public:
 	*	@return La texture
 	*/
 	static Texture *SDLSurfaceToTexture(SDL_Surface *surface);
+	
+	Texture *loadUniformSurface(int width, int height, int r, int g, int b);
+	Texture *loadFrameSurface(int width, int height, int r, int g, int b);
 
 };
 

@@ -131,5 +131,9 @@ void Surface::blit_surface(Surface *background, Rect pos)
 
 void Surface::set_alpha(unsigned char alpha)
 {
+	#ifndef _OPENGL_ACTIVE_
 	SDL_SetAlpha(get_surface(), SDL_SRCALPHA, alpha);
+	#else
+	
+	#endif
 }

@@ -26,12 +26,11 @@ void Camera::display_event(Event *event) const{	Surface *picture = event->curr
     pos_temp.w = m_frame.w;	return pos_temp;}int Camera::width() const{	return frame().w;}int Camera::height() const{	return frame().h;}void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const{
     if ( surf ) {
         if ( fixe ) {
-            SDL_Rect * pos_sdl = new SDL_Rect;
-            pos_sdl->x = (int)pos->x;
-            pos_sdl->y = (int)pos->y;
-            pos_sdl->h = (unsigned int)pos->h;
-            pos_sdl->w = (unsigned int)pos->w;			#ifndef _OPENGL_ACTIVE_            SDL_BlitSurface(surf->get_surface(), NULL, m_screen, pos_sdl);			#else			Texture *texture = surf->getTexture();			if (!texture) {				PRINT_DEBUG(1, "ECHEEEC");				return;			}			// Bind the texture to which subsequent calls refer to			glBindTexture( GL_TEXTURE_2D, texture->getGlTexture() );			 			glBegin( GL_QUADS );				//Bottom-left vertex (corner)				glTexCoord2i( 0, 0 );				glVertex3f( pos_sdl->x, pos_sdl->y, 0.f);			 				//Bottom-right vertex (corner)				glTexCoord2i( 1, 0 );				glVertex3f( pos_sdl->x + texture->w(), pos_sdl->y, 0.f );			 				//Top-right vertex (corner)				glTexCoord2i( 1, 1 );				glVertex3f( pos_sdl->x + texture->w(), pos_sdl->y + texture->h(), 0.f );			 				//Top-left vertex (corner)				glTexCoord2i( 0, 1 );				glVertex3f( pos_sdl->x, pos_sdl->y + texture->h(), 0.f );			glEnd();			#endif            delete pos_sdl;
-        } else {
+            SDL_Rect pos_sdl;
+            pos_sdl.x = (int)pos->x;
+            pos_sdl.y = (int)pos->y;
+            pos_sdl.h = (unsigned int)pos->h;
+            pos_sdl.w = (unsigned int)pos->w;			#ifndef _OPENGL_ACTIVE_            SDL_BlitSurface(surf->get_surface(), NULL, m_screen, &pos_sdl);			#else			Texture *texture = surf->getTexture();			if (!texture) {				PRINT_DEBUG(1, "ECHEEEC");				return;			}			// Bind the texture to which subsequent calls refer to			glBindTexture( GL_TEXTURE_2D, texture->getGlTexture() );			 			glBegin( GL_QUADS );				//Bottom-left vertex (corner)				glTexCoord2i( 0, 0 );				glVertex3f( pos_sdl.x, pos_sdl.y, 0.f);			 				//Bottom-right vertex (corner)				glTexCoord2i( 1, 0 );				glVertex3f( pos_sdl.x + texture->w(), pos_sdl.y, 0.f );			 				//Top-right vertex (corner)				glTexCoord2i( 1, 1 );				glVertex3f( pos_sdl.x + texture->w(), pos_sdl.y + texture->h(), 0.f );			 				//Top-left vertex (corner)				glTexCoord2i( 0, 1 );				glVertex3f( pos_sdl.x, pos_sdl.y + texture->h(), 0.f );			glEnd();			#endif        } else {
             Rect curr = *pos;
             curr.x -= m_frame.x;
             curr.y -= m_frame.y;

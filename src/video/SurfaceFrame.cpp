@@ -11,12 +11,18 @@
 
 #include "SurfaceFrame.h"
 #include "SurfaceUniform.h"
+#include "../util/debug.h"
+#include "../video/TexturesManager.h"
+#include "../video/Texture.h"
 
 SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
 	Surface(),
 	m_line_w(5),
 	m_line_h(5)
 {
+	#ifdef _OPENGL_ACTIVE_
+	m_texturesManager->loadFrameSurface(rect.w, rect.h, r, g, b);
+	#else
 	SurfaceUniform background(rect.w, rect.h, 0, 0xFF, 0xFF);
 	m_surface = background.get_copy_surface();
 	SDL_SetColorKey( m_surface, SDL_RLEACCEL | SDL_SRCCOLORKEY,  SDL_MapRGB( m_surface->format, 0, 0xFF, 0xFF ) );
@@ -30,9 +36,14 @@ SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
 	horizontal.blit_surface(this, pos);
 	pos.y = rect.h - horizontal.h();
 	horizontal.blit_surface(this, pos);
+	#endif
 }
 
 SurfaceFrame::~SurfaceFrame()
 {
+	#ifndef _OPENGL_ACTIVE_
 	SDL_FreeSurface(m_surface);
+	#else
+	delete getTexture();
+	#endif
 }

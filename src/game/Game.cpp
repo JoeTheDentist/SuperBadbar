@@ -105,6 +105,8 @@ Game::~Game()
 	gGraphics->clean();
 	gKeyboard->disable_all_keys();
 	gKeyboard->reset_menu_keys();
+	delete m_pause;
+	m_pause = NULL;
 
 }
 
@@ -232,7 +234,6 @@ result_game Game::game_loop()
 	}
 	return leave;
 }
-
 
 void Game::set_state_playing()
 {

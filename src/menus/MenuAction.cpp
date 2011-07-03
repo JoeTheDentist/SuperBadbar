@@ -16,7 +16,8 @@ MenuAction::MenuAction(std::string str, int i):
 
 MenuAction::~MenuAction()
 {
-
+	delete m_surface_text;
+	delete m_surface_text_selected;
 }
 
 void MenuAction::update()

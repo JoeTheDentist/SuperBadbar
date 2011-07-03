@@ -28,6 +28,9 @@ ListMenuActions::ListMenuActions():
 
 ListMenuActions::~ListMenuActions()
 {
+	for (std::list<MenuAction *>::iterator it = m_actions.begin(); it != m_actions.end(); ++it) {
+		delete (*it);
+	}
 	PRINT_CONSTR(2, "Destruction d'une liste d'actions (ListMenuActions)")
 }
 

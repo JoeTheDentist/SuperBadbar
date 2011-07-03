@@ -21,6 +21,8 @@
 #include "../util/repertories.h"
 #include "../util/globals.h"
 #include "Texture.h"
+#include "../video/GraphicEngine.h"
+#include "../video/Camera.h"
 
 TexturesManager::TexturesManager()
 {
@@ -123,6 +125,20 @@ Texture *TexturesManager::SDLSurfaceToTexture(SDL_Surface *surface)
 	} else {
 		return NULL;
 	}
+}
+
+Texture *TexturesManager::loadUniformSurface(int width, int height, int r, int g, int b)
+{
+	SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, 0);
+    SDL_FillRect(surface,NULL,SDL_MapRGB(gGraphics->get_camera()->sdl_screen()->format,r,g,b));
+	Texture *res = SDLSurfaceToTexture(surface);
+	SDL_FreeSurface(surface);
+	return res;
+}
+
+Texture *TexturesManager::loadFrameSurface(int width, int height, int r, int g, int b)
+{
+	return NULL; //loadUniformSurface( width,  height,  r,  g,  b);
 }
 
 #endif // #idef _OPENGL_ACTIVE_
