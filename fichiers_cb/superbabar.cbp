@@ -45,6 +45,20 @@
 			<Add library="..\lib\SDL\lib\SDL_image.lib" />
 			<Add library="..\lib\SDL\lib\libSDLmain.a" />
 			<Add library="..\lib\SDL\lib\libSDL.dll.a" />
+			<Add library="C:\Users\Benoît\Desktop\SuperBadBar\lib\SDL\lib\glut32.lib" />
+			<Add library="..\lib\SDL\lib\libglaux.a" />
+			<Add library="..\lib\SDL\lib\libglu32.a" />
+			<Add library="..\lib\SDL\lib\glut32.lib" />
+			<Add library="..\lib\SDL\lib\libglaux.a" />
+			<Add library="..\lib\SDL\lib\libglu32.a" />
+			<Add library="..\lib\SDL\lib\libglut.a" />
+			<Add library="..\lib\SDL\lib\libglut32.a" />
+			<Add library="..\lib\SDL\lib\libopengl32.a" />
+			<Add library="..\lib\SDL\lib\libSDL.dll.a" />
+			<Add library="..\lib\SDL\lib\libSDLmain.a" />
+			<Add library="..\lib\SDL\lib\SDL_image.lib" />
+			<Add library="..\lib\SDL\lib\SDL_mixer.lib" />
+			<Add library="..\lib\SDL\lib\SDL_ttf.lib" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="..\resources\resources.rc">
@@ -149,6 +163,7 @@
 		<Unit filename="..\src\menus\OptionsMenu.h" />
 		<Unit filename="..\src\menus\PauseMenu.cpp" />
 		<Unit filename="..\src\menus\PauseMenu.h" />
+		<Unit filename="..\src\param\param_dashboard.h" />
 		<Unit filename="..\src\param\param_menus.h" />
 		<Unit filename="..\src\param\param_talks.h" />
 		<Unit filename="..\src\physic\BindablePlatform.cpp" />
@@ -218,6 +233,8 @@
 		<Unit filename="..\src\video\Font.h" />
 		<Unit filename="..\src\video\GraphicEngine.cpp" />
 		<Unit filename="..\src\video\GraphicEngine.h" />
+		<Unit filename="..\src\video\KeyMapSurfaceText.cpp" />
+		<Unit filename="..\src\video\KeyMapSurfaceText.h" />
 		<Unit filename="..\src\video\LifeBarPossessor.cpp" />
 		<Unit filename="..\src\video\LifeBarPossessor.h" />
 		<Unit filename="..\src\video\MainTitle.cpp" />
@@ -238,6 +255,10 @@
 		<Unit filename="..\src\video\SurfaceUniform.h" />
 		<Unit filename="..\src\video\Talks.cpp" />
 		<Unit filename="..\src\video\Talks.h" />
+		<Unit filename="..\src\video\Texture.cpp" />
+		<Unit filename="..\src\video\Texture.h" />
+		<Unit filename="..\src\video\TexturesManager.cpp" />
+		<Unit filename="..\src\video\TexturesManager.h" />
 		<Unit filename="..\src\video\TransitionScreen.cpp" />
 		<Unit filename="..\src\video\TransitionScreen.h" />
 		<Extensions>

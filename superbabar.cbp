@@ -46,6 +46,17 @@
 			<Add library="lib\SDL\lib\SDL_image.lib" />
 			<Add library="lib\SDL\lib\libSDLmain.a" />
 			<Add library="lib\SDL\lib\libSDL.dll.a" />
+			<Add library="lib\SDL\lib\glut32.lib" />
+			<Add library="lib\SDL\lib\libglaux.a" />
+			<Add library="lib\SDL\lib\libglu32.a" />
+			<Add library="lib\SDL\lib\libglut.a" />
+			<Add library="lib\SDL\lib\libglut32.a" />
+			<Add library="lib\SDL\lib\libopengl32.a" />
+			<Add library="lib\SDL\lib\libSDL.dll.a" />
+			<Add library="lib\SDL\lib\libSDLmain.a" />
+			<Add library="lib\SDL\lib\SDL_image.lib" />
+			<Add library="lib\SDL\lib\SDL_mixer.lib" />
+			<Add library="lib\SDL\lib\SDL_ttf.lib" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="resources\resources.rc">
@@ -226,8 +237,6 @@
 		<Unit filename="src\video\LifeBarPossessor.h" />
 		<Unit filename="src\video\MainTitle.cpp" />
 		<Unit filename="src\video\MainTitle.h" />
-		<Unit filename="src\video\Maintitle.cpp" />
-		<Unit filename="src\video\Maintitle.h" />
 		<Unit filename="src\video\PicturesContainer.cpp" />
 		<Unit filename="src\video\PicturesContainer.h" />
 		<Unit filename="src\video\SpecialLetter.cpp" />

@@ -28,7 +28,7 @@
 
 #include <stdio.h>
 
-#define _OPENGL_ACTIVE_ 
+#define _OPENGL_ACTIVE_
 
 //~ #define DEBUG_COLL 1
 #define ARG_ANALYSER_ON

@@ -52,11 +52,12 @@ Texture *TexturesManager::load_IMG(std::string key)
 	Texture *texture = NULL;
 	if (it == m_container.end()) {
 		SDL_Surface *surface;
-		if ( (surface = IMG_Load(key.c_str())) ) { 
+		if ( (surface = IMG_Load(key.c_str())) ) {
 			texture = SDLSurfaceToTexture(surface);
 			SDL_FreeSurface(surface);
 		} else {
 			PRINT_DEBUG(1, "Can't load %s in TexturesManager::load_IMG ", key.c_str());
+			return NULL;
 		}
 		m_container.insert(std::pair<std::string, Texture*>(key, texture));
 	} else {
@@ -95,7 +96,7 @@ Texture *TexturesManager::loadTextureText(std::string text, int size, int r, int
 Texture *TexturesManager::SDLSurfaceToTexture(SDL_Surface *surface)
 {
 	int h, w;
-	GLuint texture;			
+	GLuint texture;
 	GLenum texture_format;
 	GLint  nOfColors;
 	nOfColors = surface->format->BytesPerPixel;
@@ -117,12 +118,13 @@ Texture *TexturesManager::SDLSurfaceToTexture(SDL_Surface *surface)
  	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
  	glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, surface->w, surface->h, 0,
-					  texture_format, GL_UNSIGNED_BYTE, surface->pixels );	
-	if (surface) { 
+					  texture_format, GL_UNSIGNED_BYTE, surface->pixels );
+	if (surface) {
 		w = surface->w;
 		h = surface->h;
 		return new Texture(texture, w, h);
 	} else {
+	    PRINT_DEBUG(1, "Can't load surface, NULL will be returned")
 		return NULL;
 	}
 }
