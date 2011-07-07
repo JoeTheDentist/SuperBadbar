@@ -4,6 +4,7 @@
 #include "../control/Keyboard.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../util/Constants.h"
 //~ #include <fmodex/fmod.h>
 
 #include "../util/globals.h"
@@ -17,6 +18,7 @@ bool GameInitializer::init_game()
 	freopen("CON", "w", stderr);
 	#endif
 	srand(time(NULL));
+	Constants::init();
 	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")

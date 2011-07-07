@@ -35,6 +35,7 @@ class PlayersManager;
 #include "../game/GameEngine.h"
 #include "../sets/AnimatedSetsManager.h"
 #include "../players/PlayersManager.h"
+#include "../util/Constants.h"
 
 #define BOX_SIZE 5
 
