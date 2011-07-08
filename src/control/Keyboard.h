@@ -75,6 +75,12 @@ public:
 	void load_config(std::string config_name);
 
 	/*!
+	* 	@brief Sauvegarde La configuration des touches dans un fichier
+	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration
+	*/
+	void save_config(std::string config_name);
+
+	/*!
 	* 	@brief Met à jour le tableau des touches enfoncees
 	*/
 	void update_events();

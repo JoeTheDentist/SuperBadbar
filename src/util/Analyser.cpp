@@ -29,17 +29,17 @@ Analyser::~Analyser()
    	PRINT_CONSTR(3, "Destruction d'un Analyser")
 }
 
-uint32_t Analyser::open(std::string file)
+bool Analyser::open(std::string file)
 {
 	m_filename = file;
 	PRINT_TRACE(3, "Ouverture du fichier %s", file.c_str())
 	m_file = new std::ifstream(file.c_str(), std::ios::in);
-	if (m_file == NULL){
+	if (m_file == NULL || !*m_file){
 		PRINT_DEBUG(1, "Impossible d'ouvrir le fichier %s", file.c_str())
-		return 1;
+		return false;
 	}
 	m_opened = true;
-	return 0;
+	return true;
 }
 
 void Analyser::close()

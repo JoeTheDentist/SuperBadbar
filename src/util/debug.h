@@ -87,6 +87,7 @@
 		#define PRINT_DEBUG(level, format, args...) \
 		if (DEBUG >= level){ \
 			fprintf(stderr, "\033[31m"format"\033[0m", ##args);          \
+			fprintf(stderr, "\033[31m" " (in %s line %d)""\033[0m", __FILE__, __LINE__); \
 			fprintf(stderr, "\n"); \
 		}
 	#else

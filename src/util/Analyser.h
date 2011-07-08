@@ -55,9 +55,9 @@ public:
  	/*!
 	* @brief ouvre le fichier nommé file
 	* @param file nom du fichier à ouvrir
-	* @return renvoie 1 si l'ouverture est un succès, 0 sinon
+	* @return renvoie vrai si l'ouverture est un succès, faux sinon
 	*/
-	uint32_t open(std::string file);
+	bool open(std::string file);
 
   	/*!
 	* @brief ferme le fichier ouvert

@@ -78,8 +78,8 @@ void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 	m_green_rect = new SurfaceUniform(LIFE_BAR_W, LIFE_BAR_H, 0, 255, 0);
 	m_red_rect = new SurfaceUniform(LIFE_BAR_W, LIFE_BAR_H, 255, 0, 0);
 	m_life_bar = new SurfaceUniform(LIFE_BAR_W, LIFE_BAR_H, 0, 255, 0);
-	m_frame_life_bar.x = WINDOW_WIDTH - m_life_bar->w() - 20;
-	m_frame_life_bar.y = WINDOW_HEIGHT -100 - DASH_DECALAGE;
+	m_frame_life_bar.x = Constants::WINDOW_WIDTH - m_life_bar->w() - 20;
+	m_frame_life_bar.y = Constants::WINDOW_HEIGHT -100 - DASH_DECALAGE;
 	m_frame_life_bar.w = m_life_bar->w();
 	m_frame_life_bar.h = m_life_bar->h();
 	m_rect_null.x = 0;
@@ -180,8 +180,8 @@ void Dashboard::draw_dashboard(Camera *camera)
 	/* affichage de l'alert */
 	if ( m_alert ) {
         Rect pos_alert;
-        pos_alert.x = WINDOW_HEIGHT/2;
-        pos_alert.y = WINDOW_WIDTH/2;
+        pos_alert.x = Constants::WINDOW_HEIGHT/2;
+        pos_alert.y = Constants::WINDOW_WIDTH/2;
         Surface * img_alert = m_alert->curr_pic();
         /* je sais pas trop pq il y a besoin d'un offset ici... */
         pos_alert.x -= img_alert->w()/2-100;

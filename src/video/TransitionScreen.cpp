@@ -23,10 +23,10 @@ TransitionScreen::TransitionScreen(std::string picture_path, std::string text1, 
 	m_text1(new SurfaceText(text1)),
 	m_text2(new SurfaceText(text2))
 {
-	m_pos_text1.x = (WINDOW_WIDTH - m_text1->w()) / 2;
-	m_pos_text2.x = (WINDOW_WIDTH - m_text2->w()) / 2;
-	m_pos_text1.y = (WINDOW_HEIGHT * 3) / 4;
-	m_pos_text2.y = (WINDOW_HEIGHT * 3) / 4;
+	m_pos_text1.x = (Constants::WINDOW_WIDTH - m_text1->w()) / 2;
+	m_pos_text2.x = (Constants::WINDOW_WIDTH - m_text2->w()) / 2;
+	m_pos_text1.y = (Constants::WINDOW_HEIGHT * 3) / 4;
+	m_pos_text2.y = (Constants::WINDOW_HEIGHT * 3) / 4;
 }
 
 TransitionScreen::~TransitionScreen()

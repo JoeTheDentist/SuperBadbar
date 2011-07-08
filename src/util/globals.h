@@ -25,6 +25,7 @@ class Stats;
 class PlayersManager;
 
 #include <sstream>
+#include "../util/Constants.h"
 
 #include "../util/repertories.h"
 #include "../actors/Actor.h"
@@ -43,8 +44,6 @@ class PlayersManager;
 #define FULL_COLL 0xF
 #define DOWN_COLL 0x4
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
 
 #define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport à Babar */
 

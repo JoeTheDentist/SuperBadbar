@@ -18,8 +18,9 @@
 #include "../util/Analyser.h"
 #include "../util/debug.h"
 #include "../util/repertories.h"
+#include "../util/macros.h"
+#include <fstream>	
 
-void display_config();
 
 Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name):
 	m_EventOrderer(NULL)
@@ -39,7 +40,8 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_key_config[SDLK_SPACE] = k_action;
 	m_key_config[SDLK_a] = k_prev_weapon;
 	m_key_config[SDLK_z] = k_next_weapon;
-//~ 	load_config("defaultkey.cfg");
+	load_config("defaultkey.cfg");
+	load_config("customizekey.cfg");
 	m_record_on = record_on;
 	m_replay_on = replay_on;
 	if (m_replay_on) {
@@ -66,33 +68,42 @@ Keyboard::~Keyboard()
 
 void Keyboard::load_config(std::string config_name)
 {
+	#define LOCAL_LOAD_KEY(yop) \
+	if (analyser.find_string(QUOTE_ACO(yop))) \
+		m_key_config[analyser.read_int()] = yop;
 	Analyser analyser;
-	analyser.open(CONFIG_R + config_name);
-	PRINT_DEBUG(1, "1");
-	analyser.find_string("#k_up#");
-	m_key_config[analyser.read_int()] = k_up;
-	PRINT_DEBUG(1, "1");
-	analyser.find_string("#k_down#");
-	m_key_config[analyser.read_int()] = k_down;
-	analyser.find_string("#k_left#");
-	m_key_config[analyser.read_int()] = k_left;
-	analyser.find_string("#k_right#");
-	m_key_config[analyser.read_int()] = k_right;
-	analyser.find_string("#k_jump#");
-	m_key_config[analyser.read_int()] = k_jump;
-	PRINT_DEBUG(1, "1");
-	analyser.find_string("#k_fire#");
-	m_key_config[analyser.read_int()] = k_fire;
-	analyser.find_string("#k_escape#");
-	m_key_config[analyser.read_int()] = k_escape;
-	analyser.find_string("#k_prev_weapon#");
-	m_key_config[analyser.read_int()] = k_prev_weapon;
-	analyser.find_string("#k_next_weapon#");
-	m_key_config[analyser.read_int()] = k_next_weapon;
-	analyser.find_string("#k_action#");
-	m_key_config[analyser.read_int()] = k_action;
-	PRINT_DEBUG(1, "1");
+	if(!analyser.open(CONFIG_R + config_name))
+		return;
+	LOCAL_LOAD_KEY(k_up)
+	LOCAL_LOAD_KEY(k_down)
+	LOCAL_LOAD_KEY(k_left)
+	LOCAL_LOAD_KEY(k_right)
+	LOCAL_LOAD_KEY(k_jump)
+	LOCAL_LOAD_KEY(k_fire)
+	LOCAL_LOAD_KEY(k_escape)
+	LOCAL_LOAD_KEY(k_prev_weapon)
+	LOCAL_LOAD_KEY(k_next_weapon)
+	LOCAL_LOAD_KEY(k_action)
 	analyser.close();
+}
+
+void Keyboard::save_config(std::string config_name)
+{
+	std::cout << "save dans " << CONFIG_R + config_name << std::endl;
+	std::ofstream out((CONFIG_R + config_name).c_str(), std::ios::out | std::ios::trunc);
+	#define LOCAL_SAVE_KEY(yop) \
+	out << "{" << #yop << "} " << SdlKeyConverter::stdstring_to_sdlkey(get_string_key(yop)) << std::endl;
+	LOCAL_SAVE_KEY(k_up)
+	LOCAL_SAVE_KEY(k_down)
+	LOCAL_SAVE_KEY(k_left)
+	LOCAL_SAVE_KEY(k_right)
+	LOCAL_SAVE_KEY(k_jump)
+	LOCAL_SAVE_KEY(k_fire)
+	LOCAL_SAVE_KEY(k_escape)
+	LOCAL_SAVE_KEY(k_prev_weapon)
+	LOCAL_SAVE_KEY(k_next_weapon)
+	LOCAL_SAVE_KEY(k_action)
+	out.close();
 }
 
 void Keyboard::update_events()
@@ -263,6 +274,7 @@ void Keyboard::disable_key_repeat()
 void Keyboard::set_key(enum key k, int val)
 {
 	m_key_down[k] = val;
+	save_config("customizekey.cfg");
 }
 
 void Keyboard::set_key(int k, int val)

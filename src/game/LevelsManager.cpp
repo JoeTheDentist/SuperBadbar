@@ -35,7 +35,7 @@ LevelsManager::~LevelsManager()
 void LevelsManager::play()
 {
 	result_game res;
-	while(m_level != 6) {
+	while(m_level != Constants::LAST_LEVEL + 1) {
 		delete m_game;
 		m_game = NULL;
 		m_game = new Game(m_level);

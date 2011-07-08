@@ -17,13 +17,14 @@
 #include "game/GameInitializer.h"
 #include "video/Talks.h"
 #include "util/debug.h"
+#include "util/globals.h"
 
 int main(int argc, char *argv[])
 {
 	PRINT_TRACE(1,"Lancement du jeu")
 	GameInitializer::init_game();
 
-		Game *game = new Game("test.lvl");
+		Game *game = new Game(Constants::TEST_LEVEL);
 		game->game_loop();
 		delete game;
 
