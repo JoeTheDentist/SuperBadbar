@@ -70,7 +70,8 @@ void Keyboard::load_config(std::string config_name)
 {
 	#define LOCAL_LOAD_KEY(yop) \
 	if (analyser.find_string(QUOTE_ACO(yop))) \
-		m_key_config[analyser.read_int()] = yop;
+		set_config_key(yop, SdlKeyConverter::sdlkey_to_stdstring(SDLKey(analyser.read_int())), false);
+//~ 		m_key_config[analyser.read_int()] = yop;
 	Analyser analyser;
 	if(!analyser.open(CONFIG_R + config_name))
 		return;
@@ -274,7 +275,6 @@ void Keyboard::disable_key_repeat()
 void Keyboard::set_key(enum key k, int val)
 {
 	m_key_down[k] = val;
-	save_config("customizekey.cfg");
 }
 
 void Keyboard::set_key(int k, int val)
@@ -328,7 +328,7 @@ void Keyboard::answer_event_order(SDLKey event)
 	m_EventOrderer = NULL; // une fois qu'on a repondu une fois, on n'a plus d'orderer
 }
 
-void Keyboard::set_config_key(key k, std::string sdl_code)
+void Keyboard::set_config_key(key k, std::string sdl_code, bool save)
 {
 	SDLKey new_sdlk = SdlKeyConverter::stdstring_to_sdlkey(sdl_code);
 	for (int i = 0; i <= (int)SDLK_LAST; ++i) {
@@ -337,6 +337,9 @@ void Keyboard::set_config_key(key k, std::string sdl_code)
 		}
 	}
 	m_key_config[new_sdlk] = k;
+	if (save)
+		save_config("customizekey.cfg");
+
 }
 
 std::string Keyboard::get_string_key(key k)

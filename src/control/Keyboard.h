@@ -191,8 +191,9 @@ public:
 	*	@brief Change la configuration de la touche k pour sdl_code
 	*	@param k La touche a modifier
 	*	@param sdl_code Le code string sdl de la nouvelle touche (cf SdlKeyConverter)
+	*	@param save True if we want to save the configuration
 	*/
-	void set_config_key(key k, std::string sdl_code);
+	void set_config_key(key k, std::string sdl_code, bool save = true);
 
 	/*!
 	*	@brief Renvoie le code string sdl de la touche correspondant a k
