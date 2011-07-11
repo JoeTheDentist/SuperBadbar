@@ -95,12 +95,12 @@ void BossElmar::update()
 
 bool BossElmar::bottom()
 {
-    return ( m_pos.y + 2*m_pos.h > gStatic->StaticData_height() );
+    return ( m_pos.y + 2*m_pos.h > int(gStatic->StaticData_height()) );
 }
 
 bool BossElmar::top()
 {
-    return ( m_pos.y + 2*m_pos.h < gStatic->StaticData_height() );
+    return ( m_pos.y + 2*m_pos.h < int(gStatic->StaticData_height()) );
 }
 
 bool BossElmar::in_bottom_left_corner()
@@ -111,7 +111,7 @@ bool BossElmar::in_bottom_left_corner()
 
 bool BossElmar::in_bottom_right_corner()
 {
-    return  ( m_pos.x + (5*m_pos.w)/4 > gStatic->StaticData_width() ) &&
+    return  ( m_pos.x + (5*m_pos.w)/4 > int(gStatic->StaticData_width()) ) &&
             bottom();
 }
 
@@ -123,14 +123,14 @@ bool BossElmar::in_top_left_corner()
 
 bool BossElmar::in_top_right_corner()
 {
-    return  ( m_pos.x + (4*m_pos.w)/4 > gStatic->StaticData_width() ) &&
+    return  ( m_pos.x + (4*m_pos.w)/4 > int(gStatic->StaticData_width()) ) &&
             top();
 }
 
 bool BossElmar::in_bottom_middle()
 {
-    return ( m_pos.x + 30 > gStatic->StaticData_width()/2 &&
-             m_pos.x - 30 < gStatic->StaticData_width()/2 ) &&
+    return ( m_pos.x + 30 > int(gStatic->StaticData_width()) / 2 &&
+             m_pos.x - 30 < int(gStatic->StaticData_width()) / 2 ) &&
              bottom();
 }
 
