@@ -26,9 +26,8 @@ ProjectilesManager::~ProjectilesManager()
     PRINT_CONSTR(1, "Destruction de ProjectilesManager");
 	for (int i=0; i<LAST_dmg_chan; i++) {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
-            it != m_proj[i].end(); ) {
-            it = m_proj[i].erase(it);
-        }
+            it != m_proj[i].end(); ++it) {
+            delete (*it);        }
 	}
 }
 
@@ -78,12 +77,14 @@ void ProjectilesManager::delete_old_projectiles()
 	}
 }
 
-void ProjectilesManager::add_proj(Projectile *proj, dmg_chan chan) {
+void ProjectilesManager::add_proj(Projectile *proj, dmg_chan chan) 
+{
 	m_proj[chan].push_back(proj);
 	proj->set_chan(chan);
 }
 
-void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan) {
+void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan) 
+{
 	for (std::list<Projectile *>::iterator it = proj->begin();
 			it != proj->end(); it++) {
 		add_proj(*it, chan);
@@ -91,10 +92,12 @@ void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan) {
 	delete proj;
 }
 
-std::list<Projectile *>::iterator ProjectilesManager::proj_begin(dmg_chan chan) {
+std::list<Projectile *>::iterator ProjectilesManager::proj_begin(dmg_chan chan) 
+{
 	return m_proj[chan].begin();
 }
 
-std::list<Projectile *>::iterator ProjectilesManager::proj_end(dmg_chan chan) {
+std::list<Projectile *>::iterator ProjectilesManager::proj_end(dmg_chan chan) 
+{
 	return m_proj[chan].end();
 }
