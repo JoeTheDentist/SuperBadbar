@@ -1,7 +1,8 @@
 #valgrind --leak-check=full --show-reachable=yes --track-origins=yes --gen-suppressions=all ./babar 2>&1 | egrep "^[{}]|^   [^ \t]" > last.supr
+INCLUDES_DIR=
 export OBJ_DIR=obj/
-export CC = g++
-export CFLAGS= -g -Wall #$(LIB_INC) 
+export CC = g++  
+export CFLAGS= -g $(INCLUDES_DIR) -Wall #$(LIB_INC) 
 export PROFILEFLAG= -lprofiler
 LDFLAGS= -g  -lfreetype -lSDL_image -lSDL_ttf -lglut #-lfmodex-4.34.03 # $(PROFILEFLAG) $(LIB_DYN)
 LIBCOMP=  ../lib/gcc/libfmod.so #../lib/fmodex/lib/libfmodex-4.34.03.so   #../lib/gcc/libSDL_ttf.so

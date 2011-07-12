@@ -19,7 +19,7 @@
 #ifdef WIN32
     #define RACINE_R std::string("")
 #else
-   #define RACINE_R std::string("../")
+   #define RACINE_R std::string("")
 #endif
 
 #define RECORDS_R RACINE_R + "records/"

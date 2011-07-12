@@ -15,10 +15,6 @@
 #include "Keyboard.h"
 #include "../control/EventOrderer.h"
 #include "../control/SdlKeyConverter.h"
-#include "../util/Analyser.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../util/macros.h"
 #include <fstream>	
 
 

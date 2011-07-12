@@ -11,9 +11,36 @@ QT -= core
 TARGET = superbabar
 TEMPLATE = app
 
-LIBS += -L"lib\SDL\lib" -lSDL -lSDL_image -lSDL_ttf \
-        -L"lib\fmodapi375win\api\lib" -lfmod \
-        -lglut -lopengl32
+win32 {
+	LIBS += -L"lib\SDL\lib" -lSDL -lSDL_image -lSDL_ttf \
+	        -L"lib\fmodapi375win\api\lib" -lfmod \
+			-lglut -lopengl32
+}
+unix {
+	LIBS += -L"lib\SDL\lib" -lSDL -lSDL_image -lSDL_ttf \
+        lib/gcc/libfmod.so \
+		-L"lib/gcc/"\
+        -lglut 
+}
+
+
+DESTDIR = .
+OBJECTS_DIR = release/.obj
+MOC_DIR = release/.moc
+RCC_DIR = release/.rcc
+UI_DIR = release/.ui
+
+Release:DESTDIR = release
+Release:OBJECTS_DIR = release/.obj
+Release:MOC_DIR = release/.moc
+Release:RCC_DIR = release/.rcc
+Release:UI_DIR = release/.ui
+
+Debug:DESTDIR = debug
+Debug:OBJECTS_DIR = debug/.obj
+Debug:MOC_DIR = debug/.moc
+Debug:RCC_DIR = debug/.rcc
+Debug:UI_DIR = debug/.ui
 
 SOURCES +=  src/main.cpp \
             src/actors/*.cpp \
