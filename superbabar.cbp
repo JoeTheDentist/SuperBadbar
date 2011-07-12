@@ -12,7 +12,6 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-menu" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -52,11 +51,7 @@
 			<Add library="lib\SDL\lib\libglut.a" />
 			<Add library="lib\SDL\lib\libglut32.a" />
 			<Add library="lib\SDL\lib\libopengl32.a" />
-			<Add library="lib\SDL\lib\libSDL.dll.a" />
-			<Add library="lib\SDL\lib\libSDLmain.a" />
-			<Add library="lib\SDL\lib\SDL_image.lib" />
 			<Add library="lib\SDL\lib\SDL_mixer.lib" />
-			<Add library="lib\SDL\lib\SDL_ttf.lib" />
 			<Add directory="$(#sdl.lib)" />
 		</Linker>
 		<Unit filename="resources\resources.rc">
@@ -206,6 +201,8 @@
 		<Unit filename="src\util\Analyser.h" />
 		<Unit filename="src\util\ArgAnalyser.cpp" />
 		<Unit filename="src\util\ArgAnalyser.h" />
+		<Unit filename="src\util\Constants.cpp" />
+		<Unit filename="src\util\Constants.h" />
 		<Unit filename="src\util\RandomGenerator.cpp" />
 		<Unit filename="src\util\RandomGenerator.h" />
 		<Unit filename="src\util\Rect.cpp" />
@@ -214,6 +211,7 @@
 		<Unit filename="src\util\globals.cpp" />
 		<Unit filename="src\util\globals.h" />
 		<Unit filename="src\util\lists.h" />
+		<Unit filename="src\util\macros.h" />
 		<Unit filename="src\util\repertories.h" />
 		<Unit filename="src\video\Anim.h" />
 		<Unit filename="src\video\AnimPic.cpp" />
