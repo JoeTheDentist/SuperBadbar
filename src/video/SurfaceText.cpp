@@ -38,6 +38,7 @@ SurfaceText::~SurfaceText()
 
 void SurfaceText::init(std::string text, int size, int r, int g, int b, std::string font_name)
 {
+	PRINT_DEBUG(1, "Construction du texte %s ", text.c_str());
 	#ifdef _OPENGL_ACTIVE_
 	setTexture(m_texturesManager->loadTextureText(text, size, r, g, b, font_name));
 	#else	

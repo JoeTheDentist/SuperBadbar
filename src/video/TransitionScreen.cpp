@@ -19,12 +19,12 @@
 TransitionScreen::TransitionScreen(std::string picture_path, std::string text1, std::string text2):
 	m_skipable(false),
 	m_ended(false),
-	m_background(new Surface(PIC_TRANSITIONS_R + picture_path)),
-	m_text1(new SurfaceText(text1)),
-	m_text2(new SurfaceText(text2))
+	m_background(new Surface(PIC_TRANSITIONS_R + picture_path))
+//~ 	m_text1(new SurfaceText(text1)),
+//~ 	m_text2(new SurfaceText(text2))
 {
-	m_pos_text1.x = (Constants::WINDOW_WIDTH - m_text1->w()) / 2;
-	m_pos_text2.x = (Constants::WINDOW_WIDTH - m_text2->w()) / 2;
+//~ 	m_pos_text1.x = (Constants::WINDOW_WIDTH - m_text1->w()) / 2;
+//~ 	m_pos_text2.x = (Constants::WINDOW_WIDTH - m_text2->w()) / 2;
 	m_pos_text1.y = (Constants::WINDOW_HEIGHT * 3) / 4;
 	m_pos_text2.y = (Constants::WINDOW_HEIGHT * 3) / 4;
 }
@@ -32,8 +32,8 @@ TransitionScreen::TransitionScreen(std::string picture_path, std::string text1, 
 TransitionScreen::~TransitionScreen()
 {
 	delete m_background;
-	delete m_text1;
-	delete m_text2;
+//~ 	delete m_text1;
+//~ 	delete m_text2;
 }
 
 void TransitionScreen::update()
@@ -44,11 +44,11 @@ void TransitionScreen::display(Camera *camera)
 {
 	Rect pos;
 	camera->display_picture(m_background, &pos, true);
-	if (!m_skipable) {
-		camera->display_picture(m_text1, &m_pos_text1, true);
-	} else {
-		camera->display_picture(m_text2, &m_pos_text2, true);
-	}
+//~ 	if (!m_skipable) {
+//~ 		camera->display_picture(m_text1, &m_pos_text1, true);
+//~ 	} else {
+//~ 		camera->display_picture(m_text2, &m_pos_text2, true);
+//~ 	}
 	camera->flip_camera();
 }
 
