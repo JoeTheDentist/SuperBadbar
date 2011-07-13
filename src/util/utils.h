@@ -2,7 +2,13 @@
  * 	@file utils.h
  * 	@brief Inclut les principaux outils de developpement
  *
- *	- enums 
+ *	- les definitions d'enums utiles
+ *	- l'analyser de fichiers
+ *	- les macros de debug
+ *	- le gestionnaire de constantes
+ *	- le generateur de nombres aleatoires
+ *	- le header rassemblant les paths
+ *	- les macros usuelles (autres que debug)
  *
  * 	@author Guillaume Bérard & Benoit Morel
  * 	@date juillet 2011

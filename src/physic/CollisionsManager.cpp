@@ -73,8 +73,9 @@ void CollisionsManager::init_statics(Analyser &analyser)
     while(static_name[0]!='!') {
 		int x = analyser.read_int();
 		int y = analyser.read_int();
+		int variableCol = analyser.read_int();
 		analyser.read_int();
-		m_matrix->addStatic(x, y, static_name);
+		m_matrix->addStatic(x, y, variableCol, static_name);
 		static_name = analyser.read_string();
 	}
 }

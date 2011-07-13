@@ -16,6 +16,7 @@
 
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../video/KeyMapSurfaceText.h"
+#include "../video/KeyMapSurfaceUnif.h"
 /**
  * 	@class PicturesContainer
  * 	@brief Charge les images de façon à optimiser la mémoire
@@ -35,6 +36,7 @@ class PicturesContainer {
 private:
 	std::map<std::string, SDL_Surface*> m_container;
 	std::map<KeyMapSurfaceText, SDL_Surface*> m_textContainer;
+	std::map<KeyMapSurfaceUnif, SDL_Surface*> m_unifContainer;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -63,6 +65,17 @@ public:
 	*	@param fontNameLe nom de la police (qui sera charge dans le repertoire des polices)
 	*/
 	SDL_Surface *loadSurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
+
+	/*!
+	*	@brief Retourne un pointeur vers la surface de texte demandee
+	*	@param width La largeur de la surface
+	*	@param height La hauteur de la surface
+	*	@param r La composante rouge de la surface
+	*	@param g La composante verte de la surface
+	*	@param b La composante bleue de la surface
+	*	@param alpha La composante alpha de la surface
+	*/
+	SDL_Surface *loadSurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
 
 	/**
 	 * 	@brief Vide la memoire du picture container

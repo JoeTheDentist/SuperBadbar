@@ -42,69 +42,69 @@ mushroom/mushroom 162 1494
 !
 #Statics#
 63
-water1 1746 4295 0
-water1 2104 4301 0
-water1 2461 4307 0
-water1 2822 4313 0
-jungle_hard_block_1 3218 4271 0
-jungle_hard_block_5 1486 4059 0
-jungle_hard_block_4 1933 4059 0
-jungle_set_1 2120 4052 0
-jungle_warning_board 1966 3984 0
-jungle_hard_block_3 3438 4265 0
-jungle_set_3 3103 4047 0
-jungle_hard_block_3 3938 4265 0
-water1 4467 4321 0
-jungle_hard_block_5 4438 4019 0
-jungle_block_4 4193 3827 0
-jungle_block_6 3745 3573 0
-jungle_warning_board 3462 4190 0
-jungle_block_2 3244 3540 0
-jungle_block_3 2744 3566 0
-jungle_block_6 2298 3317 0
-jungle_warning_board 3716 3497 0
-jungle_block_1 1633 3063 0
-jungle_block_6 1851 3063 0
-jungle_block_1 1732 2605 0
-jungle_block_5 2844 1843 0
-jungle_warning_board 1900 2527 0
-jungle_block_4 3626 1202 0
-jungle_block_2 3126 1170 0
-jungle_block_3 2626 1196 0
-jungle_block_6 2180 948 0
-jungle_block_5 1733 947 0
-jungle_block_3 1235 1194 0
-jungle_block_1 1947 484 0
-jungle_block_4 2166 483 0
-jungle_block_2 737 1167 0
-jungle_hard_block_4 179 1544 0
-jungle_block_2 -264 1166 0
-jungle_block_3 236 1193 0
-jungle_block_3 -320 1537 0
-jungle_warning_board 305 1125 0
-jungle_warning_board 3643 1124 0
-jungle_hard_block_2 -11 4279 0
-jungle_hard_block_2 985 4281 0
-jungle_set_1 3889 3606 0
-jungle_set_5 4178 3590 0
-jungle_set_4 2631 3528 0
-jungle_set_7 2271 2516 0
-jungle_set_7 2415 2419 0
-jungle_block_5 1948 2351 0
-jungle_block_5 2396 2097 0
-jungle_set_2 2253 3159 0
-jungle_set_2 2561 2078 0
-jungle_set_1 3442 1185 0
-jungle_set_4 3639 1181 0
-jungle_block_4 3738 1589 0
-jungle_block_5 3292 1588 0
-jungle_set_1 3770 1577 0
-jungle_set_5 1978 704 0
-jungle_block_7 249 3993 0
-jungle_hard_block_3 490 4306 0
-jungle_set_2 516 4156 0
-jungle_warning_board 575 3918 0
-jungle_set_3 3145 1617 0
+water1 1746 4295 0 0 
+water1 2104 4301 0 0 
+water1 2461 4307 0 0 
+water1 2822 4313 0 0 
+jungle_hard_block_1 3218 4271  0 0
+jungle_hard_block_5 1486 4059 0 0 
+jungle_hard_block_4 1933 4059 0 0 
+jungle_set_1 2120 4052 0 0 
+jungle_warning_board 1966 3984  0 0
+jungle_hard_block_3 3438 4265 0 0 
+jungle_set_3 3103 4047 0 0 
+jungle_hard_block_3 3938 4265  0 0
+water1 4467 4321 0 0 
+jungle_hard_block_5 4438 4019  0 0
+jungle_block_4 4193 3827 0 0 
+jungle_block_6 3745 3573 0 0 
+jungle_warning_board 3462 4190  0 0
+jungle_block_2 3244 3540 0 0 
+jungle_block_3 2744 3566 0 0 
+jungle_block_6 2298 3317 0 0 
+jungle_warning_board 3716 3497  0 0
+jungle_block_1 1633 3063 0 0 
+jungle_block_6 1851 3063 0 0 
+jungle_block_1 1732 2605 0 0 
+jungle_block_5 2844 1843 0 0 
+jungle_warning_board 1900 2527  0 0
+jungle_block_4 3626 1202 0 0 
+jungle_block_2 3126 1170 0 0 
+jungle_block_3 2626 1196 0 0 
+jungle_block_6 2180 948 0 0 
+jungle_block_5 1733 947 0 0 
+jungle_block_3 1235 1194 0 0 
+jungle_block_1 1947 484 0 0 
+jungle_block_4 2166 483 0 0 
+jungle_block_2 737 1167 0 0 
+jungle_hard_block_4 179 1544  0 0
+jungle_block_2 -264 1166 0 0 
+jungle_block_3 236 1193 0 0 
+jungle_block_3 -320 1537 0 0 
+jungle_warning_board 305 1125  0 0
+jungle_warning_board 3643 1124 0 0 
+jungle_hard_block_2 -11 4279 0 0 
+jungle_hard_block_2 985 4281 0 0 
+jungle_set_1 3889 3606 0 0 
+jungle_set_5 4178 3590 0 0 
+jungle_set_4 2631 3528 0 0 
+jungle_set_7 2271 2516 0 0 
+jungle_set_7 2415 2419 0 0 
+jungle_block_5 1948 2351 0 0 
+jungle_block_5 2396 2097 0 0 
+jungle_set_2 2253 3159 0 0 
+jungle_set_2 2561 2078 0 0 
+jungle_set_1 3442 1185 0 0 
+jungle_set_4 3639 1181 0 0 
+jungle_block_4 3738 1589 0 0 
+jungle_block_5 3292 1588 0 0 
+jungle_set_1 3770 1577 0 0 
+jungle_set_5 1978 704 0 0 
+jungle_block_7 249 3993 0 0 
+jungle_hard_block_3 490 4306  0 0
+jungle_set_2 516 4156 0 0 
+jungle_warning_board 575 3918  0 0
+jungle_set_3 3145 1617 0 0 
 !
 #Monsters#
 0

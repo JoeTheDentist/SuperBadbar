@@ -29,9 +29,9 @@ CollisionsMatrix::CollisionsMatrix(int w, int h):
 	m_collisions_matrix_h(h)
 {
     /*** Allocation du tableau pour les collisions ***/
-    m_collisions_matrix = new uint32_t*[m_collisions_matrix_w + 1];
+    m_collisions_matrix = new unsigned int*[m_collisions_matrix_w + 1];
     for(int i = 0; i<m_collisions_matrix_w ;i++) {
-        m_collisions_matrix[i] = new uint32_t[m_collisions_matrix_h + 1];
+        m_collisions_matrix[i] = new unsigned int[m_collisions_matrix_h + 1];
     }
     /*** Remplissage de la matrice pour les collisions ***/
     for(int i = 0;i<m_collisions_matrix_w;i++) {
@@ -49,7 +49,7 @@ CollisionsMatrix::~CollisionsMatrix()
     delete[] m_collisions_matrix;
 }
 
-void CollisionsMatrix::addStatic(int x, int y, std::string static_name)
+void CollisionsMatrix::addStatic(int x, int y, int varCol, std::string static_name)
 {
 	Analyser analyser_static;
 	analyser_static.open((PIC_STATICS_R + static_name + COLL_EXT));
@@ -59,23 +59,29 @@ void CollisionsMatrix::addStatic(int x, int y, std::string static_name)
 	int i_min = x/BOX_SIZE, i_max = int(x / BOX_SIZE + static_width);
 	for (int j = j_min ; j < j_max; j++) {
 		for (int i = i_min; i < i_max; i++) {
-			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0)
-				analyser_static.read_uint32_t();
-			else
-				m_collisions_matrix[i][j] |= analyser_static.read_uint32_t();
+			if (i_max >= m_collisions_matrix_w || j_max >= m_collisions_matrix_h || i < 0 || j < 0) {
+				analyser_static.read_unsigned_int();
+			} else {
+				unsigned int coll = analyser_static.read_unsigned_int();
+				if (coll >> 31 == 0) {
+					m_collisions_matrix[i][j] |= coll;
+				} else {
+					m_collisions_matrix[i][j] |= varCol;
+				}
+			}
 		}
 	}
 	analyser_static.close();
 }
 
-uint32_t CollisionsMatrix::collision(uint32_t x, uint32_t y)
+unsigned int CollisionsMatrix::collision(unsigned int x, unsigned int y)
 {
     return m_collisions_matrix[x/BOX_SIZE][y/BOX_SIZE];
 }
 
-uint32_t CollisionsMatrix::down_collision_type(Rect pos)
+unsigned int CollisionsMatrix::down_collision_type(Rect pos)
 {
-	uint32_t coll = 0;
+	unsigned int coll = 0;
 	int i_min = std::max(pos.x,0), i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1);
 	if (pos.y + pos.h < 0 || (pos.y+pos.h)/BOX_SIZE + 1 >= m_collisions_matrix_h)
 		return coll;
@@ -85,35 +91,35 @@ uint32_t CollisionsMatrix::down_collision_type(Rect pos)
 	return coll;
 }
 
-uint32_t CollisionsMatrix::up_collision_type(Rect pos)
+unsigned int CollisionsMatrix::up_collision_type(Rect pos)
 {
-	uint32_t coll = 0;
+	unsigned int coll = 0;
 	int i_min = std::max(pos.x,0), i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1);
-	for (int32_t i = i_min ; i < i_max ; i += BOX_SIZE)
+	for (int i = i_min ; i < i_max ; i += BOX_SIZE)
 		if (i / BOX_SIZE < m_collisions_matrix_w)
 			coll |= m_collisions_matrix[i / BOX_SIZE][pos.y /  BOX_SIZE - 1] ;
 	return coll;
 }
 
-uint32_t CollisionsMatrix::right_collision_type(Rect pos)
+unsigned int CollisionsMatrix::right_collision_type(Rect pos)
 {
-	uint32_t coll = 0;
+	unsigned int coll = 0;
 	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, m_collisions_matrix_h * BOX_SIZE);
 	int posx = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE - 3 *BOX_SIZE);
-	for (int32_t j = j_min ; j < j_max ; j += BOX_SIZE)
+	for (int j = j_min ; j < j_max ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
 			coll |= m_collisions_matrix[posx/ BOX_SIZE + 1][j / BOX_SIZE];
 	return coll;
 }
 
-uint32_t CollisionsMatrix::left_collision_type(Rect pos)
+unsigned int CollisionsMatrix::left_collision_type(Rect pos)
 {
-	uint32_t coll = 0;
+	unsigned int coll = 0;
 	int j_min = std::max(pos.y,0), j_max = std::min(pos.y + pos.h, (m_collisions_matrix_h-1) * BOX_SIZE);
 	int posx = std::max(BOX_SIZE, pos.x);
 	if (pos.x < 0 || pos.x / BOX_SIZE >= m_collisions_matrix_w)
 		return coll;
-	for (int32_t j = j_min ; j < j_max ; j += BOX_SIZE)
+	for (int j = j_min ; j < j_max ; j += BOX_SIZE)
 		if (j / BOX_SIZE < m_collisions_matrix_h)
 			coll |= m_collisions_matrix[posx / BOX_SIZE - 1][j / BOX_SIZE];
 	return coll;
@@ -144,7 +150,7 @@ bool CollisionsMatrix::double_collision(Rect pos)
 	int i_min = std::max(pos.x,0) / BOX_SIZE;
 	int i_max = std::min(pos.x + pos.w, m_collisions_matrix_w * BOX_SIZE -1) / BOX_SIZE;
 	int j = (pos.y + pos.h) / BOX_SIZE;
-	for (int32_t i = i_min ; i <= i_max ; i += 1) {
+	for (int i = i_min ; i <= i_max ; i += 1) {
 		if (m_collisions_matrix[i][j] == FULL_COLL) {
 			return true;
 		}
@@ -187,7 +193,7 @@ void CollisionsMatrix::update_pos( Rect &pos, Rect &speed )
 		}
 	}
 	/* cas où le sprite monte */
-	for (int32_t speed_y = speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
+	for (int speed_y = speed.y ; speed_y < 0 ; speed_y += BOX_SIZE){
 		if (CollisionsManager::is_up_coll(gCollision->get_matrix()->up_collision_type(pos))){
 			speed_y = 0;
 			speed.y = 0;
@@ -199,16 +205,16 @@ void CollisionsMatrix::update_pos( Rect &pos, Rect &speed )
 		}
 	}
 	/* cas où le sprite va à droite */
-	for (int32_t speed_x = speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
+	for (int speed_x = speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			pos.y -= 	BOX_SIZE;
 			if(!CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(pos)))
 				pos.y += BOX_SIZE;
 			pos.x += BOX_SIZE;
-			if (pos.x + pos.w > (int32_t)gStatic->StaticData_width())
+			if (pos.x + pos.w > (int)gStatic->StaticData_width())
 				pos.x = gStatic->StaticData_width() - pos.w;
 	}
 	/* cas où le sprite va à gauche */
-	for (int32_t speed_x = speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
+	for (int speed_x = speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			pos.y -= 	BOX_SIZE;
 			if(!CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(pos)))
 				pos.y += BOX_SIZE;

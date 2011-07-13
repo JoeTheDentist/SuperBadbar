@@ -74,6 +74,7 @@ void StaticData::init_StaticData(std::string level_name)
 	while(static_name[0]!='!') {
 		pos.x = analyser.read_int();
 		pos.y = analyser.read_int();
+		analyser.read_int();
         curr_static = new Static(static_pic_rep + static_name + PICS_EXT,pos);
         level = analyser.read_int();
 		if ( level == 0 ) {

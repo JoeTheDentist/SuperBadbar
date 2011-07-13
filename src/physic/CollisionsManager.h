@@ -40,9 +40,12 @@ class Analyser;
  *	- bloquante par la gauche
  *
  * Un nombre de collision caractérise la collision: on regarde les
- * 4 derniers bits: 1 signifie collision et 0 absence de collision
+ * 4 derniers bits (les bits de droite): 1 signifie collision et 0 absence de collision
  * le bit de poids fort représente haut, puis bas, puis gauche, puis droite pour
  * le bit de poids faible
+ * 
+ *	Le premier bit est utile que dans le codage du fichier, il n'a aucun sens quand les 
+ *	statics ont été chargés
  *
  *	La classe fournit donc des méthodes pour
  *	déterminer la nature de la collision (is_xxxx_collision())

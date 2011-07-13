@@ -98,21 +98,24 @@ public:
 
 	/*!
 	* @brief Lit et renvoie le prochain int du fichier, en sautant les séparateurs
-	*
 	* @return l'int lu
 	*/
 	int read_int();
-
+	
 	/*!
-	* @brief Lit et renvoie le prochain uint32_t du fichier, en sautant les séparateurs
-	*
-	* @return l'uint32_t lu
+	* @brief Lit et renvoie le prochain unsigned int du fichier, en sautant les séparateurs
+	* @return l'unsigned int lu
 	*/
-	uint32_t read_uint32_t();
+	unsigned int read_unsigned_int();
+	
+	/*!
+	* @brief Lit et renvoie le prochain double du fichier, en sautant les séparateurs
+	* @return le double lu
+	*/
+	double read_double();
 
 	/*!
 	* @brief Lit et renvoie le prochain string du fichier (jusqu'au prochain espace), en sautant les séparateurs
-	*
 	* @return le string lu
 	*/
 	std::string read_string();
@@ -126,11 +129,9 @@ public:
 
 	/*!
 	* @brief Lit et renvoie le prochain char du fichier
-	*
 	* @return le char lu
 	*/
 	char read_char();
-	
 	
 	/*!
 	*	@brief Sauvegarde la position du curseur actuelle dans une pile

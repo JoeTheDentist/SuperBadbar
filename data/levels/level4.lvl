@@ -18,21 +18,21 @@ level2.mp3
 !
 #Statics#
 15
-jungle_hard_block_2 -23 4260 0
-jungle_hard_block_3 962 4288 0
-jungle_hard_block_2 1460 4264 0
-jungle_hard_block_2 1957 4266 0
-jungle_hard_block_3 471 4287 0
-jungle_hard_block_2 2450 4269 0
-jungle_hard_block_2 3443 4272 0
-jungle_hard_block_3 2947 4296 0
-jungle_hard_block_3 3939 4299 0
-jungle_hard_block_3 4437 4301 0
-jungle_block_4 -11 286 0
-jungle_block_1 1636 1927 0
-jungle_block_4 1854 1928 0
-jungle_block_1 4439 990 0
-jungle_block_3 4658 983 0
+jungle_hard_block_2 -23 4260 0 0 
+jungle_hard_block_3 962 4288 0 0 
+jungle_hard_block_2 1460 4264 0 0 
+jungle_hard_block_2 1957 4266 0 0 
+jungle_hard_block_3 471 4287 0 0 
+jungle_hard_block_2 2450 4269 0 0 
+jungle_hard_block_2 3443 4272 0 0 
+jungle_hard_block_3 2947 4296 0 0 
+jungle_hard_block_3 3939 4299 0 0 
+jungle_hard_block_3 4437 4301 0 0 
+jungle_block_4 -11 286 0 0 
+jungle_block_1 1636 1927 0 0 
+jungle_block_4 1854 1928 0 0 
+jungle_block_1 4439 990 0 0 
+jungle_block_3 4658 983 0 0 
 !
 #Monsters#
 0

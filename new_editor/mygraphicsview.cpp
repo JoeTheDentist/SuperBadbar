@@ -84,6 +84,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	m_file_name = fileName;
 	Analyser analyser;
 	int x, y, zbuffer, age;
+	unsigned int colVal;
 	MyItem *myitem = NULL;
 	analyser.open(fileName.toStdString());
 	analyser.find_string("#Background#");
@@ -118,6 +119,7 @@ void MyGraphicsView::loadFile(QString fileName)
 		std::cout << nameStatic.toStdString() << std::endl;
 		x = analyser.read_int();
 		y = analyser.read_int();
+		colVal = analyser.read_unsigned_int();
 		zbuffer = analyser.read_int();
 		myitem = new StaticItem(this->scene(), nameStatic, zbuffer);
 		myitem->setPos(x, y);
@@ -300,7 +302,7 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-	QProcess::execute(QString("../src/babar ") + "-level " + substringAfter(level_name, "levels/"));
+	QProcess::execute(QString("../superbabar ") + "-level " + substringAfter(level_name, "levels/"));
 	#else
 	QProcess::execute(QString("../src/babar.exe"));
 	#endif

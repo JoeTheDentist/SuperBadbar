@@ -18,6 +18,7 @@
 #include "../util/debug.h"
 #include "../util/repertories.h"
 #include "../util/globals.h"
+#include "../video/Camera.h"
 
 
 PicturesContainer::PicturesContainer()
@@ -72,6 +73,26 @@ SDL_Surface *PicturesContainer::loadSurfaceText(std::string text, int size, int 
 	return surf;	
 }
 
+
+SDL_Surface *PicturesContainer::loadSurfaceUniform(int width, int height, int r, int g, int b, int alpha)
+{
+	KeyMapSurfaceUnif key(width, height, r, g, b, alpha);
+	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator it = m_unifContainer.find(key);
+	SDL_Surface *surf = NULL;
+	if (it == m_unifContainer.end()) {
+		surf = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, 0);
+		SDL_FillRect(surf,NULL,SDL_MapRGB(gGraphics->get_camera()->sdl_screen()->format,r,g,b));
+		if (surf == NULL) {
+			PRINT_DEBUG(1, "impossible de charger la surface uniforme");
+			return NULL;
+		}
+		m_unifContainer.insert(std::pair<KeyMapSurfaceUnif, SDL_Surface*>(key, surf));
+	} else {
+		surf = (*it).second;
+	}
+	return surf;	
+}
+
 void PicturesContainer::resetMemory()
 {
 	std::map<std::string, SDL_Surface*>::iterator it;
@@ -81,5 +102,9 @@ void PicturesContainer::resetMemory()
 	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator ittext;
 	for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ittext++) {
 		SDL_FreeSurface(ittext->second);
+	}	
+	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator itunif;
+	for (itunif = m_unifContainer.begin(); itunif != m_unifContainer.end(); itunif++) {
+		SDL_FreeSurface(itunif->second);
 	}	
 }

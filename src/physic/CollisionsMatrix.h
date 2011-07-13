@@ -49,7 +49,7 @@ class Camera;
 
 class CollisionsMatrix {
 protected:
-	uint32_t ** m_collisions_matrix;      	/* matrice des statics */
+	unsigned int ** m_collisions_matrix;      	/* matrice des statics */
 	int m_collisions_matrix_w; // taille de la matrice (en box)
 	int m_collisions_matrix_h;
 public:
@@ -77,9 +77,10 @@ public:
 	 *	@brief Ajoute les collisions du static a la matrice
 	 *	@param x L'abscisse en pixels du static a ajouter
 	 *	@param y L'ordonnee en pixels du static a ajouter
+	 *	@param varCol La valeur de la collision variable du static a ajouter
 	 *	@param static_name Le nom du static (depuis le dossier des statics et sans l'extension)
 	 */
-	void addStatic(int x, int y, std::string static_name);
+	void addStatic(int x, int y, int varCol, std::string static_name);
 
 	/*!
 	 *	@brief Retourne le type de collision de la matrice en un point
@@ -87,7 +88,7 @@ public:
 	 *	@param y Ordonnée en pixels
 	 *	@return Le type de collision en (x,y)
 	*/
-	uint32_t collision(uint32_t x, uint32_t y);
+	unsigned int collision(unsigned int x, unsigned int y);
 
 	/*!
 	 *	@brief Calcule le type de collision des cases sous le rectangle
@@ -96,28 +97,28 @@ public:
 	 *
 	 * Dans la direction down, on vérifie qu'il n'y ait pas de dépassement de tableaux
 	*/
-	uint32_t down_collision_type(Rect pos);
+	unsigned int down_collision_type(Rect pos);
 
 	/*!
 	 *	@brief Calcule le type de collision des cases au dessus du rectangle
 	 *	@param pos Rectangle à checker
 	 *	@return Le type des collisions accumulées
 	*/
-	uint32_t up_collision_type(Rect pos);
+	unsigned int up_collision_type(Rect pos);
 
 	/*!
 	 *	@brief Calcule le type de collision des cases à gauche du rectangle
 	 *	@param pos Rectangle à checker
 	 *	@return Le type des collisions accumulées
 	*/
-	uint32_t left_collision_type(Rect pos);
+	unsigned int left_collision_type(Rect pos);
 
 	/*!
 	 *	@brief Calcule le type de collision des cases à droite du rectangle
 	 *	@param pos Rectangle à checker
 	 *	@return Le type des collisions accumulées
 	*/
-	uint32_t right_collision_type(Rect pos);
+	unsigned int right_collision_type(Rect pos);
 
 
 	/*!

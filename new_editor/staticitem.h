@@ -7,6 +7,7 @@
 class StaticItem: public MyItem {
 	protected:
 	int m_zbuffer; // 0 ou 1
+	unsigned int m_colVar; // la valeur de la collision variable
 	public:
 	/*!
 	*	@brief Constructeur
@@ -14,7 +15,7 @@ class StaticItem: public MyItem {
 	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
 //~ 	StaticItem(QGraphicsItem *item, QString fileName, int buffer = 0);
-	StaticItem(QGraphicsScene *scene, QString fileName, int buffer = 0);
+	StaticItem(QGraphicsScene *scene, QString fileName, int buffer = 0, unsigned int varCol = 0);
 	
 	/*!
 	*	@brief Destructeur

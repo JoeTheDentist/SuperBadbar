@@ -20,19 +20,20 @@ Analyser::Analyser()
 	m_opened = false;
 	m_file = NULL;
 }
+
 Analyser::~Analyser()
 {
 }
 
-uint32_t Analyser::open(std::string file)
+bool Analyser::open(std::string file)
 {
 	m_filename = file;
 	m_file = new std::ifstream(file.c_str(), std::ios::in);
-	if (m_file == NULL){
-		return 1;
+	if (m_file == NULL || !*m_file){
+		return false;
 	}
 	m_opened = true;
-	return 0;
+	return true;
 }
 
 void Analyser::close()
@@ -50,8 +51,8 @@ bool Analyser::find_string(std::string str)
 
 bool Analyser::find_next_string(std::string str)
 {
-	uint32_t char_found = 0;
-	uint32_t size = str.size();
+	int char_found = 0;
+	int size = str.size();
 	char current = '*';
 	while (!m_file->eof() && char_found < size){
 		m_file->get(current);
@@ -65,12 +66,10 @@ bool Analyser::find_next_string(std::string str)
 
 bool Analyser::end_of_section()
 {
-//~ 	jump_separators();
 	char temp = read_char();
 	m_file->seekg(-1, std::ios::cur);
 	return temp == '!';
 }
-                                      
 
 void Analyser::jump_separators()
 {
@@ -105,15 +104,20 @@ void Analyser::jump_separators()
 int Analyser::read_int()
 {
 	int res;
-//~ 	jump_separators();
 	*m_file >> res;
 	return res;
 }
 
-uint32_t Analyser::read_uint32_t()
+unsigned int Analyser::read_unsigned_int()
 {
-	uint32_t res;
-//~ 	jump_separators();
+	unsigned int res;
+	*m_file >> res;
+	return res;
+}
+
+double Analyser::read_double()
+{
+	double res;
 	*m_file >> res;
 	return res;
 }

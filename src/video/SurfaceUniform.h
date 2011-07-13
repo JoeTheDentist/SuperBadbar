@@ -26,8 +26,9 @@ class SurfaceUniform: public Surface {
 	*	@param r La composante rouge de la surface
 	*	@param g La composante verte de la surface
 	*	@param b La composante bleue de la surface
+	*	@param alpha La composante alpha de la surface
 	*/
-	SurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255);
+	SurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
 
 	/*!
 	*	@brief Destructeur

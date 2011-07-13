@@ -58,8 +58,8 @@ bool Analyser::find_string(std::string str)
 
 bool Analyser::find_next_string(std::string str)
 {
-	uint32_t char_found = 0;
-	uint32_t size = str.size();
+	int char_found = 0;
+	int size = str.size();
 	char current = '*';
 	while (!m_file->eof() && char_found < size){
 		m_file->get(current);
@@ -111,15 +111,20 @@ void Analyser::jump_separators()
 int Analyser::read_int()
 {
 	int res;
-//~ 	jump_separators();
 	*m_file >> res;
 	return res;
 }
 
-uint32_t Analyser::read_uint32_t()
+unsigned int Analyser::read_unsigned_int()
 {
-	uint32_t res;
-//~ 	jump_separators();
+	unsigned int res;
+	*m_file >> res;
+	return res;
+}
+
+double Analyser::read_double()
+{
+	double res;
 	*m_file >> res;
 	return res;
 }
