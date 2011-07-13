@@ -12,12 +12,12 @@ TARGET = superbabar
 TEMPLATE = app
 
 win32 {
-	LIBS += -L"lib\SDL\lib" -lSDL -lSDL_image -lSDL_ttf \
-	        -L"lib\fmodapi375win\api\lib" -lfmod \
+        LIBS += -L"lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
+                -L"lib/fmodapi375win/api/lib" -lfmod \
 			-lglut -lopengl32
 }
 unix {
-	LIBS += -L"lib\SDL\lib" -lSDL -lSDL_image -lSDL_ttf \
+        LIBS += -L"lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
         lib/gcc/libfmod.so \
 		-L"lib/gcc/"\
         -lglut 

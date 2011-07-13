@@ -18,6 +18,7 @@
 #include "video/Talks.h"
 #include "util/debug.h"
 #include "util/globals.h"
+#undef main
 
 int main(int argc, char *argv[])
 {
