@@ -21,7 +21,17 @@ class Menu {
 
 
 	public:
+		
+	/*!
+	*	@brief Constructeur
+	*	@param parent Le menu appelant
+	*/	
 	Menu(Menu *parent = NULL);
+	
+
+	/*!
+	*	@brief Destructeur
+	*/	
 	virtual ~Menu();
 
 	/*!
@@ -34,19 +44,45 @@ class Menu {
 	*/
 	virtual void update_graphics() const;
 
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si le menu a termine son traitement (l'interface appelante peut le quitter)
+	*/	
 	bool end_menu() const {return m_leave_menu;}
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'utilisateur a demande de quitter le jeu
+	*/	
 	bool end_game() const {return m_leave_game;}
 
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si un fond gris doit etre affiche
+	*/	
 	virtual bool can_display_grey_background() const {return true;}
 
-
-
-
-
 	protected:
+		
+	/*!
+	*	@brief Indique que le menu a fini son traitement et peut etre quitte
+	*/	
 	virtual void set_leave_menu_true();
+	
+	/*!
+	*	@brief Indique qu'on doit fermer le jeu
+	*/	
 	virtual void set_leave_game_true();
-	virtual void treat_choice(int choice) = 0;
+	
+	/*!
+	*	@brief Traitement du choix
+	*	@param l'int correspond au numero de la liste choisi
+	*/	
+	virtual void treat_choice(int choice) = 0;	
+	
+	/*!
+	*	@brief Mutateur du fils du menu
+	*/	
 	virtual void set_son(Menu *menu);
 };
 

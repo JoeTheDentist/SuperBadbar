@@ -302,7 +302,7 @@ void MyGraphicsView::wheelEvent(QWheelEvent *event)
 void horror_function(QString level_name)
 {
 	#ifndef WIN32
-	QProcess::execute(QString("../superbabar ") + "-level " + substringAfter(level_name, "levels/"));
+	QProcess::execute(QString("../src/superbabar ") + "-level " + substringAfter(level_name, "levels/"));
 	#else
 	QProcess::execute(QString("../src/babar.exe"));
 	#endif
