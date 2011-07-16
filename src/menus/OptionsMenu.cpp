@@ -32,10 +32,10 @@ void OptionsMenu::update()
 	// On met a jour le moteur de son en fonction des choix
 	switch(m_menu_actions.get_selected_action()) {
 	case 1:
-		gSound->set_sounds_volume(m_menu_actions.get_selected_action_value());
+		gSound->set_sounds_volume(m_menu_actions.getSelectedActionValInteger());
 		break;
 	case 2:
-		gSound->set_music_volume(m_menu_actions.get_selected_action_value());
+		gSound->set_music_volume(m_menu_actions.getSelectedActionValInteger());
 		break;
 	default:
 		break;

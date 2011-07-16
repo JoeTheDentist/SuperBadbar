@@ -376,7 +376,6 @@ bool Babar::can_jump() const
 
 void Babar::jump()
 {
-	PRINT_DEBUG(1, "jump");
 	m_jump = true;
 	m_ready_jump = false;
 	m_ready_double_jump = true;

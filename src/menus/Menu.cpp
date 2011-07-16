@@ -54,24 +54,32 @@ void Menu::update()
 			case mk_escape:
 				m_leave_menu = true;
 				break;
-			case mk_down:
-				m_menu_actions.incr_curs(1);
-				break;
-			case mk_up:
-				m_menu_actions.incr_curs(-1);
-				break;
-			case mk_left:
-				m_menu_actions.incr_value(-1);
-				break;
-			case mk_right:
-				m_menu_actions.incr_value(1);
-				break;
-			case mk_enter:
-				treat_choice(m_menu_actions.get_selected_action());
-				m_menu_actions.enter_pressed();
-				break;
 			default:
 				break;
+			}
+			if (m_menu_actions.waitingForInput()) {
+				m_menu_actions.handleInput(key);
+			} else {
+				switch(key) {
+				case mk_down:
+					m_menu_actions.incr_curs(1);
+					break;
+				case mk_up:
+					m_menu_actions.incr_curs(-1);
+					break;
+				case mk_left:
+					m_menu_actions.incr_value(-1);
+					break;
+				case mk_right:
+					m_menu_actions.incr_value(1);
+					break;
+				case mk_enter:
+					treat_choice(m_menu_actions.get_selected_action());
+					m_menu_actions.enter_pressed();
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}

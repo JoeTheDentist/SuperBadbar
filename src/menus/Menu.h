@@ -62,8 +62,8 @@ class Menu {
 	*/	
 	virtual bool can_display_grey_background() const {return true;}
 
+	
 	protected:
-		
 	/*!
 	*	@brief Indique que le menu a fini son traitement et peut etre quitte
 	*/	

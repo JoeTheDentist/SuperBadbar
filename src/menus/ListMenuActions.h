@@ -45,24 +45,36 @@ class ListMenuActions {
 	*/
 	~ListMenuActions();
 
+	/*!
+	*	@brief Met a jour chaque MenuAction (appelle leurs update..)
+	*/	
 	void update();
 
+	/*!
+	*	@brief Ajoute l'action a la liste d'actions
+	*	@param action L'action a ajouter
+	*/
 	void add_action(MenuAction *action);
 
 	/*!
-	*	@brief Ajoute a la liste une action classique (MenuActionClassic), a la fin des actions deja existantes
+	*	@brief Cree puis ajoute a la liste une action classique (MenuActionClassic), a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action
 	*	@param action_num Le numero de l'action
 	*/
 	void add_action_classic(std::string action_name, int action_num);
 
 	/*!
-	*	@brief Ajoute a la liste une action integer (MenuActionInteger), a la fin des actions deja existantes
+	*	@brief Cree puis ajoute a la liste une action integer (MenuActionInteger), a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action
 	*	@param action_num Le numero de l'action
 	*	@param value La valeur contenue dans l'action integer
 	*/
 	void add_action_integer(std::string action_name, int action_num, int value);
+	
+	/*!
+	*	@brief Cree puis ajoute a la liste une action keyconfig (MenuActionKeyConfig) a la fin des actions deja existantes
+	*	@param action L'action a ajouter
+	*/	
 	void add_action_keyconfig(std::string action_name, int action_num, std::string value, key k);
 
 	/*!
@@ -70,12 +82,18 @@ class ListMenuActions {
 	*	@param dep Le deplacement du curseur (modulo le nombre d'actions)
 	*/
 	void incr_curs(int dep);
+	
 	/*!
 	*	@brief Augmente la valeur (s'il y en a) de l'action courante (et joue un son)
 	*	@param value Le deplacement de la valeur
 	*/
 	void incr_value(int value);
 
+	/*!
+	*	@brief Cette methode doit etre appellee par le menu quand entree est pressee
+	*	
+	*	Elle se charge de transmettre le signal "entree" a l'action actuellement selectionnee
+	*/
 	void enter_pressed();
 
 	/*!
@@ -91,7 +109,14 @@ class ListMenuActions {
 	*/
 	int get_selected_action();
 
-	int get_selected_action_value();
+	/*!
+	*	@brief Acesseur
+	*	@return La valeur (attention, ce n'est pas le numero) de l'action selectionnee
+	*
+	*	Ne pas confondre valeur et numero: le numero est l'indice dans la liste des menus, 
+	*	la valeur represente par exemple le volume pour une action de reglage de volume
+	*/
+	int getSelectedActionValInteger();
 
 	/*!
 	*	@brief Accesseur
@@ -104,6 +129,10 @@ class ListMenuActions {
 	*	@return La somme des hautes des SurfaceText des actions
 	*/
 	int height() const;
+	
+	bool waitingForInput() const; 
+	
+	void handleInput(menu_key key);
 
 
 }; // end class

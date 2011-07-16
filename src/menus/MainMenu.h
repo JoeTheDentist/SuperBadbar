@@ -16,14 +16,47 @@ class MainMenu: public Menu {
 
 
 	public:
+	/*!
+	*	@brief Constructeur
+	*/	
 	MainMenu();
+	
+	/*!
+	*	@brief Destructeur
+	*/	
 	~MainMenu();
+	
+	/*!
+	*	@brief Mise a jour de l'affichage du menu
+	*/
 	virtual void update_graphics();
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si un fond gris doit etre affiche
+	*/	
 	virtual bool can_display_grey_background() const {return false;}
 	protected:
+		
+	/*!
+	*	@brief Boucle de jeu (qui remplace ici celle de game)
+	*/
 	void loop();
+	
+	/*!
+	*	@brief Lancement du jeu
+	*/
 	void launch_game();
+	
+	/*!
+	*	@brief Lancement du menu options
+	*/
 	void launch_options();
+	
+	/*!
+	*	@brief Traitement du choix
+	*	@param l'int correspond au numero de la liste choisi
+	*/	
 	virtual void treat_choice(int choice);
 };
 

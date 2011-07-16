@@ -109,14 +109,25 @@ int ListMenuActions::get_selected_action()
 	return (*m_iterator)->get_index();
 }
 
-int ListMenuActions::get_selected_action_value()
+int ListMenuActions::getSelectedActionValInteger()
 {
 	if (m_actions.empty()) {
 		PRINT_DEBUG(1, "Actions list is empty, default value returned")
 		return 0;
 	}
-	return (*m_iterator)->get_value();
+	return (*m_iterator)->getValueInteger();
 }
+
+bool ListMenuActions::waitingForInput() const
+{
+	return (*m_iterator)->waitingForInput();
+}
+
+void ListMenuActions::handleInput(menu_key key) 
+{
+	(*m_iterator)->handleInput(key);
+}
+
 
 int ListMenuActions::width() const
 {
