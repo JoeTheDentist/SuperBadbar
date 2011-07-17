@@ -20,26 +20,26 @@ class Anim {
 
 
     public:
-		
+
 		virtual ~Anim() {}
-        /*!
+        /**
         * @brief Image a afficher.
         * @return l'image de l'animation a afficher, et MET A JOUR !!! l'image suivante.
         */
         virtual Surface * curr_pic()=0;
 
-        /*!
+        /**
         * @brief Passe a l'image suivante
         */
         virtual void next_pic()=0;
 
-        /*!
+        /**
         * @brief si on peut interrompre l'animation.
         * @return booleen, true si on peut l'interrompre.
         */
         virtual bool interruptable()=0;
 
-        /*!
+        /**
         * @brief si on peut supprimer l'animation.
         * @return booleen, true si on peut la suppr.
         */

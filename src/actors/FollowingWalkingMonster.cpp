@@ -2,7 +2,7 @@
  * 	@file FollowingWalkingMonsters.cpp
  * 	@brief Source de la classe FollowingWalkingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

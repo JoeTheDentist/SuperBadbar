@@ -2,7 +2,7 @@
  * 	@file SpecialLetter.h
  * 	@brief Header de la classe SpecialLetter
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -10,11 +10,11 @@
 #include "../video/SurfaceText.h"
 #include <string>
 
-#ifndef _BABAR_SPECIAL_LETTER_H_	
+#ifndef _BABAR_SPECIAL_LETTER_H_
 #define _BABAR_SPECIAL_LETTER_H_
 
-/*!
-*	@class SpecialLetter 
+/**
+*	@class SpecialLetter
 *	@brief Une surface representant une lettre et pouvant etre redimensionnee
 */
 class SpecialLetter : public SurfaceText {
@@ -27,7 +27,7 @@ private:
 	int m_b;			// composante bleue
 	std::string m_font_name;	// le nom de la police
 public:
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param letter La lettre
 	*	@param size La taille de la police (sans l'offset)
@@ -38,26 +38,26 @@ public:
 	*/
 	SpecialLetter(char letter, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	virtual ~SpecialLetter();
 
-	/*!
+	/**
 	*	@brief appelee a chaque tour, resize la lettre
 	*/
 	virtual void update();
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La largeur de la surface SANS l'offset (dimension finale, pas actuelle)
 	*/
 	virtual int fake_w();
-	
-	/*!
+
+	/**
 	*	@brief Accesseur
 	*	@return La hauteur de la surface SANS l'offset (dimension finale, pas actuelle)
-	*/	
+	*/
 	virtual int fake_h();
 };
 

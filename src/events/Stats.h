@@ -6,6 +6,7 @@
 #include "../sprites/Sprite.h"
 
 /**
+ * TODO (re) / TOCOMMENT
  * Classe associee a un Babar, s'occupe de ses statistiques.
  */
 

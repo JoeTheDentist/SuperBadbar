@@ -2,7 +2,7 @@
  * 	@file Weapon.h
  * 	@brief header de la classe Weapon
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -45,7 +45,7 @@ struct Rect;
  * 	@brief Instance d'une arme
  *
  *	@todo changer le fonctionnement: l'arme doit contenir
- *	un pointeur vers son propriétaire pour savoir à quelle
+ *	un pointeur vers son propriétaire pour savoir �  quelle
  * 	"alliance" elle appartient, ainsi qu'un pointeur vers le gestionnaire
  *	de projectiles (éventuellement en static avec une méthode set)
  */

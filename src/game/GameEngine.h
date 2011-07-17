@@ -2,7 +2,7 @@
  * 	@file GameEngine.h
  * 	@brief header de la classe GameEngine
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -59,26 +59,26 @@ public:
 	/**
 	 * 	@brief Initialisation des données
 	 * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
-	 * 	@param camera La camera qui servira à afficher les images
+	 * 	@param camera La camera qui servira �  afficher les images
 	 * 	@param StaticData Données du niveau
 	 * 	@param keyboard Gestionnaire du clavier
 	 *	@param PicturesContainer Le gestionnaire d'images
 	*/
 	void init_GameEngine(std::string level_name, Camera *camera, PicturesContainer *PicturesContainer);
 
-	/*!
+	/**
 	 *	@brief Met a jour le GameEngine
 	*/
 	void update();
 
 	/**
-	 * 	@brief Mise à jour des positions des éléments du jeu
-	 *	@todo à déplacer
+	 * 	@brief Mise �  jour des positions des éléments du jeu
+	 *	@todo �  déplacer
 	*/
 	void update_pos();
 
 	/**
-	 * 	@brief Mise à jour des vitesses des éléments du jeu
+	 * 	@brief Mise �  jour des vitesses des éléments du jeu
 	*/
 	void update_speed();
 
@@ -99,7 +99,7 @@ public:
 	void update_babar_projectiles();
 
 	/**
-	 *  @brief Regarde si Babar doit perdre des vies à cause du décor.
+	 *  @brief Regarde si Babar doit perdre des vies �  cause du décor.
 	 */
 	void update_babar_damage();
 
@@ -112,7 +112,7 @@ public:
  	/**
 	 * 	@brief Affichage des projectiles amis
 	 *	@param camera La camera d'affichage
-	 *	@todo à déplacer
+	 *	@todo �  déplacer
 	*/
 	void display_projectiles_friend(Camera *camera);
 
@@ -122,38 +122,38 @@ public:
 	*/
 	void display_events(Camera *camera);
 
-	/*!
-	 * 	@brief Joue les sons à jouer ce cycle
+	/**
+	 * 	@brief Joue les sons �  jouer ce cycle
 	 *	@param SoundEngine Gestionnaire de son
 	 *
 	 * Gère pour l'instant les sons de babar et des monstres
 	*/
 	void play_sounds();
 
-	/*!
+	/**
 	 *	@brief Fait gagner le niveau
 	*/
 	void set_victory();
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return Vrai si le joueur a gagne
 	*/
 	bool has_won();
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return Vrai si le joueur a perdu
 	*/
 	bool has_lost();
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return Pointeur vers le gestionnaire de monstres
 	*/
 	Monsters_manager *get_monsters_manager() { return m_monsters_manager;}
 
-    /*!
+    /**
 	 *	@brief Accesseur
 	 *	@return Pointeur vers le gestionnaire des sets
 	*/

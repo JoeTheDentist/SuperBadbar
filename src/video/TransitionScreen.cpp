@@ -2,7 +2,7 @@
  * 	@file TransitionScreen.cpp
  * 	@brief Implementation de la classe TransitionScreen
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

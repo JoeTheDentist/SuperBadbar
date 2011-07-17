@@ -49,7 +49,7 @@ private:
 	EventOrderer *m_EventOrderer;
 
 public:
-	/*!
+	/**
 	* 	@brief Constructeur
 	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
 	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
@@ -57,111 +57,111 @@ public:
 	*/
 	Keyboard(bool record_on = false, bool replay_on = false,  std::string output_name = "", std::string input_name = "");
 
-	/*!
+	/**
 	* 	@brief Destructeur
 	*/
 	~Keyboard();
 
-	/*!
+	/**
 	* 	@brief Charge La configuration des touches depuis un fichier
 	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration
 	*/
 	void load_config(std::string config_name);
 
-	/*!
+	/**
 	* 	@brief Sauvegarde La configuration des touches dans un fichier
 	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration
 	*/
 	void save_config(std::string config_name);
 
-	/*!
+	/**
 	* 	@brief Met à jour le tableau des touches enfoncees
 	*/
 	void update_events();
 
-	/*!
+	/**
 	* 	@brief Accesseur
 	*	@param k la touche a controler
 	*	@return Vrai si la touche est enfoncee
 	*/
 	bool key_down (enum key k) const;
 
-	/*!
+	/**
 	* 	@brief Accesseur
 	*	@param k la touche a controler
 	*	@return Le nombre de cycles depuis lequel la touche est enfoncee
 	*/
 	int time_pressed(enum key k) const;
 
-	/*!
+	/**
 	* 	@brief Accesseur
 	*	@return Vrai si une touche gauche ou droite est enfoncee
 	*/
 	bool key_dir_down() const;
 
-	/*!
+	/**
 	* 	@brief Force le relachement de la touche
 	*	@param k la touche à relacher
 	*/
 	void disable_key(enum key k);
 
-	/*!
+	/**
 	* 	@brief Force le relachement de toutes les touches
 	*/
 	void disable_all_keys();
 
 
-	/*!
+	/**
 	*	@brief Attend un evenement menu_key et le retourne
 	*	@return Le menu_key entre par l'utilisateur
 	*/
 	menu_key wait_menu_key();
 
-	/*!
+	/**
 	*	@brief Detecte dans la pile un evenement menu_key et le retourne
 	*	@return Le menu_key entre par l'utilisateur (mk_none s'il n'y en a pas)
 	*/
 	menu_key poll_menu_key();
 
-	/*!
+	/**
 	*	@brief Met le jeu en pause jusqu'a l'enfoncement de la touche k
 	*	@param k La touche attendue
 	*/
 	void wait_key(enum key k);
 
-	/*!
+	/**
 	*	@brief Met le jeu en pause jusqu'a l'enfoncement d'une touche
 	*/
 	void wait_for_any_key();
 
-	/*!
+	/**
 	*	@brief Autorise la repetition des touches (typiquement pour le menu)
 	*/
 	void enable_key_repeat();
 
-	/*!
+	/**
 	*	@brief Interdit la repetition des touches (typiquement pour le jeu normal)
 	*/
 	void disable_key_repeat();
 
-	/*!
+	/**
 	*	@brief Vide la liste des touches menu recemment enfoncees
 	*/
 	void reset_menu_keys();
 
-	/*!
+	/**
 	*	@brief Teste s'il reste des touches menu enfoncees non traitees
 	*	@return Vrai s'il reste au moins une touche non traitee
 	*/
 	bool is_next_menu_key() const;
 
-	/*!
+	/**
 	*	@brief Supprime la derniere touche menu enfoncee de la liste
 	*	@return La derniere touche menu enfoncee
 	*/
 	menu_key pop_menu_key();
 
-	/*!
+	/**
 	*	@brief Demande au Keyboard un event clavier depuis l'EventOrderer en param
 	*	@param eventOrderer Le demandeur
 	*
@@ -169,19 +169,19 @@ public:
 	*/
 	void order_event(EventOrderer *eventOrderer);
 
-	/*!
+	/**
 	*	@brief Retourne vrai si un EventOrderer attend un evenement du Keyboard
 	*/
 	bool event_ordered();
 
-	/*!
+	/**
 	*	@brief Envoie event a l'eventOrderer client (s'il n'existe pas, comportement indefini)
 	*
 	*	Doit etre precede de if (eventdered())
 	*/
 	void answer_event_order(SDLKey event);
 
-	/*!
+	/**
 	*	@brief Change la configuration de la touche k pour sdl_code
 	*	@param k La touche a modifier
 	*	@param sdl_code Le code string sdl de la nouvelle touche (cf SdlKeyConverter)
@@ -189,7 +189,7 @@ public:
 	*/
 	void set_config_key(key k, std::string sdl_code, bool save = true);
 
-	/*!
+	/**
 	*	@brief Renvoie le code string sdl de la touche correspondant a k
 	*	@param k La touche dont on veut l'info
 	*	@return le code string sdl de la touche correspondant a k

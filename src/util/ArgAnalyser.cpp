@@ -2,7 +2,7 @@
  * 	@file ArgAnalyser.cpp
  * 	@brief Implémentation de la classe ArgAnalyser
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date 25/01/2011
  *
  */

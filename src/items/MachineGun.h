@@ -2,7 +2,7 @@
  * 	@file MachineGun.h
  * 	@brief Header de la classe MachineGun
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

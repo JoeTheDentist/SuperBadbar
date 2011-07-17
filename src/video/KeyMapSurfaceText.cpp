@@ -2,7 +2,7 @@
  * 	@file KeyMapSurfaceText.cpp
  * 	@brief Implementation de la classe KeyMapSurfaceText
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

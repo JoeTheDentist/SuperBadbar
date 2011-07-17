@@ -2,7 +2,7 @@
  * 	@file triggerable.h
  * 	@brief header de la classe Triggerable
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */
@@ -19,8 +19,8 @@ class Analyser;
  * 	@class Triggerable
  * 	@brief Classe representant un evenement declenchable
  *
- *	Cet evenement doit etre etre declenche depuis l'exterieur (par un trigger 
- *	typiquement). 
+ *	Cet evenement doit etre etre declenche depuis l'exterieur (par un trigger
+ *	typiquement).
  *	Il possede un champ nature, une position optionnelle et un texte optionnel.
  *	Ces champs sont lus par un analyser. Le fichier ouvert est de type:
  *		#nature# nature
@@ -30,7 +30,7 @@ class Analyser;
  *		#endtriggerable#
  *	nature est obligatoire et #endtriggerable# aussi (et doit etre a la fin)
  *
- *	
+ *
  *
  */
 class Triggerable {
@@ -40,7 +40,7 @@ protected:
 	std::string m_nature;
 	std::string m_text;
 public:
-	
+
 	/**
 	 * 	@brief Constructeur
 	 *	@param analyser l'analyser positionne juste avant un triggerable
@@ -58,9 +58,9 @@ public:
 	virtual void start();
 
 protected:
-	/*!
+	/**
 	* @brief Apparition d'un monstre
-	* 
+	*
 	* Le champ nature vaut "monster"
 	* Les champs de position indiquent la position d'apparition du monstre
 	* Le champ text indique le nom du monstre a ajouter
@@ -68,7 +68,7 @@ protected:
 	void process_monster();
 
 
-	/*!
+	/**
 	* @brief Lancement d'un dialogue
 	*
 	* Le champ nature vaut "dialog"
@@ -78,7 +78,7 @@ protected:
 	*/
 	void process_dialog();
 
-	/*!
+	/**
 	* @brief Lancement d'une alerte (le monster kill)
 	*
 	* Le champ nature vaut "alert"

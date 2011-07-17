@@ -2,7 +2,7 @@
  * 	@file SurfaceFrame.h
  * 	@brief Header de la classe SurfaceFrame
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -12,7 +12,7 @@
 
  #include "../video/Surface.h"
 
- /*!
+ /**
 *	@class SurfaceFrame
 *	@brief Surface entourant un cadre (equivalent d'un cadre de tableau)
 */
@@ -21,7 +21,7 @@ protected:
 	int m_line_w;
 	int m_line_h;
 public:
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param rect La frame du cadre
 	*	@param r La composante rouge de la couleur du cadre

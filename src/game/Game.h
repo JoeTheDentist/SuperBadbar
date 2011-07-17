@@ -3,7 +3,7 @@
  * 	@file game.h
  * 	@brief header de la classe Game
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -63,7 +63,7 @@ public:
 	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
 
 
-	/*!
+	/**
 	 *	@brief Constructeur utilise par l'editeur
 	 *	@param level_name nom du niveau a ouvrir (depuis le dossier des levels)
 	*/
@@ -85,10 +85,22 @@ public:
 	*/
 	void check_monsters();
 
+        /**
+         *  TOCOMMENT
+         *  @brief
+         */
 	void set_state_playing();
 
+        /**
+         *  TOCOMMENT
+         *  @brief
+         */
 	void set_state_pause();
 
+        /**
+         *  TOCOMMENT
+         *  @brief
+         */
 	void set_state_talks();
 
 
@@ -96,27 +108,27 @@ public:
 private:
 	void init_game(std::string level_name);
 
-	/*!
-	 * 	@brief Mise à jour du moteur graphique et rafraichissement de l'écran
+	/**
+	 * 	@brief Mise �  jour du moteur graphique et rafraichissement de l'écran
 	*/
 	void update_graphic();
 
-	/*!
-	 *  @brief Mise à jour des données du jeu
+	/**
+	 *  @brief Mise �  jour des données du jeu
 	*/
 	void update_game();
 
-	/*!
-	 *  @brief Mise à jour des evenements claviers
+	/**
+	 *  @brief Mise �  jour des evenements claviers
 	*/
 	void update_keyboard();
 
-	/*!
-	 * 	@brief Joue les sons à jouer ce cycle
+	/**
+	 * 	@brief Joue les sons �  jouer ce cycle
 	*/
 	void play_sounds();
 
-	/*!
+	/**
 	 *	@brief Affiche l'écran de victoire
 	 *
 	 *	TODO a faire!

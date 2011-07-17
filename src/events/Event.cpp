@@ -2,7 +2,7 @@
  * 	@file event.cpp
  * 	@brief implémentation de la classe Events
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

@@ -1,3 +1,12 @@
+/*
+* 	@file ElmarMachineGun.h
+* 	@brief Header de la classe ElmarMachineGun
+*
+* 	@author Guillaume Berard & Benoit Morel
+* 	@date decembre 2010
+*
+*/
+
 #ifndef ElmarMachineGun_H
 #define ElmarMachineGun_H
 
@@ -6,6 +15,10 @@
 
 class Projectile;
 
+/**
+ *  @class ElmarMachineGun
+ *  @brief Le machine gun de Elmar
+ */
 class ElmarMachineGun : public Weapon
 {
     public:

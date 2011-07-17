@@ -2,7 +2,7 @@
  * 	@file SurfaceText.h
  * 	@brief Header de la classe SurfaceText
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */
@@ -15,7 +15,7 @@
 
 class Font;
 
-/*!
+/**
 *	@class SurfaceText
 *	@brief Classe representant toute image du jeu contenant du texte (sans sa position)
 */
@@ -23,7 +23,7 @@ class SurfaceText: public Surface {
 	public:
 
 	SurfaceText();
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param text Le texte a afficher
 	*	@param size La taille du texte a afficher
@@ -34,14 +34,14 @@ class SurfaceText: public Surface {
 	*/
 	SurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
 
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param text Le texte a afficher
 	*	@param font La police a utiliser pour afficher le texte
 	*/
 	SurfaceText(std::string text, Font &font);
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	virtual ~SurfaceText();

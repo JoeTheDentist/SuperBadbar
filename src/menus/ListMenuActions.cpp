@@ -2,7 +2,7 @@
  * 	@file ListMenuActions.cpp
  * 	@brief Implementation de la classe ListMenuActions
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

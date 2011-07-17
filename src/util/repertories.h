@@ -2,11 +2,11 @@
  * 	@file repertories.h
  * 	@brief Defines des chemins vers les données
  *
- *	On se repère par rapport à la racine du projet
+ *	On se repère par rapport �  la racine du projet
  *	Les chemins commencent tous par la racine
  *	Chaque chemin est un std::string
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -17,7 +17,7 @@
 #define _REPERTORIES_
 
 #ifdef WIN32
-    #define RACINE_R std::string("")
+    #define RACINE_R std::string("../")
 #else
    #define RACINE_R std::string("../")
 #endif

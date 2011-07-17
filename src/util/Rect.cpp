@@ -2,7 +2,7 @@
  * 	@file rect.cpp
  * 	@brief Implémentation de la classe Rect
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  */
 

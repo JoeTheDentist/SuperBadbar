@@ -10,7 +10,7 @@
  *	- le header rassemblant les paths
  *	- les macros usuelles (autres que debug)
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juillet 2011
  */
 

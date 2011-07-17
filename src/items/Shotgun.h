@@ -2,7 +2,7 @@
  * 	@file shotgun.h
  * 	@brief Header de la classe Shotgun
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -39,7 +39,7 @@ public:
 	~Shotgun();
 
 	/**
-	 * 	@brief Tire plusieurs balles de fusil à pompe
+	 * 	@brief Tire plusieurs balles de fusil �  pompe
 	 *	@param pos La position du propriétaire de l'arme
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés

@@ -2,7 +2,7 @@
  * 	@file CollisionsMatrix.h
  * 	@brief Implémentation de la classe CollisionsMatrix
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -204,7 +204,7 @@ void CollisionsMatrix::update_pos( Rect &pos, Rect &speed )
 			pos.y -= BOX_SIZE;
 		}
 	}
-	/* cas où le sprite va à droite */
+	/* cas où le sprite va �  droite */
 	for (int speed_x = speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			pos.y -= 	BOX_SIZE;
 			if(!CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(pos)))
@@ -213,7 +213,7 @@ void CollisionsMatrix::update_pos( Rect &pos, Rect &speed )
 			if (pos.x + pos.w > (int)gStatic->StaticData_width())
 				pos.x = gStatic->StaticData_width() - pos.w;
 	}
-	/* cas où le sprite va à gauche */
+	/* cas où le sprite va �  gauche */
 	for (int speed_x = speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			pos.y -= 	BOX_SIZE;
 			if(!CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(pos)))

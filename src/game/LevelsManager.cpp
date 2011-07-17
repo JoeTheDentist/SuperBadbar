@@ -2,7 +2,7 @@
  * 	@file level_manager.cpp
  * 	@brief implementation de la classe LevelsManager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

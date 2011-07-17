@@ -2,7 +2,7 @@
  * 	@file monster_basic_weapon.cpp
  * 	@brief Implémentation de la classe Monster_basic_weapon
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

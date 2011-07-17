@@ -2,7 +2,7 @@
  * 	@file debug.h
  * 	@brief Macros de debug / traces pour le développement
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  * Trois macros de debug et une de performance:
@@ -12,7 +12,7 @@
  * Chacune utilise une constante définie dans ce fichier afin de déterminer la
  * précision des messages: 0 pour n'afficher aucun message, 3 pour afficher le maximum
  * de messages.
- * Ces messages ne doivent pas apparaitre dans le projet final et servent seulement à suivre
+ * Ces messages ne doivent pas apparaitre dans le projet final et servent seulement �  suivre
  * le comportement du programme.
  *
  *

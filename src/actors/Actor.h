@@ -1,3 +1,12 @@
+/**
+ * 	@file Actor.h
+ * 	@brief Header de la classe Actor
+ *
+ * 	@author Guillaume Berard & Benoit Morel
+ * 	@date Mars 2011
+ *
+ */
+
 #ifndef ACTOR_H_INCLUDED
 #define ACTOR_H_INCLUDED
 
@@ -29,8 +38,11 @@ class CollisionsManager;
 class Sprite;
 
 /**
- * 	@class Actor
- * 	@brief Classe mère à tous les acteurs du jeux
+ *  @class Actor
+ *  @brief Classe mère de tous les acteurs du jeux
+ *
+ *  Cette classe représente les acteurs du jeux, toute entié ayant
+ *  une logique de mouvement (pos, speed) et d'afficahge (sprite)
  */
 class Actor {
 protected:
@@ -40,24 +52,24 @@ protected:
 	Sprite * m_sprite;  /* Représentation de l'acteur */
 	int m_phase;        /* temps depuis création, en nombre de cycle */
 public:
-	/*!
+	/**
 	 *	@brief Constructeur
 	*/
 	Actor();
 
-	/*!
+	/**
 	 *	@brief Destructeur
 	*/
     virtual ~Actor();
 
-	/*!
+	/**
 	 *	@brief Met à jour la position du sprite
 	 *	@param StaticData Données du jeu
 	 *	@param CollisionsManager Gestionnaire de collisions
 	*/
     void update_pos();
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return La position du sprite
 	*/
@@ -66,13 +78,13 @@ public:
 
 	Rect damage_box() const;
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return La phase du sprite
 	*/
 	int phase() const;
 
-	/*!
+	/**
 	 *	@brief Accesseur
 	 *	@return La direction directione du sprite
 	 *
@@ -80,13 +92,13 @@ public:
 	*/
 	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La direction du sprite
 	*/
 	direction dir() const;
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La position du centre du rectangle de l'acteur
 	*
@@ -94,7 +106,7 @@ public:
 	*/
 	Rect center() const;
 
-	/*!
+	/**
 	 *	@brief Mutateur: augmente la position de l'actor de x et y sans tenir compte des collisions
 	 *	@param x Le deplacement x
 	 *	@param y Le deplacement y
@@ -103,7 +115,7 @@ public:
 	*/
 	virtual void move(int x, int y);
 
-	/*!
+	/**
 	 *	@brief Mutateur: met a jour la position de l'actor de x et y sans tenir compte des collisions
 	 *	@param x Le nouveau x
 	 *	@param y Le nouveau y
@@ -112,6 +124,9 @@ public:
 	*/
 	virtual void set_pos(int x, int y);
 
+        /**
+         *  TOCOMMENT
+         */
 	virtual void do_stay_in_level();
 
 };

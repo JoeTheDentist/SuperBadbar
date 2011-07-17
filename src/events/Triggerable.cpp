@@ -2,7 +2,7 @@
  * 	@file triggerable.cpp
  * 	@brief implémentation de la classe Triggerables
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */

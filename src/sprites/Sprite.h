@@ -2,7 +2,7 @@
  * 	@file Sprite.h
  * 	@brief Header de la classe Sprite
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -29,7 +29,7 @@ class Sprite {
         Rect m_pos; 		    /* position du sprite et sa taille, pointe sur le Rect de son acteur */
         unsigned int m_phase;	/* phase pour alterner les images lors du déplacememnt */
         screen_level m_lvl;     /* niveau du plan d'affichage */
-        bool m_to_delete;       /* si le sprite est à détruire, ce booléen est mis à jour par son acteur */
+        bool m_to_delete;       /* si le sprite est �  détruire, ce booléen est mis �  jour par son acteur */
         bool m_no_pic;          /* si on doit afficher l'image ce tour ci */
         bool m_center;          /* si l'image doit être centrée sur la position */
 
@@ -51,7 +51,7 @@ class Sprite {
         virtual Surface * curr_pic()=0;
 
         /**
-         *	@brief Change l'image à venir
+         *	@brief Change l'image �  venir
          */
         virtual void next_pic()=0;
 
@@ -62,7 +62,7 @@ class Sprite {
 
         /**
          *  @brief Synchronise la position le l'acteur avec la position du sprite
-         *  Attention, c'est aux curr_pic de bien mettre à jour les dimensions de l'image.
+         *  Attention, c'est aux curr_pic de bien mettre �  jour les dimensions de l'image.
          */
         void set_pos(Rect pos);
 

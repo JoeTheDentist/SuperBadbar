@@ -2,7 +2,7 @@
  * 	@file WalkingMonster.h
  * 	@brief Header de la classe FlyingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -25,7 +25,7 @@ private:
 	int m_high_min;
 
 public:
-	/*!
+	/**
 	 *	@brief Constructeur
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale

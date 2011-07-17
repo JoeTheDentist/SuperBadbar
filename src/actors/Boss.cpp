@@ -2,7 +2,7 @@
  * 	@file boss.cpp
  * 	@brief Implementation de la classe Boss
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */

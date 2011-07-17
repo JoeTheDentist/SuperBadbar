@@ -2,7 +2,7 @@
  * 	@file MenuActionInteger.cpp
  * 	@brief Implementation de la classe MenuActionInteger
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

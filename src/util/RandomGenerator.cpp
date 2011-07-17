@@ -2,7 +2,7 @@
  * 	@file RandomGenerator.cpp
  * 	@brief Implementation de la classe RandomGenerator
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */

@@ -2,7 +2,7 @@
  * 	@file MovingPlatform.h
  * 	@brief header de la classe MovingPlatform
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -49,8 +49,8 @@ public:
 
 
 	/**
-	 * 	@brief Mise Ã  jour de la vitesse
-	 *	@todo Ã  coder
+	 * 	@brief Mise Ã  jour de la vitesse
+	 *	@todo Ã  coder
 	 */
 	virtual void update_speed();
 

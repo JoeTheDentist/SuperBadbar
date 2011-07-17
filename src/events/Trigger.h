@@ -2,7 +2,7 @@
  * 	@file trigger.h
  * 	@brief header de la classe Trigger
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -27,7 +27,7 @@ class Analyser;
  *	<nombre de triggers>
  *	numeros des trigger
  *	!
- *	
+ *
  *	puis plus loin, par exemple pour le trigger 42:
  *
  *	#trig42#
@@ -46,9 +46,9 @@ protected:
 	std::list<Triggerable *> m_triggerables;
 	bool m_triggered;
 public:
-	
+
 	Trigger(Analyser *analyser);
-	
+
 	/**
 	 * 	@brief Constructeur
 	 *	@param level_number le numero du trigger
@@ -61,7 +61,7 @@ public:
 	virtual ~Trigger();
 
 	/**
-	 * 	@brief Mise à jour des données de l'Trigger
+	 * 	@brief Mise �  jour des données de l'Trigger
 	*/
 	virtual void update();
 
@@ -70,38 +70,38 @@ public:
 	 *	@return Vrai si l'triggerable doit etre déclenché
 	*/
 	virtual bool can_start() const;
-	
+
 	/**
 	 * 	@brief Déclenche le triggerable
 	*/
 	virtual void start();
-	
+
 	/**
 	 * 	@brief Indique si le trigger doit etre détruit
 	 *	@return Vrai si le trigger doit etre détruit
 	*/
 	virtual bool can_be_destroyed() const;
-	
+
 	/**
 	 * 	@brief Détruit le triggerable
 	*/
 	virtual void destroy();
-	
-	/*!
+
+	/**
 	 *	@brief Ajoute une position a la zone de declenchement
 	 *	@param pos La position a ajouter
 	 */
 	void addPos(Rect pos);
-	
-	/*!
+
+	/**
 	 *	@brief Ajoute un triggerable a la liste des triggerables a declencher
 	 *	@param triggerable le triggerable a ajouter
 	 */
 	void addTriggerable(Triggerable *triggerable);
-	
-	
+
+
 	private:
-	
+
 	void initZones(Analyser *analyser);
 	void initTriggerables(Analyser *analyser);
 

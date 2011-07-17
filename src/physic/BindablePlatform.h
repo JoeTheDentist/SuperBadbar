@@ -2,7 +2,7 @@
  * 	@file BindablePlatform.h
  * 	@brief header de la classe BindablePlatform
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */
@@ -28,11 +28,11 @@ class Camera;
  *
  *	Elle peut etre affichée, se déplace et contient des données de collision
  *	Babar est le seul sprite en intéraction avec la plateforme.
- *	Lorsque Babar tombe sur la plateforme, il est liée à elle
- *	Dans ce cas, il suit ses déplacements jusqu'à son prochain son
+ *	Lorsque Babar tombe sur la plateforme, il est liée �  elle
+ *	Dans ce cas, il suit ses déplacements jusqu'�  son prochain son
  * 	ou sa chute de la plateforme. La plateforme "sait" si elle est liée
- *	ou pas à Babar.
- *	Une plateforme mobile est construite à partir du meme type de fichier qu'un
+ *	ou pas �  Babar.
+ *	Une plateforme mobile est construite �  partir du meme type de fichier qu'un
  *	static: un .col pour la matrice de collisions et une image
  */
 class BindablePlatform : public Static, public CollisionsMatrix
@@ -63,7 +63,7 @@ public:
 	void init_bindable_platform(int posx, int posy, std::string file_name);
 
 	/**
-	 * 	@brief Mise à jour de la position
+	 * 	@brief Mise �  jour de la position
 	 *	@param babar Un personnage controle par le joueur
 	 *
 	 *	Detecte la collision avec babar par le bas pour éventuellement le lier
@@ -71,12 +71,12 @@ public:
 	void update_pos();
 
 	/**
-	 * 	@brief Mise à jour de la vitesse
+	 * 	@brief Mise �  jour de la vitesse
 	 */
 	virtual void update_speed();
 
 	/**
-	 * 	@brief lie Babar à la plateforme
+	 * 	@brief lie Babar �  la plateforme
 	 */
 	virtual void bind();
 
@@ -96,12 +96,12 @@ public:
 
 
 	/**
-	 * 	@brief Indique si Babar doit etre lié à la plateforme
-	 *	@return Vrai si Babar doit etre lié à la plateforme courante
+	 * 	@brief Indique si Babar doit etre lié �  la plateforme
+	 *	@return Vrai si Babar doit etre lié �  la plateforme courante
 	 */
 	bool check_babar();
 
-	/*!
+	/**
 	 *	@brief Indique si la plateforme doit etre supprimee
 	 *	@return Vrai si oui
 	 */

@@ -2,7 +2,7 @@
  * 	@file ChainedPlatform.h
  * 	@brief header de la classe ChainedPlatform
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */
@@ -50,8 +50,8 @@ public:
 
 
 	/**
-	 * 	@brief Mise Ã  jour de la vitesse
-	 *	@todo Ã  coder
+	 * 	@brief Mise Ã  jour de la vitesse
+	 *	@todo Ã  coder
 	 */
 	virtual void update_speed();
 

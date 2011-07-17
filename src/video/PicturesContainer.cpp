@@ -2,7 +2,7 @@
  * 	@file PicturesContainer.h
  * 	@brief Implémentation de la classe PicturesContainer
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

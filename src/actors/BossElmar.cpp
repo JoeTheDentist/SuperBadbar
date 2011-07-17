@@ -2,7 +2,7 @@
  * 	@file boss.cpp
  * 	@brief Implementation de la classe BossElmar
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */
@@ -82,7 +82,7 @@ void BossElmar::update()
 {
     update_state();
 
-	// mise à jour des dimensions
+	// mise �  jour des dimensions
 	Rect pos_basse = m_pos;
 	pos_basse.y += pos_basse.h;
 	//pour toujours avoir la mm position malgré le changement d'état

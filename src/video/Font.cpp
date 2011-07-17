@@ -2,7 +2,7 @@
  * 	@file font.cpp
  * 	@brief Implémentation de la classe Font
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

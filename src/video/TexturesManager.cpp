@@ -2,7 +2,7 @@
  * 	@file TexturesManager.h
  * 	@brief Implémentation de la classe TexturesManager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

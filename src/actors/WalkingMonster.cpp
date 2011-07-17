@@ -2,7 +2,7 @@
  * 	@file WalkingMonsters.cpp
  * 	@brief Source de la classe WalkingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

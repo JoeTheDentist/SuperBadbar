@@ -2,7 +2,7 @@
  * 	@file Event.h
  * 	@brief header de la classe Event
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -47,7 +47,7 @@ public:
 	virtual ~Event();
 
 	/**
-	 * 	@brief Mise à jour des données de l'Event
+	 * 	@brief Mise �  jour des données de l'Event
 	*/
 	virtual void update();
 

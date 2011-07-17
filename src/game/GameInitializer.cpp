@@ -13,15 +13,15 @@ bool GameInitializer::init_game()
 {
 	// chargement des librairies
 	#ifdef WIN32
-	freopen("CON", "w", stdout);
-	freopen("CON", "r", stdin);
-	freopen("CON", "w", stderr);
+        freopen("CON", "w", stdout);
+        freopen("CON", "r", stdin);
+        freopen("CON", "w", stderr);
 	#endif
 	srand(time(NULL));
 	Constants::init();
 	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de la SDL")
+                PRINT_DEBUG(1, "Erreur d'initialisation de la SDL");
 		return false;
 	}
 	PRINT_TRACE(1, "Initialisation de TTF")
@@ -29,7 +29,7 @@ bool GameInitializer::init_game()
 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
 		return false;
 	}
-	// chargement des variables globales Ã  l'ensemble du jeu
+	// chargement des variables globales Ã  l'ensemble du jeu
 	gSound = new SoundEngine();
 	gGraphics = new GraphicEngine();
 	gGraphics->init_graphic_engine(false);

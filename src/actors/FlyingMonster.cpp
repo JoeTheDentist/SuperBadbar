@@ -2,7 +2,7 @@
  * 	@file FlyingMonster.cpp
  * 	@brief Source de la classe FlyingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

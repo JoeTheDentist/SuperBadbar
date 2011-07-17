@@ -6,6 +6,7 @@ PlayersManager::PlayersManager()
 {
     m_players = new std::list<Player*>();
     m_local_player = NULL;
+    m_name = "Player";
 }
 
 PlayersManager::~PlayersManager()

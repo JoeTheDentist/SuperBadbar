@@ -2,7 +2,7 @@
  * 	@file Following_FlyingMonsters.h
  * 	@brief Header de la classe Following_FlyingMonsters
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -27,7 +27,7 @@ private:
 
 public:
 
-	/*!
+	/**
 	 *	@brief Constructeur
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale

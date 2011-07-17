@@ -2,7 +2,7 @@
  * 	@file Texture.h
  * 	@brief Header de la classe Texture
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -24,12 +24,12 @@ struct SDL_Surface;
 
 
 
-/*!
+/**
 *	@class Texture
-*	@brief Contient une texture et ses dimensions (equivalent d'une SDL_Surface 
+*	@brief Contient une texture et ses dimensions (equivalent d'une SDL_Surface
 *	dans la version precedente)
 */
-class Texture {	
+class Texture {
 public:
 	Texture(GLuint textre, int w, int h);
 	GLuint getGlTexture() const;

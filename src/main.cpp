@@ -2,7 +2,7 @@
  * 	@file main.cpp
  * 	@brief main du jeu
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010 (ca commence a dater)
  *
  */
@@ -22,7 +22,7 @@
 
 int main(int argc, char *argv[])
 {
-	PRINT_TRACE(1,"Lancement du jeu")
+        PRINT_TRACE(1,"Lancement du jeu");
 	GameInitializer::init_game();
 
 		Game *game = new Game(Constants::TEST_LEVEL);
@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
 
 
 	GameInitializer::close_game();
-	PRINT_TRACE(1, "Fermeture du jeu")
+        PRINT_TRACE(1, "Fermeture du jeu");
 	return 0;
 }

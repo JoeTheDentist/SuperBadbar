@@ -13,32 +13,32 @@
 	macro(FULL_SCREEN, 0) \
 	macro(WINDOW_WIDTH, 600) \
 	macro(WINDOW_HEIGHT, 800) \
-	macro(LAST_LEVEL, 5) 
+	macro(LAST_LEVEL, 5)
 
 #define FOR_EACH_CONST_DOUBLE(macro) \
-	
-	
+
+
 #define FOR_EACH_CONST_STRING(macro) \
 	macro(TEST_LEVEL, "test.lvl")
-	
-	
+
+
 /*
 *	Macros used to declare variables in the class Constants
 */
-	
+
 #define DECLARE_CONST_INT(yop, plop) \
 	static int yop;
-	
+
 #define DECLARE_CONST_DOUBLE(yop, plop) \
 	static double yop;
-	
+
 #define DECLARE_CONST_STRING(yop, plop) \
 	static std::string yop;
 
 
 class Analyser;
 
-/*!
+/**
 *	@class Constants
 *	@brief Loads constants from a config file at the begining of the application
 *
@@ -54,7 +54,7 @@ class Analyser;
 */
 class Constants {
 public:
-	/*!
+	/**
 	* @brief Loads the constants from config.cfg file located in the data path
 	*/
 	static void init();
@@ -67,7 +67,7 @@ public:
 	FOR_EACH_CONST_INT(DECLARE_CONST_INT)
 	FOR_EACH_CONST_DOUBLE(DECLARE_CONST_DOUBLE)
 	FOR_EACH_CONST_STRING(DECLARE_CONST_STRING)
-	
+
 protected:
 	static void initAux(Analyser &analyser);
 };

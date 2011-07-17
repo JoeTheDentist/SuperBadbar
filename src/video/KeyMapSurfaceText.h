@@ -2,7 +2,7 @@
  * 	@file KeyMapSurfaceText.h
  * 	@brief Header de la classe KeyMapSurfaceText
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -14,7 +14,7 @@
 
 class KeyMapSurfaceText {
 public:
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param str Le texte
 	*	@param size La taille de la police (sans l'offset)
@@ -25,13 +25,13 @@ public:
 	*/
 	KeyMapSurfaceText(std::string str, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
 
-	/*!
-	*	@brief Destructeur	
+	/**
+	*	@brief Destructeur
 	*/
 	~KeyMapSurfaceText();
 
 	bool operator<(const KeyMapSurfaceText &key) const;
-	
+
 private:
 	std::string m_text;
 	int m_size;
@@ -39,7 +39,7 @@ private:
 	int m_g;
 	int m_b;
 	std::string m_fontName;
-	
+
 };
 
 

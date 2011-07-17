@@ -2,7 +2,7 @@
  * 	@file TexturesManager..h
  * 	@brief Header de la classe TexturesManager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -24,7 +24,7 @@ class Texture;
 
 /**
  * 	@class TexturesManager
- * 	@brief Charge les textures de façon à optimiser la mémoire
+ * 	@brief Charge les textures de façon �  optimiser la mémoire
  *
  */
 class TexturesManager {
@@ -49,7 +49,7 @@ public:
 	 */
 	Texture *load_IMG(std::string key);
 
-	/*!
+	/**
 	*	@brief Retourne un pointeur vers la texture de texte demandee
 	*	@param text Le texte de la surface
 	*	@param size La taille du texte de la surface
@@ -60,15 +60,15 @@ public:
 	*	@return Un pointeur vers la texture demandee
 	*/
 	Texture *loadTextureText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
-	
-	
-	/*!
-	*	@brief Transforme une SDL_Surface en Texture 
+
+
+	/**
+	*	@brief Transforme une SDL_Surface en Texture
 	*	@param surface La surface a transformer
 	*	@return La texture
 	*/
 	static Texture *SDLSurfaceToTexture(SDL_Surface *surface);
-	
+
 	Texture *loadUniformSurface(int width, int height, int r, int g, int b);
 	Texture *loadFrameSurface(int width, int height, int r, int g, int b);
 

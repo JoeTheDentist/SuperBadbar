@@ -1,8 +1,8 @@
 /**
  * 	@file game.cpp
- * 	@brief Implémentation de la classe Game
+ * 	@brief ImplÃ©mentation de la classe Game
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -138,7 +138,7 @@ void Game::update_graphic()
 	/* affichage des statics du deuxieme plan */
 	gStatic->display_statics_back(camera);
 
-	/* affichage des événements */
+	/* affichage des Ã©vÃ©nements */
 	gGameEngine->display_events(camera);
 
     /* Plateformes */
@@ -166,7 +166,7 @@ void Game::update_graphic()
 		gGraphics->get_talks()->display();
 	}
 
-	/* mise à jour */
+	/* mise Ã  jour */
 	camera->flip_camera();
 
 

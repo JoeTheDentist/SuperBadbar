@@ -2,7 +2,7 @@
  * 	@file rocket.h
  * 	@brief Header de la classe Rocket
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */
@@ -20,19 +20,19 @@
  */
 class Rocket: public Projectile {
 public:
-	/*!
+	/**
 	 *	@brief Constructeur
 	*/
     Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
 
-	/*!
+	/**
 	 * 	@brief Destructeur
 	*/
      ~Rocket();
 
 
-	/*!
-	 * 	@brief Met à jour la vitesse du Projectile
+	/**
+	 * 	@brief Met �  jour la vitesse du Projectile
 	*/
 	virtual void update_speed();
 

@@ -2,7 +2,7 @@
  * 	@file ChargingMonster.cpp
  * 	@brief Implementation de la classe ChargingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */

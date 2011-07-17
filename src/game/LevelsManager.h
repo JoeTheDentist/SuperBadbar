@@ -3,7 +3,7 @@
  * 	@file LevelsManager.h
  * 	@brief header de la classe LevelsManager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */
@@ -13,15 +13,39 @@
 
 class Game;
 
+/**
+ *  TOCOMMENT
+ *  @class LevelsManager
+ *  @brief
+ */
 class LevelsManager {
 private:
 	int m_level;
 	Game *m_game;
 public:
+        /**
+         *  @brief Constructeur
+         */
 	LevelsManager();
+
+        /**
+         *  @brief Destructeur
+         */
 	~LevelsManager();
+
+        /**
+         *  @brief Jeu
+         */
 	void play();
+
+        /**
+         *  @brief Active gameover
+         */
 	void play_defeat();
+
+        /**
+         *  @brief Fin
+         */
 	void the_end();
 };
 

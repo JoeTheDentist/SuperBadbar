@@ -1,4 +1,4 @@
-/*!
+/**
 	@todo surement Ã  enlever!
 
     Implémentation des listes pour pouvoir faire des listes de tout type

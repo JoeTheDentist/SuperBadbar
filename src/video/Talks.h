@@ -2,7 +2,7 @@
  * 	@file talks.h
  * 	@brief Header de la classe Talks
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -90,15 +90,15 @@ public:
 
 	/**
 	 * 	@brief Affiche sous forme de dialogue la chaine de caractères
-	 *	@param str Chaine à afficher
+	 *	@param str Chaine �  afficher
 	 */
 	void display_text(std::string str);
 
 	/**
 	 * 	@brief Affiche sous forme de dialogue le contenu du fichier
-	 *	@param filename Chemin du fichier à afficher
+	 *	@param filename Chemin du fichier �  afficher
 	 *	@warning A faire suivre par un keyboard.disable_all_keys(); pour éviter des effets indésirables
-	 *	dus à la configuration du clavier avant l'appel
+	 *	dus �  la configuration du clavier avant l'appel
 	 */
 	void load_and_display_text(std::string filename);
 
@@ -124,19 +124,19 @@ public:
 	*/
 	void display();
 
-	/*!
+	/**
 	*	@brief Coupe le texte et le stocke dans la liste de celllules
 	*	@param str Le texte a couper
 	*/
 	void aux_cut_text(std::string str);
 
-	/*!
+	/**
 	*	@brief Lance l'affichage d'une cellule
 	*	@param cell La cellule a afficher
 	*/
 	void aux_display_cell(cell_string cell);
 
-	/*!
+	/**
 	*	@brief Indique si on a fini d'afficher la cellule courante
 	*	@return Vrai si on a fini
 	*/
@@ -148,7 +148,7 @@ public:
 	*/
 	void display_background();
 
-	/*!
+	/**
 	 *	@brief Fait remonter les lignes de dialogue
 	 *
 	 *	Si la boite est pleine, il faudra ensuite appuyer sur entrer pour que
@@ -156,18 +156,18 @@ public:
 	*/
 	void move_up();
 
-	/*!
+	/**
 	 *	@brief Finit le move_up si la boite de dialogue est pleine
 	*/
 	void end_move_up();
 
-		/*!
+		/**
 	*	@brief Rajoute une lettre au texte affiche, sauf s'il faut move_up
 	*	@return Vrai s'il faut move_up
 	*/
 	bool write_letter();
 
-	/*!
+	/**
 	*	@brief Retourne vrai si on a fini l'affichage
 	*	@return vrai si on a fini l'affichage
 	*/
@@ -175,17 +175,17 @@ public:
 
 	void clear_line(int i);
 
-	/*!
+	/**
 	*	@brief Vide les lignes de texte
 	*/
 	void clear_lines();
 
-	/*!
+	/**
 	* 	@brief Mise a jour de la taille des lettres
 	*/
 	void update_letters();
 
-	/*!
+	/**
 	*	@brief Convertit une chaine (dialogue) en liste de chaines (mots)
 	*	@param str La chaine correspondant aux paroles d'un personnage
 	*	@return La liste de mots

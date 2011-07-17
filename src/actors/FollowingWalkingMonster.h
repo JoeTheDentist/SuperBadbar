@@ -2,7 +2,7 @@
  * 	@file FollowingWalkingMonsters.h
  * 	@brief Header de la classe FollowingWalkingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -29,7 +29,7 @@ private:
 
 public:
 
-	/*!
+	/**
 	 *	@brief Constructeur
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
@@ -49,7 +49,7 @@ public:
 	~FollowingWalkingMonster();
 
 	/**
-	 * 	@brief Met à jour la vitesse du monstre
+	 * 	@brief Met �  jour la vitesse du monstre
 	 *
 	 *	Le monstre avance par défaut en direction de Babar
 	 */

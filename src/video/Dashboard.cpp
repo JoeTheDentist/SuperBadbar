@@ -2,7 +2,7 @@
  * 	@file dashboard.cpp
  * 	@brief Implémentation de la classe Dashboard
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

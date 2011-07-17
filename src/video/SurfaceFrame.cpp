@@ -2,7 +2,7 @@
  * 	@file SurfaceFrame.cpp
  * 	@brief Implementation de la classe SurfaceFrame
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

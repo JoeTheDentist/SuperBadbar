@@ -2,7 +2,7 @@
  * 	@file GraphicEngine.h
  * 	@brief Header de la classe GraphicEngine
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -61,9 +61,9 @@ public:
 	void init_graphic_engine(bool game = true);
 
 	/**
-	 * 	@brief Mise Ã  jour du moteur graphique
+	 * 	@brief Mise Ã  jour du moteur graphique
 	 *
-	 *	Met Ã  jour la position de la camera
+	 *	Met Ã  jour la position de la camera
 	 */
 	void update();
 
@@ -81,7 +81,7 @@ public:
 
 	/**
 	 *  @brief Envoie un message d'avertissement
-	 *  @brief Message Ã  envoyer
+	 *  @brief Message Ã  envoyer
 	 */
     void alert(std::string text);
 
@@ -120,7 +120,7 @@ public:
      */
     void clean();
 
-	/*!
+	/**
 	*	@brief Flip la camera
 	*/
 	void flip_camera();

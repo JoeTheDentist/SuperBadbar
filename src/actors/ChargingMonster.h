@@ -2,7 +2,7 @@
  * 	@file ChargingMonster.h
  * 	@brief Header de la classe ChargingMonster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */
@@ -30,7 +30,7 @@ private:
 	int m_time_end_charge;
 public:
 
-	/*!
+	/**
 	 *	@brief Constructeur
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
@@ -50,12 +50,12 @@ public:
 	~ChargingMonster();
 
 	/**
-	 * 	@brief Mise à jour de la vitesse du monstre (non ai)
+	 * 	@brief Mise �  jour de la vitesse du monstre (non ai)
 	 */
 	void virtual update_speed_simple();
 
 	/**
-	 * 	@brief Met à jour la vitesse du monstre
+	 * 	@brief Met �  jour la vitesse du monstre
 	 *
 	 *	Le monstre avance par défaut en direction de Babar
 	 */

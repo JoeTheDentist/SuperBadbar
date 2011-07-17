@@ -2,7 +2,7 @@
  * 	@file dashboard.h
  * 	@brief Header de la classe Dashboard
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -84,13 +84,13 @@ public:
 	void draw_dashboard(Camera *camera);
 
 	/**
-	 *  @brief Fonction affichant un message à l'écran
-	 *  @param text : Texte à afficher
+	 *  @brief Fonction affichant un message �  l'écran
+	 *  @param text : Texte �  afficher
 	 */
     void alert(std::string text);
 
     /**
-     *  @brief Mets à jour l'animation de texte et la suppr si besoin
+     *  @brief Mets �  jour l'animation de texte et la suppr si besoin
      */
     void update();
 

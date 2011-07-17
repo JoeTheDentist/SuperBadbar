@@ -2,7 +2,7 @@
  * 	@file statics.h
  * 	@brief Header de la classe Static
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

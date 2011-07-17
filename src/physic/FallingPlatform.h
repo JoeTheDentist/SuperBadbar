@@ -2,7 +2,7 @@
  * 	@file MovingPlatform.h
  * 	@brief header de la classe FallingPlatform
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -64,8 +64,8 @@ public:
 
 
 	/**
-	 * 	@brief Mise Ã  jour de la vitesse
-	 *	@todo Ã  coder
+	 * 	@brief Mise Ã  jour de la vitesse
+	 *	@todo Ã  coder
 	 */
 	virtual void update_speed();
 
@@ -77,7 +77,7 @@ public:
 
 protected:
 	void begin_fall();
-	/*!
+	/**
 	 *	@brief Copie la FallingPlatform
 	 *	@return La copie
 	*/

@@ -2,7 +2,7 @@
  * 	@file enums.h
  * 	@brief Contient la definition des enumerations du jeu
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juillet 2011
  */
 

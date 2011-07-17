@@ -2,7 +2,7 @@
  * 	@file TransitionScreen.h
  * 	@brief Header de la classe TransitionScreen
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */
@@ -16,7 +16,7 @@
 class Camera;
 
 
-/*!
+/**
 *	@class TransitionScreen
 *	@brief Ecran de transition, skipable ou bout d'un certain temps
 */
@@ -31,7 +31,7 @@ class TransitionScreen {
 	Rect m_pos_text2;
 
 	public:
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param picture_path Le chemin vers l'image de fond depuis le repertoire
 	*	des images des ecrans de transition (avec l'extension)
@@ -42,28 +42,28 @@ class TransitionScreen {
 						std::string text1 = "Chargement...",
 						std::string text2 = "Entrez une touche pour continuer");
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	~TransitionScreen();
 
-	/*!
+	/**
 	*	@brief Mise a jour des evenements
 	*/
 	void update();
 
-	/*!
+	/**
 	*	@brief Affichage de l'ecran
 	*	@param camera La camera d'affichage
 	*/
 	void display(Camera *camera);
 
-	/*!
+	/**
 	*	@brief Demande au joueur d'appuyer sur une touche
 	*/
 	void wait_for_player();
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return Vrai si l'ecran de transition doit disparaitre
 	*/

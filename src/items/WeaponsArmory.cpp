@@ -2,7 +2,7 @@
  * 	@file WeaponsArmory.cpp
  * 	@brief Implémentation de la classe WeaponsArmory
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -45,7 +45,7 @@ void WeaponsArmory::add_weapon(weapon_type type)
 	std::list<Weapon *>::iterator it;
 	// Positionnement dans la liste
 	for (it = m_armory.begin(); it != m_armory.end() && (*it)->type_of_weapon() < type; it++) {}
-	// Cas où l'arme est déjà présente
+	// Cas où l'arme est déj�  présente
 	if (it != m_armory.end()) {
 		if ((*it)->type_of_weapon() == type) {
 			(*it)->add_munitions();

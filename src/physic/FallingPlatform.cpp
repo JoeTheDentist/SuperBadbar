@@ -2,7 +2,7 @@
  * 	@file FallingPlatform.cpp
  * 	@brief Implementation de la classe FallingPlatform
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */

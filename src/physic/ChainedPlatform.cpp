@@ -2,7 +2,7 @@
  * 	@file ChainedPlatform.cpp
  * 	@brief Implementation de la classe ChainedPlatform
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mai 2011
  *
  */

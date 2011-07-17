@@ -3,7 +3,7 @@
  * 	@file globals.h
  * 	@brief Constantes /types utilisés par plusieurs classes
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -45,7 +45,7 @@ class PlayersManager;
 #define DOWN_COLL 0x4
 
 
-#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport à Babar */
+#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport �  Babar */
 
 extern SoundEngine * gSound;
 extern CollisionsManager * gCollision;

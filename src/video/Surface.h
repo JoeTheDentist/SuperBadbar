@@ -2,7 +2,7 @@
  * 	@file surface.h
  * 	@brief Header de la classe Surface
  *
- * 	@author Guillaume BÃ©rard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -24,7 +24,7 @@ class Texture;
 
 
 
-/*!
+/**
 *	@class Surface
 *	@brief Classe representant toute image du jeu (sans sa position)
 */
@@ -41,82 +41,82 @@ public:
 	Surface():
 		m_surface(NULL)
 		#ifdef _OPENGL_ACTIVE_
-		,m_texture(NULL) 
+		,m_texture(NULL)
 		#endif
 		{}
 
-	/*!
+	/**
 	*	@brief Constructeur
-	*	@param filename Le chemin du fichier Ã  partir de la racine du projet
+	*	@param filename Le chemin du fichier Ã  partir de la racine du projet
 	*/
 	Surface(std::string filename);
 
-	/*!
+	/**
 	*	@brief Constructeur depuis un pointeur vers une surface
 	*	@param s La surface a copier
 	*/
 	Surface(Surface * s);
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	virtual ~Surface();
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return L'image SDL
 	*/
 	SDL_Surface *get_surface();
-	
+
 	virtual void setSurface(SDL_Surface *surface) {m_surface = surface;}
-	
+
 	#ifdef _OPENGL_ACTIVE_
 	Texture *getTexture() { return m_texture;}
 	void setTexture(Texture *texture) {m_texture = texture;}
 	#endif
-	
-	/*!
+
+	/**
 	*	@brief Duplique la SDL surface contenue et la renvoie
 	*	@return La copie
 	*/
 	SDL_Surface *get_copy_surface();
-	/*!
+	/**
 	*	@brief Initialise le PicturesContainer des Surfaces
-	*	@warning A appeler seulement Ã  l'initialisation du moteur graphic
+	*	@warning A appeler seulement Ã  l'initialisation du moteur graphic
 	*	@param PicturesContainer Le gestionnaire d'images
 	*/
 	static void set_pictures_container(PicturesContainer *PicturesContainer);
-	
+
 	#ifdef _OPENGL_ACTIVE_
 	static void setTexturesManager(TexturesManager *texturesManager);
 	#endif
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La largeur de l'image
 	*/
 	virtual int w();
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La hauteur de l'image
 	*/
 	virtual int h();
 
-	/*!
+	/**
 	*	@brief Mutateur
 	*	@param La largeur de l'image
 	*/
 	void set_w(int w);
 
-	/*!
+	/**
 	*	@brief Mutateur
 	*	@return La hauteur de l'image
 	*/
 	void set_h(int h);
 
 
-	/*!
+	/**
 	*	@brief Blit l'image sur le background
 	*	@param background La surface sur laquelle on blit l'image
 	*	@param pos La position de blit par rapport au background (x et y comptent)
@@ -125,7 +125,7 @@ public:
 	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
 	void blit_surface(Surface *background, Rect pos);
 
-	/*!
+	/**
 	*	@brief Mutateur de transparence
 	*	@param alpha une valeur entre 0 (transparent) et 255 (opaque)
 	*/

@@ -2,7 +2,7 @@
  * 	@file rocket.cpp
  * 	@brief Implementation de la classe Rocket
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */

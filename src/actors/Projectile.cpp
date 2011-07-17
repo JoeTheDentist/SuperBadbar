@@ -2,7 +2,7 @@
  * 	@file projectiles.cpp
  * 	@brief Implémentation de la classe Projectile
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -80,14 +80,14 @@ void Projectile::update_pos(CollisionsManager *CollisionsManager)
 		}
 	}
 
-	/* cas où le sprite va à droite */
+	/* cas où le sprite va �  droite */
 	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
-	/* cas où le sprite va à gauche */
+	/* cas où le sprite va �  gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;

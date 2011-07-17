@@ -2,7 +2,7 @@
  * 	@file anim_manager.cpp
  * 	@brief Implémentation de la classe AnimTable
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

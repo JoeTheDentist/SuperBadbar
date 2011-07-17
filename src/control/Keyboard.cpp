@@ -2,7 +2,7 @@
  * 	@file keyboard.cpp
  * 	@brief implémentation de la Classe Keyboard
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

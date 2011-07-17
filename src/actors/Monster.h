@@ -2,7 +2,7 @@
  * 	@file Monster.h
  * 	@brief Header de la classe Monster
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -10,7 +10,7 @@
 #ifndef _MONSTERS_
 #define _MONSTERS_
 
-/* distance à partir de laquelle le monstre se déplace suivant l'ai */
+/* distance �  partir de laquelle le monstre se déplace suivant l'ai */
 #define SWITCH_DIST 400
 
 #include "Actor.h"
@@ -28,14 +28,14 @@ class Projectile;
 
 /**
  * 	@class Monster
- * 	@brief Entité hostile à Babar
+ * 	@brief Entité hostile �  Babar
  *
  */
 
 class Monster: public Actor, public Sonorisable {
 protected:
     state_m m_state;
-	std::string m_nom;				/* sa nature (peut-etre à enlever) */
+	std::string m_nom;				/* sa nature (peut-etre �  enlever) */
 	int m_speed_def;               	/* vitesse en norme */
 	int m_life;                    	/* vies */
 	int m_life_max;                 /* vies max */
@@ -45,7 +45,7 @@ protected:
 
 public:
 
-	/*!
+	/**
 	 *	@brief Constructeur
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
@@ -65,25 +65,25 @@ public:
 	~Monster();
 
 
-	/*!
+	/**
 	 *	@brief init monster's datas from a .mstr file
 	*	@param file Le chemin du fichier monstre depuis le fichier des monstres (MONSTERS_STATS_R)
 	*/
 	void initFromMonsterFile(std::string file);
 
 	/**
-	 * 	@brief Mise à jour de la vitesse du monstre
+	 * 	@brief Mise �  jour de la vitesse du monstre
 	 */
 	void update_speed();
 
 	/**
-	 * 	@brief Mise à jour de la vitesse du monstre (non ai)
+	 * 	@brief Mise �  jour de la vitesse du monstre (non ai)
 	 */
 	void virtual update_speed_simple();
 
 	/**
-	 * 	@brief Mise à jour de la vitesse du monstre (ai)
-	 *  Si non redéfinie = à simple
+	 * 	@brief Mise �  jour de la vitesse du monstre (ai)
+	 *  Si non redéfinie = �  simple
 	 */
 	void virtual update_speed_ai();
 
@@ -106,7 +106,7 @@ public:
 
 	virtual void kill();
 
-	/*!
+	/**
 	 *	@brief Accesseur: indique si on peut tirer
 	 *	@return Vrai si on peut tirer
 	 */

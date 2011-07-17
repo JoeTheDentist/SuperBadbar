@@ -2,7 +2,7 @@
  * 	@file SurfaceUniform.cpp
  * 	@brief Implementation de la classe SurfaceUniform
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

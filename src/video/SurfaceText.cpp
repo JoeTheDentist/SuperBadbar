@@ -2,7 +2,7 @@
  * 	@file SurfaceText.cpp
  * 	@brief Implémentation de la classe SurfaceText
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */

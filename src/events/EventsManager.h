@@ -2,7 +2,7 @@
  * 	@file EventsManager.h
  * 	@brief header de la classe EventsManager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -27,7 +27,7 @@ class Analyser;
  * 	@brief Classe gérant l'ensemble des événements
  *
  *	- Contient l'ensembe des événements
- *	- Est chargé de les mettre à jour
+ *	- Est chargé de les mettre �  jour
  *	- Est chargé de déclencher leur affichage
  *	- Est chargé de les déclencher, de les détruire quand il le faut
  */
@@ -64,30 +64,35 @@ public:
 
 	/**
 	 * 	@brief charge les events du niveau
-	 *	@param analyser un Analyser ouvert sur le fichier level à charger
+	 *	@param analyser un Analyser ouvert sur le fichier level �  charger
 	*/
 	void load_events(Analyser *analyser);
 
 	/**
 	 * 	@brief charge les triggers du niveau
-	 *	@param analyser un Analyser ouvert sur le fichier level à charger
+	 *	@param analyser un Analyser ouvert sur le fichier level �  charger
 	*/
 	void load_triggers(Analyser *analyser);
 
 	/**
-	 * 	@brief Met à jour l'ensemble des événements
+	 * 	@brief Met �  jour l'ensemble des événements
 	 *
 	 *	Cette méthode détruit notamment les événements
-	 *	à détruire
+	 *	�  détruire
 	*/
 	void update();
 
 	/**
-	 * 	@brief Affiche à l'écran les événements affichables
+	 * 	@brief Affiche �  l'écran les événements affichables
 	 *	@param camera La camera pour afficher les événements
 	*/
 	void display_events(Camera const * camera);
 
+        /**
+         *  @brief Ajout de fin d'un niveau
+         *  @param x : Absisses fin
+         *  @param y : Ordonnees fin
+         */
 	void add_end_level(int x, int y);
 
 };

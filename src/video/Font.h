@@ -2,7 +2,7 @@
  * 	@file font.h
  * 	@brief Header de la classe Font
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */
@@ -14,7 +14,7 @@
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 
-/*!
+/**
 *	@class Font
 *	@brief Represente une police d'ecriture (police, taille, couleur)
 *
@@ -27,7 +27,7 @@ class Font {
 
 	public:
 
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param size La taille de la police d'ecriture
 	*	@param r La composante rouge de la police
@@ -37,25 +37,25 @@ class Font {
 	*/
 	Font(int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
 
-	/*!
+	/**
 	*	@brief Constructeur de copie
 	*	@param font l'objet a copier
 	*	@warning A ete defini mais ne doit pas etre appele! (affiche un message d'avertissement)
 	*/
 	Font(Font &font);
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	~Font();
 
-	/*!
+	/**
 	*	@brief Accesseur sur la police ttf (police, taille mais pas couleur)
 	*	@return La police ttf
 	*/
 	TTF_Font *get_TTF_font();
 
-	/*!
+	/**
 	*	@brief Accesseur sur la couleur de la police
 	*	@return La couleur de la police
 	*/

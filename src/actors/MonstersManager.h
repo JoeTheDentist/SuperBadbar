@@ -2,7 +2,7 @@
  * 	@file MonstersManager.h
  * 	@brief Header de la classe Monsters_manager
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -29,7 +29,7 @@ class SoundEngine;
  * 	@class Monsters_manager
  * 	@brief Gestionnaire de monstres
  *
- *	@todo Enlever un accesseur (identifier cet accesseur à enlever :p)
+ *	@todo Enlever un accesseur (identifier cet accesseur �  enlever :p)
  */
 
 class Monsters_manager {
@@ -39,28 +39,28 @@ private:
 
 public:
 
-	/*!
+	/**
 	*	@brief Constructeur par defaut
 	*/
 	Monsters_manager();
 
-	/*!
+	/**
 	* 	@brief Destructeur
 	*/
 	~Monsters_manager();
 
-	/*!
+	/**
 	* 	@brief remplissage de monsters_manager au debut du niveau
 	*/
 	void init_monsters_manager(Analyser *analyser);
 
 
-	/*!
+	/**
 	*	@brief Charge un monstre depuis l'analyser
 	*	@param analyser L'analyser avec le curseur place avant un monstre
 	*/
 	void load_monster(Analyser *analyser);
-	/*!
+	/**
 	*	@brief Charge un monstre a partir de son nom et de sa position
 	*	@param name Le nom du monstre
 	*	@param posx Position intiale du monstres
@@ -68,21 +68,21 @@ public:
 	*/
 	void load_monster(std::string name, int posx, int posy);
 
-	/*!
-	* 	@brief Ajoute le monstre à monsters_manager
-	*	@param monster le monstre à ajouter
+	/**
+	* 	@brief Ajoute le monstre �  monsters_manager
+	*	@param monster le monstre �  ajouter
 	*/
 	void add(Monster *monster);
 
-	/*!
-	* 	@brief Met à jour la position des monstres
+	/**
+	* 	@brief Met �  jour la position des monstres
 	*	@param StaticData DOnnées du niveau
 	*	@param CollisionsManager Gestionnaire de collisions
 	*/
 	void monsters_update_pos();
 
-	/*!
-	* 	@brief Met à jour la vitesse des monstres
+	/**
+	* 	@brief Met �  jour la vitesse des monstres
 	*/
 	void monsters_update_speed();
 
@@ -91,15 +91,15 @@ public:
      */
 	void make_monsters_fire();
 
-	/*!
+	/**
 	* 	@brief check les collisions entre babar et les monstres
-	*	et fait perdre des vies à babar si c'est le cas
+	*	et fait perdre des vies �  babar si c'est le cas
 	*	@param babar le personnage
 	*/
 	void babar_monsters_collision();
 
-	/*!
-	 * 	@brief Joue les sons à jouer ce cycle
+	/**
+	 * 	@brief Joue les sons �  jouer ce cycle
 	 *	@param SoundEngine Gestionnaire de son
 	*/
 	void play_sounds();
@@ -107,42 +107,42 @@ public:
 	/********************************************************
 	*			Fonctions de Parcours
 	********************************************************/
-	/*!
+	/**
 	*	@brief initialise le "curseur" de monstre manager
 	*/
 	void init();
 
-	/*!
+	/**
 	*	@brief retourne vrai si on a fini de parcourir l'ensembe des monstres
 	*	@return vrai si on a fini de parcourir l'ensemble des monstres
 	*/
 	bool end();
 
-	/*!
+	/**
 	*	@brief incremente le curseur
 	*/
 	void next();
 
-	/*!
+	/**
 	*	@brief supprime l'élément courant de monsters_manager
-	*	@warning la suppression fait passerle curseur à l'élément suivant
+	*	@warning la suppression fait passerle curseur �  l'élément suivant
 	*/
 	void delete_element();
 
 
-	/*!
+	/**
 	*	@brief accesseur
 	*	@return l'élément courant de monsters_manager
 	*	@todo passer la méthode en const?
 	*/
 	Monster *element();
 
-	/*!
+	/**
 	* 	@brief Supprime les monstres qui n'ont plus de vies
 	*/
 	void delete_dead_monsters();
 
-	/*!
+	/**
 	*	@brief Cherche le monstre le plus proche de la position donnee
 	*	@param rect La position dont le monstre doit etre proche
 	*	@param radius Le rayon de recherche

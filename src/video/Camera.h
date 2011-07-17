@@ -2,7 +2,7 @@
  * 	@file Camera.h
  * 	@brief Header de la classe Camera
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -16,8 +16,8 @@
  * Initialise la SDL, ouvre la fenetre et les ferme.\n
  * Pointe sur un sprite qu'elle suit dans ses déplacements avec update_pos().\n
  * Permet d'afficher des sprites et le fond d'écran aux bons endroits en calculant leur position relative
- * à la fenetre à partir de leur position absolue.\n
- * Permet aussi d'afficher une Surface * quelconque à une position donnée dans la fenetre (indépendamment
+ * �  la fenetre �  partir de leur position absolue.\n
+ * Permet aussi d'afficher une Surface * quelconque �  une position donnée dans la fenetre (indépendamment
  * de la position de la camera)\n
  * La camera suit le sprite pointé sauf lorsqu'il arrive aux limites du niveau.
 **/
@@ -47,7 +47,7 @@ class Displayable;
 class Camera {
 private:
 	Rect m_frame;		/* cadre de la camera */
-	Rect m_direction; 	/* direction de la camera (les composantes sont à valeur dans {-1, 1}*/
+	Rect m_direction; 	/* direction de la camera (les composantes sont �  valeur dans {-1, 1}*/
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
 	Actor *m_target;		/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;
@@ -55,30 +55,30 @@ private:
 	Surface *m_red_coll;
 public:
 
-	/*!
+	/**
 	*	@brief Constructeur par défaut
 	*/
 	Camera();
 
-	/*!
+	/**
 	* 	@brief Destructeur
 	*/
 	~Camera();
 
-	/*!
+	/**
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre et crée la fenetre SDL
-	* 	@param target Le sprite à pointer
+	* 	@param target Le sprite �  pointer
 	*/
 	void init_camera(Actor *target);
 
- 	/*!
+ 	/**
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
-	* 	@param target Le sprite à pointer
+	* 	@param target Le sprite �  pointer
 	*/
 	void set_target(Actor *target);
 
-	/*!
-	* 	@brief Met à jour la position de la camera
+	/**
+	* 	@brief Met �  jour la position de la camera
 	*	@param StaticData fournit la taille de l'écran
 	* 	@warning Il va falloir virer ce fucking StaticData
 	*
@@ -87,36 +87,36 @@ public:
 	*/
 	void update_pos();
 
-	/*!
+	/**
 	* 	@brief Affiche le fond d'écran passé en paramètre
 	*	@param background l'image du fond d'écran
 	*/
 	void display_background(Surface *background) ;
 
-	/*!
-	* 	@brief Affiche le Displayable passé en paramètre à l'écran
-	*	@param entity le Displayable à afficher
+	/**
+	* 	@brief Affiche le Displayable passé en paramètre �  l'écran
+	*	@param entity le Displayable �  afficher
 	*	Le Displayable est affiché en fonction de sa position
-	*	relativement à la position de la caméra
+	*	relativement �  la position de la caméra
 	*	Si le Displayable vaut NULL, rien ne se passe
 	*	@todo N'utiliser que cette méthode
 	*/
 	void display(Displayable * const entity) const;
 
-	/*!
+	/**
 	* 	@brief Affiche les événements affichables de l'event_manager
-	*	@param event_manager l'ensemble des événements à afficher
+	*	@param event_manager l'ensemble des événements �  afficher
 	*/
 	void display_events(EventsManager * const event_manager) const;
 
-	/*!
+	/**
 	* 	@brief Affiche l'événement s'il est affichable en fonction
 	*	de sa position et de son image
-	*	@param event l'événement à afficher
+	*	@param event l'événement �  afficher
 	*/
 	void display_event(Event *event) const;
 
-	/*!
+	/**
 	* 	@brief Accesseur
 	*	@return La position et le cadre de la caméra
 	*/
@@ -126,23 +126,23 @@ public:
 
 	int height() const;
 
-	/*!
-	* 	@brief Affiche pic à la position pos par rapport au cadre de la camera
-	*	@param surf L'image à afficher
+	/**
+	* 	@brief Affiche pic �  la position pos par rapport au cadre de la camera
+	*	@param surf L'image �  afficher
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
 	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
 	void display_picture(Surface *surf, Rect *pos, bool fixe=false) const;
-	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé à la rendre const...*/
+	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé �  la rendre const...*/
 
-	/*!
-	*	@brief Met à jour l'affichage de la caméra
+	/**
+	*	@brief Met �  jour l'affichage de la caméra
 	*
-	*	L'affichage réel n'est mis à jour que dans cette méthode
+	*	L'affichage réel n'est mis �  jour que dans cette méthode
 	*/
 	void flip_camera();
 
-	/*!
+	/**
 	*	@brief Accesseur
 	*	@return La surface SDL de l'ecran
 	*/
@@ -155,7 +155,7 @@ public:
 	#endif
 
 private:
-	void update_decalage();	/* mise à jour du decalage du cadre (appelé par update_pos) */
+	void update_decalage();	/* mise �  jour du decalage du cadre (appelé par update_pos) */
 };
 
 

@@ -2,7 +2,7 @@
  * 	@file trigger.cpp
  * 	@brief implémentation de la classe Triggers
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date avril 2011
  *
  */

@@ -2,7 +2,7 @@
  * 	@file sonorisable
  * 	@brief Header de la classe Sonorisable
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -11,12 +11,12 @@
 
 Sonorisable::Sonorisable()
 {
-	
+
 }
 
 Sonorisable::~Sonorisable()
 {
-	
+
 }
 
 void Sonorisable::prepare_sound(std::string sound)
@@ -38,4 +38,4 @@ void Sonorisable::pop_sound()
 {
 	m_sounds_to_play.pop();
 }
-	
+

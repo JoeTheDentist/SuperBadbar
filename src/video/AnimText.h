@@ -17,7 +17,7 @@ class AnimText: public Anim {
         SurfaceText * m_last_surf;
 
     public:
-        /*!
+        /**
         * @brief Constructeur
         *
         * Rq : Pour avoir un cardre fixe, on prend le max de la taille et la chaque surface a cette taille
@@ -30,29 +30,29 @@ class AnimText: public Anim {
         */
         AnimText(std::string text, int begin_size, int end_size, int nb_pic);
 
-        /*!
+        /**
         * @brief Destructeur
         */
 		virtual ~AnimText();
 
-        /*!
+        /**
         * @brief Image a afficher.
         * @return l'image de l'animation a afficher.
         */
         Surface * curr_pic();
 
-        /*!
+        /**
         * @brief Passe a l'image suivante
         */
         void next_pic();
 
-        /*!
+        /**
         * @brief si on peut interrompre l'animation.
         * @return booleen, true si on peut l'interrompre.
         */
         bool interruptable();
 
-        /*!
+        /**
         * @brief si on peut supprimer l'animation.
         * @return booleen, true si on peut la suppr.
         */

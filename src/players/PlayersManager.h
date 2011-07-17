@@ -15,6 +15,7 @@ class PlayersManager {
     private :
         std::list<Player*> * m_players;
         Player * m_local_player;
+        std::string m_name;
 
     public :
         static int last_peanuts;

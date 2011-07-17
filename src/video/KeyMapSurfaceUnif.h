@@ -2,7 +2,7 @@
  * 	@file KeyMapSurfaceUnif.h
  * 	@brief Header de la classe KeyMapSurfaceUnif
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2011
  *
  */

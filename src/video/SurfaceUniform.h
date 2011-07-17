@@ -2,7 +2,7 @@
  * 	@file SurfaceUniform.h
  * 	@brief Header de la classe SurfaceUniform
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date mars 2011
  *
  */
@@ -13,13 +13,13 @@
 #include "Surface.h"
 
 
-/*!
+/**
 *	@class SurfaceUniform
 *	@brief Classe representant toute image du jeu contenant une couleur uniforme
 */
 class SurfaceUniform: public Surface {
 	public:
-	/*!
+	/**
 	*	@brief Constructeur
 	*	@param width La largeur de la surface
 	*	@param height La hauteur de la surface
@@ -30,7 +30,7 @@ class SurfaceUniform: public Surface {
 	*/
 	SurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
 
-	/*!
+	/**
 	*	@brief Destructeur
 	*/
 	virtual ~SurfaceUniform();

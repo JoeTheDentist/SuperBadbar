@@ -2,7 +2,7 @@
  * 	@file shotgun.cpp
  * 	@brief Implémentation de la classe Shotgun
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

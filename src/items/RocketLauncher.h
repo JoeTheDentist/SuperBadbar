@@ -2,7 +2,7 @@
  * 	@file RocketLauncher.h
  * 	@brief Header de la classe RocketLauncher
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

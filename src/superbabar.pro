@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-#QT       += core gui #network
-QT -= qui
-QT -= core
+QT      += network
+QT      -= qui
+#QT -= core
 
 TARGET = superbabar
 TEMPLATE = app
@@ -16,13 +16,13 @@ win32 {
 			-L"../lib/fmodapi375win/api/lib" -lfmod \
 		-lglut -lopengl32
 		
-	Release:DESTDIR = ./
+        Release:DESTDIR = ./
 	Release:OBJECTS_DIR = release/.obj
 	Release:MOC_DIR = release/.moc
 	Release:RCC_DIR = release/.rcc
 	Release:UI_DIR = release/.ui
 
-	Debug:DESTDIR = ./
+        Debug:DESTDIR = ./
 	Debug:OBJECTS_DIR = debug/.obj
 	Debug:MOC_DIR = debug/.moc
 	Debug:RCC_DIR = debug/.rcc

@@ -2,7 +2,7 @@
  * 	@file sound.h
  * 	@brief Header de la classe Sound
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */

@@ -2,7 +2,7 @@
  * 	@file PicturesContainer.h
  * 	@brief Header de la classe PicturesContainer
  *
- * 	@author Guillaume Bérard & Benoit Morel
+ * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -19,12 +19,12 @@
 #include "../video/KeyMapSurfaceUnif.h"
 /**
  * 	@class PicturesContainer
- * 	@brief Charge les images de façon à optimiser la mémoire
+ * 	@brief Charge les images de façon �  optimiser la mémoire
  *
  *	Fournit une méthode load_IMG qui charge une image en fonction
  *	de son chemin, stocke cette image et en renvoie un pointeur.
- *	Si cette image a déjà été chargé une fois, la méthode renvoie
- *	un pointeur vers l'image déjà chargée.
+ *	Si cette image a déj�  été chargé une fois, la méthode renvoie
+ *	un pointeur vers l'image déj�  chargée.
  *
  *	PicturesContainer utilise un map pour stocker et retrouver
  *	les images en fonction de leur chemin.
@@ -55,7 +55,7 @@ public:
 	 */
 	SDL_Surface *load_IMG(std::string key);
 
-	/*!
+	/**
 	*	@brief Retourne un pointeur vers la surface de texte demandee
 	*	@param text Le texte de la surface
 	*	@param size La taille du texte de la surface
@@ -66,7 +66,7 @@ public:
 	*/
 	SDL_Surface *loadSurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
 
-	/*!
+	/**
 	*	@brief Retourne un pointeur vers la surface de texte demandee
 	*	@param width La largeur de la surface
 	*	@param height La hauteur de la surface
