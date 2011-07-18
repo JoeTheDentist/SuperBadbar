@@ -8,6 +8,7 @@
 #include "../game/LevelsManager.h"
 #include "../menus/MenuAction.h"
 #include "../menus/OptionsMenu.h"
+#include "../menus/MenuMulti.h"
 #include "../video/SurfaceText.h"
 #include "../video/MainTitle.h"
 
@@ -81,7 +82,7 @@ void MainMenu::launch_game()
 
 void MainMenu::launch_multi()
 {
-
+        set_son(new MenuMulti(this));
 }
 
 void MainMenu::launch_options()
