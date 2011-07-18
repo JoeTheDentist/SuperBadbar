@@ -17,9 +17,10 @@ MainMenu::MainMenu() :
 	m_pos_background(),
 	m_main_title(new MainTitle("Super Badbar"))
 {
-	m_menu_actions.add_action_classic("New game", 1);
-	m_menu_actions.add_action_classic("Options", 2);
-	m_menu_actions.add_action_classic("Leave", 3);
+        m_menu_actions.add_action_classic("Single Player", 1);
+        m_menu_actions.add_action_classic("Multi Player", 2);
+        m_menu_actions.add_action_classic("Options", 3);
+        m_menu_actions.add_action_classic("Leave", 4);
 	gSound->load_music("main_menu.mp3");
 	gSound->play_music();
 	loop();
@@ -54,13 +55,16 @@ void MainMenu::treat_choice(int choice)
 	switch(choice) {
 		case 1: // nouvelle partie
 			launch_game();
-			gSound->load_music("main_menu.mp3");
+                        gSound->load_music("main_menu.mp3"); // haha !
 			gSound->play_music();
 			break;
-		case 2: // options
+                case 2: // menu multi joueurs
+                        launch_multi();
+                        break;
+                case 3: // options
 			launch_options();
 			break;
-		case 3: // quitter le jeu
+                case 4: // quitter le jeu
 			set_leave_game_true();
 			break;
 		default:
@@ -73,6 +77,11 @@ void MainMenu::launch_game()
 	LevelsManager * levelsmanager = new LevelsManager();
 	levelsmanager->play();
 	delete levelsmanager;
+}
+
+void MainMenu::launch_multi()
+{
+
 }
 
 void MainMenu::launch_options()
