@@ -17,6 +17,7 @@
 #include "../util/debug.h"
 #include "../util/repertories.h"
 #include "../control/Keyboard.h"
+#include "../control/KeyboardConfig.h"
 #include "../video/PicturesContainer.h"
 #include "../util/globals.h"
 #include "../video/SurfaceUniform.h"
@@ -411,7 +412,7 @@ void Talks::treat_special_words(std::string specialword, std::list < word_and_le
 
 #define MACRO_TALKS_KEYBOARD(param) \
 	if (specialword == #param) { \
-		auxres = gKeyboard->get_string_key(param); \
+		auxres = gKeyboardConfig->getStringKey(param); \
 	} \
 
 

@@ -2,10 +2,10 @@
 #include <time.h>
 #include "../util/debug.h"
 #include "../control/Keyboard.h"
+#include "../control/KeyboardConfig.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 #include "../util/Constants.h"
-//~ #include <fmodex/fmod.h>
 
 #include "../util/globals.h"
 
@@ -29,11 +29,12 @@ bool GameInitializer::init_game()
 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
 		return false;
 	}
-	// chargement des variables globales Ã  l'ensemble du jeu
+	// chargement des variables globales a  l'ensemble du jeu
 	gSound = new SoundEngine();
 	gGraphics = new GraphicEngine();
 	gGraphics->init_graphic_engine(false);
 	gKeyboard = new Keyboard();
+	gKeyboardConfig = new KeyboardConfig();
 	return true;
 }
 
@@ -42,6 +43,7 @@ bool GameInitializer::close_game()
 	delete gSound;
 	delete gGraphics;
 	delete gKeyboard;
+	delete gKeyboardConfig;
 	PRINT_TRACE(1, "Fermeture de TTF")
 	TTF_Quit();
 	PRINT_TRACE(1, "Fermeture de SDL")

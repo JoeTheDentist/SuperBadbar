@@ -3,7 +3,7 @@
  * 	@file globals.h
  * 	@brief Constantes /types utilisés par plusieurs classes
  *
- * 	@author Guillaume Berard & Benoit Morel
+ * 	@author Guillaume Bérard & Benoit Morel
  * 	@date decembre 2010
  *
  */
@@ -23,6 +23,7 @@ class GraphicEngine;
 class Keyboard;
 class Stats;
 class PlayersManager;
+class KeyboardConfig;
 
 #include <sstream>
 #include "../util/Constants.h"
@@ -45,7 +46,7 @@ class PlayersManager;
 #define DOWN_COLL 0x4
 
 
-#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport �  Babar */
+#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport à Babar */
 
 extern SoundEngine * gSound;
 extern CollisionsManager * gCollision;
@@ -58,6 +59,7 @@ extern GameEngine * gGameEngine;
 extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
 extern PlayersManager * gPlayers;
+extern KeyboardConfig *gKeyboardConfig;
 
 extern int * gLocal_id;
 

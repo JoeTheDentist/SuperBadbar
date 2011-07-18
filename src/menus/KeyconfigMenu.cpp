@@ -5,17 +5,18 @@
 #include "../control/Keyboard.h"
 #include "../menus/MenuAction.h"
 #include "../menus/ListMenuActions.h"
+#include "../control/KeyboardConfig.h"
 
 KeyconfigMenu::KeyconfigMenu(Menu *parent) :
 	Menu(parent)
 {
-	m_menu_actions.add_action_keyconfig("left", 1, gKeyboard->get_string_key(k_left), k_left);
-	m_menu_actions.add_action_keyconfig("right", 2, gKeyboard->get_string_key(k_right), k_right);
-	m_menu_actions.add_action_keyconfig("jump", 3, gKeyboard->get_string_key(k_jump), k_jump);
-	m_menu_actions.add_action_keyconfig("down", 4, gKeyboard->get_string_key(k_down), k_down);
-	m_menu_actions.add_action_keyconfig("fire", 5, gKeyboard->get_string_key(k_fire), k_fire);
-	m_menu_actions.add_action_keyconfig("prev_weapon", 6, gKeyboard->get_string_key(k_next_weapon), k_next_weapon);
-	m_menu_actions.add_action_keyconfig("next_weapon", 7, gKeyboard->get_string_key(k_prev_weapon), k_prev_weapon);
+	m_menu_actions.add_action_keyconfig("left", 1, gKeyboardConfig->getStringKey(k_left), k_left);
+	m_menu_actions.add_action_keyconfig("right", 2, gKeyboardConfig->getStringKey(k_right), k_right);
+	m_menu_actions.add_action_keyconfig("jump", 3, gKeyboardConfig->getStringKey(k_jump), k_jump);
+	m_menu_actions.add_action_keyconfig("down", 4, gKeyboardConfig->getStringKey(k_down), k_down);
+	m_menu_actions.add_action_keyconfig("fire", 5, gKeyboardConfig->getStringKey(k_fire), k_fire);
+	m_menu_actions.add_action_keyconfig("prev_weapon", 6, gKeyboardConfig->getStringKey(k_next_weapon), k_next_weapon);
+	m_menu_actions.add_action_keyconfig("next_weapon", 7, gKeyboardConfig->getStringKey(k_prev_weapon), k_prev_weapon);
 	m_menu_actions.add_action_classic("Return", 8);
 }
 

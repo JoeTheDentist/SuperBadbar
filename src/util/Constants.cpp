@@ -36,6 +36,7 @@ if (analyser.find_string(QUOTE_ACO(yop))) { \
 #define CONST_INIT_STRING(yop, plop) \
 if (analyser.find_string(QUOTE_ACO(yop))) { \
 	 Constants::IDENTITY(yop) = analyser.read_string(); \
+	 std::cout << Constants::IDENTITY(yop) << std::endl; \
 }
 
 
@@ -48,12 +49,13 @@ void Constants::init()
 	Analyser analyser;
 	analyser.open(DATA_R + "config.cfg");
 	initAux(analyser);
+	analyser.close();
 	Analyser secondAnalyser;
 	if (secondAnalyser.open(DATA_R + "myconfig.cfg")) {
 		initAux(secondAnalyser);
 		secondAnalyser.close();
 	}
-	analyser.close();
+
 }
 
 void Constants::initAux(Analyser &analyser)

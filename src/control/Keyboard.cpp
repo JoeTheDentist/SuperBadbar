@@ -15,6 +15,8 @@
 #include "Keyboard.h"
 #include "../control/EventOrderer.h"
 #include "../control/SdlKeyConverter.h"
+#include "../control/KeyboardConfig.h"
+#include "../util/globals.h"
 #include <fstream>	
 
 
@@ -22,22 +24,9 @@ Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std
 	m_EventOrderer(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
-	for (uint32_t i = 0; i < SDLK_LAST; i++)
-		m_key_config[i] = k_none;
+
 	for (uint32_t i = 0; i <= k_fire; i++)
 		set_key(i, 0);
-	m_key_config[SDLK_UP] = k_up;
-	m_key_config[SDLK_DOWN] = k_down;
-	m_key_config[SDLK_LEFT] = k_left;
-	m_key_config[SDLK_RIGHT] = k_right;
-	m_key_config[SDLK_q] = k_jump;
-	m_key_config[SDLK_d] = k_fire;
-	m_key_config[SDLK_ESCAPE] = k_escape;
-	m_key_config[SDLK_SPACE] = k_action;
-	m_key_config[SDLK_a] = k_prev_weapon;
-	m_key_config[SDLK_z] = k_next_weapon;
-	load_config("defaultkey.cfg");
-	load_config("customizekey.cfg");
 	m_record_on = record_on;
 	m_replay_on = replay_on;
 	if (m_replay_on) {
@@ -62,46 +51,6 @@ Keyboard::~Keyboard()
 		delete m_analyser;
 }
 
-void Keyboard::load_config(std::string config_name)
-{
-	#define LOCAL_LOAD_KEY(yop) \
-	if (analyser.find_string(QUOTE_ACO(yop))) \
-		set_config_key(yop, SdlKeyConverter::sdlkey_to_stdstring(SDLKey(analyser.read_int())), false);
-//~ 		m_key_config[analyser.read_int()] = yop;
-	Analyser analyser;
-	if(!analyser.open(CONFIG_R + config_name))
-		return;
-	LOCAL_LOAD_KEY(k_up)
-	LOCAL_LOAD_KEY(k_down)
-	LOCAL_LOAD_KEY(k_left)
-	LOCAL_LOAD_KEY(k_right)
-	LOCAL_LOAD_KEY(k_jump)
-	LOCAL_LOAD_KEY(k_fire)
-	LOCAL_LOAD_KEY(k_escape)
-	LOCAL_LOAD_KEY(k_prev_weapon)
-	LOCAL_LOAD_KEY(k_next_weapon)
-	LOCAL_LOAD_KEY(k_action)
-	analyser.close();
-}
-
-void Keyboard::save_config(std::string config_name)
-{
-	std::cout << "save dans " << CONFIG_R + config_name << std::endl;
-	std::ofstream out((CONFIG_R + config_name).c_str(), std::ios::out | std::ios::trunc);
-	#define LOCAL_SAVE_KEY(yop) \
-	out << "{" << #yop << "} " << SdlKeyConverter::stdstring_to_sdlkey(get_string_key(yop)) << std::endl;
-	LOCAL_SAVE_KEY(k_up)
-	LOCAL_SAVE_KEY(k_down)
-	LOCAL_SAVE_KEY(k_left)
-	LOCAL_SAVE_KEY(k_right)
-	LOCAL_SAVE_KEY(k_jump)
-	LOCAL_SAVE_KEY(k_fire)
-	LOCAL_SAVE_KEY(k_escape)
-	LOCAL_SAVE_KEY(k_prev_weapon)
-	LOCAL_SAVE_KEY(k_next_weapon)
-	LOCAL_SAVE_KEY(k_action)
-	out.close();
-}
 
 void Keyboard::update_events()
 {
@@ -120,7 +69,7 @@ void Keyboard::update_events()
 			if (event_ordered()) {
 				answer_event_order(event.key.keysym.sym);
 			} else {
-				set_key(m_key_config[event.key.keysym.sym],  1);
+				set_key(gKeyboardConfig->getKey(event.key.keysym.sym),  1);
 				mk = treat_menu_key(event);
 				if (mk != mk_none) {
 					m_menu_input.push(mk);
@@ -128,7 +77,7 @@ void Keyboard::update_events()
 			}
 			break;
 		case SDL_KEYUP:
-			set_key(m_key_config[event.key.keysym.sym], 0);
+			set_key(gKeyboardConfig->getKey(event.key.keysym.sym), 0);
 			break;
 		default:
 			break;
@@ -189,7 +138,7 @@ menu_key Keyboard::treat_menu_key(SDL_Event event)
 					break;
 			}
 			// sinon on regarde les touches du joueur
-			switch (m_key_config[event.key.keysym.sym]) {
+			switch (gKeyboardConfig->getKey(event.key.keysym.sym)) {
 				case k_jump: case k_fire:
 					return mk_enter;
 				case k_up:
@@ -242,7 +191,7 @@ void Keyboard::wait_key(enum key k)
 	while(!leave){
 		SDL_WaitEvent(&event);
 		if(event.type == SDL_KEYDOWN)
-			if(m_key_config[event.key.keysym.sym] == k)
+			if(gKeyboardConfig->getKey(event.key.keysym.sym) == k)
 				leave = true;
 	}
 }
@@ -324,26 +273,5 @@ void Keyboard::answer_event_order(SDLKey event)
 	m_EventOrderer = NULL; // une fois qu'on a repondu une fois, on n'a plus d'orderer
 }
 
-void Keyboard::set_config_key(key k, std::string sdl_code, bool save)
-{
-	SDLKey new_sdlk = SdlKeyConverter::stdstring_to_sdlkey(sdl_code);
-	for (int i = 0; i <= (int)SDLK_LAST; ++i) {
-		if (m_key_config[i] == k) {
-			m_key_config[i] = k_none;
-		}
-	}
-	m_key_config[new_sdlk] = k;
-	if (save)
-		save_config("customizekey.cfg");
 
-}
 
-std::string Keyboard::get_string_key(key k)
-{
-	for (int i = 0; i < (int)SDLK_LAST; ++i) {
-		if (m_key_config[i] == k) {
-			return SdlKeyConverter::sdlkey_to_stdstring((SDLKey(i)));
-		}
-	}
-	return "unknown";
-}

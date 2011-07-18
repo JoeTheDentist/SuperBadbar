@@ -30,6 +30,9 @@ win32 {
 }
 
 unix {
+	QMAKE_LFLAGS += -g 	
+	QMAKE_CFLAGS += -g
+	QMAKE_CXXFLAGS += -g
 	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
 	../lib/gcc/libfmod.so \
 	-L"../lib/gcc/"\

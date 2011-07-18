@@ -68,6 +68,7 @@ bool Analyser::find_next_string(std::string str)
 		else
 			char_found = 0;
 	}
+	m_file->clear();
 	return char_found == size;	
 }
 

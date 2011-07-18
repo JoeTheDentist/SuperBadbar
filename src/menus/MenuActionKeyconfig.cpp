@@ -10,6 +10,7 @@
 #include "MenuActionKeyconfig.h"
 #include "../control/EventOrderer.h"
 #include "../control/Keyboard.h"
+#include "../control/KeyboardConfig.h"
 #include "../util/globals.h"
 #include <sstream>
 
@@ -32,7 +33,7 @@ void MenuActionKeyconfig::update()
 {
 	if (m_EventOrderer && m_EventOrderer->event_recieved()) {
 		m_value = m_EventOrderer->get_string_event();
-		gKeyboard->set_config_key(m_key, m_value);
+		gKeyboardConfig->setConfigKey(m_key, m_value);
 		delete m_EventOrderer;
 		m_EventOrderer = NULL;
 	}

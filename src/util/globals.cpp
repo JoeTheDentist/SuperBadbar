@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 
 #include "globals.h"
+#include "../control/KeyboardConfig.h"
 
 SoundEngine * gSound = NULL;
 CollisionsManager * gCollision = NULL;
@@ -15,6 +16,7 @@ GameEngine * gGameEngine = NULL;
 Keyboard * gKeyboard = NULL;
 Stats * gStats = NULL;
 PlayersManager * gPlayers = NULL;
+KeyboardConfig *gKeyboardConfig = NULL;
 
 int * gLocal_id = NULL;
 
