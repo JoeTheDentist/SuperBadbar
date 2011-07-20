@@ -1,6 +1,17 @@
 #include "NetworkCommunicator.h"
 
-/*NetworkCommunicator::NetworkCommunicator()
+NetworkCommunicator::NetworkCommunicator()
 {
-    connect(m_UDPReceivingSocket, SIGNAL(readyRead()), this, SLOT(receiveObject()));
-}*/
+    connect(m_UDPReceivingSocket, SIGNAL(readyRead()), this, SLOT(receiveUDPObject()));
+}
+
+NetworkCommunicator::~NetworkCommunicator()
+{
+
+}
+
+void NetworkCommunicator::getIncomingObject(QVariant &object, QAbstractSocket &socket)
+{
+
+}
+

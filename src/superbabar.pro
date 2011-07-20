@@ -54,7 +54,7 @@ SOURCES +=  ./main.cpp \
             ./game/*.cpp \
             ./items/*.cpp \
             ./menus/*.cpp \
-            #./network/*.cpp \
+            ./network/*.cpp \
             ./physic/*.cpp \
             ./players/*.cpp \
             ./sets/*.cpp \
@@ -70,7 +70,7 @@ HEADERS  += ./actors/*.h \
             ./game/*.h \
             ./items/*.h \
             ./menus/*.h \
-            #./network/*.h \
+            ./network/*.h \
             ./physic/*.h \
             ./players/*.h \
             ./sets/*.h \

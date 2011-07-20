@@ -52,18 +52,23 @@ public:
     /**
      *  @brief
      */
-    virtual void getIncomingObject(QVariant &object);
+    virtual void getIncomingObject(QVariant &object, QAbstractSocket &socket);
 
 
 protected slots:
     /**
-     *  @brief Traite en fonction de l'objet reçu
+     *  @brief Traite en fonction de l'objet reçu (UDP)
      */
-    virtual void receiveObject() = 0;
+    virtual void receiveUDPObject() = 0;
+
+    /**
+     *  @brief Traite en fonction de l'objet reçu (TCP)
+     */
+    virtual void receiveTCPObject() = 0;
 
 protected:
-    QUdpSocket m_UDPSendingSocket;
-    QUdpSocket m_UDPReceivingSocket;
+    QUdpSocket *m_UDPSendingSocket;
+    QUdpSocket *m_UDPReceivingSocket;
 
     /***************************************/
     /***Communication avec NetworkManager***/
