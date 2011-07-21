@@ -15,6 +15,8 @@
 #include <string>
 #include "../../lib/SDL/include/SDL/SDL.h"
 
+class EventKeyboard;
+
 
 /*!
 *	@class KeyboardConfig
@@ -67,7 +69,15 @@ public:
 	*	@param Une touche au format SDL
 	*	@return L'enum key correspondant (k_none s'il n'y en a pas)
 	*/
-	key getKey(SDLKey key) {return m_key_config[int(key)];}
+	key getEnumKey(SDLKey key) const;
+	
+	/*!
+	*	@brief Accesseur
+	*	@param Une touche au format EventKeyboard
+	*	@return L'enum key correspondant (k_none s'il n'y en a pas)
+	*/
+	key getEnumKey(const EventKeyboard &eventKeyboard) const;
+
 };
 
 #endif

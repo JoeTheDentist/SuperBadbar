@@ -17,6 +17,7 @@
 #include <string>
 #include <queue>
 #include "../util/utils.h"
+#include "../control/EventKeyboard.h"
 
 class Analyser;
 class EventOrderer;
@@ -42,6 +43,7 @@ private:
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
 	std::ofstream *m_record_file;
+	std::queue<EventKeyboard> m_eventsKeyboard;
 	std::queue<menu_key> m_menu_input;
 	EventOrderer *m_EventOrderer;
 
@@ -178,8 +180,6 @@ public:
 
 
 private:
-	// auxilliaire de wait_menu_key et poll_menu_key
-	menu_key treat_menu_key(SDL_Event event);
 
 	// mutateur: affecte val enfonce a l'indice k dans le tableau des touches
 	void set_key(enum key k, int val);

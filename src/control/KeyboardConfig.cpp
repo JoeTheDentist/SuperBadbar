@@ -11,6 +11,7 @@
 #include <fstream>	
 #include <iostream>	
 #include "../control/SdlKeyConverter.h"
+#include "../control/EventKeyboard.h"
 
 KeyboardConfig::KeyboardConfig()
 {
@@ -70,7 +71,6 @@ void KeyboardConfig::saveConfig(std::string config_name)
 	out.close();
 }
 
-
 void KeyboardConfig::setConfigKey(key k, std::string sdl_code, bool save)
 {
 	SDLKey new_sdlk = SdlKeyConverter::stdstring_to_sdlkey(sdl_code);
@@ -95,3 +95,12 @@ std::string KeyboardConfig::getStringKey(key k)
 	return "unknown";
 }
 
+key KeyboardConfig::getEnumKey(SDLKey key) const
+{
+	return m_key_config[int(key)];
+}
+
+key KeyboardConfig::getEnumKey(const EventKeyboard &eventKeyboard) const
+{
+	return getEnumKey(eventKeyboard.getSDLKey());
+}

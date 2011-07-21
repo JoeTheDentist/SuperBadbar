@@ -57,30 +57,23 @@ void Keyboard::update_events()
 	for (int i = k_none; i < k_fire + 1 ; i++)
 		if (key_down((enum key)i))
 			incr_key_down(i);
-	SDL_Event event;
-	menu_key mk;
-	while(SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_QUIT :
+	EventKeyboard newEvent;
+	while(EventKeyboard::pollEvent(&newEvent)) {
+		m_eventsKeyboard.push(newEvent);
+		if (newEvent.keyLeave()) {
 			set_key(k_exit, 1);
 			m_menu_input.push(mk_exit);
-			break;
-		case SDL_KEYDOWN:
+		} else if (newEvent.keyPressed()) {
 			if (event_ordered()) {
-				answer_event_order(event.key.keysym.sym);
+				answer_event_order(newEvent.getSDLKey());
 			} else {
-				set_key(gKeyboardConfig->getKey(event.key.keysym.sym),  1);
-				mk = treat_menu_key(event);
-				if (mk != mk_none) {
-					m_menu_input.push(mk);
+				set_key(gKeyboardConfig->getEnumKey(newEvent),  1);
+				if (newEvent.isMenuKey()) {
+					m_menu_input.push(newEvent.getMenuKey());
 				}
 			}
-			break;
-		case SDL_KEYUP:
-			set_key(gKeyboardConfig->getKey(event.key.keysym.sym), 0);
-			break;
-		default:
-			break;
+		} else if (newEvent.keyReleased()) {
+			set_key(gKeyboardConfig->getEnumKey(newEvent), 0);
 		}
 	}
 }
@@ -107,114 +100,63 @@ void Keyboard::disable_key(enum key k)
 
 void Keyboard::disable_all_keys()
 {
-	for (uint32_t i = 0; i <= k_fire; i++)
+	for (int i = 0; i <= k_fire; i++)
 		disable_key((enum key)i);
 }
 
-menu_key Keyboard::treat_menu_key(SDL_Event event)
-{
-	switch(event.type)
-	{
-		case SDL_QUIT:
-			return mk_exit;
-		case SDL_KEYDOWN: /* Si appui d'une touche */
-			// priorite aux touches en dur
-			switch (event.key.keysym.sym)
-			{
-				case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
-					return mk_escape;
-					break;
-				case SDLK_UP:
-					return mk_up;
-				case SDLK_DOWN:
-					return mk_down;
-				case SDLK_LEFT:
-					return mk_left;
-				case SDLK_RIGHT:
-					return mk_right;
-				case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
-					return mk_enter;
-				default:
-					break;
-			}
-			// sinon on regarde les touches du joueur
-			switch (gKeyboardConfig->getKey(event.key.keysym.sym)) {
-				case k_jump: case k_fire:
-					return mk_enter;
-				case k_up:
-					return mk_up;
-				case k_down:
-					return mk_down;
-				case k_right:
-					return mk_right;
-				case k_left:
-					return mk_left;
-				default:
-					break;
-			}
-			break;
-		default:
-			break;
-	}
-	return mk_none;
-}
 
 menu_key Keyboard::poll_menu_key()
 {
-	SDL_Event event;
-	menu_key res;
-	while(SDL_PollEvent(&event)) {
-		res = treat_menu_key(event);
-		if (res != mk_none)
-			return res;
+	EventKeyboard eventKeyboard;
+	while(EventKeyboard::pollEvent(&eventKeyboard)) {
+		if (eventKeyboard.isMenuKey())
+			return eventKeyboard.getMenuKey();
 	}
 	return mk_none;
 }
 
 menu_key Keyboard::wait_menu_key()
 {
-	SDL_Event event;
-	menu_key res;
+	EventKeyboard eventKeyboard;
 	while (true) {
-		SDL_WaitEvent(&event);
-		res = treat_menu_key(event);
-		if (res != mk_none)
-			return res;
+		EventKeyboard::waitEvent(&eventKeyboard);
+		if (eventKeyboard.isMenuKey())
+			return eventKeyboard.getMenuKey();
 	}
 	return mk_none;
 }
 
 void Keyboard::wait_key(enum key k)
 {
-	SDL_Event event;
+	EventKeyboard eventKeyboard;
 	bool leave = false;
 	while(!leave){
-		SDL_WaitEvent(&event);
-		if(event.type == SDL_KEYDOWN)
-			if(gKeyboardConfig->getKey(event.key.keysym.sym) == k)
+		EventKeyboard::waitEvent(&eventKeyboard);
+		if(eventKeyboard.keyPressed())
+			if(gKeyboardConfig->getEnumKey(eventKeyboard) == k)
 				leave = true;
 	}
 }
 
 void Keyboard::wait_for_any_key()
 {
-	SDL_Event event;
+	EventKeyboard eventKeyboard;
 	bool leave = false;
 	while(!leave){
-		SDL_WaitEvent(&event);
-		if(event.type == SDL_KEYDOWN)
+		EventKeyboard::waitEvent(&eventKeyboard);
+		if(eventKeyboard.keyPressed())
 			leave = true;
 	}
 }
 
 void Keyboard::enable_key_repeat()
 {
-	SDL_EnableKeyRepeat(500, 10);
+	EventKeyboard::setKeyRepeat(true);
 }
 
 void Keyboard::disable_key_repeat()
 {
-	SDL_EnableKeyRepeat(0, 10);
+	EventKeyboard::setKeyRepeat(false);
 }
 
 void Keyboard::set_key(enum key k, int val)

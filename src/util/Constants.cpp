@@ -34,9 +34,8 @@ if (analyser.find_string(QUOTE_ACO(yop))) { \
 }
 
 #define CONST_INIT_STRING(yop, plop) \
-if (analyser.find_string(QUOTE_ACO(yop))) { \
-	 Constants::IDENTITY(yop) = analyser.read_string(); \
-	 std::cout << Constants::IDENTITY(yop) << std::endl; \
+if (analyser.find_string(QUOTE_ACO(yop))) {\
+	Constants::IDENTITY(yop) = analyser.read_string(); \
 }
 
 
