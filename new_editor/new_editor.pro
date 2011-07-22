@@ -7,6 +7,31 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += .
 
+
+
+win32 {
+	Release:DESTDIR = ./
+	Release:OBJECTS_DIR = obj
+	Release:MOC_DIR = moc
+	Release:RCC_DIR =rcc
+	Release:UI_DIR = ui
+
+	Debug:DESTDIR = ./
+	Debug:OBJECTS_DIR = obj
+	Debug:MOC_DIR = moc
+	Debug:RCC_DIR = rcc
+	Debug:UI_DIR = ui
+}
+
+unix {
+	DESTDIR = ./
+	OBJECTS_DIR = obj
+	MOC_DIR = moc
+	RCC_DIR = rcc
+	UI_DIR = ui
+}
+
+
 # Input
 HEADERS += analyser.h \
            babaritem.h \

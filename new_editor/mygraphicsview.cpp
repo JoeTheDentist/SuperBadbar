@@ -222,7 +222,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 			// annulation d'un ajout
 			this->scene()->removeItem(m_curr_item->getItem());
 			delete m_curr_item->getItem();
-			delete m_curr_item; // ligne a debugger
+			delete m_curr_item;
 			setStateNone();
 		} else if (m_data->selectItem(posClicX(event), posClicY(event))) {
 			// clic droit sur un objet
@@ -562,8 +562,6 @@ void MyGraphicsView::pastItem()
 		MyItem *item = m_copied_item->duplicate(this->scene());
 		item->setVisible(true);
 		setStateAddingItem(item);
-//~ 		item->moveItem(this->horizontalScrollBar()->value() / m_zoom, this->verticalScrollBar()->value() / m_zoom);
-//~ 		addToData(item);
 	}
 }
 

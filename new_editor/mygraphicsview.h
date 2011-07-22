@@ -208,18 +208,65 @@ class MyGraphicsView : public QGraphicsView {
 	*/
 	void zoom(qreal z);
 	
+	/*!
+	*	@brief Accesseur
+	*	@return La MainWindow contenant MyGraphicsView
+	*/
 	MainWindow *getWindow() {return m_main_window;}
 	
+	/*!
+	*	@brief Accesseur
+	*	@return La Data contenant les donnees affichees par MyGraphicsView
+	*/
 	Data *getData() {return m_data;}
 	
+ 	/*!
+	*	@brief Accesseur
+	*	@return Vrai si un fichier est ouvert, faux sinon
+	*/
 	bool fileOpened() const {return m_state != e_fileClosed;}
 
+	/*!
+	*	@brief Ajoute un item a la Data
+	*	@param item L'item a ajouter
+	*/
 	void addToData(MyItem *item);
 	
+	/*!
+	*	@brief Selectionne l'item passe en parametre
+	*	@param item L'item a selectionner
+	*
+	*	Met a jour le membre item selectionne, et change son etat interne (surbrillance)
+	*/
 	void selectItem(MyItem *item);
+	
+	/*!
+	*	@brief Deselectionne l'item passe en parametre
+	*	@param item L'item a deselectionner
+	*
+	*	Change l'etat interne de l'item
+	*/	
 	void deSelectItem();
+	
+	/*!
+	*	@brief Supprime definitivement l'item des donnees et de l'affichage
+	*	@param item L'item a supprimer
+	*/
 	void deleteFromEditor(MyItem *item);
+	
+	/*!
+	*	@brief Duplique l'item selectionne pour le mettre dans le presse papier
+	*	@param item L'item a copier
+	*/
 	void copyItem(MyItem *item);
+	
+	/*!
+	*	@brief Ajoute a la scene l'item present dans le presse papier
+	*	
+	* 	Change l'etat interne de mygraphicsview: l'etat passe en ajout d'item, 
+	*	et l'item et accroche au curseur de la souris jusqu'à ce qu'il soit ajoute
+	*	ou que l'utilisateur annule l'ajout
+	*/
 	void pastItem();
 
 

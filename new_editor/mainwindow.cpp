@@ -50,7 +50,6 @@ MainWindow::MainWindow():
 
 MainWindow::~MainWindow()
 {
-
 	delete m_newAct;
 	delete m_openAct;
 	delete m_exitAct;
@@ -70,7 +69,6 @@ MainWindow::~MainWindow()
 	delete m_createNewBabar;
 	delete m_graphic_scene;
 	delete m_graphic_view;
-
 }
 
 void MainWindow::createActions()
@@ -93,8 +91,8 @@ void MainWindow::createActions()
 	m_aboutBabarEditor = new QAction(tr("About"), this);
 	m_aboutBabarEditor->setStatusTip(tr("About Babar Editor"));
 	connect(m_aboutBabarEditor, SIGNAL(triggered()), this, SLOT(aboutBabarEditor()));
-		
-	m_setMusic = new QAction(QIcon("images/music.png"), tr("Music"), this);
+
+	m_setMusic = new QAction(QIcon("images/setmusic.png"), tr("Music"), this);
 	m_setMusic->setStatusTip(tr("Chose a new music for this level"));
 	connect(m_setMusic, SIGNAL(triggered()), this, SLOT(setMusic()));
 	
@@ -106,12 +104,12 @@ void MainWindow::createActions()
 	m_saveAsAct = new QAction(QIcon("images/saveas.png"),tr("Save as"), this); 
 	m_saveAsAct->setStatusTip(tr("Save as"));
 	connect(m_saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));	
-		
+
 	m_createNewBabar = new QAction(QIcon("images/addbabar.png"),tr("createNewBabar"), this); 
 	m_createNewBabar->setStatusTip(tr("Change the Babar's start position"));
 	connect(m_createNewBabar, SIGNAL(triggered()), this, SLOT(createNewBabar()));	
-		
-	m_createNewSet = new QAction(QIcon("images/createNewSet.png"),tr("createNewSet"), this); 
+
+	m_createNewSet = new QAction(QIcon("images/addset.png"),tr("createNewSet"), this); 
 	m_createNewSet->setStatusTip(tr("Add a set to the level"));
 	connect(m_createNewSet, SIGNAL(triggered()), this, SLOT(createNewSet()));	
 
