@@ -51,7 +51,6 @@ Keyboard::~Keyboard()
 		delete m_analyser;
 }
 
-
 void Keyboard::update_events()
 {
 	for (int i = k_none; i < k_fire + 1 ; i++)
@@ -103,7 +102,6 @@ void Keyboard::disable_all_keys()
 	for (int i = 0; i <= k_fire; i++)
 		disable_key((enum key)i);
 }
-
 
 menu_key Keyboard::poll_menu_key()
 {
@@ -214,6 +212,3 @@ void Keyboard::answer_event_order(SDLKey event)
 	m_EventOrderer->answer_event_order(event);
 	m_EventOrderer = NULL; // une fois qu'on a repondu une fois, on n'a plus d'orderer
 }
-
-
-

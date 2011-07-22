@@ -43,12 +43,12 @@ void MenuAction::incr_value(int value)
 {
 }
 
-int MenuAction::width()
+int MenuAction::width() const
 {
 	return get_surface()->w();
 }
 
-int MenuAction::height()
+int MenuAction::height() const
 {
 	return get_surface()->h();
 }

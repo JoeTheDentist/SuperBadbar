@@ -52,7 +52,7 @@ void MenuActionKeyconfig::enter_pressed()
 	change_value();
 }
 
-std::string MenuActionKeyconfig::get_string()
+std::string MenuActionKeyconfig::get_string() const
 {
 	return m_value;
 }

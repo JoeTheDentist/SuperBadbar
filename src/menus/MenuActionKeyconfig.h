@@ -16,6 +16,15 @@
 #include "../control/Keyboard.h"
 class EventOrderer;
 
+/*!
+*	@class MenuActionKeyconfig
+*	@brief Bouton de menu permettant la saisie d'une touche pour configurer le clavier
+*
+*	Le choix du joueur se fait en appuyant sur entree puis la touche voulue quand le bouton
+*	est selectionne.
+*	La touche choisie peut etre recuperee avec get_string() qui renvoie la chaine correspondant
+*	au nom de la touche (format sdl)
+*/
 class MenuActionKeyconfig: public MenuAction {
 protected:
 	std::string m_value;
@@ -31,13 +40,23 @@ public:
 	*/
 	MenuActionKeyconfig(std::string str, int i, std::string val, key k);
 
+
+	// a changer
 	void change_value();
 
+	/*!
+	*	@brief Maj du bouton (a appeler a chaque cycle)
+	*/
 	virtual void update();
 
+	// a changer
 	virtual void enter_pressed();
 
-	virtual std::string get_string();
+	/*!
+	*	@brief Accesseur
+	*	@return La string correspondant a la touche choisie
+	*/
+	virtual std::string get_string() const;
 
 protected:
 	virtual void update_text();

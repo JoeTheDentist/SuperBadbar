@@ -18,37 +18,86 @@ class MenuAction {
 	int m_size_sup; // valeur qu'on ajoute a la taille de la police en fonction des interactions
 
 	public:
+	/*!
+	*	@brief Constructeur
+	*	@param str Intitule du bouton
+	*	@param i Indice du bouton dans le menu
+	*/
 	MenuAction(std::string str, int i);
 
+	/*!
+	*	@brief Destructeur
+	*/
 	~MenuAction();
 
+	/*!
+	*	@brief Maj du bouton
+	*/
 	virtual void update();
 
-	virtual int get_index() { return m_index; }
+	/*!
+	*	@brief Accesseur
+	*	@return L'indice du bouton dans le menu
+	*/
+	virtual int get_index() const { return m_index; }
 
-	virtual int getValueInteger() {return 0;}
+	/*!
+	*	@brief Accesseur
+	*	@return La valeur entiere contenue par le bouton (0 si indéfinie)
+	*/
+	virtual int getValueInteger() const {return 0;}
 
+	/*!
+	*	@brief Selectionne le bouton
+	*/
 	virtual void select();
-
+	
+	/*!
+	*	@brief Deselectionne le bouton
+	*/
 	virtual void deselect() {m_selected = false;}
 
-	virtual SurfaceText *get_surface(bool selected = false)
+	/*!
+	*	@brief Accesseur
+	*	@return La surface du bouton
+	*/
+	virtual SurfaceText *get_surface() const
 	{
 		return (m_selected ? m_surface_text_selected : m_surface_text);
 	}
 
-	virtual int width();
+	/*!
+	*	@brief Accesseur
+	*	@return La largeur de la surface du bouton
+	*/
+	virtual int width() const;
 
-	virtual int height();
+	/*!
+	*	@brief Accesseur
+	*	@return La hauteur de la surface du bouton
+	*/
+	virtual int height() const;
 
+	/*!
+	*	@brief Incremente la valeur entiere contenue par le bouton
+	*
+	*	N'a de sens que si le bouton contient une valeur entiere...
+	*/
 	virtual void incr_value(int value);
 
+	// A CHANGER
 	virtual void enter_pressed() {}
-
-	virtual std::string get_string() {return "";}
+		
+	/*!
+	*	@brief Accesseur
+	*	@return La valeur string contenue dans le bouton ("" si indéfinie)
+	*/
+	virtual std::string get_string() const {return "";}
 	
+	// a changer
 	virtual bool waitingForInput() const {return false;}
 	
+	// a changer
 	virtual void handleInput(menu_key key) {}
 
 protected:
