@@ -39,10 +39,6 @@ public:
 	*/
 	MenuActionKeyconfig(std::string str, int i, std::string val, key k);
 
-
-	// a changer
-	void change_value();
-
 	/*!
 	*	@brief Maj du bouton (a appeler a chaque cycle)
 	*/

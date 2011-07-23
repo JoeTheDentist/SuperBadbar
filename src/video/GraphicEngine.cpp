@@ -57,11 +57,11 @@ void GraphicEngine::init_graphic_engine(bool game)
 {
 	if (game) {
 		m_camera->init_camera(gPlayers->local_player());
-		m_talks->init_talks(m_camera, m_pictures_container);
-		m_dashboard->init_dashboard(m_pictures_container);
 	} else {
 		m_camera->init_camera(NULL);
 	}
+			m_talks->init_talks(m_camera, m_pictures_container);
+		m_dashboard->init_dashboard(m_pictures_container);
 }
 
 void GraphicEngine::update()
