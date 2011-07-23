@@ -127,3 +127,8 @@ menu_key EventKeyboard::getMenuKey() const
 	}
 	return mk_none;	
 }
+
+bool EventKeyboard::isEnterPressed() const 
+{
+	return isMenuKey() && (getMenuKey() == mk_enter);
+}

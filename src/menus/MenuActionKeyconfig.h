@@ -28,6 +28,7 @@ class MenuActionKeyconfig: public MenuAction {
 protected:
 	std::string m_value;
 	key m_key;
+	bool m_waitingForInput;
 public:
 	/**
 	*	@brief Constructeur
@@ -52,6 +53,15 @@ public:
 	*	@return La string correspondant a la touche choisie
 	*/
 	virtual std::string get_string() const;
+
+	/*!
+	*	@brief Traite l'evenement eventKeyboard recu
+	*	@param eventKeyboard L'evenement recu
+	*
+	*	Si l'evenement est vraiment traite, il sera marque comme
+	*	traite apres l'appel
+	*/
+	virtual void treatEvent(EventKeyboard *eventKeyboard);
 
 protected:
 	virtual void update_text();

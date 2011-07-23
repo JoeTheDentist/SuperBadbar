@@ -12,5 +12,4 @@
 MenuActionClassic::MenuActionClassic(std::string str, int i):
 	MenuAction(str, i)
 {
-
 }

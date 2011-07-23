@@ -16,7 +16,8 @@
 MenuActionKeyconfig::MenuActionKeyconfig(std::string str, int i, std::string val, key k):
 	MenuAction(str, i),
 	m_value(val),
-	m_key(k)
+	m_key(k),
+	m_waitingForInput(false)
 {
 
 }
@@ -49,4 +50,21 @@ void MenuActionKeyconfig::update_text()
 std::string MenuActionKeyconfig::get_string() const
 {
 	return m_value;
+}
+
+void MenuActionKeyconfig::treatEvent(EventKeyboard *eventKeyboard)
+{
+	if (!m_waitingForInput) {
+		if (eventKeyboard->isEnterPressed()) {
+			m_waitingForInput = true;
+			eventKeyboard->markTreated();
+		}
+	} else {
+		if (eventKeyboard->keyPressed()) {
+			m_value = eventKeyboard->getKeyString();
+			gKeyboardConfig->setConfigKey(m_key, m_value);
+			eventKeyboard->markTreated();
+			m_waitingForInput = false;
+		}
+	}
 }

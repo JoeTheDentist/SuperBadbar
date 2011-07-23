@@ -73,14 +73,12 @@ public:
 	*/
 	std::string getKeyString() const;
 
-
 	/*!
 	*	@brief Accesseur 
 	*	@return Vrai si le touche est une touche du menu
 	*/
 	bool isMenuKey() const;
 	
-
 	/*!
 	*	@brief Accesseur
 	*	@return Le menu_key correspondant a la touche
@@ -99,6 +97,12 @@ public:
 	*	@return Indique si l'evenement a ete marque comme traite
 	*/
 	bool treated() const {return m_treated;}
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'event correspond a une pression sur entree
+	*/
+	bool isEnterPressed() const;
 
 };
 

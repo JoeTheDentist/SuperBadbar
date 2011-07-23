@@ -43,6 +43,13 @@ public:
 	*/
 	virtual int getValueInteger() const {return m_value;}
 	
+	/*!
+	*	@brief Traite l'evenement eventKeyboard recu
+	*	@param eventKeyboard L'evenement recu
+	*
+	*	Si l'evenement est vraiment traite, il sera marque comme
+	*	traite apres l'appel
+	*/
 	virtual void treatEvent(EventKeyboard *eventKeyboard);
 
 

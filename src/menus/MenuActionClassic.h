@@ -21,8 +21,6 @@ public:
 	*	@param i L'indice de l'action (en general son numero dans la liste d'actions)
 	*/
 	MenuActionClassic(std::string str, int i);
-
-
 };
 
 

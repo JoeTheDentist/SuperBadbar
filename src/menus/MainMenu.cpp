@@ -18,10 +18,10 @@ MainMenu::MainMenu() :
 	m_pos_background(),
 	m_main_title(new MainTitle("Super Badbar"))
 {
-        m_menu_actions.add_action_classic("Single Player", 1);
-        m_menu_actions.add_action_classic("Multi Player", 2);
-        m_menu_actions.add_action_classic("Options", 3);
-        m_menu_actions.add_action_classic("Leave", 4);
+	m_menu_actions.add_action_classic("Single Player", 1);
+	m_menu_actions.add_action_classic("Multi Player", 2);
+	m_menu_actions.add_action_classic("Options", 3);
+	m_menu_actions.add_action_classic("Leave", 4);
 	gSound->load_music("main_menu.mp3");
 	gSound->play_music();
 	loop();
@@ -29,7 +29,6 @@ MainMenu::MainMenu() :
 
 MainMenu::~MainMenu()
 {
-//~ 	delete m_menu_background;
 }
 
 void MainMenu::update_graphics()
