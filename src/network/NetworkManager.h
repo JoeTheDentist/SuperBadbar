@@ -30,7 +30,8 @@ enum NetworkStep {
 };
 
 struct MapInfo {
-    std::string name;
+    std::string mapName;
+    std::string hostName;
     unsigned int size;
     int hash;
     unsigned int nbPlayers;
@@ -48,9 +49,7 @@ struct MapInfo {
  */
 
 class NetworkManager {
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 public :
-
     /**
      *  @brief Constructeur
      */
@@ -59,7 +58,7 @@ public :
     /**
      *  @brief Destructeur
      */
-    ~NetworkManager();
+    virtual ~NetworkManager();
 
     /**
      *  @brief Initialisation de la classe
@@ -76,128 +75,57 @@ public :
      */
     void initServer();
 
+
     /***************************************/
     /********Partie Decouverte**************/
     /***************************************/
+public:
 
     /**
-     *  @brief Lance un serveur en réseau local
-     *  @param lvl_name : nom de la map host
-     *
-     *  Une fois le server lancé, il envoie en broadcast sur
-     *  le réseau des messages avertissant de son état
-     */
-    void startLocalServer(std::string lvl_name = "test.lvl");
-
-    /**
-     *  @brief Lance un serveur sur internet
+     *  @brief Lance un serveur
      *  @param lvl_name : nom de la map host
      *
      *  Attends que les clients se connectent
+     *  Lance un message de pub cycliquement pour
+     *  se decouvrir aux clients sur le reseau local
      */
-    void startInternetServer(std::string lvl_name = "test.lvl");
+    void startServer(std::string lvl_name = "test.lvl");
 
     /**
      *  @brief Cherche les serveurs disponibles sur le reseau (local)
+     *
+     *  Regarde si il a reçu des messages
      */
     void searchServer();
 
     /**
-     *  @brief
+     *  @brief Tentative de connection a l'adresse IP
      *  @param ip : adresse ip
      */
-    void tryConnectTo(std::string ip = "127.0.0.1");
+    void connectTo(std::string ip = "127.0.0.1");
 
 
     /***************************************/
     /*********Partie Connexion**************/
     /***************************************/
-
+public:
     /**
      *  @brief Recupère les infos sur la map
      *  @return Info de la map
      *
      *  Les infos :
-     *      Nom
+     *      Nom de la carte
+     *      Nom du joueur creant la carte
      *      Taille
      *      Hash du lvl (Sha-1 Qt)
      *      Nombre de joueurs
      *      Nombre max de joueurs
+     *
+     *  Erreur : tous les champs sont vides
      */
     MapInfo getMapInfo();
 
-
-    /***************************************/
-    /************Partie Chat****************/
-    /***************************************/
-
-    /**
-     *  @brief Envoie un message
-     *  @param msg : message à envoyer
-     */
-    void sendMessage(std::string msg);
-
-
-
-
-    /***************************************/
-    /********Partie Lancement Jeu***********/
-    /***************************************/
-
-    /**
-     *  @brief Recupère et fixe l'id du reseau
-     */
-    void getSetId();
-
-
-    /***************************************/
-    /**************Partie Jeu***************/
-    /***************************************/
-
-    /***************************************/
-    /****************Autres*****************/
-    /***************************************/
-
-    /**
-     *  @brief Accesseur de l'IP du joueur
-     *  @return adresse IP
-     */
-    std::string getMyIP();
-
-    /**
-     *  @brief Accesseur id sur le reseau
-     *  @return identifiant sur reseau
-     */
-    int getMyID();
-
-    /**
-     *  @brief Info de la map choisie
-     *  @param mapName : nom de la map chemin depuis levels
-     *
-     *  Les champs sur le nombre de joueur ne sont pas remplis
-     */
-    MapInfo mapInfo(std::string mapName);
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-private :
-    NetworkState m_netState;        /* si le jeu fait aussi serveur */
-    NetworkMode m_netMode;          /* */
-    NetworkStep m_netStep;          /* */
-    int m_idLocal;                  /* identifiant sur le reseau */
-    NetworkCommunicator *m_netCom;  /* partie communicante,serveur ou client */
-
-
-
-    /***************************************/
-    /********Partie Decouverte**************/
-    /***************************************/
-
-
-
-    /***************************************/
-    /*********Partie Connexion**************/
-    /***************************************/
-
+private:
     /**
      *  @brief Demande au serveur les infos sur la map
      *
@@ -224,14 +152,72 @@ private :
 
 
     /***************************************/
-    /***************Autres******************/
+    /************Partie Chat****************/
+    /***************************************/
+public:
+    /**
+     *  @brief Envoie un message
+     *  @param msg : message à envoyer
+     */
+    void sendMessage(std::string msg);
+
+
+    /***************************************/
+    /********Partie Lancement Jeu***********/
+    /***************************************/
+public:
+    /**
+     *  @brief Recupère et fixe l'id du reseau
+     */
+    void getSetId();
+
+
+    /***************************************/
+    /**************Partie Jeu***************/
     /***************************************/
 
+    /***************************************/
+    /****************Autres*****************/
+    /***************************************/
+public:
+    /**
+     *  @brief Accesseur de l'IP du joueur
+     *  @return adresse IP
+     */
+    std::string getMyIP();
+
+    /**
+     *  @brief Accesseur id sur le reseau
+     *  @return identifiant sur reseau
+     */
+    int getMyID();
+
+    /**
+     *  @brief Info de la map choisie
+     *  @param mapName : nom de la map chemin depuis levels
+     *
+     *  Les champs sur le nombre de joueur ne sont pas remplis
+     */
+    MapInfo mapInfo(std::string mapName);
+
+private:
     /**
      *  @brief Mutateur
      *  @param Nouvelle valeur de l'id
      */
     void SetId(int id);
+
+    /***************************************/
+    /**************Attributs****************/
+    /***************************************/
+private :
+    NetworkState m_netState;        /* si le jeu fait aussi serveur */
+    NetworkMode m_netMode;          /* */
+    NetworkStep m_netStep;          /* */
+    int m_idLocal;                  /* identifiant sur le reseau */
+    NetworkCommunicator *m_netCom;  /* partie communicante */
+
+    static bool Multi;              /* si le jeu se fait en solo ou multi */
 };
 
 #endif // NETWORKMANAGER_H_INCLUDED

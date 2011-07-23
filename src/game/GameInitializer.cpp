@@ -13,9 +13,9 @@ bool GameInitializer::init_game()
 {
 	// chargement des librairies
 	#ifdef WIN32
-        freopen("CON", "w", stdout);
-        freopen("CON", "r", stdin);
-        freopen("CON", "w", stderr);
+//        freopen("CON", "w", stdout);
+//        freopen("CON", "r", stdin);
+//        freopen("CON", "w", stderr);
 	#endif
 	srand(time(NULL));
 	Constants::init();

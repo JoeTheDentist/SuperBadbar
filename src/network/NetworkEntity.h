@@ -10,19 +10,17 @@
 #ifndef NETWORKENTITY_H
 #define NETWORKENTITY_H
 
-#include "../items/Weapon.h"
-
-enum NetworkType {
-    NetType_MONSTER, NetType_PLAYER, NetType_EVENT,
-    NetType_TRIGGER
-};
-
 /**
  *  @class NetworkEntity
- *  @brief Classe permettant de signaler des évènements sur le réseau
+ *  @brief Classe permettant de signaler et récuperer
+ *          des évènements sur le réseau
  *
- *  Doit être contenue dans tous les objets ayant des informations
- *  que le réseau doit connaitre
+ *  Doit être héritée dans tous les objets ayant des informations
+ *  que le réseau doit connaitre.
+ *  Cette classe enregistre les actions à transmettre sur le réseau
+ *  et confirme à la réponse du serveur (l'objet vas lire à l'update)
+ *
+ *  Lorsque le jeu est simple joueur cette classe est transparente
  */
 class NetworkEntity
 {
@@ -30,9 +28,8 @@ public:
 
     /**
      *  @brief Constructeur
-     *  @param type : Type d'entité
      */
-    NetworkEntity(NetworkType type);
+    NetworkEntity();
 
     /**
      *  @brief Destructeur
@@ -40,73 +37,34 @@ public:
     virtual ~NetworkEntity();
 
     /**
+     *  @brief Mise à jour, active l'action donnée par le serveur
+     */
+    void update();
+
+protected:
+    /**
      *  @brief Remet le compteur des entités à zéro
      */
     static void ResetCounter();
 
-
     /***************************************/
-    /****************Actors*****************/
-    /***************************************/
-
-    /**
-     *  @brief Signale un saut
-     */
-    void sigJump();
-
-    /**
-     *  @brief Signale un tir
-     */
-    void sigFire();
-
-    /**
-     *  @brief Signale l'accroupissement
-     */
-    void sigCrouch();
-
-    /**
-     *  @brief Signale un changement d'arme
-     *  @param weapon : nouvelle arme
-     */
-    void sigChangeWeaponTo(weapon_type weapon);
-
-    /**
-     *  @brief Signale la capture d'un objet
-     *  @param idItem : identifiant de l'item pris
-     */
-    void sigItemCaught(unsigned int idItem);
-
-    /**
-     *  @brief Signale la position, l'état et la direction
-     */
-    void sigState(Rect pos, int state, direction dir);
-
-    /**
-     *  @brief Signale la mort de l'acteur
-     */
-    void sigDeath();
-
-
-    /***************************************/
-    /*****************Event*****************/
+    /***********Actions Générales***********/
     /***************************************/
 
     /**
-     *  @brief Signale qu'il a été pris par un joueur
-     *  @param idPlayer : identifiant du joueur
+     *  @brief
      */
-    void sigCaughtBy(unsigned int idPlayer);
-
-    /***************************************/
-    /****************Trigger****************/
-    /***************************************/
+    void sigKilled();
 
     /**
-     *  @brief Signale qu'il a été déclanché
+     *  @brief Action a la mort
      */
-    void sigTriggered();
+    void killedAction();
 
-private:
+    /***************************************/
+    /***************Variables***************/
+    /***************************************/
+protected:
     static unsigned int NetworkEntitiesCounter;
     unsigned int m_id;
 
