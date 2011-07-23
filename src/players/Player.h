@@ -8,14 +8,14 @@ class Babar;
 
 /**
  *  @class Player
- *  @brief Classe représentant un joueur
+ *  @brief Classe representant un joueur
  */
 
 class Player {
     private :
         Stats * m_stats;
         int m_id;
-        /* acteur controlé par le joueur */
+        /* acteur controle par le joueur */
         Babar * m_actor;
         /* liste des dommages que le joueur peux se prendre */
         std::list<dmg_chan> * m_dmgs;
@@ -24,9 +24,9 @@ class Player {
         /**
          *  @brief Coonstructeur
          *  @param id : numero du joueur
-         *  @param local : si on crée le joueur local
+         *  @param local : si on cree le joueur local
          *  TODO : Quelque chose pour pouvoir choisir son skin... A faire
-         *  TODO : descendre jusqu'à Babar sans doute...
+         *  TODO : descendre jusqu'a Babar sans doute...
          */
         Player(int id, Analyser * analyser, bool local=false);
 
@@ -46,7 +46,7 @@ class Player {
         int get_id();
 
         /**
-         *  @brief Accesseur affinités
+         *  @brief Accesseur affinites
          */
         std::list<dmg_chan> * get_dmgs();
 

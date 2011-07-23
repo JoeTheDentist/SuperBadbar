@@ -32,7 +32,7 @@ class SpriteAnim : public Sprite {
         Surface * curr_pic();
 
         /**
-         * Passe à l'image suivante
+         * Passe a l'image suivante
          */
         void next_pic();
 
@@ -54,7 +54,7 @@ class SpriteAnim : public Sprite {
         int w();
 
         /**
-         *  @brief Mets l'image de départ aléatoirement
+         *  @brief Mets l'image de depart aleatoirement
          */
         void rand_pic();
 };

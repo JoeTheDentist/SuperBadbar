@@ -57,7 +57,7 @@ int SpriteAnim::w()
 
 void SpriteAnim::next_pic()
 {
-    /* p-e le mettre à un autre endroit */
+    /* p-e le mettre a un autre endroit */
     if ( m_anim->deletable() ) {
         m_to_delete = true;
     } else {

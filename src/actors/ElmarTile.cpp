@@ -59,14 +59,14 @@ void ElmarTile::update_pos(CollisionsManager *CollisionsManager)
 		}
 	}
 
-	/* cas où le sprite va à droite */
+	/* cas où le sprite va a droite */
 	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos)))
 				m_dead = true;
 			m_pos.x += BOX_SIZE;
 	}
 
-	/* cas où le sprite va à gauche */
+	/* cas où le sprite va a gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 			if(CollisionsManager::is_down_coll(CollisionsManager->get_matrix()->down_collision_type(m_pos))) {
 				m_dead = true;

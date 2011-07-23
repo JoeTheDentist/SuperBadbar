@@ -48,7 +48,7 @@ public:
 	virtual void update_speed_ai();
 
         /**
-         *  @brief Mise à jour
+         *  @brief Mise a jour
          */
 	virtual void update();
 

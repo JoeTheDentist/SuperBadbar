@@ -34,7 +34,7 @@ void Stats::update()
 
 void Stats::alert()
 {
-    /* Si aucun message n'a été émis */
+    /* Si aucun message n'a ete emis */
     if ( !m_msg_sent ) {
         switch (m_kills) {
             case 2:
@@ -58,7 +58,7 @@ void Stats::alert()
 
 void Stats::hit()
 {
-    /* Si on est touché, on remet tout à zéro */
+    /* Si on est touche, on remet tout a zero */
     m_date_last_kill=0;
     m_kills=0;
     m_frenzy=0;
@@ -67,7 +67,7 @@ void Stats::hit()
 
 void Stats::kill()
 {
-    /* Si on a fait un kill il y a peu ou si c'est le premier de la série, on l'ajoute */
+    /* Si on a fait un kill il y a peu ou si c'est le premier de la serie, on l'ajoute */
     if ( m_date-m_date_last_kill < INT_KILL || (m_date_last_kill==0 && m_kills==0) ) {
         m_kills++;
     }

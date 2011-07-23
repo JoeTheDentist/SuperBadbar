@@ -1,12 +1,12 @@
 /**
 	@todo surement Ã  enlever!
 
-    Implémentation des listes pour pouvoir faire des listes de tout type
+    Implementation des listes pour pouvoir faire des listes de tout type
     (voire objets)
 
-    Le tout est rassemblé dans un seul .h à cause des templates, qui ne peuvent se déclarer que dans un seul fichier.
+    Le tout est rassemble dans un seul .h a cause des templates, qui ne peuvent se declarer que dans un seul fichier.
 
-    /!\ Pour la libération de mémoire ces listes ne marchent QUE pour des listes de POINTEURS alloués... Malgré le typeid, je compilateur n'es pas content
+    /!\ Pour la liberation de memoire ces listes ne marchent QUE pour des listes de POINTEURS alloues... Malgre le typeid, je compilateur n'es pas content
 **/
 
 
@@ -40,26 +40,26 @@ template <class T> class List {
         cell<T> * m_last;               /* Avant curseur */
     public :
         List();                         /* Constructeur */
-        List(cell<T> * l);              /* Constructeur surchargé pour forcer m_list */
+        List(cell<T> * l);              /* Constructeur surcharge pour forcer m_list */
         ~List();                        /* Destructeur */
         void void_list();               /* Vide la liste en gardant la sentinelle */
-        void add(T element);            /* Ajoute un élément à la tête de m_list */
-        void cut();                     /* Suppression de la tête de m_list avec libération de la mémoire */
+        void add(T element);            /* Ajoute un element a la tete de m_list */
+        void cut();                     /* Suppression de la tete de m_list avec liberation de la memoire */
         bool empty();                   /* Retourne true si la liste est vide */
-        T head();                       /* Retourne la tête de la liste */
+        T head();                       /* Retourne la tete de la liste */
 
-        void init();                    /* Met le curseur au début de la liste */
-        void next();                    /* Le curseur va sur l'élément suivant */
-        T element();                    /* Retourne l'élément sur le curseur */
-        bool end();                     /* Retourne si le curseur est à la fin de la liste */
-        void delete_element(bool cond); /* Supprime l'élément sur curseur si cond */
-        void free_element(bool cond);   /* Supprime l'élément sur curseur si cond, et libère la mémoire */
+        void init();                    /* Met le curseur au debut de la liste */
+        void next();                    /* Le curseur va sur l'element suivant */
+        T element();                    /* Retourne l'element sur le curseur */
+        bool end();                     /* Retourne si le curseur est a la fin de la liste */
+        void delete_element(bool cond); /* Supprime l'element sur curseur si cond */
+        void free_element(bool cond);   /* Supprime l'element sur curseur si cond, et libere la memoire */
 
-        void do_list(void (*fct)(T));   /* Applique une void fonction à chaque élément de la liste */
+        void do_list(void (*fct)(T));   /* Applique une void fonction a chaque element de la liste */
 };
 
 
-/*****Méthodes*****/
+/*****Methodes*****/
 
 template <class T> List<T>::List()
 {
@@ -149,7 +149,7 @@ template <class T> T List<T>::head()
     return *(m_list->head);
 }
 
-/* Attention ! La suppréssion ne libère pas la mémoire !!!!!!!! */
+/* Attention ! La suppression ne libere pas la memoire !!!!!!!! */
 template <class T> void List<T>::delete_element(bool cond)
 {
     if ( cond ) {

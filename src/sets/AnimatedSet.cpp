@@ -9,7 +9,7 @@ AnimatedSet::AnimatedSet()
 
 AnimatedSet::~AnimatedSet()
 {
-    /* ne pas toucher à m_sprite, il peut être déjà détruit */
+    /* ne pas toucher a m_sprite, il peut etre deja detruit */
 }
 
 void AnimatedSet::update_pos()
@@ -24,7 +24,7 @@ void AnimatedSet::update_pos()
 
 void AnimatedSet::update_speed()
 {
-    /* rien à faire si non redéfinie */
+    /* rien a faire si non redefinie */
 }
 
 void AnimatedSet::rand_pic()

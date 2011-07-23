@@ -5,7 +5,7 @@
 
 /**
  *  @class AnimatedPhysicSet
- *  @brief Décors subissants la gravité
+ *  @brief Decors subissants la gravite
  */
 
 class AnimatedPhysicSet : public AnimatedSet {
@@ -15,9 +15,9 @@ class AnimatedPhysicSet : public AnimatedSet {
     public:
         /**
          *  @brief Constructeur
-         *  @param anim_name, nom de l'animation : chemin à partir de /pic/
-         *  @param pos : position de départ de l'animation
-         *  @param speed : vitesse de départ
+         *  @param anim_name, nom de l'animation : chemin a partir de /pic/
+         *  @param pos : position de depart de l'animation
+         *  @param speed : vitesse de depart
          */
         AnimatedPhysicSet(std::string anim_name, Rect pos, Rect speed);
 
@@ -27,12 +27,12 @@ class AnimatedPhysicSet : public AnimatedSet {
         ~AnimatedPhysicSet();
 
         /**
-         *  @brief Mise à jour de la position
+         *  @brief Mise a jour de la position
          */
         void update_pos();
 
         /**
-         *  @brief Mise à jour de la vitesse
+         *  @brief Mise a jour de la vitesse
          */
         void update_speed();
 };

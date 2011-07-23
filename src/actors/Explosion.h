@@ -20,7 +20,7 @@ class Explosion : public Projectile {
         ~Explosion();
 
         /**
-         *  @brief Mise à jour de l'état
+         *  @brief Mise a jour de l'etat
          */
         void update_state();
 };

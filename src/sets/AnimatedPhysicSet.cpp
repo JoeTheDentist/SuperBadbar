@@ -32,6 +32,6 @@ void AnimatedPhysicSet::update_speed()
 {
     /* gravite */
     m_speed.y += GRAVITE;
-    /* continuité en x */
+    /* continuite en x */
     m_speed.x = (9*m_speed.x)/10;
 }

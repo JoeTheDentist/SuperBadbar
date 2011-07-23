@@ -36,7 +36,7 @@ class SpritesManager {
         Sprite * add_anim(std::string anim_name, anim_type type, screen_level lvl, bool center=false);
 
         /**
-         * Pour un text animé
+         * Pour un text anime
          */
         Sprite * add_anim(std::string text, int begin_size, int end_size, int nb_pic, screen_level lvl);
 
@@ -46,17 +46,17 @@ class SpritesManager {
         Sprite * add_table(std::string anim_name, screen_level lvl);
 
         /**
-         * Méthode de mise à jour de la liste, next_pic pour tous les sprites !
+         * Methode de mise a jour de la liste, next_pic pour tous les sprites !
          */
         void update();
 
         /**
-         * Méthode de suppression des éléments.
+         * Methode de suppression des elements.
          */
         void delete_dead_sprites();
 
         /**
-         * Vide la liste, sans la détruire
+         * Vide la liste, sans la detruire
          */
         void clear();
 

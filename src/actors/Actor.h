@@ -39,9 +39,9 @@ class Sprite;
 
 /**
  *  @class Actor
- *  @brief Classe mère de tous les acteurs du jeux
+ *  @brief Classe mere de tous les acteurs du jeux
  *
- *  Cette classe représente les acteurs du jeux, toute entié ayant
+ *  Cette classe represente les acteurs du jeux, toute entie ayant
  *  une logique de mouvement (pos, speed) et d'afficahge (sprite)
  */
 class Actor {
@@ -49,8 +49,8 @@ protected:
 	Rect m_pos; 		/* position du sprite et sa taille */
 	Rect m_speed;		/* vitesse du sprite */
 	direction m_dir;    /* direction */
-	Sprite * m_sprite;  /* Représentation de l'acteur */
-	int m_phase;        /* temps depuis création, en nombre de cycle */
+	Sprite * m_sprite;  /* Representation de l'acteur */
+	int m_phase;        /* temps depuis creation, en nombre de cycle */
 public:
 	/**
 	 *	@brief Constructeur
@@ -63,8 +63,8 @@ public:
     virtual ~Actor();
 
 	/**
-	 *	@brief Met à jour la position du sprite
-	 *	@param StaticData Données du jeu
+	 *	@brief Met a jour la position du sprite
+	 *	@param StaticData Donnees du jeu
 	 *	@param CollisionsManager Gestionnaire de collisions
 	*/
     void update_pos();

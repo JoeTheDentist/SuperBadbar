@@ -21,25 +21,25 @@
 
 /**
  *  @class AI
- *  @brief Classe évaluant le comportement intelligent de certains monstres
+ *  @brief Classe evaluant le comportement intelligent de certains monstres
  *
- *  Cette classe est liée à un monstre (ptr sur sa position)
- *  et cherche à se rapprocher de Badbar (todo, le joueur le plus proche)
- *  tout en évitant les projectiles (todo, les projectiles ennemis)
+ *  Cette classe est liee a un monstre (ptr sur sa position)
+ *  et cherche a se rapprocher de Badbar (todo, le joueur le plus proche)
+ *  tout en evitant les projectiles (todo, les projectiles ennemis)
  */
 class AI {
     private:
         Rect * m_pos;
 
         /**
-         *  @brief Evaluation de la direction considérée
-         *  @param d : direction à prendre en compte
+         *  @brief Evaluation de la direction consideree
+         *  @param d : direction a prendre en compte
          *  @return poids (sens AI, choix) de le direction
          */
         double eval(direction d);
 
         /**
-         *  @brief Vérifie s'il y a collision
+         *  @brief Verifie s'il y a collision
          *  @param A : Rectange 1
          *  @param B : Rectangle 2
          *  @return s'il y a collision ou non
@@ -59,13 +59,13 @@ class AI {
         double eval_down();
 
         /**
-         *  @brief Evaluation à gauche
+         *  @brief Evaluation a gauche
          *  @return poids (sens AI, choix) de le direction
          */
         double eval_left();
 
         /**
-         *  @brief Evaluation à droite
+         *  @brief Evaluation a droite
          *  @return poids (sens AI, choix) de le direction
          */
         double eval_right();
@@ -83,7 +83,7 @@ class AI {
         ~AI();
 
         /**
-         * @brief donne la direction à suivre
+         * @brief donne la direction a suivre
          * @return direction
          */
         direction dir();

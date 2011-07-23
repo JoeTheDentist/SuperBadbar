@@ -15,7 +15,7 @@
 #include "../video/Surface.h"
 
 
-AnimPic::AnimPic(std::string anim_name, anim_type type) 
+AnimPic::AnimPic(std::string anim_name, anim_type type)
 {
     std::string sup;
     if ( FileExists(anim_name+"_"+"0"+PICS_EXT) ) {
@@ -23,7 +23,7 @@ AnimPic::AnimPic(std::string anim_name, anim_type type)
     } else if ( FileExists(anim_name+"0"+PICS_EXT) ) {
         sup = "";
     } else if ( FileExists(anim_name+PICS_EXT) ) {
-        /* si on a juste une image avec le nom stipulé */
+        /* si on a juste une image avec le nom stipule */
         m_images = new Surface*[1];
         m_size = 1;
         m_curr = 0;
@@ -85,14 +85,14 @@ void AnimPic::next_pic()
     m_phase%=ANIMATION_SPEED;
 
     if ( m_phase == 0 ) {
-        if ( m_type != CYCLE && m_finished ) {  /* si on a fini sans être en CYCLE, on garde la dernière image */
+        if ( m_type != CYCLE && m_finished ) {  /* si on a fini sans etre en CYCLE, on garde la derniere image */
             m_curr = m_size-1;
         } else {                        /* sinon on affiche les images cycliquement */
             m_curr++;
             m_curr%=m_size;
         }
 
-        if ( m_type != CYCLE && ( m_curr == m_size-1 ) ) { /* une fois qu'on a fini une animation en forcé, on a fini */
+        if ( m_type != CYCLE && ( m_curr == m_size-1 ) ) { /* une fois qu'on a fini une animation en force, on a fini */
             m_finished = true;
         }
     }

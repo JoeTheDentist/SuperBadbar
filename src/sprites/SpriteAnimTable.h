@@ -20,18 +20,18 @@ class SpriteAnimTable : public Sprite {
 		virtual ~SpriteAnimTable();
 
         /**
-         * Image à afficher
+         * Image a afficher
          *  +maj de m_pos
          */
         Surface * curr_pic();
 
         /**
-         * Passe à l'image suivante
+         * Passe a l'image suivante
          */
         void next_pic();
 
         /**
-         *	@brief Change l'état
+         *	@brief Change l'etat
          */
         void change_anim(int s, direction dir, bool fire=false ,bool phase_rand=false);
 

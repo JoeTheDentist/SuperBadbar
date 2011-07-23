@@ -20,7 +20,7 @@ PlayersManager::~PlayersManager()
 
 void PlayersManager::init_players_manager(Analyser * analyser)
 {
-    /* création du joueur local */
+    /* creation du joueur local */
     delete m_local_player;
     gLocal_id = new int;
     *gLocal_id = 0;

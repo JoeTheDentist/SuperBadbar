@@ -1,6 +1,6 @@
 /**
  * 	@file sprites.cpp
- * 	@brief Implémentation de la classe Actor
+ * 	@brief Implementation de la classe Actor
  *
  * 	@author Guillaume Berard & Benoit Morel
  * 	@date decembre 2010
@@ -21,7 +21,7 @@
 
 
 /*********************************
-**	Méthodes de Actor 	**
+**	Methodes de Actor 	**
 **********************************/
 Actor::Actor()
 {

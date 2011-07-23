@@ -7,7 +7,7 @@ class Sprite;
 
 /**
  *  @class Classe
- *  @brief Classe des décors animés (plus ou moins, un gai lapin mort est moyennement animé)
+ *  @brief Classe des decors animes (plus ou moins, un gai lapin mort est moyennement anime)
  */
 
 class AnimatedSet {
@@ -28,17 +28,17 @@ class AnimatedSet {
         ~AnimatedSet();
 
         /**
-         *  @brief Mise à jour de la position
+         *  @brief Mise a jour de la position
          */
         virtual void update_pos();
 
         /**
-         *  @brief Mise à jour de la vitesse
+         *  @brief Mise a jour de la vitesse
          */
         virtual void update_speed();
 
         /**
-         *  @brief Choisit l'image de départ aléatoirement
+         *  @brief Choisit l'image de depart aleatoirement
          */
         void rand_pic();
 

@@ -47,7 +47,7 @@ class Anim {
 
         /**
          *  @brief Set hauteur et largeur en fonction de l'image courante
-         *  @param pos Rect à modifier
+         *  @param pos Rect a modifier
          */
         virtual void set_rect(Rect &pos)=0;
 

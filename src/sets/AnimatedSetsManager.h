@@ -7,7 +7,7 @@ class AnimatedSet;
 
 /**
  *  @class AnimatedSetManager
- *  @brief Classe gréant les animated_sets
+ *  @brief Classe greant les animated_sets
  */
 class AnimatedSetManager {
     private:
@@ -39,12 +39,12 @@ class AnimatedSetManager {
         void add_set(std::string anim_name, Rect pos, Rect speed);
 
         /**
-         *  @brief Mise à jour : update_pos, update_speed
+         *  @brief Mise a jour : update_pos, update_speed
          */
         void update();
 
         /**
-         *  @brief Vide la liste sans la détruire
+         *  @brief Vide la liste sans la detruire
          */
         void clear();
 

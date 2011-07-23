@@ -92,22 +92,22 @@ public:
     ~BossElmar();
 
     /**
-     *  @brief Mise à jour vitesse normale
+     *  @brief Mise a jour vitesse normale
      */
     void update_speed_simple();
 
     /**
-     *  @brief Mise à jour vitesse si IA
+     *  @brief Mise a jour vitesse si IA
      */
     void update_speed_ia();
 
     /**
-     *  @brief Mise à jour
+     *  @brief Mise a jour
      */
     void update();
 
     /**
-     *  @brief Mise à jour état
+     *  @brief Mise a jour etat
      */
     void update_state();
 

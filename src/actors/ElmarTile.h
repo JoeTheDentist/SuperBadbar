@@ -17,18 +17,18 @@ class ElmarTile : public Projectile
          ~ElmarTile();
 
         /**
-         * 	@brief Met à jour la position du ElmarTile
+         * 	@brief Met a jour la position du ElmarTile
          *	@param CollisionsManager Gestionnaire de collisions
         */
         virtual void update_pos(CollisionsManager *CollisionsManager);
 
         /**
-         * 	@brief Met à jour de la direction du ElmarTile
+         * 	@brief Met a jour de la direction du ElmarTile
         */
         virtual void update_state();
 
         /**
-         * 	@brief Met à jour la position du ElmarTile
+         * 	@brief Met a jour la position du ElmarTile
         */
         virtual void update_speed();
 
@@ -51,7 +51,7 @@ class ElmarTile : public Projectile
 
         /**
          *	@brief Accesseur
-         *	@return Vrai si le Projectile doit etre supprimé
+         *	@return Vrai si le Projectile doit etre supprime
         */
         virtual bool dead() const;
 

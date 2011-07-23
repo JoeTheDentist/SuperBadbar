@@ -5,7 +5,7 @@
 
 /**
  *  @class AnimatedPhysicSet
- *  @brief Décors ne subissants pas la gravité
+ *  @brief Decors ne subissants pas la gravite
  */
 
 class AnimatedNophysicSet : public AnimatedSet {
@@ -15,9 +15,9 @@ class AnimatedNophysicSet : public AnimatedSet {
     public:
         /**
          *  @brief Constructeur pour une animation simple, cyclique etc...
-         *  @param anim_name : nom de l'animation, à partir de /pic/animations/
+         *  @param anim_name : nom de l'animation, a partir de /pic/animations/
          *  @param x : absisse
-         *  @param y : on se demande bien ce que ça peut être !
+         *  @param y : on se demande bien ce que ça peut etre !
          */
         AnimatedNophysicSet(std::string anim_name, int x, int y, bool ended=false, bool to_delete=false);
 
@@ -27,7 +27,7 @@ class AnimatedNophysicSet : public AnimatedSet {
         ~AnimatedNophysicSet();
 
         /**
-         *  @brief Choisit l'image de départ aléatoirement
+         *  @brief Choisit l'image de depart aleatoirement
          */
         void rand_pic();
 };

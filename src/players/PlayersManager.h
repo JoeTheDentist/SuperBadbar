@@ -9,7 +9,7 @@ class Camera;
 
 /**
  *  @class Player_manager
- *  @brief Classe organisant les différents joueurs
+ *  @brief Classe organisant les differents joueurs
  */
 class PlayersManager {
     private :
@@ -32,19 +32,19 @@ class PlayersManager {
         ~PlayersManager();
 
         /**
-         *  @brief Initialisation du manager suivant des règles
+         *  @brief Initialisation du manager suivant des regles
          *  @param analyser : analyseur ouvert sur le fichier .lvl correstpondant
          *  TODO : Si on veut des modes de jeux, il faudrait changer ici.
-         *  TODO : Par exemple on pourrait faire un joueur allié avec les
+         *  TODO : Par exemple on pourrait faire un joueur allie avec les
          *  TODO : monstres contre les autres etc etc...
-         *  TODO : On pourra mettre les règles dans un fichier xml...
+         *  TODO : On pourra mettre les regles dans un fichier xml...
          */
         void init_players_manager(Analyser * analyser);
 
         /**
-         *  @brief Mise à jour des joueurs
-         *  Mise à jour des positions, vitesses et états !
-         *  C'est ici que la partie réseau va avoir un point d'accès
+         *  @brief Mise a jour des joueurs
+         *  Mise a jour des positions, vitesses et etats !
+         *  C'est ici que la partie reseau va avoir un point d'acces
          */
         void update();
 
