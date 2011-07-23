@@ -41,6 +41,7 @@ void MenuAction::select()
 
 void MenuAction::incr_value(int value)
 {
+	
 }
 
 int MenuAction::width() const
@@ -66,3 +67,9 @@ void MenuAction::update_pic(std::string str)
 	m_surface_text_selected = new SurfaceText(str, MENU_TEXT_SELECTED_SIZE + m_size_sup, MENU_TEXT_SELECTED_R,
 			MENU_TEXT_SELECTED_G, MENU_TEXT_SELECTED_B);
 }
+
+void MenuAction::treatEvent(EventKeyboard *eventKeyboard)
+{
+	
+}
+

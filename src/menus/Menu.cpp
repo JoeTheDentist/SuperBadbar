@@ -10,6 +10,7 @@
 #include "../menus/MenuAction.h"
 #include "../video/SurfaceUniform.h"
 #include "../video/SurfaceFrame.h"
+#include "../control/EventKeyboard.h"
 
 
 Menu::Menu(Menu *parent) :
@@ -24,6 +25,7 @@ Menu::Menu(Menu *parent) :
 	m_pos_menu.x = 200;
 	m_pos_menu.y = 300;
 	gKeyboard->disable_all_keys();
+	gKeyboard->resetKeysInQueue();
 	gKeyboard->reset_menu_keys();
 	gKeyboard->enable_key_repeat();
 }
@@ -45,21 +47,21 @@ void Menu::update()
 		m_son->update();
 	} else {
 		m_menu_actions.update();
-		while (gKeyboard->is_next_menu_key()) {
-			menu_key key = gKeyboard->pop_menu_key();
-			switch (key) {
-			case mk_exit:
-				m_leave_menu = true;
-				m_leave_game = true;
-			case mk_escape:
-				m_leave_menu = true;
-				break;
-			default:
-				break;
-			}
-			if (m_menu_actions.waitingForInput()) {
-				m_menu_actions.handleInput(key);
-			} else {
+		while (gKeyboard->isNextKeyInQueue()) {
+			EventKeyboard eventKeyboard = gKeyboard->getNextKeyInQueue();
+			m_menu_actions.treatEvent(&eventKeyboard);
+			if (!eventKeyboard.treated() && eventKeyboard.isMenuKey()) {
+				menu_key key = eventKeyboard.getMenuKey();
+				switch (key) {
+				case mk_exit:
+					m_leave_menu = true;
+					m_leave_game = true;
+				case mk_escape:
+					m_leave_menu = true;
+					break;
+				default:
+					break;
+				}
 				switch(key) {
 				case mk_down:
 					m_menu_actions.incr_curs(1);
@@ -67,15 +69,8 @@ void Menu::update()
 				case mk_up:
 					m_menu_actions.incr_curs(-1);
 					break;
-				case mk_left:
-					m_menu_actions.incr_value(-1);
-					break;
-				case mk_right:
-					m_menu_actions.incr_value(1);
-					break;
 				case mk_enter:
 					treat_choice(m_menu_actions.get_selected_action());
-					m_menu_actions.enter_pressed();
 					break;
 				default:
 					break;

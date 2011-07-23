@@ -31,8 +31,20 @@ public:
 	*/
 	MenuActionInteger(std::string str, int i, int val = -1, int valmin = 0, int valmax = 99, int step = 5);
 
+	/*!
+	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action 
+	*	@param value Coefficient d'incremementation
+	*/
 	virtual void incr_value(int value);
-	virtual int get_value() {return m_value;}
+
+	/*!
+	*	@brief Accesseur
+	*	@return La valeur entiere contenue par le bouton (0 si indéfinie)
+	*/
+	virtual int getValueInteger() const {return m_value;}
+	
+	virtual void treatEvent(EventKeyboard *eventKeyboard);
+
 
 protected:
 	virtual void update_text();

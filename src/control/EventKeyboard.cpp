@@ -3,13 +3,15 @@
 #include "../control/KeyboardConfig.h"
 #include "../util/globals.h"
 
-EventKeyboard::EventKeyboard()
+EventKeyboard::EventKeyboard():
+	m_treated(false)
 {
 	
 }
 
 EventKeyboard::EventKeyboard(SDL_Event event):
-	m_event(event)
+	m_event(event),
+	m_treated(false)
 {
 	
 }
@@ -71,12 +73,10 @@ std::string EventKeyboard::getKeyString() const
 	return SdlKeyConverter::sdlkey_to_stdstring(getSDLKey());
 }
 
-
 bool EventKeyboard::isMenuKey() const
 {
 	return getMenuKey() != mk_none;
 }
-
 
 menu_key EventKeyboard::getMenuKey() const
 {

@@ -11,7 +11,6 @@
 #ifndef _KEYBOARD_
 #define _KEYBOARD_
 
-#include "../../lib/SDL/include/SDL/SDL.h"
 
 #include <iostream>
 #include <string>
@@ -20,7 +19,6 @@
 #include "../control/EventKeyboard.h"
 
 class Analyser;
-class EventOrderer;
 
 /**
  * 	@class Keyboard
@@ -45,7 +43,6 @@ private:
 	std::ofstream *m_record_file;
 	std::queue<EventKeyboard> m_eventsKeyboard;
 	std::queue<menu_key> m_menu_input;
-	EventOrderer *m_EventOrderer;
 
 public:
 	/*!
@@ -136,6 +133,23 @@ public:
 	*	@brief Vide la liste des touches menu recemment enfoncees
 	*/
 	void reset_menu_keys();
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai s'il reste au des evenements a traiter dans la file
+	*/
+	bool isNextKeyInQueue() const;
+	
+	/*!
+	*	@brief Sort un element de la file des evenements
+	*	@return L'element sorti
+	*/
+	EventKeyboard getNextKeyInQueue();
+	
+	/*!
+	*	@brief Vide la file des evenements
+	*/
+	void resetKeysInQueue();
 
 	/*!
 	*	@brief Teste s'il reste des touches menu enfoncees non traitees
@@ -148,26 +162,6 @@ public:
 	*	@return La derniere touche menu enfoncee
 	*/
 	menu_key pop_menu_key();
-
-	/*!
-	*	@brief Demande au Keyboard un event clavier depuis l'EventOrderer en param
-	*	@param eventOrderer Le demandeur
-	*
-	* 	Le prochain event recupere ne sera pas traite et sera envoye a l'eventOrderer
-	*/
-	void order_event(EventOrderer *eventOrderer);
-
-	/*!
-	*	@brief Retourne vrai si un EventOrderer attend un evenement du Keyboard
-	*/
-	bool event_ordered();
-
-	/*!
-	*	@brief Envoie event a l'eventOrderer client (s'il n'existe pas, comportement indefini)
-	*
-	*	Doit etre precede de if (eventdered())
-	*/
-	void answer_event_order(SDLKey event);
 
 	/*!
 	*	@brief Change la configuration de la touche k pour sdl_code

@@ -76,17 +76,6 @@ void ListMenuActions::incr_curs(int dep)
 	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 }
 
-void ListMenuActions::incr_value(int value)
-{
-	(*m_iterator)->incr_value(value);
-	gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
-}
-
-void ListMenuActions::enter_pressed()
-{
-	(*m_iterator)->enter_pressed();
-}
-
 void ListMenuActions::display(Camera *camera, Rect pos) const
 {
 	Surface *surf;
@@ -118,17 +107,6 @@ int ListMenuActions::getSelectedActionValInteger()
 	return (*m_iterator)->getValueInteger();
 }
 
-bool ListMenuActions::waitingForInput() const
-{
-	return (*m_iterator)->waitingForInput();
-}
-
-void ListMenuActions::handleInput(menu_key key) 
-{
-	(*m_iterator)->handleInput(key);
-}
-
-
 int ListMenuActions::width() const
 {
 	int res = 0;
@@ -147,4 +125,8 @@ int ListMenuActions::height() const
 	return res;
 }
 
+void ListMenuActions::treatEvent(EventKeyboard *eventKeyboard)
+{
+	(*m_iterator)->treatEvent(eventKeyboard);
+}
 

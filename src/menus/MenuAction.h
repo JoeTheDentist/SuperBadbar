@@ -5,6 +5,7 @@
 #include "../control/Keyboard.h"
 
 class SurfaceText;
+class EventKeyboard;
 
 class MenuAction {
 	protected:
@@ -84,9 +85,6 @@ class MenuAction {
 	*	N'a de sens que si le bouton contient une valeur entiere...
 	*/
 	virtual void incr_value(int value);
-
-	// A CHANGER
-	virtual void enter_pressed() {}
 		
 	/*!
 	*	@brief Accesseur
@@ -94,11 +92,8 @@ class MenuAction {
 	*/
 	virtual std::string get_string() const {return "";}
 	
-	// a changer
-	virtual bool waitingForInput() const {return false;}
-	
-	// a changer
-	virtual void handleInput(menu_key key) {}
+	virtual void treatEvent(EventKeyboard *eventKeyboard);
+
 
 protected:
 	virtual void update_text();

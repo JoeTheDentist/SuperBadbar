@@ -12,6 +12,7 @@
 class EventKeyboard {
 protected:
 	SDL_Event m_event;
+	bool m_treated;
 public:
 	/*!
 	*	@brief Constructeur 
@@ -87,6 +88,17 @@ public:
 	*	Si aucun menu_key ne correspond, comportememnt indefini
 	*/
 	menu_key getMenuKey() const;
+	
+	/*!
+	*	@brief Marque l'evenement comme traite
+	*/
+	void markTreated() {m_treated = true;}
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Indique si l'evenement a ete marque comme traite
+	*/
+	bool treated() const {return m_treated;}
 
 };
 

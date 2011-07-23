@@ -30,10 +30,26 @@ void MenuActionInteger::incr_value(int value)
 	update();
 }
 
-
 void MenuActionInteger::update_text()
 {
 	std::ostringstream oss;
 	oss << m_text << " < " <<  m_value << " >";
 	m_text_to_display = oss.str();
+}
+
+void MenuActionInteger::treatEvent(EventKeyboard *eventKeyboard)
+{
+	menu_key key = eventKeyboard->getMenuKey();
+	switch (key) {
+	case mk_left:
+		incr_value(-1);
+		eventKeyboard->markTreated();
+		break;
+	case mk_right:
+		incr_value(1);
+		eventKeyboard->markTreated();
+		break;	
+	default:
+		break;
+	}
 }

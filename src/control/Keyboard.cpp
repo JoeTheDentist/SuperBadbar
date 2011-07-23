@@ -13,15 +13,13 @@
 #include <stdint.h>
 
 #include "Keyboard.h"
-#include "../control/EventOrderer.h"
 #include "../control/SdlKeyConverter.h"
 #include "../control/KeyboardConfig.h"
 #include "../util/globals.h"
 #include <fstream>	
 
 
-Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name):
-	m_EventOrderer(NULL)
+Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
 {
 	PRINT_CONSTR(1, "Construction de Keyboard")
 
@@ -63,13 +61,9 @@ void Keyboard::update_events()
 			set_key(k_exit, 1);
 			m_menu_input.push(mk_exit);
 		} else if (newEvent.keyPressed()) {
-			if (event_ordered()) {
-				answer_event_order(newEvent.getSDLKey());
-			} else {
-				set_key(gKeyboardConfig->getEnumKey(newEvent),  1);
-				if (newEvent.isMenuKey()) {
-					m_menu_input.push(newEvent.getMenuKey());
-				}
+			set_key(gKeyboardConfig->getEnumKey(newEvent),  1);
+			if (newEvent.isMenuKey()) {
+				m_menu_input.push(newEvent.getMenuKey());
 			}
 		} else if (newEvent.keyReleased()) {
 			set_key(gKeyboardConfig->getEnumKey(newEvent), 0);
@@ -185,6 +179,25 @@ void Keyboard::reset_menu_keys()
 	}
 }
 
+bool Keyboard::isNextKeyInQueue() const 
+{
+	return !m_eventsKeyboard.empty();
+}
+
+EventKeyboard Keyboard::getNextKeyInQueue()
+{
+	EventKeyboard eventKeyboard = m_eventsKeyboard.front();
+	m_eventsKeyboard.pop();
+	return eventKeyboard;
+}
+
+void Keyboard::resetKeysInQueue()
+{
+	while(isNextKeyInQueue()) {
+		getNextKeyInQueue();
+	}
+}
+
 bool Keyboard::is_next_menu_key() const
 {
 	return !m_menu_input.empty();
@@ -197,18 +210,3 @@ menu_key Keyboard::pop_menu_key()
 	return res;
 }
 
-void Keyboard::order_event(EventOrderer *EventOrderer)
-{
-	m_EventOrderer = EventOrderer;
-}
-
-bool Keyboard::event_ordered()
-{
-	return m_EventOrderer;
-}
-
-void Keyboard::answer_event_order(SDLKey event)
-{
-	m_EventOrderer->answer_event_order(event);
-	m_EventOrderer = NULL; // une fois qu'on a repondu une fois, on n'a plus d'orderer
-}

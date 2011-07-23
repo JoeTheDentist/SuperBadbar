@@ -14,7 +14,6 @@
 #include <string>
 #include "../menus/MenuAction.h"
 #include "../control/Keyboard.h"
-class EventOrderer;
 
 /*!
 *	@class MenuActionKeyconfig
@@ -28,7 +27,6 @@ class EventOrderer;
 class MenuActionKeyconfig: public MenuAction {
 protected:
 	std::string m_value;
-	EventOrderer *m_EventOrderer;
 	key m_key;
 public:
 	/**
@@ -48,9 +46,6 @@ public:
 	*	@brief Maj du bouton (a appeler a chaque cycle)
 	*/
 	virtual void update();
-
-	// a changer
-	virtual void enter_pressed();
 
 	/*!
 	*	@brief Accesseur
