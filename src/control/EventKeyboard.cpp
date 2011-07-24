@@ -1,19 +1,31 @@
 #include "EventKeyboard.h"
 #include "../control/SdlKeyConverter.h"
 #include "../control/KeyboardConfig.h"
+#include "../util/utils.h"
 #include "../util/globals.h"
 
 EventKeyboard::EventKeyboard():
 	m_treated(false)
 {
-	
+	initMode();
+}
+
+EventKeyboard::EventKeyboard(const EventKeyboard &eventKeyboard):
+	m_event(eventKeyboard.m_event),
+	m_treated(eventKeyboard.m_treated),
+	m_ctrl(eventKeyboard.m_ctrl),
+	m_altGr(eventKeyboard.m_altGr),
+	m_capsLockOn(eventKeyboard.m_capsLockOn),
+	m_shift(eventKeyboard.m_shift)
+{
 }
 
 EventKeyboard::EventKeyboard(SDL_Event event):
 	m_event(event),
 	m_treated(false)
-{
 	
+{
+	initMode();
 }
 
 EventKeyboard::~EventKeyboard()
@@ -128,7 +140,38 @@ menu_key EventKeyboard::getMenuKey() const
 	return mk_none;	
 }
 
-bool EventKeyboard::isEnterPressed() const 
+bool EventKeyboard::enterPressed() const 
 {
-	return isMenuKey() && (getMenuKey() == mk_enter);
+	return getSDLKey() == SDLK_RETURN;
 }
+
+bool EventKeyboard::enterMenuPressed() const 
+{
+	return mk_enter == getMenuKey();
+}
+
+bool EventKeyboard::backspacePressed() const 
+{
+	return getSDLKey() == SDLK_BACKSPACE;
+}
+
+char EventKeyboard::unicode() const
+{
+	return (char)m_event.key.keysym.unicode;
+}
+
+bool EventKeyboard::hasUnicode() const
+{
+	return (m_event.key.keysym.unicode < 0x80 && m_event.key.keysym.unicode > 0);
+}
+
+void EventKeyboard::initMode() 
+{
+	int mod = SDL_GetModState();
+	m_ctrl =  mod & KMOD_CTRL;
+	m_altGr =  mod & KMOD_RALT;
+	m_capsLockOn = mod & KMOD_CAPS;
+	m_shift = mod & KMOD_SHIFT;
+}
+
+

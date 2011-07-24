@@ -1,4 +1,5 @@
 #include "MenuMulti.h"
+#include "../menus/MenuJoin.h"
 
 MenuMulti::MenuMulti(Menu *parent) :
         Menu(parent)
@@ -16,14 +17,15 @@ MenuMulti::~MenuMulti()
 void MenuMulti::treat_choice(int choice)
 {
     switch(choice) {
-            case 1: // join
-                    break;
-            case 2: // host
-                    break;
-            case 3: // return
-                    set_leave_menu_true();
-                    break;
-            default:
-                    break;
+	case 1: // join
+		set_son(new MenuJoin(this));
+		break;
+	case 2: // host
+		break;
+	case 3: // return
+		set_leave_menu_true();
+		break;
+	default:
+		break;
     }
 }

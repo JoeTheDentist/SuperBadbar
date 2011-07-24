@@ -1,5 +1,5 @@
-#ifndef MENUMULTI_H
-#define MENUMULTI_H
+#ifndef _MENUMULTI_H
+#define _MENUMULTI_H
 
 #include "Menu.h"
 

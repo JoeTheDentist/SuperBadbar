@@ -24,6 +24,7 @@ bool GameInitializer::init_game()
                 PRINT_DEBUG(1, "Erreur d'initialisation de la SDL");
 		return false;
 	}
+	SDL_EnableUNICODE( 1 );
 	PRINT_TRACE(1, "Initialisation de TTF")
 	if (TTF_Init() == -1) {
 		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");

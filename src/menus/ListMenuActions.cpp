@@ -11,6 +11,7 @@
 #include "../menus/MenuAction.h"
 #include "../menus/MenuActionClassic.h"
 #include "../menus/MenuActionInteger.h"
+#include "../menus/MenuActionString.h"
 #include "../menus/MenuActionKeyconfig.h"
 #include "../video/Camera.h"
 #include "../video/Surface.h"
@@ -61,6 +62,11 @@ void ListMenuActions::add_action_integer(std::string action, int num, int val)
 void ListMenuActions::add_action_keyconfig(std::string action, int num, std::string val, key k)
 {
 	add_action(new MenuActionKeyconfig(action, num, val, k));
+}
+
+void ListMenuActions::add_action_string(std::string action_name, int action_num, std::string value)
+{
+	add_action(new MenuActionString(action_name, action_num, value));
 }
 
 void ListMenuActions::incr_curs(int dep)

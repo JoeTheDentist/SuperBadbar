@@ -45,7 +45,7 @@ std::string MenuActionKeyconfig::get_string() const
 void MenuActionKeyconfig::treatEvent(EventKeyboard *eventKeyboard)
 {
 	if (!m_waitingForInput) {
-		if (eventKeyboard->isEnterPressed()) {
+		if (eventKeyboard->enterMenuPressed()) {
 			m_waitingForInput = true;
 			eventKeyboard->markTreated();
 		}

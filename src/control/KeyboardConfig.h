@@ -77,7 +77,6 @@ public:
 	*	@return L'enum key correspondant (k_none s'il n'y en a pas)
 	*/
 	key getEnumKey(const EventKeyboard &eventKeyboard) const;
-
 };
 
 #endif

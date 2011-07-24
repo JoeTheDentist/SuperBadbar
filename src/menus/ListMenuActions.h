@@ -78,6 +78,14 @@ class ListMenuActions {
 	*	@param action L'action a ajouter
 	*/	
 	void add_action_keyconfig(std::string action_name, int action_num, std::string value, key k);
+	
+	/*!
+	*	@brief Cree puis ajoute a la liste une action string (MenuActionString), a la fin des actions deja existantes
+	*	@param action_name Le nom de l'action
+	*	@param action_num Le numero de l'action
+	*	@param value La valeur contenue dans l'action string
+	*/
+	void add_action_string(std::string action_name, int action_num, std::string value);
 
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)

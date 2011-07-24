@@ -13,6 +13,10 @@ class EventKeyboard {
 protected:
 	SDL_Event m_event;
 	bool m_treated;
+	bool m_ctrl;
+	bool m_altGr;
+	bool m_capsLockOn;
+	bool m_shift;
 public:
 	/*!
 	*	@brief Constructeur 
@@ -21,6 +25,11 @@ public:
 	*	par exemple avec pollEvent ou waitEvent
 	*/
 	EventKeyboard();
+
+	/*!
+	*	@brief Constructeur de copie
+	*/
+	EventKeyboard(const EventKeyboard &eventKeyboard);
 
 	/*!
 	*	@brief Constructeur
@@ -102,7 +111,28 @@ public:
 	*	@brief Accesseur
 	*	@return Vrai si l'event correspond a une pression sur entree
 	*/
-	bool isEnterPressed() const;
+	bool enterPressed() const;	
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'event correspond a une pression sur entree ou tir
+	*/
+	bool enterMenuPressed() const;
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'event correspond a une pression sur backspace
+	*/
+	bool backspacePressed() const;
+	
+	bool ctrlPressed() const;
+	
+	char unicode() const;
+	
+	bool hasUnicode() const;
+	
+protected:
+	void initMode();
 
 };
 

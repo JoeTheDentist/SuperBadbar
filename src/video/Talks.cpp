@@ -62,7 +62,7 @@ void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 	m_pos_talker.y = POSY;
 	m_pos_talker.w = m_talker->w();
 	m_pos_talker.h = m_talker->h();
-	for (int i = 0; i < LINES_NUMBER; i++){
+	for (int i = 0; i < LINES_NUMBER; i++) {
 		m_pos_text[i].x = m_pos_talker.x + m_pos_talker.w + 10;
 		m_pos_text[i].y = POSY + i * POSH;
 		m_pos_text[i].w = 0;

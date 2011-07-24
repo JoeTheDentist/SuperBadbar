@@ -170,6 +170,8 @@ public:
 	*	@param save True if we want to save the configuration
 	*/
 	void set_config_key(key k, std::string sdl_code, bool save = true);
+	
+//~ 	bool 
 
 
 
