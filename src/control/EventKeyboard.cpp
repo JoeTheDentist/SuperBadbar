@@ -4,6 +4,10 @@
 #include "../util/utils.h"
 #include "../util/globals.h"
 
+/************************************************/
+/*				PUBLIC METHODS				*/
+/************************************************/
+
 EventKeyboard::EventKeyboard():
 	m_treated(false)
 {
@@ -165,6 +169,15 @@ bool EventKeyboard::hasUnicode() const
 	return (m_event.key.keysym.unicode < 0x80 && m_event.key.keysym.unicode > 0);
 }
 
+bool EventKeyboard::isUndo() const
+{
+	return keyPressed() && m_ctrl && getSDLKey() == SDLK_z;
+}
+
+/************************************************/
+/*				PROTECTED METHODS				*/
+/************************************************/
+
 void EventKeyboard::initMode() 
 {
 	int mod = SDL_GetModState();
@@ -173,5 +186,4 @@ void EventKeyboard::initMode()
 	m_capsLockOn = mod & KMOD_CAPS;
 	m_shift = mod & KMOD_SHIFT;
 }
-
 

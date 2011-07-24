@@ -1,6 +1,8 @@
 #ifndef _INPUTSTRING_H_
 #define _INPUTSTRING_H_
 
+
+#include <list>
 #include <string>
 
 class EventKeyboard;
@@ -8,7 +10,8 @@ class EventKeyboard;
 class InputString {
 private:
 	std::string m_string;
-//~ 	std::list<std::string> m_previousStrings;
+	std::list<std::string> m_previousStrings;
+	int m_itPreviousStrings;
 
 public:
 	/*!
@@ -38,7 +41,11 @@ public:
 	*	@brief Mutateur
 	*	@param str La nouvelle string
 	*/	
-	void setString(std::string str) {m_string = str;}
+	void setString(std::string str);
+	
+protected:
+	void saveToUndoList();
+	void undo();
 	
 	
 	

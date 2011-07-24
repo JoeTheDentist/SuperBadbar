@@ -137,6 +137,12 @@ public:
 	*/	
 	bool hasUnicode() const;
 	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'evenement est un undo (ctrl + z)
+	*/		
+	bool isUndo() const;
+	
 protected:
 	/*!
 	*	@brief Initialise 
