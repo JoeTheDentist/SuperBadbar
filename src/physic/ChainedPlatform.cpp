@@ -24,7 +24,6 @@ ChainedPlatform::ChainedPlatform(Analyser &analyserLevel):
 	BindablePlatform()
 {
 	std::string file_name = analyserLevel.read_string();
-	std::cout << "file_name : " << file_name << std::endl;
 	int beginx = analyserLevel.read_int();
 	int beginy = analyserLevel.read_int();
 	int endx = analyserLevel.read_int();

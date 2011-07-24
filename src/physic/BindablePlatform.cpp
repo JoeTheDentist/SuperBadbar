@@ -28,7 +28,6 @@ BindablePlatform::BindablePlatform()
 
 BindablePlatform::~BindablePlatform()
 {
-	PRINT_DEBUG(1, "Suppression de moving plateforme");
 	if (m_babar) {
 		m_babar->unbind();
 	}
@@ -101,13 +100,11 @@ void BindablePlatform::update_speed()
 
 void BindablePlatform::bind()
 {
-	PRINT_DEBUG(1, "bind");
 	m_babar = gPlayers->local_player();
 }
 
 void BindablePlatform::unbind()
 {
-	PRINT_DEBUG(1, "unbind");
 	m_babar = NULL;
 	m_can_bind = -3;
 }

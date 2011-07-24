@@ -198,7 +198,6 @@ void Dashboard::draw_dashboard(Camera *camera)
 		rect1.h = m_life_bar->h();
 		m_green_rect->blit_surface(m_life_bar, rect1, rect1);
 		rect1.x = double(m_life_bar->w()) * m_life_bar_possessor->life_bar_status();
-		std::cout << rect1.x << std::endl;
 		m_red_rect->blit_surface(m_life_bar, rect1, rect1);
 		camera->display_picture(m_life_bar, &m_frame_life_bar, true);
 	}

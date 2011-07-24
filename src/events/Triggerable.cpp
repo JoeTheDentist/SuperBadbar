@@ -50,7 +50,6 @@ Triggerable::~Triggerable()
 
 void Triggerable::start()
 {
-	PRINT_DEBUG(1,"START TRIGGERABLE");
 	if (m_nature == "monster") {
 		process_monster();
 	} else if (m_nature == "dialog") {

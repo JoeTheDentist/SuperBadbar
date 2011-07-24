@@ -560,7 +560,6 @@ void Babar::bind(BindablePlatform *platform)
 void Babar::unbind()
 {
 	if (binded()) {
-		std::cout << "unbind" << std::endl;
 		m_pos.x = m_rel_pos.x + m_bind->position().x;
 		m_pos.y = m_rel_pos.y + m_bind->position().y;
 		m_bind->unbind();

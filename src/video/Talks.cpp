@@ -93,7 +93,7 @@ void Talks::load_and_display_text(std::string filename)
 	std::ifstream file((TALKS_R + filename).c_str(), std::ios::in);
 	std::string str;
 	if(!file) {
-		std::cerr << "Erreur lors de l'ouverture du fichier de dialogue " << filename << std::endl;
+		PRINT_DEBUG(1, "Erreur lors de l'ouverture du fichier de dialogue %s", filename.c_str());
 		return;
 	}
 	while (!file.eof()) {
@@ -378,7 +378,6 @@ void Talks::prepare_cell_string(cell_string cell)
 			linelength += spaceletter->fake_w();
 			it++;
 			linelength += (*it).length;
-			std::cerr << linelength << std::endl;
 		}
 		newline.push(new SpecialLetter(' ', TALKS_TEXT_SIZE,
 					TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B));

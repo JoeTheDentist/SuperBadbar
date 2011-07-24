@@ -16,8 +16,9 @@ void InputString::treatEvent(const EventKeyboard &event)
 				m_string.resize(m_string.length() - 1);
 			}
 		} else {
-			if (event.hasUnicode())
+			if (event.hasUnicode()) {
 				m_string += event.unicode();
+			}
 		}
 	}
 }

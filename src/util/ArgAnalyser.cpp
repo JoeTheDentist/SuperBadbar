@@ -45,7 +45,6 @@
 				i = i + 1;
 				m_level_name = argv[i];
 				m_level_specified = true;
-				std::cout << "YEAH " << std::endl;
 			}
 		}
 	}

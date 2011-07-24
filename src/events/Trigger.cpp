@@ -49,8 +49,6 @@ bool Trigger::can_start() const
 		return false;
 	for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it) {
 		if (CollisionsManager::check_collision((*it), gPlayers->local_player()->position())) {
-			std::cout << gPlayers->local_player()->position().y << " " << gPlayers->local_player()->position().h << std::endl;
-			std::cout << (*it).y << " " << (*it).h << std::endl;
 			return true;
 		}
 	}
@@ -59,7 +57,6 @@ bool Trigger::can_start() const
 
 void Trigger::start()
 {
-	PRINT_DEBUG(1, "PULL THE TRIGGER");
 	m_triggered = true;
 	for (std::list<Triggerable *>::iterator it = m_triggerables.begin(); it != m_triggerables.end(); ++it) {
 		(*it)->start();

@@ -35,7 +35,7 @@ bool Analyser::open(std::string file)
 	PRINT_TRACE(3, "Ouverture du fichier %s", file.c_str())
 	m_file = new std::ifstream(file.c_str(), std::ios::in);
 	if (m_file == NULL || !*m_file){
-		PRINT_DEBUG(1, "Impossible d'ouvrir le fichier %s", file.c_str())
+		PRINT_DEBUG(3, "Impossible d'ouvrir le fichier %s", file.c_str())
 		return false;
 	}
 	m_opened = true;
