@@ -13,9 +13,9 @@
 #include <sstream>
 
 MenuActionString::MenuActionString(std::string str, int i, std::string val):
-	MenuAction(str, i),
-	m_currentString(str + " : " + val),
-	m_backupString(str + " : " + val),
+	MenuAction(str + " : ", i),
+	m_currentString(val),
+	m_backupString(val),
 	m_waitingForInput(false)
 {
 	
@@ -23,7 +23,7 @@ MenuActionString::MenuActionString(std::string str, int i, std::string val):
 
 void MenuActionString::update_text()
 {
-	m_text_to_display = m_currentString.getString();
+	m_text_to_display = m_text + m_currentString.getString();
 }
 
 void MenuActionString::update()

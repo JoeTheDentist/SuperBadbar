@@ -125,13 +125,22 @@ public:
 	*/
 	bool backspacePressed() const;
 	
-	bool ctrlPressed() const;
-	
+	/*!
+	*	@brief Accesseur
+	*	@return Le caractere unicode correspondant a l'event (si defini, cf hasUnicode)
+	*/
 	char unicode() const;
 	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'unicode de l'event est affichable
+	*/	
 	bool hasUnicode() const;
 	
 protected:
+	/*!
+	*	@brief Initialise 
+	*/
 	void initMode();
 
 };
