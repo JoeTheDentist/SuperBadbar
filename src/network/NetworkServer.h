@@ -12,12 +12,13 @@
 
 #include "NetworkCommunicator.h"
 
+#define BROADCAST_FREQ 5000
+
 class NetworkServer : public NetworkCommunicator
 {
     Q_OBJECT
 
 public:
-
     /**
      *  @brief Constructeur
      */
@@ -28,9 +29,41 @@ public:
      */
     virtual ~NetworkServer();
 
-protected:
-    QTcpServer * m_server;
+private:
+    /**
+     *  @brief Traite l'objet de demande de variable
+     *  @param object : objet de demande de variable
+     */
+    void treatObject(const NetworkMessageAskFor &object);
+
+
+    /***************************************/
+    /*****************SLOTS*****************/
+    /***************************************/
+private slots:
+    /**
+     *  @brief Signale sur le reseau
+     *
+     *  Coucou ! Je suis là
+     *  (Solo de Korn sur Another brick in the wall)
+     *  Message envoye 4 fois (udp oblige), toutes les BROADCAST_FREQ ms
+     * (timer)
+     */
+    void broadcastAd();
+
+    /**
+     *  @brief Nouvelle connexion
+     */
+    void newClient();
+
+
+    /***************************************/
+    /***************Attributs***************/
+    /***************************************/
+private:
+    QTcpServer *m_server;
     QMap<int, QTcpSocket*> m_clients;
+    QTimer *m_timer;
 
 };
 

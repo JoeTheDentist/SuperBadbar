@@ -1,6 +1,8 @@
 #include "MenuMulti.h"
 #include "../menus/MenuJoin.h"
 
+/* TEMP */ #include "../network/NetworkServer.h"
+
 MenuMulti::MenuMulti(Menu *parent) :
         Menu(parent)
 {
@@ -21,6 +23,9 @@ void MenuMulti::treat_choice(int choice)
 		set_son(new MenuJoin(this));
 		break;
 	case 2: // host
+            {
+                NetworkServer *serv = new NetworkServer();
+            }
 		break;
 	case 3: // return
 		set_leave_menu_true();

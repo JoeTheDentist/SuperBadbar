@@ -13,6 +13,7 @@
 #include <string>
 
 #include "NetworkCommunicator.h"
+#include "NetworkEntity.h"
 
 enum NetworkState {
     NetState_HOST, NetState_CLIENT, NetState_NONE
@@ -196,16 +197,23 @@ public:
      *  @brief Info de la map choisie
      *  @param mapName : nom de la map chemin depuis levels
      *
+     *  TODO changer d'endroit
      *  Les champs sur le nombre de joueur ne sont pas remplis
      */
     MapInfo mapInfo(std::string mapName);
+
+    /**
+     *  @brief Retourne l'adresse IP
+     *  @return adresse IP
+     */
+    std::string getIP();
 
 private:
     /**
      *  @brief Mutateur
      *  @param Nouvelle valeur de l'id
      */
-    void SetId(int id);
+    void setId(int id);
 
     /***************************************/
     /**************Attributs****************/
@@ -216,6 +224,7 @@ private :
     NetworkStep m_netStep;          /* */
     int m_idLocal;                  /* identifiant sur le reseau */
     NetworkCommunicator *m_netCom;  /* partie communicante */
+    QMap<int, NetworkEntity*> m_entities;
 
     static bool Multi;              /* si le jeu se fait en solo ou multi */
 };

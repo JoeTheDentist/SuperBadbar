@@ -6,12 +6,15 @@
 NetworkCommunicator::NetworkCommunicator()
 {
     m_msgSize = 0;
-    //connect(m_udpReceivingSocket, SIGNAL(readyRead()), this, SLOT(receiveUdpObject()));
+    m_udpReceivingSocket = new QUdpSocket();
+    m_udpSendingSocket = new QUdpSocket();
+    connect(m_udpReceivingSocket, SIGNAL(readyRead()), this, SLOT(receivingUdpData()));
 }
 
 NetworkCommunicator::~NetworkCommunicator()
 {
-
+    delete m_udpReceivingSocket;
+    delete m_udpSendingSocket;
 }
 
 /***************************************/
@@ -57,28 +60,33 @@ void NetworkCommunicator::treatObject(const QVariant &object)
         NetworkMessageResponse msg = object.value<NetworkMessageResponse>();
         treatObject(msg);
     } else {
-        PRINT_DEBUG(1, "Type non trouve");
+        PRINT_DEBUG(1, "Type non trouve : code Gloups est une chique !");
     }
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageError &object)
 {
-
+    QString msg = QString("Erreur reseau")+object.errorMsg;
+    PRINT_DEBUG(1, msg.toStdString().c_str());
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageAd &object)
 {
-
+    PRINT_DEBUG(1, "Erreur objet d'ad traite par un serveur");
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageAskFor &object)
 {
-
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageResponse &object)
 {
-
+    int type = QMetaType::type(object.respVar.typeName());
+    if ( type == qMetaTypeId<int>() ) {
+        // TODO
+    } else {
+        PRINT_DEBUG(1, "Type non trouve : code Crapatchou !");
+    }
 }
 
 
@@ -86,7 +94,7 @@ void NetworkCommunicator::treatObject(const NetworkMessageResponse &object)
 /******Envoie/reception d'objets********/
 /***************************************/
 
-void NetworkCommunicator::sendObject(const QVariant &object, QTcpSocket &socket)
+void NetworkCommunicator::sendObject(const QVariant &object, QTcpSocket *socket)
 {
     QByteArray paquet;
     QDataStream out(&paquet, QIODevice::WriteOnly);
@@ -96,10 +104,10 @@ void NetworkCommunicator::sendObject(const QVariant &object, QTcpSocket &socket)
     out.device()->seek(0);
     out << (quint16) (paquet.size() - sizeof(quint16));
 
-    socket.write(paquet);
+    socket->write(paquet);
 }
 
-void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket &socket,
+void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket *socket,
                                      const QHostAddress &address)
 {
     QByteArray paquet;
@@ -107,7 +115,7 @@ void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket &socket,
 
     out << object;
 
-    socket.writeDatagram(paquet, address, /* TODO */ (quint16)66666);
+    socket->writeDatagram(paquet, address, /* TODO */ (quint16)66666);
 }
 
 void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)

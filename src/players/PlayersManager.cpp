@@ -6,7 +6,7 @@ PlayersManager::PlayersManager()
 {
     m_players = new std::list<Player*>();
     m_local_player = NULL;
-    m_name = "Player";
+    m_name = "Peanut&Co Player";
 }
 
 PlayersManager::~PlayersManager()
@@ -56,4 +56,9 @@ Babar *PlayersManager::closer_babar(Rect pos)
 //~ 		}
 //~ 	}
 	return best_babar;
+}
+
+std::string PlayersManager::playerName()
+{
+    return m_name;
 }

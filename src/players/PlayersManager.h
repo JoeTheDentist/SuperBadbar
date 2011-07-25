@@ -12,59 +12,65 @@ class Camera;
  *  @brief Classe organisant les differents joueurs
  */
 class PlayersManager {
-    private :
-        std::list<Player*> * m_players;
-        Player * m_local_player;
-        std::string m_name;
+private :
+    std::list<Player*> * m_players;
+    Player * m_local_player;
+    std::string m_name;
 
-    public :
-        static int last_peanuts;
-        static int last_lifes;
+public :
+    static int last_peanuts;
+    static int last_lifes;
 
-        /**
-         *  @brief Constructeur
-         */
-        PlayersManager();
+    /**
+     *  @brief Constructeur
+     */
+    PlayersManager();
 
-        /**
-         *  @brief Destructeur
-         */
-        ~PlayersManager();
+    /**
+     *  @brief Destructeur
+     */
+    ~PlayersManager();
 
-        /**
-         *  @brief Initialisation du manager suivant des regles
-         *  @param analyser : analyseur ouvert sur le fichier .lvl correstpondant
-         *  TODO : Si on veut des modes de jeux, il faudrait changer ici.
-         *  TODO : Par exemple on pourrait faire un joueur allie avec les
-         *  TODO : monstres contre les autres etc etc...
-         *  TODO : On pourra mettre les regles dans un fichier xml...
-         */
-        void init_players_manager(Analyser * analyser);
+    /**
+     *  @brief Initialisation du manager suivant des regles
+     *  @param analyser : analyseur ouvert sur le fichier .lvl correstpondant
+     *  TODO : Si on veut des modes de jeux, il faudrait changer ici.
+     *  TODO : Par exemple on pourrait faire un joueur allie avec les
+     *  TODO : monstres contre les autres etc etc...
+     *  TODO : On pourra mettre les regles dans un fichier xml...
+     */
+    void init_players_manager(Analyser * analyser);
 
-        /**
-         *  @brief Mise a jour des joueurs
-         *  Mise a jour des positions, vitesses et etats !
-         *  C'est ici que la partie reseau va avoir un point d'acces
-         */
-        void update();
+    /**
+     *  @brief Mise a jour des joueurs
+     *  Mise a jour des positions, vitesses et etats !
+     *  C'est ici que la partie reseau va avoir un point d'acces
+     */
+    void update();
 
-        /**
-         *  @brief Joueur client
-         */
-        Babar * local_player();
+    /**
+     *  @brief Joueur client
+     */
+    Babar * local_player();
 
-        /**
-         * @brief Nombre de joueurs
-         */
-        int nb_players();
+    /**
+     * @brief Nombre de joueurs
+     */
+    int nb_players();
 
-		/**
-		 *	@brief Cherche le joueur le plus proche d'une position (aggro!)
-		 *	@param pos La position
-		 *	@return Le babar de distance minimale avec la position
-		 *	@todo Pour l'instant renvoie local_player
-		 */
-		Babar *closer_babar(Rect pos);
+    /**
+     *	@brief Cherche le joueur le plus proche d'une position (aggro!)
+     *	@param pos La position
+     *	@return Le babar de distance minimale avec la position
+     *	@todo Pour l'instant renvoie local_player
+     */
+    Babar *closer_babar(Rect pos);
+
+    /**
+     *  @brief Accesseur
+     *  @return nom du joueur
+     */
+    std::string playerName();
 };
 
 #endif // PLAYERS_MANAGER_H_INCLUDED

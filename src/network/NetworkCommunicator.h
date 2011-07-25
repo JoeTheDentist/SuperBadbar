@@ -45,7 +45,6 @@ public:
     /*****************SLOTS*****************/
     /***************************************/
 protected slots:
-
     /**
      *  @brief Traite en fonction de l'objet reçu (UDP)
      */
@@ -86,18 +85,14 @@ protected:
     /**
      *  @brief Traite l'objet de demande de variable
      *  @param object : objet de demande de variable
-     *
-     *  PRINT_DEBUG si non redef (seul le serveur peut traiter)
      */
     virtual void treatObject(const NetworkMessageAskFor &object);
 
     /**
      *  @brief Traite l'objet de reponse
      *  @param object : objet de reponse
-     *
-     *  PRINT_DEBUG si non redef (seul les clients peuvent traiter)
      */
-    virtual void treatObject(const NetworkMessageResponse &object);
+    void treatObject(const NetworkMessageResponse &object);
 
 
     /***************************************/
@@ -113,7 +108,7 @@ protected:
      *  de l'objet et du type de communicator
      *  (client ou serveur)
      */
-    virtual void sendObject(const QVariant &object, QTcpSocket &socket);
+    virtual void sendObject(const QVariant &object, QTcpSocket *socket);
 
     /**
      *  @brief Envoie un objet sur la socket (udp)
@@ -125,7 +120,7 @@ protected:
      *  de l'objet et du type de communicator
      *  (client ou serveur)
      */
-    virtual void sendObject(const QVariant &object, QUdpSocket &socket,
+    virtual void sendObject(const QVariant &object, QUdpSocket *socket,
                             const QHostAddress &address);
 
     /**
