@@ -67,7 +67,7 @@ void NetworkCommunicator::treatObject(const QVariant &object)
 void NetworkCommunicator::treatObject(const NetworkMessageError &object)
 {
     QString msg = QString("Erreur reseau")+object.errorMsg;
-    PRINT_DEBUG(1, msg.toStdString().c_str());
+    PRINT_DEBUG(1, "%s", (msg.toStdString()).c_str());
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageAd &object)

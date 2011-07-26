@@ -82,5 +82,7 @@ protected:
 };
 
 Q_DECLARE_METATYPE(NetworkMessageAd);
+QDataStream &operator << (QDataStream &out, const NetworkMessageAd &msg);
+QDataStream &operator >> (QDataStream &in, NetworkMessageAd &msg);
 
 #endif // NETWORKMESSAGEAD_H

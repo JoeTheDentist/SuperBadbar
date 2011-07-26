@@ -3,10 +3,12 @@
 
 NetworkServer::NetworkServer()
 {
+    // TODO au bon endoit
+    NetworkTypes::initNetTypes();
+
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(broadcastAd()));
     m_timer->start(BROADCAST_FREQ);
-
 }
 
 NetworkServer::~NetworkServer()
@@ -21,7 +23,6 @@ void NetworkServer::treatObject(const NetworkMessageAskFor &object)
 
 void NetworkServer::broadcastAd()
 {
-    qDebug() << "test";
     NetworkMessageAd msg(QString("Flute a qui lira !"));
     QVariant v;
     v.setValue(msg);

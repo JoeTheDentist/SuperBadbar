@@ -21,8 +21,6 @@
     #undef main
 #endif
 
-/* TEMP */ #include <QtCore>
-
 int main(int argc, char *argv[])
 {
         PRINT_TRACE(1,"Lancement du jeu");
