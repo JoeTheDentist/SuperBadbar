@@ -69,7 +69,7 @@ public:
 	*/
 	static Texture *SDLSurfaceToTexture(SDL_Surface *surface);
 
-	Texture *loadUniformSurface(int width, int height, int r, int g, int b);
+	Texture *loadUniformSurface(int width, int height, int r, int g, int b, int alpha);
 	Texture *loadFrameSurface(int width, int height, int r, int g, int b);
 
 };

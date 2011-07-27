@@ -22,7 +22,7 @@ SurfaceUniform::SurfaceUniform(int width, int height, int r, int g, int b, int a
 	#ifndef _OPENGL_ACTIVE_
 	setSurface(m_pictures_container->loadSurfaceUniform(width, height, r, g, b, alpha));
 	#else
-	setTexture(m_texturesManager->loadUniformSurface(width, height, r, g, b));
+	setTexture(m_texturesManager->loadUniformSurface(width, height, r, g, b, alpha));
 	#endif
 	set_alpha(alpha);
 }

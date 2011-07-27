@@ -129,13 +129,45 @@ Texture *TexturesManager::SDLSurfaceToTexture(SDL_Surface *surface)
 	}
 }
 
-Texture *TexturesManager::loadUniformSurface(int width, int height, int r, int g, int b)
+Texture *TexturesManager::loadUniformSurface(int width, int height, int r, int g, int b, int alpha)
 {
-	SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, 0);
-    SDL_FillRect(surface,NULL,SDL_MapRGB(gGraphics->get_camera()->sdl_screen()->format,r,g,b));
-	Texture *res = SDLSurfaceToTexture(surface);
-	SDL_FreeSurface(surface);
-	return res;
+
+	GLuint textName;
+	glClearColor (0.0, 0.0, 0.0, 0.0);
+	glShadeModel(GL_FLAT);
+	glEnable(GL_DEPTH_TEST);
+
+	GLubyte **pic = new GLubyte*[width * height];
+	for (int i = 0; i < width * height; ++i) {
+		pic[i] = new GLubyte[4];
+		pic[i][0] = 255;
+		pic[i][1] = 255;
+		pic[i][2] = 255;
+		pic[i][3] = 255;
+	}
+	
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	glGenTextures(1, &textName);
+	glBindTexture(GL_TEXTURE_2D, textName);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
+					GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 			
+					GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, 
+					height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 
+					pic);
+	glDisable(GL_DEPTH_TEST);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+	return new Texture(textName, width, height);
+//~ 	SDL_Surface *surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, 0);
+//~     SDL_FillRect(surface,NULL,SDL_MapRGB(gGraphics->get_camera()->sdl_screen()->format,r,g,b));
+//~ 	Texture *res = SDLSurfaceToTexture(surface);
+//~ 	SDL_FreeSurface(surface);
+//~ 	return res;
 }
 
 Texture *TexturesManager::loadFrameSurface(int width, int height, int r, int g, int b)

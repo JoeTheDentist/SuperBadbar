@@ -11,7 +11,7 @@
 #define NETWORKSERVER_H
 
 #include "NetworkCommunicator.h"
-#include "LoopThread.h"
+//~ #include "LoopThread.h"
 
 #define BROADCAST_FREQ 5000
 
