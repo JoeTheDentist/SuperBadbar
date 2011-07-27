@@ -1,6 +1,7 @@
 #include "InputString.h"
-#include "../control/EventKeyboard.h"
-#include "../util/debug.h"
+
+#include <control/EventKeyboard.h>
+#include <util/debug.h>
 
 InputString::InputString(std::string str):
 	m_string(str),

@@ -9,6 +9,7 @@
 
 #include "MenuActionString.h"
 #include "../control/Keyboard.h"
+#include <control/EventKeyboard.h>
 #include "../util/globals.h"
 #include <sstream>
 

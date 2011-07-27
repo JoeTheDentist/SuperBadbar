@@ -1,8 +1,9 @@
 #include "EventKeyboard.h"
-#include "../control/SdlKeyConverter.h"
-#include "../control/KeyboardConfig.h"
-#include "../util/utils.h"
-#include "../util/globals.h"
+
+#include <control/SdlKeyConverter.h>
+#include <control/KeyboardConfig.h>
+#include <util/utils.h>
+#include <util/globals.h>
 
 /************************************************/
 /*				PUBLIC METHODS				*/

@@ -11,9 +11,10 @@
 #ifndef _KEYBOARD_CONFIG_H_
 #define _KEYBOARD_CONFIG_H_
 
-#include "../util/utils.h"
 #include <string>
 #include "../../lib/SDL/include/SDL/SDL.h"
+
+#include <util/utils.h>
 
 class EventKeyboard;
 

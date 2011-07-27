@@ -9,6 +9,7 @@
 
 #include "MenuActionInteger.h"
 #include <sstream>
+#include <control/EventKeyboard.h>
 
 MenuActionInteger::MenuActionInteger(std::string str, int i, int val, int valmin, int valmax, int step):
 	MenuAction(str, i),

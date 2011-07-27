@@ -12,13 +12,13 @@
 #define _KEYBOARD_
 
 
-#include <iostream>
 #include <string>
 #include <queue>
-#include "../util/utils.h"
-#include "../control/EventKeyboard.h"
+
+#include <util/utils.h>
 
 class Analyser;
+class EventKeyboard;
 
 /**
  * 	@class Keyboard

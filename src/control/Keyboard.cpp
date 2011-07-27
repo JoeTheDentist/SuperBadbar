@@ -6,17 +6,15 @@
  * 	@date decembre 2010
  *
  */
-#include <iostream>
 
+#include <fstream>	
 #include "../../lib/SDL/include/SDL/SDL.h"
 
-#include <stdint.h>
-
 #include "Keyboard.h"
-#include "../control/SdlKeyConverter.h"
-#include "../control/KeyboardConfig.h"
-#include "../util/globals.h"
-#include <fstream>	
+#include <control/EventKeyboard.h>
+#include <control/KeyboardConfig.h>
+#include <control/SdlKeyConverter.h>
+#include <util/globals.h>
 
 
 Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)

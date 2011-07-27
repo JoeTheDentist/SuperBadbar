@@ -8,10 +8,13 @@
  */
  
  #include "KeyboardConfig.h"
+ 
 #include <fstream>	
 #include <iostream>	
-#include "../control/SdlKeyConverter.h"
-#include "../control/EventKeyboard.h"
+
+#include <control/EventKeyboard.h>
+#include <control/SdlKeyConverter.h>
+
 
 KeyboardConfig::KeyboardConfig()
 {
