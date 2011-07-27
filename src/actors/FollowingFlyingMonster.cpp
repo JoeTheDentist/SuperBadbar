@@ -6,14 +6,17 @@
  * 	@date decembre 2010
  *
  */
+
+
+#include "FollowingFlyingMonster.h"
+
 #include <iostream>
 #include <stdint.h>
 
-#include "FollowingFlyingMonster.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "Babar.h"
-#include "../players/PlayersManager.h"
+#include <actors/Babar.h>
+#include <players/PlayersManager.h>
+#include <util/debug.h>
+#include <util/Analyser.h>
 
 FollowingFlyingMonster::FollowingFlyingMonster(std::string name, int posx, int posy):
 	FlyingMonster(name, posx, posy)

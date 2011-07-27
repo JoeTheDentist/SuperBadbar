@@ -10,7 +10,7 @@
 #ifndef _FlyingMonster_
 #define _FlyingMonster_
 
-#include "../actors/Monster.h"
+#include <actors/Monster.h>
 
 class Analyser;
 

@@ -1,33 +1,31 @@
+
+
 #include "GameInitializer.h"
+
 #include <time.h>
-#include "../util/debug.h"
-#include "../control/Keyboard.h"
-#include "../control/KeyboardConfig.h"
+
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include "../util/Constants.h"
 
-#include "../util/globals.h"
+#include <control/Keyboard.h>
+#include <control/KeyboardConfig.h>
+#include <util/globals.h>
+#include <util/utils.h>
 
 bool GameInitializer::init_game()
 {
 	// chargement des librairies
-	#ifdef WIN32
-//        freopen("CON", "w", stdout);
-//        freopen("CON", "r", stdin);
-//        freopen("CON", "w", stderr);
-	#endif
 	srand(time(NULL));
 	Constants::init();
 	PRINT_TRACE(1, "Initialisation de SDL")
 	if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-                PRINT_DEBUG(1, "Erreur d'initialisation de la SDL");
+                PRINT_DEBUG(1, "SDL initialization failed");
 		return false;
 	}
 	SDL_EnableUNICODE( 1 );
 	PRINT_TRACE(1, "Initialisation de TTF")
 	if (TTF_Init() == -1) {
-		PRINT_DEBUG(1, "Erreur d'initialisation de TTF");
+		PRINT_DEBUG(1, "TTF SDL initialization failed");
 		return false;
 	}
 	// chargement des variables globales a  l'ensemble du jeu
@@ -45,9 +43,9 @@ bool GameInitializer::close_game()
 	delete gGraphics;
 	delete gKeyboard;
 	delete gKeyboardConfig;
-	PRINT_TRACE(1, "Fermeture de TTF")
+	PRINT_TRACE(1, "Closing de TTF")
 	TTF_Quit();
-	PRINT_TRACE(1, "Fermeture de SDL")
+	PRINT_TRACE(1, "Closing de SDL")
 	SDL_Quit();
 	return true;
 }

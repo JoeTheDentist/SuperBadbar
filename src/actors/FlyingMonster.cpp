@@ -6,13 +6,11 @@
  * 	@date decembre 2010
  *
  */
-#include <iostream>
-#include <stdint.h>
 
 #include "FlyingMonster.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "Babar.h"
+
+#include <actors/Babar.h>
+#include <util/utils.h>
 
 
 FlyingMonster::FlyingMonster(std::string name, int posx, int posy):

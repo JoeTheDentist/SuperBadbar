@@ -11,13 +11,13 @@
 #define _BABAR_
 
 #include <list>
-#include "../sound/Sonorisable.h"
-#include "../util/Analyser.h"
-#include "../video/AnimPic.h"
-#include "../video/AnimTable.h"
-#include "../items/WeaponsArmory.h"
-#include "Actor.h"
-#include "../actors/ProjectilesManager.h"
+#include <sound/Sonorisable.h>
+#include <util/Analyser.h>
+#include <video/AnimPic.h>
+#include <video/AnimTable.h>
+#include <items/WeaponsArmory.h>
+#include <actors/Actor.h>
+#include <actors/ProjectilesManager.h>
 
 
 #define BABAR_SPEED 15
@@ -32,6 +32,7 @@ class Analyser;
 class Gun;
 class WeaponsArmory;
 class BindablePlatform;
+class Rect;
 
 const int c_babar_hp_max = 5;
 const int c_babar_lifes = 3;
@@ -43,7 +44,7 @@ const int c_babar_lifes = 3;
  *
  *	Les touches enfoncées par l'utilisateur sont récupérées par
  *	keyboard, dont l'état est utilisé par les méthodes de tir, de saut,
- *	de mise �  jour d'état et de vitesse
+ *	de mise a jour d'état et de vitesse
  *
  *	#############################
  *	## 	Gestion de la position ##
@@ -75,14 +76,14 @@ class Babar: public Actor, public Sonorisable {
         int m_hp;                        	/* nombre de points de vies */
 		int m_lifes;						/* nombre de vies */
         int m_invincible;                   /* durée d'invicibilité après avoir été touché */
-        int m_crouch_time;                  /* durée depuis laquelle le joueur demande �  être accroupis */
+        int m_crouch_time;                  /* durée depuis laquelle le joueur demande a être accroupis */
         bool m_ready_double_jump;           /* booléen autorisant le double saut */
         bool m_ready_jump;                  /* booleen autorisant le saut */
         bool m_jump;						/* indique que le joueur est en cours de saut (sa vitesse augment) */
         bool m_double_jump;		            /* vaut vrai si Babar est en cours de double saut */
 
         WeaponsArmory m_weapons_armory;
-        BindablePlatform *m_bind;			/* plateforme �  laquelle est lié Babar (s'il y en a une) */
+        BindablePlatform *m_bind;			/* plateforme a laquelle est lié Babar (s'il y en a une) */
         Rect m_rel_pos;					/* position dans le référentiel de la plateforme m_bind (si m_bind != NULL)*/
         bool m_fire;                        /* booléen indiquant si Babar est en train de tirer */
         int m_peanuts;
@@ -131,7 +132,7 @@ class Babar: public Actor, public Sonorisable {
         virtual void move(int x, int y);
 
         /**
-         *	@brief Met �  jour la position du sprite
+         *	@brief Met a jour la position du sprite
          *	@param static_data Données du jeu
          *	@param CollisionsManager Gestionnaire de collisions
         */
@@ -139,12 +140,12 @@ class Babar: public Actor, public Sonorisable {
 
 
         /**
-         * 	@brief Met �  jour la vitesse de Babar
+         * 	@brief Met a jour la vitesse de Babar
          */
         void update_speed();
 
         /**
-         * 	@brief Met �  jour l'état et la direction de Babar
+         * 	@brief Met a jour l'état et la direction de Babar
          *	@param static_data Données du niveau
          *	@param CollisionsManager Gestionnaire de collision
          *	@param ProjectilesManager Gestionnaire des projectiles
@@ -153,7 +154,7 @@ class Babar: public Actor, public Sonorisable {
         void update_state();
 
         /**
-         * 	@brief Mise �  jour de la direction de Babar en fonction des touches enfoncées
+         * 	@brief Mise a jour de la direction de Babar en fonction des touches enfoncées
          */
         void update_direction();
 
@@ -162,7 +163,7 @@ class Babar: public Actor, public Sonorisable {
          *	@return Vrai si Babar peut tirer
          *
          *	On considère que "Babar peut tirer" si la touche
-         *	tirer est enfoncée et s'il est autorisé �  tirer
+         *	tirer est enfoncée et s'il est autorisé a tirer
          */
         bool can_fire();
 
@@ -194,7 +195,7 @@ class Babar: public Actor, public Sonorisable {
          *	@return Vrai si Babar peut sauter
          *
          *	On considère que "Babar peut sauter" si la touche
-         *	sauter est enfoncée et s'il est autorisé �  sauter
+         *	sauter est enfoncée et s'il est autorisé a sauter
          */
         bool can_jump() const;
 
@@ -208,7 +209,7 @@ class Babar: public Actor, public Sonorisable {
          *	@return Vrai si Babar peut faire un double saut
          *
          *	On considère que "Babar peut faire un double saut" si la touche
-         *	sauter est enfoncée et s'il est autorisé �  faire un double saut
+         *	sauter est enfoncée et s'il est autorisé a faire un double saut
          */
         bool can_double_jump() const;
 
@@ -230,7 +231,7 @@ class Babar: public Actor, public Sonorisable {
         void go_down();
 
         /**
-         * 	@brief Donne une nouvelle arme �  Babar
+         * 	@brief Donne une nouvelle arme a Babar
          *	@param weapon La nouvelle arme
          */
         void add_weapon(weapon_type weapon);
@@ -266,20 +267,20 @@ class Babar: public Actor, public Sonorisable {
         weapon_type type_of_weapon();
 
         /**
-         * 	@brief Mutateur: fait perdre des vies �  Babar et le rend invincible qq secondes
-         *	@param damages Le nombre de points de vies �  faire perdre
+         * 	@brief Mutateur: fait perdre des vies a Babar et le rend invincible qq secondes
+         *	@param damages Le nombre de points de vies a faire perdre
          */
         void damage(int damages);
 
         /**
          * 	@brief Mutateur: fait gagner des vies a Babar
-         *	@param lifes Le nombre de vies �  faire gagner
+         *	@param lifes Le nombre de vies a faire gagner
          */
         void lifesup(int lifes);
 
         /**
          * 	@brief Mutateur: fait gagner des points de vies a Babar
-         *	@param HP Le nombre de points de vies �  faire gagner
+         *	@param HP Le nombre de points de vies a faire gagner
          */
         void HPup(int HP);
 
@@ -302,13 +303,13 @@ class Babar: public Actor, public Sonorisable {
 
         /**
          * 	@brief Accesseur
-         *	@return Return vrai si babar est lié �  une plateforme
+         *	@return Return vrai si babar est lié a une plateforme
          */
         bool binded() const;
 
         /**
-         * 	@brief Lie babar �  la plateforme
-         *	@param platform plateforme �  lier
+         * 	@brief Lie babar a la plateforme
+         *	@param platform plateforme a lier
          */
         void bind(BindablePlatform *platform);
 
@@ -352,7 +353,7 @@ class Babar: public Actor, public Sonorisable {
         bool check_unbind();
 
         /**
-         *  @brief Remet babar �  sa position de dernière collision
+         *  @brief Remet babar a sa position de dernière collision
          */
         void set_last_pos();
 
@@ -360,13 +361,13 @@ class Babar: public Actor, public Sonorisable {
          * 	@brief Mutateur
          *	@param h La nouvelle hauteur de babar
          */
-        virtual void set_h(int h) { m_pos.h = h; m_rel_pos.h = h;}
+        virtual void set_h(int h);
 
         /**
          * 	@brief Mutateur
          *	@param h La nouvelle hauteur de babar
          */
-        virtual void set_w(int w) { m_pos.w = w; m_rel_pos.w = w;}
+        virtual void set_w(int w);
 
         /**
          *  @brief Mutateur

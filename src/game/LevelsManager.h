@@ -14,9 +14,9 @@
 class Game;
 
 /**
- *  TOCOMMENT
  *  @class LevelsManager
  *  @brief
+ *	@todo comment
  */
 class LevelsManager {
 private:

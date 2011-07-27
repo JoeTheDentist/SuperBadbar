@@ -4,7 +4,7 @@
 #include "AnimatedSetsManager.h"
 #include "AnimatedNophysicSet.h"
 #include "AnimatedPhysicSet.h"
-
+#include <util/utils.h>
 
 AnimatedSetManager::AnimatedSetManager()
 {

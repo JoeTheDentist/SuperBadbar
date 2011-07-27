@@ -1,5 +1,7 @@
+
 #include "ElmarTile.h"
-#include "../sprites/SpritesManager.h"
+
+#include <sprites/SpritesManager.h>
 
 ElmarTile::ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {

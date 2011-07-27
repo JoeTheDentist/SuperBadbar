@@ -15,6 +15,7 @@
 #define SPAWN_TIME 20   /* temps avant respawn, en nombre de cycles */
 
 #include <stdint.h>
+#include <string>
 
 class StaticData;
 class Game;
@@ -59,7 +60,7 @@ public:
 	/**
 	 * 	@brief Initialisation des données
 	 * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
-	 * 	@param camera La camera qui servira �  afficher les images
+	 * 	@param camera La camera qui servira a  afficher les images
 	 * 	@param StaticData Données du niveau
 	 * 	@param keyboard Gestionnaire du clavier
 	 *	@param PicturesContainer Le gestionnaire d'images
@@ -72,13 +73,13 @@ public:
 	void update();
 
 	/**
-	 * 	@brief Mise �  jour des positions des éléments du jeu
-	 *	@todo �  déplacer
+	 * 	@brief Mise a  jour des positions des éléments du jeu
+	 *	@todo a  déplacer
 	*/
 	void update_pos();
 
 	/**
-	 * 	@brief Mise �  jour des vitesses des éléments du jeu
+	 * 	@brief Mise a  jour des vitesses des éléments du jeu
 	*/
 	void update_speed();
 
@@ -99,7 +100,7 @@ public:
 	void update_babar_projectiles();
 
 	/**
-	 *  @brief Regarde si Babar doit perdre des vies �  cause du décor.
+	 *  @brief Regarde si Babar doit perdre des vies a cause du decor.
 	 */
 	void update_babar_damage();
 
@@ -112,7 +113,7 @@ public:
  	/**
 	 * 	@brief Affichage des projectiles amis
 	 *	@param camera La camera d'affichage
-	 *	@todo �  déplacer
+	 *	@todo a déplacer
 	*/
 	void display_projectiles_friend(Camera *camera);
 
@@ -123,7 +124,7 @@ public:
 	void display_events(Camera *camera);
 
 	/**
-	 * 	@brief Joue les sons �  jouer ce cycle
+	 * 	@brief Joue les sons a jouer ce cycle
 	 *	@param SoundEngine Gestionnaire de son
 	 *
 	 * Gère pour l'instant les sons de babar et des monstres

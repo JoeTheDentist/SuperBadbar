@@ -12,16 +12,16 @@
 #include <stdint.h>
 
 #include "Babar.h"
-#include "../util/debug.h"
-#include "../game/Game.h"
-#include "../physic/CollisionsManager.h"
-#include "../physic/BindablePlatform.h"
-#include "../control/Keyboard.h"
-#include "../game/StaticData.h"
-#include "../actors/ProjectilesManager.h"
-#include "../video/Surface.h"
-#include "../util/globals.h"
-#include "../sprites/SpritesManager.h"
+#include <util/utils.h>
+#include <game/Game.h>
+#include <physic/CollisionsManager.h>
+#include <physic/BindablePlatform.h>
+#include <control/Keyboard.h>
+#include <game/StaticData.h>
+#include <actors/ProjectilesManager.h>
+#include <video/Surface.h>
+#include <util/globals.h>
+#include <sprites/SpritesManager.h>
 
 class SpritesManager;
 
@@ -642,6 +642,18 @@ void Babar::set_last_pos()
     m_pos = m_last_pos;
     m_speed.x = 0;
     m_speed.y = 0;
+}
+
+void Babar::set_h(int h) 
+{ 
+	m_pos.h = h;
+	m_rel_pos.h = h;
+}
+
+void Babar::set_w(int w) 
+{ 
+	m_pos.w = w;
+	m_rel_pos.w = w;
 }
 
 void Babar::set_peanuts(int pean)

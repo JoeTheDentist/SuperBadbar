@@ -6,16 +6,18 @@
  * 	@date decembre 2010
  *
  */
+
+#include "FollowingWalkingMonster.h"
+
 #include <iostream>
 #include <stdint.h>
 
-#include "FollowingWalkingMonster.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "../items/Gun.h"
-#include "../items/MonsterBasicWeapon.h"
-#include "Babar.h"
-#include "../AI/AI.h"
+#include <actors/Babar.h>
+#include <AI/AI.h>
+#include <items/Gun.h>
+#include <items/MonsterBasicWeapon.h>
+#include <util/utils.h>
+
 
 
 FollowingWalkingMonster::FollowingWalkingMonster(std::string name, int posx, int posy):

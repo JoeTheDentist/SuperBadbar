@@ -1,6 +1,7 @@
 
 #include "Explosion.h"
-#include "../sprites/SpritesManager.h"
+
+#include <sprites/SpritesManager.h>
 
 Explosion::Explosion(Rect pos, direction h, unsigned int damage)
 {

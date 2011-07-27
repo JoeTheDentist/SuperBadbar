@@ -1,19 +1,21 @@
 
+
+#include "StaticData.h"
+
 #include <iostream>
 #include <stdint.h>
 #include <string>
 
-#include "StaticData.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "../game/Game.h"
-#include "../actors/Actor.h"
-#include "../actors/Monster.h"
-#include "../video/Camera.h"
-#include "../video/Statics.h"
-#include "../video/PicturesContainer.h"
-#include "../video/Surface.h"
-#include "../util/globals.h"
+#include <actors/Actor.h>
+#include <actors/Monster.h>
+#include <game/Game.h>
+#include <util/globals.h>
+#include <util/utils.h>
+#include <video/Camera.h>
+#include <video/PicturesContainer.h>
+#include <video/Statics.h>
+#include <video/Surface.h>
+#include <video/Surface.h>
 
 
 StaticData::StaticData() : m_pictures_container(new PicturesContainer())

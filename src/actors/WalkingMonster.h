@@ -7,18 +7,16 @@
  *
  */
 
-#ifndef _WalkingMonsterS_
-#define _WalkingMonsterS_
+#ifndef _WALKINGMONSTERS_
+#define _WALKINGMONSTERS_
 
-#include "../actors/Monster.h"
+#include <actors/Monster.h>
 
 class Analyser;
 
-
-/**
+/*!
  * 	@class WalkingMonster
  * 	@brief Monstre qui marche
- *
  */
 class WalkingMonster : public Monster {
 private:

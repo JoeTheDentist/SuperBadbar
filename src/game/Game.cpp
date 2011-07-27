@@ -13,28 +13,25 @@
 **/
 
 
-#include "../sound/Sound.h"
 #include "Game.h"
-#include "../util/debug.h"
-#include "../control/Keyboard.h"
 
-
-#include "../actors/Babar.h"
-#include "../actors/ProjectilesManager.h"
-#include "../video/Camera.h"
-#include "../video/GraphicEngine.h"
-#include "../video/Talks.h"
-#include "../video/TransitionScreen.h"
-#include "../sound/SoundEngine.h"
-#include "../menus/PauseMenu.h"
-#include "../game/GameEngine.h"
-#include "../game/StaticData.h"
-#include "../events/EventsManager.h"
-#include "../sprites/SpritesManager.h"
-#include "../events/Stats.h"
-#include "../sets/AnimatedSetsManager.h"
-
-
+#include <actors/Babar.h>
+#include <actors/ProjectilesManager.h>
+#include <control/Keyboard.h>
+#include <events/EventsManager.h>
+#include <events/Stats.h>
+#include <game/GameEngine.h>
+#include <game/StaticData.h>
+#include <menus/PauseMenu.h>
+#include <sets/AnimatedSetsManager.h>
+#include <sound/Sound.h>
+#include <sound/SoundEngine.h>
+#include <sprites/SpritesManager.h>
+#include <util/debug.h>
+#include <video/Camera.h>
+#include <video/GraphicEngine.h>
+#include <video/Talks.h>
+#include <video/TransitionScreen.h>
 
 
 Game::Game(int level, bool record_on, bool replay_on, std::string output_name, std::string input_name):

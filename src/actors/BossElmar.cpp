@@ -6,18 +6,17 @@
  * 	@date mai 2011
  *
  */
-#include <iostream>
-#include <stdint.h>
+
 #include <cmath>
-#include <stdlib.h>
 
 #include "BossElmar.h"
-#include "../video/Surface.h"
-#include "../actors/Babar.h"
-#include "../items/ElmarMachineGun.h"
-#include "../video/Talks.h"
-#include "../util/globals.h"
-#include "../events/EventsManager.h"
+
+#include <actors/Babar.h>
+#include <events/EventsManager.h>
+#include <items/ElmarMachineGun.h>
+#include <util/globals.h>
+#include <video/Surface.h>
+#include <video/Talks.h>
 
 BossElmar::BossElmar(std::string name, int posx, int posy):
 	Boss(name, posx, posy)

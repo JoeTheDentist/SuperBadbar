@@ -8,16 +8,17 @@
  */
 
 
-#include <iostream>
-#include <stdint.h>
 
 #include "Actor.h"
-#include "../util/debug.h"
-#include "../game/Game.h"
-#include "../util/globals.h"
-#include "../game/StaticData.h"
-#include "../physic/CollisionsManager.h"
-#include "../video/Surface.h"
+
+
+#include <game/Game.h>
+#include <game/StaticData.h>
+#include <physic/CollisionsManager.h>
+#include <util/utils.h>
+#include <util/globals.h>
+#include <video/Surface.h>
+#include <sprites/Sprite.h>
 
 
 /*********************************

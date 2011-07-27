@@ -46,6 +46,8 @@ unix {
 	
 }
 
+INCLUDEPATH += "../"
+
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \
             ./AI/*.cpp \

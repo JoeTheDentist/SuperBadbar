@@ -7,35 +7,34 @@
  *
  */
 
-#include <iostream>
-
-#include <stdint.h>
-#include <string>
 
 #include "GameEngine.h"
-#include "../game/StaticData.h"
-#include "../physic/CollisionsManager.h"
-#include "../sound/SoundEngine.h"
-#include "../control/Keyboard.h"
-#include "../util/debug.h"
-#include "../actors/Actor.h"
-#include "../actors/Babar.h"
-#include "../actors/Monster.h"
-#include "../sound/SoundEngine.h"
-#include "../actors/MonstersManager.h"
-#include "../actors/WalkingMonster.h"
-#include "../actors/Projectile.h"
-#include "../actors/ProjectilesManager.h"
-#include "../util/Analyser.h"
-#include "../video/Camera.h"
-#include "../control/Keyboard.h"
-#include "../video/PicturesContainer.h"
-#include "../events/EventsManager.h"
-#include "../util/globals.h"
-#include "../sets/AnimatedSetsManager.h"
-#include "../sprites/SpritesManager.h"
-#include "../events/Stats.h"
-#include "../players/PlayersManager.h"
+
+#include <iostream>
+#include <stdint.h>
+
+#include <actors/Actor.h>
+#include <actors/Babar.h>
+#include <actors/Monster.h>
+#include <actors/MonstersManager.h>
+#include <actors/Projectile.h>
+#include <actors/ProjectilesManager.h>
+#include <actors/WalkingMonster.h>
+#include <control/Keyboard.h>
+#include <events/EventsManager.h>
+#include <events/Stats.h>
+#include <game/StaticData.h>
+#include <physic/CollisionsManager.h>
+#include <players/PlayersManager.h>
+#include <sets/AnimatedSetsManager.h>
+#include <sound/SoundEngine.h>
+#include <sprites/SpritesManager.h>
+#include <util/utils.h>
+#include <util/globals.h>
+#include <video/Camera.h>
+#include <video/PicturesContainer.h>
+
+
 
 int PlayersManager::last_peanuts = 0;
 int PlayersManager::last_lifes = 3;

@@ -8,8 +8,7 @@
 #define _StaticData_
 
 #include <list>
-#include "../video/Surface.h"
-#include "../util/globals.h"
+#include <string>
 
 class Static;
 class Projectiles;
@@ -22,7 +21,8 @@ class Surface;
 /**
  *  TOCOMMENT
  *  @class StaticData
- *  @brief
+ *  @brief 
+ *	@todo REORGANISER CE BAZAR
  */
 class StaticData {
 

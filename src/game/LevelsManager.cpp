@@ -8,14 +8,15 @@
  */
 
 #include "LevelsManager.h"
-#include "../game/Game.h"
-#include "../util/globals.h"
-#include "../util/debug.h"
-#include "../video/Camera.h"
-#include "../video/Surface.h"
-#include "../video/SurfaceText.h"
-#include "../control/Keyboard.h"
-#include "../video/TransitionScreen.h"
+
+#include <control/Keyboard.h>
+#include <game/Game.h>
+#include <util/debug.h>
+#include <util/globals.h>
+#include <video/Camera.h>
+#include <video/TransitionScreen.h>
+#include <video/Surface.h>
+#include <video/SurfaceText.h>
 
 
 LevelsManager::LevelsManager() :

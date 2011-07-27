@@ -3,7 +3,10 @@
 
 #include "AnimatedSet.h"
 
+#include <list>
+
 class AnimatedSet;
+class Analyser;
 
 /**
  *  @class AnimatedSetManager

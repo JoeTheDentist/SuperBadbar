@@ -11,8 +11,8 @@
 #define _BABAR_BOSS_
 
 
-#include "../actors/Monster.h"
-#include "../video/LifeBarPossessor.h"
+#include <actors/Monster.h>
+#include <video/LifeBarPossessor.h>
 
 /**
  * 	@class Boss
@@ -43,7 +43,7 @@ public:
 	~Boss();
 
 	/**
-	 * 	@brief Met Ã  jour la vitesse du monstre quand il est proche de babar
+	 * 	@brief Met a jour la vitesse du monstre quand il est proche de babar
 	*/
 	virtual void update_speed_ai();
 

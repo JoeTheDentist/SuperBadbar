@@ -10,13 +10,9 @@
 #ifndef _ChargingMonster_
 #define _ChargingMonster_
 
-#include "../actors/Monster.h"
-#include "../actors/WalkingMonster.h"
-#include "../AI/AI.h"
+#include <actors/WalkingMonster.h>
 
 class Analyser;
-class AI;
-
 
 /**
  * 	@class ChargingMonster
@@ -50,12 +46,12 @@ public:
 	~ChargingMonster();
 
 	/**
-	 * 	@brief Mise √  jour de la vitesse du monstre (non ai)
+	 * 	@brief Mise a jour de la vitesse du monstre (non ai)
 	 */
 	void virtual update_speed_simple();
 
 	/**
-	 * 	@brief Met √  jour la vitesse du monstre
+	 * 	@brief Met a jour la vitesse du monstre
 	 *
 	 *	Le monstre avance par d√©faut en direction de Babar
 	 */

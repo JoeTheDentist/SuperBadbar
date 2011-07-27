@@ -1,7 +1,7 @@
 #ifndef _KEYCONFIG_MENU_H
 #define _KEYCONFIG_MENU_H
 
-#include "../menus/Menu.h"
+#include <menus/Menu.h>
 
 #include "../video/Surface.h"
 #include "../menus/ListMenuActions.h"

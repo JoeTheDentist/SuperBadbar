@@ -28,9 +28,8 @@ enum direction {
     LEFT, RIGHT, UP, DOWN, NOPE
 };
 
-#include "../items/Weapon.h"
-#include "../sprites/Sprite.h"
-#include "../video/Displayable.h"
+
+#include <util/Rect.h>
 
 class StaticData;
 class Keyboard;

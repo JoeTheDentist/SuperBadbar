@@ -6,21 +6,23 @@
  * 	@date mai 2011
  *
  */
-#include <iostream>
-#include <stdint.h>
-#include <cmath>
+
 
 #include "ChargingMonster.h"
-#include "../util/debug.h"
-#include "../util/globals.h"
-#include "../video/Camera.h"
-#include "../video/GraphicEngine.h"
-#include "../util/Analyser.h"
-#include "../items/Gun.h"
-#include "../items/MonsterBasicWeapon.h"
-#include "../actors/Babar.h"
-#include "../players/PlayersManager.h"
-#include "../AI/AI.h"
+
+#include <cmath>
+
+#include <actors/Babar.h>
+#include <items/Gun.h>
+#include <items/MonsterBasicWeapon.h>
+#include <players/PlayersManager.h>
+#include <util/globals.h>
+#include <util/utils.h>
+#include <video/Camera.h>
+#include <video/GraphicEngine.h>
+
+
+
 
 
 ChargingMonster::ChargingMonster(std::string name, int posx, int posy):

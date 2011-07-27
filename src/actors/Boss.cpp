@@ -6,9 +6,6 @@
  * 	@date mai 2011
  *
  */
-#include <iostream>
-#include <stdint.h>
-#include <cmath>
 
 #include "Boss.h"
 
