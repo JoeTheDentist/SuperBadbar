@@ -20,24 +20,29 @@
 #include "../util/globals.h"
 
 
-SoundEngine::SoundEngine():
+SoundEngine::SoundEngine()
+#ifdef ACTIVE_FMOD
+:
 	m_music(NULL),
 	m_sounds_volume(99),
 	m_music_volume(99)
+#endif
 {
-
+#ifdef ACTIVE_FMOD
 	PRINT_CONSTR(1, "Construction du SoundEngine")
 	FSOUND_Init(44100, 32, 0);
 //~ 	m_fire = new FSOUND_SAMPLE*[SHOTGUN + 1];
 	FSOUND_SetPan(BABAR_FIRE_CANAL, 5);
 	FSOUND_SetVolume(BABAR_FIRE_CANAL, 5);
-
+#endif
 }
 
 SoundEngine::~SoundEngine()
 {
+#ifdef ACTIVE_FMOD
 	PRINT_CONSTR(1, "Destruction du SoundEngine")
 	FSOUND_Close();
+#endif
 }
 
 void SoundEngine::init_level(std::string level)
@@ -51,22 +56,27 @@ void SoundEngine::init_level(std::string level)
 
 void SoundEngine::load_music(std::string str)
 {
+	#ifdef ACTIVE_FMOD
 	if (m_music) {
 		FSOUND_Stream_Stop (m_music);
 		FSOUND_Stream_Close(m_music);
 		FSOUND_StopSound(MUSIC_CANAL);
 	}
 	m_music = FSOUND_Stream_Open((MUSIC_R + str).c_str(), 0, 0, 0);
+	#endif
 }
 
 void SoundEngine::play_music()
 {
+	#ifdef ACTIVE_FMOD
 	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
+	#endif
 }
 
 void SoundEngine::play_sound(std::string key)
 {
+	#ifdef ACTIVE_FMOD
 	PRINT_TRACE(1, "jeu du son %s", key.c_str())
 	std::map<std::string, FSOUND_SAMPLE*>::iterator it = m_sound_samples.find(key);
 	FSOUND_SAMPLE *to_play = NULL;
@@ -83,7 +93,7 @@ void SoundEngine::play_sound(std::string key)
 	PRINT_TRACE(3, "JEU DU SON %s",key.c_str());
 	int channel = FSOUND_PlaySound(FSOUND_FREE, to_play);
 	FSOUND_SetVolume(channel, m_sounds_volume);
-
+#endif
 }
 
 void SoundEngine::play_sound(Sonorisable *sonorisable)
@@ -96,25 +106,37 @@ void SoundEngine::play_sound(Sonorisable *sonorisable)
 
 void SoundEngine::set_sounds_volume(int v)
 {
+	#ifdef ACTIVE_FMOD
 	m_sounds_volume = v;
 	FSOUND_SetVolume(FSOUND_ALL, (255.0 * (double)m_sounds_volume / 100.0));
 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
-
+	#endif
 }
 
 void SoundEngine::set_music_volume(int v)
 {
+	#ifdef ACTIVE_FMOD
 	m_music_volume = v;
 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
+	#endif
 }
 
 int SoundEngine::get_sounds_volume() const
 {
+	#ifdef ACTIVE_FMOD
 	return m_sounds_volume;
+	#else
+	return 0;
+	#endif
 }
 
 int SoundEngine::get_music_volume() const
 {
+	#ifdef ACTIVE_FMOD
 	return m_music_volume;
+	#else
+	return 0;
+	#endif
 }
+
 

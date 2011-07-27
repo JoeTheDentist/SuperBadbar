@@ -30,11 +30,12 @@ class Sonorisable;
  */
 class SoundEngine {
 private:
+#ifdef ACTIVE_FMOD
 	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
 	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
-
+#endif
 
 public:
 

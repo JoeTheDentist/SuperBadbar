@@ -36,6 +36,7 @@
 #define TRACE 2
 #define TRACE_CONSTR 2 	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
 #define PERF_CYCLES 2
+//~ #define ACTIVE_FMOD /* Si desactive, pas de fmod*/
 
 #ifdef WIN32
 	#define COL_CONSTR

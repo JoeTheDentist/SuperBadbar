@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------
 
-QT      += network
-QT      -= qui
+QT += network
+QT -= qui
 #QT -= core
 
 TARGET = superbabar
