@@ -12,19 +12,18 @@
 
 #include <map>
 #include <string>
-#include <iostream>
 
 #include "../../lib/SDL/include/SDL/SDL.h"
-#include "../video/KeyMapSurfaceText.h"
-#include "../video/KeyMapSurfaceUnif.h"
+#include <video/KeyMapSurfaceText.h>
+#include <video/KeyMapSurfaceUnif.h>
 /**
  * 	@class PicturesContainer
- * 	@brief Charge les images de façon �  optimiser la mémoire
+ * 	@brief Charge les images de façon a optimiser la mémoire
  *
  *	Fournit une méthode load_IMG qui charge une image en fonction
  *	de son chemin, stocke cette image et en renvoie un pointeur.
- *	Si cette image a déj�  été chargé une fois, la méthode renvoie
- *	un pointeur vers l'image déj�  chargée.
+ *	Si cette image a déja été chargé une fois, la méthode renvoie
+ *	un pointeur vers l'image déja chargée.
  *
  *	PicturesContainer utilise un map pour stocker et retrouver
  *	les images en fonction de leur chemin.

@@ -8,11 +8,13 @@
  */
 
 #include "SpecialLetter.h"
-#include "../util/debug.h"
-#include "../video/Font.h"
 
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
+
+#include <util/debug.h>
+#include <video/Font.h>
+
 
 SpecialLetter::SpecialLetter(char c, int size, int r, int g, int b, std::string font_name):
 	m_letter(c),

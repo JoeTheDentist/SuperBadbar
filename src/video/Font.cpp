@@ -8,11 +8,12 @@
  */
  
 #include "Font.h"
-#include "../util/repertories.h"
-#include "../util/debug.h"
 
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
+
+#include <util/utils.h>
+
 
 
 

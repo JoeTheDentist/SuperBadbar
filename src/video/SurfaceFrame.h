@@ -10,7 +10,7 @@
  #ifndef BABAR_SURFACE_FRAME_H
  #define BABAR_SURFACE_FRAME_H
 
- #include "../video/Surface.h"
+ #include <video/Surface.h>
 
  /**
 *	@class SurfaceFrame

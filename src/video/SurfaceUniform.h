@@ -10,8 +10,7 @@
 #ifndef _SURFACE_UNIFORM_
 #define _SURFACE_UNIFORM_
 
-#include "Surface.h"
-
+#include <video/Surface.h>
 
 /**
 *	@class SurfaceUniform

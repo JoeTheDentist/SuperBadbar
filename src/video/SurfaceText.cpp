@@ -8,14 +8,15 @@
  */
 
 #include "SurfaceText.h"
-#include "../util/repertories.h"
-#include "../util/debug.h"
-#include "../video/Font.h"
-#include <iostream>
 
+#include <iostream>
 #include "../../lib/SDL/include/SDL/SDL.h"
-#include "../video/PicturesContainer.h"
-#include "../video/TexturesManager.h"
+
+#include <util/utils.h>
+#include <video/Font.h>
+#include <video/PicturesContainer.h>
+#include <video/TexturesManager.h>
+
 SurfaceText::SurfaceText()
 {
 

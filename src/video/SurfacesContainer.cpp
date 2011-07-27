@@ -15,10 +15,9 @@
 
 
 #include "SurfacesContainer.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../video/Camera.h"
+#include <util/utils.h>
+#include <util/globals.h>
+#include <video/Camera.h>
 
 
 SurfacesContainer::SurfacesContainer()

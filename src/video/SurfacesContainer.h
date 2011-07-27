@@ -15,13 +15,11 @@
 #include <iostream>
 
 #include "../../lib/SDL/include/SDL/SDL.h"
-#include "../video/KeyMapSurfaceText.h"
-#include "../video/KeyMapSurfaceUnif.h"
+#include <video/KeyMapSurfaceText.h>
+#include <video/KeyMapSurfaceUnif.h>
 /**
  * 	@class SurfacesContainer
  * 	@brief Fabrique, stocke et detruit des surfaces
- *
- *	
  *
  *	SurfacesContainer utilise un map pour stocker et retrouver
  *	les surfaces en fonction de leur chemin.

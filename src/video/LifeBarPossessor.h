@@ -18,6 +18,8 @@ class Dashboard;
 *	appele. Dans ce cas, le dashboard affichera une barre correspondant a la fraction
 *	renvoyee par life_bar_status()
 */
+
+
 class LifeBarPossessor {
 public:
 	/**

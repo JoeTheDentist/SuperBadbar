@@ -7,18 +7,15 @@
  *
  */
 
-#include <iostream>
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include <stdint.h>
 
 
 #include "PicturesContainer.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../video/Camera.h"
+#include <util/utils.h>
+#include <util/globals.h>
+#include <video/Camera.h>
 
 
 PicturesContainer::PicturesContainer()

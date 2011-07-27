@@ -1,7 +1,7 @@
 #ifndef ANIM_H_INCLUDED
 #define ANIM_H_INCLUDED
 
-#include "../video/Surface.h"
+#include <video/Surface.h>
 
 class Surface;
 
@@ -17,7 +17,6 @@ class Anim {
         anim_type m_type;           /* type de l'animation */
         bool m_finished;            /* si l'animation peut etre interrompue */
         int m_phase;                /* nombre de cycle depuis lequel l'animation a ete cree */
-
 
     public:
 

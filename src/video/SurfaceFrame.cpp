@@ -7,13 +7,14 @@
  *
  */
 
-#include "../../lib/SDL/include/SDL/SDL.h"
 
 #include "SurfaceFrame.h"
-#include "SurfaceUniform.h"
-#include "../util/debug.h"
-#include "../video/TexturesManager.h"
-#include "../video/Texture.h"
+
+#include "../../lib/SDL/include/SDL/SDL.h"
+
+#include <util/debug.h>
+#include <video/Texture.h>
+#include <video/TexturesManager.h>
 
 SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
 	Surface(),

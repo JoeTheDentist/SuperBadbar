@@ -7,22 +7,22 @@
  *
  */
 
-#include "../util/debug.h"
+#include "TexturesManager.h"
+
 #ifdef _OPENGL_ACTIVE_
 
 #include <iostream>
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include <stdint.h>
 
 
-#include "TexturesManager.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "Texture.h"
-#include "../video/GraphicEngine.h"
-#include "../video/Camera.h"
+#include <util/repertories.h>
+#include <util/globals.h>
+#include <video/Camera.h>
+#include <video/GraphicEngine.h>
+#include <video/Texture.h>
+
 
 TexturesManager::TexturesManager()
 {

@@ -12,7 +12,8 @@
 #define _GRAPHIC_ENGINE_
 
 #include <string>
-#include "../util/debug.h"
+#include <util/debug.h>
+
 #ifdef _OPENGL_ACTIVE_
 class Texture;
 class TexturesManager;

@@ -8,12 +8,9 @@
  */
 
 
-#include <iostream>
-#include <stdint.h>
-
 #include "AnimPic.h"
-#include "../video/Surface.h"
 
+#include <video/Surface.h>
 
 AnimPic::AnimPic(std::string anim_name, anim_type type)
 {

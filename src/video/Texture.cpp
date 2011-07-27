@@ -7,16 +7,14 @@
  *
  */
 
-#include "../util/debug.h"
+#include "Texture.h"
+
 #ifdef _OPENGL_ACTIVE_
 
-#include <iostream>
 #include <cmath>
-
 #include "../../lib/SDL/include/SDL/SDL.h"
 
-#include "Texture.h"
-#include "../video/TexturesManager.h"
+#include <video/TexturesManager.h>
 
 
 Texture::Texture(GLuint texture, int w, int h) :

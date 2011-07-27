@@ -8,14 +8,16 @@
  */
 
 #include "SurfaceUniform.h"
-#include "../util/debug.h"
-#include "../video/Camera.h"
-#include "../video/GraphicEngine.h"
-#include "../util/globals.h"
-#include "../video/PicturesContainer.h"
-#include "../video/TexturesManager.h"
-#include "../video/Texture.h"
+
 #include "../../lib/SDL/include/SDL/SDL.h"
+
+#include <util/debug.h>
+#include <util/globals.h>
+#include <video/Camera.h>
+#include <video/GraphicEngine.h>
+#include <video/PicturesContainer.h>
+#include <video/Texture.h>
+#include <video/TexturesManager.h>
 
 SurfaceUniform::SurfaceUniform(int width, int height, int r, int g, int b, int alpha)
 {

@@ -10,21 +10,22 @@
 #ifndef _TEXTUREMSMANAGER_
 #define _TEXTUREMSMANAGER_
 
-#include "../util/debug.h"
-#ifdef _OPENGL_ACTIVE_
+#include <util/debug.h>
 
+#ifdef _OPENGL_ACTIVE_
 #include <map>
 #include <string>
 #include <iostream>
-#include "../video/KeyMapSurfaceText.h"
+#include <video/KeyMapSurfaceText.h>
 
 
-
+struct SDL_Surface;
 class Texture;
+class Surface;
 
 /**
  * 	@class TexturesManager
- * 	@brief Charge les textures de façon �  optimiser la mémoire
+ * 	@brief Charge les textures de façon a optimiser la mémoire
  *
  */
 class TexturesManager {

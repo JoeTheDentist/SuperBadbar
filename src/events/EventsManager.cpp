@@ -47,7 +47,6 @@ void EventsManager::init_EventsManager(StaticData *StaticData, GameEngine *GameE
 	m_StaticData = StaticData;
 	m_pictures_container = PicturesContainer;
 	m_level_name = StaticData->level_name();
-	std::cout << "LEVEL NAME " << m_level_name << std::endl;
 }
 
 void EventsManager::load_events(Analyser *analyser)

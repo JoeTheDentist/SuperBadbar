@@ -10,9 +10,10 @@
 #ifndef _SURFACE_
 #define _SURFACE_
 
-#include "../util/Rect.h"
-#include "../util/debug.h"
 #include <string>
+
+#include <util/Rect.h>
+#include <util/debug.h>
 
 class PicturesContainer;
 struct SDL_Surface;

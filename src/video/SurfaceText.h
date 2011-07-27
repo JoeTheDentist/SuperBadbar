@@ -10,8 +10,9 @@
 #ifndef _SURFACE_TEXT_
 #define _SURFACE_TEXT_
 
-#include "Surface.h"
 #include <string>
+
+#include <video/Surface.h>
 
 class Font;
 

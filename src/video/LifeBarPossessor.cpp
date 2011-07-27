@@ -8,7 +8,7 @@
  */
 
 #include "LifeBarPossessor.h"
-#include "../video/Dashboard.h"
+#include <video/Dashboard.h>
 
 Dashboard *LifeBarPossessor::m_dashboard = NULL;
 

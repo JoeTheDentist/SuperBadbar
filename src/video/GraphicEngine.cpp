@@ -9,19 +9,20 @@
 
 
 #include "GraphicEngine.h"
-#include "../util/debug.h"
-#include "../actors/Babar.h"
-#include "../video/Camera.h"
-#include "../video/Talks.h"
-#include "../video/Dashboard.h"
-#include "../video/PicturesContainer.h"
-#include "../game/StaticData.h"
-#include "../video/Surface.h"
-#include "../sprites/SpritesManager.h"
-#include "../players/PlayersManager.h"
+#include <actors/Babar.h>
+#include <game/StaticData.h>
+#include <players/PlayersManager.h>
+#include <sprites/SpritesManager.h>
+#include <video/Camera.h>
+#include <video/Dashboard.h>
+#include <video/PicturesContainer.h>
+#include <video/Talks.h>
+#include <video/Surface.h>
+
+
 #ifdef _OPENGL_ACTIVE_
-#include "../video/TexturesManager.h"
-#include "../video/Texture.h"
+#include <video/Texture.h>
+#include <video/TexturesManager.h>
 #endif
 
 GraphicEngine::GraphicEngine()

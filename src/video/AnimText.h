@@ -1,10 +1,10 @@
 #ifndef ANIM_TEXT_H_INCLUDED
 #define ANIM_TEXT_H_INCLUDED
 
-#include "../video/Anim.h"
-#include "../video/SurfaceText.h"
+#include <video/Anim.h>
 
 class Anim;
+class SurfaceText;
 
 
 class AnimText: public Anim {

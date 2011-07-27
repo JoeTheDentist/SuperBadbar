@@ -1,10 +1,14 @@
+
 #include "MainTitle.h"
-#include "../video/SurfaceText.h"
-#include "../video/SurfaceUniform.h"
-#include "../video/SurfaceFrame.h"
-#include "../video/Camera.h"
-#include "../video/GraphicEngine.h"
-#include "../util/globals.h"
+
+#include <util/globals.h>
+#include <video/Camera.h>
+#include <video/GraphicEngine.h>
+#include <video/Surface.h>
+#include <video/SurfaceFrame.h>
+#include <video/SurfaceText.h>
+#include <video/SurfaceUniform.h>
+
 
 MainTitle::MainTitle(std::string title):
 	m_surface(NULL),

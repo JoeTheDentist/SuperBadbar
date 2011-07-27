@@ -7,26 +7,28 @@
  *
  */
 
+#include "Dashboard.h"
 
-#include <iostream>
-#include <stdint.h>
 #include <sstream>
 
+#include <items/Weapon.h>
 
-#include "Dashboard.h"
-#include "../video/Camera.h"
-#include "../util/debug.h"
-#include "../param/param_dashboard.h"
-#include "../actors/Babar.h"
-#include "../video/Talks.h"
-#include "../video/Surface.h"
-#include "../video/SurfaceText.h"
-#include "../video/SurfaceUniform.h"
-#include "../video/SurfaceFrame.h"
-#include "../video/PicturesContainer.h"
-#include "../util/globals.h"
-#include "../players/PlayersManager.h"
-#include "../video/LifeBarPossessor.h"
+#include <actors/Babar.h>
+#include <param/param_dashboard.h>
+#include <players/PlayersManager.h>
+#include <util/utils.h>
+#include <video/AnimText.h>
+#include <video/Camera.h>
+#include <video/Font.h>
+#include <video/LifeBarPossessor.h>
+#include <video/PicturesContainer.h>
+#include <video/Surface.h>
+#include <video/SurfaceFrame.h>
+#include <video/SurfaceUniform.h>
+#include <video/SurfaceText.h>
+#include <video/Talks.h>
+#include <util/globals.h>
+
 
 Dashboard::Dashboard():
 	m_heart(NULL),

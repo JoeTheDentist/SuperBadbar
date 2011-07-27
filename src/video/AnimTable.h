@@ -13,11 +13,11 @@
 #include <string>
 
 #include "AnimPic.h"
-#include "../actors/Actor.h"
-#include "../util/debug.h"
+#include <util/debug.h>
 
 #define PICS_EXT ".png"
 
+class Actor;
 class Surface;
 
 /**

@@ -8,13 +8,13 @@
  */
 
 
-
-#include <iostream>
-#include <stdint.h>
-#include <string>
-#include "../video/Surface.h"
-#include <stdlib.h>
 #include "AnimTable.h"
+
+#include <string>
+
+#include <actors/Actor.h>
+#include <util/RandomGenerator.h>
+#include <video/Surface.h>
 
 AnimTable::AnimTable(std::string anim_name) 
 {
@@ -140,7 +140,7 @@ void AnimTable::change_anim(int s, direction dir, bool fire, bool phase_rand)
                 m_curr_anim = m_anim[s][dir];
             }
             if ( phase_rand ) {
-                m_curr_anim->set_img( rand()%3 );
+                m_curr_anim->set_img( RandomGenerator::irand(0, 2));
             }
         }
         m_last_state = s;

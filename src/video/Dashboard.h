@@ -18,16 +18,18 @@
 #define LIFE_BAR_W 200
 #define LIFE_BAR_H 20
 
-#include "../video/SurfaceText.h"
-#include "../util/debug.h"
-#include "../items/Weapon.h"
-#include "../video/Font.h"
-#include "../video/AnimText.h"
+#include <string>
+
+#include <util/Rect.h>
 
 class Camera;
 class Babar;
+class Font;
 class PicturesContainer;
 class Surface;
+class SurfaceText;
+class Weapon;
+class AnimText;
 class LifeBarPossessor;
 
 /**
