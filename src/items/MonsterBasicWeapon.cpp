@@ -12,10 +12,10 @@
 #include <stdlib.h>
 
 #include "MonsterBasicWeapon.h"
-#include "../util/debug.h"
-#include "../actors/Projectile.h"
-#include "../util/globals.h"
-#include "../util/repertories.h"
+#include <actors/Projectile.h>
+#include <util/debug.h>
+#include <util/globals.h>
+#include <util/repertories.h>
 
 
 Monster_basic_weapon::Monster_basic_weapon()
@@ -42,7 +42,6 @@ std::list<Projectile*> *Monster_basic_weapon::fire(Rect pos, direction h, dmg_ch
 	}
 	return proj_list;
 }
-
 
 weapon_type Monster_basic_weapon::type_of_weapon() const
 {

@@ -8,15 +8,14 @@
  */
 
 #include "WeaponsArmory.h"
-#include "../util/debug.h"
-#include "../items/Weapon.h"
-#include "../items/Gun.h"
-#include "../items/Shotgun.h"
-#include "../items/MachineGun.h"
-#include "../items/RocketLauncher.h"
-#include "../items/ElmarMachineGun.h"
-#include "../video/PicturesContainer.h"
-#include "../sound/SoundEngine.h"
+#include <util/debug.h>
+#include <items/ElmarMachineGun.h>
+#include <items/Gun.h>
+#include <items/MachineGun.h>
+#include <items/RocketLauncher.h>
+#include <items/Shotgun.h>
+#include <sound/SoundEngine.h>
+#include <video/PicturesContainer.h>
 
 
 WeaponsArmory::WeaponsArmory()

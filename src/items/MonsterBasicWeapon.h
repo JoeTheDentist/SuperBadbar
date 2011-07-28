@@ -9,9 +9,10 @@
 #ifndef _MONSTER_BASIC_WEAPON_
 #define _MONSTER_BASIC_WEAPON_
 
-#include "../items/Weapon.h"
 #include <list>
-#include "../util/globals.h"
+
+#include <items/Weapon.h>
+#include <util/globals.h>
 
 
 

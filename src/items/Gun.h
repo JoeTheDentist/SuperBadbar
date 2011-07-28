@@ -10,10 +10,11 @@
 #ifndef _GUN_
 #define _GUN_
 
-#include "../items/Weapon.h"
-#include <list>
-#include "../util/globals.h"
 
+#include <list>
+
+#include <items/Weapon.h>
+#include <util/globals.h>
 
 
 class Sprites;

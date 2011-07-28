@@ -11,10 +11,10 @@
 #include <stdint.h>
 
 #include "Gun.h"
-#include "../util/debug.h"
-#include "../actors/Projectile.h"
-#include "../util/globals.h"
-#include "../util/repertories.h"
+#include <util/debug.h>
+#include <actors/Projectile.h>
+#include <util/globals.h>
+#include <util/repertories.h>
 
 
 Gun::Gun()

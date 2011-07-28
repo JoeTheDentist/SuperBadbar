@@ -10,9 +10,11 @@
 #ifndef _MACHINEGUN_
 #define _MACHINEGUN_
 
-#include "../items/Weapon.h"
+
 #include <list>
-#include "../util/globals.h"
+
+#include <items/Weapon.h>
+#include <util/globals.h>
 
 
 

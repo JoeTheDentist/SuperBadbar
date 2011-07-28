@@ -10,8 +10,10 @@
 #ifndef ElmarMachineGun_H
 #define ElmarMachineGun_H
 
+
 #include <list>
-#include "Weapon.h"
+
+#include <items/Weapon.h>
 
 class Projectile;
 

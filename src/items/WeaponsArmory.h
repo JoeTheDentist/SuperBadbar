@@ -11,8 +11,8 @@
 #define _WEAPONS_ARMORY_
 
 #include <list>
-#include "../items/Weapon.h"
-class Weapon;
+
+#include <items/Weapon.h>
 
 /**
  * 	@class WeaponsArmory
@@ -42,16 +42,16 @@ public:
 	Weapon *get_current_weapon();
 
 	/**
-	 *	@brief Ajout d'une arme �  l'arsenal
-	 *	@param type Le type d'arme �  ajouter
+	 *	@brief Ajout d'une arme a l'arsenal
+	 *	@param type Le type d'arme a ajouter
 	 *
-	 *	Si l'arme est déj�  présente dans l'inventaire, on lui rajoute
+	 *	Si l'arme est déja présente dans l'inventaire, on lui rajoute
 	 *	des munitions. Sinon, on la crée et on l'ajoute.
 	*/
 	void add_weapon(weapon_type type);
 
 	/**
-	 *	@brief Mise �  jour de l'inventaire
+	 *	@brief Mise a jour de l'inventaire
 	 *
 	 *	Supprime les armes n'ayant plus de munitions
 	*/
@@ -60,14 +60,14 @@ public:
 	/**
 	 *	@brief Sélectionne l'arme suivante
 	 *
-	 *	Quand on arrive �  la dernière arme, on repart de la première
+	 *	Quand on arrive a la dernière arme, on repart de la première
 	*/
 	void next_weapon();
 
 	/**
 	 *	@brief Sélectionne l'arme précédente
 	 *
-	 *	Quand on arrive �  la première arme, on repart de la dernière
+	 *	Quand on arrive a la première arme, on repart de la dernière
 	*/
 	void previous_weapon();
 };

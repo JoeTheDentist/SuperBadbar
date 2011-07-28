@@ -10,9 +10,10 @@
 #ifndef _BABAR_ROCKET_LAUNCHER_H_
 #define _BABAR_ROCKET_LAUNCHER_H_
 
-#include "../items/Weapon.h"
 #include <list>
-#include "../util/globals.h"
+
+#include <items/Weapon.h>
+#include <util/globals.h>
 
 
 

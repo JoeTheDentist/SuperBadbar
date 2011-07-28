@@ -1,6 +1,6 @@
-#include <stdlib.h>
 #include "ElmarMachineGun.h"
-#include "../actors/ElmarTile.h"
+#include <actors/ElmarTile.h>
+#include <util/RandomGenerator.h>
 
 ElmarMachineGun::ElmarMachineGun()
 {
@@ -23,7 +23,7 @@ std::list<Projectile*> *ElmarMachineGun::fire(Rect pos, direction h, dmg_chan ty
 	if (m_munitions >= 0) {
 		int dir_h = (2*h-1)*PROJ_SPEED;
 		Rect other_pos = pos;
-		other_pos.y +=15*(rand()%5-2);
+		other_pos.y +=15*(RandomGenerator::irand(-2, 2));
 		other_pos.x +=(2*h-1)*40;
 		proj_list->push_back(new ElmarTile(other_pos, h, dir_h, 0,1, type));
 		proj_list->push_back(new ElmarTile(pos, h, dir_h, 0,1, type));

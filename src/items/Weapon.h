@@ -12,8 +12,8 @@
 
 #include <stdint.h>
 #include <list>
-#include "../util/globals.h"
-#include "../actors/ProjectilesManager.h"
+#include <util/globals.h>
+#include <actors/ProjectilesManager.h>
 
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
 
@@ -45,7 +45,7 @@ struct Rect;
  * 	@brief Instance d'une arme
  *
  *	@todo changer le fonctionnement: l'arme doit contenir
- *	un pointeur vers son propriétaire pour savoir �  quelle
+ *	un pointeur vers son propriétaire pour savoir a quelle
  * 	"alliance" elle appartient, ainsi qu'un pointeur vers le gestionnaire
  *	de projectiles (éventuellement en static avec une méthode set)
  */

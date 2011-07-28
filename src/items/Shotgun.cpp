@@ -13,11 +13,10 @@
 
 
 #include "Shotgun.h"
-#include "../util/debug.h"
-#include "../actors/Projectile.h"
-#include "../util/globals.h"
-#include "../util/repertories.h"
-#include "../util/RandomGenerator.h"
+
+#include <actors/Projectile.h>
+#include <util/globals.h>
+#include <util/utils.h>
 
 
 
