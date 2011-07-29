@@ -38,12 +38,6 @@ Surface::Surface(std::string filename)
 
 }
 
-Surface::Surface(Surface * s)
-{
-	PRINT_CONSTR(3, "Construction d'une classe Surface");
-	m_surface = s->get_surface();
-}
-
 Surface::~Surface()
 {
 	/*

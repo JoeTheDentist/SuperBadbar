@@ -11,18 +11,19 @@
 #define _SURFACE_
 
 #include <string>
+#include <vector>
 
 #include <util/Rect.h>
 #include <util/debug.h>
 
 class PicturesContainer;
 struct SDL_Surface;
+class SurfaceCompositeItem;
 
 #ifdef _OPENGL_ACTIVE_
 class TexturesManager;
 class Texture;
 #endif
-
 
 
 /**
@@ -51,12 +52,6 @@ public:
 	*	@param filename Le chemin du fichier Ã  partir de la racine du projet
 	*/
 	Surface(std::string filename);
-
-	/**
-	*	@brief Constructeur depuis un pointeur vers une surface
-	*	@param s La surface a copier
-	*/
-	Surface(Surface * s);
 
 	/**
 	*	@brief Destructeur
@@ -115,7 +110,14 @@ public:
 	*	@return La hauteur de l'image
 	*/
 	void set_h(int h);
-
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La liste des surfaces filles et de leurs positions relatives
+	*	
+	*	Les Surface ayant des enfants heritent de SurfaceComposite
+	*/
+	virtual std::vector<SurfaceCompositeItem *> *children ()  { return NULL; }
 
 	/**
 	*	@brief Blit l'image sur le background

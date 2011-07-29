@@ -22,11 +22,13 @@
 
 #include <util/Rect.h>
 
+
 class Camera;
 class Babar;
 class Font;
 class PicturesContainer;
 class Surface;
+class SurfaceComposite;
 class SurfaceText;
 class Weapon;
 class AnimText;
@@ -45,7 +47,7 @@ private:
 	Rect m_HP_pos;
 	Rect m_weapons_pos;
 	Surface *m_peanut;
-	Surface *m_babar_head;
+	SurfaceComposite *m_babar_head;
 	int m_sizeFont;
 	int m_rFont;
 	int m_gFont;

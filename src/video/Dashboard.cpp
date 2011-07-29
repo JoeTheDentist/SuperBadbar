@@ -23,6 +23,7 @@
 #include <video/LifeBarPossessor.h>
 #include <video/PicturesContainer.h>
 #include <video/Surface.h>
+#include <video/SurfaceComposite.h>
 #include <video/SurfaceFrame.h>
 #include <video/SurfaceUniform.h>
 #include <video/SurfaceText.h>
@@ -63,7 +64,10 @@ void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 	clear_dashboard();
     std::string rac = RACINE_R;
 	m_heart = new Surface(PIC_DASHBOARD_R + "heart.png");
-	m_babar_head = new Surface(PIC_DASHBOARD_R + "babarhead.png");
+	m_babar_head = new SurfaceComposite(new Surface(PIC_DASHBOARD_R + "babarhead.png"));
+	m_babar_head->addChildren(new Surface(PIC_DASHBOARD_R + "babarhead.png"), 
+									SurfaceCompositeItem::center, 
+									Rect(50, 0, 0, 0));
 	m_HP_pos.x = POS_HEART_X;
 	m_HP_pos.y = POS_HEART_Y;
 	m_weapons_pictures = new Surface*[LASTWEAPON];

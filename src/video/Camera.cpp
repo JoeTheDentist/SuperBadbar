@@ -24,6 +24,7 @@
 #include <video/Displayable.h>
 #include <video/Statics.h>
 #include <video/Surface.h>
+#include <video/SurfaceCompositeItem.h>
 
 
 
@@ -233,6 +234,14 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
             pos_sdl.w = (unsigned int)pos->w;
 			#ifndef _OPENGL_ACTIVE_
             SDL_BlitSurface(surf->get_surface(), NULL, m_screen, &pos_sdl);
+			std::vector<SurfaceCompositeItem *> *children = surf->children();
+			if (children) {
+				for (std::vector<SurfaceCompositeItem *>::iterator it = children->begin();
+						it != children->end(); ++it) {
+					Rect poschild = (*it)->getPosInCompositeSurface() + *pos;
+					display_picture((*it)->getSurface(), &poschild, fixe);
+				}
+			}
 			#else
 			Texture *texture = surf->getTexture();
 			if (!texture) {
