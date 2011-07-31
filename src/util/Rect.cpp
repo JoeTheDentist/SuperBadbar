@@ -62,3 +62,14 @@ int Rect::operator* (const Rect &rect2) const
 {
 	return x * rect2.x + y * rect2.y;
 }
+
+Rect Rect::operator* (int coeff) const
+{
+	return Rect(x * coeff, y * coeff, w, h);
+}
+
+Rect Rect::operator/ (int coeff) const
+{
+	return Rect(x / coeff, y / coeff, w, h);
+}
+

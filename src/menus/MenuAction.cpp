@@ -44,6 +44,11 @@ void MenuAction::incr_value(int value)
 	
 }
 
+Surface *MenuAction::get_surface() const
+{
+	return (m_selected ? m_surface_text_selected : m_surface_text);
+}
+
 int MenuAction::width() const
 {
 	return get_surface()->w();

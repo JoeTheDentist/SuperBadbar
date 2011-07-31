@@ -77,6 +77,25 @@ public:
 	*	@return (*this) * rect2, en prenant les w et h de (*this)
 	*/
 	int operator*(const Rect &rect2) const;
+	
+	/**
+	*	@brief Operateur de produit par un scalaire
+	*	@param coeff Le scalaire
+	*	@return (*this) * coeff
+	*
+	*	Les champs h et w ne sont PAS affectes
+	*/
+	Rect operator*(int coeff) const;
+	
+	/**
+	*	@brief Operateur de division par un scalaire
+	*	@param coeff Le scalaire
+	*	@return (*this) / coeff
+	*
+	*	Les champs h et w ne sont PAS affectes
+	*/
+	Rect operator/(int coeff) const;
+	
 };
 
 

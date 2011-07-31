@@ -30,6 +30,7 @@
 	#define PIC_EDITOR_R			PIC_R + "editor/"
 	#define PIC_EVENTS_R			PIC_R + "events/"
 	#define PIC_ITEMS_R				PIC_R + "items/"
+	#define PIC_MENU_R				PIC_R + "menus/"
 	#define PIC_MONSTERS_R 			PIC_R + "monsters/"
 	#define PIC_PROJ_R				PIC_R + "projectiles/"
 	#define PIC_STATICS_R			PIC_R + "statics/"

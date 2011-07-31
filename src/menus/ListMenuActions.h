@@ -86,7 +86,13 @@ class ListMenuActions {
 	*	@param value La valeur contenue dans l'action string
 	*/
 	void add_action_string(std::string action_name, int action_num, std::string value);
-
+	
+	/*!
+	*	@brief Cree puis ajoute a la liste une action selectmap (MenuActionSelectMap), a la fin des actions deja existantes
+	*	@param action_num Le numero de l'action
+	*/
+	void add_action_selectmap(int action_num);
+	
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)
 	*	@param dep Le deplacement du curseur (modulo le nombre d'actions)

@@ -15,17 +15,20 @@ class SurfaceComposite;
 class Surface;
 #include <util/Rect.h>
 
-
+/*!
+*	@class SurfaceCompositeItem
+*	@brief Ensemble contenant une surface de SurfaceComposite et ses informations
+*/
 class SurfaceCompositeItem {
 public:
-	enum  posMode {up, down, right, left, center};
+	enum  posMode {top, bottom, right, left, center};
 
 	/*!
 	*	@brief Constructeur
 	*	@param surface Surface
 	*	@param posFromCenterSurface
 	*	@param posMode
-	*	@
+	*	@param parent
 	*/
 	SurfaceCompositeItem(	Surface *surface,
 							Rect posFromCenterSurface, 
@@ -45,7 +48,13 @@ public:
 	
 	/*!
 	*	@brief Accesseur
-	*	@return La position de l'item par rapport a la surface centrale, utilisee en fonction du posMode
+	*	@return Une position de l'item par rapport a la surface centrale, utilisee en fonction du posMode
+	*/
+	Rect getInformativePos() const;
+	
+	/*!
+	*	@brief Accesseur
+	*	@return La position de l'item par rapport a la surface centrale
 	*/
 	Rect getPosFromCenterSurface() const;
 	
@@ -62,6 +71,32 @@ public:
 	*	@return Le posMode de l'item
 	*/
 	SurfaceCompositeItem::posMode getPosMode() const;
+	
+	/*!
+	*	@brief Mutateur
+	*	@param surface La nouvelle surface
+	*/
+	void setSurface(Surface *surface) {m_surface = surface;}
+	
+
+	/*!
+	*	@brief Mutateur
+	*	@param pos La nouvelle position
+	*/
+	void setInformativePos(Rect pos) {m_posFromCenterSurface = pos;}
+	
+
+	/*!
+	*	@brief Mutateur
+	*	@param mode Le nouveau mode
+	*/
+	void setPosMode(SurfaceCompositeItem::posMode mode) {m_posMode = mode;}
+	
+	/*!
+	*	@brief Accesseur
+	*	@return Vrai si l'item est l'item contenant la Surface centrale du SurfaceComposite
+	*/
+	bool isCenterSurface() const;
 	
 protected:
 	Surface *m_surface;

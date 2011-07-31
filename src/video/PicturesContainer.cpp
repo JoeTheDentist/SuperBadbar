@@ -48,6 +48,8 @@ SDL_Surface *PicturesContainer::load_IMG(std::string key)
 
 SDL_Surface *PicturesContainer::loadSurfaceText(std::string text, int size, int r, int g, int b, std::string fontName)
 {
+	if (text == "")
+		return NULL;
 	KeyMapSurfaceText key(text, size, r, g, b, fontName);
 	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator it = m_textContainer.find(key);
 	SDL_Surface *surf = NULL;

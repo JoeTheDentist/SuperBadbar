@@ -46,17 +46,22 @@ class MainMenu: public Menu {
 	/*!
 	*	@brief Lancement du jeu
 	*/
-	void launch_game();
+	void launchGame();
 
-        /*!
-        *       @brief Lancement menu multi
-        */
-        void launch_multi();
+	/*!
+	*	@brief Lancement menu multi
+	*/
+	void launchMulti();
+	
+	/*!
+	*	@brief Lancement menu ChoseLevel
+	*/
+	void launchFastGame();
 	
 	/*!
 	*	@brief Lancement du menu options
 	*/
-	void launch_options();
+	void launchOptions();
 	
 	/*!
 	*	@brief Traitement du choix

@@ -4,13 +4,13 @@
 #include <string>
 #include "../control/Keyboard.h"
 
-class SurfaceText;
+class Surface;
 class EventKeyboard;
 
 class MenuAction {
 	protected:
-	SurfaceText *m_surface_text;
-	SurfaceText *m_surface_text_selected;
+	Surface *m_surface_text;
+	Surface *m_surface_text_selected;
 	std::string m_text;
 	std::string m_text_to_display;	// 
 	int m_index; // numero du menuaction dans la liste
@@ -62,11 +62,8 @@ class MenuAction {
 	*	@brief Accesseur
 	*	@return La surface du bouton
 	*/
-	virtual SurfaceText *get_surface() const
-	{
-		return (m_selected ? m_surface_text_selected : m_surface_text);
-	}
-
+	virtual Surface *get_surface() const;
+	
 	/*!
 	*	@brief Accesseur
 	*	@return La largeur de la surface du bouton

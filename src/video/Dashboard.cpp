@@ -23,7 +23,6 @@
 #include <video/LifeBarPossessor.h>
 #include <video/PicturesContainer.h>
 #include <video/Surface.h>
-#include <video/SurfaceComposite.h>
 #include <video/SurfaceFrame.h>
 #include <video/SurfaceUniform.h>
 #include <video/SurfaceText.h>
@@ -58,16 +57,14 @@ Dashboard::~Dashboard()
 	PRINT_CONSTR(1, "Destruction de Dashboard")
 }
 
-void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
+void Dashboard::init_dashboard(PicturesContainer *)
 {
 	#ifndef DISABLE_DASHBOARD
 	clear_dashboard();
     std::string rac = RACINE_R;
 	m_heart = new Surface(PIC_DASHBOARD_R + "heart.png");
-	m_babar_head = new SurfaceComposite(new Surface(PIC_DASHBOARD_R + "babarhead.png"));
-	m_babar_head->addChildren(new Surface(PIC_DASHBOARD_R + "babarhead.png"), 
-									SurfaceCompositeItem::center, 
-									Rect(50, 0, 0, 0));
+	m_babar_head = new Surface(PIC_DASHBOARD_R + "babarhead.png");
+
 	m_HP_pos.x = POS_HEART_X;
 	m_HP_pos.y = POS_HEART_Y;
 	m_weapons_pictures = new Surface*[LASTWEAPON];
@@ -94,7 +91,6 @@ void Dashboard::init_dashboard(PicturesContainer *PicturesContainer)
 	m_rect_null.h = 0;
 	#endif
 }
-
 
 void Dashboard::draw_dashboard(Camera *camera)
 {

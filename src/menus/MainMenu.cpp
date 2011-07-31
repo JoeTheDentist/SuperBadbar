@@ -9,8 +9,10 @@
 #include "../menus/MenuAction.h"
 #include "../menus/OptionsMenu.h"
 #include "../menus/MenuMulti.h"
+#include "../menus/ChoseLevelMenu.h"
 #include "../video/SurfaceText.h"
 #include "../video/MainTitle.h"
+#include "../video/SurfaceComposite.h"
 
 MainMenu::MainMenu() :
 	Menu(),
@@ -20,8 +22,9 @@ MainMenu::MainMenu() :
 {
 	m_menu_actions.add_action_classic("Single Player", 1);
 	m_menu_actions.add_action_classic("Multi Player", 2);
-	m_menu_actions.add_action_classic("Options", 3);
-	m_menu_actions.add_action_classic("Leave", 4);
+//~ 	m_menu_actions.add_action_classic("Fast game", 3);
+	m_menu_actions.add_action_classic("Options", 4);
+	m_menu_actions.add_action_classic("Leave", 5);
 	gSound->load_music("main_menu.mp3");
 	gSound->play_music();
 	loop();
@@ -53,38 +56,47 @@ void MainMenu::loop()
 void MainMenu::treat_choice(int choice)
 {
 	switch(choice) {
-		case 1: // nouvelle partie
-			launch_game();
-                        gSound->load_music("main_menu.mp3"); // haha !
-			gSound->play_music();
-			break;
-                case 2: // menu multi joueurs
-                        launch_multi();
-                        break;
-                case 3: // options
-			launch_options();
-			break;
-                case 4: // quitter le jeu
-			set_leave_game_true();
-			break;
-		default:
-			break;
+	case 1: // nouvelle partie
+		launchGame();
+		gSound->load_music("main_menu.mp3"); // haha !
+		gSound->play_music();
+		break;
+	case 2: // menu multi joueurs
+		launchMulti();
+		break;
+	case 3: // menu fast game 
+		launchFastGame();
+		break;
+	case 4: // options
+		launchOptions();
+		break;
+	case 5: // quitter le jeu
+		set_leave_game_true();
+		break;
+	default:
+		break;
 	}
 }
 
-void MainMenu::launch_game()
+void MainMenu::launchGame()
 {
 	LevelsManager * levelsmanager = new LevelsManager();
 	levelsmanager->play();
 	delete levelsmanager;
 }
 
-void MainMenu::launch_multi()
+void MainMenu::launchMulti()
 {
         set_son(new MenuMulti(this));
 }
 
-void MainMenu::launch_options()
+void MainMenu::launchFastGame()
+{
+	set_son(new ChoseLevelMenu(this));
+}
+
+
+void MainMenu::launchOptions()
 {
 	set_son(new OptionsMenu(this));
 }
