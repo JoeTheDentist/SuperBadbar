@@ -56,7 +56,9 @@ void MainMenu::loop()
 void MainMenu::treat_choice(int choice)
 {
 	switch(choice) {
-	case 1: // nouvelle partie
+        case 1: // nouvelle partie => pas de reseau
+                delete gNetwork;
+                gNetwork = NULL;
 		launchGame();
 		gSound->load_music("main_menu.mp3"); // haha !
 		gSound->play_music();

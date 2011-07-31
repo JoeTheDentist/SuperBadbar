@@ -1,12 +1,14 @@
 #include "NetworkServer.h"
 #include "NetworkTypes.h"
 
+#include "util/debug.h"
+
 NetworkServer::NetworkServer()
 {
     // TODO au bon endoit
     NetworkTypes::initNetTypes();
 
-    m_timer = new QTimer(this);
+    m_timer = new QTimer();
     connect(m_timer, SIGNAL(timeout()), this, SLOT(broadcastAd()));
     m_timer->start(BROADCAST_FREQ);
 }

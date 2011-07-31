@@ -25,7 +25,7 @@ enum NetworkMessage {
  *
  *  Cette classe peut jouer le role d'un client ou d'un serveur
  */
-class NetworkCommunicator : public QThread
+class NetworkCommunicator : public QObject
 {
     Q_OBJECT
 
@@ -39,7 +39,6 @@ public:
      *  @brief Destructeur
      */
     virtual ~NetworkCommunicator();
-
 
     /***************************************/
     /*****************SLOTS*****************/

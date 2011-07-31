@@ -15,14 +15,6 @@
 #include "NetworkCommunicator.h"
 #include "NetworkEntity.h"
 
-enum NetworkState {
-    NetState_HOST, NetState_CLIENT, NetState_NONE
-};
-
-enum NetworkMode {
-    NetMode_LOCAL, NetMode_INTERNET, NetMode_NONE
-};
-
 enum NetworkStep {
     NetStep_WaitForServer, NetStep_WaitForClients,
     NetStep_WaitForConnexion, NetStep_Chat,
@@ -194,6 +186,12 @@ public:
     int getMyID();
 
     /**
+     *  @brief Accesseur
+     *  @return si le jeu fait serveur
+     */
+    bool isServer();
+
+    /**
      *  @brief Info de la map choisie
      *  @param mapName : nom de la map chemin depuis levels
      *
@@ -215,18 +213,17 @@ private:
      */
     void setId(int id);
 
+
+
     /***************************************/
     /**************Attributs****************/
     /***************************************/
 private :
-    NetworkState m_netState;        /* si le jeu fait aussi serveur */
-    NetworkMode m_netMode;          /* */
     NetworkStep m_netStep;          /* */
     int m_idLocal;                  /* identifiant sur le reseau */
     NetworkCommunicator *m_netCom;  /* partie communicante */
     QMap<int, NetworkEntity*> m_entities;
-
-    static bool Multi;              /* si le jeu se fait en solo ou multi */
+    bool m_server;                  /* si le jeu fait serveur aussi */
 };
 
 #endif // NETWORKMANAGER_H_INCLUDED

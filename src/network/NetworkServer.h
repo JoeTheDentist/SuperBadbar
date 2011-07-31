@@ -11,7 +11,6 @@
 #define NETWORKSERVER_H
 
 #include "NetworkCommunicator.h"
-//~ #include "LoopThread.h"
 
 #define BROADCAST_FREQ 5000
 
@@ -36,7 +35,6 @@ private:
      *  @param object : objet de demande de variable
      */
     void treatObject(const NetworkMessageAskFor &object);
-
 
     /***************************************/
     /*****************SLOTS*****************/

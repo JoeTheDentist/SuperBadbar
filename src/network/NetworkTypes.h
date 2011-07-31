@@ -15,6 +15,9 @@
 #include "NetworkMessageAskFor.h"
 #include "NetworkMessageResponse.h"
 
+#define PORT_SERVER_IN 31415
+#define PORT_SERVER_OUT 31416
+
 /**
  *  @class NetworkTypes
  *  @brief Classe pour initaliser les classes "reseau"

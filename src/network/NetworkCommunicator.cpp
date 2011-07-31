@@ -115,7 +115,7 @@ void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket *socket,
 
     out << object;
 
-    socket->writeDatagram(paquet, address, /* TODO */ (quint16)66666);
+    socket->writeDatagram(paquet, address, PORT_SERVER_OUT);
 }
 
 void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)

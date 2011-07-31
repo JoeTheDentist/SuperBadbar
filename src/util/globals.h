@@ -24,6 +24,7 @@ class Keyboard;
 class Stats;
 class PlayersManager;
 class KeyboardConfig;
+class NetworkManager;
 
 #include <sstream>
 #include "../util/Constants.h"
@@ -37,6 +38,7 @@ class KeyboardConfig;
 #include "../game/GameEngine.h"
 #include "../sets/AnimatedSetsManager.h"
 #include "../players/PlayersManager.h"
+#include "../network/NetworkManager.h"
 #include "../util/Constants.h"
 
 #define BOX_SIZE 5
@@ -46,7 +48,7 @@ class KeyboardConfig;
 #define DOWN_COLL 0x4
 
 
-#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport à Babar */
+#define BACKGROUND_SPEED 0.5 /* vitesse de déplacement du fond d'écran par rapport �  Babar */
 
 extern SoundEngine * gSound;
 extern CollisionsManager * gCollision;
@@ -60,8 +62,7 @@ extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
 extern PlayersManager * gPlayers;
 extern KeyboardConfig *gKeyboardConfig;
-
-extern int * gLocal_id;
+extern NetworkManager *gNetwork;
 
 double dist(Rect A, Rect B);
 

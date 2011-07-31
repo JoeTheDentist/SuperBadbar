@@ -17,8 +17,7 @@ Keyboard * gKeyboard = NULL;
 Stats * gStats = NULL;
 PlayersManager * gPlayers = NULL;
 KeyboardConfig *gKeyboardConfig = NULL;
-
-int * gLocal_id = NULL;
+NetworkManager *gNetwork = NULL;
 
 
 double dist(Rect A, Rect B)

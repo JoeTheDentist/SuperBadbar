@@ -47,7 +47,7 @@ unix {
 	
 }
 
-INCLUDEPATH += "../"
+INCLUDEPATH += .
 
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \

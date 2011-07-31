@@ -10,7 +10,7 @@
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#ifndef DESACTIVATE_GFX
+#ifdef DESACTIVATE_GFX
 	#include <SDL/SDL_rotozoom.h>
 #endif
 

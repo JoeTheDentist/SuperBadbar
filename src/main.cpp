@@ -20,9 +20,12 @@
 #ifdef WIN32
     #undef main
 #endif
+#include <QApplication> //TEMP
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+
         PRINT_TRACE(1,"Lancement du jeu");
         GameInitializer::init_game();
 #ifdef ARG_ANALYSER_ON

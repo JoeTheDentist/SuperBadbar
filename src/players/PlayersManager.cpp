@@ -15,16 +15,13 @@ PlayersManager::~PlayersManager()
     last_lifes = m_local_player->get_actor()->lifes();
     delete m_players;
     delete m_local_player;
-    delete gLocal_id;
 }
 
 void PlayersManager::init_players_manager(Analyser * analyser)
 {
     /* creation du joueur local */
     delete m_local_player;
-    gLocal_id = new int;
-    *gLocal_id = 0;
-    m_local_player = new Player(*gLocal_id, analyser, true);
+    m_local_player = new Player(/* TODO */ 0, analyser, true);
 }
 
 void PlayersManager::update()
