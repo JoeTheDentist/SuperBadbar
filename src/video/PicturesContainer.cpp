@@ -10,7 +10,9 @@
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
-
+#ifndef DESACTIVATE_GFX
+	#include <SDL/SDL_rotozoom.h>
+#endif
 
 #include "PicturesContainer.h"
 #include <util/utils.h>
@@ -34,7 +36,15 @@ SDL_Surface *PicturesContainer::load_IMG(std::string key)
 	std::map<std::string, SDL_Surface*>::iterator it = m_container.find(key);
 	SDL_Surface *surf = NULL;
 	if (it == m_container.end()) {
-        surf = IMG_Load((key).c_str());
+		SDL_Surface *temp = IMG_Load((key).c_str());
+		#ifdef DESACTIVATE_GFX
+		surf = temp;
+		#else
+		if (temp) {
+			surf = rotozoomSurface(temp, 0, 0.8, 1);
+			SDL_FreeSurface(temp);
+		}
+		#endif
 		if (surf == NULL) {
 			PRINT_DEBUG(1, "impossible de charger l'image %s", key.c_str());
 			return NULL;

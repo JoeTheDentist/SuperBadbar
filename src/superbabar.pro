@@ -36,6 +36,7 @@ unix {
 	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
 	../lib/gcc/libfmod.so \
 	-L"../lib/gcc/"\
+	-lSDL_gfx \
 	-lglut 
 
 	DESTDIR = ./

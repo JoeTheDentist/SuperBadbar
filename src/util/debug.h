@@ -31,6 +31,7 @@
 //~ #define _OPENGL_ACTIVE_
 
 //~ #define DEBUG_COLL 
+#define DESACTIVATE_GFX
 #define ARG_ANALYSER_ON
 #define DEBUG 2
 #define TRACE 2
