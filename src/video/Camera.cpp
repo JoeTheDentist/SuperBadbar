@@ -228,8 +228,8 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
     if ( surf ) {
         if ( fixe ) {
             SDL_Rect pos_sdl;
-            pos_sdl.x = (int)pos->x;
-            pos_sdl.y = (int)pos->y;
+            pos_sdl.x = (int)(pos->x * Constants::ZOOM);
+            pos_sdl.y = (int)(pos->y * Constants::ZOOM);
             pos_sdl.h = (unsigned int)pos->h;
             pos_sdl.w = (unsigned int)pos->w;
 #ifndef _OPENGL_ACTIVE_

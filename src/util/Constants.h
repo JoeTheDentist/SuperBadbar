@@ -16,6 +16,7 @@
 	macro(LAST_LEVEL, 5)
 
 #define FOR_EACH_CONST_DOUBLE(macro) \
+	macro(ZOOM, 0.8)
 
 
 #define FOR_EACH_CONST_STRING(macro) \
