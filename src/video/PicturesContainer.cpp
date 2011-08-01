@@ -7,6 +7,7 @@
  *
  */
 
+#include "../util/utils.h"
 #include "../../lib/SDL/include/SDL/SDL.h"
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"

@@ -238,22 +238,22 @@ event machinegun 1207 3718
 !
 #MovingPlatforms#
 3
-block8 4547 1723 4547 1159
-block8 166 1953 178 1484
-block8 433 1320 881 1324
+jungle/block8 4547 1723 4547 1159
+jungle/block8 166 1953 178 1484
+jungle/block8 433 1320 881 1324
 !
 #FallingPlatforms#
 10
-block8 4089 3073
-block8 3829 2753
-block8 4104 2416
-block8 104 2651
-block8 1037 3073
-block8 1459 3078
-block8 1825 3086
-block8 2206 3092
-block8 2616 3107
-block8 538 3999
+jungle/block8 4089 3073
+jungle/block8 3829 2753
+jungle/block8 4104 2416
+jungle/block8 104 2651
+jungle/block8 1037 3073
+jungle/block8 1459 3078
+jungle/block8 1825 3086
+jungle/block8 2206 3092
+jungle/block8 2616 3107
+jungle/block8 538 3999
 !
 #Triggers#
 9

@@ -121,8 +121,8 @@ event victory 19 1427
 !
 #FallingPlatforms#
 2
-block8 2409 4045
-block8 2789 4040
+jungle/block8 2409 4045
+jungle/block8 2789 4040
 !
 #Triggers#
 8
