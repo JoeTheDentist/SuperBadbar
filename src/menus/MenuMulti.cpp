@@ -26,6 +26,7 @@ void MenuMulti::treat_choice(int choice)
         break;
     case 2: // host
         {
+            //TEMP
             gNetwork->initServer();
         }
         break;
