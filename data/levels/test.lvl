@@ -18,8 +18,8 @@ level2.mp3
 !
 #Statics#
 2
-jungle_hard_block_2 -24 5270 0 0
-jungle_hard_block_2 472 5272 0 0
+jungle/jungle_hard_block_2 -24 5270 0 0
+jungle/jungle_hard_block_2 472 5272 0 0
 !
 #Monsters#
 0

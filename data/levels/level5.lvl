@@ -27,18 +27,18 @@ mushroom/mushroom 466 1166
 !
 #Statics#
 12
-jungle_block_4 263 811 0  0
-jungle_set_1 453 804 0 0
-jungle_block_6 1161 518 0 0
-jungle_block_1 940 518 0 0
-jungle_set_3 828 292 0 0
-jungle_block_4 1609 771 0 0
-jungle_block_6 -183 562 0 0
-jungle_set_2 229 654 0 0
-jungle_hard_block_2 -8 1186 0 0 
-jungle_hard_block_3 492 1211  0 0
-jungle_hard_block_2 991 1186 0 0 
-jungle_hard_block_4 1491 1218 0 0 
+jungle/jungle_block_4 263 811 0  0
+jungle/jungle_set_1 453 804 0 0
+jungle/jungle_block_6 1161 518 0 0
+jungle/jungle_block_1 940 518 0 0
+jungle/jungle_set_3 828 292 0 0
+jungle/jungle_block_4 1609 771 0 0
+jungle/jungle_block_6 -183 562 0 0
+jungle/jungle_set_2 229 654 0 0
+jungle/jungle_hard_block_2 -8 1186 0 0
+jungle/jungle_hard_block_3 492 1211  0 0
+jungle/jungle_hard_block_2 991 1186 0 0
+jungle/jungle_hard_block_4 1491 1218 0 0
 !
 #Monsters#
 1
@@ -72,6 +72,6 @@ event machinegun 39 559
 #y# 999
 #nature# dialog
 #text# "<elmar> Finalement tu es arrivé jusqu'ici, tout ça pour mieux me divertir, il fallait pas."
-#endtriggerable# 
+#endtriggerable#
 
 !

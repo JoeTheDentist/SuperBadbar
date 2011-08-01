@@ -18,21 +18,21 @@ level2.mp3
 !
 #Statics#
 15
-jungle_hard_block_2 -23 4260 0 0 
-jungle_hard_block_3 962 4288 0 0 
-jungle_hard_block_2 1460 4264 0 0 
-jungle_hard_block_2 1957 4266 0 0 
-jungle_hard_block_3 471 4287 0 0 
-jungle_hard_block_2 2450 4269 0 0 
-jungle_hard_block_2 3443 4272 0 0 
-jungle_hard_block_3 2947 4296 0 0 
-jungle_hard_block_3 3939 4299 0 0 
-jungle_hard_block_3 4437 4301 0 0 
-jungle_block_4 -11 286 0 0 
-jungle_block_1 1636 1927 0 0 
-jungle_block_4 1854 1928 0 0 
-jungle_block_1 4439 990 0 0 
-jungle_block_3 4658 983 0 0 
+jungle/jungle_hard_block_2 -23 4260 0 0
+jungle/jungle_hard_block_3 962 4288 0 0
+jungle/jungle_hard_block_2 1460 4264 0 0
+jungle/jungle_hard_block_2 1957 4266 0 0
+jungle/jungle_hard_block_3 471 4287 0 0
+jungle/jungle_hard_block_2 2450 4269 0 0
+jungle/jungle_hard_block_2 3443 4272 0 0
+jungle/jungle_hard_block_3 2947 4296 0 0
+jungle/jungle_hard_block_3 3939 4299 0 0
+jungle/jungle_hard_block_3 4437 4301 0 0
+jungle/jungle_block_4 -11 286 0 0
+jungle/jungle_block_1 1636 1927 0 0
+jungle/jungle_block_4 1854 1928 0 0
+jungle/jungle_block_1 4439 990 0 0
+jungle/jungle_block_3 4658 983 0 0
 !
 #Monsters#
 0
@@ -199,7 +199,7 @@ block8 4170 1315
 #y# 3999
 #nature# dialog
 #text# "<elmar> Ahah ! Toujours là on dirait. Tu devais y tenir à ce Malababar(C). Mais ton chemin s'arrete là !"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -216,17 +216,17 @@ block8 4170 1315
 #y# 2149
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 762
 #y# 2053
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 670
 #y# 1738
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -241,12 +241,12 @@ block8 4170 1315
 #y# 3974
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 993
 #y# 3745
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -261,22 +261,22 @@ block8 4170 1315
 #y# 4190
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 #x# 1447
 #y# 4148
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 #x# 15
 #y# 4154
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 #x# 1153
 #y# 4177
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -291,12 +291,12 @@ block8 4170 1315
 #y# 2719
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 848
 #y# 2922
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -312,27 +312,27 @@ block8 4170 1315
 #y# 1960
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 2149
 #y# 1518
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 1272
 #y# 1566
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 1349
 #y# 1930
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 2279
 #y# 1710
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -347,17 +347,17 @@ block8 4170 1315
 #y# 290
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 1465
 #y# 507
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 2181
 #y# 429
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -372,22 +372,22 @@ block8 4170 1315
 #y# 131
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 504
 #y# 403
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 636
 #y# 225
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 561
 #y# 31
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -403,12 +403,12 @@ block8 4170 1315
 #y# 858
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 691
 #y# 1016
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -423,17 +423,17 @@ block8 4170 1315
 #y# 3325
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 2639
 #y# 3355
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 3388
 #y# 3051
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -448,12 +448,12 @@ block8 4170 1315
 #y# 3331
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 4066
 #y# 3514
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -468,12 +468,12 @@ block8 4170 1315
 #y# 2103
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 3357
 #y# 1999
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -488,17 +488,17 @@ block8 4170 1315
 #y# 1262
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 3825
 #y# 1330
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 3846
 #y# 1071
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -513,11 +513,11 @@ block8 4170 1315
 #y# 793
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 2745
 #y# 864
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 !

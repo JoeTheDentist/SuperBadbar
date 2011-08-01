@@ -68,64 +68,64 @@ butterfly/butterfly 1007 2217
 !
 #Statics#
 58
-water1 -29 4301 0 0 
-water1 421 4307 0 0 
-water1 779 4311 0 0 
-jungle_hard_block_1 1185 4289 0 0 
-water1 2009 4301 0 0 
-water1 2359 4307 0 0 
-jungle_hard_block_6 2351 4037 0 0 
-jungle_hard_block_5 1904 4036 0 0 
-jungle_hard_block_2 2797 4257 0 0 
-jungle_hard_block_3 3298 4282 0 0 
-jungle_hard_block_3 3799 4283 0 0 
-jungle_hard_block_3 4293 4282 0 0 
-jungle_block_1 4352 3830 0 0 
-jungle_block_2 4571 3799 0 0 
-jungle_block_1 4548 3412 0 0 
-jungle_set_2 2494 3976 0 0 
-jungle_set_5 3137 4040 0 0 
-jungle_set_4 4292 3809 0 0 
-jungle_set_1 3908 4280 0 0 
-jungle_set_1 2088 4148 0 0 
-jungle_set_4 2696 4248 0 0 
-jungle_block_1 4280 2059 0 0 
-jungle_block_4 4497 2059 0 0 
-jungle_block_4 3747 2049 0 0 
-jungle_block_6 3302 1796 0 0 
-jungle_block_1 3287 2443 0 0 
-jungle_block_4 3507 2442 0 0 
-jungle_block_2 2805 1764 0 0 
-jungle_block_5 2359 1796 0 0 
-jungle_block_5 1913 2049 0 0 
-jungle_block_2 1413 2270 0 0 
-jungle_block_1 193 2302 0 0 
-jungle_block_8 958 3831 0 0 
-jungle_hard_block_2 1403 4257  0 0
-jungle_set_4 1379 3794 0 0 
-jungle_set_1 1628 3834 0 0 
-jungle_set_1 1072 3866 0 0 
-jungle_set_1 1338 3864 0 0 
-jungle_block_1 1129 1301 0 0 
-jungle_block_1 1207 913 0 0 
-jungle_block_4 1423 912 0 0 
-jungle_block_1 1600 561 0 0 
-jungle_block_3 2266 299 0 0 
-jungle_block_3 2767 299 0 0 
-jungle_block_4 3266 306 0 0 
-jungle_set_2 1243 765 0 0 
-jungle_set_4 1437 882 0 0 
-jungle_block_4 1347 1302 0 0 
-jungle_set_1 1526 1293 0 0 
-jungle_set_1 2342 290 0 0 
-jungle_block_5 1818 306 0 0 
-jungle_set_1 1816 542 0 0 
-jungle_set_3 2058 89 0 0 
-jungle_set_5 1312 2025 0 0 
-jungle_block_3 914 2296 0 0 
-jungle_block_2 412 2271 0 0 
-jungle_warning_board 205 4059  0 0
-arbre_bord -17 625 0 0 
+jungle/water1 -29 4301 0 0
+jungle/water1 421 4307 0 0
+jungle/water1 779 4311 0 0
+jungle/jungle_hard_block_1 1185 4289 0 0
+jungle/water1 2009 4301 0 0
+jungle/water1 2359 4307 0 0
+jungle/jungle_hard_block_6 2351 4037 0 0
+jungle/jungle_hard_block_5 1904 4036 0 0
+jungle/jungle_hard_block_2 2797 4257 0 0
+jungle/jungle_hard_block_3 3298 4282 0 0
+jungle/jungle_hard_block_3 3799 4283 0 0
+jungle/jungle_hard_block_3 4293 4282 0 0
+jungle/jungle_block_1 4352 3830 0 0
+jungle/jungle_block_2 4571 3799 0 0
+jungle/jungle_block_1 4548 3412 0 0
+jungle/jungle_set_2 2494 3976 0 0
+jungle/jungle_set_5 3137 4040 0 0
+jungle/jungle_set_4 4292 3809 0 0
+jungle/jungle_set_1 3908 4280 0 0
+jungle/jungle_set_1 2088 4148 0 0
+jungle/jungle_set_4 2696 4248 0 0
+jungle/jungle_block_1 4280 2059 0 0
+jungle/jungle_block_4 4497 2059 0 0
+jungle/jungle_block_4 3747 2049 0 0
+jungle/jungle_block_6 3302 1796 0 0
+jungle/jungle_block_1 3287 2443 0 0
+jungle/jungle_block_4 3507 2442 0 0
+jungle/jungle_block_2 2805 1764 0 0
+jungle/jungle_block_5 2359 1796 0 0
+jungle/jungle_block_5 1913 2049 0 0
+jungle/jungle_block_2 1413 2270 0 0
+jungle/jungle_block_1 193 2302 0 0
+jungle/jungle_block_8 958 3831 0 0
+jungle/jungle_hard_block_2 1403 4257  0 0
+jungle/jungle_set_4 1379 3794 0 0
+jungle/jungle_set_1 1628 3834 0 0
+jungle/jungle_set_1 1072 3866 0 0
+jungle/jungle_set_1 1338 3864 0 0
+jungle/jungle_block_1 1129 1301 0 0
+jungle/jungle_block_1 1207 913 0 0
+jungle/jungle_block_4 1423 912 0 0
+jungle/jungle_block_1 1600 561 0 0
+jungle/jungle_block_3 2266 299 0 0
+jungle/jungle_block_3 2767 299 0 0
+jungle/jungle_block_4 3266 306 0 0
+jungle/jungle_set_2 1243 765 0 0
+jungle/jungle_set_4 1437 882 0 0
+jungle/jungle_block_4 1347 1302 0 0
+jungle/jungle_set_1 1526 1293 0 0
+jungle/jungle_set_1 2342 290 0 0
+jungle/jungle_block_5 1818 306 0 0
+jungle/jungle_set_1 1816 542 0 0
+jungle/jungle_set_3 2058 89 0 0
+jungle/jungle_set_5 1312 2025 0 0
+jungle/jungle_block_3 914 2296 0 0
+jungle/jungle_block_2 412 2271 0 0
+jungle/jungle_warning_board 205 4059  0 0
+jungle/arbre_bord -17 625 0 0
 !
 #Monsters#
 0
@@ -270,7 +270,7 @@ block8 538 3999
 #y# 4139
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -285,17 +285,17 @@ block8 538 3999
 #y# 1941
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 3345
 #y# 1592
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 #x# 4461
 #y# 1844
 #nature# monster
 #text# "fubob"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -310,7 +310,7 @@ block8 538 3999
 #y# 2140
 #nature# monster
 #text# "sanglichon"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -326,7 +326,7 @@ block8 538 3999
 #y# 1930
 #nature# monster
 #text# "sanglichon"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -341,7 +341,7 @@ block8 538 3999
 #y# 796
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -356,7 +356,7 @@ block8 538 3999
 #y# 2177
 #nature# monster
 #text# "sanglichon"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -371,7 +371,7 @@ block8 538 3999
 #y# 2151
 #nature# monster
 #text# "sanglichon"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -386,12 +386,12 @@ block8 538 3999
 #y# 187
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 #x# 3043
 #y# 183
 #nature# monster
 #text# "gailapin"
-#endtriggerable# 
+#endtriggerable#
 
 #trig#
 #editor pos#
@@ -406,6 +406,6 @@ block8 538 3999
 #y# 3958
 #nature# dialog
 #text# "<ex> C'est parti ! A toi la grande vie et la liberte ! - pov' tache"
-#endtriggerable# 
+#endtriggerable#
 
 !
