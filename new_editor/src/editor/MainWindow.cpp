@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "mygraphicsview.h"
+#include "MainWindow.h"
+
 #include <iostream>
 #include <QGraphicsScene>
 #include <QMenu>
@@ -12,10 +12,9 @@
 #include <QToolBar>
 #include <QScrollBar>
 #include <QStatusBar>
-#include "utils.h"
 
-//~ #include "qnewfilewindow.h"
-
+#include <editor/MyGraphicsView.h>
+#include <util/utils.h>
 
 MainWindow::MainWindow():
 	m_graphic_scene(new QGraphicsScene()),

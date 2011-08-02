@@ -7,12 +7,13 @@
  *
  */
  
+#include "Analyser.h"
+
 #include <iostream>
 #include <stdint.h>
 #include <string>
 #include <fstream>
 
-#include "analyser.h"
 
 
 Analyser::Analyser()

@@ -1,14 +1,10 @@
+#include "TriggerItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
 #include <sstream>
-#include "triggeritem.h"
-#include "triggerableitem.h"
-#include "zoneitem.h"
-#include "mygraphicsview.h"
-#include "utils.h"
 #include <QFile>
 #include <QGraphicsScene>
-#include "mainwindow.h"
 #include <QWidget>
 #include <QTextEdit>
 #include <QRadioButton>
@@ -18,6 +14,11 @@
 #include <QMenu>
 #include <QAction>
 
+#include <editor/MainWindow.h>
+#include <items/TriggerableItem.h>
+#include <items/ZoneItem.h>
+#include <editor/MyGraphicsView.h>
+#include <util/utils.h>
 
 TriggerItem::TriggerItem(QGraphicsScene *scene, QString fileName, Analyser *analyser):
 	MyItem(NULL, fileName),

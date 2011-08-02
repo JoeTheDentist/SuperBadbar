@@ -1,10 +1,12 @@
 #ifndef _EDITOR_PLATEFORM_ITEM_H_
 #define _EDITOR_PLATEFORM_ITEM_H_
 
-#include "myitem.h"
-#include "staticitem.h"
-#include "data.h"
-#include "analyser.h"
+
+
+#include <items/MyItem.h>
+#include <editor/Data.h>
+#include <items/StaticItem.h>
+#include <util/Analyser.h>
 
 class MyGraphicsView;
 

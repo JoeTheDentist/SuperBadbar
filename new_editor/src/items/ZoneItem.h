@@ -2,10 +2,11 @@
 #ifndef _EDITOR_ZONE_ITEM_H
 #define _EDITOR_ZONE_ITEM_H
 
-#include "myitem.h"
-#include "data.h"
 #include <QObject>
-#include "utils.h"
+
+#include <items/MyItem.h>
+#include <editor/Data.h>
+#include <util/utils.h>
 
 class QTextEdit;
 class TriggerItem;

@@ -1,11 +1,14 @@
-#include "myitem.h"
-#include "data.h"
+#include "MyItem.h"
+
 #include <QGraphicsItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPixmap>
 #include <QGraphicsColorizeEffect>
-#include "mygraphicsview.h"
+
+#include <editor/MyGraphicsView.h>
+#include <editor/Data.h>
+
 
 MyGraphicsView *MyItem::m_view = NULL;
 

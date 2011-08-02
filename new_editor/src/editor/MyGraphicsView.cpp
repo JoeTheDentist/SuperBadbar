@@ -1,16 +1,5 @@
 
-#include "mygraphicsview.h"
-#include "myitem.h"
-#include "data.h"
-#include "babaritem.h"
-#include "setitem.h"
-#include "staticitem.h"
-#include "movingplatformitem.h"
-#include "fallingplatformitem.h"
-#include "monsteritem.h"
-#include "eventitem.h"
-#include "triggeritem.h"
-#include "utils.h"
+#include "MyGraphicsView.h"
 
 #include <iostream>
 #include <QScrollBar>
@@ -27,7 +16,19 @@
 #include <QProcess>
 #include <QGraphicsSimpleTextItem>
 #include <QStatusBar>
-#include "mainwindow.h"
+
+#include <editor/MainWindow.h>
+#include <editor/Data.h>
+#include <items/MyItem.h>
+#include <items/BabarItem.h>
+#include <items/SetItem.h>
+#include <items/StaticItem.h>
+#include <items/MovingPlatformItem.h>
+#include <items/FallingPlatformItem.h>
+#include <items/MonsterItem.h>
+#include <items/EventItem.h>
+#include <items/TriggerItem.h>
+#include <util/utils.h>
 
 
 #ifndef WIN32

@@ -1,13 +1,15 @@
-#include "data.h"
-#include "myitem.h"
-#include "movingplatformitem.h"
+#include "Data.h"
+
+
 #include <iostream>
 #include <QTextStream>
 #include <QFile>
 #include <QGraphicsPixmapItem>
-#include "paths.h"
-#include "triggeritem.h"
 
+#include <util/paths.h>
+#include <items/TriggerItem.h>
+#include <items/MyItem.h>
+#include <items/MovingPlatformItem.h>
 
 Data::Data():
 	m_babar_item(NULL),

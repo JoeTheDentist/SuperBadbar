@@ -1,10 +1,10 @@
-#ifndef _EDITOR_MONSTER_ITEM_H
-#define _EDITOR_MONSTER_ITEM_H
+#ifndef _EDITOR_EVENT_ITEM_H
+#define _EDITOR_EVENT_ITEM_H
 
-#include "myitem.h"
-#include "data.h"
+#include <items/MyItem.h>
+#include <editor/Data.h>
 
-class MonsterItem: public MyItem {
+class EventItem: public MyItem {
 	private:
 	QString m_class_name;
 	
@@ -14,18 +14,18 @@ class MonsterItem: public MyItem {
 	*	@param scene La scene de l'editeur
 	*	@param fileName Le nom du fichier, contenant "monsters/chemindufichier"
 	*/
-	MonsterItem(QGraphicsScene *scene, QString fileName);
-
+	EventItem(QGraphicsScene *scene, QString fileName);
+	
 	/*!
 	*	@brief Destructeur
 	*/
-	~MonsterItem();
+	~EventItem();
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
 	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
-	*/	
+	*/
 	virtual MyItem *duplicate(QGraphicsScene *scene);
 	
 	
@@ -43,7 +43,7 @@ class MonsterItem: public MyItem {
 	virtual void addToData(Data *data, bool push_front = true);
 
 	/*!
-	*	@brief transforme le nom du fichier ecrit dans un .lvl
+	*	@brief transforme le nom du fichier ecrit dans un .evt
 	*	en le chemin relatif vers le fichier depuis l'editeur
 	*	@return Ce chemin
 	*/

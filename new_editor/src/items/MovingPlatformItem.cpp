@@ -1,11 +1,14 @@
-#include "movingplatformitem.h"
+#include "MovingPlatformItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
-#include "paths.h"
-#include "mygraphicsview.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
 #include <QStringList>
+
+#include <util/paths.h>
+#include <editor/MyGraphicsView.h>
+
 
 MovingPlatformItem::MovingPlatformItem(QGraphicsScene *scene, QString fileName, MovingPlatformItem *father):
 	StaticItem(scene, fileName),

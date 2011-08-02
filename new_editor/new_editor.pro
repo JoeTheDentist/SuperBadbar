@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += .
 INCLUDEPATH += .
+INCLUDEPATH += src/
 
 
 
@@ -33,38 +34,11 @@ unix {
 
 
 # Input
-HEADERS += analyser.h \
-           babaritem.h \
-           data.h \
-           debug.h \
-           eventitem.h \
-           mainwindow.h \
-           monsteritem.h \
-           mygraphicsview.h \
-           myitem.h \
-           paths.h \
-           movingplatformitem.h \
-           fallingplatformitem.h \
-           setitem.h \
-           staticitem.h \
-           triggeritem.h \
-           triggerableitem.h \
-           utils.h \
-           zoneitem.h 
-SOURCES += analyser.cpp \
-           babaritem.cpp \
-           data.cpp \
-           eventitem.cpp \
-           main.cpp \
-           mainwindow.cpp \
-           monsteritem.cpp \
-           mygraphicsview.cpp \
-           myitem.cpp \
-           movingplatformitem.cpp \
-		   fallingplatformitem.cpp \
-           setitem.cpp \
-           staticitem.cpp \
-           triggeritem.cpp \
-           triggerableitem.cpp \
-           utils.cpp \
-           zoneitem.cpp
+HEADERS += 	src/editor/*.h \
+			src/items/*.h \
+			src/util/*.h 
+
+SOURCES += src/main.cpp \
+			src/editor/*.cpp \
+			src/items/*.cpp \
+			src/util/*.cpp 

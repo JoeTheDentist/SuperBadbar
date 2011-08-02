@@ -1,8 +1,11 @@
 #ifndef _EDITOR_MY_GRAPHICS_VIEW_
 #define _EDITOR_MY_GRAPHICS_VIEW_
+
 #include <QGraphicsView>
-#include "paths.h"
-#include "babaritem.h"
+
+#include <util/paths.h>
+#include <items/BabarItem.h>
+
 #define CURS_BOX 0
 #define CURS_LINE 1
 #define BOX_SIZE 5

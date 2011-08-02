@@ -1,9 +1,11 @@
-#include "staticitem.h"
+#include "StaticItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
-#include "paths.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
+
+#include <util/paths.h>
 
 StaticItem::StaticItem(QGraphicsScene *scene, QString fileName, int buffer, unsigned int varCol):
 	MyItem(NULL, fileName),

@@ -1,9 +1,11 @@
-#include "babaritem.h"
+#include "BabarItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
-#include "paths.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
+
+#include <util/paths.h>
 
 BabarItem::BabarItem(QGraphicsScene *scene, int age):
 	MyItem(NULL, QString(BABAR_PIC_DIR) + "1/babar_0_0_0_0.png"),

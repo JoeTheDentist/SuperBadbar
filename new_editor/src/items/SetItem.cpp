@@ -1,9 +1,11 @@
-#include "setitem.h"
+#include "SetItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
-#include "paths.h"
 #include <QGraphicsScene>
 #include <QInputDialog>
+
+#include <util/paths.h>
 
 SetItem::SetItem(QGraphicsScene *scene, QString fileName):
 	MyItem(NULL, fileName)

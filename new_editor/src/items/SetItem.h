@@ -1,34 +1,31 @@
-#ifndef _EDITOR_EVENT_ITEM_H
-#define _EDITOR_EVENT_ITEM_H
+#ifndef _EDITOR_SET_ITEM_H_
+#define _EDITOR_SET_ITEM_H_
 
-#include "myitem.h"
-#include "data.h"
+#include <items/MyItem.h>
+#include <editor/Data.h>
 
-class EventItem: public MyItem {
-	private:
-	QString m_class_name;
-	
+class SetItem: public MyItem {
+	protected:
 	public:
 	/*!
 	*	@brief Constructeur
-	*	@param scene La scene de l'editeur
-	*	@param fileName Le nom du fichier, contenant "monsters/chemindufichier"
+	*	@param item L'objet à encapsuler
+	*	@param fileName Le nom du fichier, contenant "statics/chemindufichier"
 	*/
-	EventItem(QGraphicsScene *scene, QString fileName);
+	SetItem(QGraphicsScene *scene, QString fileName);
 	
 	/*!
 	*	@brief Destructeur
 	*/
-	~EventItem();
+	~SetItem();
 	
 	/*!
 	*	@brief Cree une instance identique a l'instance actuelle
 	*	@param scene La scene de l'editeur
 	*	@return Un pointeur vers la copie
-	*/
+	*/	
 	virtual MyItem *duplicate(QGraphicsScene *scene);
-	
-	
+
 	/*!
 	*	@brief Sauvegarde l'objet dans out
 	*	@param out Le flux dans lequel on doit sauvegarder
@@ -41,13 +38,17 @@ class EventItem: public MyItem {
 	*	@param push_front Indique si l'item doit etre positionne en tete ou en queue
 	*/
 	virtual void addToData(Data *data, bool push_front = true);
+	
 
 	/*!
-	*	@brief transforme le nom du fichier ecrit dans un .evt
-	*	en le chemin relatif vers le fichier depuis l'editeur
+	*	@brief transforme le nom du fichier ecrit dans un .lvl
+	*	en le chemin relatif vers l'image de l'objet depuis l'editeur
 	*	@return Ce chemin
 	*/
 	static QString picPathFromEditor(QString fileName);
+	
+	protected:
+		
 
 };
 

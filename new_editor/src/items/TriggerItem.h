@@ -1,10 +1,11 @@
 #ifndef _EDITOR_TRIGGER_ITEM_H
 #define _EDITOR_TRIGGER_ITEM_H
 
-#include "myitem.h"
-#include "data.h"
-#include "eventitem.h"
 #include <QObject>
+
+#include <items/MyItem.h>
+#include <editor/Data.h>
+#include <util/utils.h>
 
 class TriggerableItem;
 class ZoneItem;

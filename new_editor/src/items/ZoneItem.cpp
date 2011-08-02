@@ -1,12 +1,9 @@
+#include "ZoneItem.h"
+
 #include <QGraphicsPixmapItem>
 #include <iostream>
-#include "zoneitem.h"
-#include "triggeritem.h"
-#include "mygraphicsview.h"
-#include "utils.h"
 #include <QFile>
 #include <QGraphicsScene>
-#include "mainwindow.h"
 #include <QWidget>
 #include <QTextEdit>
 #include <QRadioButton>
@@ -14,7 +11,10 @@
 #include <QVBoxLayout>
 #include <QDir>
 
-
+#include <editor/MainWindow.h>
+#include <editor/MyGraphicsView.h>
+#include <items/TriggerItem.h>
+#include <util/utils.h>
 
 ZoneItem::ZoneItem(QGraphicsScene *scene, TriggerItem *parent, int x, int y, int w, int h):
 	MyItem(NULL, ""),

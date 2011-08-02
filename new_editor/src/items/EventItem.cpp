@@ -1,10 +1,11 @@
 #include <QGraphicsItem>
 #include <iostream>
-#include "eventitem.h"
-#include "paths.h"
 #include <QFile>
-#include "analyser.h"
 #include <QGraphicsScene>
+
+#include <items/EventItem.h>
+#include <util/paths.h>
+#include <util/Analyser.h>
 
 EventItem::EventItem(QGraphicsScene *scene, QString fileName):
 	MyItem(NULL, fileName),

@@ -1,5 +1,6 @@
-#include "fallingplatformitem.h"
-#include "paths.h"
+#include "FallingPlatformItem.h"
+#include <util/paths.h>
+
 FallingPlatformItem::FallingPlatformItem(QGraphicsScene *scene, QString fileName, int buffer):
 	StaticItem(scene, fileName, buffer)
 {

@@ -1,8 +1,8 @@
 #ifndef _EDITOR_BABAR_ITEM_H_
 #define _EDITOR_BABAR_ITEM_H_
 
-#include "myitem.h"
-#include "data.h"
+#include <items/MyItem.h>
+#include <editor/Data.h>
 
 class BabarItem: public MyItem {
 	private:

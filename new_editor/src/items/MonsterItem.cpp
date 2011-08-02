@@ -1,11 +1,12 @@
+#include "MonsterItem.h"
+
 #include <QGraphicsItem>
 #include <iostream>
-#include "monsteritem.h"
-#include "paths.h"
 #include <QFile>
-#include "analyser.h"
 #include <QGraphicsScene>
 
+#include <util/paths.h>
+#include <util/Analyser.h>
 
 
 MonsterItem::MonsterItem(QGraphicsScene *scene, QString fileName):
