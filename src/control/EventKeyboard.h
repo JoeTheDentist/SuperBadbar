@@ -1,8 +1,10 @@
 #ifndef _EVENT_KEYBOARD_H
 #define _EVENT_KEYBOARD_H
 
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include <SDL/SDL.h>
+
 #include <string>
+
 #include "../util/enums.h"
 
 /*!

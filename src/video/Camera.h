@@ -26,7 +26,7 @@
 #define _CAMERA_
 
 
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include <SDL/SDL.h>
 
 #include <util/globals.h>
 #include <util/debug.h>

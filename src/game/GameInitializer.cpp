@@ -2,10 +2,10 @@
 
 #include "GameInitializer.h"
 
-#include <time.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 
-#include "../../lib/SDL/include/SDL/SDL.h"
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include <time.h>
 
 #include <control/Keyboard.h>
 #include <control/KeyboardConfig.h>

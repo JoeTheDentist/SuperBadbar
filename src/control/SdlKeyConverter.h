@@ -10,8 +10,9 @@
 #ifndef _SdlKeyConverter_H
 #define _SdlKeyConverter_H
 
+#include <SDL/SDL.h>
+
 #include <string>
-#include "../../lib/SDL/include/SDL/SDL.h"
 
 class SdlKeyConverter {
 public:
