@@ -31,12 +31,21 @@ unix {
 	QMAKE_LFLAGS +=	-lsfml-system -lsfml-graphics -lsfml-window
 	QMAKE_CFLAGS += 
 	QMAKE_CXXFLAGS += 
-	LIBS += -L"../lib/gcc" 
-	QMAKE_LFLAGS_RPATH += -L"../lib/gcc/" 
+	
 	
 	dep.target = dep
-	dep.commands = export LD_LIBRARY_PATH="../lib/gcc":$LD_LIBRARY_PATH
-	QMAKE_EXTRA_UNIX_TARGETS += dep 
+	QT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
+	X64 = $$find(QT_INSTALL_PREFIX, 64)
+	isEmpty(X64) {
+	    dep.commands = ./depends.sh
+		
+	  	LIBS += -L"../lib/gcc/x32" 
+		QMAKE_LFLAGS_RPATH += -L"../lib/gcc/x32" 
+	} else {
+	  dep.commands = export LD_LIBRARY_PATH="../lib/gcc/x64":$LD_LIBRARY_PATH
+
+	}
+	QMAKE_EXTRA_UNIX_TARGETS += dep 			
 			
 	DESTDIR = ./
 	OBJECTS_DIR = release/.obj
