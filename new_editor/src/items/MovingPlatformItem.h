@@ -75,7 +75,19 @@ class MovingPlatformItem: public StaticItem {
 	
 	MovingPlatformItem *getSon() { return m_son; }
 
-	virtual void moveItem(int x, int y);
+	/*!
+	*	@brief Deplace l'item selon son etat
+	*	@param xrel	Deplacement relatif 
+	*	@param yrel	Deplacement relatif
+	*	@param xabs Deplacement absolu
+	*	@param yabs Deplacement absolu
+	*
+	*	Si l'item est en cours d'ajout, l'item et place en (xabs, yabs)
+	*
+	*	Sinon, l'item et deplace de (xrel, yrel)
+	*/	
+	virtual void moveItem(int xrel, int yrel, int xabs = 0, int yabs = 0);
+	
 	virtual void setPos(int x, int y);	
 	
 	virtual MyItem* selectItem(int x, int y);

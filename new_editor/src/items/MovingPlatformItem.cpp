@@ -88,15 +88,29 @@ QString MovingPlatformItem::picPathFromEditor(QString fileName)
 	return STATIC_DIR + fileName + ".png";
 }
 
-void MovingPlatformItem::moveItem(int x, int y)
+void MovingPlatformItem::moveItem(int xrel, int yrel, int xabs, int yabs)
 {
-	qWarning("plop");
-	StaticItem::setPos(this->getItem()->x() + x, this->getItem()->y() + y);
-	if (isFather()) {
-		m_son->moveItem(x, y);
+	QGraphicsItem *item = this->getItem();
+	if (m_state == e_beingAdded) {
+		StaticItem::setPos(xabs, yabs);
 	} else {
+		StaticItem::setPos(item->x() + xrel, item->y() + yrel);
+	}
+	if (isFather()) {
+		m_son->moveItem(xrel, yrel, xabs, yabs);
 	}
 }
+
+
+//~ void MovingPlatformItem::moveItem(int x, int y)
+//~ {
+//~ 	qWarning("plop");
+//~ 	StaticItem::setPos(this->getItem()->x() + x, this->getItem()->y() + y);
+//~ 	if (isFather()) {
+//~ 		m_son->moveItem(x, y);
+//~ 	} else {
+//~ 	}
+//~ }
 
 void MovingPlatformItem::setPos(int x, int y)
 {
