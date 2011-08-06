@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-#include <util/utils.h>
+#include "util/utils.h"
 #include <video/Font.h>
 #include <video/PicturesContainer.h>
 #include <video/TexturesManager.h>
@@ -39,7 +39,7 @@ void SurfaceText::init(std::string text, int size, int r, int g, int b, std::str
 {
 	#ifdef _OPENGL_ACTIVE_
 	setTexture(m_texturesManager->loadTextureText(text, size, r, g, b, font_name));
-	#else	
+	#else
 	setSurface(m_pictures_container->loadSurfaceText(text, size, r, g, b, font_name));
 	#endif
 }

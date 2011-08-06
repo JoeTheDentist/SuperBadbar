@@ -2,7 +2,7 @@
 #include "SpritesManager.h"
 #include "SpriteAnim.h"
 #include "SpriteAnimTable.h"
-#include "../util/debug.h"
+#include "util/debug.h"
 
 SpritesManager::SpritesManager()
 {

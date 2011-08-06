@@ -11,8 +11,8 @@
 #include <stdint.h>
 
 #include "Weapon.h"
-#include <util/debug.h>
-#include <actors/Projectile.h>
+#include "util/debug.h"
+#include "actors/Projectile.h"
 
 
 Weapon::Weapon()

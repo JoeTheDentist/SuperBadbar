@@ -14,7 +14,7 @@
 #include <vector>
 
 #include <util/Rect.h>
-#include <util/debug.h>
+#include "util/debug.h"
 
 class PicturesContainer;
 struct SDL_Surface;
@@ -110,11 +110,11 @@ public:
 	*	@return La hauteur de l'image
 	*/
 	void set_h(int h);
-	
+
 	/*!
 	*	@brief Accesseur
 	*	@return La liste des surfaces filles et de leurs positions relatives
-	*	
+	*
 	*	Les Surface ayant des enfants heritent de SurfaceComposite
 	*/
 	virtual std::vector<SurfaceCompositeItem *> *children ()  { return NULL; }

@@ -1,7 +1,7 @@
 #ifndef ANIM_H_INCLUDED
 #define ANIM_H_INCLUDED
 
-#include <video/Surface.h>
+#include "video/Surface.h"
 
 class Surface;
 

@@ -9,10 +9,10 @@
 
 #include "SurfaceUniform.h"
 
-#include <util/debug.h>
-#include <util/globals.h>
-#include <video/Camera.h>
-#include <video/GraphicEngine.h>
+#include "util/debug.h"
+#include "util/globals.h"
+#include "video/Camera.h"
+#include "video/GraphicEngine.h"
 #include <video/PicturesContainer.h>
 #include <video/Texture.h>
 #include <video/TexturesManager.h>

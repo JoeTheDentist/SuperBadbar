@@ -13,11 +13,11 @@
 #include <string>
 #include <stdint.h>
 
-#include "../video/Statics.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "../physic/CollisionsMatrix.h"
-#include "../physic/BindablePlatform.h"
+#include "video/Statics.h"
+#include "util/debug.h"
+#include "util/Analyser.h"
+#include "physic/CollisionsMatrix.h"
+#include "physic/BindablePlatform.h"
 
 #define PLATFORM_RESPAWN_TIME 100
 class Surface;

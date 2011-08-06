@@ -7,13 +7,15 @@
  *
  */
 
-#include <iostream>
 #include "ProjectilesManager.h"
-#include "../actors/Projectile.h"
-#include "../game/StaticData.h"
-#include "../physic/CollisionsManager.h"
-#include "../video/Camera.h"
-#include "../util/debug.h"
+
+#include <iostream>
+
+#include "actors/Projectile.h"
+#include "game/StaticData.h"
+#include "physic/CollisionsManager.h"
+#include "video/Camera.h"
+#include "util/debug.h"
 
 
 ProjectilesManager::ProjectilesManager()
@@ -77,13 +79,13 @@ void ProjectilesManager::delete_old_projectiles()
 	}
 }
 
-void ProjectilesManager::add_proj(Projectile *proj, dmg_chan chan) 
+void ProjectilesManager::add_proj(Projectile *proj, dmg_chan chan)
 {
 	m_proj[chan].push_back(proj);
 	proj->set_chan(chan);
 }
 
-void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan) 
+void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan)
 {
 	for (std::list<Projectile *>::iterator it = proj->begin();
 			it != proj->end(); it++) {
@@ -92,12 +94,12 @@ void ProjectilesManager::add_proj(std::list<Projectile*> *proj, dmg_chan chan)
 	delete proj;
 }
 
-std::list<Projectile *>::iterator ProjectilesManager::proj_begin(dmg_chan chan) 
+std::list<Projectile *>::iterator ProjectilesManager::proj_begin(dmg_chan chan)
 {
 	return m_proj[chan].begin();
 }
 
-std::list<Projectile *>::iterator ProjectilesManager::proj_end(dmg_chan chan) 
+std::list<Projectile *>::iterator ProjectilesManager::proj_end(dmg_chan chan)
 {
 	return m_proj[chan].end();
 }

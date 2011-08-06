@@ -14,7 +14,7 @@
 #include <list>
 
 #include <items/Weapon.h>
-#include <util/globals.h>
+#include "util/globals.h"
 
 
 

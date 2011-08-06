@@ -6,10 +6,10 @@
  * 	@date juillet 2011
  *
  */
- 
+
 #include "SurfaceComposite.h"
 
-#include <video/Surface.h>
+#include "video/Surface.h"
 
 #define LOCAL_MIN(a, b) (((a) > (b)) ? (b) : (a))
 #define LOCAL_MAX(a, b) (((a) < (b)) ? (b) : (a))
@@ -37,11 +37,11 @@ void SurfaceComposite::setSurface(unsigned int i, Surface *surface)
 }
 
 
-int SurfaceComposite::w() 
+int SurfaceComposite::w()
 {
 	Surface *surface = centerChild()->getSurface();
 	int x1 = 0, x2 = surface->w();
-	for (std::vector<SurfaceCompositeItem *>::iterator it = m_children.begin(); 
+	for (std::vector<SurfaceCompositeItem *>::iterator it = m_children.begin();
 			it != m_children.end(); ++it) {
 		Rect temp = (*it)->getPosFromCenterSurface();
 		x1 = LOCAL_MIN(x1, temp.x);
@@ -50,11 +50,11 @@ int SurfaceComposite::w()
 	return x2 - x1;
 }
 
-int SurfaceComposite::h() 
+int SurfaceComposite::h()
 {
 	Surface *surface = centerChild()->getSurface();
 	int y1 = 0, y2 = surface->h();
-	for (std::vector<SurfaceCompositeItem *>::iterator it = m_children.begin(); 
+	for (std::vector<SurfaceCompositeItem *>::iterator it = m_children.begin();
 			it != m_children.end(); ++it) {
 		Rect temp = (*it)->getPosFromCenterSurface();
 		y1 = LOCAL_MIN(y1, temp.y);
@@ -84,12 +84,12 @@ Rect SurfaceComposite::centerChildPos() const
 	return res;
 }
 
-int SurfaceComposite::centerWidth() const 
+int SurfaceComposite::centerWidth() const
 {
 	return centerChild()->getSurface()->w();
 }
 
-int SurfaceComposite::centerHeight() const 
+int SurfaceComposite::centerHeight() const
 {
 	return centerChild()->getSurface()->h();
 }

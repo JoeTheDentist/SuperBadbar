@@ -8,12 +8,13 @@
  */
 
 #include "Rocket.h"
-#include "../util/debug.h"
-#include "../sprites/SpritesManager.h"
-#include "../util/globals.h"
-#include "../game/GameEngine.h"
-#include "../actors/MonstersManager.h"
-#include "Explosion.h"
+
+#include "util/debug.h"
+#include "sprites/SpritesManager.h"
+#include "util/globals.h"
+#include "game/GameEngine.h"
+#include "actors/MonstersManager.h"
+#include "actors/Explosion.h"
 
 Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {

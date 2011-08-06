@@ -12,8 +12,8 @@
 
 #include <stdint.h>
 #include <list>
-#include <util/globals.h>
-#include <actors/ProjectilesManager.h>
+#include "util/globals.h"
+#include "actors/ProjectilesManager.h"
 
 #define PROJ_SPEED 40       /* Vitesse des projectiles */
 

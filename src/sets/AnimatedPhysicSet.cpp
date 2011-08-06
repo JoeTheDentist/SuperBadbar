@@ -1,6 +1,6 @@
 
 #include "AnimatedPhysicSet.h"
-#include "../sprites/SpritesManager.h"
+#include "sprites/SpritesManager.h"
 
 AnimatedPhysicSet::AnimatedPhysicSet(std::string anim_name, Rect pos, Rect speed)
 {

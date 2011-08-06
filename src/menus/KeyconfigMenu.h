@@ -3,8 +3,8 @@
 
 #include <menus/Menu.h>
 
-#include "../video/Surface.h"
-#include "../menus/ListMenuActions.h"
+#include "video/Surface.h"
+#include "menus/ListMenuActions.h"
 
 
 class KeyconfigMenu: public Menu {

@@ -1,7 +1,7 @@
 #ifndef PLAYER_H_INCLUDED
 #define PLAYER_H_INCLUDED
 
-#include "../actors/ProjectilesManager.h"
+#include "actors/ProjectilesManager.h"
 class Analyser;
 class Stats;
 class Babar;

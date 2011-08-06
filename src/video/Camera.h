@@ -28,8 +28,8 @@
 
 #include <SDL/SDL.h>
 
-#include <util/globals.h>
-#include <util/debug.h>
+#include "util/globals.h"
+#include "util/debug.h"
 
 #define VITESSE_DECALAGE_CAMERA 25
 #define VITESSE_DECALAGE_RETOUR_CAMERA 10

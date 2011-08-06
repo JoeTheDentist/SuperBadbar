@@ -9,15 +9,15 @@
 
 
 #include "GraphicEngine.h"
-#include <actors/Babar.h>
-#include <game/StaticData.h>
-#include <players/PlayersManager.h>
-#include <sprites/SpritesManager.h>
-#include <video/Camera.h>
+#include "actors/Babar.h"
+#include "game/StaticData.h"
+#include "players/PlayersManager.h"
+#include "sprites/SpritesManager.h"
+#include "video/Camera.h"
 #include <video/Dashboard.h>
 #include <video/PicturesContainer.h>
-#include <video/Talks.h>
-#include <video/Surface.h>
+#include "video/Talks.h"
+#include "video/Surface.h"
 
 
 #ifdef _OPENGL_ACTIVE_

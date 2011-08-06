@@ -10,11 +10,11 @@
 #ifndef _SOUND_ENGINE_
 #define _SOUND_ENGINE_
 
-#include "../../lib/fmodapi375win/api/inc/fmod.h"
+#include "../lib/fmodapi375win/api/inc/fmod.h"
 
 #include <string>
 #include <map>
-#include "../items/Weapon.h"
+#include "items/Weapon.h"
 
 #define MUSIC_CANAL 1
 

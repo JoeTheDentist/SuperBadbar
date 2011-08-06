@@ -1,7 +1,7 @@
 
 #include "AnimText.h"
 
-#include <video/SurfaceText.h>
+#include "video/SurfaceText.h"
 
 AnimText::AnimText(std::string text, int begin_size, int end_size, int nb_pic)
 {

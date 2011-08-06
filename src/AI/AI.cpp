@@ -4,12 +4,13 @@
 
 #include <cmath>
 
-#include <actors/Projectile.h>
-#include <actors/Babar.h>
-#include <players/PlayersManager.h>
-#include <actors/ProjectilesManager.h>
-#include <physic/CollisionsManager.h>
-#include <physic/CollisionsMatrix.h>
+#include "actors/Projectile.h"
+#include "actors/Babar.h"
+#include "players/PlayersManager.h"
+#include "actors/ProjectilesManager.h"
+#include "physic/CollisionsManager.h"
+#include "physic/CollisionsMatrix.h"
+
 AI::AI(Rect * pos)
 {
     m_pos = pos;

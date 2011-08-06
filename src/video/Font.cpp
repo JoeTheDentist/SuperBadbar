@@ -6,13 +6,13 @@
  * 	@date mars 2011
  *
  */
- 
+
 #include "Font.h"
 
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 
-#include <util/utils.h>
+#include "util/utils.h"
 
 
 
@@ -29,7 +29,7 @@ Font::Font(int size, int r, int g, int b, std::string font_name):
 	m_font_color.b = b;
 }
 
-Font::Font(Font &font) 
+Font::Font(Font &font)
 {
 	PRINT_DEBUG(1, "Attention, cet objet (Font) ne doit pas etre copie")
 }
@@ -37,9 +37,9 @@ Font::Font(Font &font)
 Font::~Font()
 {
 	if (m_font)
-		TTF_CloseFont(m_font);		
+		TTF_CloseFont(m_font);
 }
-	
+
 TTF_Font *Font::get_TTF_font()
 {
 	return m_font;

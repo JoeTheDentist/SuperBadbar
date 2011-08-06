@@ -2,8 +2,8 @@
 #define SPRITES_MANAGER_H_INCLUDED
 
 #include "Sprite.h"
-#include "../video/Anim.h"
-#include "../video/Camera.h"
+#include "video/Anim.h"
+#include "video/Camera.h"
 
 /**
  *  @class SpritesManager

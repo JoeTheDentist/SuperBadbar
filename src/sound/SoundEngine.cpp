@@ -10,14 +10,14 @@
 #include <iostream>
 #include <stdint.h>
 #include <stdio.h>
-#include "../util/Analyser.h"
-#include "../util/repertories.h"
+#include "util/Analyser.h"
+#include "util/repertories.h"
 #include "SoundEngine.h"
-#include "../sound/SoundEngine.h"
-#include "../sound/Sound.h"
-#include "../sound/Sonorisable.h"
-#include "../util/debug.h"
-#include "../util/globals.h"
+#include "sound/SoundEngine.h"
+#include "sound/Sound.h"
+#include "sound/Sonorisable.h"
+#include "util/debug.h"
+#include "util/globals.h"
 
 
 SoundEngine::SoundEngine()

@@ -13,25 +13,25 @@
 #include <iostream>
 #include <stdint.h>
 
-#include <actors/Actor.h>
-#include <actors/Babar.h>
-#include <actors/Monster.h>
+#include "actors/Actor.h"
+#include "actors/Babar.h"
+#include "actors/Monster.h"
 #include <actors/MonstersManager.h>
-#include <actors/Projectile.h>
-#include <actors/ProjectilesManager.h>
+#include "actors/Projectile.h"
+#include "actors/ProjectilesManager.h"
 #include <actors/WalkingMonster.h>
-#include <control/Keyboard.h>
-#include <events/EventsManager.h>
+#include "control/Keyboard.h"
+#include "events/EventsManager.h"
 #include <events/Stats.h>
-#include <game/StaticData.h>
-#include <physic/CollisionsManager.h>
-#include <players/PlayersManager.h>
+#include "game/StaticData.h"
+#include "physic/CollisionsManager.h"
+#include "players/PlayersManager.h"
 #include <sets/AnimatedSetsManager.h>
 #include <sound/SoundEngine.h>
-#include <sprites/SpritesManager.h>
-#include <util/utils.h>
-#include <util/globals.h>
-#include <video/Camera.h>
+#include "sprites/SpritesManager.h"
+#include "util/utils.h"
+#include "util/globals.h"
+#include "video/Camera.h"
 #include <video/PicturesContainer.h>
 
 

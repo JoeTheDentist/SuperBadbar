@@ -12,7 +12,7 @@
 
 #include <string>
 
-#include <video/Surface.h>
+#include "video/Surface.h"
 
 class Font;
 

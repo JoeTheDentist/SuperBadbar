@@ -10,7 +10,7 @@
 #ifndef _TEXTUREMSMANAGER_
 #define _TEXTUREMSMANAGER_
 
-#include <util/debug.h>
+#include "util/debug.h"
 
 #ifdef _OPENGL_ACTIVE_
 #include <map>

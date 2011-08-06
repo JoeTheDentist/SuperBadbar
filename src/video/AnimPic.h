@@ -12,7 +12,7 @@
 
 #include <string>
 
-#include <util/globals.h>
+#include "util/globals.h"
 #include <video/Anim.h>
 
 #define ANIMATION_SPEED 3   /* Nombres de cycles entre deux images de l'animation (temps = TIME_LOOP * ANIMATION_SPEED) */

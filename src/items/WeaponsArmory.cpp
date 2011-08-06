@@ -8,9 +8,9 @@
  */
 
 #include "WeaponsArmory.h"
-#include <util/debug.h>
-#include <items/ElmarMachineGun.h>
-#include <items/Gun.h>
+#include "util/debug.h"
+#include "items/ElmarMachineGun.h"
+#include "items/Gun.h"
 #include <items/MachineGun.h>
 #include <items/RocketLauncher.h>
 #include <items/Shotgun.h>

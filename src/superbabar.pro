@@ -11,7 +11,8 @@ QT -= qui
 TARGET = superbabar
 TEMPLATE = app
 
-INCLUDEPATH += ../lib/include
+INCLUDEPATH +=  ../lib/include \
+                .
 
 win32 {
         LIBS += -L"../lib/lib" \
@@ -45,8 +46,6 @@ unix {
 	UI_DIR = release/.ui
 	
 }
-
-INCLUDEPATH += .
 
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \

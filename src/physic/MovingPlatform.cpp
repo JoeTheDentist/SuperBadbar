@@ -10,14 +10,14 @@
 #include <iostream>
 #include <math.h>
 #include "MovingPlatform.h"
-#include "../game/StaticData.h"
-#include "../video/Camera.h"
-#include "../video/Surface.h"
-#include "../actors/Babar.h"
-#include "../util/Analyser.h"
-#include "../physic/CollisionsManager.h"
-#include "../physic/CollisionsMatrix.h"
-#include "../video/Displayable.h"
+#include "game/StaticData.h"
+#include "video/Camera.h"
+#include "video/Surface.h"
+#include "actors/Babar.h"
+#include "util/Analyser.h"
+#include "physic/CollisionsManager.h"
+#include "physic/CollisionsMatrix.h"
+#include "video/Displayable.h"
 
 
 MovingPlatform::MovingPlatform(Analyser &analyserLevel):

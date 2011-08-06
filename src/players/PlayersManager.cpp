@@ -1,6 +1,6 @@
 
 #include "PlayersManager.h"
-#include "../actors/Babar.h"
+#include "actors/Babar.h"
 
 PlayersManager::PlayersManager()
 {

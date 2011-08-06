@@ -10,7 +10,7 @@
 #ifndef NETWORKCLIENT_H
 #define NETWORKCLIENT_H
 
-#include "NetworkCommunicator.h"
+#include "network/NetworkCommunicator.h"
 
 /**
  *  @class NetworkClient

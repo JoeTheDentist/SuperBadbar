@@ -11,7 +11,7 @@
 #ifndef _BABAR_MENU_ACTION_CLASSIC_
 #define _BABAR_MENU_ACTION_CLASSIC_
 
-#include "../menus/MenuAction.h"
+#include "menus/MenuAction.h"
 
 class MenuActionClassic: public MenuAction {
 public:

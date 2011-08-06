@@ -15,9 +15,9 @@
 #include <list>
 #include "CollisionsMatrix.h"
 #include "BindablePlatform.h"
-#include "../util/globals.h"
-#include "../util/Analyser.h"
-#include "../util/debug.h"
+#include "util/globals.h"
+#include "util/Analyser.h"
+#include "util/debug.h"
 
 
 

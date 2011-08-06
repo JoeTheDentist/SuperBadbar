@@ -11,7 +11,7 @@
 #ifndef _BABAR_SPECIAL_LETTER_H_
 #define _BABAR_SPECIAL_LETTER_H_
 
-#include <video/SurfaceText.h>
+#include "video/SurfaceText.h"
 #include <string>
 
 /**

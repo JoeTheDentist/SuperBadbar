@@ -13,7 +13,7 @@
 #include <string>
 #include <queue>
 
-#include "../video/Camera.h"
+#include "video/Camera.h"
 
 #define PIC_TALKS_DIR "/pic/talks/"
 #define FONTS_TALKS_DIR "/data/talks/fonts/"
@@ -26,10 +26,10 @@
 #define DISPLAY_SPEED 20
 
 
-#include "../video/Font.h"
-#include "../video/SurfaceText.h"
-#include "../video/SpecialLetter.h"
-#include "../video/Surface.h"
+#include "video/Font.h"
+#include "video/SurfaceText.h"
+#include "video/SpecialLetter.h"
+#include "video/Surface.h"
 
 
 

@@ -1,14 +1,14 @@
 #include "PauseMenu.h"
 
-#include "../video/Camera.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../control/Keyboard.h"
-#include "../game/Game.h"
-#include "../game/LevelsManager.h"
-#include "../menus/MenuAction.h"
-#include "../menus/OptionsMenu.h"
-#include "../video/SurfaceText.h"
+#include "video/Camera.h"
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "control/Keyboard.h"
+#include "game/Game.h"
+#include "game/LevelsManager.h"
+#include "menus/MenuAction.h"
+#include "menus/OptionsMenu.h"
+#include "video/SurfaceText.h"
 
 PauseMenu::PauseMenu() :
 	Menu()

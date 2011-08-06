@@ -10,8 +10,8 @@
 
 #include <string>
 
-#include <util/debug.h>
-#include <video/Surface.h>
+#include "util/debug.h"
+#include "video/Surface.h"
 #include <video/Statics.h>
 
 Static::Static()

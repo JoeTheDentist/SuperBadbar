@@ -9,16 +9,16 @@
 
 #include "CollisionsManager.h"
 #include "stdint.h"
-#include "../util/Analyser.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../actors/Babar.h"
-#include "../util/globals.h"
-#include "../video/Camera.h"
-#include "../physic/MovingPlatform.h"
-#include "../physic/FallingPlatform.h"
-#include "../physic/ChainedPlatform.h"
-#include "../players/PlayersManager.h"
+#include "util/Analyser.h"
+#include "util/debug.h"
+#include "util/repertories.h"
+#include "actors/Babar.h"
+#include "util/globals.h"
+#include "video/Camera.h"
+#include "physic/MovingPlatform.h"
+#include "physic/FallingPlatform.h"
+#include "physic/ChainedPlatform.h"
+#include "players/PlayersManager.h"
 
 #include <iostream>
 #include <algorithm>
@@ -33,7 +33,7 @@ CollisionsManager::~CollisionsManager()
 	for(std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
 			it != m_moving_platforms.end(); it++) {
 		delete (*it);
-	}	
+	}
 	for(std::list<std::pair<BindablePlatform *, int> > ::const_iterator it = m_waiting_platforms.begin();
 			it != m_waiting_platforms.end(); it++) {
 		delete (*it).first;

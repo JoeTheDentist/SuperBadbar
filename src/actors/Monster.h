@@ -14,8 +14,8 @@
 #define SWITCH_DIST 400
 
 #include "Actor.h"
-#include "../video/AnimPic.h"
-#include "../sound/Sonorisable.h"
+#include "video/AnimPic.h"
+#include "sound/Sonorisable.h"
 #include <list>
 
 class Anim;

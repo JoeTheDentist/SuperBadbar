@@ -12,12 +12,12 @@
 
 #include <list>
 #include <sound/Sonorisable.h>
-#include <util/Analyser.h>
+#include "util/Analyser.h"
 #include <video/AnimPic.h>
 #include <video/AnimTable.h>
 #include <items/WeaponsArmory.h>
-#include <actors/Actor.h>
-#include <actors/ProjectilesManager.h>
+#include "actors/Actor.h"
+#include "actors/ProjectilesManager.h"
 
 
 #define BABAR_SPEED 15

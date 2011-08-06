@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 #include "SpriteAnim.h"
-#include "../video/AnimPic.h"
-#include "../video/AnimText.h"
+#include "video/AnimPic.h"
+#include "video/AnimText.h"
 
 SpriteAnim::SpriteAnim(std::string anim_name, anim_type type, screen_level lvl, bool center)
 {

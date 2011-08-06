@@ -12,11 +12,11 @@
 
 #include <string>
 
-#include <actors/Actor.h>
-#include <util/RandomGenerator.h>
-#include <video/Surface.h>
+#include "actors/Actor.h"
+#include "util/RandomGenerator.h"
+#include "video/Surface.h"
 
-AnimTable::AnimTable(std::string anim_name) 
+AnimTable::AnimTable(std::string anim_name)
 {
     m_last_state = 0;
     m_last_dir = LEFT;
@@ -42,7 +42,7 @@ AnimTable::AnimTable(std::string anim_name)
 }
 
 
-AnimTable::~AnimTable() 
+AnimTable::~AnimTable()
 {
 	if (m_fire) {
 		for (int i = 0; i < m_nb_states; i++) {

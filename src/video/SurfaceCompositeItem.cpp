@@ -8,11 +8,11 @@
  */
 
 #include "SurfaceCompositeItem.h"
-#include <video/Surface.h>
+#include "video/Surface.h"
 #include <video/SurfaceComposite.h>
 
 SurfaceCompositeItem::SurfaceCompositeItem(	Surface *surface,
-											Rect posFromCenterSurface, 
+											Rect posFromCenterSurface,
 											SurfaceCompositeItem::posMode pm,
 											SurfaceComposite *parent):
 	m_surface(surface),
@@ -25,7 +25,7 @@ SurfaceCompositeItem::SurfaceCompositeItem(	Surface *surface,
 
 SurfaceCompositeItem::~SurfaceCompositeItem()
 {
-	
+
 }
 
 Rect SurfaceCompositeItem::getInformativePos() const
@@ -35,7 +35,7 @@ Rect SurfaceCompositeItem::getInformativePos() const
 	Rect res = m_posFromCenterSurface;
 	res.w = m_surface->w();
 	res.h = m_surface->h();
-	return res;	
+	return res;
 }
 
 Rect SurfaceCompositeItem::getPosFromCenterSurface() const
@@ -62,7 +62,7 @@ Rect SurfaceCompositeItem::getPosFromCenterSurface() const
 				res.x -= getSurface()->w();
 				res.y += centerPos.h / 2;
 				res.y -= getSurface()->h() / 2;
-				break;			
+				break;
 			case right:
 				res.x += centerPos.w;
 				res.y += centerPos.h / 2;

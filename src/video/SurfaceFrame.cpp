@@ -10,9 +10,9 @@
 
 #include "SurfaceFrame.h"
 
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 
-#include <util/debug.h>
+#include "util/debug.h"
 #include <util/Rect.h>
 #include <video/SurfaceUniform.h>
 #include <video/Texture.h>

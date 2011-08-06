@@ -11,14 +11,14 @@
 #include <stdint.h>
 
 #include "Triggerable.h"
-#include "../util/debug.h"
-#include "../util/globals.h"
-#include "../util/Analyser.h"
-#include "../util/repertories.h"
-#include "../actors/Babar.h"
-#include "../actors/MonstersManager.h"
-#include "../video/Talks.h"
-#include "../video/GraphicEngine.h"
+#include "util/debug.h"
+#include "util/globals.h"
+#include "util/Analyser.h"
+#include "util/repertories.h"
+#include "actors/Babar.h"
+#include "actors/MonstersManager.h"
+#include "video/Talks.h"
+#include "video/GraphicEngine.h"
 
 
 Triggerable::Triggerable(Analyser &analyser)

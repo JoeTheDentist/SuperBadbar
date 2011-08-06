@@ -2,7 +2,7 @@
 #define SPRITES_ANIM_H_INCLUDED
 
 #include "Sprite.h"
-#include "../video/Anim.h"
+#include "video/Anim.h"
 
 class SpriteAnim : public Sprite {
     private:

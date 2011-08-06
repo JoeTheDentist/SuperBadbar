@@ -14,9 +14,9 @@
 
 #include "Shotgun.h"
 
-#include <actors/Projectile.h>
-#include <util/globals.h>
-#include <util/utils.h>
+#include "actors/Projectile.h"
+#include "util/globals.h"
+#include "util/utils.h"
 
 
 

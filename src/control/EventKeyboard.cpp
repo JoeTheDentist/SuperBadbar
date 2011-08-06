@@ -2,8 +2,8 @@
 
 #include <control/SdlKeyConverter.h>
 #include <control/KeyboardConfig.h>
-#include <util/utils.h>
-#include <util/globals.h>
+#include "util/utils.h"
+#include "util/globals.h"
 
 /************************************************/
 /*				PUBLIC METHODS				*/
@@ -28,14 +28,14 @@ EventKeyboard::EventKeyboard(const EventKeyboard &eventKeyboard):
 EventKeyboard::EventKeyboard(SDL_Event event):
 	m_event(event),
 	m_treated(false)
-	
+
 {
 	initMode();
 }
 
 EventKeyboard::~EventKeyboard()
 {
-	
+
 }
 
 bool EventKeyboard::pollEvent(EventKeyboard *eventKeyboard)
@@ -62,7 +62,7 @@ void EventKeyboard::setKeyRepeat(bool repeat)
 
 bool EventKeyboard::keyLeave() const
 {
-	return getSDLEvent().type == SDL_QUIT;	
+	return getSDLEvent().type == SDL_QUIT;
 }
 
 bool EventKeyboard::keyPressed() const
@@ -72,7 +72,7 @@ bool EventKeyboard::keyPressed() const
 
 bool EventKeyboard::keyReleased() const
 {
-	return getSDLEvent().type == SDL_KEYUP;	
+	return getSDLEvent().type == SDL_KEYUP;
 }
 
 SDL_Event EventKeyboard::getSDLEvent() const
@@ -142,20 +142,20 @@ menu_key EventKeyboard::getMenuKey() const
 		default:
 			break;
 	}
-	return mk_none;	
+	return mk_none;
 }
 
-bool EventKeyboard::enterPressed() const 
+bool EventKeyboard::enterPressed() const
 {
 	return getSDLKey() == SDLK_RETURN;
 }
 
-bool EventKeyboard::enterMenuPressed() const 
+bool EventKeyboard::enterMenuPressed() const
 {
 	return mk_enter == getMenuKey();
 }
 
-bool EventKeyboard::backspacePressed() const 
+bool EventKeyboard::backspacePressed() const
 {
 	return getSDLKey() == SDLK_BACKSPACE;
 }
@@ -179,7 +179,7 @@ bool EventKeyboard::isUndo() const
 /*				PROTECTED METHODS				*/
 /************************************************/
 
-void EventKeyboard::initMode() 
+void EventKeyboard::initMode()
 {
 	int mod = SDL_GetModState();
 	m_ctrl =  mod & KMOD_CTRL;

@@ -1,5 +1,5 @@
 
-#include "../util/debug.h"
+#include "util/debug.h"
 
 #include "NetworkCommunicator.h"
 

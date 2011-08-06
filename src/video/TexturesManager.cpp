@@ -12,15 +12,15 @@
 #ifdef _OPENGL_ACTIVE_
 
 #include <iostream>
-#include "../../lib/SDL/include/SDL/SDL.h"
-#include "../../lib/SDL/include/SDL/SDL_image.h"
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_image.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
 
 
-#include <util/repertories.h>
-#include <util/globals.h>
-#include <video/Camera.h>
-#include <video/GraphicEngine.h>
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "video/Camera.h"
+#include "video/GraphicEngine.h"
 #include <video/Texture.h>
 
 
@@ -145,7 +145,7 @@ Texture *TexturesManager::loadUniformSurface(int width, int height, int r, int g
 		pic[i][2] = 255;
 		pic[i][3] = 255;
 	}
-	
+
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	glGenTextures(1, &textName);
@@ -153,12 +153,12 @@ Texture *TexturesManager::loadUniformSurface(int width, int height, int r, int g
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
 					GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 			
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
 					GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, 
-					height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width,
+					height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
 					pic);
 	glDisable(GL_DEPTH_TEST);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);

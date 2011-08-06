@@ -13,7 +13,7 @@
 #include <list>
 #include <string>
 
-#include "../control/Keyboard.h"
+#include "control/Keyboard.h"
 
 class Camera;
 class MenuAction;
@@ -49,7 +49,7 @@ class ListMenuActions {
 
 	/*!
 	*	@brief Met a jour chaque MenuAction (appelle leurs update..)
-	*/	
+	*/
 	void update();
 
 	/*!
@@ -72,13 +72,13 @@ class ListMenuActions {
 	*	@param value La valeur contenue dans l'action integer
 	*/
 	void add_action_integer(std::string action_name, int action_num, int value);
-	
+
 	/*!
 	*	@brief Cree puis ajoute a la liste une action keyconfig (MenuActionKeyConfig) a la fin des actions deja existantes
 	*	@param action L'action a ajouter
-	*/	
+	*/
 	void add_action_keyconfig(std::string action_name, int action_num, std::string value, key k);
-	
+
 	/*!
 	*	@brief Cree puis ajoute a la liste une action string (MenuActionString), a la fin des actions deja existantes
 	*	@param action_name Le nom de l'action
@@ -86,19 +86,19 @@ class ListMenuActions {
 	*	@param value La valeur contenue dans l'action string
 	*/
 	void add_action_string(std::string action_name, int action_num, std::string value);
-	
+
 	/*!
 	*	@brief Cree puis ajoute a la liste une action selectmap (MenuActionSelectMap), a la fin des actions deja existantes
 	*	@param action_num Le numero de l'action
 	*/
 	void add_action_selectmap(int action_num);
-	
+
 	/*!
 	*	@brief Deplace le curseur pointant sur l'action selectionnee (et joue un son)
 	*	@param dep Le deplacement du curseur (modulo le nombre d'actions)
 	*/
 	void incr_curs(int dep);
-	
+
 	/*!
 	*	@brief Affiche a l'ecran les actions
 	*	@param camera La camera chargee de de l'affichage
@@ -116,7 +116,7 @@ class ListMenuActions {
 	*	@brief Acesseur
 	*	@return La valeur (attention, ce n'est pas le numero) de l'action selectionnee
 	*
-	*	Ne pas confondre valeur et numero: le numero est l'indice dans la liste des menus, 
+	*	Ne pas confondre valeur et numero: le numero est l'indice dans la liste des menus,
 	*	la valeur represente par exemple le volume pour une action de reglage de volume
 	*/
 	int getSelectedActionValInteger();
@@ -132,7 +132,7 @@ class ListMenuActions {
 	*	@return La somme des hautes des SurfaceText des actions
 	*/
 	int height() const;
-	
+
 	void treatEvent(EventKeyboard *eventKeyboard);
 
 

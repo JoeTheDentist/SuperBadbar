@@ -1,7 +1,7 @@
 #ifndef NETWORKENTITYACTOR_H
 #define NETWORKENTITYACTOR_H
 
-#include "NetworkEntity.h"
+#include "network/NetworkEntity.h"
 
 class NetworkEntityActor : public NetworkEntity
 {

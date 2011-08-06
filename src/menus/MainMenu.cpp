@@ -1,18 +1,18 @@
 #include "MainMenu.h"
 
-#include "../video/Camera.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../control/Keyboard.h"
-#include "../game/Game.h"
-#include "../game/LevelsManager.h"
-#include "../menus/MenuAction.h"
-#include "../menus/OptionsMenu.h"
-#include "../menus/MenuMulti.h"
-#include "../menus/ChoseLevelMenu.h"
-#include "../video/SurfaceText.h"
-#include "../video/MainTitle.h"
-#include "../video/SurfaceComposite.h"
+#include "video/Camera.h"
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "control/Keyboard.h"
+#include "game/Game.h"
+#include "game/LevelsManager.h"
+#include "menus/MenuAction.h"
+#include "menus/OptionsMenu.h"
+#include "menus/MenuMulti.h"
+#include "menus/ChoseLevelMenu.h"
+#include "video/SurfaceText.h"
+#include "video/MainTitle.h"
+#include "video/SurfaceComposite.h"
 
 MainMenu::MainMenu() :
 	Menu(),
@@ -66,7 +66,7 @@ void MainMenu::treat_choice(int choice)
 	case 2: // menu multi joueurs
 		launchMulti();
 		break;
-	case 3: // menu fast game 
+	case 3: // menu fast game
 		launchFastGame();
 		break;
 	case 4: // options

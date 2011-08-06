@@ -10,9 +10,9 @@
 #ifndef _FollowingWalkingMonsterS_
 #define _FollowingWalkingMonsterS_
 
-#include "../actors/Monster.h"
-#include "../actors/WalkingMonster.h"
-#include "../AI/AI.h"
+#include "actors/Monster.h"
+#include "actors/WalkingMonster.h"
+#include "AI/AI.h"
 
 class Analyser;
 class AI;

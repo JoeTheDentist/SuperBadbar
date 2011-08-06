@@ -1,6 +1,6 @@
 #include "MenuJoin.h"
-#include "../util/globals.h"
-#include "../network/NetworkManager.h"
+#include "util/globals.h"
+#include "network/NetworkManager.h"
 
 MenuJoin::MenuJoin(Menu *parent) :
         Menu(parent)

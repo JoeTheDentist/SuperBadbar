@@ -8,17 +8,17 @@
  */
 
 #include "ListMenuActions.h"
-#include "../menus/MenuAction.h"
-#include "../menus/MenuActionClassic.h"
-#include "../menus/MenuActionInteger.h"
-#include "../menus/MenuActionString.h"
-#include "../menus/MenuActionKeyconfig.h"
-#include "../menus/MenuActionSelectMap.h"
-#include "../video/Camera.h"
-#include "../video/Surface.h"
-#include "../video/SurfaceText.h"
-#include "../util/globals.h"
-#include "../sound/SoundEngine.h"
+#include "menus/MenuAction.h"
+#include "menus/MenuActionClassic.h"
+#include "menus/MenuActionInteger.h"
+#include "menus/MenuActionString.h"
+#include "menus/MenuActionKeyconfig.h"
+#include "menus/MenuActionSelectMap.h"
+#include "video/Camera.h"
+#include "video/Surface.h"
+#include "video/SurfaceText.h"
+#include "util/globals.h"
+#include "sound/SoundEngine.h"
 #include <algorithm>
 
 ListMenuActions::ListMenuActions():

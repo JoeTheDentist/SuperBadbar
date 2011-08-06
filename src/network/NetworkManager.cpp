@@ -2,7 +2,7 @@
 #include "NetworkManager.h"
 #include "NetworkClient.h"
 #include "NetworkServer.h"
-#include "../util/debug.h"
+#include "util/debug.h"
 
 NetworkManager::NetworkManager()
 {

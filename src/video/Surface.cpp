@@ -11,16 +11,16 @@
 #include <iostream>
 #include <cmath>
 
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 
 #include "Surface.h"
-#include "../video/PicturesContainer.h"
-#include "../util/debug.h"
+#include "video/PicturesContainer.h"
+#include "util/debug.h"
 
 PicturesContainer *Surface::m_pictures_container = NULL;
 #ifdef _OPENGL_ACTIVE_
-#include "../video/TexturesManager.h"
-#include "../video/Texture.h"
+#include "video/TexturesManager.h"
+#include "video/Texture.h"
 TexturesManager *Surface::m_texturesManager = NULL;
 #endif
 
@@ -128,6 +128,6 @@ void Surface::set_alpha(unsigned char alpha)
 	#ifndef _OPENGL_ACTIVE_
 	SDL_SetAlpha(get_surface(), SDL_SRCALPHA, alpha);
 	#else
-	
+
 	#endif
 }

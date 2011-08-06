@@ -13,7 +13,7 @@
 #include <map>
 #include <string>
 
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 #include <video/KeyMapSurfaceText.h>
 #include <video/KeyMapSurfaceUnif.h>
 /**

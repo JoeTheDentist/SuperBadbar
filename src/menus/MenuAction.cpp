@@ -1,6 +1,6 @@
 #include "MenuAction.h"
-#include "../video/SurfaceText.h"
-#include "../param/param_menus.h"
+#include "video/SurfaceText.h"
+#include "param/param_menus.h"
 #include <iostream>
 
 MenuAction::MenuAction(std::string str, int i):
@@ -41,7 +41,7 @@ void MenuAction::select()
 
 void MenuAction::incr_value(int value)
 {
-	
+
 }
 
 Surface *MenuAction::get_surface() const
@@ -75,6 +75,6 @@ void MenuAction::update_pic(std::string str)
 
 void MenuAction::treatEvent(EventKeyboard *eventKeyboard)
 {
-	
+
 }
 

@@ -15,7 +15,7 @@
 #include <string>
 #include <queue>
 
-#include <util/utils.h>
+#include "util/utils.h"
 
 class Analyser;
 class EventKeyboard;
@@ -133,19 +133,19 @@ public:
 	*	@brief Vide la liste des touches menu recemment enfoncees
 	*/
 	void reset_menu_keys();
-	
+
 	/*!
 	*	@brief Accesseur
 	*	@return Vrai s'il reste au des evenements a traiter dans la file
 	*/
 	bool isNextKeyInQueue() const;
-	
+
 	/*!
 	*	@brief Sort un element de la file des evenements
 	*	@return L'element sorti
 	*/
 	EventKeyboard getNextKeyInQueue();
-	
+
 	/*!
 	*	@brief Vide la file des evenements
 	*/
@@ -170,8 +170,8 @@ public:
 	*	@param save True if we want to save the configuration
 	*/
 	void set_config_key(key k, std::string sdl_code, bool save = true);
-	
-//~ 	bool 
+
+//~ 	bool
 
 
 

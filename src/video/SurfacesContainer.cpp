@@ -8,16 +8,16 @@
  */
 
 #include <iostream>
-#include "../../lib/SDL/include/SDL/SDL.h"
-#include "../../lib/SDL/include/SDL/SDL_image.h"
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_image.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
 #include <stdint.h>
 
 
 #include "SurfacesContainer.h"
-#include <util/utils.h>
-#include <util/globals.h>
-#include <video/Camera.h>
+#include "util/utils.h"
+#include "util/globals.h"
+#include "video/Camera.h"
 
 
 SurfacesContainer::SurfacesContainer()
@@ -69,7 +69,7 @@ SDL_Surface *SurfacesContainer::loadSurfaceText(std::string text, int size, int 
 	} else {
 		surf = (*it).second;
 	}
-	return surf;	
+	return surf;
 }
 
 
@@ -89,7 +89,7 @@ SDL_Surface *SurfacesContainer::loadSurfaceUniform(int width, int height, int r,
 	} else {
 		surf = (*it).second;
 	}
-	return surf;	
+	return surf;
 }
 
 void SurfacesContainer::resetMemory()
@@ -101,9 +101,9 @@ void SurfacesContainer::resetMemory()
 	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator ittext;
 	for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ittext++) {
 		SDL_FreeSurface(ittext->second);
-	}	
+	}
 	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator itunif;
 	for (itunif = m_unifContainer.begin(); itunif != m_unifContainer.end(); itunif++) {
 		SDL_FreeSurface(itunif->second);
-	}	
+	}
 }

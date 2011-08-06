@@ -27,19 +27,19 @@ class KeyboardConfig;
 class NetworkManager;
 
 #include <sstream>
-#include "../util/Constants.h"
+#include "util/Constants.h"
 
-#include "../util/repertories.h"
-#include "../actors/Actor.h"
-#include "../sound/SoundEngine.h"
-#include "../physic/CollisionsManager.h"
-#include "../game/StaticData.h"
-#include "../video/GraphicEngine.h"
-#include "../game/GameEngine.h"
-#include "../sets/AnimatedSetsManager.h"
-#include "../players/PlayersManager.h"
-#include "../network/NetworkManager.h"
-#include "../util/Constants.h"
+#include "util/repertories.h"
+#include "actors/Actor.h"
+#include "sound/SoundEngine.h"
+#include "physic/CollisionsManager.h"
+#include "game/StaticData.h"
+#include "video/GraphicEngine.h"
+#include "game/GameEngine.h"
+#include "sets/AnimatedSetsManager.h"
+#include "players/PlayersManager.h"
+#include "network/NetworkManager.h"
+#include "util/Constants.h"
 
 #define BOX_SIZE 5
 

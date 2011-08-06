@@ -12,7 +12,7 @@
 #define _BABAR_ROCKET_H_
 
 #define ROCKET_TURN_SPEED 3
-#include "../actors/Projectile.h"
+#include "actors/Projectile.h"
 
 /**
  * 	@class Rocket

@@ -1,8 +1,8 @@
 
 #include "SurfaceSelectionMenu.h"
 
-#include <util/repertories.h>
-#include <video/SurfaceText.h>
+#include "util/repertories.h"
+#include "video/SurfaceText.h"
 
 SurfaceSelectionMenu::SurfaceSelectionMenu(Surface *centralSurface, std::string text):
 	SurfaceComposite(centralSurface),
@@ -16,6 +16,6 @@ SurfaceSelectionMenu::SurfaceSelectionMenu(Surface *centralSurface, std::string 
 	m_rightArrow(new Surface(PIC_MENU_R + "rightarrow.png")),
 	m_rightArrowIndex(addChild(m_rightArrow, SurfaceCompositeItem::right, Rect(30, 0)))
 {
-	
+
 }
-	
+

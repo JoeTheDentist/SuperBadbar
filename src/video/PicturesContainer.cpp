@@ -7,18 +7,18 @@
  *
  */
 
-#include "../util/utils.h"
-#include "../../lib/SDL/include/SDL/SDL.h"
-#include "../../lib/SDL/include/SDL/SDL_image.h"
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "util/utils.h"
+#include "../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_image.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
 #ifndef DESACTIVATE_GFX
-	#include "../../lib/SDL/include/SDL/SDL_rotozoom.h"
+	#include "../lib/SDL/include/SDL/SDL_rotozoom.h"
 #endif
 
 #include "PicturesContainer.h"
-#include <util/utils.h>
-#include <util/globals.h>
-#include <video/Camera.h>
+#include "util/utils.h"
+#include "util/globals.h"
+#include "video/Camera.h"
 
 
 PicturesContainer::PicturesContainer()
@@ -80,7 +80,7 @@ SDL_Surface *PicturesContainer::loadSurfaceText(std::string text, int size, int 
 	} else {
 		surf = (*it).second;
 	}
-	return surf;	
+	return surf;
 }
 
 
@@ -100,7 +100,7 @@ SDL_Surface *PicturesContainer::loadSurfaceUniform(int width, int height, int r,
 	} else {
 		surf = (*it).second;
 	}
-	return surf;	
+	return surf;
 }
 
 void PicturesContainer::resetMemory()
@@ -112,9 +112,9 @@ void PicturesContainer::resetMemory()
 	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator ittext;
 	for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ittext++) {
 		SDL_FreeSurface(ittext->second);
-	}	
+	}
 	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator itunif;
 	for (itunif = m_unifContainer.begin(); itunif != m_unifContainer.end(); itunif++) {
 		SDL_FreeSurface(itunif->second);
-	}	
+	}
 }

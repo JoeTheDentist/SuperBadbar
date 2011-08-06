@@ -12,7 +12,7 @@
 #ifdef _OPENGL_ACTIVE_
 
 #include <cmath>
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 
 #include <video/TexturesManager.h>
 
@@ -22,7 +22,7 @@ Texture::Texture(GLuint texture, int w, int h) :
 	m_w(w),
 	m_h(h)
 {
-	
+
 }
 
 GLuint Texture::getGlTexture() const

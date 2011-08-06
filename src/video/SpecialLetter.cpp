@@ -9,10 +9,10 @@
 
 #include "SpecialLetter.h"
 
-#include "../../lib/SDL/include/SDL/SDL.h"
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
 
-#include <util/debug.h>
+#include "util/debug.h"
 #include <video/Font.h>
 
 

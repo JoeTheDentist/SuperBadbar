@@ -12,10 +12,10 @@
 #include <stdlib.h>
 
 #include "MonsterBasicWeapon.h"
-#include <actors/Projectile.h>
-#include <util/debug.h>
-#include <util/globals.h>
-#include <util/repertories.h>
+#include "actors/Projectile.h"
+#include "util/debug.h"
+#include "util/globals.h"
+#include "util/repertories.h"
 
 
 Monster_basic_weapon::Monster_basic_weapon()

@@ -13,7 +13,7 @@
 #include <QVariant>
 #include <QtNetwork>
 
-#include "NetworkTypes.h"
+#include "network/NetworkTypes.h"
 
 enum NetworkMessage {
     NetMsg_Texte, NetMsg_Position, NetMsg_

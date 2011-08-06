@@ -15,8 +15,8 @@
 #include <stdint.h>
 #include <string>
 
-#include "../actors/ProjectilesManager.h"
-#include "../video/Surface.h"
+#include "actors/ProjectilesManager.h"
+#include "video/Surface.h"
 class Monster;
 class Camera;
 class Babar;

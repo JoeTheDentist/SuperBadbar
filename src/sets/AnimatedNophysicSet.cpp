@@ -1,6 +1,6 @@
 #include <iostream>
 #include "AnimatedNophysicSet.h"
-#include "../sprites/SpritesManager.h"
+#include "sprites/SpritesManager.h"
 
 AnimatedNophysicSet::AnimatedNophysicSet(std::string anim_name, int x, int y, bool ended, bool to_delete)
 {

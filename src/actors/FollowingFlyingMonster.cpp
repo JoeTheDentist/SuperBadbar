@@ -13,10 +13,10 @@
 #include <iostream>
 #include <stdint.h>
 
-#include <actors/Babar.h>
-#include <players/PlayersManager.h>
-#include <util/debug.h>
-#include <util/Analyser.h>
+#include "actors/Babar.h"
+#include "players/PlayersManager.h"
+#include "util/debug.h"
+#include "util/Analyser.h"
 
 FollowingFlyingMonster::FollowingFlyingMonster(std::string name, int posx, int posy):
 	FlyingMonster(name, posx, posy)

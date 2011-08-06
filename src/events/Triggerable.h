@@ -11,7 +11,7 @@
 #define _BABAR_TRIGGERABLE_H_
 
 #include <string>
-#include "../video/Surface.h"
+#include "video/Surface.h"
 
 class Analyser;
 

@@ -12,8 +12,8 @@
 #define _BABAR_MENU_ACTION_KEYCONFIG_
 
 #include <string>
-#include "../menus/MenuAction.h"
-#include "../control/Keyboard.h"
+#include "menus/MenuAction.h"
+#include "control/Keyboard.h"
 
 /*!
 *	@class MenuActionKeyconfig

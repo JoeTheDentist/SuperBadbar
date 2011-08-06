@@ -12,13 +12,13 @@
 #include "Actor.h"
 
 
-#include <game/Game.h>
-#include <game/StaticData.h>
-#include <physic/CollisionsManager.h>
-#include <util/utils.h>
-#include <util/globals.h>
-#include <video/Surface.h>
-#include <sprites/Sprite.h>
+#include "game/Game.h"
+#include "game/StaticData.h"
+#include "physic/CollisionsManager.h"
+#include "util/utils.h"
+#include "util/globals.h"
+#include "video/Surface.h"
+#include "sprites/Sprite.h"
 
 
 /*********************************

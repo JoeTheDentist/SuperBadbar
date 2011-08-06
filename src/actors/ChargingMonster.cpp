@@ -12,14 +12,14 @@
 
 #include <cmath>
 
-#include <actors/Babar.h>
-#include <items/Gun.h>
-#include <items/MonsterBasicWeapon.h>
-#include <players/PlayersManager.h>
-#include <util/globals.h>
-#include <util/utils.h>
-#include <video/Camera.h>
-#include <video/GraphicEngine.h>
+#include "actors/Babar.h"
+#include "items/Gun.h"
+#include "items/MonsterBasicWeapon.h"
+#include "players/PlayersManager.h"
+#include "util/globals.h"
+#include "util/utils.h"
+#include "video/Camera.h"
+#include "video/GraphicEngine.h"
 
 
 

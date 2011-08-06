@@ -11,7 +11,7 @@
 #ifndef _BABAR_MENU_ACTION_INTEGER_
 #define _BABAR_MENU_ACTION_INTEGER_
 
-#include "../menus/MenuAction.h"
+#include "menus/MenuAction.h"
 
 class MenuActionInteger: public MenuAction {
 protected:
@@ -32,7 +32,7 @@ public:
 	MenuActionInteger(std::string str, int i, int val = -1, int valmin = 0, int valmax = 99, int step = 5);
 
 	/*!
-	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action 
+	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action
 	*	@param value Coefficient d'incremementation
 	*/
 	virtual void incr_value(int value);
@@ -42,7 +42,7 @@ public:
 	*	@return La valeur entiere contenue par le bouton (0 si indéfinie)
 	*/
 	virtual int getValueInteger() const {return m_value;}
-	
+
 	/*!
 	*	@brief Traite l'evenement eventKeyboard recu
 	*	@param eventKeyboard L'evenement recu

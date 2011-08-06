@@ -19,13 +19,13 @@
 #define _BABAR_UTILS_H_
 
 
-#include "../util/enums.h"
-#include "../util/Analyser.h"
-#include "../util/debug.h"
-#include "../util/Constants.h"
-#include "../util/RandomGenerator.h"
-#include "../util/repertories.h"
-#include "../util/macros.h"
+#include "util/enums.h"
+#include "util/Analyser.h"
+#include "util/debug.h"
+#include "util/Constants.h"
+#include "util/RandomGenerator.h"
+#include "util/repertories.h"
+#include "util/macros.h"
 #include <util/Rect.h>
 
 
@@ -33,4 +33,4 @@
 
 
 
-#endif 
+#endif

@@ -1,16 +1,16 @@
 #include "Menu.h"
 
 
-#include "../video/Camera.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../control/Keyboard.h"
-#include "../game/Game.h"
-#include "../game/LevelsManager.h"
-#include "../menus/MenuAction.h"
-#include "../video/SurfaceUniform.h"
-#include "../video/SurfaceFrame.h"
-#include "../control/EventKeyboard.h"
+#include "video/Camera.h"
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "control/Keyboard.h"
+#include "game/Game.h"
+#include "game/LevelsManager.h"
+#include "menus/MenuAction.h"
+#include "video/SurfaceUniform.h"
+#include "video/SurfaceFrame.h"
+#include "control/EventKeyboard.h"
 
 
 Menu::Menu(Menu *parent) :

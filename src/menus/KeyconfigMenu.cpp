@@ -1,11 +1,11 @@
 #include "KeyconfigMenu.h"
 
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../control/Keyboard.h"
-#include "../menus/MenuAction.h"
-#include "../menus/ListMenuActions.h"
-#include "../control/KeyboardConfig.h"
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "control/Keyboard.h"
+#include "menus/MenuAction.h"
+#include "menus/ListMenuActions.h"
+#include "control/KeyboardConfig.h"
 
 KeyconfigMenu::KeyconfigMenu(Menu *parent) :
 	Menu(parent)

@@ -11,13 +11,13 @@
 #ifndef _BABAR_MENU_ACTION_SELECT_MAP_
 #define _BABAR_MENU_ACTION_SELECT_MAP_
 
-#include "../menus/MenuAction.h"
+#include "menus/MenuAction.h"
 
 class SurfaceSelectionMenu;
 
 class MenuActionSelectMap: public MenuAction {
 protected:
-	
+
 public:
 	/**
 	*	@brief Constructeur
@@ -26,11 +26,11 @@ public:
 	MenuActionSelectMap(int i);
 
 	/*!
-	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action 
+	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action
 	*	@param value Coefficient d'incremementation
 	*/
 	virtual void incr_value(int value);
-	
+
 	/*!
 	*	@brief Traite l'evenement eventKeyboard recu
 	*	@param eventKeyboard L'evenement recu
@@ -47,9 +47,9 @@ public:
 	*	@brief Maj du bouton
 	*/
 	virtual void update();
-	
+
 	virtual void setSurfaceSelection(SurfaceSelectionMenu *surf);
-	
+
 
 
 protected:

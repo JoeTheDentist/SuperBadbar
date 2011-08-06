@@ -6,14 +6,14 @@
  * 	@date decembre 2010
  *
  */
- 
+
 #include <iostream>
 #include <stdint.h>
 #include <string>
 #include <fstream>
 
 #include "Analyser.h"
-#include <util/debug.h>
+#include "util/debug.h"
 
 Analyser::Analyser()
 {
@@ -42,7 +42,7 @@ bool Analyser::open(std::string file)
 
 void Analyser::close()
 {
-	PRINT_TRACE(3, "Fermeture du fichier %s", m_filename.c_str())	
+	PRINT_TRACE(3, "Fermeture du fichier %s", m_filename.c_str())
 	m_file->close();
 	delete m_file;
 	m_opened = false;
@@ -67,7 +67,7 @@ bool Analyser::find_next_string(std::string str)
 			char_found = 0;
 	}
 	m_file->clear();
-	return char_found == size;	
+	return char_found == size;
 }
 
 bool Analyser::end_of_section()
@@ -84,7 +84,7 @@ void Analyser::jump_separators()
 	while (jump){
 		m_file->get(current);
 		switch (current){
-		case ' ': 
+		case ' ':
 			break;
 		case '\n':
 			break;
@@ -156,7 +156,7 @@ char Analyser::read_char()
 	jump_separators();
 	char res;
 	*m_file >> res;
-	return res;	
+	return res;
 }
 
 void Analyser::push_curs()

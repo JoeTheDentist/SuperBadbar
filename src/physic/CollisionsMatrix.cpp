@@ -11,13 +11,13 @@
 #include <algorithm>
 #include "CollisionsMatrix.h"
 #include "CollisionsManager.h"
-#include "../util/Analyser.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../physic/MovingPlatform.h"
-#include "../video/Camera.h"
-#include "../actors/Babar.h"
-#include "../util/globals.h"
+#include "util/Analyser.h"
+#include "util/debug.h"
+#include "util/repertories.h"
+#include "physic/MovingPlatform.h"
+#include "video/Camera.h"
+#include "actors/Babar.h"
+#include "util/globals.h"
 
 CollisionsMatrix::CollisionsMatrix()
 {

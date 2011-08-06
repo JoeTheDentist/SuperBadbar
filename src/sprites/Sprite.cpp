@@ -12,8 +12,8 @@
 #include <stdint.h>
 
 #include "Sprite.h"
-#include "../util/debug.h"
-#include "../video/Surface.h"
+#include "util/debug.h"
+#include "video/Surface.h"
 
 
 Sprite::Sprite()

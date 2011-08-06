@@ -11,8 +11,8 @@
 #define _BABAR_FONT_
 
 #include <string>
-#include "../../lib/SDL/include/SDL/SDL_ttf.h"
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include "../lib/SDL/include/SDL/SDL_ttf.h"
+#include "../lib/SDL/include/SDL/SDL.h"
 
 /**
 *	@class Font

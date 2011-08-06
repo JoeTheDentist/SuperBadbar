@@ -12,11 +12,11 @@
 #include <iostream>
 #include <stdint.h>
 
-#include <actors/Babar.h>
-#include <AI/AI.h>
-#include <items/Gun.h>
-#include <items/MonsterBasicWeapon.h>
-#include <util/utils.h>
+#include "actors/Babar.h"
+#include "AI/AI.h"
+#include "items/Gun.h"
+#include "items/MonsterBasicWeapon.h"
+#include "util/utils.h"
 
 
 

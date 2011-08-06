@@ -9,13 +9,13 @@
 
 #include "TransitionScreen.h"
 
-#include <control/Keyboard.h>
-#include <util/globals.h>
-#include <util/repertories.h>
-#include <video/Camera.h>
-#include <video/GraphicEngine.h>
-#include <video/Surface.h>
-#include <video/SurfaceText.h>
+#include "control/Keyboard.h"
+#include "util/globals.h"
+#include "util/repertories.h"
+#include "video/Camera.h"
+#include "video/GraphicEngine.h"
+#include "video/Surface.h"
+#include "video/SurfaceText.h"
 
 
 TransitionScreen::TransitionScreen(std::string picture_path, std::string text1, std::string text2):

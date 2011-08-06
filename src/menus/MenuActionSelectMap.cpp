@@ -10,7 +10,7 @@
 #include "MenuActionSelectMap.h"
 #include <sstream>
 #include <control/EventKeyboard.h>
-#include <util/repertories.h>
+#include "util/repertories.h"
 #include <video/SurfaceSelectionMenu.h>
 #include <video/SurfaceComposite.h>
 #include <video/SurfaceCompositeItem.h>
@@ -19,7 +19,7 @@ MenuActionSelectMap::MenuActionSelectMap(int i):
 	MenuAction("o", i),
 	m_surfaceComposite(NULL)
 {
-	
+
 	setSurfaceSelection(new SurfaceSelectionMenu(new Surface(PIC_STATICS_R + "block8.png"), "block"));
 }
 
@@ -37,17 +37,17 @@ void MenuActionSelectMap::setSurfaceSelection(SurfaceSelectionMenu *surf)
 
 void MenuActionSelectMap::update_text()
 {
-	
+
 }
 
-Surface *MenuActionSelectMap::get_surface() const 
+Surface *MenuActionSelectMap::get_surface() const
 {
 	return m_interfaceForSurfaceComposite;
 }
 
 void MenuActionSelectMap::update()
 {
-	
+
 }
 
 void MenuActionSelectMap::treatEvent(EventKeyboard *eventKeyboard)
@@ -61,7 +61,7 @@ void MenuActionSelectMap::treatEvent(EventKeyboard *eventKeyboard)
 	case mk_right:
 		incr_value(1);
 		eventKeyboard->markTreated();
-		break;	
+		break;
 	default:
 		break;
 	}

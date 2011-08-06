@@ -2,7 +2,7 @@
 #define PLAYERS_MANAGER_H_INCLUDED
 
 #include "Player.h"
-#include "../video/Surface.h"
+#include "video/Surface.h"
 
 class Analyser;
 class Camera;

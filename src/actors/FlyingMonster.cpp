@@ -9,8 +9,8 @@
 
 #include "FlyingMonster.h"
 
-#include <actors/Babar.h>
-#include <util/utils.h>
+#include "actors/Babar.h"
+#include "util/utils.h"
 
 
 FlyingMonster::FlyingMonster(std::string name, int posx, int posy):

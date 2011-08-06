@@ -9,28 +9,28 @@
 
 /**
  * Contient la boucle de Game et les paramètres de la partie
- * Sera accessible à partir de la touche "jouer" du menu
+ * Sera accessible �  partir de la touche "jouer" du menu
 **/
 
 
 #include "Game.h"
 
-#include <actors/Babar.h>
-#include <actors/ProjectilesManager.h>
-#include <control/Keyboard.h>
-#include <events/EventsManager.h>
+#include "actors/Babar.h"
+#include "actors/ProjectilesManager.h"
+#include "control/Keyboard.h"
+#include "events/EventsManager.h"
 #include <events/Stats.h>
 #include <game/GameEngine.h>
-#include <game/StaticData.h>
+#include "game/StaticData.h"
 #include <menus/PauseMenu.h>
 #include <sets/AnimatedSetsManager.h>
 #include <sound/Sound.h>
 #include <sound/SoundEngine.h>
-#include <sprites/SpritesManager.h>
-#include <util/debug.h>
-#include <video/Camera.h>
-#include <video/GraphicEngine.h>
-#include <video/Talks.h>
+#include "sprites/SpritesManager.h"
+#include "util/debug.h"
+#include "video/Camera.h"
+#include "video/GraphicEngine.h"
+#include "video/Talks.h"
 #include <video/TransitionScreen.h>
 
 

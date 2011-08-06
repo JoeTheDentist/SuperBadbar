@@ -1,7 +1,7 @@
 #ifndef ANIMATED_SET_H_INCLUDED
 #define ANIMATED_SET_H_INCLUDED
 
-#include "../sprites/Sprite.h"
+#include "sprites/Sprite.h"
 
 class Sprite;
 

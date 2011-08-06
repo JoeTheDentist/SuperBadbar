@@ -13,15 +13,15 @@
 #include <fstream>
 
 #include "Talks.h"
-#include "../param/param_talks.h"
-#include "../util/debug.h"
-#include "../util/repertories.h"
-#include "../control/Keyboard.h"
-#include "../control/KeyboardConfig.h"
-#include "../video/PicturesContainer.h"
-#include "../util/globals.h"
-#include "../video/SurfaceUniform.h"
-#include "../video/SurfaceFrame.h"
+#include "param/param_talks.h"
+#include "util/debug.h"
+#include "util/repertories.h"
+#include "control/Keyboard.h"
+#include "control/KeyboardConfig.h"
+#include "video/PicturesContainer.h"
+#include "util/globals.h"
+#include "video/SurfaceUniform.h"
+#include "video/SurfaceFrame.h"
 
 
 Talks::Talks():

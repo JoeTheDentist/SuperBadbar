@@ -12,9 +12,9 @@
 #define _BABAR_MENU_ACTION_STRING_
 
 #include <string>
-#include "../menus/MenuAction.h"
-#include "../control/Keyboard.h"
-#include "../control/InputString.h"
+#include "menus/MenuAction.h"
+#include "control/Keyboard.h"
+#include "control/InputString.h"
 
 
 /*!

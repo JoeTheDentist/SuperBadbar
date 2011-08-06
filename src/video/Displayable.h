@@ -10,7 +10,7 @@
 #ifndef _DISPLAYABLE_
 #define _DISPLAYABLE_
 
-#include <util/debug.h>
+#include "util/debug.h"
 
 class Surface;
 

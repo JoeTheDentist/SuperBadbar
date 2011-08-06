@@ -7,15 +7,16 @@
  *
  */
 
+#include "Projectile.h"
+
 #include <iostream>
 #include <stdint.h>
 
-#include "Projectile.h"
-#include "../util/debug.h"
-#include "../game/Game.h"
-#include "../game/StaticData.h"
-#include "../physic/CollisionsManager.h"
-#include "../sprites/SpritesManager.h"
+#include "util/debug.h"
+#include "game/Game.h"
+#include "game/StaticData.h"
+#include "physic/CollisionsManager.h"
+#include "sprites/SpritesManager.h"
 
 
 /**************************

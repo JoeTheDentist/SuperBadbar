@@ -6,8 +6,8 @@
  * 	@date juillet 2011
  *
  */
- 
- 
+
+
 #ifndef _KEYBOARD_CONFIG_H_
 #define _KEYBOARD_CONFIG_H_
 
@@ -15,7 +15,7 @@
 
 #include <string>
 
-#include <util/utils.h>
+#include "util/utils.h"
 
 class EventKeyboard;
 
@@ -38,13 +38,13 @@ public:
 	*	@brief Destructeur
 	*/
 	~KeyboardConfig() {}
-		
+
 	/*!
 	* 	@brief Charge La configuration des touches depuis un fichier
 	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration
 	*/
 	void loadConfig(std::string config_name);
-		
+
 	/*!
 	* 	@brief Sauvegarde La configuration des touches dans un fichier
 	*	@param config_name Le nom du fichier de configuration depuis le dossier des fichiers de configuration
@@ -58,21 +58,21 @@ public:
 	*	@param save True if we want to save the configuration
 	*/
 	void setConfigKey(key k, std::string sdl_code, bool save = true);
-	
+
 	/*!
 	*	@brief Renvoie le code string sdl de la touche correspondant a k
 	*	@param k La touche dont on veut l'info
 	*	@return le code string sdl de la touche correspondant a k
 	*/
 	std::string getStringKey(key k);
-	
+
 	/*!
 	*	@brief Accesseur
 	*	@param Une touche au format SDL
 	*	@return L'enum key correspondant (k_none s'il n'y en a pas)
 	*/
 	key getEnumKey(SDLKey key) const;
-	
+
 	/*!
 	*	@brief Accesseur
 	*	@param Une touche au format EventKeyboard

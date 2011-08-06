@@ -3,7 +3,7 @@
 
 #define INT_KILL 50 /* nombre de cycle maximal pour compter deux kills */
 
-#include "../sprites/Sprite.h"
+#include "sprites/Sprite.h"
 
 /**
  * TODO (re) / TOCOMMENT

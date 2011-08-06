@@ -1,13 +1,13 @@
 #include "InputString.h"
 
 #include <control/EventKeyboard.h>
-#include <util/debug.h>
+#include "util/debug.h"
 
 InputString::InputString(std::string str):
 	m_string(str),
 	m_itPreviousStrings(0)
 {
-	
+
 }
 
 void InputString::treatEvent(const EventKeyboard &event)
@@ -18,7 +18,7 @@ void InputString::treatEvent(const EventKeyboard &event)
 				m_string.resize(m_string.length() - 1);
 			}
 		} else if (event.isUndo()) {
-			
+
 		} else {
 			if (event.hasUnicode()) {
 				m_string += event.unicode();
@@ -41,5 +41,5 @@ void InputString::saveToUndoList()
 
 void InputString::undo()
 {
-//~ 	m_string = 
+//~ 	m_string =
 }

@@ -2,7 +2,7 @@
 #define SPRITES_ANIM_TABLE_H_INCLUDED
 
 #include "Sprite.h"
-#include "../video/AnimTable.h"
+#include "video/AnimTable.h"
 
 class SpriteAnimTable : public Sprite {
     private:

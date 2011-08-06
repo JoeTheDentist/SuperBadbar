@@ -1,16 +1,16 @@
 #include "OptionsMenu.h"
 
-#include "../video/Camera.h"
-#include "../sound/SoundEngine.h"
-#include "../util/repertories.h"
-#include "../util/globals.h"
-#include "../control/Keyboard.h"
-#include "../game/Game.h"
-#include "../game/LevelsManager.h"
-#include "../menus/MenuAction.h"
-#include "../menus/KeyconfigMenu.h"
-#include "../video/SurfaceText.h"
-#include "../menus/ListMenuActions.h"
+#include "video/Camera.h"
+#include "sound/SoundEngine.h"
+#include "util/repertories.h"
+#include "util/globals.h"
+#include "control/Keyboard.h"
+#include "game/Game.h"
+#include "game/LevelsManager.h"
+#include "menus/MenuAction.h"
+#include "menus/KeyconfigMenu.h"
+#include "video/SurfaceText.h"
+#include "menus/ListMenuActions.h"
 
 
 OptionsMenu::OptionsMenu(Menu *parent) :

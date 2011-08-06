@@ -6,15 +6,17 @@
  * 	@date decembre 2010
  *
  */
+
+ #include "WalkingMonster.h"
+
 #include <iostream>
 #include <stdint.h>
 
-#include "WalkingMonster.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "../sound/SoundEngine.h"
-#include "../video/PicturesContainer.h"
-#include "Babar.h"
+#include "util/debug.h"
+#include "util/Analyser.h"
+#include "sound/SoundEngine.h"
+#include "video/PicturesContainer.h"
+#include "actors/Babar.h"
 
 
 WalkingMonster::WalkingMonster(std::string name, int posx, int posy):

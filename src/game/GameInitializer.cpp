@@ -7,10 +7,10 @@
 
 #include <time.h>
 
-#include <control/Keyboard.h>
+#include "control/Keyboard.h"
 #include <control/KeyboardConfig.h>
-#include <util/globals.h>
-#include <util/utils.h>
+#include "util/globals.h"
+#include "util/utils.h"
 
 bool GameInitializer::init_game()
 {

@@ -1,8 +1,8 @@
 #include "Constants.h"
-#include "../util/Analyser.h"
-#include "../util/repertories.h"
+#include "util/Analyser.h"
+#include "util/repertories.h"
 #include <iostream>
-#include "../util/utils.h"
+#include "util/utils.h"
 
 
 
@@ -12,17 +12,17 @@
 */
 #define LOCAL_INITIALIZE_INT(yop, plop) \
 	int Constants::IDENTITY(yop) = plop;
-	
+
 #define LOCAL_INITIALIZE_DOUBLE(yop, plop) \
 	double Constants::IDENTITY(yop) = plop;
-	
+
 #define LOCAL_INITIALIZE_STRING(yop, plop) \
 	std::string Constants::IDENTITY(yop) = plop;
-	
-	
+
+
 /*
 *	The 3 next macros are used to inizialise the constants from the config files
-*/	
+*/
 #define CONST_INIT_INT(yop, plop) \
 if (analyser.find_string(QUOTE_ACO(yop))) { \
 	 Constants::IDENTITY(yop) = analyser.read_int(); \
@@ -64,7 +64,7 @@ void Constants::initAux(Analyser &analyser)
 	FOR_EACH_CONST_INT(CONST_INIT_INT)
 	FOR_EACH_CONST_DOUBLE(CONST_INIT_DOUBLE)
 	FOR_EACH_CONST_STRING(CONST_INIT_STRING)
-	
+
 
 }
 

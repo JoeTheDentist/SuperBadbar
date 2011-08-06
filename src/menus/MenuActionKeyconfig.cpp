@@ -8,11 +8,11 @@
  */
 
 #include "MenuActionKeyconfig.h"
-#include "../control/Keyboard.h"
-#include "../control/KeyboardConfig.h"
+#include "control/Keyboard.h"
+#include "control/KeyboardConfig.h"
 #include <control/EventKeyboard.h>
-#include "../control/SdlKeyConverter.h"
-#include "../util/globals.h"
+#include "control/SdlKeyConverter.h"
+#include "util/globals.h"
 #include <sstream>
 
 MenuActionKeyconfig::MenuActionKeyconfig(std::string str, int i, std::string val, key k):

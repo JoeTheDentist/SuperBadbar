@@ -11,18 +11,18 @@
 #include <stdint.h>
 
 #include "Monster.h"
-#include "../util/globals.h"
-#include "../util/repertories.h"
-#include "../util/debug.h"
-#include "../util/Analyser.h"
-#include "../game/Game.h"
-#include "../video/Surface.h"
-#include "../actors/Projectile.h"
-#include "../items/Weapon.h"
-#include "../items/MonsterBasicWeapon.h"
+#include "util/globals.h"
+#include "util/repertories.h"
+#include "util/debug.h"
+#include "util/Analyser.h"
+#include "game/Game.h"
+#include "video/Surface.h"
+#include "actors/Projectile.h"
+#include "items/Weapon.h"
+#include "items/MonsterBasicWeapon.h"
 #include "Babar.h"
-#include "../sprites/SpritesManager.h"
-#include "../players/PlayersManager.h"
+#include "sprites/SpritesManager.h"
+#include "players/PlayersManager.h"
 
 class AnimatedSetManager;
 

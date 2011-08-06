@@ -1,7 +1,7 @@
 #include "MenuMulti.h"
-#include "../menus/MenuJoin.h"
-#include "../util/globals.h"
-#include "../network/NetworkManager.h"
+#include "menus/MenuJoin.h"
+#include "util/globals.h"
+#include "network/NetworkManager.h"
 
 MenuMulti::MenuMulti(Menu *parent) :
         Menu(parent)

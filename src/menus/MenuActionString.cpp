@@ -8,9 +8,9 @@
  */
 
 #include "MenuActionString.h"
-#include "../control/Keyboard.h"
+#include "control/Keyboard.h"
 #include <control/EventKeyboard.h>
-#include "../util/globals.h"
+#include "util/globals.h"
 #include <sstream>
 
 MenuActionString::MenuActionString(std::string str, int i, std::string val):
@@ -19,7 +19,7 @@ MenuActionString::MenuActionString(std::string str, int i, std::string val):
 	m_backupString(val),
 	m_waitingForInput(false)
 {
-	
+
 }
 
 void MenuActionString::update_text()

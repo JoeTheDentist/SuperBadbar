@@ -10,26 +10,26 @@
 
 
 #include "Camera.h"
-#include <actors/Actor.h>
-#include <actors/Babar.h>
-#include <actors/Monster.h>
-#include <actors/Projectile.h>
-#include <events/EventsManager.h>
+#include "actors/Actor.h"
+#include "actors/Babar.h"
+#include "actors/Monster.h"
+#include "actors/Projectile.h"
+#include "events/EventsManager.h"
 #include <events/Event.h>
-#include <game/StaticData.h>
-#include <physic/CollisionsManager.h>
+#include "game/StaticData.h"
+#include "physic/CollisionsManager.h"
 #include <physic/MovingPlatform.h>
-#include <util/globals.h>
-#include <util/utils.h>
+#include "util/globals.h"
+#include "util/utils.h"
 #include <video/Displayable.h>
 #include <video/Statics.h>
-#include <video/Surface.h>
+#include "video/Surface.h"
 #include <video/SurfaceCompositeItem.h>
 
 
 
 #ifdef _OPENGL_ACTIVE_
-#include "../../lib/SDL/include/SDL/SDL_opengl.h"
+#include "../lib/SDL/include/SDL/SDL_opengl.h"
 #include <video/Texture.h>
 #endif
 

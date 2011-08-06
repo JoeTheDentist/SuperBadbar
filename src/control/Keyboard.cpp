@@ -7,14 +7,14 @@
  *
  */
 
-#include <fstream>	
-#include "../../lib/SDL/include/SDL/SDL.h"
+#include <fstream>
+#include "../lib/SDL/include/SDL/SDL.h"
 
 #include "Keyboard.h"
 #include <control/EventKeyboard.h>
 #include <control/KeyboardConfig.h>
 #include <control/SdlKeyConverter.h>
-#include <util/globals.h>
+#include "util/globals.h"
 
 
 Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
@@ -177,7 +177,7 @@ void Keyboard::reset_menu_keys()
 	}
 }
 
-bool Keyboard::isNextKeyInQueue() const 
+bool Keyboard::isNextKeyInQueue() const
 {
 	return !m_eventsKeyboard.empty();
 }

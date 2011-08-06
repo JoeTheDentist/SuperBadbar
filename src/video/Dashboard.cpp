@@ -13,21 +13,21 @@
 
 #include <items/Weapon.h>
 
-#include <actors/Babar.h>
+#include "actors/Babar.h"
 #include <param/param_dashboard.h>
-#include <players/PlayersManager.h>
-#include <util/utils.h>
+#include "players/PlayersManager.h"
+#include "util/utils.h"
 #include <video/AnimText.h>
-#include <video/Camera.h>
+#include "video/Camera.h"
 #include <video/Font.h>
 #include <video/LifeBarPossessor.h>
 #include <video/PicturesContainer.h>
-#include <video/Surface.h>
+#include "video/Surface.h"
 #include <video/SurfaceFrame.h>
 #include <video/SurfaceUniform.h>
-#include <video/SurfaceText.h>
-#include <video/Talks.h>
-#include <util/globals.h>
+#include "video/SurfaceText.h"
+#include "video/Talks.h"
+#include "util/globals.h"
 
 
 Dashboard::Dashboard():
@@ -35,7 +35,7 @@ Dashboard::Dashboard():
 	m_weapons_pictures(NULL),
 	m_peanut(NULL),
 	m_babar_head(NULL),
-	m_sizeFont(DASH_TEXT_SIZE), 
+	m_sizeFont(DASH_TEXT_SIZE),
 	m_rFont(DASH_TEXT_R),
 	m_gFont(DASH_TEXT_G),
 	m_bFont(DASH_TEXT_B),
@@ -203,7 +203,7 @@ void Dashboard::draw_dashboard(Camera *camera)
 		m_red_rect->blit_surface(m_life_bar, rect1, rect1);
 		camera->display_picture(m_life_bar, &m_frame_life_bar, true);
 	}
-	
+
 	#endif
 }
 

@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 
 #include "globals.h"
-#include "../control/KeyboardConfig.h"
+#include "control/KeyboardConfig.h"
 
 SoundEngine * gSound = NULL;
 CollisionsManager * gCollision = NULL;
