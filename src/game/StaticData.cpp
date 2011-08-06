@@ -90,7 +90,6 @@ void StaticData::init_StaticData(std::string level_name)
     analyser.close();
 }
 
-
 Surface * StaticData::background()
 {
     return m_background;
@@ -98,17 +97,13 @@ Surface * StaticData::background()
 
 uint32_t StaticData::StaticData_height()
 {
-    return m_background->h() / BACKGROUND_SPEED - Constants::WINDOW_HEIGHT ;
+    return m_background->h() / BACKGROUND_SPEED / Constants::ZOOM - Constants::WINDOW_HEIGHT ;
 }
 
 uint32_t StaticData::StaticData_width()
 {
-    return m_background->w() / BACKGROUND_SPEED - Constants::WINDOW_WIDTH;
+    return m_background->w() / BACKGROUND_SPEED / Constants::ZOOM - Constants::WINDOW_WIDTH;
 }
-
-
-
-
 
 PicturesContainer *StaticData::get_pictures_container()
 {

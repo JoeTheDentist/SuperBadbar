@@ -10,7 +10,6 @@
 #include "SurfaceText.h"
 
 #include <iostream>
-#include "../../lib/SDL/include/SDL/SDL.h"
 
 #include <util/utils.h>
 #include <video/Font.h>
@@ -34,7 +33,6 @@ SurfaceText::SurfaceText(std::string text, Font &font)
 
 SurfaceText::~SurfaceText()
 {
-	// ON NE DELETE PAS, C'EST PICTURESCONTAINER QUI GERE LA MEMOIRE SDL
 }
 
 void SurfaceText::init(std::string text, int size, int r, int g, int b, std::string font_name)

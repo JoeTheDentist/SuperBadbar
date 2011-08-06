@@ -12,7 +12,7 @@
 #include "../../lib/SDL/include/SDL/SDL_image.h"
 #include "../../lib/SDL/include/SDL/SDL_ttf.h"
 #ifndef DESACTIVATE_GFX
-	#include <SDL/SDL_rotozoom.h>
+	#include "../../lib/SDL/include/SDL/SDL_rotozoom.h"
 #endif
 
 #include "PicturesContainer.h"
@@ -43,7 +43,6 @@ SDL_Surface *PicturesContainer::load_IMG(std::string key)
 		#else
 		if (temp) {
 			surf = rotozoomSurface(temp, 0, Constants::ZOOM, 1);
-			PRINT_DEBUG(1, "zoom");
 			SDL_FreeSurface(temp);
 		}
 		#endif

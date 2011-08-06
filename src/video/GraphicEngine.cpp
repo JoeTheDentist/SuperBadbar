@@ -28,7 +28,6 @@
 GraphicEngine::GraphicEngine()
 {
 	PRINT_CONSTR(1, "Construction de GraphicEngine")
-	PRINT_TRACE(1, "Initialisation de SDL")
 	m_camera = new Camera();
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();

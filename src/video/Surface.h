@@ -49,7 +49,7 @@ public:
 
 	/**
 	*	@brief Constructeur
-	*	@param filename Le chemin du fichier Ã  partir de la racine du projet
+	*	@param filename Le chemin du fichier a partir de la racine du projet
 	*/
 	Surface(std::string filename);
 

@@ -2,8 +2,8 @@
 #include "../util/Analyser.h"
 #include "../util/repertories.h"
 #include <iostream>
-#include "../util/Analyser.h"
-#include "../util/macros.h"
+#include "../util/utils.h"
+
 
 
 /*
@@ -54,13 +54,17 @@ void Constants::init()
 		initAux(secondAnalyser);
 		secondAnalyser.close();
 	}
+	WINDOW_HEIGHT = double(WINDOW_HEIGHT) / ZOOM;
+	WINDOW_WIDTH = double(WINDOW_WIDTH) / ZOOM;
 
 }
 
 void Constants::initAux(Analyser &analyser)
 {
 	FOR_EACH_CONST_INT(CONST_INIT_INT)
-	FOR_EACH_CONST_INT(CONST_INIT_DOUBLE)
+	FOR_EACH_CONST_DOUBLE(CONST_INIT_DOUBLE)
 	FOR_EACH_CONST_STRING(CONST_INIT_STRING)
+	
+
 }
 

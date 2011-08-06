@@ -59,9 +59,9 @@ void Camera::init_camera(Actor *target)
     m_frame.h = Constants::WINDOW_HEIGHT;
 
 
-    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.h, m_frame.w)
+    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM)
 #ifndef _OPENGL_ACTIVE_
-            m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
+            m_screen = SDL_SetVideoMode( m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 #else
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
     if (Constants::FULL_SCREEN)
@@ -110,11 +110,6 @@ void Camera::update_decalage()
     if (m_target->direction_h() != 0) {
         m_direction.x = m_target->direction_h();
     }
-    /* del vertical
-	if (m_target->direction_v() != 0) {
-		m_direction.y = m_target->direction_v();
-	}*/
-
 
     // gestion du decalage direction
     m_decalage.x += m_direction.x* VITESSE_DECALAGE_CAMERA;
@@ -123,27 +118,7 @@ void Camera::update_decalage()
     if (m_decalage.x > m_frame.w * MAX_DECALAGE_CAMERA)
         m_decalage.x = m_frame.w * MAX_DECALAGE_CAMERA;
 
-    // gestion du decalage vertical
-    /* del vertical
-	if(m_target->direction_v() == 0) {
-		if (m_decalage.y > 0) {
-			if (m_decalage.y < VITESSE_DECALAGE_RETOUR_CAMERA)
-				m_decalage.y = 0;
-			else
-				m_decalage.y -= VITESSE_DECALAGE_RETOUR_CAMERA;
-		} else {
-			if (m_decalage.y > -VITESSE_DECALAGE_RETOUR_CAMERA)
-				m_decalage.y = 0;
-			else
-				m_decalage.y += VITESSE_DECALAGE_RETOUR_CAMERA;
-		}
-	} else {
-		m_decalage.y += (m_target)->direction_v()* VITESSE_DECALAGE_CAMERA;
-		if (m_decalage.y < -m_frame.h *MAX_DECALAGE_CAMERA)
-			m_decalage.y = -m_frame.h * MAX_DECALAGE_CAMERA;
-		if (m_decalage.y > m_frame.h * MAX_DECALAGE_CAMERA)
-			m_decalage.y = m_frame.h * MAX_DECALAGE_CAMERA;
-	}*/
+	m_decalage.x = 0;
 }
 
 

@@ -13,9 +13,7 @@
 #include <fstream>
 
 #include "Analyser.h"
-#include "../util/debug.h"
-#include "../util/globals.h"
-
+#include <util/debug.h>
 
 Analyser::Analyser()
 {

@@ -9,8 +9,6 @@
 
 #include "SurfaceUniform.h"
 
-#include "../../lib/SDL/include/SDL/SDL.h"
-
 #include <util/debug.h>
 #include <util/globals.h>
 #include <video/Camera.h>

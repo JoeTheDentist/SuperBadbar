@@ -33,82 +33,82 @@ private:
 	PicturesContainer *m_pictures_container;
 	std::string m_level_name;
 public:
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-        StaticData();
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
+	StaticData();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-        ~StaticData();
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
+	~StaticData();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void init_StaticData(unsigned int lvl);
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void init_StaticData(std::string level_name); /* level name est un chemin vers le level */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-        Surface * background();
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
+	Surface * background();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-        unsigned int StaticData_height();
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
+	unsigned int StaticData_height();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-        unsigned int StaticData_width();
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
+	unsigned int StaticData_width();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	PicturesContainer *get_pictures_container(); /* accesseur */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void display_statics_first(Camera *camera);	    /* fonction d'affichage des statics */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void display_statics_back(Camera *camera);	    /* fonction d'affichage des statics */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void add_static_first(Static *stat);		/* ajoute static devant sprites */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	void add_static_back(Static *stat);			/* ajoute static derrière sprites */
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
+	/**
+	 *  TOCOMMENT
+	 *  @brief
+	 */
 	std::string level_name() {return m_level_name;} /* retourne le chemin vers le level depuis le dossier de l'executable */
 
 };
