@@ -7,10 +7,10 @@ noir.png
 
 #Music#
 level2.mp3
-
 #Babar#
-0
-0
+
+2848
+167
 1
 
 #Sets#
@@ -28,7 +28,8 @@ jungle/jungle_hard_block_2 472 5272 0 0
 0
 !
 #MovingPlatforms#
-0
+1
+jungle/arbre_feuilles 403 130 65 139
 !
 #FallingPlatforms#
 0

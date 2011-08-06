@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <iostream>
 
-#include "mainwindow.h"
+#include <editor/MainWindow.h>
 #include <QString>
 
 int main(int argc, char *argv[])

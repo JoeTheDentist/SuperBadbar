@@ -221,7 +221,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent * event)
 	} else if (event->button() == Qt::RightButton && fileOpened()) {
 		if (!m_del_curs && (m_state == e_addingItem)) {
 			// annulation d'un ajout
-			this->scene()->removeItem(m_curr_item->getItem());
+			m_curr_item->removeFromScene(this->scene());
 			delete m_curr_item->getItem();
 			delete m_curr_item;
 			setStateNone();
@@ -371,7 +371,7 @@ void MyGraphicsView::setMusic()
 
 void MyGraphicsView::createNewBabar()
 {
-	m_curr_item = m_data->selectBabar();
+	setStateAddingItem(m_data->selectBabar());
 }
 
 void MyGraphicsView::createNewSet()

@@ -105,7 +105,6 @@ void Data::addFallingPlatformItem(MyItem *item, bool push_front)
 	item->getItem()->setZValue(STATICS_0_ZBUFFER);
 }
 
-
 void Data::addMonsterItem(MyItem *item, bool push_front)
 {	
 	if (push_front) {
@@ -115,7 +114,6 @@ void Data::addMonsterItem(MyItem *item, bool push_front)
 	}
 	item->getItem()->setZValue(MONSTERS_ZBUFFER);	
 }
-
 
 void Data::addEventItem(MyItem *item, bool push_front)
 {
@@ -381,5 +379,3 @@ void Data::removeItem(MyItem *item)
 			return;
 	}
 }
-
-

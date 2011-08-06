@@ -1,4 +1,4 @@
- #ifndef _EDITOR_DATA_H_
+#ifndef _EDITOR_DATA_H_
 #define _EDITOR_DATA_H_
 
 #include <list>
@@ -115,8 +115,6 @@ class Data {
 	*/
 	void addFallingPlatformItem(MyItem *item, bool push_front = false);
 		
-		
-		
 	/*!
 	*	@brief Ajoute un item a la liste des monstersItem
 	*	@param item L'item a ajouter
@@ -161,7 +159,6 @@ class Data {
 	*	@return Un pointeur vers le BabarItem contenu dans data
 	*/
 	MyItem *selectBabar();
-	
 	
 	/*!
 	*	@brief Supprime l'item de la liste MAIS NE LE DELETE PAS

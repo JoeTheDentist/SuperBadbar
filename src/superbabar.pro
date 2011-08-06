@@ -33,7 +33,7 @@ win32 {
 }
 
 unix {
-	QMAKE_LFLAGS += -g 	
+	QMAKE_LFLAGS += -g 	-R "../lib/gcc"
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
         LIBS += -lSDL -lSDL_image -lSDL_ttf -lSDL_gfx \

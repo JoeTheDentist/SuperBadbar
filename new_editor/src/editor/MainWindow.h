@@ -43,7 +43,6 @@ class MainWindow : public QMainWindow {
 	*/
 	void createToolBars();
 	
-
 	/*!
 	*	@brief Enregistre le niveau en fonction des modifications faites
 	*	@param str Nom (terminant par .lvl) du fichier à sauvegarder
@@ -54,7 +53,6 @@ class MainWindow : public QMainWindow {
 	*	@brief Demande a l'utilisateur s'il veut sauvegarder son travail
 	*/
 	void warningSave();
-	
 	
 	public slots:
 	void newFile();
@@ -72,7 +70,6 @@ class MainWindow : public QMainWindow {
 	void createNewEvent();
 	void createNewTrigger();
 	void deleteItem();
-	
 	
 	private:
 	QGraphicsScene *m_graphic_scene; // scene liee a m_graphic_view

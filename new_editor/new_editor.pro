@@ -36,9 +36,11 @@ unix {
 # Input
 HEADERS += 	src/editor/*.h \
 			src/items/*.h \
-			src/util/*.h 
-
+			src/util/*.h  \
+			../src/util/Analyser.h
+			
 SOURCES += src/main.cpp \
 			src/editor/*.cpp \
 			src/items/*.cpp \
-			src/util/*.cpp 
+			src/util/*.cpp \
+			../src/util/Analyser.cpp

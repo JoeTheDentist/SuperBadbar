@@ -23,7 +23,6 @@ enum mgvState {
 	e_fileClosed, e_addingItem, e_movingItem, e_erasingItem, e_none
 };
 
-
 class MyGraphicsView : public QGraphicsView {
 
 	public:

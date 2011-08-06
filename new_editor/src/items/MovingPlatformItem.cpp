@@ -33,8 +33,6 @@ MovingPlatformItem::MovingPlatformItem(QGraphicsScene *scene, QString fileName, 
 	}
 }
 
-
-
 MovingPlatformItem::~MovingPlatformItem()
 {
 	if (isFather())
@@ -92,7 +90,8 @@ QString MovingPlatformItem::picPathFromEditor(QString fileName)
 
 void MovingPlatformItem::moveItem(int x, int y)
 {
-	StaticItem::moveItem(x, y);
+	qWarning("plop");
+	StaticItem::setPos(this->getItem()->x() + x, this->getItem()->y() + y);
 	if (isFather()) {
 		m_son->moveItem(x, y);
 	} else {

@@ -53,4 +53,16 @@ class BabarItem: public MyItem {
 
 };
 
+enum nains {atchoum, prof, simplet};
+
+struct mesNains {
+	char m_nains[2];
+	
+	mesNains() {
+		m_nains[0] = atchoum;
+		m_nains[1] = prof;
+	}
+};
+
+
 #endif

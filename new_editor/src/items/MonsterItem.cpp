@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 
 #include <util/paths.h>
-#include <util/Analyser.h>
+#include <../src/util/Analyser.h>
 
 
 MonsterItem::MonsterItem(QGraphicsScene *scene, QString fileName):

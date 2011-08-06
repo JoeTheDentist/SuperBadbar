@@ -200,6 +200,7 @@ class MyItem {
 	*	@return Vrai si l'item n'a pas d'etat particulier
 	*/
 	bool isNothing() const {return m_state == e_nothing ;}
+	
 	protected:
 	
 	/*!
