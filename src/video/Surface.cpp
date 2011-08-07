@@ -18,20 +18,11 @@
 #include "util/debug.h"
 
 PicturesContainer *Surface::m_pictures_container = NULL;
-#ifdef _OPENGL_ACTIVE_
-#include "video/TexturesManager.h"
-#include "video/Texture.h"
-TexturesManager *Surface::m_texturesManager = NULL;
-#endif
-
 
 Surface::Surface(std::string filename)
 {
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
 	m_surface = m_pictures_container->load_IMG(filename);
-	#ifdef _OPENGL_ACTIVE_
-	m_texture = m_texturesManager->load_IMG(filename);
-	#endif
 	if ( !m_surface ) {
         PRINT_CONSTR(1, "Impossible de charger l'image : %s", filename.c_str());
 	}
@@ -63,30 +54,15 @@ void Surface::set_pictures_container(PicturesContainer *picturesContainer)
 	m_pictures_container = picturesContainer;
 	PRINT_TRACE(1,"Ajout du PicturesContainer aux surfaces");
 }
-#ifdef _OPENGL_ACTIVE_
-void Surface::setTexturesManager(TexturesManager *texturesManager)
-{
-	m_texturesManager = texturesManager;
-	PRINT_TRACE(1,"Ajout du texturesManager aux surfaces");
-}
-#endif
 
 int Surface::w()
 {
-	#ifdef _OPENGL_ACTIVE_
-	return getTexture()->w();
-	#else
 	return m_surface->w;
-	#endif
 }
 
 int Surface::h()
 {
-	#ifdef _OPENGL_ACTIVE_
-	return getTexture()->h();
-	#else
 	return m_surface->h;
-	#endif
 }
 
 void Surface::set_w(int w)
@@ -125,9 +101,5 @@ void Surface::blit_surface(Surface *background, Rect pos)
 
 void Surface::set_alpha(unsigned char alpha)
 {
-	#ifndef _OPENGL_ACTIVE_
 	SDL_SetAlpha(get_surface(), SDL_SRCALPHA, alpha);
-	#else
-
-	#endif
 }

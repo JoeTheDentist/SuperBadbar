@@ -14,11 +14,6 @@
 #include <string>
 #include "util/debug.h"
 
-#ifdef _OPENGL_ACTIVE_
-class Texture;
-class TexturesManager;
-#endif
-
 class Camera;
 class Babar;
 class StaticData;
@@ -38,9 +33,6 @@ private:
 	Talks *m_talks;
 	Dashboard *m_dashboard;
 	PicturesContainer *m_pictures_container;
-	#ifdef _OPENGL_ACTIVE_
-	TexturesManager *m_texturesManager;
-	#endif
 	SpritesManager * m_sprites;
 
 public:

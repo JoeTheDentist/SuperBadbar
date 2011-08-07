@@ -20,11 +20,6 @@
 #include "video/Surface.h"
 
 
-#ifdef _OPENGL_ACTIVE_
-#include <video/Texture.h>
-#include <video/TexturesManager.h>
-#endif
-
 GraphicEngine::GraphicEngine()
 {
 	PRINT_CONSTR(1, "Construction de GraphicEngine")
@@ -34,18 +29,11 @@ GraphicEngine::GraphicEngine()
 	m_pictures_container = new PicturesContainer();
 	m_sprites = new SpritesManager;
 	Surface::set_pictures_container(m_pictures_container);
-	#ifdef _OPENGL_ACTIVE_
-	m_texturesManager = new TexturesManager;
-	Surface::setTexturesManager(m_texturesManager);
-	#endif
 }
 
 GraphicEngine::~GraphicEngine()
 {
 	PRINT_CONSTR(1, "Destruction de GraphicEngine")
-	#ifdef _OPENGL_ACTIVE_
-	delete m_texturesManager;
-	#endif
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;

@@ -11,13 +11,9 @@ QT -= qui
 TARGET = superbabar
 TEMPLATE = app
 
-INCLUDEPATH +=  ../lib/include \
-                .
-
 win32 {
-        LIBS += -L"../lib/lib" \
-                -lSDL -lSDL_image -lSDL_ttf \
-                -lglut -lopengl32 -lSDL_gfx
+	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
+			-L"../lib/fmodapi375win/api/lib" -lfmod 
 		
         Release:DESTDIR = ./
 	Release:OBJECTS_DIR = release/.obj
@@ -33,11 +29,13 @@ win32 {
 }
 
 unix {
-	QMAKE_LFLAGS += -g 	-R "../lib/gcc"
+	QMAKE_LFLAGS += -g 	
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
-        LIBS += -lSDL -lSDL_image -lSDL_ttf -lSDL_gfx \
-                -lglut
+	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
+	../lib/gcc/libfmod.so \
+	-L"../lib/gcc/"\
+	-lSDL_gfx 
 
 	DESTDIR = ./
 	OBJECTS_DIR = release/.obj
@@ -46,6 +44,8 @@ unix {
 	UI_DIR = release/.ui
 	
 }
+
+INCLUDEPATH += .
 
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \

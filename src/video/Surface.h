@@ -20,10 +20,7 @@ class PicturesContainer;
 struct SDL_Surface;
 class SurfaceCompositeItem;
 
-#ifdef _OPENGL_ACTIVE_
-class TexturesManager;
-class Texture;
-#endif
+
 
 
 /**
@@ -34,17 +31,11 @@ class Surface {
 protected:
 	SDL_Surface *m_surface;
 	static PicturesContainer *m_pictures_container;
-	#ifdef _OPENGL_ACTIVE_
-	static TexturesManager *m_texturesManager;
-	Texture *m_texture;
-	#endif
+
 public:
 
 	Surface():
 		m_surface(NULL)
-		#ifdef _OPENGL_ACTIVE_
-		,m_texture(NULL)
-		#endif
 		{}
 
 	/**
@@ -66,11 +57,6 @@ public:
 
 	virtual void setSurface(SDL_Surface *surface) {m_surface = surface;}
 
-	#ifdef _OPENGL_ACTIVE_
-	Texture *getTexture() { return m_texture;}
-	void setTexture(Texture *texture) {m_texture = texture;}
-	#endif
-
 	/**
 	*	@brief Duplique la SDL surface contenue et la renvoie
 	*	@return La copie
@@ -82,10 +68,6 @@ public:
 	*	@param PicturesContainer Le gestionnaire d'images
 	*/
 	static void set_pictures_container(PicturesContainer *PicturesContainer);
-
-	#ifdef _OPENGL_ACTIVE_
-	static void setTexturesManager(TexturesManager *texturesManager);
-	#endif
 
 	/**
 	*	@brief Accesseur

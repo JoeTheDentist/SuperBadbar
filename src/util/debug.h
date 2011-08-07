@@ -28,7 +28,6 @@
 
 #include <stdio.h>
 
-//~ #define _OPENGL_ACTIVE_
 
 //~ #define DEBUG_COLL 
 #define DESACTIVATE_GFX

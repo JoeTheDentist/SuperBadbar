@@ -16,8 +16,8 @@
  * Initialise la SDL, ouvre la fenetre et les ferme.\n
  * Pointe sur un sprite qu'elle suit dans ses déplacements avec update_pos().\n
  * Permet d'afficher des sprites et le fond d'écran aux bons endroits en calculant leur position relative
- * �  la fenetre �  partir de leur position absolue.\n
- * Permet aussi d'afficher une Surface * quelconque �  une position donnée dans la fenetre (indépendamment
+ * a la fenetre a partir de leur position absolue.\n
+ * Permet aussi d'afficher une Surface * quelconque a une position donnée dans la fenetre (indépendamment
  * de la position de la camera)\n
  * La camera suit le sprite pointé sauf lorsqu'il arrive aux limites du niveau.
 **/
@@ -50,7 +50,7 @@ class Displayable;
 class Camera {
 private:
 	Rect m_frame;		/* cadre de la camera */
-	Rect m_direction; 	/* direction de la camera (les composantes sont �  valeur dans {-1, 1}*/
+	Rect m_direction; 	/* direction de la camera (les composantes sont a valeur dans {-1, 1}*/
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
 	Actor *m_target;		/* sprite sur lequel pointe la camera */
 	SDL_Surface *m_screen;
@@ -70,18 +70,18 @@ public:
 
 	/**
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre et crée la fenetre SDL
-	* 	@param target Le sprite �  pointer
+	* 	@param target Le sprite a pointer
 	*/
 	void init_camera(Actor *target);
 
  	/**
 	* 	@brief Fait pointer la camera sur le sprite passé en paramètre
-	* 	@param target Le sprite �  pointer
+	* 	@param target Le sprite a pointer
 	*/
 	void set_target(Actor *target);
 
 	/**
-	* 	@brief Met �  jour la position de la camera
+	* 	@brief Met a jour la position de la camera
 	*	@param StaticData fournit la taille de l'écran
 	* 	@warning Il va falloir virer ce fucking StaticData
 	*
@@ -97,10 +97,10 @@ public:
 	void display_background(Surface *background) ;
 
 	/**
-	* 	@brief Affiche le Displayable passé en paramètre �  l'écran
-	*	@param entity le Displayable �  afficher
+	* 	@brief Affiche le Displayable passé en paramètre a l'écran
+	*	@param entity le Displayable a afficher
 	*	Le Displayable est affiché en fonction de sa position
-	*	relativement �  la position de la caméra
+	*	relativement a la position de la caméra
 	*	Si le Displayable vaut NULL, rien ne se passe
 	*	@todo N'utiliser que cette méthode
 	*/
@@ -108,14 +108,14 @@ public:
 
 	/**
 	* 	@brief Affiche les événements affichables de l'event_manager
-	*	@param event_manager l'ensemble des événements �  afficher
+	*	@param event_manager l'ensemble des événements a afficher
 	*/
 	void display_events(EventsManager * const event_manager) const;
 
 	/**
 	* 	@brief Affiche l'événement s'il est affichable en fonction
 	*	de sa position et de son image
-	*	@param event l'événement �  afficher
+	*	@param event l'événement a afficher
 	*/
 	void display_event(Event *event) const;
 
@@ -130,18 +130,18 @@ public:
 	int height() const;
 
 	/**
-	* 	@brief Affiche pic �  la position pos par rapport au cadre de la camera
-	*	@param surf L'image �  afficher
+	* 	@brief Affiche pic a la position pos par rapport au cadre de la camera
+	*	@param surf L'image a afficher
 	*	@param pos la position de l'image (relativement au cadre de la camera!!)
 	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
 	void display_picture(Surface *surf, Rect *pos, bool fixe=false) const;
-	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé �  la rendre const...*/
+	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé a la rendre const...*/
 
 	/**
-	*	@brief Met �  jour l'affichage de la caméra
+	*	@brief Met a jour l'affichage de la caméra
 	*
-	*	L'affichage réel n'est mis �  jour que dans cette méthode
+	*	L'affichage réel n'est mis a jour que dans cette méthode
 	*/
 	void flip_camera();
 
@@ -158,7 +158,7 @@ public:
 	#endif
 
 private:
-	void update_decalage();	/* mise �  jour du decalage du cadre (appelé par update_pos) */
+	void update_decalage();	/* mise a jour du decalage du cadre (appelé par update_pos) */
 };
 
 

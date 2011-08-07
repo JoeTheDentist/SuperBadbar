@@ -3,7 +3,7 @@
 #include "util/repertories.h"
 #include <iostream>
 #include "util/utils.h"
-
+#include <util/debug.h>
 
 
 /*
@@ -54,8 +54,10 @@ void Constants::init()
 		initAux(secondAnalyser);
 		secondAnalyser.close();
 	}
+	#ifndef DESACTIVATE_GFX
 	WINDOW_HEIGHT = double(WINDOW_HEIGHT) / ZOOM;
 	WINDOW_WIDTH = double(WINDOW_WIDTH) / ZOOM;
+	#endif
 
 }
 

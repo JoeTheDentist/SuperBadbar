@@ -28,12 +28,6 @@
 
 
 
-#ifdef _OPENGL_ACTIVE_
-#include "../lib/SDL/include/SDL/SDL_opengl.h"
-#include <video/Texture.h>
-#endif
-
-
 Camera::Camera()
 {
     m_target = NULL;
@@ -58,30 +52,16 @@ void Camera::init_camera(Actor *target)
     m_frame.w = Constants::WINDOW_WIDTH;
     m_frame.h = Constants::WINDOW_HEIGHT;
 
+#ifdef DESACTIVATE_GFX
+    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w, m_frame.h)
+	m_screen = SDL_SetVideoMode( m_frame.w, m_frame.h, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 
-    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM)
-#ifndef _OPENGL_ACTIVE_
-            m_screen = SDL_SetVideoMode( m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 #else
-    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-    if (Constants::FULL_SCREEN)
-        m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32,  SDL_OPENGL | SDL_FULLSCREEN);
-    else
-        m_screen = SDL_SetVideoMode(m_frame.w, m_frame.h, 32,  SDL_OPENGL /*| SDL_FULLSCREEN*/);
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_BLEND);
-    glDisable(GL_DEPTH_TEST);
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-    glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-    glViewport( 0, 0, m_frame.w, m_frame.h );
-    glClear( GL_COLOR_BUFFER_BIT );
-    glMatrixMode( GL_PROJECTION );
-    glLoadIdentity();
-    glOrtho(0.0f, m_frame.w, m_frame.h, 0.0f, -1.0f, 1.0f);
-    glMatrixMode( GL_MODELVIEW );
-    glLoadIdentity();
-#endif
+    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM)
+	m_screen = SDL_SetVideoMode( m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
 
+#endif
+	
     SDL_WM_SetCaption("SuperBadbar", NULL);
     m_target = target;
 #ifdef DEBUG_COLL
@@ -120,7 +100,6 @@ void Camera::update_decalage()
 
 	m_decalage.x = 0;
 }
-
 
 void Camera::update_pos()
 {
@@ -212,7 +191,6 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
 			#endif
             pos_sdl.h = (unsigned int)pos->h;
             pos_sdl.w = (unsigned int)pos->w;
-#ifndef _OPENGL_ACTIVE_
 			SDL_BlitSurface(surf->get_surface(), NULL, m_screen, &pos_sdl);
             std::vector<SurfaceCompositeItem *> *children = surf->children();
             if (children) {
@@ -222,34 +200,6 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
                     display_picture((*it)->getSurface(), &poschild, fixe);
                 }
             }
-#else
-            Texture *texture = surf->getTexture();
-            if (!texture) {
-                PRINT_DEBUG(1, "ECHEEEC");
-                return;
-            }
-            // Bind the texture to which subsequent calls refer to
-            glBindTexture( GL_TEXTURE_2D, texture->getGlTexture() );
-
-
-            glBegin( GL_QUADS );
-            //Bottom-left vertex (corner)
-            glTexCoord2i( 0, 0 );
-            glVertex3f( pos_sdl.x, pos_sdl.y, 0.f);
-
-            //Bottom-right vertex (corner)
-            glTexCoord2i( 1, 0 );
-            glVertex3f( pos_sdl.x + texture->w(), pos_sdl.y, 0.f );
-
-            //Top-right vertex (corner)
-            glTexCoord2i( 1, 1 );
-            glVertex3f( pos_sdl.x + texture->w(), pos_sdl.y + texture->h(), 0.f );
-
-            //Top-left vertex (corner)
-            glTexCoord2i( 0, 1 );
-            glVertex3f( pos_sdl.x, pos_sdl.y + texture->h(), 0.f );
-            glEnd();
-#endif
         } else {
             Rect curr = *pos;
             curr.x -= m_frame.x;
@@ -272,11 +222,7 @@ void Camera::display_picture(SDL_Surface *surf, Rect *pos)
 
 void Camera::flip_camera()
 {
-#ifdef	_OPENGL_ACTIVE_
-    SDL_GL_SwapBuffers();
-#else
     SDL_Flip(m_screen);
-#endif
 }
 
 #ifdef DEBUG_COLL
