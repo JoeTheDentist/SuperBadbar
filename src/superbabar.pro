@@ -32,10 +32,7 @@ unix {
 	QMAKE_LFLAGS += -g 	
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
-	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
-	../lib/gcc/libfmod.so \
-	-L"../lib/gcc/"\
-	-lSDL_gfx 
+        LIBS += -lSDL -lSDL_image -lSDL_ttf -lSDL_gfx
 
 	DESTDIR = ./
 	OBJECTS_DIR = release/.obj
@@ -45,7 +42,7 @@ unix {
 	
 }
 
-INCLUDEPATH += .
+INCLUDEPATH += ../lib/include
 
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \
