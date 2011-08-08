@@ -21,6 +21,8 @@ class Font;
 *	@brief Classe representant toute image du jeu contenant du texte (sans sa position)
 */
 class SurfaceText: public Surface {
+	protected:
+		sf::String *m_stringSurface;
 	public:
 
 	SurfaceText();
@@ -46,6 +48,18 @@ class SurfaceText: public Surface {
 	*	@brief Destructeur
 	*/
 	virtual ~SurfaceText();
+	
+	/**
+	*	@brief Accesseur
+	*	@return La largeur de l'image
+	*/
+	virtual int w();
+
+	/**
+	*	@brief Accesseur
+	*	@return La hauteur de l'image
+	*/
+	virtual int h();
 
 protected:
 	virtual void init(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");

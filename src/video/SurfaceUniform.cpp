@@ -17,7 +17,8 @@
 
 SurfaceUniform::SurfaceUniform(int width, int height, int r, int g, int b, int alpha)
 {
-	setSurface(m_pictures_container->loadSurfaceUniform(width, height, r, g, b, alpha));
+	m_sprite = m_pictures_container->loadSurfaceUniform(width, height, r, g, b, alpha);
+	setSurface(m_sprite);
 	set_alpha(alpha);
 }
 

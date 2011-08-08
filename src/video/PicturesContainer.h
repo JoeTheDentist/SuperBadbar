@@ -11,11 +11,14 @@
 #define _PICTURES_CONTAINER_
 
 #include <map>
+#include <list>
 #include <string>
 
 #include "../lib/SDL/include/SDL/SDL.h"
 #include <video/KeyMapSurfaceText.h>
 #include <video/KeyMapSurfaceUnif.h>
+#include <SFML/Graphics.hpp>
+
 /**
  * 	@class PicturesContainer
  * 	@brief Charge les images de façon a optimiser la mémoire
@@ -33,9 +36,10 @@
  */
 class PicturesContainer {
 private:
-	std::map<std::string, SDL_Surface*> m_container;
-	std::map<KeyMapSurfaceText, SDL_Surface*> m_textContainer;
-	std::map<KeyMapSurfaceUnif, SDL_Surface*> m_unifContainer;
+	std::map<std::string, sf::Sprite*> m_container;
+	std::map<KeyMapSurfaceText, sf::String*> m_textContainer;
+	std::map<KeyMapSurfaceUnif, sf::Sprite*> m_unifContainer;
+	std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
 public:
 	/**
 	 * 	@brief Constructeur
@@ -52,7 +56,7 @@ public:
 	 *	@param key Le chemin vers l'image
 	 *	@return Un pointeur vers l'image voulue
 	 */
-	SDL_Surface *load_IMG(std::string key);
+	sf::Sprite *load_picture(std::string key);
 
 	/**
 	*	@brief Retourne un pointeur vers la surface de texte demandee
@@ -63,7 +67,7 @@ public:
 	*	@param b La composante bleue du texte
 	*	@param fontNameLe nom de la police (qui sera charge dans le repertoire des polices)
 	*/
-	SDL_Surface *loadSurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
+	sf::String *loadSurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
 
 	/**
 	*	@brief Retourne un pointeur vers la surface de texte demandee
@@ -74,7 +78,7 @@ public:
 	*	@param b La composante bleue de la surface
 	*	@param alpha La composante alpha de la surface
 	*/
-	SDL_Surface *loadSurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
+	sf::Sprite *loadSurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
 
 	/**
 	 * 	@brief Vide la memoire du picture container

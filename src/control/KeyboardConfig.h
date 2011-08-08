@@ -11,11 +11,12 @@
 #ifndef _KEYBOARD_CONFIG_H_
 #define _KEYBOARD_CONFIG_H_
 
-#include <SDL/SDL.h>
 
 #include <string>
 
 #include "util/utils.h"
+
+#include <SFML/Window.hpp>
 
 class EventKeyboard;
 
@@ -26,7 +27,7 @@ class EventKeyboard;
 */
 class KeyboardConfig {
 private:
-	enum key m_key_config[SDLK_LAST];	// tableau de configuration des touches
+	enum key m_key_config[sf::Key::Count];	// tableau de configuration des touches
 
 public:
 	/*!
@@ -71,7 +72,8 @@ public:
 	*	@param Une touche au format SDL
 	*	@return L'enum key correspondant (k_none s'il n'y en a pas)
 	*/
-	key getEnumKey(SDLKey key) const;
+//~ 	key getEnumKey(SDLKey key) const;
+	key getEnumKey(sf::Key::Code key) const;
 
 	/*!
 	*	@brief Accesseur

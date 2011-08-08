@@ -25,25 +25,28 @@
 #include <video/Statics.h>
 #include "video/Surface.h"
 #include <video/SurfaceCompositeItem.h>
-
+//todo enlever:
+#include <control/EventKeyboard.h>
 
 
 Camera::Camera()
 {
+	PRINT_DEBUG(1, "Construction de la camera");
     m_target = NULL;
     m_screen = NULL;
+	m_window = NULL;
+	m_initialized = false;
 }
 
 Camera::~Camera()
 {
     PRINT_CONSTR(1, "Destruction de la camera");
     PRINT_TRACE(1, "Fermeture de la fenetre");
-    SDL_FreeSurface(m_screen);
+	delete m_window;
 }
 
 void Camera::init_camera(Actor *target)
 {
-    PRINT_CONSTR(1, "Construction de la camera");
     m_frame.x = 0;
     m_frame.y = 0;
     if (target) {
@@ -51,24 +54,17 @@ void Camera::init_camera(Actor *target)
     }
     m_frame.w = Constants::WINDOW_WIDTH;
     m_frame.h = Constants::WINDOW_HEIGHT;
-
-#ifdef DESACTIVATE_GFX
     PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w, m_frame.h)
-	m_screen = SDL_SetVideoMode( m_frame.w, m_frame.h, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
-
-#else
-    PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM)
-	m_screen = SDL_SetVideoMode( m_frame.w * Constants::ZOOM, m_frame.h * Constants::ZOOM, 32, SDL_HWPALETTE | SDL_DOUBLEBUF /*| SDL_FULLSCREEN*/);
-
-#endif
-	
-    SDL_WM_SetCaption("SuperBadbar", NULL);
-    m_target = target;
+	if (!m_initialized) {
+		m_window = new sf::RenderWindow(sf::VideoMode(m_frame.w, m_frame.h, 32), "SuperBadbar");
+		EventKeyboard::initEventKeyboard();
+	}
+	m_target = target;
 #ifdef DEBUG_COLL
     m_green_coll = new Surface(PIC_DEBUG_R + "green_col.png");
     m_red_coll = new Surface(PIC_DEBUG_R + "red_col.png");
 #endif
-
+	m_initialized = true;
 }
 
 void Camera::set_target(Actor *target)
@@ -181,17 +177,12 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
 {
     if ( surf ) {
         if ( fixe ) {
-            SDL_Rect pos_sdl;
-			#ifndef DESACTIVATE_GFX
-            pos_sdl.x = (int)(pos->x * Constants::ZOOM);
-            pos_sdl.y = (int)(pos->y * Constants::ZOOM);
-			#else
-            pos_sdl.x = (int)(pos->x);
-            pos_sdl.y = (int)(pos->y);
-			#endif
-            pos_sdl.h = (unsigned int)pos->h;
-            pos_sdl.w = (unsigned int)pos->w;
-			SDL_BlitSurface(surf->get_surface(), NULL, m_screen, &pos_sdl);
+			sf::Drawable *drawable = surf->getSurface();
+			if (!surf->getSurface())
+				return;
+			drawable->SetX(pos->x);
+			drawable->SetY(pos->y);
+			m_window->Draw(*drawable);
             std::vector<SurfaceCompositeItem *> *children = surf->children();
             if (children) {
                 for (std::vector<SurfaceCompositeItem *>::iterator it = children->begin();
@@ -209,20 +200,9 @@ void Camera::display_picture(Surface *surf, Rect *pos, bool fixe) const
     }
 }
 
-void Camera::display_picture(SDL_Surface *surf, Rect *pos)
-{
-    SDL_Rect * pos_sdl = new SDL_Rect;
-    pos_sdl->x = (int)pos->x;
-    pos_sdl->y = (int)pos->y;
-    pos_sdl->h = (unsigned int)pos->h;
-    pos_sdl->w = (unsigned int)pos->w;
-    SDL_BlitSurface(surf, NULL, m_screen, pos_sdl);
-    delete pos_sdl;
-}
-
 void Camera::flip_camera()
 {
-    SDL_Flip(m_screen);
+	m_window->Display();
 }
 
 #ifdef DEBUG_COLL

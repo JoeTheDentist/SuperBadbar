@@ -97,7 +97,8 @@ Surface * StaticData::background()
 
 uint32_t StaticData::StaticData_height()
 {
-    return m_background->h() / BACKGROUND_SPEED / Constants::ZOOM - Constants::WINDOW_HEIGHT ;
+    return m_background->h() / BACKGROUND_SPEED - Constants::WINDOW_HEIGHT ;
+//~     return m_background->h() / BACKGROUND_SPEED / Constants::ZOOM - Constants::WINDOW_HEIGHT ;
 }
 
 uint32_t StaticData::StaticData_width()

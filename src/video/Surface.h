@@ -16,6 +16,8 @@
 #include <util/Rect.h>
 #include "util/debug.h"
 
+#include <SFML/Graphics.hpp>
+
 class PicturesContainer;
 struct SDL_Surface;
 class SurfaceCompositeItem;
@@ -29,12 +31,16 @@ class SurfaceCompositeItem;
 */
 class Surface {
 protected:
-	SDL_Surface *m_surface;
+	sf::Drawable *m_drawable;
+	sf::Sprite *m_sprite;
 	static PicturesContainer *m_pictures_container;
+	SDL_Surface *m_surface; // a virer
 
 public:
 
 	Surface():
+		m_drawable(NULL),	
+		m_sprite(NULL),
 		m_surface(NULL)
 		{}
 
@@ -51,11 +57,12 @@ public:
 
 	/**
 	*	@brief Accesseur
-	*	@return L'image SDL
+	*	@return L'image SFML
 	*/
+	sf::Drawable *getSurface();
 	SDL_Surface *get_surface();
 
-	virtual void setSurface(SDL_Surface *surface) {m_surface = surface;}
+	virtual void setSurface(sf::Drawable *surface) {m_drawable = surface;}
 
 	/**
 	*	@brief Duplique la SDL surface contenue et la renvoie

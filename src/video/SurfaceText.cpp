@@ -17,7 +17,7 @@
 
 SurfaceText::SurfaceText()
 {
-
+	m_stringSurface = NULL;
 }
 
 SurfaceText::SurfaceText(std::string text, int size, int r, int g, int b, std::string font_name)
@@ -36,5 +36,18 @@ SurfaceText::~SurfaceText()
 
 void SurfaceText::init(std::string text, int size, int r, int g, int b, std::string font_name)
 {
-	setSurface(m_pictures_container->loadSurfaceText(text, size, r, g, b, font_name));
+	m_stringSurface = m_pictures_container->loadSurfaceText(text, size, r, g, b, font_name);
+	setSurface(m_stringSurface);
+}
+
+int SurfaceText::w() 
+{
+	PRINT_DEBUG(1, "ok");
+	return m_stringSurface? m_stringSurface->GetRect().GetWidth() : 5;
+}
+
+int SurfaceText::h()
+{
+	return m_stringSurface? m_stringSurface->GetRect().GetHeight() : 5;
+	
 }

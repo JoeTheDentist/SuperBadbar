@@ -1,19 +1,21 @@
 #ifndef _EVENT_KEYBOARD_H
 #define _EVENT_KEYBOARD_H
 
-#include <SDL/SDL.h>
 
 #include <string>
 
 #include "util/enums.h"
 
+#include <SFML/Window.hpp>
+
+
 /*!
 *	@class EventKeyboard
-*	@brief Encapsulation d'un evenement SDL
+*	@brief Encapsulation d'un evenement SFML
 */
 class EventKeyboard {
 protected:
-	SDL_Event m_event;
+	sf::Event m_event;
 	bool m_treated;
 	bool m_ctrl;
 	bool m_altGr;
@@ -37,7 +39,7 @@ public:
 	*	@brief Constructeur
 	*	@param event L'evenement a encapsuler
 	*/
-	EventKeyboard(SDL_Event event);
+	EventKeyboard(sf::Event event);
 
 	/*!
 	*	@brief Destructeur
@@ -47,6 +49,7 @@ public:
 	static bool pollEvent(EventKeyboard *event);
 	static void waitEvent(EventKeyboard *event);
 	static void setKeyRepeat(bool repeat);
+	static void initEventKeyboard();
 
 	/*!
 	*	@brief Accesseur
@@ -70,13 +73,7 @@ public:
 	*	@brief Accesseur
 	*	@return L'evenement encapsule
 	*/
-	SDL_Event getSDLEvent() const;
-
-	/*!
-	*	@brief Accesseur
-	*	@return La touche concernee au format SDLKey
-	*/
-	SDLKey getSDLKey() const;
+	sf::Event getSFMLEvent() const;
 
 	/*!
 	*	@brief Accesseur
@@ -150,6 +147,9 @@ protected:
 	*	@brief Initialise
 	*/
 	void initMode();
+
+protected: 
+	static sf::Window *m_window;
 
 };
 

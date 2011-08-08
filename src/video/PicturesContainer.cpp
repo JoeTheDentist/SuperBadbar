@@ -32,71 +32,73 @@ PicturesContainer::~PicturesContainer()
 	PRINT_CONSTR(1, "Destruction d'un PicturesContainer");
 }
 
-SDL_Surface *PicturesContainer::load_IMG(std::string key)
+sf::Sprite *PicturesContainer::load_picture(std::string key)
 {
-	std::map<std::string, SDL_Surface*>::iterator it = m_container.find(key);
-	SDL_Surface *surf = NULL;
+	std::map<std::string, sf::Sprite*>::iterator it = m_container.find(key);
+	sf::Sprite *surf = NULL;
 	if (it == m_container.end()) {
-		SDL_Surface *temp = IMG_Load((key).c_str());
-		#ifdef DESACTIVATE_GFX
-		surf = temp;
-		#else
-		if (temp) {
-			surf = rotozoomSurface(temp, 0, Constants::ZOOM, 1);
-			SDL_FreeSurface(temp);
-		}
-		#endif
-		if (surf == NULL) {
+		sf::Image *image = new sf::Image;
+		if (!image->LoadFromFile(key.c_str())) {
 			PRINT_DEBUG(1, "impossible de charger l'image %s", key.c_str());
+			delete image;
 			return NULL;
 		}
-		m_container.insert(std::pair<std::string, SDL_Surface*>(key, surf));
+		surf = new sf::Sprite;
+		surf->SetImage(*image);
+		m_images.push_back(image);
+		m_container.insert(std::pair<std::string, sf::Sprite*>(key, surf));
 	} else {
 		surf = (*it).second;
 	}
-	return surf;
+	return surf;	
 }
 
-SDL_Surface *PicturesContainer::loadSurfaceText(std::string text, int size, int r, int g, int b, std::string fontName)
+sf::String *PicturesContainer::loadSurfaceText(std::string text, int size, int r, int g, int b, std::string fontName)
 {
 	if (text == "")
 		return NULL;
 	KeyMapSurfaceText key(text, size, r, g, b, fontName);
-	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator it = m_textContainer.find(key);
-	SDL_Surface *surf = NULL;
+	std::map<KeyMapSurfaceText, sf::String*>::iterator it = m_textContainer.find(key);
+	sf::String *surf = NULL;
 	if (it == m_textContainer.end()) {
-		TTF_Font *font = TTF_OpenFont((FONTS_R + fontName).c_str(), size);
-		SDL_Color font_color;
-		font_color.r = r;
-		font_color.g = g;
-		font_color.b = b;
-		surf = TTF_RenderText_Blended(font, text.c_str(), font_color);
-		TTF_CloseFont(font);
+		sf::Font *MyFont = new sf::Font;
+		if (!MyFont->LoadFromFile((FONTS_R + fontName).c_str(), size)) {
+			PRINT_DEBUG(1, "impossible de charger la surface ttf correspondant a  %s", text.c_str());
+			return NULL;			
+		}
+		PRINT_DEBUG(1, "%s", (FONTS_R + fontName).c_str());
+		surf = new sf::String;
+		surf->SetText(text.c_str());
+		surf->SetFont(*MyFont);
+		surf->SetSize(size);
+		surf->SetColor(sf::Color(r, g, b));
 		if (surf == NULL) {
 			PRINT_DEBUG(1, "impossible de charger la surface ttf correspondant a  %s", text.c_str());
 			return NULL;
 		}
-		m_textContainer.insert(std::pair<KeyMapSurfaceText, SDL_Surface*>(key, surf));
+		m_textContainer.insert(std::pair<KeyMapSurfaceText, sf::String*>(key, surf));
 	} else {
 		surf = (*it).second;
 	}
 	return surf;
 }
 
-
-SDL_Surface *PicturesContainer::loadSurfaceUniform(int width, int height, int r, int g, int b, int alpha)
+sf::Sprite *PicturesContainer::loadSurfaceUniform(int width, int height, int r, int g, int b, int alpha)
 {
 	KeyMapSurfaceUnif key(width, height, r, g, b, alpha);
-	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator it = m_unifContainer.find(key);
-	SDL_Surface *surf = NULL;
+	std::map<KeyMapSurfaceUnif, sf::Sprite*>::iterator it = m_unifContainer.find(key);
+	sf::Sprite *surf = NULL;
+	sf::Image *image = NULL;
 	if (it == m_unifContainer.end()) {
-		surf = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, 0);
-		SDL_FillRect(surf,NULL,SDL_MapRGB(gGraphics->get_camera()->sdl_screen()->format,r,g,b));
-		if (surf == NULL) {
+		image = new sf::Image(width, height, sf::Color(r, g, b, alpha));
+		if (image == NULL) {
 			PRINT_DEBUG(1, "impossible de charger la surface uniforme");
 			return NULL;
 		}
-		m_unifContainer.insert(std::pair<KeyMapSurfaceUnif, SDL_Surface*>(key, surf));
+		surf = new sf::Sprite;
+		surf->SetImage(*image);
+		m_unifContainer.insert(std::pair<KeyMapSurfaceUnif, sf::Sprite*>(key, surf));
+		m_images.push_back(image);
 	} else {
 		surf = (*it).second;
 	}
@@ -105,16 +107,24 @@ SDL_Surface *PicturesContainer::loadSurfaceUniform(int width, int height, int r,
 
 void PicturesContainer::resetMemory()
 {
-	std::map<std::string, SDL_Surface*>::iterator it;
+	std::map<std::string, sf::Sprite*>::iterator it;
 	for (it = m_container.begin(); it != m_container.end(); it++) {
-		SDL_FreeSurface(it->second);
+		delete it->second;
 	}
-	std::map<KeyMapSurfaceText, SDL_Surface*>::iterator ittext;
+	m_container.clear();
+	std::map<KeyMapSurfaceText, sf::String*>::iterator ittext;
 	for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ittext++) {
-		SDL_FreeSurface(ittext->second);
+		delete ittext->second;
 	}
-	std::map<KeyMapSurfaceUnif, SDL_Surface*>::iterator itunif;
+	m_textContainer.clear();
+	std::map<KeyMapSurfaceUnif, sf::Sprite*>::iterator itunif;
 	for (itunif = m_unifContainer.begin(); itunif != m_unifContainer.end(); itunif++) {
-		SDL_FreeSurface(itunif->second);
+		delete itunif->second;
 	}
+	m_unifContainer.clear();
+	std::list<sf::Image *>::iterator itimages;
+	for (itimages = m_images.begin(); itimages != m_images.end(); itimages++) {
+		delete *itimages;
+	}
+	m_images.clear();
 }

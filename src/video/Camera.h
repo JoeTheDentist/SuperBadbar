@@ -27,6 +27,7 @@
 
 
 #include <SDL/SDL.h>
+#include <SFML/Window.hpp>
 
 #include "util/globals.h"
 #include "util/debug.h"
@@ -49,6 +50,7 @@ class Displayable;
 
 class Camera {
 private:
+	sf::RenderWindow *m_window;
 	Rect m_frame;		/* cadre de la camera */
 	Rect m_direction; 	/* direction de la camera (les composantes sont a valeur dans {-1, 1}*/
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
@@ -56,6 +58,7 @@ private:
 	SDL_Surface *m_screen;
 	Surface *m_green_coll;
 	Surface *m_red_coll;
+	bool m_initialized;
 public:
 
 	/**
@@ -136,7 +139,7 @@ public:
 	*	@todo Supprimer la surcharge. Le probleme vient de la création d'images par TTF qu'il faut encapsuler
 	*/
 	void display_picture(Surface *surf, Rect *pos, bool fixe=false) const;
-	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé a la rendre const...*/
+//~ 	void display_picture(SDL_Surface *surf, Rect *pos) ; /*je ne suis pas arrivé a la rendre const...*/
 
 	/**
 	*	@brief Met a jour l'affichage de la caméra
@@ -150,6 +153,8 @@ public:
 	*	@return La surface SDL de l'ecran
 	*/
 	SDL_Surface *sdl_screen() { return m_screen; }
+	
+	sf::Window *getWindow() const {return m_window;}
 
 
 	#ifdef DEBUG_COLL

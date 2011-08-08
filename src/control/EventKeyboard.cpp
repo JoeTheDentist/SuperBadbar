@@ -1,9 +1,11 @@
 #include "EventKeyboard.h"
 
-#include <control/SdlKeyConverter.h>
 #include <control/KeyboardConfig.h>
+#include <video/Camera.h>
 #include "util/utils.h"
 #include "util/globals.h"
+
+sf::Window *EventKeyboard::m_window = NULL;
 
 /************************************************/
 /*				PUBLIC METHODS				*/
@@ -25,7 +27,7 @@ EventKeyboard::EventKeyboard(const EventKeyboard &eventKeyboard):
 {
 }
 
-EventKeyboard::EventKeyboard(SDL_Event event):
+EventKeyboard::EventKeyboard(sf::Event event):
 	m_event(event),
 	m_treated(false)
 
@@ -40,8 +42,8 @@ EventKeyboard::~EventKeyboard()
 
 bool EventKeyboard::pollEvent(EventKeyboard *eventKeyboard)
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event)) {
+	sf::Event event;
+	if (m_window->GetEvent(event)) {
 		eventKeyboard->m_event = event;
 		return true;
 	}
@@ -50,44 +52,42 @@ bool EventKeyboard::pollEvent(EventKeyboard *eventKeyboard)
 
 void EventKeyboard::waitEvent(EventKeyboard *eventKeyboard)
 {
-	SDL_Event event;
-	SDL_WaitEvent(&event);
+	sf::Event event;
+	while (!m_window->GetEvent(event)) 
+		{}
 	eventKeyboard->m_event = event;
 }
 
 void EventKeyboard::setKeyRepeat(bool repeat)
 {
-	SDL_EnableKeyRepeat((repeat ? 500 : 0), 10);
+	m_window->EnableKeyRepeat(repeat);
 }
 
 bool EventKeyboard::keyLeave() const
 {
-	return getSDLEvent().type == SDL_QUIT;
+	return getSFMLEvent().Type == sf::Event::Closed;
 }
 
 bool EventKeyboard::keyPressed() const
 {
-	return getSDLEvent().type == SDL_KEYDOWN;
+	return getSFMLEvent().Type == sf::Event::KeyPressed;
 }
 
 bool EventKeyboard::keyReleased() const
 {
-	return getSDLEvent().type == SDL_KEYUP;
+	return getSFMLEvent().Type == sf::Event::KeyReleased;
 }
 
-SDL_Event EventKeyboard::getSDLEvent() const
+sf::Event EventKeyboard::getSFMLEvent() const
 {
 	return m_event;
 }
 
-SDLKey EventKeyboard::getSDLKey() const
-{
-	return getSDLEvent().key.keysym.sym;
-}
-
 std::string EventKeyboard::getKeyString() const
 {
-	return SdlKeyConverter::sdlkey_to_stdstring(getSDLKey());
+	std::string res;
+	res += (char)(getSFMLEvent().Text.Unicode);
+	return res;
 }
 
 bool EventKeyboard::isMenuKey() const
@@ -97,57 +97,50 @@ bool EventKeyboard::isMenuKey() const
 
 menu_key EventKeyboard::getMenuKey() const
 {
-	switch(m_event.type)
-	{
-		case SDL_QUIT:
-			return mk_exit;
-		case SDL_KEYDOWN: /* Si appui d'une touche */
-			// priorite aux touches en dur
-			switch (m_event.key.keysym.sym)
-			{
-				case SDLK_ESCAPE: /* Appui sur la touche Echap, on arrête le programme */
-					return mk_escape;
-					break;
-				case SDLK_UP:
-					return mk_up;
-				case SDLK_DOWN:
-					return mk_down;
-				case SDLK_LEFT:
-					return mk_left;
-				case SDLK_RIGHT:
-					return mk_right;
-				case SDLK_RETURN: case SDLK_KP_ENTER: case SDLK_SPACE:
-					return mk_enter;
-				default:
-					break;
-			}
-			// sinon on regarde les touches du joueur
-			if (gKeyboardConfig) {
-				switch (gKeyboardConfig->getEnumKey(*this)) {
-					case k_jump: case k_fire:
-						return mk_enter;
-					case k_up:
-						return mk_up;
-					case k_down:
-						return mk_down;
-					case k_right:
-						return mk_right;
-					case k_left:
-						return mk_left;
-					default:
-						break;
-				}
-			}
+	if (keyLeave())
+		return mk_exit;
+	if (keyPressed()) {
+		// priorite aux touches en dur
+		switch(getSFMLEvent().Key.Code) {
+		case sf::Key::Escape: /* Appui sur la touche Echap, on arrête le programme */
+			return mk_escape;
 			break;
+		case sf::Key::Up:
+			return mk_up;
+		case sf::Key::Down:
+			return mk_down;
+		case sf::Key::Left:
+			return mk_left;
+		case sf::Key::Right:
+			return mk_right;
+		case sf::Key::Return: case sf::Key::Space:
+			return mk_enter;
 		default:
 			break;
+		}
+		if (gKeyboardConfig) {
+			switch (gKeyboardConfig->getEnumKey(*this)) {
+			case k_jump: case k_fire:
+				return mk_enter;
+			case k_up:
+				return mk_up;
+			case k_down:
+				return mk_down;
+			case k_right:
+				return mk_right;
+			case k_left:
+				return mk_left;
+			default:
+				break;
+			}
+		}
 	}
 	return mk_none;
 }
 
 bool EventKeyboard::enterPressed() const
 {
-	return getSDLKey() == SDLK_RETURN;
+	return getSFMLEvent().Key.Code == sf::Key::Return;
 }
 
 bool EventKeyboard::enterMenuPressed() const
@@ -157,22 +150,27 @@ bool EventKeyboard::enterMenuPressed() const
 
 bool EventKeyboard::backspacePressed() const
 {
-	return getSDLKey() == SDLK_BACKSPACE;
+	return getSFMLEvent().Key.Code == sf::Key::Space;
 }
 
 char EventKeyboard::unicode() const
 {
-	return (char)m_event.key.keysym.unicode;
+	return char(getSFMLEvent().Text.Unicode);
 }
 
 bool EventKeyboard::hasUnicode() const
 {
-	return (m_event.key.keysym.unicode < 0x80 && m_event.key.keysym.unicode > 0);
+	return true;
 }
 
 bool EventKeyboard::isUndo() const
 {
-	return keyPressed() && m_ctrl && getSDLKey() == SDLK_z;
+	return keyPressed() && m_ctrl && getSFMLEvent().Key.Code == sf::Key::Z;
+}
+
+void EventKeyboard::initEventKeyboard()
+{
+	m_window = gGraphics->get_camera()->getWindow();
 }
 
 /************************************************/
@@ -181,10 +179,10 @@ bool EventKeyboard::isUndo() const
 
 void EventKeyboard::initMode()
 {
-	int mod = SDL_GetModState();
-	m_ctrl =  mod & KMOD_CTRL;
-	m_altGr =  mod & KMOD_RALT;
-	m_capsLockOn = mod & KMOD_CAPS;
-	m_shift = mod & KMOD_SHIFT;
+	m_ctrl =  getSFMLEvent().Key.Control;
+	m_altGr =  getSFMLEvent().Key.Alt;
+	// todo
+	m_capsLockOn = getSFMLEvent().Key.Shift;
+	m_shift = getSFMLEvent().Key.Shift;
 }
 

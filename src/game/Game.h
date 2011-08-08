@@ -17,7 +17,7 @@
 #include <string>
 
 
-
+#include <SFML/System.hpp>
 #define TIME_LOOP 50
 
 class GameEngine;
@@ -48,6 +48,8 @@ private:
 	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
 	Menu *m_pause;
 	game_state m_state;
+	sf::Clock m_clock;
+
 public:
 
 	/**

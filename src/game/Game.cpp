@@ -68,8 +68,8 @@ void Game::init_game(std::string level_name)
 	gGameEngine->init_GameEngine(level_name, gGraphics->get_camera(),
                                     gGraphics->get_pictures_container());
 	gGraphics->init_graphic_engine();
-	m_time = SDL_GetTicks();
-	m_previous_time = SDL_GetTicks();
+	m_time = m_clock.GetElapsedTime() / 1000;
+	m_previous_time = m_clock.GetElapsedTime() / 1000;
 	m_pause = NULL;
 	set_state_playing();
 
@@ -79,6 +79,7 @@ void Game::init_game(std::string level_name)
 
 	loading->wait_for_player();
 	gSound->play_music();
+	m_clock.Reset();
 	delete loading;
 }
 
@@ -178,10 +179,9 @@ result_game Game::game_loop()
 {
 	bool end = false;
 	gSound->play_music();
+	m_clock.Reset();
 	while (!end){
-		m_time = SDL_GetTicks();
-		if (m_time - m_previous_time > TIME_LOOP) {
-			m_previous_time = m_time;
+		if (m_clock.GetElapsedTime() * 1000 > TIME_LOOP) {
 			//** DEBUT DE LA BOUCLE DE JEU **//
 			update_keyboard();
 			if (m_state == gs_playing) {
@@ -224,9 +224,9 @@ result_game Game::game_loop()
 				return defeat;
 			}
 			//** FIN DE LA BOUCLE DE JEU **//
-			m_time = SDL_GetTicks();
+			m_clock.Reset();
 		} else  {
-		    SDL_Delay(TIME_LOOP - (m_time - m_previous_time));
+		    sf::Sleep(float(TIME_LOOP) / 1000 - m_clock.GetElapsedTime());
 		}
 	}
 	return leave;

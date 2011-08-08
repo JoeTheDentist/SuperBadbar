@@ -29,11 +29,26 @@ win32 {
 }
 
 unix {
+	QT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
+	X64 = $$find(QT_INSTALL_PREFIX, 64)
+	isEmpty(X64) {		
+	  	LIBS += -L"../lib/gcc/x32" 
+		QMAKE_LFLAGS_RPATH += -L"../lib/gcc/x32" 
+	} else {
+
+	}
 	QMAKE_LFLAGS += -g 	
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
-        LIBS += -lSDL -lSDL_image -lSDL_ttf -lSDL_gfx
 
+	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
+	../lib/gcc/libfmod.so \
+	-L"../lib/gcc/"\
+	-lSDL_gfx \
+	-lsfml-graphics -lsfml-window -lsfml-system 
+	
+	
+ 
 	DESTDIR = ./
 	OBJECTS_DIR = release/.obj
 	MOC_DIR = release/.moc
@@ -43,6 +58,7 @@ unix {
 }
 
 INCLUDEPATH += ../lib/include
+INCLUDEPATH += "../lib/include/"
 
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \

@@ -33,8 +33,8 @@
 #define DESACTIVATE_GFX
 #define ARG_ANALYSER_ON
 #define DEBUG 2
-#define TRACE 0
-#define TRACE_CONSTR 0	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
+#define TRACE 2
+#define TRACE_CONSTR 2	/* En général: 1 pour les classes singletons, 2 pour les classes peu instanciées, 3 pour les classes souvent instanciées */
 #define PERF_CYCLES 2
 //~ #define ACTIVE_FMOD /* Si desactive, pas de fmod*/
 

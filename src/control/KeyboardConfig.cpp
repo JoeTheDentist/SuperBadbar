@@ -18,19 +18,19 @@
 
 KeyboardConfig::KeyboardConfig()
 {
-	for (uint32_t i = 0; i < SDLK_LAST; i++)
+	for (uint32_t i = 0; i < sf::Key::Count; i++)
 		m_key_config[i] = k_none;
-	m_key_config[SDLK_UP] = k_up;
-	m_key_config[SDLK_DOWN] = k_down;
-	m_key_config[SDLK_LEFT] = k_left;
-	m_key_config[SDLK_RIGHT] = k_right;
-	m_key_config[SDLK_q] = k_jump;
-	m_key_config[SDLK_d] = k_fire;
-	m_key_config[SDLK_ESCAPE] = k_escape;
-	m_key_config[SDLK_SPACE] = k_action;
-	m_key_config[SDLK_a] = k_prev_weapon;
-	m_key_config[SDLK_z] = k_next_weapon;
-	loadConfig("defaultkey.cfg");
+	m_key_config[sf::Key::Up] = k_up;
+	m_key_config[sf::Key::Down] = k_down;
+	m_key_config[sf::Key::Left] = k_left;
+	m_key_config[sf::Key::Right] = k_right;
+	m_key_config[sf::Key::Q] = k_jump;
+	m_key_config[sf::Key::D] = k_fire;
+	m_key_config[sf::Key::Escape] = k_escape;
+	m_key_config[sf::Key::Space] = k_action;
+	m_key_config[sf::Key::A] = k_prev_weapon;
+	m_key_config[sf::Key::Z] = k_next_weapon;
+//~ 	loadConfig("defaultkey.cfg");
 	loadConfig("customizekey.cfg");
 }
 
@@ -98,12 +98,12 @@ std::string KeyboardConfig::getStringKey(key k)
 	return "unknown";
 }
 
-key KeyboardConfig::getEnumKey(SDLKey key) const
+key KeyboardConfig::getEnumKey(sf::Key::Code key) const
 {
 	return m_key_config[int(key)];
 }
 
 key KeyboardConfig::getEnumKey(const EventKeyboard &eventKeyboard) const
 {
-	return getEnumKey(eventKeyboard.getSDLKey());
+	return getEnumKey(eventKeyboard.getSFMLEvent().Key.Code);
 }

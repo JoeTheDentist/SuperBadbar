@@ -56,6 +56,7 @@ void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 	m_pos_background.y = camera->height() - TALKS_BACKGROUND_OFFSET_H - m_text_background->h();
 	m_pos_background.w = m_text_background->w();
 	m_pos_background.h = m_text_background->h();
+
 	m_frame_background = new SurfaceFrame(m_pos_background, TALKS_FRAME_R, TALKS_FRAME_G, TALKS_FRAME_B);
 	m_talker = new Surface(PIC_TALKS_R + "babar.png");
 	m_pos_talker.x = POSX;
