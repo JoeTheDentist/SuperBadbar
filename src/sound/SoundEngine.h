@@ -17,8 +17,9 @@
 #include "items/Weapon.h"
 
 #define MUSIC_CANAL 1
-
 #define BABAR_FIRE_CANAL 2
+
+#include <SFML/Audio.hpp>
 
 class Sound;
 class Sonorisable;
@@ -30,12 +31,10 @@ class Sonorisable;
  */
 class SoundEngine {
 private:
-#ifdef ACTIVE_FMOD
-	std::map<std::string, FSOUND_SAMPLE*> m_sound_samples;
-	FSOUND_STREAM *m_music;
+	std::map<std::string, sf::SoundBuffer*> m_sound_samples;
+//~ 	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
-#endif
 
 public:
 

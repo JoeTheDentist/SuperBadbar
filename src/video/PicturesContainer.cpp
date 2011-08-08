@@ -97,6 +97,8 @@ sf::Sprite *PicturesContainer::loadSurfaceUniform(int width, int height, int r, 
 		}
 		surf = new sf::Sprite;
 		surf->SetImage(*image);
+		PRINT_DEBUG(1, "ALPHA: %d ", alpha);
+		surf->SetColor( sf::Color(r, g, b, alpha));
 		m_unifContainer.insert(std::pair<KeyMapSurfaceUnif, sf::Sprite*>(key, surf));
 		m_images.push_back(image);
 	} else {

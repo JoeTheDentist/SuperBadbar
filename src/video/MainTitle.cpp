@@ -52,8 +52,7 @@ void MainTitle::recompute_surface()
 	m_surface = new SurfaceText(m_title, m_size + m_offset, MAIN_TITLE_R, MAIN_TITLE_G, MAIN_TITLE_B);
 	recompute_pos();
 	m_surface_background = new SurfaceUniform(m_posbackground.w, m_posbackground.h,
-				MAIN_TITLE_BACK_R, MAIN_TITLE_BACK_G, MAIN_TITLE_BACK_B);
-	m_surface_background->set_alpha(MAINT_TITLE_BACKGROUND_ALPHA);
+				MAIN_TITLE_BACK_R, MAIN_TITLE_BACK_G, MAIN_TITLE_BACK_B, MAINT_TITLE_BACKGROUND_ALPHA);
 }
 
 void MainTitle::recompute_pos()

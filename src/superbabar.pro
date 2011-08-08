@@ -45,7 +45,7 @@ unix {
 	../lib/gcc/libfmod.so \
 	-L"../lib/gcc/"\
 	-lSDL_gfx \
-	-lsfml-graphics -lsfml-window -lsfml-system 
+	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 	
 	
  

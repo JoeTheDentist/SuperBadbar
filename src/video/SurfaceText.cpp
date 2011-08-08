@@ -42,7 +42,6 @@ void SurfaceText::init(std::string text, int size, int r, int g, int b, std::str
 
 int SurfaceText::w() 
 {
-	PRINT_DEBUG(1, "ok");
 	return m_stringSurface? m_stringSurface->GetRect().GetWidth() : 5;
 }
 

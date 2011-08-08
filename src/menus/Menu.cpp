@@ -88,13 +88,11 @@ void Menu::update_graphics() const
 		int w = 2 * MENU_OFFSET_W + m_menu_actions.width();
 		int h = 2 * MENU_OFFSET_H + m_menu_actions.height();
 		SurfaceUniform grey(camera->width(), camera->height(),
-				MENU_GREY_LEVEL, MENU_GREY_LEVEL, MENU_GREY_LEVEL);
-		grey.set_alpha(MENU_GREY_ALPHA);
+				MENU_GREY_LEVEL, MENU_GREY_LEVEL, MENU_GREY_LEVEL, MENU_GREY_ALPHA);
 		Rect posNull;
 		if (can_display_grey_background())
 			camera->display_picture(&grey, &posNull, true);
-		SurfaceUniform background(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B);
-		background.set_alpha(MENU_BACKGROUND_ALPHA);
+		SurfaceUniform background(w, h, MENU_BACKGROUND_R, MENU_BACKGROUND_G, MENU_BACKGROUND_B, MENU_BACKGROUND_ALPHA);
 		Rect pos;
 		pos.w = w;
 		pos.h = h;

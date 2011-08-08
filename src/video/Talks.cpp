@@ -50,8 +50,7 @@ void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 	std::string background_name = "talks_background.png";
 	m_text_background = new SurfaceUniform(camera->width() - 2 * TALKS_BACKGROUND_OFFSET_W,
 											TALKS_BACKGROUND_SIZE_H, TALKS_BACKGROUND_R,
-											TALKS_BACKGROUND_G, TALKS_BACKGROUND_B);
-	m_text_background->set_alpha(ALPHA_TALKS_BACKGROUND);
+											TALKS_BACKGROUND_G, TALKS_BACKGROUND_B, ALPHA_TALKS_BACKGROUND);
 	m_pos_background.x = 5;
 	m_pos_background.y = camera->height() - TALKS_BACKGROUND_OFFSET_H - m_text_background->h();
 	m_pos_background.w = m_text_background->w();
