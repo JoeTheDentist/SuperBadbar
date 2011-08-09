@@ -121,7 +121,7 @@ void Game::update_game()
 void Game::play_sounds()
 {
 	gGameEngine->play_sounds();
-//~ 	gSound->update();
+	gSound->update();
 }
 
 void Game::update_graphic()

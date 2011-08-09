@@ -14,6 +14,7 @@
 
 #include <string>
 #include <map>
+#include <list>
 #include "items/Weapon.h"
 
 #define MUSIC_CANAL 1
@@ -31,10 +32,11 @@ class Sonorisable;
  */
 class SoundEngine {
 private:
-	std::map<std::string, sf::SoundBuffer*> m_sound_samples;
+	std::map<std::string, sf::SoundBuffer*> m_soundBuffers;
 //~ 	FSOUND_STREAM *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
+	std::list<sf::Sound *> m_soundsPlaying;
 
 public:
 
@@ -49,6 +51,11 @@ public:
 	~SoundEngine();
 
 	void init_level(std::string level);
+
+	/*!
+	*	@brief Mise a jour des sons, doit etre appelee a chaque tour
+	*/
+	void update();
 
 	/**
 	*	@brief Charge la musique a jouer
