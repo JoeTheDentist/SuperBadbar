@@ -33,7 +33,7 @@ class Sonorisable;
 class SoundEngine {
 private:
 	std::map<std::string, sf::SoundBuffer*> m_soundBuffers;
-//~ 	FSOUND_STREAM *m_music;
+	sf::Music *m_music;
 	int m_sounds_volume;
 	int m_music_volume;
 	std::list<sf::Sound *> m_soundsPlaying;

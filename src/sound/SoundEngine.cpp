@@ -22,7 +22,7 @@
 
 SoundEngine::SoundEngine()
 :
-//~ 	m_music(NULL),
+	m_music(NULL),
 	m_sounds_volume(99),
 	m_music_volume(99)
 
@@ -60,7 +60,6 @@ void SoundEngine::update()
 		if ((*it)->GetStatus() == sf::Sound::Stopped) {
 			delete (*it);
 			it = m_soundsPlaying.erase(it);
-			PRINT_DEBUG(1, "DESTRUUUUUUUUUCTION");
 		} else {
 			++it;
 		}
@@ -70,18 +69,20 @@ void SoundEngine::update()
 
 void SoundEngine::load_music(std::string str)
 {
-//~ 	if (m_music) {
+	if (m_music) {
 //~ 		FSOUND_Stream_Stop (m_music);
 //~ 		FSOUND_Stream_Close(m_music);
 //~ 		FSOUND_StopSound(MUSIC_CANAL);
-//~ 	}
-//~ 	m_music = FSOUND_Stream_Open((MUSIC_R + str).c_str(), 0, 0, 0);
+	}
+	m_music = new sf::Music;
+	if (!m_music->OpenFromFile(str.c_str())) {
+		PRINT_DEBUG(1, "Can't load music %s", str.c_str());
+	}
 }
 
 void SoundEngine::play_music()
 {
-//~ 	FSOUND_Stream_Play(MUSIC_CANAL, m_music);
-//~ 	FSOUND_SetVolume(MUSIC_CANAL, (255.0 * (double)m_music_volume / 100.0));
+	m_music->Play();
 }
 
 void SoundEngine::play_sound(std::string key)

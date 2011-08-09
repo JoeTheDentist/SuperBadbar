@@ -53,6 +53,7 @@ Game::Game(std::string level_name)
 
 void Game::init_game(std::string level_name)
 {
+	PRINT_TRACE(1, "ouverture de %s", level_name.c_str());
 	TransitionScreen * loading = new TransitionScreen("loading.png");
 	gSound->init_level(level_name);
 	loading->display(gGraphics->get_camera());
