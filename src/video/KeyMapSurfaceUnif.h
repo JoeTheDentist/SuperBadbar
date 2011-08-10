@@ -12,7 +12,7 @@
 
 #include <string>
 
-class KeyMapSurfaceUnif {
+struct KeyMapSurfaceUnif {
 public:
 	/*!
 	*	@brief Constructeur
@@ -32,7 +32,7 @@ public:
 
 	bool operator<(const KeyMapSurfaceUnif &key) const;
 	
-private:
+public:
 	int m_width;
 	int m_height;
 	int m_r;

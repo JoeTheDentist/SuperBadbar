@@ -77,7 +77,9 @@ SOURCES +=  ./main.cpp \
             ./sound/*.cpp \
             ./sprites/*.cpp \
             ./util/*.cpp \
-            ./video/*.cpp
+            ./video/*.cpp \
+			./video/ressources/*.cpp
+
 
 HEADERS  += ./actors/*.h \
             ./AI/*.h \
@@ -93,6 +95,7 @@ HEADERS  += ./actors/*.h \
             ./sound/*.h \
             ./sprites/*.h \
             ./util/*.h \
-            ./video/*.h
-
+            ./video/*.h \
+			./video/ressources/*.h
+			
 FORMS +=

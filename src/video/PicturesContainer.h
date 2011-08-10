@@ -18,6 +18,9 @@
 #include <video/KeyMapSurfaceText.h>
 #include <video/KeyMapSurfaceUnif.h>
 #include <SFML/Graphics.hpp>
+#include <video/ressources/FontMap.h>
+#include <video/ressources/UniformSurfaceMap.h>
+
 
 /**
  * 	@class PicturesContainer
@@ -36,9 +39,10 @@
  */
 class PicturesContainer {
 private:
+	FontMap m_fontsContainer;
 	std::map<std::string, sf::Sprite*> m_container;
 	std::map<KeyMapSurfaceText, sf::String*> m_textContainer;
-	std::map<KeyMapSurfaceUnif, sf::Sprite*> m_unifContainer;
+	UniformSurfaceMap m_unifContainer;
 	std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
 public:
 	/**
@@ -79,6 +83,7 @@ public:
 	*	@param alpha La composante alpha de la surface
 	*/
 	sf::Sprite *loadSurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
+	
 
 	/**
 	 * 	@brief Vide la memoire du picture container

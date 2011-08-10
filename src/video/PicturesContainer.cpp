@@ -20,7 +20,6 @@
 #include "util/globals.h"
 #include "video/Camera.h"
 
-
 PicturesContainer::PicturesContainer()
 {
 	PRINT_CONSTR(1, "Construction d'un PicturesContainer");
@@ -61,11 +60,7 @@ sf::String *PicturesContainer::loadSurfaceText(std::string text, int size, int r
 	std::map<KeyMapSurfaceText, sf::String*>::iterator it = m_textContainer.find(key);
 	sf::String *surf = NULL;
 	if (it == m_textContainer.end()) {
-		sf::Font *MyFont = new sf::Font;
-		if (!MyFont->LoadFromFile((FONTS_R + fontName).c_str(), size)) {
-			PRINT_DEBUG(1, "impossible de charger la surface ttf correspondant a  %s", text.c_str());
-			return NULL;			
-		}
+		sf::Font *MyFont = m_fontsContainer.getOrCreate(FONTS_R + fontName);
 		PRINT_DEBUG(1, "%s", (FONTS_R + fontName).c_str());
 		surf = new sf::String;
 		surf->SetText(text.c_str());
@@ -85,26 +80,7 @@ sf::String *PicturesContainer::loadSurfaceText(std::string text, int size, int r
 
 sf::Sprite *PicturesContainer::loadSurfaceUniform(int width, int height, int r, int g, int b, int alpha)
 {
-	KeyMapSurfaceUnif key(width, height, r, g, b, alpha);
-	std::map<KeyMapSurfaceUnif, sf::Sprite*>::iterator it = m_unifContainer.find(key);
-	sf::Sprite *surf = NULL;
-	sf::Image *image = NULL;
-	if (it == m_unifContainer.end()) {
-		image = new sf::Image(width, height, sf::Color(r, g, b, alpha));
-		if (image == NULL) {
-			PRINT_DEBUG(1, "impossible de charger la surface uniforme");
-			return NULL;
-		}
-		surf = new sf::Sprite;
-		surf->SetImage(*image);
-		PRINT_DEBUG(1, "ALPHA: %d ", alpha);
-		surf->SetColor( sf::Color(r, g, b, alpha));
-		m_unifContainer.insert(std::pair<KeyMapSurfaceUnif, sf::Sprite*>(key, surf));
-		m_images.push_back(image);
-	} else {
-		surf = (*it).second;
-	}
-	return surf;
+	return m_unifContainer.getOrCreate(width, height, r, g, b, alpha);
 }
 
 void PicturesContainer::resetMemory()
@@ -119,14 +95,11 @@ void PicturesContainer::resetMemory()
 		delete ittext->second;
 	}
 	m_textContainer.clear();
-	std::map<KeyMapSurfaceUnif, sf::Sprite*>::iterator itunif;
-	for (itunif = m_unifContainer.begin(); itunif != m_unifContainer.end(); itunif++) {
-		delete itunif->second;
-	}
-	m_unifContainer.clear();
 	std::list<sf::Image *>::iterator itimages;
 	for (itimages = m_images.begin(); itimages != m_images.end(); itimages++) {
 		delete *itimages;
 	}
 	m_images.clear();
+	m_unifContainer.clear();
+	m_fontsContainer.clear();
 }
