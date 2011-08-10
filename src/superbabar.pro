@@ -13,7 +13,9 @@ TEMPLATE = app
 
 win32 {
 	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
-			-L"../lib/fmodapi375win/api/lib" -lfmod 
+                -L"../lib/lib" 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+        INCLUDEPATH += .
 		
         Release:DESTDIR = ./
 	Release:OBJECTS_DIR = release/.obj
