@@ -1,0 +1,40 @@
+#Background#
+noir.png
+
+#Level_dimensions#
+5200
+5400
+
+#Babar#
+0
+0
+1
+
+#Sets#
+0
+!
+#Statics#
+7
+noir/noir_block_2 -28 5228 0
+noir/noir_block_2 470 5230 0
+noir/noir_block_2 966 5231 0
+noir/noir_block_2 1461 5233 0
+noir/noir_block_2 1957 5235 0
+noir/noir_block_2 2455 5237 0
+noir/noir_block_2 2946 5239 0
+!
+#Monsters#
+0
+!
+#Events#
+0
+!
+#MovingPlatforms#
+0
+!
+#FallingPlatforms#
+0
+!
+#Triggers#
+0
+!
