@@ -11,7 +11,7 @@
 #include "control/Keyboard.h"
 #include "control/KeyboardConfig.h"
 #include <control/EventKeyboard.h>
-#include "control/SdlKeyConverter.h"
+#include "control/SfmlKeyConvertor.h"
 #include "util/globals.h"
 #include <sstream>
 

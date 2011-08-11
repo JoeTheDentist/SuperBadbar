@@ -1,25 +1,25 @@
 /**
- * 	@file SdlKeyConverter.h
- * 	@brief Header de la classe SdlKeyConverter
+ * 	@file SfmlKeyConvertor.h
+ * 	@brief Header de la classe SfmlKeyConvertor
  *
  * 	@author Guillaume Berard & Benoit Morel
  * 	@date juin 2010
  *
  */
 
-#ifndef _SdlKeyConverter_H
-#define _SdlKeyConverter_H
+#ifndef _SFMLKEYCONVERTOR_H
+#define _SFMLKEYCONVERTOR_H
 
-#include <SDL/SDL.h>
+#include <SFML/Window.hpp>
 
 #include <string>
 
-class SdlKeyConverter {
+class SfmlKeyConvertor {
 public:
         /**
          *  @brief Destructeur
          */
-	virtual ~SdlKeyConverter() = 0;
+	virtual ~SfmlKeyConvertor() = 0;
 
         /**
          *  TOCOMMENT
@@ -27,7 +27,7 @@ public:
          *  @param
          *  @return
          */
-	static std::string sdlkey_to_stdstring(SDLKey key);
+	static std::string sfmlkeyToStdstring(sf::Key::Code key);
 
         /**
          *  TOCOMMENT
@@ -35,7 +35,7 @@ public:
          *  @param
          *  @return
          */
-	static SDLKey stdstring_to_sdlkey(std::string str);
+	static sf::Key::Code stdstringToSfmlkey(std::string str);
 };
 
 

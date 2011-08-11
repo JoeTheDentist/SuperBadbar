@@ -13,7 +13,7 @@
 #include <iostream>	
 
 #include <control/EventKeyboard.h>
-#include <control/SdlKeyConverter.h>
+#include <control/SfmlKeyConvertor.h>
 
 
 KeyboardConfig::KeyboardConfig()
@@ -38,7 +38,7 @@ void KeyboardConfig::loadConfig(std::string config_name)
 {
 	#define LOCAL_LOAD_KEY(yop) \
 	if (analyser.find_string(QUOTE_ACO(yop))) \
-		setConfigKey(yop, SdlKeyConverter::sdlkey_to_stdstring(SDLKey(analyser.read_int())), false);
+		setConfigKey(yop, SfmlKeyConvertor::sfmlkeyToStdstring(sf::Key::Code(analyser.read_int())), false);
 	Analyser analyser;
 	if(!analyser.open(CONFIG_R + config_name))
 		return;
@@ -60,7 +60,7 @@ void KeyboardConfig::saveConfig(std::string config_name)
 	std::cout << "save dans " << CONFIG_R + config_name << std::endl;
 	std::ofstream out((CONFIG_R + config_name).c_str(), std::ios::out | std::ios::trunc);
 	#define LOCAL_SAVE_KEY(yop) \
-	out << "{" << #yop << "} " << SdlKeyConverter::stdstring_to_sdlkey(getStringKey(yop)) << std::endl;
+	out << "{" << #yop << "} " << SfmlKeyConvertor::stdstringToSfmlkey(getStringKey(yop)) << std::endl;
 	LOCAL_SAVE_KEY(k_up)
 	LOCAL_SAVE_KEY(k_down)
 	LOCAL_SAVE_KEY(k_left)
@@ -76,8 +76,8 @@ void KeyboardConfig::saveConfig(std::string config_name)
 
 void KeyboardConfig::setConfigKey(key k, std::string sdl_code, bool save)
 {
-	SDLKey new_sdlk = SdlKeyConverter::stdstring_to_sdlkey(sdl_code);
-	for (int i = 0; i <= (int)SDLK_LAST; ++i) {
+	sf::Key::Code new_sdlk = SfmlKeyConvertor::stdstringToSfmlkey(sdl_code);
+	for (int i = 0; i <= (int)sf::Key::Count; ++i) {
 		if (m_key_config[i] == k) {
 			m_key_config[i] = k_none;
 		}
@@ -90,9 +90,9 @@ void KeyboardConfig::setConfigKey(key k, std::string sdl_code, bool save)
 
 std::string KeyboardConfig::getStringKey(key k)
 {
-	for (int i = 0; i < (int)SDLK_LAST; ++i) {
+	for (int i = 0; i < (int)sf::Key::Count; ++i) {
 		if (m_key_config[i] == k) {
-			return SdlKeyConverter::sdlkey_to_stdstring((SDLKey(i)));
+			return SfmlKeyConvertor::sfmlkeyToStdstring((sf::Key::Code(i)));
 		}
 	}
 	return "unknown";

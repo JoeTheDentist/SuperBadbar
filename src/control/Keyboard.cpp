@@ -13,7 +13,7 @@
 #include "Keyboard.h"
 #include <control/EventKeyboard.h>
 #include <control/KeyboardConfig.h>
-#include <control/SdlKeyConverter.h>
+#include <control/SfmlKeyConvertor.h>
 #include "util/globals.h"
 
 
