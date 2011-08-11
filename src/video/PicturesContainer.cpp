@@ -61,7 +61,6 @@ sf::String *PicturesContainer::loadSurfaceText(std::string text, int size, int r
 	sf::String *surf = NULL;
 	if (it == m_textContainer.end()) {
 		sf::Font *MyFont = m_fontsContainer.getOrCreate(FONTS_R + fontName);
-		PRINT_DEBUG(1, "%s", (FONTS_R + fontName).c_str());
 		surf = new sf::String;
 		surf->SetText(text.c_str());
 		surf->SetFont(*MyFont);
