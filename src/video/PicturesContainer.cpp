@@ -52,6 +52,16 @@ sf::Sprite *PicturesContainer::load_picture(std::string key)
 	return surf;	
 }
 
+BigSprite *PicturesContainer::loadBigPicture(std::string key)
+{
+	BigImage *image = new BigImage();
+	image->LoadFromFile(key);
+	BigSprite *sprite = new BigSprite(*image);
+	m_bigsContainer.push_back(std::pair<BigImage *, BigSprite*>(image, sprite));
+	return sprite;	
+}
+
+
 sf::String *PicturesContainer::loadSurfaceText(std::string text, int size, int r, int g, int b, std::string fontName)
 {
 	if (text == "")
@@ -101,4 +111,11 @@ void PicturesContainer::resetMemory()
 	m_images.clear();
 	m_unifContainer.clear();
 	m_fontsContainer.clear();
+	
+	for (std::list< std::pair< BigImage* , BigSprite* > >::iterator it = m_bigsContainer.begin();
+			it != m_bigsContainer.end(); ++it) 
+	{
+		delete it->first;
+		delete it->second;
+	}
 }

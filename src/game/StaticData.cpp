@@ -16,6 +16,7 @@
 #include <video/Statics.h>
 #include "video/Surface.h"
 #include "video/Surface.h"
+#include "video/SurfaceBig.h"
 
 
 StaticData::StaticData() : m_pictures_container(new PicturesContainer())
@@ -63,7 +64,7 @@ void StaticData::init_StaticData(std::string level_name)
 
 	/*** chargement du fond d'écran ***/
 	analyser.find_string("#Background#");
-	m_background = new Surface(PIC_BACKGROUNDS_R + analyser.read_string());
+	m_background = new SurfaceBig(PIC_BACKGROUNDS_R + analyser.read_string());
 
     /*** Remplissage des statics  ***/
 	std::string static_pic_rep = PIC_STATICS_R;

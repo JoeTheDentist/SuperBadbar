@@ -20,7 +20,7 @@
 #include <SFML/Graphics.hpp>
 #include <video/ressources/FontMap.h>
 #include <video/ressources/UniformSurfaceMap.h>
-
+#include <video/BigImage.h>
 
 /**
  * 	@class PicturesContainer
@@ -44,6 +44,7 @@ private:
 	std::map<KeyMapSurfaceText, sf::String*> m_textContainer;
 	UniformSurfaceMap m_unifContainer;
 	std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
+	std::list< std::pair< BigImage* , BigSprite* > > m_bigsContainer;
 public:
 	/**
 	 * 	@brief Constructeur
@@ -61,6 +62,13 @@ public:
 	 *	@return Un pointeur vers l'image voulue
 	 */
 	sf::Sprite *load_picture(std::string key);
+
+	/*!
+	*	@brief Retourne un pointeur vers l'image demandee
+	 *	@param key Le chemin vers l'image
+	 *	@return Un pointeur vers l'image voulue
+	*/
+	BigSprite *loadBigPicture(std::string);
 
 	/**
 	*	@brief Retourne un pointeur vers la surface de texte demandee

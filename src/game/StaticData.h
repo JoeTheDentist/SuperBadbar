@@ -17,7 +17,7 @@ class GameEngine;
 class Camera;
 class PicturesContainer;
 class Surface;
-
+class SurfaceBig;
 /**
  *  TOCOMMENT
  *  @class StaticData
@@ -27,7 +27,7 @@ class Surface;
 class StaticData {
 
 private:
-	Surface * m_background;             /* image de fond du niveau */
+	SurfaceBig * m_background;             /* image de fond du niveau */
 	std::list<Static*> m_statics_back;				/* liste des statics derrière sprites */
 	std::list<Static*> m_statics_first;               /* liste des statics devant sprites */
 	PicturesContainer *m_pictures_container;
