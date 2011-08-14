@@ -1,5 +1,7 @@
 #include "MenuMulti.h"
+
 #include "menus/MenuJoin.h"
+#include "menus/MenuHost.h"
 #include "util/globals.h"
 #include "network/NetworkManager.h"
 
@@ -25,10 +27,7 @@ void MenuMulti::treat_choice(int choice)
         set_son(new MenuJoin(this));
         break;
     case 2: // host
-        {
-            //TEMP
-            gNetwork->initServer();
-        }
+        set_son(new MenuHost(this));
         break;
     case 3: // return
         //suppr du reseau puisqu'on sort du menu

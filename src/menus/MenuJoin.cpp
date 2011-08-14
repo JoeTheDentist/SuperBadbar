@@ -21,7 +21,7 @@ void MenuJoin::treat_choice(int choice)
     switch(choice) {
     case 1: // join
         break;
-    case 2: // host
+    case 2: // refresh
         break;
     case 3: // return
         set_leave_menu_true();
