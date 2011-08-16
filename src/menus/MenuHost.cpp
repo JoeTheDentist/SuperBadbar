@@ -27,14 +27,13 @@ void MenuHost::treat_choice(int choice)
     if ( choice == 1 ) { //return
         set_leave_menu_true();
     } else { //choix d'une map
-        //selectLevel(choice-1);
+        selectLevel(choice-1);
     }
 }
 
 void MenuHost::buildMenuWithLevels()
 {
     QDir files(QString::fromStdString(LEVELS_R));
-    //files.addPath(QString::fromStdString("C:/Users/Guillaume/Desktop/superbabar/data/levels"));
 
     for (int i = 0; i < files.entryList(QDir::Files).size(); ++i) {
         m_lvls << files.entryList(QDir::Files).at(i);

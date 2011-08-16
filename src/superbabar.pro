@@ -13,7 +13,8 @@ TEMPLATE = app
 
 win32 {
 	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
-                -L"../lib/lib" 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+                -L"../lib/lib" 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
+                -lglu32 -lopengl32
 
         INCLUDEPATH += .
 		
@@ -74,11 +75,12 @@ SOURCES +=  ./main.cpp \
             ./physic/*.cpp \
             ./players/*.cpp \
             ./sets/*.cpp \
+            ./soil/*.c \
             ./sound/*.cpp \
             ./sprites/*.cpp \
             ./util/*.cpp \
             ./video/*.cpp \
-			./video/ressources/*.cpp
+            ./video/ressources/*.cpp
 
 
 HEADERS  += ./actors/*.h \
@@ -92,6 +94,7 @@ HEADERS  += ./actors/*.h \
             ./physic/*.h \
             ./players/*.h \
             ./sets/*.h \
+            ./soil/*.h \
             ./sound/*.h \
             ./sprites/*.h \
             ./util/*.h \

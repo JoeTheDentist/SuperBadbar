@@ -19,6 +19,7 @@ bool GameInitializer::init_game()
 	Constants::init();
 	
 	// chargement des variables globales a  l'ensemble du jeu
+        gPlayers = new PlayersManager();
 	gSound = new SoundEngine();
 	gGraphics = new GraphicEngine();
 	gGraphics->init_graphic_engine(false);

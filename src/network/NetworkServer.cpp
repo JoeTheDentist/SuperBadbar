@@ -15,6 +15,7 @@ NetworkServer::NetworkServer()
 
 NetworkServer::~NetworkServer()
 {
+    m_timer->stop();
     delete m_timer;
 }
 

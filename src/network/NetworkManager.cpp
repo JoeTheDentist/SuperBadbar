@@ -27,3 +27,13 @@ void NetworkManager::initServer()
     delete m_netCom;
     m_netCom = new NetworkServer();
 }
+
+void NetworkManager::startServer(std::string lvl_name)
+{
+
+}
+
+bool NetworkManager::isServer()
+ {
+    return m_server;
+}
