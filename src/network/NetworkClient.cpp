@@ -10,6 +10,11 @@ NetworkClient::~NetworkClient()
 
 }
 
+void NetworkClient::discovery()
+{
+    m_state = NS_DISCOVERY;
+}
+
 void NetworkClient::treatObject(const NetworkMessageAd &object)
 {
 

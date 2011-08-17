@@ -29,6 +29,15 @@ public:
      */
     virtual ~NetworkClient();
 
+    /***************************************/
+    /****************Phases*****************/
+    /***************************************/
+public:
+    /**
+     *  @brief Phase de decouverte
+     */
+    void discovery();
+
 private:
     /**
      *  @brief Traite l'objet de pub

@@ -30,7 +30,7 @@ void NetworkManager::initServer()
 
 void NetworkManager::startServer(std::string lvl_name)
 {
-
+    m_netCom->discovery();
 }
 
 bool NetworkManager::isServer()

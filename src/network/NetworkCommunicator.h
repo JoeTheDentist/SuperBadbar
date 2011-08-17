@@ -15,8 +15,8 @@
 
 #include "network/NetworkTypes.h"
 
-enum NetworkMessage {
-    NetMsg_Texte, NetMsg_Position, NetMsg_
+enum NetworkState {
+    NS_DISCOVERY, NS_WAITFORPLAYERS
 };
 
 /**
@@ -39,6 +39,16 @@ public:
      *  @brief Destructeur
      */
     virtual ~NetworkCommunicator();
+
+    /***************************************/
+    /****************Phases*****************/
+    /***************************************/
+public:
+    /**
+     *  @brief Phase de decouverte
+     */
+    virtual void discovery() = 0;
+
 
     /***************************************/
     /*****************SLOTS*****************/
@@ -138,6 +148,7 @@ protected:
     QUdpSocket *m_udpSendingSocket;
     QUdpSocket *m_udpReceivingSocket;
     unsigned int m_msgSize;
+    NetworkState m_state;
 };
 
 #endif // NETWORKCOMMUNICATOR_H
