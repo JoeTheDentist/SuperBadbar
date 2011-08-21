@@ -36,30 +36,40 @@ public:
      */
     virtual ~NetworkEntity();
 
+public:
     /**
      *  @brief Mise à jour, active l'action donnée par le serveur
      */
-    void update();
+    void updateNetwork();
 
 protected:
     /**
-     *  @brief Remet le compteur des entités à zéro
+     *  @brief Remet le compteur des entites a zero
      */
     static void ResetCounter();
 
     /***************************************/
     /***********Actions Générales***********/
     /***************************************/
-
+protected:
     /**
-     *  @brief
+     *  @brief Signaler la mort
      */
     void sigKilled();
 
+    /***************************************/
+    /**********Actions pour l'update********/
+    /***************************************/
+protected:
     /**
-     *  @brief Action a la mort
+     *  @brief Demande suppression
      */
-    void killedAction();
+    void killed();
+
+    /**
+     *  Ne rien faire
+     */
+    void doNothing() {}
 
     /***************************************/
     /***************Variables***************/
@@ -67,6 +77,8 @@ protected:
 protected:
     static unsigned int NetworkEntitiesCounter;
     unsigned int m_id;
+    void (NetworkEntity::*actionToActivate)(); //ptr de methode
+
 
 };
 

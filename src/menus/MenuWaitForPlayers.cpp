@@ -30,3 +30,13 @@ void MenuWaitForPlayers::treat_choice(int choice) {
     }
 }
 
+void MenuWaitForPlayers::update()
+{
+    Menu::update();
+    updateNetwork();
+}
+
+void MenuWaitForPlayers::refreshList()
+{
+    return;
+}

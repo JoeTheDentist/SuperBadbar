@@ -135,6 +135,8 @@ class ListMenuActions {
 
 	void treatEvent(EventKeyboard *eventKeyboard);
 
+        void clearList();
+
 
 }; // end class
 

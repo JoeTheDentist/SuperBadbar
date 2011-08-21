@@ -4,8 +4,9 @@
 #include <QString>
 
 #include "menus/Menu.h"
+#include "network/NetworkEntityMenu.h"
 
-class MenuWaitForPlayers : public Menu
+class MenuWaitForPlayers : public Menu, public NetworkEntityMenu
 {
 public:
     /**
@@ -16,12 +17,22 @@ public:
     /**
      *  Destructeur
      */
-    ~MenuWaitForPlayers();
+    virtual ~MenuWaitForPlayers();
 
     /**
      *  Choix
      */
     void treat_choice(int choice);
+
+    /**
+     *
+     */
+    void update();
+
+    /**
+     *
+     */
+    void refreshList();
 
 private:
     QString m_lvlSelected;

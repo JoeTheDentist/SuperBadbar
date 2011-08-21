@@ -142,3 +142,8 @@ void ListMenuActions::treatEvent(EventKeyboard *eventKeyboard)
 	(*m_iterator)->treatEvent(eventKeyboard);
 }
 
+void ListMenuActions::clearList()
+{
+    m_actions.clear();
+}
+
