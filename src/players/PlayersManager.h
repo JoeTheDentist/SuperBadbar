@@ -16,6 +16,7 @@ private :
     std::list<Player*> * m_players;
     Player * m_local_player;
     std::string m_name;
+    std::string m_map;
 
 public :
     static int last_peanuts;
@@ -71,6 +72,18 @@ public :
      *  @return nom du joueur
      */
     std::string playerName();
+
+    /**
+     *  Mutateur
+     *  @param map_name : nom de la map courante
+     */
+    void setMap(std::string map_name);
+
+    /**
+     *  Accesseur
+     *  @return nom de la map courante
+     */
+    std::string getMap();
 };
 
 #endif // PLAYERS_MANAGER_H_INCLUDED

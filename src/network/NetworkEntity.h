@@ -36,13 +36,17 @@ public:
      */
     virtual ~NetworkEntity();
 
+    /**
+     *  Accesseur
+     */
+    int id();
+
 public:
     /**
      *  @brief Mise à jour, active l'action donnée par le serveur
      */
     void updateNetwork();
 
-protected:
     /**
      *  @brief Remet le compteur des entites a zero
      */

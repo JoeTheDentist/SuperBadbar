@@ -86,8 +86,6 @@ protected:
     /**
      *  @brief Traite l'objet de pub
      *  @param object : objet de pub
-     *
-     *  PRINT_DEBUG si non redef (seul les clients peuvent traiter)
      */
     virtual void treatObject(const NetworkMessageAd &object);
 
@@ -149,6 +147,7 @@ protected:
     QUdpSocket *m_udpReceivingSocket;
     unsigned int m_msgSize;
     NetworkState m_state;
+    std::string m_lastIp;  //derniere ip qui a envoye
 };
 
 #endif // NETWORKCOMMUNICATOR_H

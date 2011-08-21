@@ -11,9 +11,10 @@
 #define NETWORKMANAGER_H_INCLUDED
 
 #include <string>
+#include <QMap>
 
-#include "NetworkCommunicator.h"
-#include "NetworkEntity.h"
+class NetworkEntity;
+class NetworkCommunicator;
 
 enum NetworkStep {
     NetStep_WaitForServer, NetStep_WaitForClients,
@@ -76,13 +77,12 @@ public:
 
     /**
      *  @brief Lance un serveur
-     *  @param lvl_name : nom de la map host
      *
      *  Attends que les clients se connectent
      *  Lance un message de pub cycliquement pour
      *  se decouvrir aux clients sur le reseau local
      */
-    void startServer(std::string lvl_name = "test.lvl");
+    void startServer();
 
     /**
      *  @brief Cherche les serveurs disponibles sur le reseau (local)
@@ -95,7 +95,14 @@ public:
      *  @brief Tentative de connection a l'adresse IP
      *  @param ip : adresse ip
      */
-    void connectTo(std::string ip = "127.0.0.1");
+    void connectTo(const std::string &ip = "127.0.0.1");
+
+    /**
+     *  Nouveau serveur découvert
+     *  @param ip : adresse ip de l'expediteur
+     *  @param adMsg : message de pub
+     */
+    void addAd(const std::string &ip, const std::string &adMsg);
 
 
     /***************************************/
@@ -198,7 +205,7 @@ public:
      *  TODO changer d'endroit
      *  Les champs sur le nombre de joueur ne sont pas remplis
      */
-    MapInfo mapInfo(std::string mapName);
+    MapInfo mapInfo(const std::string &mapName);
 
     /**
      *  @brief Retourne l'adresse IP
@@ -213,17 +220,24 @@ private:
      */
     void setId(int id);
 
-
+public:
+    /**
+     *  Ajout d'une entite reseau
+     *  @param ne : entity a ajouter
+     */
+    void addEntity(NetworkEntity *ne);
 
     /***************************************/
     /**************Attributs****************/
     /***************************************/
 private :
-    NetworkStep m_netStep;          /* */
-    int m_idLocal;                  /* identifiant sur le reseau */
-    NetworkCommunicator *m_netCom;  /* partie communicante */
-    QMap<int, NetworkEntity*> m_entities;
-    bool m_server;                  /* si le jeu fait serveur aussi */
+    NetworkStep m_netStep;          //
+    int m_idLocal;                  // identifiant sur le reseau
+    NetworkCommunicator *m_netCom;  // partie communicante
+    std::map<int, NetworkEntity*> m_entities;
+    std::map<std::string, std::string> m_servers; //ip, nom a afficher
+    bool m_server;                  // si le jeu fait serveur aussi
+    int m_id_menu;  // identifiant du menu
 };
 
 #endif // NETWORKMANAGER_H_INCLUDED

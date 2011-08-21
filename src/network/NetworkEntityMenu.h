@@ -16,11 +16,18 @@ public:
      */
     virtual ~NetworkEntityMenu();
 
+protected:
     /**
      *  Reaffiche liste des joueurs
      *  Liste contenue par player manager
      */
     virtual void refreshList()=0;
+
+public:
+    /**
+     *  Mettre a rafraichir
+     */
+    void setToRefresh();
 
 
 };

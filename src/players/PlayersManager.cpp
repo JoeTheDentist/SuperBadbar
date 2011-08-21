@@ -7,6 +7,7 @@ PlayersManager::PlayersManager()
     m_players = new std::list<Player*>();
     m_local_player = NULL;
     m_name = "Peanut&Co Player";
+    m_map = "";
 }
 
 PlayersManager::~PlayersManager()
@@ -58,4 +59,14 @@ Babar *PlayersManager::closer_babar(Rect pos)
 std::string PlayersManager::playerName()
 {
     return m_name;
+}
+
+void PlayersManager::setMap(std::string map_name)
+{
+    m_map = map_name;
+}
+
+std::string PlayersManager::getMap()
+{
+    return m_map;
 }

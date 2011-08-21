@@ -2,6 +2,8 @@
 #include "util/debug.h"
 
 #include "NetworkCommunicator.h"
+#include "util/globals.h"
+#include "network/NetworkManager.h"
 
 NetworkCommunicator::NetworkCommunicator()
 {
@@ -72,7 +74,7 @@ void NetworkCommunicator::treatObject(const NetworkMessageError &object)
 
 void NetworkCommunicator::treatObject(const NetworkMessageAd &object)
 {
-    PRINT_DEBUG(1, "Erreur objet d'ad traite par un serveur");
+    gNetwork->addAd(m_lastIp, object.adMsg.toStdString());
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageAskFor &object)
@@ -121,6 +123,8 @@ void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket *socket,
 void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)
 {
     QDataStream in(socket);
+
+    m_lastIp = socket->peerAddress().toString().toStdString();
 
     while ( socket->bytesAvailable() ) {
         if ( m_msgSize == 0 ) {

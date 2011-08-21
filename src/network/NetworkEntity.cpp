@@ -10,12 +10,17 @@ NetworkEntity::NetworkEntity()
 {
     m_id = NetworkEntitiesCounter;
     NetworkEntitiesCounter++;
-    actionToActivate = &NetworkEntity::doNothing;
-    //gNetwork->addEntity(this);
+//    actionToActivate = &NetworkEntity::doNothing;
+//    gNetwork->addEntity(this);
 }
 
 NetworkEntity::~NetworkEntity()
 {
+}
+
+int NetworkEntity::id()
+{
+    return m_id;
 }
 
 void NetworkEntity::ResetCounter()
@@ -31,6 +36,7 @@ void NetworkEntity::sigKilled()
 void NetworkEntity::updateNetwork()
 {
     (this->*NetworkEntity::actionToActivate)();
+    actionToActivate = &NetworkEntity::doNothing;
 }
 
 void NetworkEntity::killed()

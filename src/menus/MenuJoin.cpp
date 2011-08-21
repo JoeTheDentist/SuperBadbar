@@ -30,3 +30,8 @@ void MenuJoin::treat_choice(int choice)
         break;
     }
 }
+
+void MenuJoin::refreshList()
+{
+
+}

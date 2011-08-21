@@ -7,8 +7,9 @@
 MenuWaitForPlayers::MenuWaitForPlayers(Menu *parent, QString lvl_name)
     :Menu(parent)
 {
+    gPlayers->setMap(lvl_name.toStdString());
     if ( gNetwork->isServer() ) { //role serveur
-        gNetwork->startServer(lvl_name.toStdString());
+        gNetwork->startServer();
         m_lvlSelected = lvl_name;
         m_menu_actions.add_action_classic("Return", 1);
         m_menu_actions.add_action_classic(gPlayers->playerName(), 2);
