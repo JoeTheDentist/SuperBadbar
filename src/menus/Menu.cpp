@@ -55,9 +55,9 @@ void Menu::update()
 				switch (key) {
 				case mk_exit:
 					m_leave_menu = true;
-					m_leave_game = true;
+                                        set_leave_game_true();
 				case mk_escape:
-					m_leave_menu = true;
+                                        m_leave_menu = true;
 					break;
 				default:
 					break;
