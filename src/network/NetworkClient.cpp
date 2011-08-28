@@ -2,7 +2,7 @@
 
 NetworkClient::NetworkClient()
 {
-
+    m_udpReceivingSocket->bind(PORT_SERVER_OUT, QUdpSocket::ShareAddress);
 }
 
 NetworkClient::~NetworkClient()

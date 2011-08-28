@@ -10,8 +10,8 @@ NetworkEntity::NetworkEntity()
 {
     m_id = NetworkEntitiesCounter;
     NetworkEntitiesCounter++;
-//    actionToActivate = &NetworkEntity::doNothing;
-//    gNetwork->addEntity(this);
+    actionToActivate = &NetworkEntity::doNothing;
+    gNetwork->addEntity(this);
 }
 
 NetworkEntity::~NetworkEntity()

@@ -19,15 +19,23 @@ public:
     ~MenuJoin();
 
     /**
-    *	@brief Traitement du choix
-    *	@param l'int correspond au numero de la liste choisi
-    */
+     *	@brief Traitement du choix
+     *	@param l'int correspond au numero de la liste choisi
+     */
     virtual void treat_choice(int choice);
 
     /**
      *
      */
+    void update();
+
+    /**
+     *  Met a jour la liste des parties decouvertes
+     */
     void refreshList();
+
+private:
+    int m_size; //nombre de parties decouvertes
 };
 
 #endif // _MENUJOIN_H

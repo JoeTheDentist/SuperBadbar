@@ -213,6 +213,18 @@ public:
      */
     std::string getIP();
 
+    /**
+     *  Iterateur du debut des serveurs
+     *  @return idem
+     */
+    std::map<std::string,std::string>::iterator beginServers();
+
+    /**
+     *  Iterateur de fin des serveurs
+     *  @return idem
+     */
+    std::map<std::string,std::string>::iterator endServers();
+
 private:
     /**
      *  @brief Mutateur

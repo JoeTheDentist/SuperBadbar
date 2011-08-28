@@ -7,9 +7,11 @@
 
 NetworkCommunicator::NetworkCommunicator()
 {
+    NetworkTypes::initNetTypes();
+
     m_msgSize = 0;
-    m_udpReceivingSocket = new QUdpSocket();
-    m_udpSendingSocket = new QUdpSocket();
+    m_udpReceivingSocket = new QUdpSocket(this);
+    m_udpSendingSocket = new QUdpSocket(this);
     connect(m_udpReceivingSocket, SIGNAL(readyRead()), this, SLOT(receivingUdpData()));
 }
 
@@ -25,18 +27,19 @@ NetworkCommunicator::~NetworkCommunicator()
 
 void NetworkCommunicator::receivingUdpData()
 {
+    qDebug() << "receivingUdpData";
     QUdpSocket *socket = qobject_cast<QUdpSocket *>(sender());
-    while ( socket->bytesAvailable() ) {
-        getAndTreatIncomingObjects(socket);
-    }
+//    while ( socket->bytesAvailable() ) {
+        getAndTreatIncomingUdpObjects(socket);
+//    }
 }
 
 void NetworkCommunicator::receivingTcpData()
 {
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
-    while ( socket->bytesAvailable() ) {
-        getAndTreatIncomingObjects(socket);
-    }
+//    while ( socket->bytesAvailable() ) {
+        getAndTreatIncomingTcpObjects(socket);
+//    }
 }
 
 
@@ -52,8 +55,9 @@ void NetworkCommunicator::treatObject(const QVariant &object)
         treatObject(msg);
         return;
     } else if ( type == qMetaTypeId<NetworkMessageAd>() ) {
+        qDebug() << "add!";
         NetworkMessageAd msg = object.value<NetworkMessageAd>();
-        treatObject(msg);
+        treatAdObject(msg);
         return;
     } else if ( type == qMetaTypeId<NetworkMessageAskFor>() ) {
         NetworkMessageAskFor msg = object.value<NetworkMessageAskFor>();
@@ -72,8 +76,9 @@ void NetworkCommunicator::treatObject(const NetworkMessageError &object)
     PRINT_DEBUG(1, "%s", (msg.toStdString()).c_str());
 }
 
-void NetworkCommunicator::treatObject(const NetworkMessageAd &object)
+void NetworkCommunicator::treatAdObject(const NetworkMessageAd &object)
 {
+    qDebug() << "treatObject(NetworkMessageAd)";
     gNetwork->addAd(m_lastIp, object.adMsg.toStdString());
 }
 
@@ -117,10 +122,31 @@ void NetworkCommunicator::sendObject(const QVariant &object, QUdpSocket *socket,
 
     out << object;
 
-    socket->writeDatagram(paquet, address, PORT_SERVER_OUT);
+    if ( gNetwork->isServer() ) {
+        socket->writeDatagram(paquet, address, PORT_SERVER_OUT);
+    } else {
+        socket->writeDatagram(paquet, address, PORT_SERVER_IN);
+    }
 }
 
-void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)
+void NetworkCommunicator::getAndTreatIncomingUdpObjects(QUdpSocket *socket)
+{
+    m_lastIp = socket->peerAddress().toString().toStdString();
+
+    while (socket->hasPendingDatagrams()) {
+        QByteArray datagram;
+        QDataStream in(&datagram, QIODevice::ReadOnly);
+        datagram.resize(socket->pendingDatagramSize());
+        socket->readDatagram(datagram.data(), datagram.size());
+
+        QVariant object;
+        in >> object;
+
+        treatObject(object);
+    }
+}
+
+void NetworkCommunicator::getAndTreatIncomingTcpObjects(QTcpSocket *socket)
 {
     QDataStream in(socket);
 
@@ -134,6 +160,8 @@ void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)
             in >> m_msgSize;
         }
 
+        qDebug() << m_msgSize;
+
         if ( socket->bytesAvailable() < m_msgSize )
             return;
 
@@ -145,4 +173,3 @@ void NetworkCommunicator::getAndTreatIncomingObjects(QAbstractSocket *socket)
         treatObject(object);
     }
 }
-

@@ -7,9 +7,6 @@
 
 NetworkServer::NetworkServer()
 {
-    // TODO au bon endoit
-    NetworkTypes::initNetTypes();
-
     m_timer = NULL;
 }
 

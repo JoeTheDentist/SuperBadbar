@@ -87,7 +87,7 @@ protected:
      *  @brief Traite l'objet de pub
      *  @param object : objet de pub
      */
-    virtual void treatObject(const NetworkMessageAd &object);
+    virtual void treatAdObject(const NetworkMessageAd &object);
 
     /**
      *  @brief Traite l'objet de demande de variable
@@ -131,12 +131,16 @@ protected:
                             const QHostAddress &address);
 
     /**
-     *  @brief Recupere les objets sur une socket et le traite
+     *  @brief Recupere les objets sur une socket udp et le traite
      *  @param socket : socket à lire
-     *
-     *  Peut ne pas marcher, QAbstractSocket (tocheck)
      */
-    void getAndTreatIncomingObjects(QAbstractSocket *socket);
+    void getAndTreatIncomingUdpObjects(QUdpSocket *socket);
+
+    /**
+     *  @brief Recupere les objets sur une socket tcp et le traite
+     *  @param socket : socket à lire
+     */
+    void getAndTreatIncomingTcpObjects(QTcpSocket *socket);
 
 
     /***************************************/
