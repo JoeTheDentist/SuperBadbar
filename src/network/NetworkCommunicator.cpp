@@ -55,7 +55,6 @@ void NetworkCommunicator::treatObject(const QVariant &object)
         treatObject(msg);
         return;
     } else if ( type == qMetaTypeId<NetworkMessageAd>() ) {
-        qDebug() << "add!";
         NetworkMessageAd msg = object.value<NetworkMessageAd>();
         treatAdObject(msg);
         return;
@@ -78,7 +77,6 @@ void NetworkCommunicator::treatObject(const NetworkMessageError &object)
 
 void NetworkCommunicator::treatAdObject(const NetworkMessageAd &object)
 {
-    qDebug() << "treatObject(NetworkMessageAd)";
     gNetwork->addAd(m_lastIp, object.adMsg.toStdString());
 }
 

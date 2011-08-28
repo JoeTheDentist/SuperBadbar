@@ -55,11 +55,14 @@ void NetworkManager::addEntity(NetworkEntity *ne)
 
 void NetworkManager::addAd(const std::string &ip, const std::string &adMsg)
 {
-    m_servers.insert(std::pair<std::string,std::string>(ip, adMsg));
-    NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
-    NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
-    if ( menu ) {
-        menu->setToRefresh();
+    if ( m_servers.find(ip) == m_servers.end() ) {
+        qDebug() << "New server";
+        m_servers.insert(std::pair<std::string,std::string>(ip, adMsg));
+        NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
+        NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
+        if ( menu ) {
+            menu->setToRefresh();
+        }
     }
 }
 
