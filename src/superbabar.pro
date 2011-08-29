@@ -63,6 +63,10 @@ unix {
 INCLUDEPATH += ../lib/include
 INCLUDEPATH += "../lib/include/"
 
+
+mypath = "bloup"
+include(bloup/bloup.pri)
+
 SOURCES +=  ./main.cpp \
             ./actors/*.cpp \
             ./AI/*.cpp \
