@@ -34,12 +34,21 @@ void NetworkClient::treatObject(const NetworkMessageAskFor &object)
 void NetworkClient::connectTo(const std::string &ip)
 {
     m_TcpSocket = new QTcpSocket(this);
+    connect(m_TcpSocket, SIGNAL(readyRead()), this, SLOT(receivingTcpData()));
+    connect(m_TcpSocket, SIGNAL(connected()), this, SLOT(connected()));
+    connect(m_TcpSocket, SIGNAL(disconnected()), this, SLOT(disco()));
     m_TcpSocket->abort();
     m_TcpSocket->connectToHost(QString::fromStdString(ip), TCP_PORT);
+
     NetworkMessageConnexion connexion(QString::fromStdString(gPlayers->playerName()));
     QVariant object;
     object.setValue(connexion);
     sendObject(object, m_TcpSocket);
+
+    NetworkMessageAskFor ask("players");
+    QVariant object2;
+    object2.setValue(ask);
+    sendObject(object2, m_TcpSocket);
 }
 
 void NetworkClient::clearState()
@@ -47,4 +56,14 @@ void NetworkClient::clearState()
     m_TcpSocket->disconnectFromHost();
     delete m_TcpSocket;
     m_TcpSocket = NULL;
+}
+
+void NetworkClient::connected()
+{
+
+}
+
+void NetworkClient::disco()
+{
+    gNetwork->disco();
 }

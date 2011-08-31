@@ -146,3 +146,12 @@ void NetworkManager::clearAll()
     m_players.clear();
     m_netCom->clearState();
 }
+
+void NetworkManager::disco()
+{
+    NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
+    NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
+    if ( menu ) {
+        menu->setToClose();
+    }
+}

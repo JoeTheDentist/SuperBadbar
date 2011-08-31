@@ -18,6 +18,8 @@
  */
 class NetworkClient : public NetworkCommunicator
 {
+    Q_OBJECT
+
     /***************************************/
     /**************Attributs****************/
     /***************************************/
@@ -77,6 +79,17 @@ private:
      *  @param object : objet de demande de variable
      */
     void treatObject(const NetworkMessageAskFor &object);
+
+private slots:
+    /**
+     *  Lorsque le client est connecte
+     */
+    void connected();
+
+    /**
+     *  Lorsque le server coupe la connexion
+     */
+    void disco();
 };
 
 #endif // NETWORKCLIENT_H

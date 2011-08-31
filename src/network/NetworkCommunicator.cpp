@@ -34,6 +34,7 @@ void NetworkCommunicator::receivingUdpData()
 
 void NetworkCommunicator::receivingTcpData()
 {
+    qDebug() << "receivingTcpData";
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
     while ( socket->bytesAvailable() ) {
         getAndTreatIncomingTcpObjects(socket);
@@ -86,6 +87,7 @@ void NetworkCommunicator::treatAdObject(const NetworkMessageAd &object)
 
 void NetworkCommunicator::treatObject(const NetworkMessageAskFor &object)
 {
+
 }
 
 void NetworkCommunicator::treatObject(const NetworkMessageResponse &object)

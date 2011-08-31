@@ -92,11 +92,22 @@ public:
      */
     void discoAll();
 
+private slots:
+    /**
+     *  Lorsqu'un client s'est deco
+     */
+    void clientDisconnected();
+
 private:
     /**
      *  Libere la memoire de la socket server
      */
     void clearServer();
+
+    /**
+     *  Envoi a tous le monde, en tcp
+     */
+    void sendObjectToAll(const QVariant &object);
 
 };
 

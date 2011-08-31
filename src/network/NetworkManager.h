@@ -274,9 +274,15 @@ public:
     void discoAll();
 
     /**
-     *  Libere tout
+     *  Libere tout !
+     *  Vas-y Jean Charles ! Sus aux schtroumfs noirs !
      */
     void clearAll();
+
+    /**
+     *  Ferme le menu courant
+     */
+    void disco();
 
 private:
     /**

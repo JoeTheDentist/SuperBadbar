@@ -36,7 +36,24 @@ void NetworkServer::discovery()
 
 void NetworkServer::treatObject(const NetworkMessageAskFor &object)
 {
-
+    //TODO p-e passer la socket, pour renvoyer juste au demandeur
+    if ( object.varName == "players" ) {
+        QStringList list;
+        std::list<std::string>::iterator it = gNetwork->beginPlayers();
+        while ( it != gNetwork->endPlayers() ) {
+            list << QString::fromStdString(*it);
+            ++it;
+        }
+        QVariant object;
+        object.setValue(list);
+        NetworkMessageResponse resp;
+        resp.respVar = object;
+        QVariant object2;
+        object2.setValue(resp);
+        sendObjectToAll(object2);
+    } else {
+        PRINT_DEBUG(1, "Non implemente : code vive Joe Joseph !");
+    }
 }
 
 void NetworkServer::broadcastAd()
@@ -76,7 +93,6 @@ void NetworkServer::discoAll()
 {
     foreach ( QTcpSocket *client, m_clients ) {
         client->disconnectFromHost();
-        //TOCHECK
         delete client;
     }
     m_clients.clear();
@@ -89,4 +105,16 @@ void NetworkServer::clearServer()
     m_clients.clear();
     delete m_server;
     m_server = NULL;
+}
+
+void NetworkServer::sendObjectToAll(const QVariant &object)
+{
+    foreach( QTcpSocket *socket, m_clients) {
+        sendObject(object,socket);
+    }
+}
+
+void NetworkServer::clientDisconnected()
+{
+    QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
 }
