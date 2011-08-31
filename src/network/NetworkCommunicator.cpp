@@ -93,6 +93,12 @@ void NetworkCommunicator::treatObject(const NetworkMessageResponse &object)
     int type = QMetaType::type(object.respVar.typeName());
     if ( type == qMetaTypeId<int>() ) {
         // TODO
+    } else if ( type == qMetaTypeId<QStringList>() ){
+        gNetwork->clearPlayers();
+        QStringList list = object.respVar.value<QStringList>();
+        foreach ( QString name, list ) {
+            gNetwork->addPlayer(name.toStdString());
+        }
     } else {
         PRINT_DEBUG(1, "Type non trouve : code Crapatchou !");
     }
@@ -101,7 +107,7 @@ void NetworkCommunicator::treatObject(const NetworkMessageResponse &object)
 void NetworkCommunicator::treatObjectConnexion(const NetworkMessageConnexion &object) {
     if ( m_state == NS_DISCOVERY && gNetwork->isServer() ) {
         //Rafraichir et envoyer l'info a ttlm
-        gNetwork->addPlayer(/*TODO*/1, object.name.toStdString());
+        gNetwork->addPlayer(object.name.toStdString());
     }
 }
 

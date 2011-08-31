@@ -92,12 +92,12 @@ std::map<std::string,std::string>::iterator NetworkManager::endServers()
     return m_servers.end();
 }
 
-std::map<int,std::string>::iterator NetworkManager::beginPlayers()
+std::list<std::string>::iterator NetworkManager::beginPlayers()
 {
     return m_players.begin();
 }
 
-std::map<int,std::string>::iterator NetworkManager::endPlayers()
+std::list<std::string>::iterator NetworkManager::endPlayers()
 {
     return m_players.end();
 }
@@ -112,15 +112,13 @@ void NetworkManager::clearPlayers()
     m_players.clear();
 }
 
-void NetworkManager::addPlayer(int id, std::string name)
+void NetworkManager::addPlayer(std::string name)
 {
-    if ( m_players.find(id) == m_players.end() ) {
-        m_players.insert(std::pair<int,std::string>(id, name));
-        NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
-        NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
-        if ( menu ) {
-            menu->setToRefresh();
-        }
+    m_players.push_front(name);
+    NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
+    NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
+    if ( menu ) {
+        menu->setToRefresh();
     }
 }
 

@@ -13,7 +13,7 @@ MenuWaitForPlayers::MenuWaitForPlayers(Menu *parent, QString lvl_name)
     if ( gNetwork->isServer() ) { //role serveur
         gNetwork->startServer();
         m_lvlSelected = lvl_name;
-        gNetwork->addPlayer(-1,gPlayers->playerName());
+        gNetwork->addPlayer(gPlayers->playerName());
     } else { //role client
         gNetwork->getAndDisplayPlayers();
     }
@@ -50,9 +50,9 @@ void MenuWaitForPlayers::refreshList()
     m_menu_actions.clearList();
     m_menu_actions.add_action_classic("Return", 1);
 
-    std::map<int,std::string>::iterator it = gNetwork->beginPlayers();
+    std::list<std::string>::iterator it = gNetwork->beginPlayers();
     while ( it != gNetwork->endPlayers() ) {
-        m_menu_actions.add_action_classic((*it).second, i+2);
+        m_menu_actions.add_action_classic((*it), i+2);
         ++it;
     }
 }

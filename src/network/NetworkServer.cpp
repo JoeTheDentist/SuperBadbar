@@ -79,6 +79,7 @@ void NetworkServer::discoAll()
         //TOCHECK
         delete client;
     }
+    m_clients.clear();
 }
 
 void NetworkServer::clearServer()

@@ -20,7 +20,7 @@ MenuJoin::MenuJoin(Menu *parent) :
 
 MenuJoin::~MenuJoin()
 {
-
+    gNetwork->clearAll();
 }
 
 void MenuJoin::treat_choice(int choice)

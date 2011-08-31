@@ -50,7 +50,7 @@ private :
     int m_idLocal;                  // identifiant sur le reseau
     NetworkCommunicator *m_netCom;  // partie communicante
     std::map<int, NetworkEntity*> m_entities;
-    std::map<int, std::string> m_players;
+    std::list<std::string> m_players;
     std::map<std::string, std::string> m_servers; //ip, nom a afficher
     bool m_server;                  // si le jeu fait serveur aussi
     int m_id_menu;                  // identifiant du menu
@@ -240,13 +240,13 @@ public:
      *  Iterateur du debut des joueurs
      *  @return idem
      */
-    std::map<int,std::string>::iterator beginPlayers();
+    std::list<std::string>::iterator beginPlayers();
 
     /**
      *  Iterateur de fin des joueurs
      *  @return idem
      */
-    std::map<int,std::string>::iterator endPlayers();
+    std::list<std::string>::iterator endPlayers();
 
     /**
      *  Vide le map des serveurs decouverts
@@ -261,7 +261,7 @@ public:
     /**
      *  Ajoute le joueur
      */
-    void addPlayer(int id, std::string name);
+    void addPlayer(std::string name);
 
     /**
      *  Affiche dans le NetworkMenu courant les joueurs presents

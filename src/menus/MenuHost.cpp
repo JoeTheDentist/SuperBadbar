@@ -19,7 +19,7 @@ MenuHost::MenuHost(Menu *parent) :
 
 MenuHost::~MenuHost()
 {
-
+    gNetwork->clearAll();
 }
 
 void MenuHost::treat_choice(int choice)
