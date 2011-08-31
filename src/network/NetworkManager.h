@@ -18,7 +18,6 @@ class NetworkCommunicator;
 
 enum NetworkStep {
     NetStep_WaitForServer, NetStep_WaitForClients,
-    NetStep_WaitForConnexion, NetStep_Chat,
     NetStep_LaunchingGame, NetStep_Play,
     NetStepNONE
 };
@@ -43,6 +42,20 @@ struct MapInfo {
  */
 
 class NetworkManager {
+    /***************************************/
+    /**************Attributs****************/
+    /***************************************/
+private :
+    NetworkStep m_netStep;          //
+    int m_idLocal;                  // identifiant sur le reseau
+    NetworkCommunicator *m_netCom;  // partie communicante
+    std::map<int, NetworkEntity*> m_entities;
+    std::map<int, std::string> m_players;
+    std::map<std::string, std::string> m_servers; //ip, nom a afficher
+    bool m_server;                  // si le jeu fait serveur aussi
+    int m_id_menu;                  // identifiant du menu
+    std::string m_hostIp;           // ip du serveur
+
 public :
     /**
      *  @brief Constructeur
@@ -83,13 +96,6 @@ public:
      *  se decouvrir aux clients sur le reseau local
      */
     void startServer();
-
-    /**
-     *  @brief Cherche les serveurs disponibles sur le reseau (local)
-     *
-     *  Regarde si il a reçu des messages
-     */
-    void searchServer();
 
     /**
      *  @brief Tentative de connection a l'adresse IP
@@ -214,6 +220,11 @@ public:
     std::string getIP();
 
     /**
+     *  Met le menu courant a jour
+     */
+   void setMenuId(int id);
+
+    /**
      *  Iterateur du debut des serveurs
      *  @return idem
      */
@@ -224,6 +235,48 @@ public:
      *  @return idem
      */
     std::map<std::string,std::string>::iterator endServers();
+
+    /**
+     *  Iterateur du debut des joueurs
+     *  @return idem
+     */
+    std::map<int,std::string>::iterator beginPlayers();
+
+    /**
+     *  Iterateur de fin des joueurs
+     *  @return idem
+     */
+    std::map<int,std::string>::iterator endPlayers();
+
+    /**
+     *  Vide le map des serveurs decouverts
+     */
+    void clearServers();
+
+    /**
+     *  Vide le map des joueur courrants
+     */
+    void clearPlayers();
+
+    /**
+     *  Ajoute le joueur
+     */
+    void addPlayer(int id, std::string name);
+
+    /**
+     *  Affiche dans le NetworkMenu courant les joueurs presents
+     */
+    void getAndDisplayPlayers();
+
+    /**
+     *  Deconnecte tous les joueurs
+     */
+    void discoAll();
+
+    /**
+     *  Libere tout
+     */
+    void clearAll();
 
 private:
     /**
@@ -239,17 +292,10 @@ public:
      */
     void addEntity(NetworkEntity *ne);
 
-    /***************************************/
-    /**************Attributs****************/
-    /***************************************/
-private :
-    NetworkStep m_netStep;          //
-    int m_idLocal;                  // identifiant sur le reseau
-    NetworkCommunicator *m_netCom;  // partie communicante
-    std::map<int, NetworkEntity*> m_entities;
-    std::map<std::string, std::string> m_servers; //ip, nom a afficher
-    bool m_server;                  // si le jeu fait serveur aussi
-    int m_id_menu;  // identifiant du menu
+    /**
+     *  Change l'adresse du serveur courant
+     */
+    void setHostIp(std::string ip);
 };
 
 #endif // NETWORKMANAGER_H_INCLUDED

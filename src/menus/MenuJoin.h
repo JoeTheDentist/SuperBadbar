@@ -5,7 +5,7 @@
 #include "network/NetworkEntityMenu.h"
 
 class MenuJoin : public Menu, public NetworkEntityMenu
-{
+{   
 public:
     /**
      *  @brief Constructeur
@@ -33,6 +33,11 @@ public:
      *  Met a jour la liste des parties decouvertes
      */
     void refreshList();
+
+    /**
+     *  Redef
+     */
+    void close();
 
 private:
     int m_size; //nombre de parties decouvertes

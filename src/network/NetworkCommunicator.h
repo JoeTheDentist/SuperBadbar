@@ -16,7 +16,7 @@
 #include "network/NetworkTypes.h"
 
 enum NetworkState {
-    NS_DISCOVERY, NS_WAITFORPLAYERS
+    NS_DISCOVERY, NS_WAITFORPLAYERS, NS_NONE
 };
 
 /**
@@ -28,6 +28,17 @@ enum NetworkState {
 class NetworkCommunicator : public QObject
 {
     Q_OBJECT
+
+public:
+    /***************************************/
+    /**************Attributs****************/
+    /***************************************/
+protected:
+    QUdpSocket *m_udpSendingSocket;
+    QUdpSocket *m_udpReceivingSocket;
+    quint16 m_msgSize;
+    NetworkState m_state;
+    std::string m_lastIp;  //derniere ip qui a envoye
 
 public:
     /**
@@ -101,6 +112,12 @@ protected:
      */
     void treatObject(const NetworkMessageResponse &object);
 
+    /**
+     *  @brief Traite l'objet de connexion
+     *  @param object : objet de connxion
+     */
+    void treatObjectConnexion(const NetworkMessageConnexion &object);
+
 
     /***************************************/
     /******Envoie/reception d'objets********/
@@ -142,16 +159,15 @@ protected:
      */
     void getAndTreatIncomingTcpObjects(QTcpSocket *socket);
 
-
     /***************************************/
-    /**************Attributs****************/
+    /****************Utile******************/
     /***************************************/
-protected:
-    QUdpSocket *m_udpSendingSocket;
-    QUdpSocket *m_udpReceivingSocket;
-    unsigned int m_msgSize;
-    NetworkState m_state;
-    std::string m_lastIp;  //derniere ip qui a envoye
+public:
+    /**
+     *  S'assure de tout cleaner avant de lancer
+     *  un nouvel etat
+     */
+    virtual void clearState()=0;
 };
 
 #endif // NETWORKCOMMUNICATOR_H

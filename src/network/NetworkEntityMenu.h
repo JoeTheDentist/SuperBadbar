@@ -23,11 +23,22 @@ protected:
      */
     virtual void refreshList()=0;
 
+    /**
+     *  Forcer la fermeture du menu
+     */
+    virtual void close()=0;
+
 public:
     /**
      *  Mettre a rafraichir
      */
     void setToRefresh();
+
+    /**
+     *  Mettre a fermer
+     *  A utiliser par exemple quand deco
+     */
+    void setToClose();
 
 
 };

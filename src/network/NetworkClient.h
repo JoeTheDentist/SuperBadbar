@@ -18,6 +18,12 @@
  */
 class NetworkClient : public NetworkCommunicator
 {
+    /***************************************/
+    /**************Attributs****************/
+    /***************************************/
+private:
+    QTcpSocket *m_TcpSocket;
+
 public:
     /**
      *  @brief Constructeur
@@ -37,6 +43,27 @@ public:
      *  @brief Phase de decouverte
      */
     void discovery();
+
+    /**
+     *  @brief Phase d'attente des joueurs
+     */
+    void waitForPlayers();
+
+    /**
+     *  Tentative de connection a l'adress ip
+     *  passe en mode waitForPlayers
+     */
+    void connectTo(const std::string &ip);
+
+    /***************************************/
+    /****************Autre******************/
+    /***************************************/
+public:
+    /**
+     *  S'assure de tout cleaner avant de lancer
+     *  un nouvel etat
+     */
+    void clearState();
 
 private:
     /**

@@ -12,7 +12,7 @@ public:
     /**
      *  Constructeur
      */
-    MenuWaitForPlayers(Menu *parent, QString lvl_name);
+    MenuWaitForPlayers(Menu *parent, QString lvl_name = "");
 
     /**
      *  Destructeur
@@ -25,14 +25,19 @@ public:
     void treat_choice(int choice);
 
     /**
-     *
+     *  Redef
      */
     void update();
 
     /**
-     *
+     *  Redef
      */
     void refreshList();
+
+    /**
+     *  Redef
+     */
+    void close();
 
 private:
     QString m_lvlSelected;

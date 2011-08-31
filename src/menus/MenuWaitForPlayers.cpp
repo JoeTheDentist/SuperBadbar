@@ -8,14 +8,14 @@
 MenuWaitForPlayers::MenuWaitForPlayers(Menu *parent, QString lvl_name)
     :Menu(parent)
 {
+    m_menu_actions.add_action_classic("Return", 1);
     gPlayers->setMap(lvl_name.toStdString());
     if ( gNetwork->isServer() ) { //role serveur
         gNetwork->startServer();
         m_lvlSelected = lvl_name;
-        m_menu_actions.add_action_classic("Return", 1);
-        m_menu_actions.add_action_classic(gPlayers->playerName(), 2);
+        gNetwork->addPlayer(-1,gPlayers->playerName());
     } else { //role client
-
+        gNetwork->getAndDisplayPlayers();
     }
 }
 
@@ -27,7 +27,7 @@ MenuWaitForPlayers::~MenuWaitForPlayers()
 void MenuWaitForPlayers::treat_choice(int choice) {
     if ( gNetwork->isServer() ) { //role serveur
         if ( choice == 1 ) { //return
-            //TODO deco les joueurs avant
+            gNetwork->discoAll();
             set_leave_menu_true();
         }
     } else { //role client
@@ -39,11 +39,25 @@ void MenuWaitForPlayers::treat_choice(int choice) {
 
 void MenuWaitForPlayers::update()
 {
+    gNetwork->setMenuId(m_id);
     Menu::update();
     updateNetwork();
 }
 
 void MenuWaitForPlayers::refreshList()
 {
+    int i=0;
+    m_menu_actions.clearList();
+    m_menu_actions.add_action_classic("Return", 1);
 
+    std::map<int,std::string>::iterator it = gNetwork->beginPlayers();
+    while ( it != gNetwork->endPlayers() ) {
+        m_menu_actions.add_action_classic((*it).second, i+2);
+        ++it;
+    }
+}
+
+void MenuWaitForPlayers::close()
+{
+    set_leave_menu_true();
 }

@@ -7,23 +7,31 @@
 
 NetworkServer::NetworkServer()
 {
+    m_numPlayer = 0;
     m_timer = NULL;
+    m_server = NULL;
 }
 
 NetworkServer::~NetworkServer()
 {
-    if ( m_timer )
-        m_timer->stop();
-    delete m_timer;
+    clearState();
 }
 
 void NetworkServer::discovery()
 {
     clearState();
     m_state = NS_DISCOVERY;
+    broadcastAd();
     m_timer = new QTimer();
     connect(m_timer, SIGNAL(timeout()), this, SLOT(broadcastAd()));
     m_timer->start(BROADCAST_FREQ);
+
+    m_server = new QTcpServer(this);
+    if (!m_server->listen(QHostAddress::Any, TCP_PORT)) {
+        //error
+    } else {
+        connect(m_server, SIGNAL(newConnection()), this, SLOT(newClient()));
+    }
 }
 
 void NetworkServer::treatObject(const NetworkMessageAskFor &object)
@@ -45,7 +53,8 @@ void NetworkServer::broadcastAd()
 void NetworkServer::newClient()
 {
     QTcpSocket *client = m_server->nextPendingConnection();
-    m_clients.insert(/* TODO */ 1, client);
+    m_clients.insert(m_numPlayer, client);
+    ++m_numPlayer;
 
     connect(client, SIGNAL(readyRead()), this, SLOT(receivingTcpData()));
     connect(client, SIGNAL(disconnected()), this, SLOT(clientDisconnected()));
@@ -59,4 +68,24 @@ void NetworkServer::clearState()
         delete m_timer;
         m_timer = NULL;
     }
+    //clean si server lance
+    clearServer();
+}
+
+void NetworkServer::discoAll()
+{
+    foreach ( QTcpSocket *client, m_clients ) {
+        client->disconnectFromHost();
+        //TOCHECK
+        delete client;
+    }
+}
+
+void NetworkServer::clearServer()
+{
+    discoAll();
+    m_numPlayer = 0;
+    m_clients.clear();
+    delete m_server;
+    m_server = NULL;
 }

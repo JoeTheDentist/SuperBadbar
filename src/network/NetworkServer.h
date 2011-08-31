@@ -18,6 +18,15 @@ class NetworkServer : public NetworkCommunicator
 {
     Q_OBJECT
 
+    /***************************************/
+    /***************Attributs***************/
+    /***************************************/
+private:
+    QTcpServer *m_server;
+    QMap<int, QTcpSocket*> m_clients;
+    QTimer *m_timer;
+    unsigned int m_numPlayer;
+
 public:
     /**
      *  @brief Constructeur
@@ -71,21 +80,23 @@ private slots:
     /***************************************/
     /*****************Utile*****************/
     /***************************************/
-private:
+public:
     /**
      *  S'assure de tout cleaner avant de lancer
      *  un nouvel etat
      */
     void clearState();
 
+    /**
+     *  Deconnecte tous les clients
+     */
+    void discoAll();
 
-    /***************************************/
-    /***************Attributs***************/
-    /***************************************/
 private:
-    QTcpServer *m_server;
-    QMap<int, QTcpSocket*> m_clients;
-    QTimer *m_timer;
+    /**
+     *  Libere la memoire de la socket server
+     */
+    void clearServer();
 
 };
 

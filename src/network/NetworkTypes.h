@@ -14,9 +14,11 @@
 #include "NetworkMessageAd.h"
 #include "NetworkMessageAskFor.h"
 #include "NetworkMessageResponse.h"
+#include "NetworkMessageConnexion.h"
 
 #define PORT_SERVER_IN 31415
 #define PORT_SERVER_OUT 31416
+#define TCP_PORT 31415
 
 /**
  *  @class NetworkTypes
@@ -34,6 +36,7 @@ public:
         NetworkMessageAd::init();
         NetworkMessageAskFor::init();
         NetworkMessageResponse::init();
+        NetworkMessageConnexion::init();
     }
 };
 

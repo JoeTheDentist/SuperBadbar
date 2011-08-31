@@ -27,7 +27,7 @@ void MenuHost::treat_choice(int choice)
     if ( choice == 1 ) { //return
         set_leave_menu_true();
     } else { //choix d'une map
-        selectLevel(choice-1);
+        selectLevel(choice-2);
     }
 }
 

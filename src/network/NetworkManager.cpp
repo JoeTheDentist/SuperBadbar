@@ -10,12 +10,15 @@
 #include <QDebug> //TEMP
 
 NetworkManager::NetworkManager()
-{
+{   
     PRINT_CONSTR(1, "Construction d'un NetworkManager");
+
+    NetworkTypes::initNetTypes();
     m_netCom = NULL;
     m_id_menu = 0;
     NetworkEntity::ResetCounter();
     m_server = false;
+    m_netStep = NetStepNONE;
 }
 
 NetworkManager::~NetworkManager()
@@ -29,6 +32,7 @@ void NetworkManager::initClient()
     delete m_netCom;
     m_netCom = new NetworkClient();
     m_server = false;
+    m_netCom->discovery();
 }
 
 void NetworkManager::initServer()
@@ -56,7 +60,6 @@ void NetworkManager::addEntity(NetworkEntity *ne)
 void NetworkManager::addAd(const std::string &ip, const std::string &adMsg)
 {
     if ( m_servers.find(ip) == m_servers.end() ) {
-        qDebug() << "New server";
         m_servers.insert(std::pair<std::string,std::string>(ip, adMsg));
         NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
         NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
@@ -64,6 +67,19 @@ void NetworkManager::addAd(const std::string &ip, const std::string &adMsg)
             menu->setToRefresh();
         }
     }
+}
+
+void NetworkManager::connectTo(const std::string &ip)
+{
+    if ( !m_server ) {
+        NetworkClient *client = dynamic_cast<NetworkClient*>(m_netCom);
+        client->connectTo(ip);
+    }
+}
+
+void NetworkManager::setMenuId(int id)
+{
+    m_id_menu = id;
 }
 
 std::map<std::string,std::string>::iterator NetworkManager::beginServers()
@@ -74,4 +90,61 @@ std::map<std::string,std::string>::iterator NetworkManager::beginServers()
 std::map<std::string,std::string>::iterator NetworkManager::endServers()
 {
     return m_servers.end();
+}
+
+std::map<int,std::string>::iterator NetworkManager::beginPlayers()
+{
+    return m_players.begin();
+}
+
+std::map<int,std::string>::iterator NetworkManager::endPlayers()
+{
+    return m_players.end();
+}
+
+void NetworkManager::clearServers()
+{
+    m_servers.clear();
+}
+
+void NetworkManager::clearPlayers()
+{
+    m_players.clear();
+}
+
+void NetworkManager::addPlayer(int id, std::string name)
+{
+    if ( m_players.find(id) == m_players.end() ) {
+        m_players.insert(std::pair<int,std::string>(id, name));
+        NetworkEntity *ne = (*m_entities.find(m_id_menu)).second;
+        NetworkEntityMenu *menu = dynamic_cast<NetworkEntityMenu*>(ne);
+        if ( menu ) {
+            menu->setToRefresh();
+        }
+    }
+}
+
+void NetworkManager::getAndDisplayPlayers()
+{
+    connectTo(m_hostIp);
+}
+
+void NetworkManager::discoAll()
+{
+    if ( m_server ) {
+        NetworkServer *server = dynamic_cast<NetworkServer*>(m_netCom);
+        server->discoAll();
+    }
+}
+
+void NetworkManager::setHostIp(std::string ip)
+{
+    m_hostIp = ip;
+}
+
+void NetworkManager::clearAll()
+{
+    m_servers.clear();
+    m_players.clear();
+    m_netCom->clearState();
 }
