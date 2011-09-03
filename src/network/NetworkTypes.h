@@ -38,6 +38,13 @@ public:
         NetworkMessageResponse::init();
         NetworkMessageConnexion::init();
     }
+
+    template<class T>
+    static QVariant toQVariant(const T &from) {
+        QVariant v;
+        v.setValue(from);
+        return v;
+    }
 };
 
 

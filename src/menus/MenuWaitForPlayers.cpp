@@ -21,7 +21,10 @@ MenuWaitForPlayers::MenuWaitForPlayers(Menu *parent, QString lvl_name)
 
 MenuWaitForPlayers::~MenuWaitForPlayers()
 {
-
+    if ( !gNetwork->isServer() ) {
+        gNetwork->clearAll();
+        gNetwork->initClient();
+    }
 }
 
 void MenuWaitForPlayers::treat_choice(int choice) {

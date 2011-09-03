@@ -41,14 +41,10 @@ void NetworkClient::connectTo(const std::string &ip)
     m_TcpSocket->connectToHost(QString::fromStdString(ip), TCP_PORT);
 
     NetworkMessageConnexion connexion(QString::fromStdString(gPlayers->playerName()));
-    QVariant object;
-    object.setValue(connexion);
-    sendObject(object, m_TcpSocket);
+    sendObject(NetworkTypes::toQVariant(connexion), m_TcpSocket);
 
     NetworkMessageAskFor ask("players");
-    QVariant object2;
-    object2.setValue(ask);
-    sendObject(object2, m_TcpSocket);
+    sendObject(NetworkTypes::toQVariant(ask), m_TcpSocket);
 }
 
 void NetworkClient::clearState()

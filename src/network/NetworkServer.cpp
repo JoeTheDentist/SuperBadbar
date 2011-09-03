@@ -44,13 +44,9 @@ void NetworkServer::treatObject(const NetworkMessageAskFor &object)
             list << QString::fromStdString(*it);
             ++it;
         }
-        QVariant object;
-        object.setValue(list);
         NetworkMessageResponse resp;
-        resp.respVar = object;
-        QVariant object2;
-        object2.setValue(resp);
-        sendObjectToAll(object2);
+        resp.respVar = NetworkTypes::toQVariant(list);
+        sendObjectToAll(NetworkTypes::toQVariant(resp));
     } else {
         PRINT_DEBUG(1, "Non implemente : code vive Joe Joseph !");
     }
@@ -60,10 +56,8 @@ void NetworkServer::broadcastAd()
 {
     NetworkMessageAd msg(QString::fromStdString(gPlayers->playerName())+" - "+
                          QString::fromStdString(gPlayers->getMap()));
-    QVariant v;
-    v.setValue(msg);
     for (int i = 0; i<4; i++) {
-        sendObject(v, m_udpSendingSocket, QHostAddress::Broadcast);
+        sendObject(NetworkTypes::toQVariant(msg), m_udpSendingSocket, QHostAddress::Broadcast);
     }
 }
 
@@ -117,4 +111,5 @@ void NetworkServer::sendObjectToAll(const QVariant &object)
 void NetworkServer::clientDisconnected()
 {
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
+    qDebug() << socket->peerAddress().toString() << " disco";
 }
