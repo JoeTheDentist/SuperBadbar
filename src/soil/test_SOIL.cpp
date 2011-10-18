@@ -5,6 +5,8 @@
 #include <shellapi.h>
 #include <gl/gl.h>
 #include <gl/glext.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "SOIL.h"
 

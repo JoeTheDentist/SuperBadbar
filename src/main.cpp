@@ -20,6 +20,7 @@
 #ifdef WIN32
     #undef main
 #endif
+
 #include <QApplication> //TEMP
 
 int main(int argc, char *argv[])
