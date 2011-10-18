@@ -56,7 +56,11 @@ void Camera::init_camera(Actor *target)
     m_frame.h = Constants::WINDOW_HEIGHT;
     PRINT_TRACE(1, "Ouverture de la fenetre (de taille %d*%d)", m_frame.w, m_frame.h)
 	if (!m_initialized) {
-		m_window = new sf::RenderWindow(sf::VideoMode(m_frame.w, m_frame.h, 32), "SuperBadbar");
+		if (Constants::FULL_SCREEN == 0) {
+			m_window = new sf::RenderWindow(sf::VideoMode(m_frame.w, m_frame.h, 32), "SuperBadbar");
+		} else {
+			m_window = new sf::RenderWindow(sf::VideoMode(m_frame.w, m_frame.h, 32), "SuperBadbar", sf::Style::Fullscreen);
+		}
 		EventKeyboard::initEventKeyboard();
 	}
 	m_target = target;
@@ -128,7 +132,6 @@ void Camera::display_background(Surface *background)
     display_picture(background, &pos, true);
 }
 
-
 void Camera::display(Displayable * const entity) const
 {
     Surface *picture = entity->current_picture();
@@ -137,7 +140,6 @@ void Camera::display(Displayable * const entity) const
         display_picture(picture, &pos);
     }
 }
-
 
 void Camera::display_events(EventsManager * const event_manager) const
 {

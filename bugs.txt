@@ -1,5 +1,0 @@
-############################
-## Liste des bugs actuels ##
-############################
-
-- Segfault quand on vide le chargeur du shotgun !

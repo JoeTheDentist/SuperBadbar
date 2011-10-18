@@ -380,7 +380,7 @@ void Babar::jump()
 	m_ready_jump = false;
 	m_ready_double_jump = true;
 	m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
-	prepare_sound(BABAR_SOUNDS_R + "jump" + SOUNDS_EXT);
+	prepare_sound(BABAR_SOUNDS_R + "jump.wav");
 	unbind();
 }
 
