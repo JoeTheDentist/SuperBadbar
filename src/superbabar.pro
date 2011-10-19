@@ -149,13 +149,13 @@ SOURCES += \
     sprites/SpriteAnimTable.cpp \
     sprites/SpriteAnim.cpp \
     sprites/Sprite.cpp \
-    util/repertories.cpp \
     util/Rect.cpp \
     util/RandomGenerator.cpp \
     util/globals.cpp \
     util/Constants.cpp \
     util/ArgAnalyser.cpp \
     util/Analyser.cpp \
+	video/ressources/UniformSurfaceMap.cpp \
     video/TransitionScreen.cpp \
     video/Talks.cpp \
     video/SurfaceUniform.cpp \
@@ -300,6 +300,8 @@ HEADERS  += \
     util/Constants.h \
     util/ArgAnalyser.h \
     util/Analyser.h \
+	video/ressources/UniformSurfaceMap.h \
+	video/ressources/FontMap.h \
     video/TransitionScreen.h \
     video/Talks.h \
     video/SurfaceUniform.h \
