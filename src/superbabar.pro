@@ -38,9 +38,8 @@ unix {
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
 
-	LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
-	../lib/gcc/libfmod.so \
-	-L"../lib/gcc/"\
+        LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
+        -L"../lib/gcc"\
 	-lSDL_gfx \
 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 	

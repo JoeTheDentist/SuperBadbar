@@ -50,5 +50,5 @@ int main(int argc, char *argv[])
 	
         GameInitializer::close_game();
         PRINT_TRACE(1, "Fermeture du jeu");
-	return 0;
+        return 0;
 }
