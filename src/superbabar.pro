@@ -12,9 +12,9 @@ TARGET = superbabar
 TEMPLATE = app
 
 win32 {
-        LIBS += -L"../lib/SFMLwin/" \
+        LIBS += -L../lib/SFMLwin \
                 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
-                -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf\
+                -L../lib/SDL/lib -lSDL -lSDL_image -lSDL_ttf\
                 -lglu32 -lopengl32
 
         INCLUDEPATH += .
