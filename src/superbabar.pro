@@ -26,6 +26,26 @@ win32 {
 }
 
 unix {
+
+    contains ( CROSS_COMPILE, yes ) {
+
+        LIBS += -L../lib/SFMLwin \
+                -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
+                -L../lib/SDL/lib -lSDL -lSDL_image -lSDL_ttf\
+                -lglu32 -lopengl32
+
+        INCLUDEPATH += .
+
+        DEPENDPATH += . SFML
+
+        DEFINES += SFML_DYNAMIC
+
+        QMAKE_CC = i586-mingw32msvc-gcc
+        QMAKE_CXX = i586-mingw32msvc-g++
+        QMAKE_LINK = i586-mingw32msvc-g++
+
+    } else {
+
 	QT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
 	X64 = $$find(QT_INSTALL_PREFIX, 64)
 	isEmpty(X64) {		
@@ -43,14 +63,14 @@ unix {
 	-lSDL_gfx \
 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 	
-	
+    }
  
-	DESTDIR = ./
-	OBJECTS_DIR = release/.obj
-	MOC_DIR = release/.moc
-	RCC_DIR = release/.rcc
-	UI_DIR = release/.ui
-	
+    DESTDIR = ./
+    OBJECTS_DIR = release/.obj
+    MOC_DIR = release/.moc
+    RCC_DIR = release/.rcc
+    UI_DIR = release/.ui
+
 }
 
 INCLUDEPATH += ../lib/include
