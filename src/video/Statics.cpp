@@ -11,7 +11,7 @@
 #include <string>
 
 #include "util/debug.h"
-#include "video/Surface.h"
+#include "video/SurfaceBig.h"
 #include <video/Statics.h>
 
 Static::Static()
@@ -20,7 +20,7 @@ Static::Static()
     m_image = NULL;
 }
 
-Static::Static(std::string dir_image, Rect pos): m_image(new Surface(dir_image))
+Static::Static(std::string dir_image, Rect pos): m_image(new SurfaceBig(dir_image))
 {
 	PRINT_CONSTR(3, "Construction du Static %s", dir_image.c_str())
     m_pos = pos;
