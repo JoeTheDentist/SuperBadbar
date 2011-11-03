@@ -22,8 +22,8 @@ Menu::Menu(Menu *parent) :
 	m_leave_menu(false)
 
 {
-	m_pos_menu.x = 200;
-	m_pos_menu.y = 300;
+        m_pos_menu.x = 200;
+        m_pos_menu.y = 300;
 	gKeyboard->disable_all_keys();
 	gKeyboard->resetKeysInQueue();
 	gKeyboard->reset_menu_keys();

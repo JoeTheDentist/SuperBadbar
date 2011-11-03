@@ -29,7 +29,7 @@ MainTitle::~MainTitle()
 
 void MainTitle::update()
 {
-	m_offset -= (m_offset / 3) + 1;
+        m_offset -= (m_offset / 3) + 1;
 	if (m_offset <= 0)
 		m_offset = 0;
 	else {
