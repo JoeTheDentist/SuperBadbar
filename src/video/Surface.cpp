@@ -11,7 +11,6 @@
 #include <iostream>
 #include <cmath>
 
-#include "../lib/SDL/include/SDL/SDL.h"
 
 #include "Surface.h"
 #include "video/PicturesContainer.h"
