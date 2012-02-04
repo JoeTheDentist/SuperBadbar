@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "util/utils.h"
+#include <video/Font.h>
 #include <video/PicturesContainer.h>
 
 SurfaceText::SurfaceText()

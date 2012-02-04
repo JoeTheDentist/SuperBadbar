@@ -25,6 +25,7 @@
 
 
 Talks::Talks():
+	m_font(POSH - 10, 0, 0, 0),
 	m_cell_letters()
 {
 }
@@ -66,6 +67,7 @@ void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
 		m_pos_text[i].y = POSY + i * POSH;
 		m_pos_text[i].w = 0;
 	}
+	m_font.set_color(TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
 	m_active = false;
 	#endif
 }

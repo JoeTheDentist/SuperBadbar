@@ -26,6 +26,7 @@
 #define DISPLAY_SPEED 20
 
 
+#include "video/Font.h"
 #include "video/SurfaceText.h"
 #include "video/SpecialLetter.h"
 #include "video/Surface.h"
@@ -61,6 +62,7 @@ private:
 	Rect m_pos_text[LINES_NUMBER]; // les positions des lignes de text
 	int m_curr_line; // le numero de ligne courante (par rapport au move_up)
 	unsigned int m_string_curs; // le curseur dans m_text
+	Font m_font; // police utilisee pour l'affichage
 	Camera *m_camera; // wtf
 	bool m_active; // vrai si le talks doit etre affiche
 	std::string m_text; // la replique courante
