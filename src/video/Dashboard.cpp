@@ -19,7 +19,6 @@
 #include "util/utils.h"
 #include <video/AnimText.h>
 #include "video/Camera.h"
-#include <video/Font.h>
 #include <video/LifeBarPossessor.h>
 #include <video/PicturesContainer.h>
 #include "video/Surface.h"

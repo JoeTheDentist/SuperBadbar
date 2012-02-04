@@ -189,7 +189,6 @@ SOURCES += \
     video/KeyMapSurfaceUnif.cpp \
     video/KeyMapSurfaceText.cpp \
     video/GraphicEngine.cpp \
-    video/Font.cpp \
     video/Dashboard.cpp \
     video/Camera.cpp \
     video/BigImage.cpp \
@@ -335,7 +334,6 @@ HEADERS  += \
     video/KeyMapSurfaceUnif.h \
     video/KeyMapSurfaceText.h \
     video/GraphicEngine.h \
-    video/Font.h \
     video/Displayable.h \
     video/Dashboard.h \
     video/Camera.h \
