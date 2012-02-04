@@ -36,14 +36,7 @@ class SurfaceText: public Surface {
 	*	@param font_name Le nom de la police (qui sera charge dans le repertoire des polices)
 	*/
 	SurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string font_name = "defaultfont.ttf");
-
-	/**
-	*	@brief Constructeur
-	*	@param text Le texte a afficher
-	*	@param font La police a utiliser pour afficher le texte
-	*/
-	SurfaceText(std::string text, Font &font);
-
+	
 	/**
 	*	@brief Destructeur
 	*/

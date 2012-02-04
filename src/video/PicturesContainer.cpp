@@ -8,12 +8,7 @@
  */
 
 #include "util/utils.h"
-#include "../lib/SDL/include/SDL/SDL.h"
-#include "../lib/SDL/include/SDL/SDL_image.h"
-#include "../lib/SDL/include/SDL/SDL_ttf.h"
-#ifndef DESACTIVATE_GFX
-	#include "../lib/SDL/include/SDL/SDL_rotozoom.h"
-#endif
+
 
 #include "PicturesContainer.h"
 #include "util/utils.h"

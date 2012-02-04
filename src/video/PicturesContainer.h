@@ -14,7 +14,6 @@
 #include <list>
 #include <string>
 
-#include "../lib/SDL/include/SDL/SDL.h"
 #include <video/KeyMapSurfaceText.h>
 #include <video/KeyMapSurfaceUnif.h>
 #include <SFML/Graphics.hpp>

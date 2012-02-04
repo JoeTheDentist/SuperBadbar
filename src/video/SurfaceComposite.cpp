@@ -17,7 +17,6 @@
 SurfaceComposite::SurfaceComposite(Surface *center)
 {
 	addChild(center);
-	m_surface = NULL;
 }
 
 

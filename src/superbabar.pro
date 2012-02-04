@@ -14,7 +14,6 @@ TEMPLATE = app
 win32 {
         LIBS += -L../lib/SFMLwin \
                 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
-                -L../lib/SDL/lib -lSDL -lSDL_image -lSDL_ttf\
                 -lglu32 -lopengl32
 
         INCLUDEPATH += .
@@ -31,7 +30,6 @@ unix {
 
         LIBS += -L../lib/SFMLwin \
                 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
-                -L../lib/SDL/lib -lSDL -lSDL_image -lSDL_ttf\
                 -lglu32 -lopengl32
 
         INCLUDEPATH += .
@@ -58,9 +56,7 @@ unix {
 	QMAKE_CFLAGS += -g
 	QMAKE_CXXFLAGS += -g
 
-        LIBS += -L"../lib/SDL/lib" -lSDL -lSDL_image -lSDL_ttf \
-        -L"../lib/gcc"\
-	-lSDL_gfx \
+        LIBS +=  -L"../lib/gcc"\
 	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 	
     }

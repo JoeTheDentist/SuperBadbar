@@ -19,7 +19,6 @@
 #include <SFML/Graphics.hpp>
 
 class PicturesContainer;
-struct SDL_Surface;
 class SurfaceCompositeItem;
 
 
@@ -34,14 +33,12 @@ protected:
 	sf::Drawable *m_drawable;
 	sf::Sprite *m_sprite;
 	static PicturesContainer *m_pictures_container;
-	SDL_Surface *m_surface; // a virer
 
 public:
 
 	Surface():
 		m_drawable(NULL),	
-		m_sprite(NULL),
-		m_surface(NULL)
+		m_sprite(NULL)
 		{}
 
 	/**
@@ -60,15 +57,10 @@ public:
 	*	@return L'image SFML
 	*/
 	sf::Drawable *getSurface();
-	SDL_Surface *get_surface();
 
 	virtual void setSurface(sf::Drawable *surface) {m_drawable = surface;}
 
-	/**
-	*	@brief Duplique la SDL surface contenue et la renvoie
-	*	@return La copie
-	*/
-	SDL_Surface *get_copy_surface();
+
 	/**
 	*	@brief Initialise le PicturesContainer des Surfaces
 	*	@warning A appeler seulement Ã  l'initialisation du moteur graphic
@@ -113,9 +105,11 @@ public:
 	*	@param background La surface sur laquelle on blit l'image
 	*	@param pos La position de blit par rapport au background (x et y comptent)
 	*	@param rel_pos La taille du rectangle copie (h et w comptent)
+	*	@todo A IMPLEMENTER
 	*/
-	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
 	void blit_surface(Surface *background, Rect pos);
+	void blit_surface(Surface *background, Rect pos, Rect rel_pos);
+
 
 };
 

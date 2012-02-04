@@ -25,11 +25,6 @@ SurfaceText::SurfaceText(std::string text, int size, int r, int g, int b, std::s
 	init(text, size, r, g, b, font_name);
 }
 
-SurfaceText::SurfaceText(std::string text, Font &font)
-{
-        m_surface = 0; // TTF_RenderText_Blended(font.get_TTF_font(), text.c_str(), font.get_color());
-}
-
 SurfaceText::~SurfaceText()
 {
 }

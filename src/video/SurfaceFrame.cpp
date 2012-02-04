@@ -10,7 +10,6 @@
 
 #include "SurfaceFrame.h"
 
-#include "../lib/SDL/include/SDL/SDL.h"
 
 #include "util/debug.h"
 #include <util/Rect.h>
@@ -38,5 +37,4 @@ SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
 
 SurfaceFrame::~SurfaceFrame()
 {
-	SDL_FreeSurface(m_surface);
 }

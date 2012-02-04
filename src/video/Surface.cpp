@@ -21,7 +21,6 @@ PicturesContainer *Surface::m_pictures_container = NULL;
 
 Surface::Surface(std::string filename)
 {
-	m_surface = NULL;
 	m_drawable = NULL;
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
 	m_sprite = m_pictures_container->load_picture(filename);
@@ -40,16 +39,6 @@ Surface::~Surface()
 sf::Drawable *Surface::getSurface()
 {
 	return m_drawable;
-}
-
-SDL_Surface * Surface::get_surface()
-{
-	return NULL;
-}
-
-SDL_Surface *Surface::get_copy_surface()
-{
-   return NULL;
 }
 
 void Surface::set_pictures_container(PicturesContainer *picturesContainer)
@@ -77,6 +66,16 @@ void Surface::set_h(int h)
 {
 }
 
+
+void Surface::blit_surface(Surface *background, Rect pos)
+{
+//~ 	SDL_Rect *sdl_pos = new SDL_Rect;
+//~ 	sdl_pos->x = pos.x;
+//~ 	sdl_pos->y = pos.y;
+//~ 	SDL_BlitSurface(this->get_surface(), NULL, background->get_surface(), sdl_pos);
+//~ 	delete sdl_pos;
+}
+
 void Surface::blit_surface(Surface *background, Rect pos, Rect rel_pos)
 {
 //~ 	SDL_Rect *sdl_pos = new SDL_Rect;
@@ -92,11 +91,3 @@ void Surface::blit_surface(Surface *background, Rect pos, Rect rel_pos)
 //~ 	delete sdl_rel_pos;
 }
 
-void Surface::blit_surface(Surface *background, Rect pos)
-{
-//~ 	SDL_Rect *sdl_pos = new SDL_Rect;
-//~ 	sdl_pos->x = pos.x;
-//~ 	sdl_pos->y = pos.y;
-//~ 	SDL_BlitSurface(this->get_surface(), NULL, background->get_surface(), sdl_pos);
-//~ 	delete sdl_pos;
-}

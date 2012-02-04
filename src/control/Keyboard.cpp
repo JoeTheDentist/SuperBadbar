@@ -8,7 +8,6 @@
  */
 
 #include <fstream>
-#include "../lib/SDL/include/SDL/SDL.h"
 
 #include "Keyboard.h"
 #include <control/EventKeyboard.h>

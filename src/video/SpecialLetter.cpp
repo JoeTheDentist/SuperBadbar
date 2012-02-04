@@ -9,8 +9,6 @@
 
 #include "SpecialLetter.h"
 
-#include "../lib/SDL/include/SDL/SDL.h"
-#include "../lib/SDL/include/SDL/SDL_ttf.h"
 
 #include "util/debug.h"
 #include <video/Font.h>
@@ -32,7 +30,6 @@ SpecialLetter::SpecialLetter(char c, int size, int r, int g, int b, std::string 
 
 SpecialLetter::~SpecialLetter()
 {
-	// ON NE DELETE PAS, C'EST PICTURESCONTAINER QUI GERE LA MEMOIRE SDL
 }
 
 void SpecialLetter::update()
