@@ -1,9 +1,0 @@
--AI, etat d'arret
--Sang des monstres
--Ecureil
--Moutons ?
--2 niveaux pour anims
--Icone du jeu
-
-P-e liste:
--explosion vire monstres
