@@ -346,25 +346,6 @@ HEADERS  += \
     video/Anim.h
 
 
-mypath = "bloup"
-include(bloup/bloup.pri)
-			
-FORMS +=
-
-OTHER_FILES += \
-    soil/stbi_DDS_aug_c.h.gch \
-    soil/stbi_DDS_aug.h.gch \
-    soil/stb_image_aug.h.gch \
-    soil/SOIL.h.gch \
-    soil/image_helper.h.gch \
-    soil/image_DXT.h.gch
-
-
-
-
-
-
-
 
 
 
