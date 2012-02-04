@@ -344,10 +344,7 @@ HEADERS  += \
     video/Anim.h
 
 
-mypath = "bloup"
-include(bloup/bloup.pri)
-			
-FORMS +=
+
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \
