@@ -23,7 +23,7 @@ class Projectile;
  */
 class ElmarMachineGun : public Weapon
 {
-    public:
+public:
 	/**
 	 * 	@brief Constructeur
 	*/

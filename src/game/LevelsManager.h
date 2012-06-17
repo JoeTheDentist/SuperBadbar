@@ -23,29 +23,29 @@ private:
 	int m_level;
 	Game *m_game;
 public:
-        /**
-         *  @brief Constructeur
-         */
+	/**
+		 *  @brief Constructeur
+		 */
 	LevelsManager();
 
-        /**
-         *  @brief Destructeur
-         */
+	/**
+		 *  @brief Destructeur
+		 */
 	~LevelsManager();
 
-        /**
-         *  @brief Jeu
-         */
+	/**
+		 *  @brief Jeu
+		 */
 	void play();
 
-        /**
-         *  @brief Active gameover
-         */
+	/**
+		 *  @brief Active gameover
+		 */
 	void play_defeat();
 
-        /**
-         *  @brief Fin
-         */
+	/**
+		 *  @brief Fin
+		 */
 	void the_end();
 };
 

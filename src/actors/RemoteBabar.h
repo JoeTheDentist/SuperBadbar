@@ -4,9 +4,9 @@
 #include "Babar.h"
 
 class Remote_Babar : public Babar {
-    public :
+public :
 
-    private :
+private :
 
 };
 

@@ -16,25 +16,25 @@
 
 class SfmlKeyConvertor {
 public:
-        /**
-         *  @brief Destructeur
-         */
+	/**
+		 *  @brief Destructeur
+		 */
 	virtual ~SfmlKeyConvertor() = 0;
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         *  @param
-         *  @return
-         */
+	/**
+		 *  TOCOMMENT
+		 *  @brief
+		 *  @param
+		 *  @return
+		 */
 	static std::string sfmlkeyToStdstring(sf::Key::Code key);
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         *  @param
-         *  @return
-         */
+	/**
+		 *  TOCOMMENT
+		 *  @brief
+		 *  @param
+		 *  @return
+		 */
 	static sf::Key::Code stdstringToSfmlkey(std::string str);
 };
 

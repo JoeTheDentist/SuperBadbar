@@ -15,17 +15,17 @@
 
 /* Differents ets du joueur */
 enum state_player {
-    STATIC, WALK, JUMP, CROUCH, CROUCH_WALKING
+	STATIC, WALK, JUMP, CROUCH, CROUCH_WALKING
 };
 
 /* Diffents etats des monstres */
 enum state_m {
-    WALKING, WAIT, DEATH
+	WALKING, WAIT, DEATH
 };
 
 
 enum direction {
-    LEFT, RIGHT, UP, DOWN, NOPE
+	LEFT, RIGHT, UP, DOWN, NOPE
 };
 
 
@@ -59,14 +59,14 @@ public:
 	/**
 	 *	@brief Destructeur
 	*/
-    virtual ~Actor();
+	virtual ~Actor();
 
 	/**
 	 *	@brief Met a jour la position du sprite
 	 *	@param StaticData Donnees du jeu
 	 *	@param CollisionsManager Gestionnaire de collisions
 	*/
-    void update_pos();
+	void update_pos();
 
 	/**
 	 *	@brief Accesseur
@@ -123,9 +123,9 @@ public:
 	*/
 	virtual void set_pos(int x, int y);
 
-        /**
-         *  TOCOMMENT
-         */
+	/**
+		 *  TOCOMMENT
+		 */
 	virtual void do_stay_in_level();
 
 };

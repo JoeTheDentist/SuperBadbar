@@ -23,12 +23,12 @@ public:
 	/**
 	 *	@brief Constructeur
 	*/
-    Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
+	Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
 
 	/**
 	 * 	@brief Destructeur
 	*/
-     ~Rocket();
+	~Rocket();
 
 
 	/**

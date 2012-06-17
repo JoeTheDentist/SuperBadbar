@@ -27,65 +27,65 @@
  *  tout en evitant les projectiles (todo, les projectiles ennemis)
  */
 class AI {
-    private:
-        Rect * m_pos;
+private:
+	Rect * m_pos;
 
-        /**
-         *  @brief Evaluation de la direction consideree
-         *  @param d : direction a prendre en compte
-         *  @return poids (sens AI, choix) de le direction
-         */
-        double eval(direction d);
+	/**
+		 *  @brief Evaluation de la direction consideree
+		 *  @param d : direction a prendre en compte
+		 *  @return poids (sens AI, choix) de le direction
+		 */
+	double eval(direction d);
 
-        /**
-         *  @brief Verifie s'il y a collision
-         *  @param A : Rectange 1
-         *  @param B : Rectangle 2
-         *  @return s'il y a collision ou non
-         */
-        bool check_collision(Rect A, Rect B);
+	/**
+		 *  @brief Verifie s'il y a collision
+		 *  @param A : Rectange 1
+		 *  @param B : Rectangle 2
+		 *  @return s'il y a collision ou non
+		 */
+	bool check_collision(Rect A, Rect B);
 
-        /**
-         *  @brief Evaluation en haut
-         *  @return poids (sens AI, choix) de le direction
-         */
-        double eval_up();
+	/**
+		 *  @brief Evaluation en haut
+		 *  @return poids (sens AI, choix) de le direction
+		 */
+	double eval_up();
 
-        /**
-         *  @brief Evaluation en bas
-         *  @return poids (sens AI, choix) de le direction
-         */
-        double eval_down();
+	/**
+		 *  @brief Evaluation en bas
+		 *  @return poids (sens AI, choix) de le direction
+		 */
+	double eval_down();
 
-        /**
-         *  @brief Evaluation a gauche
-         *  @return poids (sens AI, choix) de le direction
-         */
-        double eval_left();
+	/**
+		 *  @brief Evaluation a gauche
+		 *  @return poids (sens AI, choix) de le direction
+		 */
+	double eval_left();
 
-        /**
-         *  @brief Evaluation a droite
-         *  @return poids (sens AI, choix) de le direction
-         */
-        double eval_right();
+	/**
+		 *  @brief Evaluation a droite
+		 *  @return poids (sens AI, choix) de le direction
+		 */
+	double eval_right();
 
-    public:
-        /**
-         *  @brief Construction
-         *  @param Position du monstre qui a l'IA
-         */
-        AI(Rect * pos);
+public:
+	/**
+		 *  @brief Construction
+		 *  @param Position du monstre qui a l'IA
+		 */
+	AI(Rect * pos);
 
-        /**
-         *  @brief Destructeur
-         */
-        ~AI();
+	/**
+		 *  @brief Destructeur
+		 */
+	~AI();
 
-        /**
-         * @brief donne la direction a suivre
-         * @return direction
-         */
-        direction dir();
+	/**
+		 * @brief donne la direction a suivre
+		 * @return direction
+		 */
+	direction dir();
 };
 
 #endif // AI_H_INCLUDED

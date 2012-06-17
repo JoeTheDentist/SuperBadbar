@@ -6,23 +6,23 @@
 #include "Projectile.h"
 
 class Explosion : public Projectile {
-    private:
+private:
 
-    public:
-        /**
-         *  @brief Constructeur
-         */
-        Explosion(Rect pos, direction h, unsigned int damage);
+public:
+	/**
+	 *  @brief Constructeur
+	 */
+	Explosion(Rect pos, direction h, unsigned int damage);
 
-        /**
-         *  @brief Destructeur
-         */
-        ~Explosion();
+	/**
+	 *  @brief Destructeur
+	 */
+	~Explosion();
 
-        /**
-         *  @brief Mise a jour de l'etat
-         */
-        void update_state();
+	/**
+	 *  @brief Mise a jour de l'etat
+	 */
+	void update_state();
 };
 
 #endif // EXPLOSION_H_INCLUDED

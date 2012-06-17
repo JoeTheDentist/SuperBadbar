@@ -31,17 +31,17 @@ public:
 	 *	@param name Le nom du monstre
 	 *	@param posx Position initiale
 	 *	@param posy Position initiale
-	*/
-
+	 */
 	ChargingMonster(std::string name, int posx, int posy);
+
 	/**
-	 * 	@brief Constructeur
+	 *	@brief Constructeur
 	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
-	*/
+	 */
 	ChargingMonster(Analyser *analyserLevel);
 
 	/**
-	 * 	@brief Destructeur
+	 *	@brief Destructeur
 	 */
 	~ChargingMonster();
 
@@ -56,12 +56,6 @@ public:
 	 *	Le monstre avance par défaut en direction de Babar
 	 */
 	void update_speed_ai();
-
-
 };
 
-
-
 #endif
-
-

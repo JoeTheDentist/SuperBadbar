@@ -47,26 +47,26 @@ public:
 	*/
 	virtual void update_speed_ai();
 
-        /**
-         *  @brief Mise a jour
-         */
+	/**
+		 *  @brief Mise a jour
+		 */
 	virtual void update();
 
-        /**
-         *  @brief Niveau de la barre de vie
-         *  @return etat de la barre de vie
-         */
+	/**
+		 *  @brief Niveau de la barre de vie
+		 *  @return etat de la barre de vie
+		 */
 	virtual double life_bar_status() { return double(m_life) / double(m_life_max);}
 
-        /**
-         *  @brief Mort
-         */
+	/**
+		 *  @brief Mort
+		 */
 	virtual void kill();
 
 private:
-        /**
-         *  @brief Initialisation du boss
-         */
+	/**
+		 *  @brief Initialisation du boss
+		 */
 	void initBoss();
 
 };

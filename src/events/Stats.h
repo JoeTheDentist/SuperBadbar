@@ -11,36 +11,36 @@
  */
 
 class Stats {
-    private:
-        int m_date;             /* temps depuis execution, en nombre de cycles */
-        int m_date_last_kill;   /* date de dernier kill */
-        int m_kills;            /* kills successifs, limite temps */
-        int m_frenzy;           /* kills successifs, sans se faire toucher */
-        bool m_msg_sent;        /* si un message vient d'etre emi */
-        Sprite * m_sprite;      /* pour affichage */
+private:
+	int m_date;             /* temps depuis execution, en nombre de cycles */
+	int m_date_last_kill;   /* date de dernier kill */
+	int m_kills;            /* kills successifs, limite temps */
+	int m_frenzy;           /* kills successifs, sans se faire toucher */
+	bool m_msg_sent;        /* si un message vient d'etre emi */
+	Sprite * m_sprite;      /* pour affichage */
 
-        /**
-         * Fonction d'affichage des messages
-         */
-        void alert();
-    public:
-        Stats();
-        ~Stats();
+	/**
+		 * Fonction d'affichage des messages
+		 */
+	void alert();
+public:
+	Stats();
+	~Stats();
 
-        /**
-         * Mise a jour : compte un cycle, raz si besoin
-         */
-        void update();
+	/**
+		 * Mise a jour : compte un cycle, raz si besoin
+		 */
+	void update();
 
-        /**
-         * Si Babar se fait toucher
-         */
-        void hit();
+	/**
+		 * Si Babar se fait toucher
+		 */
+	void hit();
 
-        /**
-         * Si Babar tue un monstre
-         */
-        void kill();
+	/**
+		 * Si Babar tue un monstre
+		 */
+	void kill();
 };
 
 #endif // STATS_H_INCLUDED
