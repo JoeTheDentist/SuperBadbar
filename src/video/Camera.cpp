@@ -74,7 +74,7 @@ void Camera::init_camera(Actor *target)
 void Camera::set_target(Actor *target)
 {
     Rect pos_temp = target->position();
-    SDL_Rect position_target;
+	Rect position_target;
     position_target.x = pos_temp.x;
     position_target.y = pos_temp.y;
     position_target.h = pos_temp.h;
@@ -105,7 +105,7 @@ void Camera::update_pos()
 {
     update_decalage();
     Rect pos_temp = m_target->position();
-    SDL_Rect position_target;
+	Rect position_target;
     position_target.x = pos_temp.x;
     position_target.y = pos_temp.y;
     position_target.h = pos_temp.h;

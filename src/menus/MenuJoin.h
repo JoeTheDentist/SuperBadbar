@@ -2,10 +2,9 @@
 #define _MENUJOIN_H
 
 #include "Menu.h"
-#include "network/NetworkEntityMenu.h"
 
-class MenuJoin : public Menu, public NetworkEntityMenu
-{   
+class MenuJoin : public Menu
+{
 public:
     /**
      *  @brief Constructeur

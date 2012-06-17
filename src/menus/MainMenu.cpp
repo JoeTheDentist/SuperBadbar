@@ -22,7 +22,7 @@ MainMenu::MainMenu() :
 {
 	m_menu_actions.add_action_classic("Single Player", 1);
 	m_menu_actions.add_action_classic("Multi Player", 2);
-//~ 	m_menu_actions.add_action_classic("Fast game", 3);
+	//~ 	m_menu_actions.add_action_classic("Fast game", 3);
 	m_menu_actions.add_action_classic("Options", 4);
 	m_menu_actions.add_action_classic("Leave", 5);
 	gSound->load_music("main_menu.mp3");
@@ -56,27 +56,27 @@ void MainMenu::loop()
 void MainMenu::treat_choice(int choice)
 {
 	switch(choice) {
-        case 1: // nouvelle partie => pas de reseau
-                delete gNetwork;
-                gNetwork = NULL;
-		launchGame();
-		gSound->load_music("main_menu.mp3"); // haha !
-		gSound->play_music();
-		break;
-	case 2: // menu multi joueurs
-		launchMulti();
-		break;
-	case 3: // menu fast game
-		launchFastGame();
-		break;
-	case 4: // options
-		launchOptions();
-		break;
-	case 5: // quitter le jeu
-		set_leave_game_true();
-		break;
-	default:
-		break;
+		case 1: // nouvelle partie => pas de reseau
+			//delete gNetwork;
+			//gNetwork = NULL;
+			launchGame();
+			gSound->load_music("main_menu.mp3"); // haha !
+			gSound->play_music();
+			break;
+		case 2: // menu multi joueurs
+			launchMulti();
+			break;
+		case 3: // menu fast game
+			launchFastGame();
+			break;
+		case 4: // options
+			launchOptions();
+			break;
+		case 5: // quitter le jeu
+			set_leave_game_true();
+			break;
+		default:
+			break;
 	}
 }
 
@@ -89,7 +89,7 @@ void MainMenu::launchGame()
 
 void MainMenu::launchMulti()
 {
-        set_son(new MenuMulti(this));
+	set_son(new MenuMulti(this));
 }
 
 void MainMenu::launchFastGame()

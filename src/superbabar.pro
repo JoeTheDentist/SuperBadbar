@@ -4,24 +4,21 @@
 #
 #-------------------------------------------------
 
-QT += network
-QT -= qui
-#QT -= core
+QT -= network
+QT -= gui
+QT -= core
 
 TARGET = superbabar
 TEMPLATE = app
 
 win32 {
-        LIBS += -L../lib/SFMLwin \
+		LIBS = -L../lib/SFMLwin \
                 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
                 -lglu32 -lopengl32
 
-        INCLUDEPATH += .
-		
-        DEPENDPATH += . SFML
-
-        DEFINES += SFML_DYNAMIC
-
+		INCLUDEPATH = .
+		DEPENDPATH = . SFML
+		DEFINES = SFML_DYNAMIC
 }
 
 unix {
@@ -134,13 +131,6 @@ SOURCES += \
     menus/ListMenuActions.cpp \
     menus/KeyconfigMenu.cpp \
     menus/ChoseLevelMenu.cpp \
-    network/NetworkServer.cpp \
-    network/NetworkManager.cpp \
-    network/NetworkEntityMenu.cpp \
-    network/NetworkEntityActor.cpp \
-    network/NetworkEntity.cpp \
-    network/NetworkCommunicator.cpp \
-    network/NetworkClient.cpp \
     physic/MovingPlatform.cpp \
     physic/FallingPlatform.cpp \
     physic/CollisionsMatrix.cpp \
@@ -257,19 +247,6 @@ HEADERS  += \
     menus/ListMenuActions.h \
     menus/KeyconfigMenu.h \
     menus/ChoseLevelMenu.h \
-    network/NetworkTypes.h \
-    network/NetworkServer.h \
-    network/NetworkMessageResponse.h \
-    network/NetworkMessageError.h \
-    network/NetworkMessageConnexion.h \
-    network/NetworkMessageAskFor.h \
-    network/NetworkMessageAd.h \
-    network/NetworkManager.h \
-    network/NetworkEntityMenu.h \
-    network/NetworkEntityActor.h \
-    network/NetworkEntity.h \
-    network/NetworkCommunicator.h \
-    network/NetworkClient.h \
     param/param_talks.h \
     param/param_menus.h \
     param/param_dashboard.h \
@@ -353,52 +330,3 @@ OTHER_FILES += \
     soil/SOIL.h.gch \
     soil/image_helper.h.gch \
     soil/image_DXT.h.gch
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

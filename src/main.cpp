@@ -18,21 +18,19 @@
 #include "video/Talks.h"
 
 #ifdef WIN32
-    #undef main
+#undef main
 #endif
-
-#include <QApplication> //TEMP
 
 int main(int argc, char *argv[])
 {
 
-        PRINT_TRACE(1,"Lancement du jeu");
-        GameInitializer::init_game();
+	PRINT_TRACE(1,"Lancement du jeu");
+	GameInitializer::init_game();
 
 	MainMenu *menu = new MainMenu();
-	delete menu;	
+	delete menu;
 	
-        GameInitializer::close_game();
-        PRINT_TRACE(1, "Fermeture du jeu");
-        return 0;
+	GameInitializer::close_game();
+	PRINT_TRACE(1, "Fermeture du jeu");
+	return 0;
 }

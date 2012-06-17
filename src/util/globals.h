@@ -38,7 +38,6 @@ class NetworkManager;
 #include "game/GameEngine.h"
 #include "sets/AnimatedSetsManager.h"
 #include "players/PlayersManager.h"
-#include "network/NetworkManager.h"
 #include "util/Constants.h"
 
 #define BOX_SIZE 5
@@ -62,7 +61,6 @@ extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
 extern PlayersManager * gPlayers;
 extern KeyboardConfig *gKeyboardConfig;
-extern NetworkManager *gNetwork;
 
 double dist(Rect A, Rect B);
 
