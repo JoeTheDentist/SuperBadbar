@@ -8,7 +8,7 @@ QT -= network
 QT -= gui
 QT -= core
 
-TARGET = superbabar
+TARGET = ../superbabar
 TEMPLATE = app
 
 win32 {
@@ -67,10 +67,6 @@ unix {
 }
 
 INCLUDEPATH += ../lib/include
-INCLUDEPATH += "../lib/include/"
-
-
-
 
 SOURCES += \
     actors/WalkingMonster.cpp \
