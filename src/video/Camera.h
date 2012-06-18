@@ -25,8 +25,6 @@
 #ifndef _CAMERA_
 #define _CAMERA_
 
-
-#include <SDL/SDL.h>
 #include <SFML/Window.hpp>
 
 #include "util/globals.h"
@@ -55,7 +53,7 @@ private:
 	Rect m_direction; 	/* direction de la camera (les composantes sont a valeur dans {-1, 1}*/
 	Rect m_decalage; 	/* decalage du cadre (en fonction de la direction regardée) */
 	Actor *m_target;		/* sprite sur lequel pointe la camera */
-	SDL_Surface *m_screen;
+	Surface *m_screen;
 	Surface *m_green_coll;
 	Surface *m_red_coll;
 	bool m_initialized;
@@ -152,7 +150,7 @@ public:
 	*	@brief Accesseur
 	*	@return La surface SDL de l'ecran
 	*/
-	SDL_Surface *sdl_screen() { return m_screen; }
+	Surface *sdl_screen() { return m_screen; }
 	
 	sf::Window *getWindow() const {return m_window;}
 

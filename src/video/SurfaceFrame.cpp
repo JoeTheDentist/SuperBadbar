@@ -7,9 +7,7 @@
  *
  */
 
-
 #include "SurfaceFrame.h"
-
 
 #include "util/debug.h"
 #include <util/Rect.h>
