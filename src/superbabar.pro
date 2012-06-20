@@ -47,7 +47,8 @@ unix {
 	  	LIBS += -L"../lib/gcc/x32" 
 		QMAKE_LFLAGS_RPATH += -L"../lib/gcc/x32" 
 	} else {
-
+                LIBS += -L../lib/gcc/x64 -L/usr/lib64 -lGL
+                QMAKE_LFLAGS_RPATH += -L../lib/gcc/x64
 	}
 	QMAKE_LFLAGS += -g 	
 	QMAKE_CFLAGS += -g

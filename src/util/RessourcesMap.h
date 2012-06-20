@@ -58,7 +58,7 @@ template<class K, class T>
 T *RessourcesMap<K, T>::getOrCreate(K key)
 {
 	typename std::map<K, T*>::iterator it = m_map.find(key);
-	T *t = NULL;
+        T *t = 0;
 	if (it == m_map.end()) {
 		t = create(key);
 		m_map.insert(typename std::pair<K, T*>(key, t));
