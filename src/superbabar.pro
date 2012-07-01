@@ -96,6 +96,15 @@ SOURCES += \
     events/Triggerable.cpp \
     events/Trigger.cpp \
     events/Stats.cpp \
+	controllers/ActionController.cpp \
+	controllers/NetworkActionController.cpp \
+	controllers/KeyboardActionController.cpp \
+	controllers/MenuKeyboardActionController.cpp \
+	controllers/PlayerKeyboardActionController.cpp \
+	controllers/NetworkMenuActionController.cpp \
+	controllers/NetworkPlayerActionController.cpp \
+	controllers/NetworkRemotePlayerActionController.cpp \
+	controllers/NetworkLocalPlayerActionController.cpp \
     events/EventsManager.cpp \
     events/Event.cpp \
     game/StaticData.cpp \
@@ -180,19 +189,9 @@ SOURCES += \
     video/Camera.cpp \
     video/BigImage.cpp \
     video/AnimText.cpp \
-    video/AnimTable.cpp \
-    video/AnimPic.cpp \
-    main.cpp \
-    controllers/ActionController.cpp \
-    controllers/NetworkActionController.cpp \
-	controllers/KeyboardActionController.cpp \
-    controllers/MenuKeyboardActionController.cpp \
-    controllers/PlayerKeyboardActionController.cpp \
-    controllers/NetworkMenuActionController.cpp \
-    controllers/NetworkPlayerActionController.cpp \
-    controllers/NetworkRemotePlayerActionController.cpp \
-    controllers/NetworkLocalPlayerActionController.cpp
-
+	video/AnimTable.cpp \
+	video/AnimPic.cpp \
+	main.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -218,6 +217,15 @@ HEADERS  += \
     control/Keyboard.h \
     control/InputString.h \
     control/EventKeyboard.h \
+	controllers/ActionController.h \
+	controllers/NetworkActionController.h \
+	controllers/KeyboardActionController.h \
+	controllers/MenuKeyboardActionController.h \
+	controllers/PlayerKeyboardActionController.h \
+	controllers/NetworkMenuActionController.h \
+	controllers/NetworkPlayerActionController.h \
+	controllers/NetworkRemotePlayerActionController.h \
+	controllers/NetworkLocalPlayerActionController.h \
     events/Triggerable.h \
     events/Trigger.h \
     events/Stats.h \
@@ -324,19 +332,7 @@ HEADERS  += \
     video/AnimText.h \
     video/AnimTable.h \
     video/AnimPic.h \
-    video/Anim.h \
-    controllers/ActionController.h \
-    controllers/NetworkActionController.h \
-	controllers/KeyboardActionController.h \
-    controllers/MenuKeyboardActionController.h \
-    controllers/PlayerKeyboardActionController.h \
-    controllers/NetworkMenuActionController.h \
-    controllers/NetworkPlayerActionController.h \
-    controllers/NetworkRemotePlayerActionController.h \
-    controllers/NetworkLocalPlayerActionController.h
-
-
-
+	video/Anim.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \
