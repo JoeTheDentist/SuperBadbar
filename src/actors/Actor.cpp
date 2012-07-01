@@ -7,10 +7,7 @@
  *
  */
 
-
-
 #include "Actor.h"
-
 
 #include "game/Game.h"
 #include "game/StaticData.h"
@@ -34,11 +31,11 @@ Actor::Actor()
 
 Actor::~Actor()
 {
-	PRINT_CONSTR(3, "destruction de actor")
+	PRINT_CONSTR(3, "destruction de actor");
 	if ( m_sprite ) {
-        m_sprite->set_to_delete();
-        m_sprite = NULL;
-    }
+		m_sprite->set_to_delete();
+		m_sprite = NULL;
+	}
 }
 
 void Actor::update_pos()
@@ -64,7 +61,7 @@ Rect Actor::damage_box() const
 
 int Actor::phase() const
 {
-    return m_phase;
+	return m_phase;
 }
 
 int Actor::direction_h() const
@@ -77,7 +74,7 @@ int Actor::direction_h() const
 
 direction Actor::dir() const
 {
-    return m_dir;
+	return m_dir;
 }
 
 Rect Actor::center() const

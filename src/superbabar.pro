@@ -182,7 +182,16 @@ SOURCES += \
     video/AnimText.cpp \
     video/AnimTable.cpp \
     video/AnimPic.cpp \
-    main.cpp
+    main.cpp \
+    controllers/ActionController.cpp \
+    controllers/NetworkActionController.cpp \
+	controllers/KeyboardActionController.cpp \
+    controllers/MenuKeyboardActionController.cpp \
+    controllers/PlayerKeyboardActionController.cpp \
+    controllers/NetworkMenuActionController.cpp \
+    controllers/NetworkPlayerActionController.cpp \
+    controllers/NetworkRemotePlayerActionController.cpp \
+    controllers/NetworkLocalPlayerActionController.cpp
 
 
 HEADERS  += \
@@ -315,7 +324,16 @@ HEADERS  += \
     video/AnimText.h \
     video/AnimTable.h \
     video/AnimPic.h \
-    video/Anim.h
+    video/Anim.h \
+    controllers/ActionController.h \
+    controllers/NetworkActionController.h \
+	controllers/KeyboardActionController.h \
+    controllers/MenuKeyboardActionController.h \
+    controllers/PlayerKeyboardActionController.h \
+    controllers/NetworkMenuActionController.h \
+    controllers/NetworkPlayerActionController.h \
+    controllers/NetworkRemotePlayerActionController.h \
+    controllers/NetworkLocalPlayerActionController.h
 
 
 
