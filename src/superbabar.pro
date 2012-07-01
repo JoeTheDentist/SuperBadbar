@@ -191,7 +191,14 @@ SOURCES += \
     video/AnimText.cpp \
 	video/AnimTable.cpp \
 	video/AnimPic.cpp \
-	main.cpp
+	main.cpp \
+    network/NetworkController.cpp \
+    controllers/EventController.cpp \
+    controllers/NetworkEventController.cpp \
+    controllers/ItemEventController.cpp \
+    controllers/PlayerEventController.cpp \
+    controllers/NetworkItemEventController.cpp \
+    controllers/NetworkPlayerEventController.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -332,7 +339,14 @@ HEADERS  += \
     video/AnimText.h \
     video/AnimTable.h \
     video/AnimPic.h \
-	video/Anim.h
+	video/Anim.h \
+    network/NetworkController.h \
+    controllers/EventController.h \
+    controllers/NetworkEventController.h \
+    controllers/ItemEventController.h \
+    controllers/PlayerEventController.h \
+    controllers/NetworkItemEventController.h \
+    controllers/NetworkPlayerEventController.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \
