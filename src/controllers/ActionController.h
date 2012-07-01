@@ -1,9 +1,14 @@
 #ifndef ACTIONCONTROLLER_H
 #define ACTIONCONTROLLER_H
 
-class ActionController
+#include "Controller.h"
+
+class ActionController : virtual public Controller
 {
 public:
+	/**
+	 *	Constructor
+	 */
 	ActionController();
 };
 

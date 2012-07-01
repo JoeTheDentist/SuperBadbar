@@ -29,10 +29,10 @@ class SpritesManager;
 **	Méthodes de Babar 	**
 **********************************/
 Babar::Babar(Analyser *analyser)
-    : m_peanuts(0)
+	: m_peanuts(0)
 {
 	PRINT_CONSTR(1, "Construction de Babar")
-	init_babar(analyser);
+			init_babar(analyser);
 	m_bind = NULL;
 	m_fire = false;
 }
@@ -40,20 +40,20 @@ Babar::Babar(Analyser *analyser)
 Babar::~Babar()
 {
 	PRINT_CONSTR(1, "Destruction de Babar")
-	if ( binded() ) {
-        unbind();
+			if ( binded() ) {
+		unbind();
 	}
 }
 
 void Babar::load_anim(int age)
 {
-	#ifdef DEBUG_COLL
+#ifdef DEBUG_COLL
 	age = 0;
-	#endif
+#endif
 
-    if ( m_sprite ) {
-        m_sprite->to_delete();
-    }
+	if ( m_sprite ) {
+		m_sprite->to_delete();
+	}
 	m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
@@ -66,23 +66,23 @@ void Babar::load_anim(int age)
 void Babar::init_babar(Analyser * a)
 {
 	m_bind = NULL;
-    /* Initialisation de la position de Babar */
-    a->find_string("#Babar#");
-    m_pos.x = a->read_int();
-    m_pos.y = a->read_int();
-    /* Chargement des images en fonction de l'age */
-    load_anim(a->read_int());
+	/* Initialisation de la position de Babar */
+	a->find_string("#Babar#");
+	m_pos.x = a->read_int();
+	m_pos.y = a->read_int();
+	/* Chargement des images en fonction de l'age */
+	load_anim(a->read_int());
 	m_rel_pos = m_pos;
 
-    /* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
-    m_hp = c_babar_hp_max;
+	/* A gerer en fonction des évènements précédents : vies en sortant du niveau... */
+	m_hp = c_babar_hp_max;
 	m_lifes = c_babar_lifes;
 
-    /* Initisalisation de la phase de tir */
-    m_fire_phase = 0;
+	/* Initisalisation de la phase de tir */
+	m_fire_phase = 0;
 
-    /* Paramètres par défaut */
-    m_invincible = 0;
+	/* Paramètres par défaut */
+	m_invincible = 0;
 	m_dir = RIGHT;
 	m_crouch_time = 0;
 	interrupt_jump();
@@ -143,12 +143,12 @@ void Babar::update_pos()
 			speed_y = 0;
 			m_speed.y = 0;
 			if ( !binded() ) {
-                m_last_pos = m_pos;
+				m_last_pos = m_pos;
 			}
 		} else {
 			move(0, BOX_SIZE);
-//~ 			if (position().y + position().h > (int)gStatic->StaticData_height())
-//~ 				m_rel_pos.y = gStatic->StaticData_height() - m_pos.h;
+			//~ 			if (position().y + position().h > (int)gStatic->StaticData_height())
+			//~ 				m_rel_pos.y = gStatic->StaticData_height() - m_pos.h;
 		}
 	}
 	/* cas où le sprite monte */
@@ -167,7 +167,7 @@ void Babar::update_pos()
 			move(0, -BOX_SIZE);
 		}
 	}
-	/* cas où le sprite va à droite */
+	/* cas où le sprite va �  droite */
 	for (int speed_x = m_speed.x ; speed_x > 0 ; speed_x -= BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
@@ -188,9 +188,9 @@ void Babar::update_pos()
 			move(0, BOX_SIZE);
 		if(!is_on_something())
 			move(0, -BOX_SIZE); // ce n'était pas une pente descendante, on revient
-	do_stay_in_level();
+		do_stay_in_level();
 	}
-	/* cas où le sprite va à gauche */
+	/* cas où le sprite va �  gauche */
 	for (int speed_x = m_speed.x ; speed_x < 0 ; speed_x += BOX_SIZE){
 		check_unbind();
 		gCollision->update_babar_platforms();
@@ -219,28 +219,28 @@ void Babar::update_speed()
 {
 	if (locked())
 		return;
-    m_speed.y += GRAVITE;
-    m_speed.x = 0;
+	m_speed.y += GRAVITE;
+	m_speed.x = 0;
 
 	if (m_jump) {
 		m_speed.y = -2*BABAR_SPEED; /* Vitesse de saut */
 	}
 
 	/* Pour pouvoir se diriger (ttlt) */
-    if (gKeyboard->key_down(k_left)) {
-        if ( m_crouch_time ) {
-            m_speed.x -= BABAR_SPEED/3;
-        } else {
-            m_speed.x -= BABAR_SPEED;
-        }
-    }
-    if (gKeyboard->key_down(k_right)) {
-        if ( m_crouch_time ) {
-            m_speed.x += BABAR_SPEED/3;
-        } else {
-            m_speed.x += BABAR_SPEED;
-        }
-    }
+	if (gKeyboard->key_down(k_left)) {
+		if ( m_crouch_time ) {
+			m_speed.x -= BABAR_SPEED/3;
+		} else {
+			m_speed.x -= BABAR_SPEED;
+		}
+	}
+	if (gKeyboard->key_down(k_right)) {
+		if ( m_crouch_time ) {
+			m_speed.x += BABAR_SPEED/3;
+		} else {
+			m_speed.x += BABAR_SPEED;
+		}
+	}
 }
 
 void Babar::update_state()
@@ -264,29 +264,29 @@ void Babar::update_state()
 
 	update_direction();
 
-    if ( CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position())) ) {
-        interrupt_jump();
-    }
+	if ( CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position())) ) {
+		interrupt_jump();
+	}
 
-    if (can_fire()) {
-        m_fire = true;
+	if (can_fire()) {
+		m_fire = true;
 		gProj->add_proj(fire(), PLAYER1);
-        m_fire_phase = 0;
-    } else {
-        m_fire = false;
-        m_fire_phase++;
-    }
+		m_fire_phase = 0;
+	} else {
+		m_fire = false;
+		m_fire_phase++;
+	}
 
-    if (can_crouch()) {
-        crouch();
-    } else {
-        /* si on se releve */
-        if ( m_crouch_time ) {
-           interrupt_crouch();
-        }
-    }
+	if (can_crouch()) {
+		crouch();
+	} else {
+		/* si on se releve */
+		if ( m_crouch_time ) {
+			interrupt_crouch();
+		}
+	}
 
-    if (can_jump())
+	if (can_jump())
 		jump();
 
 	if (can_double_jump())
@@ -317,8 +317,8 @@ void Babar::update_state()
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-    m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
-    m_sprite->set_pos(position());
+	m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
+	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
 	set_w(m_sprite->w());
 }
@@ -341,37 +341,37 @@ bool Babar::can_fire()
 std::list<Projectile*> *Babar::fire(int num_player)
 {
 	PRINT_TRACE(2, "Tir de Babar")
-	/* Calcul de la position de la source du tir */
-	Rect fire_pos = position();
+			/* Calcul de la position de la source du tir */
+			Rect fire_pos = position();
 	fire_pos.y += SOURCE_Y;
 	if ( m_dir == RIGHT ) {
-	    fire_pos.x += position().w;
+		fire_pos.x += position().w;
 	}
-    return m_weapons_armory.get_current_weapon()->fire(fire_pos,m_dir, (dmg_chan)(num_player+1) );
+	return m_weapons_armory.get_current_weapon()->fire(fire_pos,m_dir, (dmg_chan)(num_player+1) );
 }
 
 bool Babar::can_walk() const
 {
-    return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&& !m_jump && !m_double_jump;
+	return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&& !m_jump && !m_double_jump;
 }
 
 bool Babar::can_crouch() const
 {
-    return gKeyboard->key_down(k_down) & !locked();
+	return gKeyboard->key_down(k_down) & !locked();
 }
 
 void Babar::crouch()
 {
-    m_crouch_time = 1;
-    int h_last = m_sprite->h();
-    m_sprite->change_anim(CROUCH, m_dir);
-    int h = m_sprite->h();
+	m_crouch_time = 1;
+	int h_last = m_sprite->h();
+	m_sprite->change_anim(CROUCH, m_dir);
+	int h = m_sprite->h();
 	move(0, h_last - h);
 }
 
 bool Babar::can_jump() const
 {
-    return !can_go_down() && gKeyboard->key_down(k_jump) && m_ready_jump && !gKeyboard->key_down(k_down) && !locked();
+	return !can_go_down() && gKeyboard->key_down(k_jump) && m_ready_jump && !gKeyboard->key_down(k_down) && !locked();
 }
 
 void Babar::jump()
@@ -394,7 +394,7 @@ void Babar::double_jump()
 	m_double_jump = true;
 	m_ready_double_jump = false;
 	PRINT_TRACE(1, "Double-saut de Babar")
-	m_speed.y = -4*BABAR_SPEED;
+			m_speed.y = -4*BABAR_SPEED;
 	gKeyboard->disable_key(k_jump);
 
 }
@@ -411,8 +411,8 @@ bool Babar::can_go_down() const
 		pos = m_pos;
 	}
 	return (gKeyboard->key_down(k_jump) && gKeyboard->key_down(k_down)
-				&& CollisionsManager::is_down_coll(plop->down_collision_type(pos)))
-				&& !plop->double_collision(pos);
+			&& CollisionsManager::is_down_coll(plop->down_collision_type(pos)))
+			&& !plop->double_collision(pos);
 }
 
 void Babar::go_down()
@@ -496,7 +496,7 @@ void Babar::die()
 	lock(BABAR_RESU_TIME);
 	m_sprite->no_pic();
 	if ( !(gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->StaticData_height()) ) {
-        gGameEngine->get_sets()->add_set(PIC_BABAR_R+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
+		gGameEngine->get_sets()->add_set(PIC_BABAR_R+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
 	}
 	prepare_sound(BABAR_SOUNDS_R + "die.wav");
 }
@@ -604,10 +604,10 @@ void Babar::interrupt_jump()
 
 void Babar::interrupt_crouch()
 {
-    m_sprite->set_pic();
-    int h_last = m_sprite->curr_pic()->h();
-    m_sprite->change_anim(STATIC, m_dir);
-    int h = m_sprite->curr_pic()->h();
+	m_sprite->set_pic();
+	int h_last = m_sprite->curr_pic()->h();
+	m_sprite->change_anim(STATIC, m_dir);
+	int h = m_sprite->curr_pic()->h();
 	move(0, h_last - h);
 	m_crouch_time = 0;
 }
@@ -619,7 +619,7 @@ bool Babar::check_unbind()
 
 	if (binded()) {
 		if (!CollisionsManager::is_down_coll(m_bind->down_collision_type(m_rel_pos))
-			&& !CollisionsManager::is_down_coll(m_bind->down_collision_type(rectdown))) {
+				&& !CollisionsManager::is_down_coll(m_bind->down_collision_type(rectdown))) {
 			PRINT_DEBUG(1, "AIUYGFSGDF");
 			unbind();
 			return true;
@@ -628,10 +628,10 @@ bool Babar::check_unbind()
 		if (m_bind->is_going_down() && CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()))) {
 			unbind();
 			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-			return true;
+					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
+					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
+					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
+					return true;
 		}
 	}
 	return false;
@@ -639,9 +639,9 @@ bool Babar::check_unbind()
 
 void Babar::set_last_pos()
 {
-    m_pos = m_last_pos;
-    m_speed.x = 0;
-    m_speed.y = 0;
+	m_pos = m_last_pos;
+	m_speed.x = 0;
+	m_speed.y = 0;
 }
 
 void Babar::set_h(int h)
@@ -658,10 +658,10 @@ void Babar::set_w(int w)
 
 void Babar::set_peanuts(int pean)
 {
-    m_peanuts = pean;
+	m_peanuts = pean;
 }
 
 void Babar::set_lifes(int life)
 {
-    m_lifes = life;
+	m_lifes = life;
 }

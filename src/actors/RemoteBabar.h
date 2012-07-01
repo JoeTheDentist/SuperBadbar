@@ -3,7 +3,8 @@
 
 #include "Babar.h"
 
-class Remote_Babar : public Babar {
+class RemoteBabar : public Babar
+{
 public :
 
 private :

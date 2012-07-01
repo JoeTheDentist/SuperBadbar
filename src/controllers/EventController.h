@@ -1,7 +1,9 @@
 #ifndef EVENTCONTROLLER_H
 #define EVENTCONTROLLER_H
 
-class EventController
+#include "Controller.h"
+
+class EventController : virtual public Controller
 {
 public:
 	EventController();

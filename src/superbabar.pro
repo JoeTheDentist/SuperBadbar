@@ -198,7 +198,12 @@ SOURCES += \
     controllers/ItemEventController.cpp \
     controllers/PlayerEventController.cpp \
     controllers/NetworkItemEventController.cpp \
-    controllers/NetworkPlayerEventController.cpp
+    controllers/NetworkPlayerEventController.cpp \
+    controllers/ActionControlled.cpp \
+    controllers/EventControlled.cpp \
+    controllers/ControllerFactory.cpp \
+    controllers/Controller.cpp \
+    controllers/Controlled.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -346,7 +351,12 @@ HEADERS  += \
     controllers/ItemEventController.h \
     controllers/PlayerEventController.h \
     controllers/NetworkItemEventController.h \
-    controllers/NetworkPlayerEventController.h
+    controllers/NetworkPlayerEventController.h \
+    controllers/ActionControlled.h \
+    controllers/EventControlled.h \
+    controllers/ControllerFactory.h \
+    controllers/Controller.h \
+    controllers/Controlled.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \
