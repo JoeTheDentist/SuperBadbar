@@ -1,0 +1,1300 @@
+Lancement du jeu
+Construction du SoundEngine
+Construction de GraphicEngine
+Construction de la camera (video\Camera.cpp:l34 in Camera)
+Construction de Dashboard (tableau de bord)
+Construction d'un PicturesContainer
+Ajout du PicturesContainer aux surfaces
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Construction de Keyboard
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+main_menu.mp3
+Failed to open "main_menu.mp3" for reading
+Can't load music main_menu.mp3 (sound\SoundEngine.cpp:l79 in load_music)
+Failed to play audio stream : sound parameters have not been initialized (call Initialize first)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+jeu du son ../sound/menu/move_selection.wav
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Destruction d'une liste d'actions (ListMenuActions)
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+Destruction du SoundEngine
+Destruction de GraphicEngine
+Destruction de la camera
+Fermeture de la fenetre
+Destruction de la classe Talks
+Destruction de Dashboard
+Destruction d'un PicturesContainer
+Suppression du sprite manager
+Destruction d'Keyboard
+Fermeture du jeu
+C:\Users\user\Projets\SuperBabar\src\superbabar.exe a quitté avec le code 0
+Démarrage de C:\Users\user\Projets\SuperBabar\src\superbabar.exe...Lancement du jeu
+Construction du SoundEngine
+Construction de GraphicEngine
+Construction de la camera (video\Camera.cpp:l34 in Camera)
+Construction de Dashboard (tableau de bord)
+Construction d'un PicturesContainer
+Ajout du PicturesContainer aux surfaces
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Construction de Keyboard
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+main_menu.mp3
+Failed to open "main_menu.mp3" for reading
+Can't load music main_menu.mp3 (sound\SoundEngine.cpp:l79 in load_music)
+Failed to play audio stream : sound parameters have not been initialized (call Initialize first)
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+Destruction du SoundEngine
+Destruction de GraphicEngine
+Destruction de la camera
+Fermeture de la fenetre
+Destruction de la classe Talks
+Destruction de Dashboard
+Destruction d'un PicturesContainer
+Suppression du sprite manager
+Destruction d'Keyboard
+Fermeture du jeu
+C:\Users\user\Projets\SuperBabar\src\superbabar.exe a quitté avec le code 0
+Démarrage de C:\Users\user\Projets\SuperBabar\src\superbabar.exe...Lancement du jeu
+Construction du SoundEngine
+Construction de GraphicEngine
+Construction de la camera (video\Camera.cpp:l34 in Camera)
+Construction de Dashboard (tableau de bord)
+Construction d'un PicturesContainer
+Ajout du PicturesContainer aux surfaces
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Construction de Keyboard
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+main_menu.mp3
+Failed to open "main_menu.mp3" for reading
+Can't load music main_menu.mp3 (sound\SoundEngine.cpp:l79 in load_music)
+Failed to play audio stream : sound parameters have not been initialized (call Initialize first)
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+Destruction du SoundEngine
+Destruction de GraphicEngine
+Destruction de la camera
+Fermeture de la fenetre
+Destruction de la classe Talks
+Destruction de Dashboard
+Destruction d'un PicturesContainer
+Suppression du sprite manager
+Destruction d'Keyboard
+Fermeture du jeu
+C:\Users\user\Projets\SuperBabar\src\superbabar.exe a quitté avec le code 0
+Début du débogageLancement du jeu
+Construction du SoundEngine
+Construction de GraphicEngine
+Construction de la camera (video\Camera.cpp:l34 in Camera)
+Construction de Dashboard (tableau de bord)
+Construction d'un PicturesContainer
+Ajout du PicturesContainer aux surfaces
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Construction de Keyboard
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+main_menu.mp3
+Failed to open "main_menu.mp3" for reading
+Can't load music main_menu.mp3 (sound\SoundEngine.cpp:l79 in load_music)
+Failed to play audio stream : sound parameters have not been initialized (call Initialize first)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Destruction d'une liste d'actions (ListMenuActions)
+Destruction du SoundEngine
+Destruction de GraphicEngine
+Destruction de la camera
+Fermeture de la fenetre
+Destruction de la classe Talks
+Destruction de Dashboard
+Destruction d'un PicturesContainer
+Suppression du sprite manager
+Destruction d'Keyboard
+Fermeture du jeu
+Fin du débogage
+Démarrage de C:\Users\user\Projets\SuperBabar\src\superbabar.exe...Lancement du jeu
+Construction du SoundEngine
+Construction de GraphicEngine
+Construction de la camera (video\Camera.cpp:l34 in Camera)
+Construction de Dashboard (tableau de bord)
+Construction d'un PicturesContainer
+Ajout du PicturesContainer aux surfaces
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Construction de Keyboard
+Construction d'une liste d'actions (ListMenuActions)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+main_menu.mp3
+Failed to open "main_menu.mp3" for reading
+Can't load music main_menu.mp3 (sound\SoundEngine.cpp:l79 in load_music)
+Failed to play audio stream : sound parameters have not been initialized (call Initialize first)
+jeu du son ../sound/menu/move_selection.wav
+jeu du son ../sound/menu/move_selection.wav
+Creation du gestionnaire de niveaux
+Construction de la classe Game
+ouverture de level1.lvl
+../sound/music/level1.wav
+Construction de CollisionsManager
+Construction de ProjectilesManager
+Construction de EventsManager
+Construction de MonstersManager
+Construction d'un PicturesContainer
+Construction d'un StaticData
+Construction d'un StaticData
+Construction de la classe GameEngine
+Construction de WeaponsArmory
+construction d'une weapon
+Construction d'une Gun
+Construction de Babar
+Initialisation de EventsManager
+Chargement des evenements
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Chargement des triggers
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Affichage d'un texte par Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Affichage d'un texte par Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Affichage d'un texte par Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/babar/jump.wav
+construction d'une weapon
+Construction d'un MachineGun
+jeu du son ../sound/events/weapon_taken.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+construction d'une weapon
+Construction d'un Shotgun
+jeu du son ../sound/events/weapon_taken.wav
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Double-saut de Babar
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+construction d'une weapon
+Construction d'une RocketLauncher
+jeu du son ../sound/events/weapon_taken.wav
+Descente d'une plateforme
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Tir de Babar
+Construction de Projectile
+Construction de Rocket
+jeu du son ../sound/fire/rocket.wav
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+Destruction de Projectile
+Construction de Projectile
+Construction de Explosion
+Construction de SpriteAnimTable
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Tir de Babar
+Construction de Projectile
+Construction de Rocket
+jeu du son ../sound/fire/rocket.wav
+YOP (actors\Rocket.cpp:l55 in update_speed)
+Construction de SpriteAnimTable
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+Destruction de Explosion
+Destruction de Projectile
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+YOP (actors\Rocket.cpp:l55 in update_speed)
+Destruction de Projectile
+Construction de Projectile
+Construction de Explosion
+Construction de SpriteAnimTable
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+You wooooooon
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Construction de SpriteAnimTable
+Destruction de Explosion
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Affichage d'un texte par Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Descente d'une plateforme
+Destruction de la classe Game
+Destruction de MonstersManager
+Destruction de Babar
+Destruction de WeaponsArmory
+Destruction d'un Gun
+Destruction d'une Weapon
+Destruction d'un MachineGun
+Destruction d'une Weapon
+Destruction d'une Shotgun
+Destruction d'une Weapon
+Destruction d'un RocketLauncher
+Destruction d'une Weapon
+Destruction de ProjectilesManager
+Destruction de EventsManager
+Destruction d'un StaticData
+Destruction d'un PicturesContainer
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Construction de la classe Game
+ouverture de level2.lvl
+../sound/music/level2.wav
+Construction de CollisionsManager
+Construction de ProjectilesManager
+Construction de EventsManager
+Construction de MonstersManager
+Construction d'un PicturesContainer
+Construction d'un StaticData
+Construction d'un StaticData
+Construction de la classe GameEngine
+Construction de WeaponsArmory
+construction d'une weapon
+Construction d'une Gun
+Construction de Babar
+Initialisation de EventsManager
+Chargement des evenements
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Construction de SpriteAnimTable
+Chargement des triggers
+Ouverture de la fenetre (de taille 800*600)
+Initialisation de la classe Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Affichage d'un texte par Talks
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/events/peanut_taken.ogg
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+construction d'une weapon
+Construction d'un MachineGun
+jeu du son ../sound/events/weapon_taken.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Descente d'une plateforme
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+Construction de Monster
+Construction de WalkingMonster
+Construction de FollowingWalkingMonster
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingWalkingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+jeu du son ../sound/fire/gun.wav
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+Double-saut de Babar
+jeu du son ../sound/events/weapon_taken.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/events/peanut_taken.ogg
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+construction d'une weapon
+Construction d'un Shotgun
+jeu du son ../sound/events/weapon_taken.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Construction de Monster
+Construction de FlyingMonster
+Construction de FollowingFlyingMonster
+Construction de Monster
+Construction de FlyingMonster
+Construction de FollowingFlyingMonster
+Construction de Monster
+Construction de FlyingMonster
+Construction de FollowingFlyingMonster
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingFlyingMonster
+Destruction de FlyingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+Double-saut de Babar
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/peanut_taken.ogg
+jeu du son ../sound/events/HPup.wav
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+jeu du son ../sound/events/doublekill.mp3
+Failed to load sound buffer from file "../sound/events/doublekill.mp3"
+impossible de charger le son ../sound/events/doublekill.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Construction de Monster
+Construction de WalkingMonster
+Construction de ChargingMonster
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de ChargingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Construction de Monster
+Construction de WalkingMonster
+Construction de FollowingWalkingMonster
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingWalkingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/events/weapon_taken.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/events/HPup.wav
+jeu du son ../sound/babar/jump.wav
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingFlyingMonster
+Destruction de FlyingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingFlyingMonster
+Destruction de FlyingMonster
+Destruction de Monster
+jeu du son ../sound/events/doublekill.mp3
+Failed to load sound buffer from file "../sound/events/doublekill.mp3"
+impossible de charger le son ../sound/events/doublekill.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+jeu du son ../sound/babar/jump.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+jeu du son ../sound/babar/jump.wav
+Double-saut de Babar
+Construction de Monster
+Construction de WalkingMonster
+Construction de FollowingWalkingMonster
+Construction de Monster
+Construction de WalkingMonster
+Construction de FollowingWalkingMonster
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingWalkingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Tir de Babar
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+Construction de Projectile
+jeu du son ../sound/fire/shotgun.wav
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+jeu du son ../sound/monsters/hit.mp3
+Failed to load sound buffer from file "../sound/monsters/hit.mp3"
+impossible de charger le son ../sound/monsters/hit.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Construction de SpriteAnimTable
+Destruction de FollowingWalkingMonster
+Destruction de WalkingMonster
+Destruction de Monster
+jeu du son ../sound/events/doublekill.mp3
+Failed to load sound buffer from file "../sound/events/doublekill.mp3"
+You wooooooon
+impossible de charger le son ../sound/events/doublekill.mp3 (sound\SoundEngine.cpp:l96 in play_sound)
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de Projectile
+Destruction de la classe Game
+Destruction de MonstersManager
+Destruction de Babar
+Destruction de WeaponsArmory
+Destruction d'un Gun
+Destruction d'une Weapon
+Destruction d'un MachineGun
+Destruction d'une Weapon
+Destruction d'une Shotgun
+Destruction d'une Weapon
+Destruction de ProjectilesManager
+Destruction de EventsManager
+Destruction d'un StaticData
+Destruction d'un PicturesContainer
+Reset de menu keys (control\Keyboard.cpp:l173 in reset_menu_keys)
+Construction de la classe Game
+ouverture de level3.lvl
+../sound/music/level2.wav
+Le programme s'est terminé subitement.
