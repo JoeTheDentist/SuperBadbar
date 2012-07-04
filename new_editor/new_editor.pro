@@ -34,13 +34,41 @@ unix {
 
 
 # Input
-HEADERS += 	src/editor/*.h \
-			src/items/*.h \
-			src/util/*.h  \
-			../src/util/Analyser.h
-			
+HEADERS += 	src/editor/Data.h \
+                src/editor/MainWindow.h \
+                src/editor/MyGraphicsView.h \
+                src/items/BabarItem.h \
+                src/items/EventItem.h \
+                src/items/FallingPlatformItem.h \
+                src/items/MonsterItem.h \
+                src/items/MovingPlatformItem.h \
+                src/items/MyItem.h \
+                src/items/SetItem.h \
+                src/items/StaticItem.h \
+                src/items/TriggerableItem.h \
+                src/items/TriggerItem.h \
+                src/items/ZoneItem.h \
+                ../src/util/Analyser.h \
+                src/util/debug.h  \
+                src/util/paths.h  \
+                src/util/utils.h
+
+
+
 SOURCES += src/main.cpp \
-			src/editor/*.cpp \
-			src/items/*.cpp \
-			src/util/*.cpp \
-			../src/util/Analyser.cpp
+                src/editor/Data.cpp \
+                src/editor/MainWindow.cpp \
+                src/editor/MyGraphicsView.cpp \
+                src/items/BabarItem.cpp \
+                src/items/EventItem.cpp \
+                src/items/FallingPlatformItem.cpp \
+                src/items/MonsterItem.cpp \
+                src/items/MovingPlatformItem.cpp \
+                src/items/MyItem.cpp \
+                src/items/SetItem.cpp \
+                src/items/StaticItem.cpp \
+                src/items/TriggerableItem.cpp \
+                src/items/TriggerItem.cpp \
+                src/items/ZoneItem.cpp \
+                src/util/utils.cpp \
+                ../src/util/Analyser.cpp

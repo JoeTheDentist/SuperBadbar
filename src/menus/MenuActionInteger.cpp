@@ -10,6 +10,8 @@
 #include "MenuActionInteger.h"
 #include <sstream>
 #include <control/EventKeyboard.h>
+#include "util/globals.h"
+#include "sound/SoundEngine.h"
 
 MenuActionInteger::MenuActionInteger(std::string str, int i, int val, int valmin, int valmax, int step):
 	MenuAction(str, i),
@@ -45,10 +47,12 @@ void MenuActionInteger::treatEvent(EventKeyboard *eventKeyboard)
 	case mk_left:
 		incr_value(-1);
 		eventKeyboard->markTreated();
+                gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 		break;
 	case mk_right:
 		incr_value(1);
 		eventKeyboard->markTreated();
+                gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
 		break;	
 	default:
 		break;

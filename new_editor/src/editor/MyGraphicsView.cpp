@@ -165,7 +165,7 @@ void MyGraphicsView::loadFile(QString fileName)
 	for (int i = 0; i < nbEvents; i ++) {
 		classEvent = QString::fromStdString(analyser.read_string());
 		if (classEvent != "event") {
-			std::cout << "Erreur dans le fichier chargé ou l'éditeur n'est plus à jour!" << std::endl;
+			std::cout << "Erreur dans le fichier chargé ou l'éditeur n'est plus �  jour!" << std::endl;
 		}
 		nameEvent = QString::fromStdString(analyser.read_string());
 		x = analyser.read_int();
@@ -305,7 +305,7 @@ void horror_function(QString level_name)
 	#ifndef WIN32
 	QProcess::execute(QString("../src/superbabar ") + "-level " + substringAfter(level_name, "levels/"));
 	#else
-	QProcess::execute(QString("../src/babar.exe"));
+        QProcess::execute(QString("../src/superbabar.exe"));
 	#endif
 }
 

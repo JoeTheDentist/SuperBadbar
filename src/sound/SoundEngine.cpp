@@ -70,7 +70,6 @@ void SoundEngine::update()
 
 void SoundEngine::load_music(std::string str)
 {
-	std::cerr << str << std::endl;
 	if (m_music) {
 		delete m_music;
 	}
@@ -78,6 +77,7 @@ void SoundEngine::load_music(std::string str)
 	if (!m_music->OpenFromFile(str.c_str())) {
 		PRINT_DEBUG(1, "Can't load music %s", str.c_str());
 	}
+        m_music->SetVolume(m_music_volume);
 }
 
 void SoundEngine::play_music()
@@ -87,7 +87,7 @@ void SoundEngine::play_music()
 
 void SoundEngine::play_sound(std::string key)
 {
-	PRINT_TRACE(1, "jeu du son %s", key.c_str())
+        PRINT_TRACE(3, "jeu du son %s", key.c_str())
 	std::map<std::string, sf::SoundBuffer*>::iterator it = m_soundBuffers.find(key);
 	sf::SoundBuffer *to_play = NULL;
 	if (it == m_soundBuffers.end()) {
@@ -103,6 +103,7 @@ void SoundEngine::play_sound(std::string key)
 	}
 	sf::Sound *sound = new sf::Sound;
 	sound->SetBuffer(*to_play);
+        sound->SetVolume(m_sounds_volume);
 	sound->Play();
 	m_soundsPlaying.push_back(sound);
 }
@@ -118,11 +119,15 @@ void SoundEngine::play_sound(Sonorisable *sonorisable)
 void SoundEngine::set_sounds_volume(int v)
 {
 	m_sounds_volume = v;
+
 }
 
 void SoundEngine::set_music_volume(int v)
 {
 	m_music_volume = v;
+        if (m_music) {
+            m_music->SetVolume(m_music_volume);
+        }
 }
 
 int SoundEngine::get_sounds_volume() const
