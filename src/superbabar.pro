@@ -149,10 +149,6 @@ SOURCES += \
     sets/AnimatedSet.cpp \
     sets/AnimatedPhysicSet.cpp \
     sets/AnimatedNophysicSet.cpp \
-    soil/stb_image_aug.c \
-    soil/SOIL.c \
-    soil/image_helper.c \
-    soil/image_DXT.c \
     sound/SoundEngine.cpp \
     sound/Sound.cpp \
     sound/Sonorisable.cpp \
@@ -288,12 +284,6 @@ HEADERS  += \
     sets/AnimatedSet.h \
     sets/AnimatedPhysicSet.h \
     sets/AnimatedNophysicSet.h \
-    soil/stbi_DDS_aug_c.h \
-    soil/stbi_DDS_aug.h \
-    soil/stb_image_aug.h \
-    soil/SOIL.h \
-    soil/image_helper.h \
-    soil/image_DXT.h \
     sound/SoundEngine.h \
     sound/Sound.h \
     sound/Sonorisable.h \
@@ -357,11 +347,3 @@ HEADERS  += \
     controllers/ControllerFactory.h \
     controllers/Controller.h \
     controllers/Controlled.h
-
-OTHER_FILES += \
-    soil/stbi_DDS_aug_c.h.gch \
-    soil/stbi_DDS_aug.h.gch \
-    soil/stb_image_aug.h.gch \
-    soil/SOIL.h.gch \
-    soil/image_helper.h.gch \
-    soil/image_DXT.h.gch
