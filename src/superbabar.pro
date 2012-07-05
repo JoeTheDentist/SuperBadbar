@@ -203,7 +203,14 @@ SOURCES += \
     controllers/EventControlled.cpp \
     controllers/ControllerFactory.cpp \
     controllers/Controller.cpp \
-    controllers/Controlled.cpp
+    controllers/Controlled.cpp \
+    actors/babar_states/BabarState.cpp \
+    actors/babar_states/BabarStateNone.cpp \
+    actors/babar_states/BabarStateRun.cpp \
+    actors/babar_states/BabarStateJump.cpp \
+    actors/babar_states/BabarStateDoubleJump.cpp \
+    actors/babar_states/BabarStateCrouchNone.cpp \
+    actors/babar_states/BabarStateCrouchWalking.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -356,7 +363,14 @@ HEADERS  += \
     controllers/EventControlled.h \
     controllers/ControllerFactory.h \
     controllers/Controller.h \
-    controllers/Controlled.h
+    controllers/Controlled.h \
+    actors/babar_states/BabarState.h \
+    actors/babar_states/BabarStateNone.h \
+    actors/babar_states/BabarStateRun.h \
+    actors/babar_states/BabarStateJump.h \
+    actors/babar_states/BabarStateDoubleJump.h \
+    actors/babar_states/BabarStateCrouchNone.h \
+    actors/babar_states/BabarStateCrouchWalking.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \
