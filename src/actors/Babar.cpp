@@ -31,16 +31,16 @@ class SpritesManager;
 Babar::Babar(Analyser *analyser)
 	: m_peanuts(0)
 {
-	PRINT_CONSTR(1, "Construction de Babar")
-			init_babar(analyser);
+	PRINT_CONSTR(1, "Construction de Babar");
+	init_babar(analyser);
 	m_bind = NULL;
 	m_fire = false;
 }
 
 Babar::~Babar()
 {
-	PRINT_CONSTR(1, "Destruction de Babar")
-			if ( binded() ) {
+	PRINT_CONSTR(1, "Destruction de Babar");
+	if ( binded() ) {
 		unbind();
 	}
 }

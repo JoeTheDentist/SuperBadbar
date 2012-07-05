@@ -18,7 +18,7 @@
 
 
 #include <SFML/System.hpp>
-#define TIME_LOOP 50
+#define TIME_LOOP 25
 
 class GameEngine;
 class StaticData;
