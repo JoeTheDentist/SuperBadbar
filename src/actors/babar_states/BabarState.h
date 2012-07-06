@@ -12,16 +12,51 @@ class BabarState
 public:
 	/**
 	 *	Ctor
-	 *	@param context of the state
+	 *	@param context: context of the state
 	 */
 	BabarState(Babar *context);
 
 	/**
-	 *	Move Up
+	 *	Gets the initial state, to hide the states behind
+	 *	@param context: context for the state
+	 *	@return an new state
+	 */
+	static BabarState *GetInitialState(Babar *context);
+
+	/**
+	 *	Update
+	 */
+	virtual void update() = 0;
+
+	/**
+	 *	Move Up (jump & double jump)
 	 */
 	virtual void moveUp() = 0;
 
+	/**
+	 *	Move Down (crouch)
+	 */
 	virtual void moveDown() = 0;
+
+	/**
+	 *	Move Left
+	 */
+	virtual void moveLeft();
+
+	/**
+	 *	Move Right
+	 */
+	virtual void moveRight();
+
+	/**
+	 *	Fire action
+	 */
+	virtual void fire();
+
+	/**
+	 *	Protect action
+	 */
+	virtual void protect();
 
 protected:
 	/**

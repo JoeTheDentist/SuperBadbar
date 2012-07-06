@@ -12,6 +12,7 @@
 #include <stdint.h>
 
 #include "Babar.h"
+#include "babar_states/BabarState.h"
 #include "util/utils.h"
 #include "game/Game.h"
 #include "physic/CollisionsManager.h"
@@ -88,7 +89,58 @@ void Babar::init_babar(Analyser * a)
 	interrupt_jump();
 	m_bind = NULL;
 	m_lock = -1;
+
+	m_state = BabarState::GetInitialState(this);
 }
+
+/**************************************************************************/
+/**For states**************************************************************/
+/**************************************************************************/
+
+void Babar::changeState(BabarState *newState)
+{
+	if (m_state)
+	{
+		delete m_state;
+	}
+	m_state = newState;
+}
+
+/**************************************************************************/
+/**ACTIONS*****************************************************************/
+/**************************************************************************/
+
+void Babar::moveUp()
+{
+	m_state->moveUp();
+}
+
+void Babar::moveDown()
+{
+	m_state->moveDown();
+}
+
+void Babar::moveLeft()
+{
+	m_state->moveLeft();
+}
+
+void Babar::moveRight()
+{
+	m_state->moveRight();
+}
+
+void Babar::fire()
+{
+	m_state->fire();
+}
+
+void Babar::protect()
+{
+	m_state->protect();
+}
+
+/**************************************************************************/
 
 Rect Babar::position() const
 {
@@ -270,7 +322,7 @@ void Babar::update_state()
 
 	if (can_fire()) {
 		m_fire = true;
-		gProj->add_proj(fire(), PLAYER1);
+		gProj->add_proj(fire_old(), PLAYER1);
 		m_fire_phase = 0;
 	} else {
 		m_fire = false;
@@ -338,7 +390,7 @@ bool Babar::can_fire()
 	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time() && !locked());
 }
 
-std::list<Projectile*> *Babar::fire(int num_player)
+std::list<Projectile*> *Babar::fire_old(int num_player)
 {
 	PRINT_TRACE(2, "Tir de Babar")
 			/* Calcul de la position de la source du tir */

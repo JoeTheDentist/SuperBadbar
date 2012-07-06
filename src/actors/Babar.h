@@ -33,6 +33,7 @@ class Gun;
 class WeaponsArmory;
 class BindablePlatform;
 class Rect;
+class BabarState;
 
 const int c_babar_hp_max = 5;
 const int c_babar_lifes = 3;
@@ -92,6 +93,8 @@ protected:
 	int m_lock;
 	Rect m_last_pos;                    /* dernière position sur qqch */
 
+	BabarState *m_state;		// Babar's state
+
 	/**
 	 * 	@brief Charge les images de babar
 	 *	@param age	L'age de Babar
@@ -113,6 +116,50 @@ public:
 	 * 	@brief Destructeur
 	 */
 	~Babar();
+
+	/**************************************************************************/
+	/**States methods**********************************************************/
+	/**************************************************************************/
+	/**
+	 *	Change the state
+	 *	@param newState: new state to apply to Babar
+	 */
+	void changeState(BabarState *newState);
+
+	/**************************************************************************/
+	/**ACTIONS (called by controller)******************************************/
+	/**************************************************************************/
+	/**
+	 *	Tries jump or double jump
+	 */
+	void moveUp();
+
+	/**
+	 *	Crouch
+	 */
+	void moveDown();
+
+	/**
+	 *	Move Left
+	 */
+	void moveLeft();
+
+	/**
+	 *	Move Right
+	 */
+	void moveRight();
+
+	/**
+	 *	Tries to fire
+	 */
+	void fire();
+
+	/**
+	 *	Tries to protect
+	 */
+	void protect();
+
+	/**************************************************************************/
 
 	/**
 	 *  @brief Charge les attributs de Babar propre au lvl
@@ -172,8 +219,9 @@ public:
 	/**
 	 * 	@brief Fait tirer Babar
 	 *	@return La liste de projectiles tirés
+	 *	@deprecated
 	 */
-	std::list<Projectile*> *fire(int num_player = 1);
+	std::list<Projectile*> *fire_old(int num_player = 1);
 
 	/**
 	 *  @brief si le joueur demande a marcher et qu'il n'y a rien d'autre
