@@ -32,7 +32,6 @@ private:
 	Camera *m_camera;
 	Talks *m_talks;
 	Dashboard *m_dashboard;
-	PicturesContainer *m_pictures_container;
 	SpritesManager * m_sprites;
 
 public:
@@ -89,12 +88,6 @@ public:
 	 *	@return Un pointeur vers le gestionnaire de dialogues
 	 */
 	Talks *get_talks();
-
-	/**
-	 * 	@brief Accesseur
-	 *	@return Un pointeur vers le gestionnaire d'images
-	 */
-	PicturesContainer *get_pictures_container();
 
 	/**
 	 * 	@brief Accesseur

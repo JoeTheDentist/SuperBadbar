@@ -15,13 +15,11 @@
 #include "video/PicturesContainer.h"
 #include "util/debug.h"
 
-PicturesContainer *Surface::m_pictures_container = NULL;
-
 Surface::Surface(std::string filename)
 {
 	m_drawable = NULL;
 	PRINT_CONSTR(3, "Construction d'une classe Surface");
-	m_sprite = m_pictures_container->load_picture(filename);
+	m_sprite = PicturesContainer::GetInstance()->load_picture(filename);
 	setSurface(m_sprite);
 	if ( !m_drawable ) {
 		PRINT_CONSTR(1, "Impossible de charger l'image : %s", filename.c_str());
@@ -37,12 +35,6 @@ Surface::~Surface()
 sf::Drawable *Surface::getSurface()
 {
 	return m_drawable;
-}
-
-void Surface::set_pictures_container(PicturesContainer *picturesContainer)
-{
-	m_pictures_container = picturesContainer;
-	PRINT_TRACE(1,"Ajout du PicturesContainer aux surfaces");
 }
 
 int Surface::w()

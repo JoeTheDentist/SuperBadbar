@@ -38,17 +38,17 @@ Game::Game(int level, bool record_on, bool replay_on, std::string output_name, s
 	m_pause(NULL)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
-    char str[3];
-    std::string str_lvl;
-    sprintf(str, "%d", level);
-    str_lvl = str;
+			char str[3];
+	std::string str_lvl;
+	sprintf(str, "%d", level);
+	str_lvl = str;
 	init_game("level" + str_lvl + ".lvl");
 }
 
 Game::Game(std::string level_name)
 {
 	PRINT_CONSTR(1, "Construction de la classe Game")
-	init_game(level_name);
+			init_game(level_name);
 }
 
 void Game::init_game(std::string level_name)
@@ -57,17 +57,16 @@ void Game::init_game(std::string level_name)
 	TransitionScreen * loading = new TransitionScreen("loading.png");
 	gSound->init_level(level_name);
 	loading->display(gGraphics->get_camera());
-    gCollision = new CollisionsManager();
-    gProj = new ProjectilesManager();
-    gEvent = new EventsManager();
-    gStats = new Stats();
+	gCollision = new CollisionsManager();
+	gProj = new ProjectilesManager();
+	gEvent = new EventsManager();
+	gStats = new Stats();
 
 	gPlayers = NULL;
 	gGameEngine = new GameEngine();
-    gStatic = new StaticData();
+	gStatic = new StaticData();
 	gStatic->init_StaticData(level_name);
-	gGameEngine->init_GameEngine(level_name, gGraphics->get_camera(),
-                                    gGraphics->get_pictures_container());
+	gGameEngine->init_GameEngine(level_name, gGraphics->get_camera());
 	gGraphics->init_graphic_engine();
 	m_time = m_clock.GetElapsedTime() / 1000;
 	m_previous_time = m_clock.GetElapsedTime() / 1000;
@@ -87,19 +86,19 @@ void Game::init_game(std::string level_name)
 Game::~Game()
 {
 	PRINT_CONSTR(1, "Destruction de la classe Game")
-	delete gGameEngine;
+			delete gGameEngine;
 	gGameEngine = NULL;
-    delete gPlayers;
-    gPlayers = NULL;
-    delete gStats;
-    gStats = NULL;
+	delete gPlayers;
+	gPlayers = NULL;
+	delete gStats;
+	gStats = NULL;
 	delete gCollision;
 	gCollision = NULL;
 	delete gProj;
 	gProj = NULL;
 	delete gEvent;
 	gGameEngine = NULL;
-    delete gStatic;
+	delete gStatic;
 	gStatic = NULL;
 	gGraphics->clean();
 	gKeyboard->disable_all_keys();
@@ -122,7 +121,7 @@ void Game::update_game()
 void Game::play_sounds()
 {
 	gGameEngine->play_sounds();
-//~ 	gSound->update();
+	//~ 	gSound->update();
 }
 
 void Game::update_graphic()
@@ -140,11 +139,11 @@ void Game::update_graphic()
 	/* affichage des Ã©vÃ©nements */
 	gGameEngine->display_events(camera);
 
-    /* Plateformes */
-    gCollision->display_platforms(camera);
+	/* Plateformes */
+	gCollision->display_platforms(camera);
 
-    /* Sprites */
-    gGraphics->display_sprites(camera);
+	/* Sprites */
+	gGraphics->display_sprites(camera);
 
 	/* affichage du sprite babar */
 	/*camera->display(gBabar);*/
@@ -152,9 +151,9 @@ void Game::update_graphic()
 	/* affichage des statics du premier plan */
 	gStatic->display_statics_first(camera);
 
-	#ifdef DEBUG_COLL
+#ifdef DEBUG_COLL
 	gCollision->display_coll(camera);
-	#endif
+#endif
 
 	/* affichage du tableau de board */
 	gGraphics->draw_dashboard(camera);
@@ -227,7 +226,7 @@ result_game Game::game_loop()
 			//** FIN DE LA BOUCLE DE JEU **//
 			m_clock.Reset();
 		} else  {
-		    sf::Sleep(float(TIME_LOOP) / 1000 - m_clock.GetElapsedTime());
+			sf::Sleep(float(TIME_LOOP) / 1000 - m_clock.GetElapsedTime());
 		}
 	}
 	return leave;

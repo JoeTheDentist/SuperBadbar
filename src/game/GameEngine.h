@@ -58,14 +58,11 @@ public:
 	~GameEngine();
 
 	/**
-	 * 	@brief Initialisation des données
+	 * 	@brief Initialisation des donnees
 	 * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
 	 * 	@param camera La camera qui servira a  afficher les images
-	 * 	@param StaticData Données du niveau
-	 * 	@param keyboard Gestionnaire du clavier
-	 *	@param PicturesContainer Le gestionnaire d'images
 	*/
-	void init_GameEngine(std::string level_name, Camera *camera, PicturesContainer *PicturesContainer);
+	void init_GameEngine(std::string level_name, Camera *camera);
 
 	/**
 	 *	@brief Met a jour le GameEngine

@@ -46,8 +46,8 @@ Dashboard::Dashboard():
 	m_life_bar(NULL)
 {
 	PRINT_CONSTR(1, "Construction de Dashboard (tableau de bord)")
-	// Abonnement aux life_bar_possessors
-	LifeBarPossessor::setDashboard(this);
+			// Abonnement aux life_bar_possessors
+			LifeBarPossessor::setDashboard(this);
 }
 
 Dashboard::~Dashboard()
@@ -56,11 +56,11 @@ Dashboard::~Dashboard()
 	PRINT_CONSTR(1, "Destruction de Dashboard")
 }
 
-void Dashboard::init_dashboard(PicturesContainer *)
+void Dashboard::init_dashboard()
 {
-	#ifndef DISABLE_DASHBOARD
+#ifndef DISABLE_DASHBOARD
 	clear_dashboard();
-    std::string rac = RACINE_R;
+	std::string rac = RACINE_R;
 	m_heart = new Surface(PIC_DASHBOARD_R + "heart.png");
 	m_babar_head = new Surface(PIC_DASHBOARD_R + "babarhead.png");
 
@@ -88,12 +88,12 @@ void Dashboard::init_dashboard(PicturesContainer *)
 	m_rect_null.y = 0;
 	m_rect_null.w = 0;
 	m_rect_null.h = 0;
-	#endif
+#endif
 }
 
 void Dashboard::draw_dashboard(Camera *camera)
 {
-	#ifndef DISABLE_DASHBOARD
+#ifndef DISABLE_DASHBOARD
 	/********************************************************************************/
 	/*	HP																VIES		*/
 	/*	ARME															CACAHUETTES	*/
@@ -132,9 +132,9 @@ void Dashboard::draw_dashboard(Camera *camera)
 	*/
 	camera->display_picture(m_weapons_pictures[gPlayers->local_player()->type_of_weapon()], &m_weapons_pos, true);
 	Rect pos_munitions;
-    std::ostringstream ossmun;
-    ossmun <<  "x " << gPlayers->local_player()->munitions();
-    std::string munitions = ossmun.str();
+	std::ostringstream ossmun;
+	ossmun <<  "x " << gPlayers->local_player()->munitions();
+	std::string munitions = ossmun.str();
 	SurfaceText *munitions_picture = new SurfaceText(munitions, m_sizeFont, m_rFont, m_gFont, m_bFont, m_nameFont);
 	pos_munitions.x = POS_WEAPON_X + m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->w() + 10;
 	pos_munitions.y = m_weapons_pos.y + (m_weapons_pictures[gPlayers->local_player()->type_of_weapon()]->h() - munitions_picture->h())/2;
@@ -180,14 +180,14 @@ void Dashboard::draw_dashboard(Camera *camera)
 
 	/* affichage de l'alert */
 	if ( m_alert ) {
-        Rect pos_alert;
-        pos_alert.x = Constants::WINDOW_HEIGHT/2;
-        pos_alert.y = Constants::WINDOW_WIDTH/2;
-        Surface * img_alert = m_alert->curr_pic();
-        /* je sais pas trop pq il y a besoin d'un offset ici... */
-        pos_alert.x -= img_alert->w()/2-100;
-        pos_alert.y -= img_alert->h()/2+100;
-        camera->display_picture(img_alert,&pos_alert,true);
+		Rect pos_alert;
+		pos_alert.x = Constants::WINDOW_HEIGHT/2;
+		pos_alert.y = Constants::WINDOW_WIDTH/2;
+		Surface * img_alert = m_alert->curr_pic();
+		/* je sais pas trop pq il y a besoin d'un offset ici... */
+		pos_alert.x -= img_alert->w()/2-100;
+		pos_alert.y -= img_alert->h()/2+100;
+		camera->display_picture(img_alert,&pos_alert,true);
 	}
 
 	/* affichage de le life bar */
@@ -203,31 +203,31 @@ void Dashboard::draw_dashboard(Camera *camera)
 		camera->display_picture(m_life_bar, &m_frame_life_bar, true);
 	}
 
-	#endif
+#endif
 }
 
 void Dashboard::alert(std::string text)
 {
-	#ifndef DISABLE_DASHBOARD
-    if ( m_alert ) {
-        delete m_alert;
-    }
-    m_alert = new AnimText(text, 150, 10, 30);
-	#endif
+#ifndef DISABLE_DASHBOARD
+	if ( m_alert ) {
+		delete m_alert;
+	}
+	m_alert = new AnimText(text, 150, 10, 30);
+#endif
 }
 
 void Dashboard::update()
 {
-	#ifndef DISABLE_DASHBOARD
-    if ( m_alert ) {
-        if ( m_alert->deletable() ) {
-            delete m_alert;
-            m_alert = NULL;
-        } else {
-            m_alert->next_pic();
-        }
-    }
-	#endif
+#ifndef DISABLE_DASHBOARD
+	if ( m_alert ) {
+		if ( m_alert->deletable() ) {
+			delete m_alert;
+			m_alert = NULL;
+		} else {
+			m_alert->next_pic();
+		}
+	}
+#endif
 }
 
 void Dashboard::clear_dashboard()

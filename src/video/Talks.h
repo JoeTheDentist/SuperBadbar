@@ -84,7 +84,7 @@ public:
 	 *	@param camera Le gestionnaire d'affichage
 	 *	@param PicturesContainer Le gestionnaire de chargement d'image
 	 */
-	void init_talks(Camera *camera, PicturesContainer *PicturesContainer);
+	void init_talks(Camera *camera);
 
 	/**
 	 * 	@brief Affiche sous forme de dialogue la chaine de caractères

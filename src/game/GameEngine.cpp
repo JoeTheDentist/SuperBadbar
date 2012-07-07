@@ -53,11 +53,10 @@ GameEngine::~GameEngine()
 }
 
 
-void GameEngine::init_GameEngine(std::string level_name, Camera *camera,
-	PicturesContainer *PicturesContainer)
+void GameEngine::init_GameEngine(std::string level_name, Camera *camera)
 {
 
-	PRINT_CONSTR(1, "Construction de la classe GameEngine")
+	PRINT_CONSTR(1, "Construction de la classe GameEngine");
 	m_matrix_weight = gStatic->StaticData_width();
 	m_matrix_height = gStatic->StaticData_height();
 
@@ -70,7 +69,7 @@ void GameEngine::init_GameEngine(std::string level_name, Camera *camera,
     gPlayers->local_player()->set_peanuts(PlayersManager::last_peanuts);
     gPlayers->local_player()->set_lifes(PlayersManager::last_lifes);
 	m_monsters_manager->init_monsters_manager(&analyser);
-	gEvent->init_EventsManager(gStatic, this, PicturesContainer);
+	gEvent->init_EventsManager(gStatic, this);
 	gEvent->load_events(&analyser);
 
 	m_sets->load_sets(&analyser);

@@ -38,7 +38,6 @@ private:
 
 	GameEngine *m_GameEngine;
 	StaticData *m_StaticData;
-	PicturesContainer *m_pictures_container;
 	std::string m_level_name;
 public:
 
@@ -60,7 +59,7 @@ public:
 	 *	@param PicturesContainer Le conteneur d'images
 	 *
 	*/
-	void init_EventsManager(StaticData *StaticData, GameEngine *GameEngine, PicturesContainer *PicturesContainer);
+	void init_EventsManager(StaticData *StaticData, GameEngine *GameEngine);
 
 	/**
 	 * 	@brief charge les events du niveau

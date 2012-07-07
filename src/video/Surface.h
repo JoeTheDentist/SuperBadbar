@@ -29,7 +29,6 @@ class Surface {
 protected:
 	sf::Drawable *m_drawable;
 	sf::Sprite *m_sprite;
-	static PicturesContainer *m_pictures_container;
 
 public:
 
@@ -55,15 +54,10 @@ public:
 	 */
 	sf::Drawable *getSurface();
 
-	virtual void setSurface(sf::Drawable *surface) {m_drawable = surface;}
-
-
 	/**
-	 *	@brief Initialise le PicturesContainer des Surfaces
-	 *	@warning A appeler seulement Ã  l'initialisation du moteur graphic
-	 *	@param PicturesContainer Le gestionnaire d'images
+	 *	TOCOMMENT
 	 */
-	static void set_pictures_container(PicturesContainer *PicturesContainer);
+	virtual void setSurface(sf::Drawable *surface) {m_drawable = surface;}
 
 	/**
 	 *	@brief Accesseur

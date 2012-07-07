@@ -40,7 +40,7 @@ Talks::~Talks()
 	#endif
 }
 
-void Talks::init_talks(Camera *camera, PicturesContainer *PicturesContainer)
+void Talks::init_talks(Camera *camera)
 {
 	#ifndef DISABLE_TALKS
 	PRINT_CONSTR(1, "Initialisation de la classe Talks")

@@ -1,3 +1,6 @@
+- Destruction du PicturesContainer
+- Crop images
+- Grid for animations
 - States pour Badbar
 - Controlleurs
 - Factory pour les controlleurs

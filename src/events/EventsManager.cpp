@@ -40,12 +40,11 @@ EventsManager::~EventsManager()
 
 }
 
-void EventsManager::init_EventsManager(StaticData *StaticData, GameEngine *GameEngine, PicturesContainer *PicturesContainer)
+void EventsManager::init_EventsManager(StaticData *StaticData, GameEngine *GameEngine)
 {
-	PRINT_TRACE(1, "Initialisation de EventsManager")
+	PRINT_TRACE(1, "Initialisation de EventsManager");
 	m_GameEngine = GameEngine;
 	m_StaticData = StaticData;
-	m_pictures_container = PicturesContainer;
 	m_level_name = StaticData->level_name();
 }
 

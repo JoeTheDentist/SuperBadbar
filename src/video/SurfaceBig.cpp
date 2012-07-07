@@ -3,7 +3,7 @@
 
 SurfaceBig::SurfaceBig(std::string filename)
 {
-	m_bigSprite = m_pictures_container->loadBigPicture(filename);
+	m_bigSprite = PicturesContainer::GetInstance()->loadBigPicture(filename);
 	setSurface(m_bigSprite);
 }
 

@@ -30,7 +30,7 @@ SurfaceText::~SurfaceText()
 
 void SurfaceText::init(std::string text, int size, int r, int g, int b, std::string font_name)
 {
-	m_stringSurface = m_pictures_container->loadSurfaceText(text, size, r, g, b, font_name);
+	m_stringSurface = PicturesContainer::GetInstance()->loadSurfaceText(text, size, r, g, b, font_name);
 	setSurface(m_stringSurface);
 }
 

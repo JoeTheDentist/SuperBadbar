@@ -26,9 +26,7 @@ GraphicEngine::GraphicEngine()
 	m_camera = new Camera();
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
-	m_pictures_container = PicturesContainer::GetInstance();
 	m_sprites = new SpritesManager;
-	Surface::set_pictures_container(m_pictures_container);
 }
 
 GraphicEngine::~GraphicEngine()
@@ -48,8 +46,8 @@ void GraphicEngine::init_graphic_engine(bool game)
 	} else {
 		m_camera->init_camera(NULL);
 	}
-	m_talks->init_talks(m_camera, m_pictures_container);
-	m_dashboard->init_dashboard(m_pictures_container);
+	m_talks->init_talks(m_camera);
+	m_dashboard->init_dashboard();
 }
 
 void GraphicEngine::update()
@@ -83,11 +81,6 @@ Camera *GraphicEngine::get_camera()
 Talks *GraphicEngine::get_talks()
 {
 	return m_talks;
-}
-
-PicturesContainer *GraphicEngine::get_pictures_container()
-{
-	return m_pictures_container;
 }
 
 SpritesManager * GraphicEngine::get_sprites_manager()

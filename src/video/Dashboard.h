@@ -73,9 +73,8 @@ public:
 
 	/**
 	 * 	@brief Initialise le tableau de board
-	 *	@param PicturesContainer Gestionnaire de chargement d'images
 	 */
-	void init_dashboard(PicturesContainer *PicturesContainer);
+	void init_dashboard();
 
 	/**
 	 * 	@brief Affiche le tableau de board
