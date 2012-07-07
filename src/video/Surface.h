@@ -13,12 +13,11 @@
 #include <string>
 #include <vector>
 
-#include <util/Rect.h>
+#include "util/Rect.h"
 #include "util/debug.h"
 
 #include <SFML/Graphics.hpp>
 
-class PicturesContainer;
 class SurfaceCompositeItem;
 
 /**

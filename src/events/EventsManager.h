@@ -56,7 +56,6 @@ public:
 	 * 	@warning Ne charge pas les events!
 	 *	@param StaticData les données du niveau
 	 *	@param GameEngine le moteur de jeu
-	 *	@param PicturesContainer Le conteneur d'images
 	 *
 	*/
 	void init_EventsManager(StaticData *StaticData, GameEngine *GameEngine);

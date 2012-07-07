@@ -13,7 +13,7 @@
 #include "util/globals.h"
 #include "video/Camera.h"
 #include "video/GraphicEngine.h"
-#include <video/PicturesContainer.h>
+#include "video/PicturesContainer.h"
 
 SurfaceUniform::SurfaceUniform(int width, int height, int r, int g, int b, int alpha)
 {

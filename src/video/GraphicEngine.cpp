@@ -14,8 +14,8 @@
 #include "players/PlayersManager.h"
 #include "sprites/SpritesManager.h"
 #include "video/Camera.h"
-#include <video/Dashboard.h>
-#include <video/PicturesContainer.h>
+#include "video/Dashboard.h"
+#include "video/PicturesContainer.h"
 #include "video/Talks.h"
 #include "video/Surface.h"
 

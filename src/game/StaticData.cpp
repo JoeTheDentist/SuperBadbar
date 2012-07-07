@@ -12,8 +12,8 @@
 #include "util/globals.h"
 #include "util/utils.h"
 #include "video/Camera.h"
-#include <video/PicturesContainer.h>
-#include <video/Statics.h>
+#include "video/PicturesContainer.h"
+#include "video/Statics.h"
 #include "video/Surface.h"
 #include "video/Surface.h"
 #include "video/SurfaceBig.h"

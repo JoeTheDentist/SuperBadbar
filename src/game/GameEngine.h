@@ -26,7 +26,6 @@ class Monsters_manager;
 class EventsManager;
 class CollisionsManager;
 class ProjectilesManager;
-class PicturesContainer;
 class SoundEngine;
 class AnimatedSetManager;
 

@@ -19,7 +19,6 @@ class Babar;
 class StaticData;
 class Talks;
 class Dashboard;
-class PicturesContainer;
 class SpritesManager;
 
 /**

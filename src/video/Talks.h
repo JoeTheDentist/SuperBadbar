@@ -82,7 +82,6 @@ public:
 	/**
 	 * 	@brief Initialisation des paramètres de l'objet
 	 *	@param camera Le gestionnaire d'affichage
-	 *	@param PicturesContainer Le gestionnaire de chargement d'image
 	 */
 	void init_talks(Camera *camera);
 

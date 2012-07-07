@@ -11,11 +11,11 @@
 #include "util/debug.h"
 #include "items/ElmarMachineGun.h"
 #include "items/Gun.h"
-#include <items/MachineGun.h>
-#include <items/RocketLauncher.h>
-#include <items/Shotgun.h>
-#include <sound/SoundEngine.h>
-#include <video/PicturesContainer.h>
+#include "items/MachineGun.h"
+#include "items/RocketLauncher.h"
+#include "items/Shotgun.h"
+#include "sound/SoundEngine.h"
+#include "video/PicturesContainer.h"
 
 
 WeaponsArmory::WeaponsArmory()

@@ -25,7 +25,6 @@
 
 class Camera;
 class Babar;
-class PicturesContainer;
 class Surface;
 class SurfaceText;
 class Weapon;
