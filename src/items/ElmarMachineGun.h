@@ -38,7 +38,7 @@ public:
 	/**
 	 * 	@brief Tire
 	 */
-	std::list<Projectile*> *fire(Rect pos, direction h, dmg_chan type);
+	std::list<Projectile*> *fire(Rect pos, Direction h, dmg_chan type);
 
 	/**
 	 * 	@brief Accesseur

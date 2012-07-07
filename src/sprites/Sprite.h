@@ -69,7 +69,7 @@ class Sprite {
         /**
          *	@brief Change l'état, pour un joueur. Uniquement pour les anim_table.
          */
-        virtual void change_anim(int s, direction dir, bool fire=false, bool phase_rand=false);
+        virtual void change_anim(int s, Direction dir, bool fire=false, bool phase_rand=false);
 
         /**
          *  @brief Change le texte de l'animation. Uniquement pour les anims simples

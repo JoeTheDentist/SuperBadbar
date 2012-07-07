@@ -35,7 +35,7 @@ private:
 		 *  @param d : direction a prendre en compte
 		 *  @return poids (sens AI, choix) de le direction
 		 */
-	double eval(direction d);
+	double eval(Direction d);
 
 	/**
 		 *  @brief Verifie s'il y a collision
@@ -85,7 +85,7 @@ public:
 		 * @brief donne la direction a suivre
 		 * @return direction
 		 */
-	direction dir();
+	Direction dir();
 };
 
 #endif // AI_H_INCLUDED

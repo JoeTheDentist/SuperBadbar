@@ -9,7 +9,7 @@ public:
 	/**
 	 *  @brief Constructeur
 	 */
-	ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type = ALL);
+	ElmarTile(Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type = ALL);
 
 	/**
 	 * 	@brief Destructeur

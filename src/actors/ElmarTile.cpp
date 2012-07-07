@@ -3,7 +3,7 @@
 
 #include "sprites/SpritesManager.h"
 
-ElmarTile::ElmarTile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
+ElmarTile::ElmarTile(Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
 	PRINT_CONSTR(2, "Construction de ElmarTile");
     m_pos = pos;

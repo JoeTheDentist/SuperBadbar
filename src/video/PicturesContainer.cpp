@@ -15,6 +15,26 @@
 #include "util/globals.h"
 #include "video/Camera.h"
 
+PicturesContainer *PicturesContainer::s_instance = 0;
+
+PicturesContainer *PicturesContainer::GetInstance()
+{
+	if (!s_instance)
+	{
+		s_instance = new PicturesContainer();
+	}
+	return s_instance;
+}
+
+void PicturesContainer::DeleteInstance()
+{
+	if (s_instance)
+	{
+		delete s_instance;
+		s_instance = 0;
+	}
+}
+
 PicturesContainer::PicturesContainer()
 {
 	PRINT_CONSTR(1, "Construction d'un PicturesContainer");

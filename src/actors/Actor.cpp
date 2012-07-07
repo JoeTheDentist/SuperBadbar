@@ -68,11 +68,13 @@ int Actor::direction_h() const
 {
 	if (m_dir == RIGHT)
 		return 1;
-	else
+	else if(m_dir == LEFT)
 		return -1;
+	else
+		return 0;
 }
 
-direction Actor::dir() const
+Direction Actor::getDirection() const
 {
 	return m_dir;
 }

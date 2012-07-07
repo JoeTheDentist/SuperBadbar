@@ -19,16 +19,15 @@
 #include "video/SurfaceBig.h"
 
 
-StaticData::StaticData() : m_pictures_container(new PicturesContainer())
+StaticData::StaticData() : m_pictures_container(PicturesContainer::GetInstance())
 {
-	PRINT_CONSTR(1, "Construction d'un StaticData")
+	PRINT_CONSTR(1, "Construction d'un StaticData");
 
 }
 
 StaticData::~StaticData()
 {
-	PRINT_CONSTR(1, "Destruction d'un StaticData")
-	delete m_pictures_container;
+	PRINT_CONSTR(1, "Destruction d'un StaticData");
 	for(std::list<Static *>::iterator it = m_statics_first.begin();
 			it != m_statics_first.end(); it++) {
 	    delete (*it);

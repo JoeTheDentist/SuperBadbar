@@ -24,7 +24,7 @@ enum state_m {
 };
 
 
-enum direction {
+enum Direction {
 	LEFT, RIGHT, UP, DOWN, NOPE
 };
 
@@ -47,7 +47,7 @@ class Actor {
 protected:
 	Rect m_pos; 		/* position du sprite et sa taille */
 	Rect m_speed;		/* vitesse du sprite */
-	direction m_dir;    /* direction */
+	Direction m_dir;    /* direction */
 	Sprite * m_sprite;  /* Representation de l'acteur */
 	int m_phase;        /* temps depuis creation, en nombre de cycle */
 public:
@@ -89,13 +89,13 @@ public:
 	 *
 	 *	-1 pour gauche, 0 pour milieu, 1 pour droite
 	*/
-	int direction_h() const; /* retourne la direction directione du sprite (-1 pour gauche, 0 pour middle, 1 pour droite*/
+	int direction_h() const;
 
 	/**
 	*	@brief Accesseur
 	*	@return La direction du sprite
 	*/
-	direction dir() const;
+	Direction getDirection() const;
 
 	/**
 	*	@brief Accesseur

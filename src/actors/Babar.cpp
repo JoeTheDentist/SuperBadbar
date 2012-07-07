@@ -392,9 +392,9 @@ bool Babar::can_fire()
 
 std::list<Projectile*> *Babar::fire_old(int num_player)
 {
-	PRINT_TRACE(2, "Tir de Babar")
-			/* Calcul de la position de la source du tir */
-			Rect fire_pos = position();
+	PRINT_TRACE(2, "Tir de Babar");
+	/* Calcul de la position de la source du tir */
+	Rect fire_pos = position();
 	fire_pos.y += SOURCE_Y;
 	if ( m_dir == RIGHT ) {
 		fire_pos.x += position().w;
@@ -493,7 +493,7 @@ void Babar::go_down()
 		}
 	}
 	unbind();
-	PRINT_TRACE(1, "Descente d'une plateforme")
+	PRINT_TRACE(1, "Descente d'une plateforme");
 }
 
 void Babar::damage(int damages)
@@ -679,11 +679,11 @@ bool Babar::check_unbind()
 		// si on descend et qu'on rencontre un static, on s'y arrete
 		if (m_bind->is_going_down() && CollisionsManager::is_down_coll(gCollision->get_matrix()->down_collision_type(position()))) {
 			unbind();
-			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-					PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH")
-					return true;
+			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH");
+			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH");
+			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH");
+			PRINT_DEBUG(1, "oIURHGELIUHFGELIUGHLEISHRGHSDLIUH");
+			return true;
 		}
 	}
 	return false;

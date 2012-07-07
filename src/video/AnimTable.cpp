@@ -130,7 +130,7 @@ void AnimTable::init_nfire(std::string anim_name)
     m_curr_anim = m_anim[0][0];
 }
 
-void AnimTable::change_anim(int s, direction dir, bool fire, bool phase_rand)
+void AnimTable::change_anim(int s, Direction dir, bool fire, bool phase_rand)
 {
     if ( s != m_last_state || dir != m_last_dir || fire != m_last_fire ) {
         if ( m_curr_anim->interruptable() ) {

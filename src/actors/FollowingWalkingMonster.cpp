@@ -42,7 +42,7 @@ FollowingWalkingMonster::~FollowingWalkingMonster()
 
 void FollowingWalkingMonster::update_speed_ai()
 {
-    direction d = m_ai->dir();
+    Direction d = m_ai->dir();
     m_state = WALKING;
 
     switch ( d ) {

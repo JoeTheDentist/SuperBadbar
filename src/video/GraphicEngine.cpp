@@ -22,22 +22,22 @@
 
 GraphicEngine::GraphicEngine()
 {
-	PRINT_CONSTR(1, "Construction de GraphicEngine")
+	PRINT_CONSTR(1, "Construction de GraphicEngine");
 	m_camera = new Camera();
 	m_talks = new Talks();
 	m_dashboard = new Dashboard();
-	m_pictures_container = new PicturesContainer();
+	m_pictures_container = PicturesContainer::GetInstance();
 	m_sprites = new SpritesManager;
 	Surface::set_pictures_container(m_pictures_container);
 }
 
 GraphicEngine::~GraphicEngine()
 {
-	PRINT_CONSTR(1, "Destruction de GraphicEngine")
+	PRINT_CONSTR(1, "Destruction de GraphicEngine");
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;
-	delete m_pictures_container;
+	//delete m_pictures_container;
 	delete m_sprites;
 }
 

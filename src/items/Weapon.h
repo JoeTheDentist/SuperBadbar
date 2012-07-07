@@ -74,7 +74,7 @@ public:
 	 *	@param h la direction de tir
 	 *	@return La liste de projectiles tirés
 	 */
-	virtual std::list<Projectile*> * fire(Rect pos, direction h, dmg_chan type) = 0;
+	virtual std::list<Projectile*> * fire(Rect pos, Direction h, dmg_chan type) = 0;
 
 	/**
 	 * 	@brief Accesseur

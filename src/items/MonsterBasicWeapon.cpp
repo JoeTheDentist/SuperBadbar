@@ -33,7 +33,7 @@ Monster_basic_weapon::~Monster_basic_weapon()
 	PRINT_CONSTR(2, "Destruction d'un Monster_basic_weapon")
 }
 
-std::list<Projectile*> *Monster_basic_weapon::fire(Rect pos, direction h, dmg_chan type)
+std::list<Projectile*> *Monster_basic_weapon::fire(Rect pos, Direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (rand() % m_fire_frequency == 0) {

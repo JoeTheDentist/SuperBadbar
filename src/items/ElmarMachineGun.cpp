@@ -17,7 +17,7 @@ ElmarMachineGun::~ElmarMachineGun()
 	PRINT_CONSTR(2, "Destruction d'un ElmarMachineGun")
 }
 
-std::list<Projectile*> *ElmarMachineGun::fire(Rect pos, direction h, dmg_chan type)
+std::list<Projectile*> *ElmarMachineGun::fire(Rect pos, Direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {

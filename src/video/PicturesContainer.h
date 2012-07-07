@@ -23,15 +23,17 @@
 
 /**
  * 	@class PicturesContainer
- * 	@brief Charge les images de faÃ§on a optimiser la mÃ©moire
+ * 	@brief Charge les images de faÃ§on a optimiser la mémoire
  *
- *	Fournit une mÃ©thode load_IMG qui charge une image en fonction
+ *	Fournit une méthode load_IMG qui charge une image en fonction
  *	de son chemin, stocke cette image et en renvoie un pointeur.
- *	Si cette image a dÃ©ja Ã©tÃ© chargÃ© une fois, la mÃ©thode renvoie
- *	un pointeur vers l'image dÃ©ja chargÃ©e.
+ *	Si cette image a déjà été chargé une fois, la méthode renvoie
+ *	un pointeur vers l'image déjà chargée.
  *
  *	PicturesContainer utilise un map pour stocker et retrouver
  *	les images en fonction de leur chemin.
+ *
+ *	Singleton.
  *
  *	@todo reorganiser la ou les localisations de PicturesContainer dans les autres classes
  *
@@ -44,19 +46,23 @@ private:
 	UniformSurfaceMap m_unifContainer;
 	std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
 	std::list< std::pair< BigImage* , BigSprite* > > m_bigsContainer;
+
+	static PicturesContainer *s_instance;
+
 public:
-	/**
-	 * 	@brief Constructeur
-	 */
-	PicturesContainer();
 
 	/**
-	 * 	@brief Destructeur
+	 *	Getter of the instance
 	 */
-	~PicturesContainer();
+	static PicturesContainer *GetInstance();
 
 	/**
-	 * 	@brief Retourne un pointeur vers l'image demandÃ©e
+	 *	Delete the instance
+	 */
+	static void DeleteInstance();
+
+	/**
+	 * 	@brief Retourne un pointeur vers l'image demandée
 	 *	@param key Le chemin vers l'image
 	 *	@return Un pointeur vers l'image voulue
 	 */
@@ -96,6 +102,17 @@ public:
 	 * 	@brief Vide la memoire du picture container
 	 */
 	void resetMemory();
+
+private:
+	/**
+	 * 	@brief Constructeur
+	 */
+	PicturesContainer();
+
+	/**
+	 * 	@brief Destructeur
+	 */
+	~PicturesContainer();
 };
 
 

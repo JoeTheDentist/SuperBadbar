@@ -33,7 +33,7 @@ class SpriteAnimTable : public Sprite {
         /**
          *	@brief Change l'etat
          */
-        void change_anim(int s, direction dir, bool fire=false ,bool phase_rand=false);
+        void change_anim(int s, Direction dir, bool fire=false ,bool phase_rand=false);
 
         /**
          *  @brief Hauteur

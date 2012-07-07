@@ -3,7 +3,7 @@
 
 #include "sprites/SpritesManager.h"
 
-Explosion::Explosion(Rect pos, direction h, unsigned int damage)
+Explosion::Explosion(Rect pos, Direction h, unsigned int damage)
 {
     PRINT_CONSTR(2, "Construction de Explosion");
     m_pos = pos;

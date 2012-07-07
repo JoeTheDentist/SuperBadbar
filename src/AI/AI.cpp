@@ -21,21 +21,21 @@ AI::~AI()
 
 }
 
-direction AI::dir()
+Direction AI::dir()
 {
-	direction best_dir = LEFT;
+	Direction best_dir = LEFT;
 	double max = eval(best_dir);
 	for (int i = 1; i < 4; i++) {
-		double cur = eval((direction)i);
+		double cur = eval((Direction)i);
 		if ( cur > max ) {
-			best_dir = (direction)i;
+			best_dir = (Direction)i;
 			max = cur;
 		}
 	}
 	return best_dir;
 }
 
-double AI::eval(direction d) {
+double AI::eval(Direction d) {
 	Rect zone = *m_pos;
 	double weight = 0;
 	switch ( d ) {

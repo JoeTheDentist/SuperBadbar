@@ -139,7 +139,7 @@ void GameEngine::update_monsters_projectiles()
                 Rect pos = monster->position();
                 pos.y = (*it)->position().y;
                 char img = '0';
-                if ( (*it)->dir() == RIGHT ) {
+				if ( (*it)->getDirection() == RIGHT ) {
                     pos.x += pos.w;
                     img++;
                 }

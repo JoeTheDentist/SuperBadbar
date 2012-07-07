@@ -12,7 +12,7 @@ public:
 	/**
 	 *  @brief Constructeur
 	 */
-	Explosion(Rect pos, direction h, unsigned int damage);
+	Explosion(Rect pos, Direction h, unsigned int damage);
 
 	/**
 	 *  @brief Destructeur

@@ -32,7 +32,7 @@ MachineGun::~MachineGun()
 	PRINT_CONSTR(2, "Destruction d'un MachineGun")
 }
 
-std::list<Projectile*> *MachineGun::fire(Rect pos, direction h, dmg_chan type)
+std::list<Projectile*> *MachineGun::fire(Rect pos, Direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	if (m_munitions >= 0) {

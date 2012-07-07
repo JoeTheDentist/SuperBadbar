@@ -31,7 +31,7 @@ void SpriteAnimTable::next_pic()
     m_animt->next_pic();
 }
 
-void SpriteAnimTable::change_anim(int s, direction dir, bool fire ,bool phase_rand)
+void SpriteAnimTable::change_anim(int s, Direction dir, bool fire ,bool phase_rand)
 {
     m_animt->change_anim(s, dir, fire, phase_rand);
 }

@@ -3,6 +3,8 @@
 
 #include <list>
 
+class Controller;
+
 /**
  *	Factory for the controllers.
  *	Singleton.
@@ -11,17 +13,41 @@ class ControllerFactory
 {
 public:
 	/**
-	 *	Getter of the singleton instance.
+	 *	Getter of the singleton instance
+	 *	@return instance
 	 */
 	static ControllerFactory *Factory();
 
-private:
-	static ControllerFactory *s_instance;
+	/**
+	 *	Frees the instance
+	 */
+	static void Destroy();
 
 	/**
-	 *	Constructor
+	 *	Getter of a new action controller for player
+	 *	@return new controller
+	 */
+	Controller *createActionPlayerController();
+
+	/**
+	 *	Getter of a new event controller for player
+	 *	@return new controller
+	 */
+	Controller *createEventPlayerController();
+
+private:
+	static ControllerFactory *s_instance;
+	std::list<Controller*> m_controllers; //TODO here ControllersManager better
+
+	/**
+	 *	Ctor
 	 */
 	ControllerFactory();
+
+	/**
+	 *	Dtor
+	 */
+	~ControllerFactory();
 };
 
 #endif // CONTROLLERFACTORY_H

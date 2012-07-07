@@ -16,7 +16,7 @@
 #include "actors/MonstersManager.h"
 #include "actors/Explosion.h"
 
-Rocket::Rocket(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
+Rocket::Rocket(Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage)
 {
     PRINT_CONSTR(2, "Construction de Rocket");
     m_pos = pos;

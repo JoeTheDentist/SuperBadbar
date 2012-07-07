@@ -32,7 +32,7 @@ RocketLauncher::~RocketLauncher()
 	PRINT_CONSTR(2, "Destruction d'un RocketLauncher")
 }
 
-std::list<Projectile*> *RocketLauncher::fire(Rect pos, direction h, dmg_chan type)
+std::list<Projectile*> *RocketLauncher::fire(Rect pos, Direction h, dmg_chan type)
 {
 	std::list<Projectile*> *proj_list = new std::list<Projectile*>();
 	Projectile * r = new Rocket(pos, h, (2*h-1)*PROJ_SPEED, 0,ROCKET_DAMAGE);

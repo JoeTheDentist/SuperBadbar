@@ -42,7 +42,7 @@ void Sprite::set_pos(Rect pos)
     m_pos.y = pos.y;
 }
 
-void Sprite::change_anim(int s, direction dir, bool fire ,bool phase_rand) {}
+void Sprite::change_anim(int s, Direction dir, bool fire ,bool phase_rand) {}
 
 void Sprite::change_text_to(std::string text, int begin_size, int end_size, int nb_pic) {}
 

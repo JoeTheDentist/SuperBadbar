@@ -29,7 +29,7 @@ Projectile::Projectile()
     PRINT_CONSTR(2, "Construction de Projectile");
 }
 
-Projectile::Projectile(Rect pos, direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
+Projectile::Projectile(Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage, dmg_chan type)
 {
 	PRINT_CONSTR(2, "Construction de Projectile");
     m_pos = pos;
