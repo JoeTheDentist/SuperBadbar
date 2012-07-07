@@ -59,7 +59,7 @@ public:
 	/**
 	 *	Delete the instance
 	 */
-	static void DeleteInstance();
+	static void Destroy();
 
 	/**
 	 * 	@brief Retourne un pointeur vers l'image demandée

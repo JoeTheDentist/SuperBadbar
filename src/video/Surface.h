@@ -44,6 +44,7 @@ public:
 
 	/**
 	 *	Ctor
+	 *	Must be called from grids (memory management)
 	 *	@param sprite
 	 */
 	Surface(sf::Sprite *sprite);

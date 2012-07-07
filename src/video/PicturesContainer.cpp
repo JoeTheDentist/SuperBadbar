@@ -26,13 +26,10 @@ PicturesContainer *PicturesContainer::GetInstance()
 	return s_instance;
 }
 
-void PicturesContainer::DeleteInstance()
+void PicturesContainer::Destroy()
 {
-	if (s_instance)
-	{
-		delete s_instance;
-		s_instance = 0;
-	}
+	delete s_instance;
+	s_instance = 0;
 }
 
 PicturesContainer::PicturesContainer()
@@ -64,7 +61,7 @@ sf::Sprite *PicturesContainer::load_picture(std::string key)
 	} else {
 		surf = (*it).second;
 	}
-	return surf;	
+	return surf;
 }
 
 BigSprite *PicturesContainer::loadBigPicture(std::string key)
@@ -73,7 +70,7 @@ BigSprite *PicturesContainer::loadBigPicture(std::string key)
 	image->LoadFromFile(key);
 	BigSprite *sprite = new BigSprite(*image);
 	m_bigsContainer.push_back(std::pair<BigImage *, BigSprite*>(image, sprite));
-	return sprite;	
+	return sprite;
 }
 
 
@@ -128,7 +125,7 @@ void PicturesContainer::resetMemory()
 	m_fontsContainer.clear();
 	
 	for (std::list< std::pair< BigImage* , BigSprite* > >::iterator it = m_bigsContainer.begin();
-			it != m_bigsContainer.end(); ++it) 
+		 it != m_bigsContainer.end(); ++it)
 	{
 		delete it->first;
 		delete it->second;
