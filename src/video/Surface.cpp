@@ -24,7 +24,17 @@ Surface::Surface(std::string filename)
 	if ( !m_drawable ) {
 		PRINT_CONSTR(1, "Impossible de charger l'image : %s", filename.c_str());
 	}
+}
 
+Surface::Surface(sf::Sprite *sprite)
+{
+	m_drawable = NULL;
+	PRINT_CONSTR(3, "Construction d'une classe Surface");
+	m_sprite = sprite;
+	setSurface(m_sprite);
+	if ( !m_drawable ) {
+		PRINT_CONSTR(1, "Impossible de charger l'image depuis un sprite");
+	}
 }
 
 Surface::~Surface()
@@ -35,6 +45,11 @@ Surface::~Surface()
 sf::Drawable *Surface::getSurface()
 {
 	return m_drawable;
+}
+
+sf::Sprite *Surface::getSprite()
+{
+	return m_sprite;
 }
 
 int Surface::w()

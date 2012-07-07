@@ -43,6 +43,12 @@ public:
 	Surface(std::string filename);
 
 	/**
+	 *	Ctor
+	 *	@param sprite
+	 */
+	Surface(sf::Sprite *sprite);
+
+	/**
 	 *	@brief Destructeur
 	 */
 	virtual ~Surface();
@@ -52,6 +58,12 @@ public:
 	 *	@return L'image SFML
 	 */
 	sf::Drawable *getSurface();
+
+	/**
+	 *	Getter
+	 *	@return sprite
+	 */
+	sf::Sprite *getSprite();
 
 	/**
 	 *	TOCOMMENT

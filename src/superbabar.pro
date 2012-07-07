@@ -210,7 +210,8 @@ SOURCES += \
     actors/babar_states/BabarStateJump.cpp \
     actors/babar_states/BabarStateDoubleJump.cpp \
     actors/babar_states/BabarStateCrouchNone.cpp \
-    actors/babar_states/BabarStateCrouchWalking.cpp
+    actors/babar_states/BabarStateCrouchWalking.cpp \
+    video/Grid.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -370,7 +371,8 @@ HEADERS  += \
     actors/babar_states/BabarStateJump.h \
     actors/babar_states/BabarStateDoubleJump.h \
     actors/babar_states/BabarStateCrouchNone.h \
-    actors/babar_states/BabarStateCrouchWalking.h
+    actors/babar_states/BabarStateCrouchWalking.h \
+    video/Grid.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \

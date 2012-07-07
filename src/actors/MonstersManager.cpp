@@ -31,17 +31,17 @@
 
 Monsters_manager::Monsters_manager()
 {
-    PRINT_CONSTR(1, "Construction de MonstersManager");
+	PRINT_CONSTR(1, "Construction de MonstersManager");
 }
 
 Monsters_manager::~Monsters_manager()
 {
-    PRINT_CONSTR(1, "Destruction de MonstersManager");
+	PRINT_CONSTR(1, "Destruction de MonstersManager");
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); ){
+		it != m_monsters.end(); ){
 		delete (*it);
-        (*it) = NULL;
-        it = m_monsters.erase(it);
+		(*it) = NULL;
+		it = m_monsters.erase(it);
 	}
 
 }
@@ -107,15 +107,15 @@ void Monsters_manager::add(Monster *monster)
 void Monsters_manager::monsters_update_speed()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++) {
-	    (*it)->update_speed();
+		it != m_monsters.end(); it++) {
+		(*it)->update_speed();
 	}
 }
 
 void Monsters_manager::monsters_update_pos()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++) {
+		it != m_monsters.end(); it++) {
 		(*it)->update_pos();
 	}
 }
@@ -123,7 +123,7 @@ void Monsters_manager::monsters_update_pos()
 void Monsters_manager::make_monsters_fire()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++) {
+		it != m_monsters.end(); it++) {
 		(*it)->update();
 		if ((*it)->can_fire())
 			gProj->add_proj((*it)->fire(), MONSTERS);
@@ -134,7 +134,7 @@ void Monsters_manager::babar_monsters_collision()
 {
 	Rect babar_pos = gPlayers->local_player()->damage_box();
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++){
+		it != m_monsters.end(); it++){
 		if (!(*it)->dead()) {
 			if (CollisionsManager::check_collision((*it)->damage_box(), babar_pos)) {
 				gPlayers->local_player()->damage(1);
@@ -146,7 +146,7 @@ void Monsters_manager::babar_monsters_collision()
 void Monsters_manager::play_sounds()
 {
 	for(std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); it++){
+		it != m_monsters.end(); it++){
 		gSound->play_sound((*it));
 	}
 }
@@ -180,13 +180,13 @@ void Monsters_manager::delete_element()
 void Monsters_manager::delete_dead_monsters()
 {
 	for (std::list<Monster *>::iterator it = m_monsters.begin();
-			it != m_monsters.end(); ) {
+		 it != m_monsters.end(); ) {
 		if ((*it)->dead()) {
 			(*it)->kill();
 			delete (*it);
 			it = m_monsters.erase(it);
 		} else if ( (*it)->position().y + (*it)->position().h >= (int)gStatic->StaticData_height() ) {
-            gGameEngine->get_sets()->add_set(PIC_ANIMATIONS_R+"splash/splash",(*it)->position().x, (int)gStatic->StaticData_height()-100, false, true, true);
+			gGameEngine->get_sets()->add_set(PIC_ANIMATIONS_R+"splash/splash",(*it)->position().x, (int)gStatic->StaticData_height()-100, false, true, true);
 			delete (*it);
 			it = m_monsters.erase(it);
 		} else {
