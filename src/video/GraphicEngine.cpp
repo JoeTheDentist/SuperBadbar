@@ -16,6 +16,7 @@
 #include "video/Camera.h"
 #include "video/Dashboard.h"
 #include "video/PicturesContainer.h"
+#include "video/GridsContainer.h"
 #include "video/Talks.h"
 #include "video/Surface.h"
 
@@ -35,7 +36,8 @@ GraphicEngine::~GraphicEngine()
 	delete m_camera;
 	delete m_talks;
 	delete m_dashboard;
-	//delete m_pictures_container;
+	PicturesContainer::Destroy();
+	GridsContainer::Destroy();
 	delete m_sprites;
 }
 

@@ -1,7 +1,6 @@
-- Destruction du PicturesContainer
-- Destruction du GridContainer
 - Clean settings?
 - States pour Badbar
 - Controlleurs
 - Réseau
 - Point chaud et bounding box
+- Check memory
