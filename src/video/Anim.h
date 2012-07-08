@@ -24,7 +24,7 @@ public:
 	/**
 	 * @brief Image a afficher.
 	 * @return l'image de l'animation a afficher, et MET A JOUR !!! l'image suivante.
- */
+	 */
 	virtual Surface * curr_pic()=0;
 
 	/**

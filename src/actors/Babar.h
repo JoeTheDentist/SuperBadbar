@@ -34,6 +34,7 @@ class WeaponsArmory;
 class BindablePlatform;
 class Rect;
 class BabarState;
+class SpriteGrid;
 
 const int c_babar_hp_max = 5;
 const int c_babar_lifes = 3;
@@ -94,6 +95,7 @@ protected:
 	Rect m_last_pos;                    /* dernière position sur qqch */
 
 	BabarState *m_state;		// Babar's state
+	SpriteGrid *m_spriteGrid;	// instead of Actor's sprite
 
 	/**
 	 * 	@brief Charge les images de babar

@@ -1,4 +1,6 @@
 - Destruction du PicturesContainer
+- Destruction du GridContainer
+- Clean settings?
 - Crop images
 - Grid for animations
 - States pour Badbar

@@ -23,6 +23,7 @@
 #include "video/Surface.h"
 #include "util/globals.h"
 #include "sprites/SpritesManager.h"
+#include "sprites/SpriteGrid.h"
 
 class SpritesManager;
 
@@ -33,9 +34,10 @@ Babar::Babar(Analyser *analyser)
 	: m_peanuts(0)
 {
 	PRINT_CONSTR(1, "Construction de Babar");
-	init_babar(analyser);
+	m_spriteGrid = 0;
 	m_bind = NULL;
 	m_fire = false;
+	init_babar(analyser);
 }
 
 Babar::~Babar()
@@ -52,13 +54,22 @@ void Babar::load_anim(int age)
 	age = 0;
 #endif
 
-	if ( m_sprite ) {
-		m_sprite->to_delete();
+	if ( m_spriteGrid ) {
+		m_spriteGrid->to_delete();
 	}
-	m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
+	/*m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
 	m_sprite->set_pos(position());
 	set_h(m_sprite->h());
-	set_w(m_sprite->w());
+	set_w(m_sprite->w());*/
+
+	//TODO (Guillaume) var for the path
+	m_spriteGrid = gGraphics->get_sprites_manager()->addGrid("../pic/players/babar_states.png");
+
+	m_spriteGrid->setPictures(0,1,2);
+
+	m_spriteGrid->set_pos(position());
+	set_h(m_spriteGrid->h());
+	set_w(m_spriteGrid->w());
 
 	m_last_pos.x = 0;
 	m_last_pos.y = 0;
@@ -351,15 +362,12 @@ void Babar::update_state()
 		m_invincible --;
 		if (!locked()) {
 			if ( m_invincible%2) {
-				m_sprite->no_pic();
+				//m_sprite->no_pic();
 			} else {
-				m_sprite->set_pic();
+				//m_sprite->set_pic();
 			}
 		}
 	}
-
-
-
 
 	m_weapons_armory.update();
 
@@ -369,10 +377,10 @@ void Babar::update_state()
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-	m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
-	m_sprite->set_pos(position());
-	set_h(m_sprite->h());
-	set_w(m_sprite->w());
+	//m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
+	m_spriteGrid->set_pos(position());
+	set_h(m_spriteGrid->h());
+	set_w(m_spriteGrid->w());
 }
 
 void Babar::update_direction()
@@ -415,10 +423,10 @@ bool Babar::can_crouch() const
 void Babar::crouch()
 {
 	m_crouch_time = 1;
-	int h_last = m_sprite->h();
+	/*int h_last = m_sprite->h();
 	m_sprite->change_anim(CROUCH, m_dir);
 	int h = m_sprite->h();
-	move(0, h_last - h);
+	move(0, h_last - h);*/
 }
 
 bool Babar::can_jump() const
@@ -445,8 +453,8 @@ void Babar::double_jump()
 {
 	m_double_jump = true;
 	m_ready_double_jump = false;
-	PRINT_TRACE(1, "Double-saut de Babar")
-			m_speed.y = -4*BABAR_SPEED;
+	PRINT_TRACE(1, "Double-saut de Babar");
+	m_speed.y = -4*BABAR_SPEED;
 	gKeyboard->disable_key(k_jump);
 
 }
@@ -546,7 +554,7 @@ void Babar::die()
 	m_lifes--;
 	m_hp = c_babar_hp_max;
 	lock(BABAR_RESU_TIME);
-	m_sprite->no_pic();
+	//m_sprite->no_pic();
 	if ( !(gPlayers->local_player()->position().y + gPlayers->local_player()->position().h >= (int)gStatic->StaticData_height()) ) {
 		gGameEngine->get_sets()->add_set(PIC_BABAR_R+to_string(1)+"/death/babar_"+to_string(m_dir)+"_", m_pos, m_speed);
 	}
@@ -561,7 +569,7 @@ void Babar::lock(int time)
 
 void Babar::unlock()
 {
-	m_sprite->set_pic();
+	//m_sprite->set_pic();
 	m_lock = -1;
 	m_invincible = 20;
 	set_last_pos();
@@ -656,11 +664,11 @@ void Babar::interrupt_jump()
 
 void Babar::interrupt_crouch()
 {
-	m_sprite->set_pic();
+	/*m_sprite->set_pic();
 	int h_last = m_sprite->curr_pic()->h();
 	m_sprite->change_anim(STATIC, m_dir);
 	int h = m_sprite->curr_pic()->h();
-	move(0, h_last - h);
+	move(0, h_last - h);*/
 	m_crouch_time = 0;
 }
 

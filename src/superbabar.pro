@@ -212,7 +212,9 @@ SOURCES += \
     actors/babar_states/BabarStateCrouchNone.cpp \
     actors/babar_states/BabarStateCrouchWalking.cpp \
     video/Grid.cpp \
-    video/GridsContainer.cpp
+    video/GridsContainer.cpp \
+    sprites/SpriteGrid.cpp \
+    video/AnimGrid.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -374,7 +376,9 @@ HEADERS  += \
     actors/babar_states/BabarStateCrouchNone.h \
     actors/babar_states/BabarStateCrouchWalking.h \
     video/Grid.h \
-    video/GridsContainer.h
+    video/GridsContainer.h \
+    sprites/SpriteGrid.h \
+    video/AnimGrid.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \

@@ -124,8 +124,8 @@ public:
 	virtual void set_pos(int x, int y);
 
 	/**
-		 *  TOCOMMENT
-		 */
+	 *  TOCOMMENT
+	 */
 	virtual void do_stay_in_level();
 
 };

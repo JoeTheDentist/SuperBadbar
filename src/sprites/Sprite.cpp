@@ -18,8 +18,8 @@
 
 Sprite::Sprite()
 {
-    PRINT_CONSTR(3, "Construction de Sprite")
-	m_phase = 0;
+	PRINT_CONSTR(3, "Construction de Sprite")
+			m_phase = 0;
 	m_to_delete = false;
 	m_lvl = BACKGROUND;
 	m_no_pic = false;
@@ -33,13 +33,13 @@ Sprite::~Sprite()
 
 Rect * Sprite::pos()
 {
-    return &m_pos;
+	return &m_pos;
 }
 
 void Sprite::set_pos(Rect pos)
 {
-    m_pos.x = pos.x;
-    m_pos.y = pos.y;
+	m_pos.x = pos.x;
+	m_pos.y = pos.y;
 }
 
 void Sprite::change_anim(int s, Direction dir, bool fire ,bool phase_rand) {}
@@ -48,35 +48,35 @@ void Sprite::change_text_to(std::string text, int begin_size, int end_size, int 
 
 unsigned int Sprite::phase() const
 {
-    return m_phase;
+	return m_phase;
 }
 
 void Sprite::set_to_delete()
 {
-    m_to_delete = true;
+	m_to_delete = true;
 }
 
 bool Sprite::to_delete() const
 {
-    return m_to_delete;
+	return m_to_delete;
 }
 
 void Sprite::no_pic()
 {
-    m_no_pic = true;
+	m_no_pic = true;
 }
 
 void Sprite::set_pic()
 {
-    m_no_pic = false;
+	m_no_pic = false;
 }
 
 void Sprite::rand_pic()
 {
-    /* Ne rien faire si non redef */
+	/* Ne rien faire si non redef */
 }
 
 bool Sprite::center()
 {
-    return m_center;
+	return m_center;
 }
