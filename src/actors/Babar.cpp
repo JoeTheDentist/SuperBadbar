@@ -37,6 +37,8 @@ Babar::Babar(Analyser *analyser)
 	m_spriteGrid = 0;
 	m_bind = NULL;
 	m_fire = false;
+	m_firing = false;
+	m_crouching = false;
 	init_babar(analyser);
 }
 
@@ -111,6 +113,16 @@ void Babar::changeState(BabarState *newState)
 		delete m_state;
 	}
 	m_state = newState;
+}
+
+bool Babar::isCrouching()
+{
+	return m_crouching;
+}
+
+bool Babar::isFiring()
+{
+	return m_firing;
 }
 
 /**************************************************************************/

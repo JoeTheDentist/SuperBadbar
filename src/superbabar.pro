@@ -373,8 +373,6 @@ HEADERS  += \
     actors/babar_states/BabarStateRun.h \
     actors/babar_states/BabarStateJump.h \
     actors/babar_states/BabarStateDoubleJump.h \
-    actors/babar_states/BabarStateCrouchNone.h \
-    actors/babar_states/BabarStateCrouchWalking.h \
     video/Grid.h \
     video/GridsContainer.h \
     sprites/SpriteGrid.h \

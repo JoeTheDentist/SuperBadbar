@@ -96,6 +96,8 @@ protected:
 
 	BabarState *m_state;		// Babar's state
 	SpriteGrid *m_spriteGrid;	// instead of Actor's sprite
+	bool m_firing;				// if Babar is firing
+	bool m_crouching;			// if Babar is crouching
 
 	/**
 	 * 	@brief Charge les images de babar
@@ -127,6 +129,18 @@ public:
 	 *	@param newState: new state to apply to Babar
 	 */
 	void changeState(BabarState *newState);
+
+	/**
+	 *	Getter
+	 *	@return if Babar is crouching
+	 */
+	bool isCrouching();
+
+	/**
+	 *	Getter
+	 *	@return if Babar is firing
+	 */
+	bool isFiring();
 
 	/**************************************************************************/
 	/**ACTIONS (called by controller)******************************************/
