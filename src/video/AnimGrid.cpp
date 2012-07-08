@@ -10,6 +10,9 @@ AnimGrid::AnimGrid(string anim_name)
 	m_grid = GridsContainer::GetInstance()->createGrid(anim_name);
 	setPictures(0);
 	m_curr = 0;
+	m_phase = 0;
+	//TODO (Guillaume) see if always cycle
+	m_type = CYCLE;
 }
 
 AnimGrid::~AnimGrid()
@@ -24,8 +27,22 @@ Surface *AnimGrid::curr_pic()
 
 void AnimGrid::next_pic()
 {
-	m_curr++;
-	m_curr %= m_picToDisplay.size();
+	m_phase++;
+	//TODO (Guillaume) not hardcoded
+	m_phase%=6;
+
+	if ( m_phase == 0 ) {
+		if ( m_type != CYCLE && m_finished ) {  /* si on a fini sans etre en CYCLE, on garde la derniere image */
+			m_curr = m_picToDisplay.size()-1;
+		} else {                        /* sinon on affiche les images cycliquement */
+			m_curr++;
+			m_curr%=m_picToDisplay.size();
+		}
+
+		if ( m_type != CYCLE && ( m_curr == m_picToDisplay.size()-1 ) ) { /* une fois qu'on a fini une animation en force, on a fini */
+			m_finished = true;
+		}
+	}
 }
 
 void AnimGrid::set_rect(Rect &pos)

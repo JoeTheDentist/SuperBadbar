@@ -57,10 +57,6 @@ void Babar::load_anim(int age)
 	if ( m_spriteGrid ) {
 		m_spriteGrid->to_delete();
 	}
-	/*m_sprite = gGraphics->get_sprites_manager()->add_table(PIC_BABAR_R+to_string(age)+"/"+"babar", MIDDLEGROUND);
-	m_sprite->set_pos(position());
-	set_h(m_sprite->h());
-	set_w(m_sprite->w());*/
 
 	//TODO (Guillaume) var for the path
 	m_spriteGrid = gGraphics->get_sprites_manager()->addGrid("../pic/players/babar_states.png");
