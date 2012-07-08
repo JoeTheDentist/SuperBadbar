@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 
 	sf::Color color(255,0,255);
 	sf::Image *outputImg = new sf::Image(width*(caseWidth+2),
-										 height*(caseHeight+2),
+										 2*height*(caseHeight+2),
 										 color);
 
 	count = 0;
@@ -93,11 +93,20 @@ int main(int argc, char *argv[])
 	for (vector<sf::Image*>::iterator it = images.begin();
 		 it < images.end();
 		 ++it) {
-		i = count / width;
+		i = 2 * (count / width);
 		j = count % width;
 		outputImg->Copy(*(*it),
 						j*caseWidth+1+2*j,
 						i*caseHeight+1+2*i);
+
+		for (int pi=0; pi<caseHeight; ++pi) {
+			for (int pj=0; pj<caseWidth; ++pj) {
+				outputImg->SetPixel(j*caseWidth+1+2*j + pj,
+									(i+1)*caseHeight+1+2*(i+1) + pi,
+									(*it)->GetPixel(caseWidth-pj-1, pi));
+			}
+		}
+
 		count++;
 	}
 
