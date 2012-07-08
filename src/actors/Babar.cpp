@@ -370,9 +370,9 @@ void Babar::update_state()
 		m_invincible --;
 		if (!locked()) {
 			if ( m_invincible%2) {
-				//m_sprite->no_pic();
+				m_spriteGrid->no_pic();
 			} else {
-				//m_sprite->set_pic();
+				m_spriteGrid->set_pic();
 			}
 		}
 	}
@@ -385,7 +385,28 @@ void Babar::update_state()
 	if (gKeyboard->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
-	//m_sprite->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
+	switch (get_state()) {
+		case STATIC:
+			m_spriteGrid->setPictures(0);
+			break;
+		case WALK:
+			m_spriteGrid->setPictures(1,0,2,0);
+			break;
+		case JUMP:
+			m_spriteGrid->setPictures(1);
+			break;
+		case CROUCH:
+			m_spriteGrid->setPictures(12);
+			break;
+		case CROUCH_WALKING:
+			m_spriteGrid->setPictures(12,13,14);
+			break;
+		default:
+			m_spriteGrid->setPictures(0);
+			break;
+	}
+
+	//m_spriteGrid->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
 	m_spriteGrid->set_pos(position());
 	set_h(m_spriteGrid->h());
 	set_w(m_spriteGrid->w());
@@ -577,7 +598,7 @@ void Babar::lock(int time)
 
 void Babar::unlock()
 {
-	//m_sprite->set_pic();
+	m_spriteGrid->set_pic();
 	m_lock = -1;
 	m_invincible = 20;
 	set_last_pos();
@@ -672,11 +693,7 @@ void Babar::interrupt_jump()
 
 void Babar::interrupt_crouch()
 {
-	/*m_sprite->set_pic();
-	int h_last = m_sprite->curr_pic()->h();
-	m_sprite->change_anim(STATIC, m_dir);
-	int h = m_sprite->curr_pic()->h();
-	move(0, h_last - h);*/
+	m_spriteGrid->setPictures(0,1,2);
 	m_crouch_time = 0;
 }
 

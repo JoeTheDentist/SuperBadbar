@@ -22,7 +22,7 @@ AnimGrid::~AnimGrid()
 
 Surface *AnimGrid::curr_pic()
 {
-	return m_grid->getImage(m_picToDisplay.at(m_curr));
+	return m_grid->getImage(m_picToDisplay.at(m_curr%m_picToDisplay.size()));
 }
 
 void AnimGrid::next_pic()
@@ -63,7 +63,7 @@ void AnimGrid::setPictures(int a, int b, int c, int d, int e, int f)
 	if (b != -1) {
 		m_picToDisplay.push_back(b);
 	}
-	if (b != -1) {
+	if (c != -1) {
 		m_picToDisplay.push_back(c);
 	}
 	if (d != -1) {
