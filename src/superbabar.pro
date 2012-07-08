@@ -212,7 +212,8 @@ SOURCES += \
     video/Grid.cpp \
     video/GridsContainer.cpp \
     sprites/SpriteGrid.cpp \
-    video/AnimGrid.cpp
+    video/AnimGrid.cpp \
+    controllers/ControllerManager.cpp
 
 HEADERS  += \
     actors/WalkingMonster.h \
@@ -374,7 +375,8 @@ HEADERS  += \
     video/Grid.h \
     video/GridsContainer.h \
     sprites/SpriteGrid.h \
-    video/AnimGrid.h
+    video/AnimGrid.h \
+    controllers/ControllerManager.h
 
 OTHER_FILES += \
     soil/stbi_DDS_aug_c.h.gch \

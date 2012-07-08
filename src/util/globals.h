@@ -57,7 +57,6 @@ extern EventsManager * gEvent;
 //extern Babar * gBabar; /* liste si multi */
 extern GraphicEngine * gGraphics;
 extern GameEngine * gGameEngine;
-extern Keyboard * gKeyboard;
 extern Stats * gStats; /* liste si multi */
 extern PlayersManager * gPlayers;
 extern KeyboardConfig *gKeyboardConfig;

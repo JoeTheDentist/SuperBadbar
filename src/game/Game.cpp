@@ -73,8 +73,8 @@ void Game::init_game(std::string level_name)
 	m_pause = NULL;
 	set_state_playing();
 
-	gKeyboard->disable_all_keys();
-	gKeyboard->disable_key_repeat();
+	Keyboard::GetInstance()->disable_all_keys();
+	Keyboard::GetInstance()->disable_key_repeat();
 
 
 	loading->wait_for_player();
@@ -101,8 +101,8 @@ Game::~Game()
 	delete gStatic;
 	gStatic = NULL;
 	gGraphics->clean();
-	gKeyboard->disable_all_keys();
-	gKeyboard->reset_menu_keys();
+	Keyboard::GetInstance()->disable_all_keys();
+	Keyboard::GetInstance()->reset_menu_keys();
 	delete m_pause;
 	m_pause = NULL;
 
@@ -110,7 +110,7 @@ Game::~Game()
 
 void Game::update_keyboard()
 {
-	gKeyboard->update_events();
+	Keyboard::GetInstance()->update_events();
 }
 
 void Game::update_game()
@@ -185,12 +185,12 @@ result_game Game::game_loop()
 			//** DEBUT DE LA BOUCLE DE JEU **//
 			update_keyboard();
 			if (m_state == gs_playing) {
-				if (gKeyboard->key_down(k_exit)) {
+				if (Keyboard::GetInstance()->key_down(k_exit)) {
 					end = true;
 					break;
 				}
 				update_game();
-				if (gKeyboard->key_down(k_escape)) {
+				if (Keyboard::GetInstance()->key_down(k_escape)) {
 					set_state_pause();
 				}
 				if (gGraphics->get_talks()->isActive()) {
@@ -234,8 +234,8 @@ result_game Game::game_loop()
 
 void Game::set_state_playing()
 {
-	gKeyboard->reset_menu_keys();
-	gKeyboard->disable_all_keys();
+	Keyboard::GetInstance()->reset_menu_keys();
+	Keyboard::GetInstance()->disable_all_keys();
 	m_state = gs_playing;
 	if (m_pause) {
 		delete m_pause;
@@ -252,5 +252,5 @@ void Game::set_state_pause()
 void Game::set_state_talks()
 {
 	m_state = gs_talks;
-	gKeyboard->reset_menu_keys();
+	Keyboard::GetInstance()->reset_menu_keys();
 }

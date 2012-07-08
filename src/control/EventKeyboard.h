@@ -21,6 +21,7 @@ protected:
 	bool m_altGr;
 	bool m_capsLockOn;
 	bool m_shift;
+
 public:
 	/*!
 	*	@brief Constructeur
@@ -47,7 +48,6 @@ public:
 	~EventKeyboard();
 
 	static bool pollEvent(EventKeyboard *event);
-	static void waitEvent(EventKeyboard *event);
 	static void setKeyRepeat(bool repeat);
 	static void initEventKeyboard();
 

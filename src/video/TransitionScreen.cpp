@@ -59,7 +59,8 @@ void TransitionScreen::wait_for_player()
 	m_skipable = true;
 	m_skipable = true;
 	display(gGraphics->get_camera());
-	gKeyboard->wait_for_any_key();
+	//TODO (Guillaume) wait properly
+	//Keyboard::GetInstance()->wait_for_any_key();
 }
 
 bool TransitionScreen::ended()

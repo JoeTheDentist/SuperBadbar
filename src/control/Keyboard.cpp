@@ -15,6 +15,21 @@
 #include <control/SfmlKeyConvertor.h>
 #include "util/globals.h"
 
+Keyboard *Keyboard::s_instance = 0;
+
+Keyboard *Keyboard::GetInstance()
+{
+	if (!s_instance) {
+		s_instance = new Keyboard();
+	}
+	return s_instance;
+}
+
+void Keyboard::Destroy()
+{
+	delete s_instance;
+	s_instance = 0;
+}
 
 Keyboard::Keyboard(bool record_on, bool replay_on,  std::string output_name, std::string input_name)
 {
@@ -102,40 +117,6 @@ menu_key Keyboard::poll_menu_key()
 			return eventKeyboard.getMenuKey();
 	}
 	return mk_none;
-}
-
-menu_key Keyboard::wait_menu_key()
-{
-	EventKeyboard eventKeyboard;
-	while (true) {
-		EventKeyboard::waitEvent(&eventKeyboard);
-		if (eventKeyboard.isMenuKey())
-			return eventKeyboard.getMenuKey();
-	}
-	return mk_none;
-}
-
-void Keyboard::wait_key(enum key k)
-{
-	EventKeyboard eventKeyboard;
-	bool leave = false;
-	while(!leave){
-		EventKeyboard::waitEvent(&eventKeyboard);
-		if(eventKeyboard.keyPressed())
-			if(gKeyboardConfig->getEnumKey(eventKeyboard) == k)
-				leave = true;
-	}
-}
-
-void Keyboard::wait_for_any_key()
-{
-	EventKeyboard eventKeyboard;
-	bool leave = false;
-	while(!leave){
-		EventKeyboard::waitEvent(&eventKeyboard);
-		if(eventKeyboard.keyPressed())
-			leave = true;
-	}
 }
 
 void Keyboard::enable_key_repeat()

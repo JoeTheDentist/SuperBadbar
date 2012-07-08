@@ -37,7 +37,6 @@ public:
 
 private:
 	static ControllerFactory *s_instance;
-	std::list<Controller*> m_controllers; //TODO here ControllersManager better
 
 	/**
 	 *	Ctor

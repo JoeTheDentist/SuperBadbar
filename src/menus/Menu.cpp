@@ -24,16 +24,16 @@ Menu::Menu(Menu *parent) :
 {
         m_pos_menu.x = 200;
         m_pos_menu.y = 300;
-	gKeyboard->disable_all_keys();
-	gKeyboard->resetKeysInQueue();
-	gKeyboard->reset_menu_keys();
-	gKeyboard->enable_key_repeat();
+	Keyboard::GetInstance()->disable_all_keys();
+	Keyboard::GetInstance()->resetKeysInQueue();
+	Keyboard::GetInstance()->reset_menu_keys();
+	Keyboard::GetInstance()->enable_key_repeat();
 }
 
 Menu::~Menu()
 {
-	gKeyboard->disable_all_keys();
-	gKeyboard->disable_key_repeat();
+	Keyboard::GetInstance()->disable_all_keys();
+	Keyboard::GetInstance()->disable_key_repeat();
 }
 
 void Menu::update()
@@ -47,8 +47,8 @@ void Menu::update()
 		m_son->update();
 	} else {
 		m_menu_actions.update();
-		while (gKeyboard->isNextKeyInQueue()) {
-			EventKeyboard eventKeyboard = gKeyboard->getNextKeyInQueue();
+		while (Keyboard::GetInstance()->isNextKeyInQueue()) {
+			EventKeyboard eventKeyboard = Keyboard::GetInstance()->getNextKeyInQueue();
 			m_menu_actions.treatEvent(&eventKeyboard);
 			if (!eventKeyboard.treated() && eventKeyboard.isMenuKey()) {
 				menu_key key = eventKeyboard.getMenuKey();

@@ -3,3 +3,8 @@
 KeyboardActionController::KeyboardActionController()
 {
 }
+
+void KeyboardActionController::update()
+{
+
+}

@@ -303,14 +303,14 @@ void Babar::update_speed()
 	}
 
 	/* Pour pouvoir se diriger (ttlt) */
-	if (gKeyboard->key_down(k_left)) {
+	if (Keyboard::GetInstance()->key_down(k_left)) {
 		if ( m_crouch_time ) {
 			m_speed.x -= BABAR_SPEED/3;
 		} else {
 			m_speed.x -= BABAR_SPEED;
 		}
 	}
-	if (gKeyboard->key_down(k_right)) {
+	if (Keyboard::GetInstance()->key_down(k_right)) {
 		if ( m_crouch_time ) {
 			m_speed.x += BABAR_SPEED/3;
 		} else {
@@ -326,14 +326,14 @@ void Babar::update_state()
 	if (m_lock == 0) {
 		unlock();
 	}
-	if (!gKeyboard->time_pressed(k_jump))
+	if (!Keyboard::GetInstance()->time_pressed(k_jump))
 		m_jump = false;
 	if (m_jump) {
-		if ( gKeyboard->time_pressed(k_jump) > 1 ) {
+		if ( Keyboard::GetInstance()->time_pressed(k_jump) > 1 ) {
 			m_ready_double_jump = true;
-			if ( gKeyboard->time_pressed(k_jump) > JUMP_TIME) {
+			if ( Keyboard::GetInstance()->time_pressed(k_jump) > JUMP_TIME) {
 				m_jump = false;
-				gKeyboard->disable_key(k_jump);
+				Keyboard::GetInstance()->disable_key(k_jump);
 			}
 		}
 	}
@@ -384,10 +384,10 @@ void Babar::update_state()
 
 	m_weapons_armory.update();
 
-	if (gKeyboard->time_pressed(k_prev_weapon) == 1)
+	if (Keyboard::GetInstance()->time_pressed(k_prev_weapon) == 1)
 		m_weapons_armory.previous_weapon();
 
-	if (gKeyboard->time_pressed(k_next_weapon) == 1)
+	if (Keyboard::GetInstance()->time_pressed(k_next_weapon) == 1)
 		m_weapons_armory.next_weapon();
 
 	switch (get_state()) {
@@ -411,7 +411,7 @@ void Babar::update_state()
 			break;
 	}
 
-	//m_spriteGrid->change_anim(get_state(), m_dir, gKeyboard->key_down(k_fire));
+	//m_spriteGrid->change_anim(get_state(), m_dir, Keyboard::GetInstance()->key_down(k_fire));
 	m_spriteGrid->set_pos(position());
 	set_h(m_spriteGrid->h());
 	set_w(m_spriteGrid->w());
@@ -419,17 +419,17 @@ void Babar::update_state()
 
 void Babar::update_direction()
 {
-	if (gKeyboard->key_down(k_left)) {
+	if (Keyboard::GetInstance()->key_down(k_left)) {
 		m_dir = LEFT;
 	}
-	if (gKeyboard->key_down(k_right)) {
+	if (Keyboard::GetInstance()->key_down(k_right)) {
 		m_dir = RIGHT;
 	}
 }
 
 bool Babar::can_fire()
 {
-	return gKeyboard->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time() && !locked());
+	return Keyboard::GetInstance()->key_down(k_fire)&&(m_fire_phase>m_weapons_armory.get_current_weapon()->reload_time() && !locked());
 }
 
 std::list<Projectile*> *Babar::fire_old(int num_player)
@@ -446,12 +446,12 @@ std::list<Projectile*> *Babar::fire_old(int num_player)
 
 bool Babar::can_walk() const
 {
-	return (gKeyboard->key_down(k_right)||gKeyboard->key_down(k_left))&& !m_jump && !m_double_jump;
+	return (Keyboard::GetInstance()->key_down(k_right)||Keyboard::GetInstance()->key_down(k_left))&& !m_jump && !m_double_jump;
 }
 
 bool Babar::can_crouch() const
 {
-	return gKeyboard->key_down(k_down) & !locked();
+	return Keyboard::GetInstance()->key_down(k_down) & !locked();
 }
 
 void Babar::crouch()
@@ -465,7 +465,7 @@ void Babar::crouch()
 
 bool Babar::can_jump() const
 {
-	return !can_go_down() && gKeyboard->key_down(k_jump) && m_ready_jump && !gKeyboard->key_down(k_down) && !locked();
+	return !can_go_down() && Keyboard::GetInstance()->key_down(k_jump) && m_ready_jump && !Keyboard::GetInstance()->key_down(k_down) && !locked();
 }
 
 void Babar::jump()
@@ -480,7 +480,7 @@ void Babar::jump()
 
 bool Babar::can_double_jump() const
 {
-	return !m_jump && (gKeyboard->time_pressed(k_jump)==1) && !m_double_jump && m_ready_double_jump;
+	return !m_jump && (Keyboard::GetInstance()->time_pressed(k_jump)==1) && !m_double_jump && m_ready_double_jump;
 }
 
 void Babar::double_jump()
@@ -489,7 +489,7 @@ void Babar::double_jump()
 	m_ready_double_jump = false;
 	PRINT_TRACE(1, "Double-saut de Babar");
 	m_speed.y = -4*BABAR_SPEED;
-	gKeyboard->disable_key(k_jump);
+	Keyboard::GetInstance()->disable_key(k_jump);
 
 }
 
@@ -504,7 +504,7 @@ bool Babar::can_go_down() const
 		plop = gCollision->get_matrix();
 		pos = m_pos;
 	}
-	return (gKeyboard->key_down(k_jump) && gKeyboard->key_down(k_down)
+	return (Keyboard::GetInstance()->key_down(k_jump) && Keyboard::GetInstance()->key_down(k_down)
 			&& CollisionsManager::is_down_coll(plop->down_collision_type(pos)))
 			&& !plop->double_collision(pos);
 }
@@ -645,7 +645,7 @@ void Babar::bind(BindablePlatform *platform)
 		m_speed.y = plat_speed.y;
 		interrupt_jump();
 		m_ready_jump = true;
-		gKeyboard->disable_key(k_jump);
+		Keyboard::GetInstance()->disable_key(k_jump);
 		m_rel_pos.x = m_pos.x - plat_pos.x;
 		m_rel_pos.y = m_pos.y - plat_pos.y;
 	}

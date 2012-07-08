@@ -47,7 +47,7 @@ void MainMenu::update_graphics()
 void MainMenu::loop()
 {
 	while(!end_menu() &	 !end_game()) {
-		gKeyboard->update_events();
+		Keyboard::GetInstance()->update_events();
 		update();
 		update_graphics();
 	}

@@ -13,7 +13,6 @@ EventsManager * gEvent = NULL;
 //Babar * gBabar = NULL;
 GraphicEngine * gGraphics = NULL;
 GameEngine * gGameEngine = NULL;
-Keyboard * gKeyboard = NULL;
 Stats * gStats = NULL;
 PlayersManager * gPlayers = NULL;
 KeyboardConfig *gKeyboardConfig = NULL;

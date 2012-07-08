@@ -24,7 +24,7 @@ class EventKeyboard;
  * 	@class Keyboard
  *	@brief Gestion des ev√®nement claviers
  *
- *	La classe Keyboard met √† jour le tableau des touches enfoncees.
+ *	La classe Keyboard met √  jour le tableau des touches enfoncees.
  *	Les touches gerees sont: quitter, haut, bas, droite, gauche, action,
  * 	saut, tir.\n
  *	Elle fournit un accesseur vers l'etat de ces touches.\n
@@ -33,10 +33,14 @@ class EventKeyboard;
  * *
  *	@warning Si trop de touches sont appuyees simultanement, certaines ne sont pas detectees.\n
  *	Solution: changer la configuration des touches (eviter en particulier les fleches directionnelles)
+ *
+ *	Singleton
  **/
 class Keyboard {
 
 private:
+	static Keyboard *s_instance;
+
 	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
 	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
 	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
@@ -45,22 +49,20 @@ private:
 	std::queue<menu_key> m_menu_input;
 
 public:
-	/*!
-	* 	@brief Constructeur
-	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
-	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
-	*	@param file_name Chemin du fichier d'input ou output a partir du repertoire courant
-	*/
-	Keyboard(bool record_on = false, bool replay_on = false,  std::string output_name = "", std::string input_name = "");
+
+	/**
+	 *	Getter
+	 *	@return Instance
+	 */
+	static Keyboard *GetInstance();
+
+	/**
+	 *	Frees the instance
+	 */
+	static void Destroy();
 
 	/*!
-	* 	@brief Destructeur
-	*/
-	~Keyboard();
-
-
-	/*!
-	* 	@brief Met √† jour le tableau des touches enfoncees
+	* 	@brief Met √  jour le tableau des touches enfoncees
 	*/
 	void update_events();
 
@@ -86,7 +88,7 @@ public:
 
 	/*!
 	* 	@brief Force le relachement de la touche
-	*	@param k la touche √† relacher
+	*	@param k la touche √  relacher
 	*/
 	void disable_key(enum key k);
 
@@ -95,29 +97,11 @@ public:
 	*/
 	void disable_all_keys();
 
-
-	/*!
-	*	@brief Attend un evenement menu_key et le retourne
-	*	@return Le menu_key entre par l'utilisateur
-	*/
-	menu_key wait_menu_key();
-
 	/*!
 	*	@brief Detecte dans la pile un evenement menu_key et le retourne
 	*	@return Le menu_key entre par l'utilisateur (mk_none s'il n'y en a pas)
 	*/
 	menu_key poll_menu_key();
-
-	/*!
-	*	@brief Met le jeu en pause jusqu'a l'enfoncement de la touche k
-	*	@param k La touche attendue
-	*/
-	void wait_key(enum key k);
-
-	/*!
-	*	@brief Met le jeu en pause jusqu'a l'enfoncement d'une touche
-	*/
-	void wait_for_any_key();
 
 	/*!
 	*	@brief Autorise la repetition des touches (typiquement pour le menu)
@@ -176,6 +160,18 @@ public:
 
 
 private:
+	/*!
+	* 	@brief Constructeur
+	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
+	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
+	*	@param file_name Chemin du fichier d'input ou output a partir du repertoire courant
+	*/
+	Keyboard(bool record_on = false, bool replay_on = false,  std::string output_name = "", std::string input_name = "");
+
+	/*!
+	* 	@brief Destructeur
+	*/
+	~Keyboard();
 
 	// mutateur: affecte val enfonce a l'indice k dans le tableau des touches
 	void set_key(enum key k, int val);

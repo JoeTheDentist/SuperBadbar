@@ -1,5 +1,9 @@
 #include "ControllerFactory.h"
 
+#include "Controller.h"
+#include "PlayerKeyboardActionController.h"
+#include "ControllerManager.h"
+
 ControllerFactory *ControllerFactory::s_instance = 0;
 
 ControllerFactory *ControllerFactory::Factory()
@@ -23,14 +27,13 @@ Controller *ControllerFactory::createActionPlayerController()
 {
 	//TODO
 	//check if network
-	//create object
-	//register to the manager
-	//return
+	return ControllerManager::GetInstance()->
+			createPlayerKeyboardActionController();
 }
 
 Controller *ControllerFactory::createEventPlayerController()
 {
-
+	return 0;
 }
 
 ControllerFactory::ControllerFactory()

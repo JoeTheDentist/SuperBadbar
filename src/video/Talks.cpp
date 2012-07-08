@@ -116,8 +116,8 @@ void Talks::update()
 		if (temp)
 			move_up();
 	}
-	if (gKeyboard->is_next_menu_key()) {
-		menu_key key = gKeyboard->pop_menu_key();
+	if (Keyboard::GetInstance()->is_next_menu_key()) {
+		menu_key key = Keyboard::GetInstance()->pop_menu_key();
 		switch(key) {
 		case mk_enter:
 			if (end_of_talks()) {

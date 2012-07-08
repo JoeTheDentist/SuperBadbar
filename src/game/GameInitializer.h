@@ -23,7 +23,6 @@
  * Instancie:
  * - gSound (le moteur de son)
  * - gGraphics
- * - gKeyboard
 **/
 
 class GameInitializer {

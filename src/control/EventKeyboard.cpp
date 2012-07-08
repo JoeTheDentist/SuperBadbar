@@ -50,14 +50,6 @@ bool EventKeyboard::pollEvent(EventKeyboard *eventKeyboard)
 	return false;
 }
 
-void EventKeyboard::waitEvent(EventKeyboard *eventKeyboard)
-{
-	sf::Event event;
-	while (!m_window->GetEvent(event)) 
-		{}
-	eventKeyboard->m_event = event;
-}
-
 void EventKeyboard::setKeyRepeat(bool repeat)
 {
 	m_window->EnableKeyRepeat(repeat);

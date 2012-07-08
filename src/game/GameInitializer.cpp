@@ -19,7 +19,6 @@ bool GameInitializer::init_game()
 	gSound = new SoundEngine();
 	gGraphics = new GraphicEngine();
 	gGraphics->init_graphic_engine(false);
-	gKeyboard = new Keyboard();
 	gKeyboardConfig = new KeyboardConfig();
 	return true;
 }
@@ -28,7 +27,7 @@ bool GameInitializer::close_game()
 {
 	delete gSound;
 	delete gGraphics;
-	delete gKeyboard;
+	Keyboard::Destroy();
 	delete gKeyboardConfig;
 	return true;
 }
