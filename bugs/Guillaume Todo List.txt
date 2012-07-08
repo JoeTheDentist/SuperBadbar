@@ -1,10 +1,7 @@
 - Destruction du PicturesContainer
 - Destruction du GridContainer
 - Clean settings?
-- Crop images
-- Grid for animations
 - States pour Badbar
 - Controlleurs
-- Factory pour les controlleurs
-- Images plus petites
 - Réseau
+- Point chaud et bounding box

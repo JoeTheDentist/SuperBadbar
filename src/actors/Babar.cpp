@@ -125,6 +125,11 @@ bool Babar::isFiring()
 	return m_firing;
 }
 
+SpriteGrid *Babar::getSprite()
+{
+	return m_spriteGrid;
+}
+
 /**************************************************************************/
 /**ACTIONS*****************************************************************/
 /**************************************************************************/
@@ -399,7 +404,7 @@ void Babar::update_state()
 			m_spriteGrid->setPictures(12);
 			break;
 		case CROUCH_WALKING:
-			m_spriteGrid->setPictures(12,13,14);
+			m_spriteGrid->setPictures(13,12,14,12);
 			break;
 		default:
 			m_spriteGrid->setPictures(0);

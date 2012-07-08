@@ -59,11 +59,19 @@ public:
 	virtual void protect();
 
 protected:
+	bool m_wasFiring;
+	bool m_wasCrouched;
+
 	/**
 	 *	Getter
 	 *	@return context
 	 */
 	Babar *getContext();
+
+	/**
+	 *	Set the animation according to the context
+	 */
+	void setAnimation();
 
 private:
 	Babar *m_context;
