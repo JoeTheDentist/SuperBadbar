@@ -209,8 +209,6 @@ SOURCES += \
     actors/babar_states/BabarStateRun.cpp \
     actors/babar_states/BabarStateJump.cpp \
     actors/babar_states/BabarStateDoubleJump.cpp \
-    actors/babar_states/BabarStateCrouchNone.cpp \
-    actors/babar_states/BabarStateCrouchWalking.cpp \
     video/Grid.cpp \
     video/GridsContainer.cpp \
     sprites/SpriteGrid.cpp \
