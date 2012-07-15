@@ -63,6 +63,7 @@ Keyboard::~Keyboard()
 
 void Keyboard::update_events()
 {
+        m_key_pressed = false;
 	for (int i = k_none; i < k_fire + 1 ; i++)
 		if (key_down((enum key)i))
 			incr_key_down(i);
@@ -73,6 +74,7 @@ void Keyboard::update_events()
 			set_key(k_exit, 1);
 			m_menu_input.push(mk_exit);
 		} else if (newEvent.keyPressed()) {
+                        m_key_pressed = true;
 			set_key(gKeyboardConfig->getEnumKey(newEvent),  1);
 			if (newEvent.isMenuKey()) {
 				m_menu_input.push(newEvent.getMenuKey());

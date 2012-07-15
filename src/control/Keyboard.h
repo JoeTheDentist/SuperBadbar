@@ -47,6 +47,7 @@ private:
 	std::ofstream *m_record_file;
 	std::queue<EventKeyboard> m_eventsKeyboard;
 	std::queue<menu_key> m_menu_input;
+        bool m_key_pressed;
 
 public:
 
@@ -154,6 +155,11 @@ public:
 	*	@param save True if we want to save the configuration
 	*/
 	void set_config_key(key k, std::string sdl_code, bool save = true);
+
+        /**
+          *     @brief Retourne vrai <=> une touche a été pressée au cycle courant
+          */
+        bool key_pressed() const {return m_key_pressed;}
 
 //~ 	bool
 
