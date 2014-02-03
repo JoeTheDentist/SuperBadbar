@@ -15,8 +15,8 @@
 
 #include "video/Camera.h"
 
-#define PIC_TALKS_DIR "/pic/talks/"
-#define FONTS_TALKS_DIR "/data/talks/fonts/"
+#define PIC_TALKS_DIR "res/pic/talks/"
+#define FONTS_TALKS_DIR "res/data/talks/fonts/"
 
 #define POSX 15
 #define POSW 770
