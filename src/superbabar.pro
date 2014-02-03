@@ -27,7 +27,7 @@ unix {
 
         LIBS += -L../lib/SFMLwin \
                 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio \
-                -lglu32 -lopengl32
+                -lglu32 -lopengl32 -lGL
 
         INCLUDEPATH += .
 
@@ -55,7 +55,7 @@ unix {
 	QMAKE_CXXFLAGS += -g
 
         LIBS +=  -L"../lib/gcc"\
-	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lGL
 	
     }
  
