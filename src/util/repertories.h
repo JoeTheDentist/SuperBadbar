@@ -23,7 +23,7 @@
 #endif
 
 #define RECORDS_R RACINE_R + "records/"
-#define PIC_R RACINE_R + "pic/"
+#define PIC_R RACINE_R + "res/pic/"
 	#define PIC_BABAR_R 			PIC_R + "babar/"
 	#define PIC_BACKGROUNDS_R		PIC_R + "backgrounds/"
 	#define PIC_DASHBOARD_R			PIC_R + "dashboard/"

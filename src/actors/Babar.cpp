@@ -61,7 +61,7 @@ void Babar::load_anim(int age)
 	}
 
 	//TODO (Guillaume) var for the path
-	m_spriteGrid = gGraphics->get_sprites_manager()->addGrid("../pic/players/babar_states.png");
+	m_spriteGrid = gGraphics->get_sprites_manager()->addGrid("../res/pic/players/babar_states.png");
 
 	m_spriteGrid->setPictures(0,1,2);
 
