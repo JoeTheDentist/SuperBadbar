@@ -25,7 +25,8 @@ MenuActionSelectMap::MenuActionSelectMap(int i):
 
 void MenuActionSelectMap::incr_value(int value)
 {
-	setSurfaceSelection(new SurfaceSelectionMenu(new Surface("../pic/animations/drum_flower/drum_flower_0.png"), "flower"));
+	//TODO (Guillaume) Path should not depend on pic root (use macro)
+	setSurfaceSelection(new SurfaceSelectionMenu(new Surface("../res/pic/animations/drum_flower/drum_flower_0.png"), "flower"));
 	update();
 }
 
