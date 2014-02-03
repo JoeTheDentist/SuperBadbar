@@ -46,7 +46,7 @@
 #define TALKS_R DATA_R + "talks/texts/"
 #define FONTS_R DATA_R + "talks/fonts/"
 #define MONSTERS_STATS_R DATA_R + "monsters/"
-#define SOUNDS_R RACINE_R + "sound/"
+#define SOUNDS_R RACINE_R + "res/sound/"
 	#define MONSTERS_SOUNDS_R SOUNDS_R + "monsters/"
 	#define BABAR_SOUNDS_R SOUNDS_R + "babar/"
 	#define FIRE_SOUNDS_R SOUNDS_R + "fire/"
