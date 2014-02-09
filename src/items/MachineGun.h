@@ -31,38 +31,39 @@ class Projectile;
  * 	"alliance" elle appartient, ainsi qu'un pointeur vers le gestionnaire
  *	de projectiles (éventuellement en static avec une méthode set)
  */
-class MachineGun: public Weapon {
+class MachineGun: public Weapon
+{
 private:
 public:
-	/**
-	 * 	@brief Constructeur
-	*/
-	MachineGun();
+    /**
+     * 	@brief Constructeur
+    */
+    MachineGun();
 
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~MachineGun();
+    /**
+     * 	@brief Destructeur
+     */
+    ~MachineGun();
 
-	/**
-	 * 	@brief Tire plusieurs balles de fusil �  pompe
-	 *	@param pos La position du propriétaire de l'arme
-	 *	@param h la direction de tir
-	 *	@return La liste de projectiles tirés
-	 */
-	std::list<Projectile*> *fire(Rect pos, Direction h, dmg_chan type);
+    /**
+     * 	@brief Tire plusieurs balles de fusil �  pompe
+     *	@param pos La position du propriétaire de l'arme
+     *	@param h la direction de tir
+     *	@return La liste de projectiles tirés
+     */
+    std::list<Projectile*> *fire (Rect pos, Direction h, dmg_chan type);
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le type de l'arme
-	 */
-	weapon_type type_of_weapon() const;
+    /**
+     * 	@brief Accesseur
+     *	@return Le type de l'arme
+     */
+    weapon_type type_of_weapon() const;
 
-	/**
-	 * 	@brief Mutateur: ajoute des munitions
-	 */
-	virtual void add_munitions();
+    /**
+     * 	@brief Mutateur: ajoute des munitions
+     */
+    virtual void add_munitions();
 
 };
 

@@ -13,10 +13,10 @@
 #include <util/Rect.h>
 #include <video/SurfaceUniform.h>
 
-SurfaceFrame::SurfaceFrame(Rect rect, int r, int g, int b):
-	Surface(),
-	m_line_w(5),
-	m_line_h(5)
+SurfaceFrame::SurfaceFrame (Rect rect, int r, int g, int b) :
+    Surface(),
+    m_line_w (5),
+    m_line_h (5)
 {
 //~ 	SurfaceUniform background(rect.w, rect.h, 0, 0xFF, 0xFF);
 //~ 	m_surface = background.get_copy_surface();

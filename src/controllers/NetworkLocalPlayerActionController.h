@@ -5,10 +5,10 @@
 #include "PlayerKeyboardActionController.h"
 
 class NetworkLocalPlayerActionController : public NetworkPlayerActionController,
-		public PlayerKeyboardActionController
+    public PlayerKeyboardActionController
 {
 public:
-	NetworkLocalPlayerActionController();
+    NetworkLocalPlayerActionController();
 };
 
 #endif // NETWORKLOCALPLAYERACTIONCONTROLLER_H

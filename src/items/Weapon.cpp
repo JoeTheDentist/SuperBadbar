@@ -17,12 +17,12 @@
 
 Weapon::Weapon()
 {
-	PRINT_CONSTR(2, "construction d'une weapon");
+    PRINT_CONSTR (2, "construction d'une weapon");
 }
 
 Weapon::~Weapon()
 {
-	PRINT_CONSTR(2, "Destruction d'une Weapon")
+    PRINT_CONSTR (2, "Destruction d'une Weapon")
 }
 
 uint32_t Weapon::reload_time() const
@@ -32,10 +32,10 @@ uint32_t Weapon::reload_time() const
 
 int Weapon::munitions() const
 {
-	return m_munitions;
+    return m_munitions;
 }
 
 weapon_type Weapon::type_of_weapon() const
 {
-	return m_weapon_type;
+    return m_weapon_type;
 }

@@ -4,15 +4,18 @@
 #include "events/Stats.h"
 
 
-Player::Player(int id, Analyser * analyser, bool local)
+Player::Player (int id, Analyser * analyser, bool local)
 {
     m_dmgs = new std::list<dmg_chan>();
 
     m_id = id;
 
-    if ( local ) {
-        m_actor = new Babar(analyser);
-    } else {
+    if ( local )
+    {
+        m_actor = new Babar (analyser);
+    }
+    else
+    {
         /*m_actor = new Another_Babar();*/
     }
 }
@@ -39,7 +42,7 @@ std::list<dmg_chan> * Player::get_dmgs()
     return m_dmgs;
 }
 
-void Player::set_dmgs(dmg_chan dmg)
+void Player::set_dmgs (dmg_chan dmg)
 {
-    m_dmgs->push_front(dmg);
+    m_dmgs->push_front (dmg);
 }

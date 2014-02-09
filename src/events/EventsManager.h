@@ -31,67 +31,68 @@ class Analyser;
  *	- Est chargé de déclencher leur affichage
  *	- Est chargé de les déclencher, de les détruire quand il le faut
  */
-class EventsManager {
+class EventsManager
+{
 private:
-	std::list<Event*> m_list_events;
-	std::list<Trigger*> m_list_triggers;
+    std::list<Event*> m_list_events;
+    std::list<Trigger*> m_list_triggers;
 
-	GameEngine *m_GameEngine;
-	StaticData *m_StaticData;
-	std::string m_level_name;
+    GameEngine *m_GameEngine;
+    StaticData *m_StaticData;
+    std::string m_level_name;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	*/
-	EventsManager();
+    /**
+     * 	@brief Constructeur
+    */
+    EventsManager();
 
-	/**
-	 * 	@brief Destructeur
-	*/
-	~EventsManager();
+    /**
+     * 	@brief Destructeur
+    */
+    ~EventsManager();
 
-	/**
-	 * 	@brief Initialise les paramètres de la classe
-	 * 	@warning Ne charge pas les events!
-	 *	@param StaticData les données du niveau
-	 *	@param GameEngine le moteur de jeu
-	 *
-	*/
-	void init_EventsManager(StaticData *StaticData, GameEngine *GameEngine);
+    /**
+     * 	@brief Initialise les paramètres de la classe
+     * 	@warning Ne charge pas les events!
+     *	@param StaticData les données du niveau
+     *	@param GameEngine le moteur de jeu
+     *
+    */
+    void init_EventsManager (StaticData *StaticData, GameEngine *GameEngine);
 
-	/**
-	 * 	@brief charge les events du niveau
-	 *	@param analyser un Analyser ouvert sur le fichier level �  charger
-	*/
-	void load_events(Analyser *analyser);
+    /**
+     * 	@brief charge les events du niveau
+     *	@param analyser un Analyser ouvert sur le fichier level �  charger
+    */
+    void load_events (Analyser *analyser);
 
-	/**
-	 * 	@brief charge les triggers du niveau
-	 *	@param analyser un Analyser ouvert sur le fichier level �  charger
-	*/
-	void load_triggers(Analyser *analyser);
+    /**
+     * 	@brief charge les triggers du niveau
+     *	@param analyser un Analyser ouvert sur le fichier level �  charger
+    */
+    void load_triggers (Analyser *analyser);
 
-	/**
-	 * 	@brief Met �  jour l'ensemble des événements
-	 *
-	 *	Cette méthode détruit notamment les événements
-	 *	�  détruire
-	*/
-	void update();
+    /**
+     * 	@brief Met �  jour l'ensemble des événements
+     *
+     *	Cette méthode détruit notamment les événements
+     *	�  détruire
+    */
+    void update();
 
-	/**
-	 * 	@brief Affiche �  l'écran les événements affichables
-	 *	@param camera La camera pour afficher les événements
-	*/
-	void display_events(Camera const * camera);
+    /**
+     * 	@brief Affiche �  l'écran les événements affichables
+     *	@param camera La camera pour afficher les événements
+    */
+    void display_events (Camera const * camera);
 
-        /**
-         *  @brief Ajout de fin d'un niveau
-         *  @param x : Absisses fin
-         *  @param y : Ordonnees fin
-         */
-	void add_end_level(int x, int y);
+    /**
+     *  @brief Ajout de fin d'un niveau
+     *  @param x : Absisses fin
+     *  @param y : Ordonnees fin
+     */
+    void add_end_level (int x, int y);
 
 };
 

@@ -24,29 +24,30 @@ class Anim;
  * 	@class Anim
  * 	@brief Classe animation, r√©presentant une succession d'images
  */
-class AnimPic: public Anim {
+class AnimPic: public Anim
+{
 private:
     Surface ** m_images;
 
 public:
 
     /**
-	* @brief Constructeur
-	*
-	* Constructeur d'animation.
-	* Impose de creer une animation avec une seule image...
-	*
-	* @param noms des images √  charger, supporte : x0.png, x_0.png ou x.png
-	*   , o√π x nom de l'anim et 0 un nombre. Si x.png : une seule image.
-	*   Le chemin donn√© se fait √  partir de l'exe
-	* @param force si on doit attendre la terminaison
-	*
-	*/
-    AnimPic(std::string anim_name, anim_type type);
+    * @brief Constructeur
+    *
+    * Constructeur d'animation.
+    * Impose de creer une animation avec une seule image...
+    *
+    * @param noms des images √  charger, supporte : x0.png, x_0.png ou x.png
+    *   , o√π x nom de l'anim et 0 un nombre. Si x.png : une seule image.
+    *   Le chemin donn√© se fait √  partir de l'exe
+    * @param force si on doit attendre la terminaison
+    *
+    */
+    AnimPic (std::string anim_name, anim_type type);
 
     /**
-	* @brief Destructeur
-	*/
+    * @brief Destructeur
+    */
     virtual ~AnimPic();
 
     /**
@@ -80,13 +81,13 @@ public:
      *
      *  @param pos Rect √  modifier
      */
-    void set_rect(Rect &pos);
+    void set_rect (Rect &pos);
 
     /**
      * @brief Set phase
      * @param Nouvelle phase
      */
-    void set_img(int p);
+    void set_img (int p);
 };
 
 #endif // ANIMATION_H_INCLUDED

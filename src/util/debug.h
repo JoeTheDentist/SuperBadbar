@@ -29,7 +29,7 @@
 #include <stdio.h>
 
 
-//~ #define DEBUG_COLL 
+//~ #define DEBUG_COLL
 #define DESACTIVATE_GFX
 #define ARG_ANALYSER_ON
 #define DEBUG 2
@@ -39,59 +39,59 @@
 //~ #define ACTIVE_FMOD /* Si desactive, pas de fmod*/
 
 #ifdef WIN32
-	#define COL_CONSTR
-	#define COL_DEBUG
-	#define COL_TRACE
-	#define COL_PERF
-	#define END_COL
+#define COL_CONSTR
+#define COL_DEBUG
+#define COL_TRACE
+#define COL_PERF
+#define END_COL
 #else
-	#define COL_CONSTR "\033[32m"
-	#define COL_DEBUG "\033[31m"
-	#define COL_TRACE "\033[36m"
-	#define COL_PERF "\033[35m"
-	#define END_COL  "\033[0m"
+#define COL_CONSTR "\033[32m"
+#define COL_DEBUG "\033[31m"
+#define COL_TRACE "\033[36m"
+#define COL_PERF "\033[35m"
+#define END_COL  "\033[0m"
 #endif
 
 #ifdef DEBUG
-	#define PRINT_DEBUG(level, format, args...) \
-	if (DEBUG >= level){ \
-		fprintf(stderr, COL_DEBUG format END_COL, ##args);          \
-		fprintf(stderr, COL_DEBUG " (%s:l%d in %s)"  END_COL , __FILE__, __LINE__, __func__); \
-		fprintf(stderr, "\n"); \
-	}
+#define PRINT_DEBUG(level, format, args...) \
+    if (DEBUG >= level){ \
+        fprintf(stderr, COL_DEBUG format END_COL, ##args);          \
+        fprintf(stderr, COL_DEBUG " (%s:l%d in %s)"  END_COL , __FILE__, __LINE__, __func__); \
+        fprintf(stderr, "\n"); \
+    }
 #else
-	#define PRINT_DEBUG(format, args...)
+#define PRINT_DEBUG(format, args...)
 #endif
 
 #ifdef TRACE
-	#define PRINT_TRACE(level, format, args...) \
-	if (TRACE >= level) { \
-		fprintf(stderr, COL_TRACE format END_COL, ##args);          \
-		fprintf(stderr, "\n"); \
-	}
+#define PRINT_TRACE(level, format, args...) \
+    if (TRACE >= level) { \
+        fprintf(stderr, COL_TRACE format END_COL, ##args);          \
+        fprintf(stderr, "\n"); \
+    }
 #else
-	#define PRINT_TRACE(format, args...)
+#define PRINT_TRACE(format, args...)
 #endif
 
 #ifdef TRACE_CONSTR
-	#define  PRINT_CONSTR(level, format, args...) \
-	if (TRACE_CONSTR >= level) { \
-		fprintf(stderr, COL_CONSTR format END_COL, ##args);          \
-		fprintf(stderr, "\n"); \
-	}
+#define  PRINT_CONSTR(level, format, args...) \
+    if (TRACE_CONSTR >= level) { \
+        fprintf(stderr, COL_CONSTR format END_COL, ##args);          \
+        fprintf(stderr, "\n"); \
+    }
 #else
-	#define  PRINT_CONSTR(level, format, args...)
+#define  PRINT_CONSTR(level, format, args...)
 #endif
 
 #ifdef PERF_CYCLES
-	#define  PRINT_PERF( format, args...)   \
-	if (PERF_CYCLES > 0) { \
-		fprintf(stderr, COL_PERF format END_COL, ##args);          \
-		fprintf(stderr, "\n"); \
-	}
+#define  PRINT_PERF( format, args...)   \
+    if (PERF_CYCLES > 0) { \
+        fprintf(stderr, COL_PERF format END_COL, ##args);          \
+        fprintf(stderr, "\n"); \
+    }
 #else
-	#define PERF_CYCLES 20
-	#define  PRINT_PERF(format, args...)
+#define PERF_CYCLES 20
+#define  PRINT_PERF(format, args...)
 #endif
 
 #endif

@@ -6,7 +6,7 @@
 class NetworkPlayerActionController : virtual public NetworkActionController
 {
 public:
-	NetworkPlayerActionController();
+    NetworkPlayerActionController();
 };
 
 #endif // NETWORKPLAYERACTIONCONTROLLER_H

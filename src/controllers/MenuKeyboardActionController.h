@@ -6,7 +6,7 @@
 class MenuKeyboardActionController : virtual public KeyboardActionController
 {
 public:
-	MenuKeyboardActionController();
+    MenuKeyboardActionController();
 };
 
 #endif // MENUKEYBOARDACTIONCONTROLLER_H

@@ -4,39 +4,42 @@
 #include "util/globals.h"
 #include "menus/MenuWaitForPlayers.h"
 
-MenuHost::MenuHost(Menu *parent) :
-	Menu(parent)
+MenuHost::MenuHost (Menu *parent) :
+    Menu (parent)
 {
-	//gNetwork->initServer();
-	m_menu_actions.add_action_classic("Return", 1);
-	buildMenuWithLevels();
+    //gNetwork->initServer();
+    m_menu_actions.add_action_classic ("Return", 1);
+    buildMenuWithLevels();
 }
 
 MenuHost::~MenuHost()
 {
-	//gNetwork->clearAll();
+    //gNetwork->clearAll();
 }
 
-void MenuHost::treat_choice(int choice)
+void MenuHost::treat_choice (int choice)
 {
-	if ( choice == 1 ) { //return
-		set_leave_menu_true();
-	} else { //choix d'une map
-		selectLevel(choice-2);
-	}
+    if ( choice == 1 )   //return
+    {
+        set_leave_menu_true();
+    }
+    else     //choix d'une map
+    {
+        selectLevel (choice - 2);
+    }
 }
 
 void MenuHost::buildMenuWithLevels()
 {
-	/*QDir files(QString::fromStdString(LEVELS_R));
+    /*QDir files(QString::fromStdString(LEVELS_R));
 
-	for (int i = 0; i < files.entryList(QDir::Files).size(); ++i) {
-		m_lvls << files.entryList(QDir::Files).at(i);
-		m_menu_actions.add_action_classic(files.entryList(QDir::Files).at(i).toStdString(), i+2);
-	}*/
+    for (int i = 0; i < files.entryList(QDir::Files).size(); ++i) {
+    	m_lvls << files.entryList(QDir::Files).at(i);
+    	m_menu_actions.add_action_classic(files.entryList(QDir::Files).at(i).toStdString(), i+2);
+    }*/
 }
 
-void MenuHost::selectLevel(int choice)
+void MenuHost::selectLevel (int choice)
 {
-	//set_son(new MenuWaitForPlayers(this, m_lvls.[choice]));
+    //set_son(new MenuWaitForPlayers(this, m_lvls.[choice]));
 }

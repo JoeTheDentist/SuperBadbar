@@ -21,42 +21,42 @@ class Surface;
  */
 class Static: public Displayable
 {
-    protected :
-        Surface *m_image;
-        Rect m_pos;
+protected :
+    Surface *m_image;
+    Rect m_pos;
 
-    public :
+public :
 
-	/**
-	 * 	@brief Constructeur
-	 */
+    /**
+     * 	@brief Constructeur
+     */
     Static();
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param dir_image Le chemin vers l'image
-	 *	@param pos La position du static
-	 *	@todo Utiliser le gestionnaire d'image!
-	 */
-    Static(std::string dir_image, Rect pos);
+    /**
+     * 	@brief Constructeur
+     *	@param dir_image Le chemin vers l'image
+     *	@param pos La position du static
+     *	@todo Utiliser le gestionnaire d'image!
+     */
+    Static (std::string dir_image, Rect pos);
 
-    Static(Surface * img, Rect pos);
+    Static (Surface * img, Rect pos);
 
-	/**
-	 * 	@brief
-	 */
+    /**
+     * 	@brief
+     */
     ~Static();
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Un pointeur vers l'image du static
-	 */
+    /**
+     * 	@brief Accesseur
+     *	@return Un pointeur vers l'image du static
+     */
     Surface * current_picture() const;
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return La position du static
-	 */
+    /**
+     * 	@brief Accesseur
+     *	@return La position du static
+     */
     Rect position() const;
 };
 

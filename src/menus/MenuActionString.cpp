@@ -13,48 +13,58 @@
 #include "util/globals.h"
 #include <sstream>
 
-MenuActionString::MenuActionString(std::string str, int i, std::string val):
-	MenuAction(str + " : ", i),
-	m_currentString(val),
-	m_backupString(val),
-	m_waitingForInput(false)
+MenuActionString::MenuActionString (std::string str, int i, std::string val) :
+    MenuAction (str + " : ", i),
+    m_currentString (val),
+    m_backupString (val),
+    m_waitingForInput (false)
 {
 
 }
 
 void MenuActionString::update_text()
 {
-	m_text_to_display = m_text + m_currentString.getString();
+    m_text_to_display = m_text + m_currentString.getString();
 }
 
 void MenuActionString::update()
 {
-	MenuAction::update();
-	update_text();
+    MenuAction::update();
+    update_text();
 }
 
 std::string MenuActionString::get_string() const
 {
-	return m_currentString.getString();
+    return m_currentString.getString();
 }
 
-void MenuActionString::treatEvent(EventKeyboard *eventKeyboard)
+void MenuActionString::treatEvent (EventKeyboard *eventKeyboard)
 {
-	if (!m_waitingForInput) {
-		if (eventKeyboard->enterMenuPressed()) {
-			m_waitingForInput = true;
-			eventKeyboard->markTreated();
-		}
-	} else {
-		if (eventKeyboard->keyPressed()) {
-			if (eventKeyboard->enterPressed()) {
-				m_waitingForInput = false;
-			} else if (eventKeyboard->isMenuKey() && eventKeyboard->getMenuKey() == mk_escape) {
-				m_waitingForInput = false;
-			} else {
-				m_currentString.treatEvent(*eventKeyboard);
-			}
-			eventKeyboard->markTreated();
-		}
-	}
+    if (!m_waitingForInput)
+    {
+        if (eventKeyboard->enterMenuPressed() )
+        {
+            m_waitingForInput = true;
+            eventKeyboard->markTreated();
+        }
+    }
+    else
+    {
+        if (eventKeyboard->keyPressed() )
+        {
+            if (eventKeyboard->enterPressed() )
+            {
+                m_waitingForInput = false;
+            }
+            else if (eventKeyboard->isMenuKey() && eventKeyboard->getMenuKey() == mk_escape)
+            {
+                m_waitingForInput = false;
+            }
+            else
+            {
+                m_currentString.treatEvent (*eventKeyboard);
+            }
+            eventKeyboard->markTreated();
+        }
+    }
 }

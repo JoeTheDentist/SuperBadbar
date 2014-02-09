@@ -30,9 +30,10 @@
 #define RELOAD_SHOTGUN 18
 #define RELOAD_ROCKET_LAUNCHER 5
 
-enum weapon_type {
+enum weapon_type
+{
     GUN, MACHINE_GUN, SHOTGUN, ROCKET_LAUNCHER, ELMAR_MACHINE_GUN,
-	MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
+    MONSTER_BASIC_WEAPON, LASTWEAPON // ATTENTION: LASTWEAPON doit rester la derniere arme de l'enum pour que l'ensemble du programme ne bug pas
 };
 
 
@@ -52,54 +53,54 @@ struct Rect;
 class Weapon
 {
 protected:
-	weapon_type m_weapon_type;              /* type de l'arme */
-	unsigned int m_reload_time;                 /* temps entre deux tirs */
-	int m_munitions;
-	float m_last_dir_h;
+    weapon_type m_weapon_type;              /* type de l'arme */
+    unsigned int m_reload_time;                 /* temps entre deux tirs */
+    int m_munitions;
+    float m_last_dir_h;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	*/
-	Weapon();
+    /**
+     * 	@brief Constructeur
+    */
+    Weapon();
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	virtual ~Weapon();
+    /**
+     * 	@brief Destructeur
+     */
+    virtual ~Weapon();
 
-	/**
-	 * 	@brief Tire en fonction de l'arme
-	 *	@param pos La position du propriétaire de l'arme
-	 *	@param h la direction de tir
-	 *	@return La liste de projectiles tirés
-	 */
-	virtual std::list<Projectile*> * fire(Rect pos, Direction h, dmg_chan type) = 0;
+    /**
+     * 	@brief Tire en fonction de l'arme
+     *	@param pos La position du propriétaire de l'arme
+     *	@param h la direction de tir
+     *	@return La liste de projectiles tirés
+     */
+    virtual std::list<Projectile*> * fire (Rect pos, Direction h, dmg_chan type) = 0;
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le temps de rechargement (en cycles de jeu)
-	 */
-	virtual unsigned int reload_time() const;
-
-
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le nombre de munitions restantes
-	 */
-	virtual int munitions() const;
-
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le type de l'arme
-	 */
-	virtual weapon_type type_of_weapon() const;
+    /**
+     * 	@brief Accesseur
+     *	@return Le temps de rechargement (en cycles de jeu)
+     */
+    virtual unsigned int reload_time() const;
 
 
-	/**
-	 * 	@brief Mutateur: ajoute des munitions
-	 */
-	virtual void add_munitions() = 0;
+    /**
+     * 	@brief Accesseur
+     *	@return Le nombre de munitions restantes
+     */
+    virtual int munitions() const;
+
+    /**
+     * 	@brief Accesseur
+     *	@return Le type de l'arme
+     */
+    virtual weapon_type type_of_weapon() const;
+
+
+    /**
+     * 	@brief Mutateur: ajoute des munitions
+     */
+    virtual void add_munitions() = 0;
 
 };
 

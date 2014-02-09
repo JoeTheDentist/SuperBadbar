@@ -28,42 +28,43 @@ class Sound;
 *	Utilisation par le sound_engine:\n
 *	Tant qu'il y a des sons, jouer le prochain son et poper
 */
-class Sonorisable {
+class Sonorisable
+{
 protected:
-	std::stack<std::string> m_sounds_to_play;
+    std::stack<std::string> m_sounds_to_play;
 public:
-	/**
-	 *	@brief Constructeur par d√©faut
-	*/
-	Sonorisable();
+    /**
+     *	@brief Constructeur par d√©faut
+    */
+    Sonorisable();
 
-	/**
-	 *	@brief Destructeur
-	*/
-	~Sonorisable();
+    /**
+     *	@brief Destructeur
+    */
+    ~Sonorisable();
 
-	/**
-	 *	@brief Prepare un son √  jouer au prochain passage de sound_engine
-	 *	@param sound Le son √  jouer
-	*/
-	void prepare_sound(std::string sound);
+    /**
+     *	@brief Prepare un son √  jouer au prochain passage de sound_engine
+     *	@param sound Le son √  jouer
+    */
+    void prepare_sound (std::string sound);
 
-	/**
-	 *	@brief Accesseur
-	 *	@return Vrai s'il n'y a plus de sons √  jouer
-	*/
-	bool no_more_sounds();
+    /**
+     *	@brief Accesseur
+     *	@return Vrai s'il n'y a plus de sons √  jouer
+    */
+    bool no_more_sounds();
 
-	/**
-	 *	@brief Accesseur
-	 *	@return Le prochain son √  jouer
-	*/
-	std::string get_next_sound();
+    /**
+     *	@brief Accesseur
+     *	@return Le prochain son √  jouer
+    */
+    std::string get_next_sound();
 
-	/**
-	 *	@brief Supprime le premier son des sons √  jouer
-	*/
-	void pop_sound();
+    /**
+     *	@brief Supprime le premier son des sons √  jouer
+    */
+    void pop_sound();
 };
 
 

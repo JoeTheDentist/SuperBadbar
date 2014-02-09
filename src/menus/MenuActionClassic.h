@@ -13,14 +13,15 @@
 
 #include "menus/MenuAction.h"
 
-class MenuActionClassic: public MenuAction {
+class MenuActionClassic: public MenuAction
+{
 public:
-	/**
-	*	@brief Constructeur
-	*	@param str Le texte de l'action (par ex "new game" ou "option")
-	*	@param i L'indice de l'action (en general son numero dans la liste d'actions)
-	*/
-	MenuActionClassic(std::string str, int i);
+    /**
+    *	@brief Constructeur
+    *	@param str Le texte de l'action (par ex "new game" ou "option")
+    *	@param i L'indice de l'action (en general son numero dans la liste d'actions)
+    */
+    MenuActionClassic (std::string str, int i);
 };
 
 

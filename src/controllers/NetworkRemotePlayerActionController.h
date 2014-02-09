@@ -6,7 +6,7 @@
 class NetworkRemotePlayerActionController : public NetworkPlayerActionController
 {
 public:
-	NetworkRemotePlayerActionController();
+    NetworkRemotePlayerActionController();
 };
 
 #endif // NETWORKREMOTEPLAYERACTIONCONTROLLER_H

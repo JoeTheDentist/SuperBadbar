@@ -1,7 +1,7 @@
 #include "BabarStateRun.h"
 
-BabarStateRun::BabarStateRun(Babar *context)
-	:BabarState(context)
+BabarStateRun::BabarStateRun (Babar *context)
+    : BabarState (context)
 {
 }
 

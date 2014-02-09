@@ -5,10 +5,10 @@
 #include "NetworkEventController.h"
 
 class NetworkPlayerEventController : public PlayerEventController,
-		public NetworkEventController
+    public NetworkEventController
 {
 public:
-	NetworkPlayerEventController();
+    NetworkPlayerEventController();
 };
 
 #endif // NETWORKPLAYEREVENTCONTROLLER_H

@@ -6,10 +6,10 @@
 class ActionController : virtual public Controller
 {
 public:
-	/**
-	 *	Constructor
-	 */
-	ActionController();
+    /**
+     *	Constructor
+     */
+    ActionController();
 };
 
 #endif // ACTIONCONTROLLER_H

@@ -11,7 +11,8 @@ class Camera;
  *  @class Player_manager
  *  @brief Classe organisant les differents joueurs
  */
-class PlayersManager {
+class PlayersManager
+{
 private :
     std::list<Player*> * m_players;
     Player * m_local_player;
@@ -40,7 +41,7 @@ public :
      *  TODO : monstres contre les autres etc etc...
      *  TODO : On pourra mettre les regles dans un fichier xml...
      */
-    void init_players_manager(Analyser * analyser);
+    void init_players_manager (Analyser * analyser);
 
     /**
      *  @brief Mise a jour des joueurs
@@ -65,7 +66,7 @@ public :
      *	@return Le babar de distance minimale avec la position
      *	@todo Pour l'instant renvoie local_player
      */
-    Babar *closer_babar(Rect pos);
+    Babar *closer_babar (Rect pos);
 
     /**
      *  @brief Accesseur
@@ -77,7 +78,7 @@ public :
      *  Mutateur
      *  @param map_name : nom de la map courante
      */
-    void setMap(std::string map_name);
+    void setMap (std::string map_name);
 
     /**
      *  Accesseur

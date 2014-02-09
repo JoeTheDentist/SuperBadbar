@@ -14,11 +14,12 @@
 
 class Surface;
 
-class Displayable {
+class Displayable
+{
 protected:
 public:
-	virtual Surface *current_picture() const = 0;
-	virtual Rect position() const = 0;
+    virtual Surface *current_picture() const = 0;
+    virtual Rect position() const = 0;
 };
 
 #endif

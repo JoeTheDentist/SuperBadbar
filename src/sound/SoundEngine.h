@@ -30,55 +30,56 @@ class Sonorisable;
  *
  *
  */
-class SoundEngine {
+class SoundEngine
+{
 private:
-	std::map<std::string, sf::SoundBuffer*> m_soundBuffers;
-	sf::Music *m_music;
-	int m_sounds_volume;
-	int m_music_volume;
-	std::list<sf::Sound *> m_soundsPlaying;
+    std::map<std::string, sf::SoundBuffer*> m_soundBuffers;
+    sf::Music *m_music;
+    int m_sounds_volume;
+    int m_music_volume;
+    std::list<sf::Sound *> m_soundsPlaying;
 
 public:
 
-	/**
-	 * @brief Constructeur
-	*/
-	SoundEngine();
+    /**
+     * @brief Constructeur
+    */
+    SoundEngine();
 
-	/**
-	 * @brief Destructeur
-	*/
-	~SoundEngine();
+    /**
+     * @brief Destructeur
+    */
+    ~SoundEngine();
 
-	void init_level(std::string level);
+    void init_level (std::string level);
 
-	/*!
-	*	@brief Mise a jour des sons, doit etre appelee a chaque tour
-	*/
-	void update();
+    /*!
+    *	@brief Mise a jour des sons, doit etre appelee a chaque tour
+    */
+    void update();
 
-	/**
-	*	@brief Charge la musique a jouer
-	*	@param str Le nom de la musique (avec l'extension, depuis le repertoire des musiques)
-	*/
-	void load_music(std::string str);
+    /**
+    *	@brief Charge la musique a jouer
+    *	@param str Le nom de la musique (avec l'extension, depuis le repertoire des musiques)
+    */
+    void load_music (std::string str);
 
-	/**
-	 * @brief Joue la musique
-	*/
-	void play_music();
+    /**
+     * @brief Joue la musique
+    */
+    void play_music();
 
-	/**
-	 * @brief Joue la musique
-	*/
-	void play_sound(std::string key);
+    /**
+     * @brief Joue la musique
+    */
+    void play_sound (std::string key);
 
-	void play_sound(Sonorisable *sonorisable);
+    void play_sound (Sonorisable *sonorisable);
 
-	void set_sounds_volume(int v);
-	void set_music_volume(int v);
-	int get_sounds_volume() const;
-	int get_music_volume() const;
+    void set_sounds_volume (int v);
+    void set_music_volume (int v);
+    int get_sounds_volume() const;
+    int get_music_volume() const;
 };
 
 

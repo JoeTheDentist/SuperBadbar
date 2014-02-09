@@ -38,81 +38,82 @@
  *	@todo reorganiser la ou les localisations de PicturesContainer dans les autres classes
  *
  */
-class PicturesContainer {
+class PicturesContainer
+{
 private:
-	FontMap m_fontsContainer;
-	std::map<std::string, sf::Sprite*> m_container;
-	std::map<KeyMapSurfaceText, sf::String*> m_textContainer;
-	UniformSurfaceMap m_unifContainer;
-	std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
-	std::list< std::pair< BigImage* , BigSprite* > > m_bigsContainer;
+    FontMap m_fontsContainer;
+    std::map<std::string, sf::Sprite*> m_container;
+    std::map<KeyMapSurfaceText, sf::String*> m_textContainer;
+    UniformSurfaceMap m_unifContainer;
+    std::list<sf::Image *> m_images; // on garde les images ici pour pouvoir les deleter proprement
+    std::list< std::pair< BigImage* , BigSprite* > > m_bigsContainer;
 
-	static PicturesContainer *s_instance;
+    static PicturesContainer *s_instance;
 
 public:
 
-	/**
-	 *	Getter of the instance
-	 */
-	static PicturesContainer *GetInstance();
+    /**
+     *	Getter of the instance
+     */
+    static PicturesContainer *GetInstance();
 
-	/**
-	 *	Delete the instance
-	 */
-	static void Destroy();
+    /**
+     *	Delete the instance
+     */
+    static void Destroy();
 
-	/**
-	 * 	@brief Retourne un pointeur vers l'image demandée
-	 *	@param key Le chemin vers l'image
-	 *	@return Un pointeur vers l'image voulue
-	 */
-	sf::Sprite *load_picture(std::string key);
+    /**
+     * 	@brief Retourne un pointeur vers l'image demandée
+     *	@param key Le chemin vers l'image
+     *	@return Un pointeur vers l'image voulue
+     */
+    sf::Sprite *load_picture (std::string key);
 
-	/*!
-	*	@brief Retourne un pointeur vers l'image demandee
-	 *	@param key Le chemin vers l'image
-	 *	@return Un pointeur vers l'image voulue
-	*/
-	BigSprite *loadBigPicture(std::string);
+    /*!
+    *	@brief Retourne un pointeur vers l'image demandee
+     *	@param key Le chemin vers l'image
+     *	@return Un pointeur vers l'image voulue
+    */
+    BigSprite *loadBigPicture (std::string);
 
-	/**
-	*	@brief Retourne un pointeur vers la surface de texte demandee
-	*	@param text Le texte de la surface
-	*	@param size La taille du texte de la surface
-	*	@param r La composante rouge du texte
-	*	@param g La composante verte du texte
-	*	@param b La composante bleue du texte
-	*	@param fontNameLe nom de la police (qui sera charge dans le repertoire des polices)
-	*/
-	sf::String *loadSurfaceText(std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
+    /**
+    *	@brief Retourne un pointeur vers la surface de texte demandee
+    *	@param text Le texte de la surface
+    *	@param size La taille du texte de la surface
+    *	@param r La composante rouge du texte
+    *	@param g La composante verte du texte
+    *	@param b La composante bleue du texte
+    *	@param fontNameLe nom de la police (qui sera charge dans le repertoire des polices)
+    */
+    sf::String *loadSurfaceText (std::string text, int size = 30, int r = 255, int g = 255, int b = 255, std::string fontName = "defaultfont.ttf");
 
-	/**
-	*	@brief Retourne un pointeur vers la surface de texte demandee
-	*	@param width La largeur de la surface
-	*	@param height La hauteur de la surface
-	*	@param r La composante rouge de la surface
-	*	@param g La composante verte de la surface
-	*	@param b La composante bleue de la surface
-	*	@param alpha La composante alpha de la surface
-	*/
-	sf::Sprite *loadSurfaceUniform(int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
-	
+    /**
+    *	@brief Retourne un pointeur vers la surface de texte demandee
+    *	@param width La largeur de la surface
+    *	@param height La hauteur de la surface
+    *	@param r La composante rouge de la surface
+    *	@param g La composante verte de la surface
+    *	@param b La composante bleue de la surface
+    *	@param alpha La composante alpha de la surface
+    */
+    sf::Sprite *loadSurfaceUniform (int width, int height, int r = 255, int g = 255, int b = 255, int alpha = 255);
 
-	/**
-	 * 	@brief Vide la memoire du picture container
-	 */
-	void resetMemory();
+
+    /**
+     * 	@brief Vide la memoire du picture container
+     */
+    void resetMemory();
 
 private:
-	/**
-	 * 	@brief Constructeur
-	 */
-	PicturesContainer();
+    /**
+     * 	@brief Constructeur
+     */
+    PicturesContainer();
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~PicturesContainer();
+    /**
+     * 	@brief Destructeur
+     */
+    ~PicturesContainer();
 };
 
 

@@ -7,39 +7,40 @@
 #include "menus/ListMenuActions.h"
 
 
-class OptionsMenu: public Menu {
-	protected:
+class OptionsMenu: public Menu
+{
+protected:
 
 
 
-	public:
-	/*!
-	*	@brief Constructeur
-	*	@param parent Le menu appelant
-	*/
-	OptionsMenu(Menu *parent = NULL);
+public:
+    /*!
+    *	@brief Constructeur
+    *	@param parent Le menu appelant
+    */
+    OptionsMenu (Menu *parent = NULL);
 
-	/*!
-	*	@brief Destructeur
-	*/
-	~OptionsMenu();
+    /*!
+    *	@brief Destructeur
+    */
+    ~OptionsMenu();
 
-	/*!
-	*	@brief Mise a jour du menu (sauf affichage)
-	*/
-	virtual void update();
+    /*!
+    *	@brief Mise a jour du menu (sauf affichage)
+    */
+    virtual void update();
 
-	protected:
-	/*!
-	*	@brief Lance le menu de configuration du clavier
-	*/
-	virtual void launch_keyconfig();
+protected:
+    /*!
+    *	@brief Lance le menu de configuration du clavier
+    */
+    virtual void launch_keyconfig();
 
-	/*!
-	*	@brief Traitement du choix
-	*	@param l'int correspond au numero de la liste choisi
-	*/
-	virtual void treat_choice(int choice);
+    /*!
+    *	@brief Traitement du choix
+    *	@param l'int correspond au numero de la liste choisi
+    */
+    virtual void treat_choice (int choice);
 };
 
 

@@ -26,89 +26,93 @@ class SpritesManager;
  * 	@brief Moteur graphique 2D du jeu
  *
  */
-class GraphicEngine {
+class GraphicEngine
+{
 private:
-	Camera *m_camera;
-	Talks *m_talks;
-	Dashboard *m_dashboard;
-	SpritesManager * m_sprites;
+    Camera *m_camera;
+    Talks *m_talks;
+    Dashboard *m_dashboard;
+    SpritesManager * m_sprites;
 
 public:
-	/**
-	 * 	@brief Constructeur
-	 */
-	GraphicEngine();
+    /**
+     * 	@brief Constructeur
+     */
+    GraphicEngine();
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~GraphicEngine();
+    /**
+     * 	@brief Destructeur
+     */
+    ~GraphicEngine();
 
-	/**
-	 * 	@brief Initialise le moteur graphique
-	 *	@param game Indique si on initialise le moteur pour le jeu (vrai) ou pour le menu principal (faux)
-	 *	@todo On a juste besoin du picture_container, qui doit faire partie de GraphicEngine..
-	 */
-	void init_graphic_engine(bool game = true);
+    /**
+     * 	@brief Initialise le moteur graphique
+     *	@param game Indique si on initialise le moteur pour le jeu (vrai) ou pour le menu principal (faux)
+     *	@todo On a juste besoin du picture_container, qui doit faire partie de GraphicEngine..
+     */
+    void init_graphic_engine (bool game = true);
 
-	/**
-	 * 	@brief Mise Ã  jour du moteur graphique
-	 *
-	 *	Met Ã  jour la position de la camera
-	 */
-	void update();
+    /**
+     * 	@brief Mise Ã  jour du moteur graphique
+     *
+     *	Met Ã  jour la position de la camera
+     */
+    void update();
 
-	/**
-	 * 	@brief Affiche le tableau de board
-	 *	@param camera Le gestionnaire d'affichage
-	 */
-	void draw_dashboard(Camera *camera);
+    /**
+     * 	@brief Affiche le tableau de board
+     *	@param camera Le gestionnaire d'affichage
+     */
+    void draw_dashboard (Camera *camera);
 
-	/**
-	 * 	@brief Affiche les sprites
-	 *	@param camera Le gestionnaire d'affichage
-	 */
-	void display_sprites(Camera * cam);
+    /**
+     * 	@brief Affiche les sprites
+     *	@param camera Le gestionnaire d'affichage
+     */
+    void display_sprites (Camera * cam);
 
-	/**
-	 *  @brief Envoie un message d'avertissement
-	 *  @brief Message Ã  envoyer
-	 */
-    void alert(std::string text);
+    /**
+     *  @brief Envoie un message d'avertissement
+     *  @brief Message Ã  envoyer
+     */
+    void alert (std::string text);
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Un pointeur vers la camera
-	 */
-	Camera *get_camera();
+    /**
+     * 	@brief Accesseur
+     *	@return Un pointeur vers la camera
+     */
+    Camera *get_camera();
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Un pointeur vers le gestionnaire de dialogues
-	 */
-	Talks *get_talks();
+    /**
+     * 	@brief Accesseur
+     *	@return Un pointeur vers le gestionnaire de dialogues
+     */
+    Talks *get_talks();
 
-	/**
-	 * 	@brief Accesseur
-	 *  @return Pointeur sur le SpritesManager
-	 */
+    /**
+     * 	@brief Accesseur
+     *  @return Pointeur sur le SpritesManager
+     */
     SpritesManager * get_sprites_manager();
 
-	/**
-	 * 	@brief Accesseur
-	 *  @return Pointeur sur le dashboard
-	 */
-	Dashboard *get_dashboard() {return m_dashboard;}
+    /**
+     * 	@brief Accesseur
+     *  @return Pointeur sur le dashboard
+     */
+    Dashboard *get_dashboard()
+    {
+        return m_dashboard;
+    }
 
     /**
      *  @brief Raz de SpritesManager
      */
     void clean();
 
-	/**
-	*	@brief Flip la camera
-	*/
-	void flip_camera();
+    /**
+    *	@brief Flip la camera
+    */
+    void flip_camera();
 };
 
 

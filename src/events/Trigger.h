@@ -40,70 +40,71 @@ class Analyser;
  *	<TRIGGERABLE>  (utiliser la syntaxe definie dans triggerable)
  *
  */
-class Trigger {
+class Trigger
+{
 protected:
-	std::list<Rect> m_zone;
-	std::list<Triggerable *> m_triggerables;
-	bool m_triggered;
+    std::list<Rect> m_zone;
+    std::list<Triggerable *> m_triggerables;
+    bool m_triggered;
 public:
 
-	Trigger(Analyser *analyser);
+    Trigger (Analyser *analyser);
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param level_number le numero du trigger
-	 *	@param level_name le nom du niveau
-	*/
+    /**
+     * 	@brief Constructeur
+     *	@param level_number le numero du trigger
+     *	@param level_name le nom du niveau
+    */
 
-	/**
-	 * 	@brief Destructeur
-	*/
-	virtual ~Trigger();
+    /**
+     * 	@brief Destructeur
+    */
+    virtual ~Trigger();
 
-	/**
-	 * 	@brief Mise �  jour des données de l'Trigger
-	*/
-	virtual void update();
+    /**
+     * 	@brief Mise �  jour des données de l'Trigger
+    */
+    virtual void update();
 
-	/**
-	 * 	@brief Indique si l'triggerable doit etre déclenché
-	 *	@return Vrai si l'triggerable doit etre déclenché
-	*/
-	virtual bool can_start() const;
+    /**
+     * 	@brief Indique si l'triggerable doit etre déclenché
+     *	@return Vrai si l'triggerable doit etre déclenché
+    */
+    virtual bool can_start() const;
 
-	/**
-	 * 	@brief Déclenche le triggerable
-	*/
-	virtual void start();
+    /**
+     * 	@brief Déclenche le triggerable
+    */
+    virtual void start();
 
-	/**
-	 * 	@brief Indique si le trigger doit etre détruit
-	 *	@return Vrai si le trigger doit etre détruit
-	*/
-	virtual bool can_be_destroyed() const;
+    /**
+     * 	@brief Indique si le trigger doit etre détruit
+     *	@return Vrai si le trigger doit etre détruit
+    */
+    virtual bool can_be_destroyed() const;
 
-	/**
-	 * 	@brief Détruit le triggerable
-	*/
-	virtual void destroy();
+    /**
+     * 	@brief Détruit le triggerable
+    */
+    virtual void destroy();
 
-	/**
-	 *	@brief Ajoute une position a la zone de declenchement
-	 *	@param pos La position a ajouter
-	 */
-	void addPos(Rect pos);
+    /**
+     *	@brief Ajoute une position a la zone de declenchement
+     *	@param pos La position a ajouter
+     */
+    void addPos (Rect pos);
 
-	/**
-	 *	@brief Ajoute un triggerable a la liste des triggerables a declencher
-	 *	@param triggerable le triggerable a ajouter
-	 */
-	void addTriggerable(Triggerable *triggerable);
+    /**
+     *	@brief Ajoute un triggerable a la liste des triggerables a declencher
+     *	@param triggerable le triggerable a ajouter
+     */
+    void addTriggerable (Triggerable *triggerable);
 
 
-	private:
+private:
 
-	void initZones(Analyser *analyser);
-	void initTriggerables(Analyser *analyser);
+    void initZones (Analyser *analyser);
+    void initTriggerables (Analyser *analyser);
 
 };
 

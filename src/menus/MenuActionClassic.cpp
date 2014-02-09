@@ -9,7 +9,7 @@
 
 #include "MenuActionClassic.h"
 
-MenuActionClassic::MenuActionClassic(std::string str, int i):
-	MenuAction(str, i)
+MenuActionClassic::MenuActionClassic (std::string str, int i) :
+    MenuAction (str, i)
 {
 }

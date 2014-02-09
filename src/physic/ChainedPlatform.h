@@ -31,29 +31,30 @@ class Camera;
  *	@todo Not implemented
  *	C'est une plateforme bindable qui se deplace circulairement
  */
-class ChainedPlatform : public BindablePlatform {
+class ChainedPlatform : public BindablePlatform
+{
 protected:
-	Rect m_center;
-	int m_chain_length;
+    Rect m_center;
+    int m_chain_length;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param analyserLevel Un analyser positionne avant la description d'un ChainedPlatform
-	 */
-	ChainedPlatform(Analyser &analyserLevel);
+    /**
+     * 	@brief Constructeur
+     *	@param analyserLevel Un analyser positionne avant la description d'un ChainedPlatform
+     */
+    ChainedPlatform (Analyser &analyserLevel);
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	virtual ~ChainedPlatform();
+    /**
+     * 	@brief Destructeur
+     */
+    virtual ~ChainedPlatform();
 
 
-	/**
-	 * 	@brief Mise Ã  jour de la vitesse
-	 *	@todo Ã  coder
-	 */
-	virtual void update_speed();
+    /**
+     * 	@brief Mise Ã  jour de la vitesse
+     *	@todo Ã  coder
+     */
+    virtual void update_speed();
 
 
 

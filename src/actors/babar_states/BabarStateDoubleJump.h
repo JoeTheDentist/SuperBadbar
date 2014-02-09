@@ -6,46 +6,46 @@
 class BabarStateDoubleJump : public BabarState
 {
 public:
-	/**
-	 *	Ctor
-	 *	@param context: context of the state
-	 */
-	BabarStateDoubleJump(Babar *context);
+    /**
+     *	Ctor
+     *	@param context: context of the state
+     */
+    BabarStateDoubleJump (Babar *context);
 
-	/**
-	 *	Update
-	 */
-	void update();
+    /**
+     *	Update
+     */
+    void update();
 
-	/**
-	 *	Move Up (jump & double jump)
-	 */
-	void moveUp();
+    /**
+     *	Move Up (jump & double jump)
+     */
+    void moveUp();
 
-	/**
-	 *	Move Down (crouch)
-	 */
-	void moveDown();
+    /**
+     *	Move Down (crouch)
+     */
+    void moveDown();
 
-	/**
-	 *	Move Left
-	 */
-	void moveLeft();
+    /**
+     *	Move Left
+     */
+    void moveLeft();
 
-	/**
-	 *	Move Right
-	 */
-	void moveRight();
+    /**
+     *	Move Right
+     */
+    void moveRight();
 
-	/**
-	 *	Fire action
-	 */
-	void fire();
+    /**
+     *	Fire action
+     */
+    void fire();
 
-	/**
-	 *	Protect action
-	 */
-	void protect();
+    /**
+     *	Protect action
+     */
+    void protect();
 };
 
 #endif // BABARSTATEDOUBLEJUMP_H

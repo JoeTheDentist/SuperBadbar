@@ -22,20 +22,21 @@
 
 
 
-Trigger::Trigger(Analyser *analyser):
-	m_triggered(false)
+Trigger::Trigger (Analyser *analyser) :
+    m_triggered (false)
 {
-	initZones(analyser);
-	initTriggerables(analyser);
+    initZones (analyser);
+    initTriggerables (analyser);
 }
 
 Trigger::~Trigger()
 {
-	for (std::list<Triggerable *>::iterator it = m_triggerables.begin();
-			it != m_triggerables.end(); ++it) {
-		delete (*it);
-	}
-	PRINT_CONSTR(3, "Destruction d'un trigger");
+    for (std::list<Triggerable *>::iterator it = m_triggerables.begin();
+            it != m_triggerables.end(); ++it)
+    {
+        delete (*it);
+    }
+    PRINT_CONSTR (3, "Destruction d'un trigger");
 }
 
 void Trigger::update()
@@ -45,27 +46,30 @@ void Trigger::update()
 
 bool Trigger::can_start() const
 {
-	if (m_triggered)
-		return false;
-	for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it) {
-		if (CollisionsManager::check_collision((*it), gPlayers->local_player()->position())) {
-			return true;
-		}
-	}
-	return false;
+    if (m_triggered)
+        return false;
+    for (std::list<Rect>::const_iterator it = m_zone.begin(); it != m_zone.end(); ++it)
+    {
+        if (CollisionsManager::check_collision ( (*it), gPlayers->local_player()->position() ) )
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Trigger::start()
 {
-	m_triggered = true;
-	for (std::list<Triggerable *>::iterator it = m_triggerables.begin(); it != m_triggerables.end(); ++it) {
-		(*it)->start();
-	}
+    m_triggered = true;
+    for (std::list<Triggerable *>::iterator it = m_triggerables.begin(); it != m_triggerables.end(); ++it)
+    {
+        (*it)->start();
+    }
 }
 
 bool Trigger::can_be_destroyed() const
 {
-	return m_triggered;
+    return m_triggered;
 
 }
 
@@ -73,41 +77,45 @@ void Trigger::destroy()
 {
 }
 
-void Trigger::addPos(Rect pos)
+void Trigger::addPos (Rect pos)
 {
-	m_zone.push_back(pos);
+    m_zone.push_back (pos);
 }
 
-void Trigger::addTriggerable(Triggerable *triggerable)
+void Trigger::addTriggerable (Triggerable *triggerable)
 {
-	m_triggerables.push_back(triggerable);
+    m_triggerables.push_back (triggerable);
 }
 
 /*************************************************************/
 /*******					PRIVATE					*********/
 /*************************************************************/
 
-void Trigger::initZones(Analyser *analyser)
+void Trigger::initZones (Analyser *analyser)
 {
-	if (analyser->find_next_string("#zone#")) {
-		int nb_zone = analyser->read_int();
-		for (int i = 0; i < nb_zone; ++i) {
-			Rect rec;
-			rec.x = analyser->read_int();
-			rec.y = analyser->read_int();
-			rec.w = analyser->read_int() - rec.x;
-			rec.h = analyser->read_int() - rec.y;
-			addPos(rec);
-		}
-	}
+    if (analyser->find_next_string ("#zone#") )
+    {
+        int nb_zone = analyser->read_int();
+        for (int i = 0; i < nb_zone; ++i)
+        {
+            Rect rec;
+            rec.x = analyser->read_int();
+            rec.y = analyser->read_int();
+            rec.w = analyser->read_int() - rec.x;
+            rec.h = analyser->read_int() - rec.y;
+            addPos (rec);
+        }
+    }
 }
 
-void Trigger::initTriggerables(Analyser *analyser)
+void Trigger::initTriggerables (Analyser *analyser)
 {
-	if (analyser->find_next_string("#triggerables#")) {
-		int nb_triggerables = analyser->read_int();
-		for (int i = 0; i < nb_triggerables; ++i) {
-			addTriggerable(new Triggerable(*analyser));
-		}
-	}
+    if (analyser->find_next_string ("#triggerables#") )
+    {
+        int nb_triggerables = analyser->read_int();
+        for (int i = 0; i < nb_triggerables; ++i)
+        {
+            addTriggerable (new Triggerable (*analyser) );
+        }
+    }
 }

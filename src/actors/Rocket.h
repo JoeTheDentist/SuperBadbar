@@ -18,27 +18,28 @@
  * 	@class Rocket
  * 	@brief Projectile a tete chercheuse
  */
-class Rocket: public Projectile {
+class Rocket: public Projectile
+{
 public:
-	/**
-	 *	@brief Constructeur
-	*/
-	Rocket(Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
+    /**
+     *	@brief Constructeur
+    */
+    Rocket (Rect pos, Direction h, unsigned int speedx, unsigned int speedy, unsigned int damage);
 
-	/**
-	 * 	@brief Destructeur
-	*/
-	~Rocket();
+    /**
+     * 	@brief Destructeur
+    */
+    ~Rocket();
 
 
-	/**
-	 * 	@brief Met Ã  jour la vitesse du Projectile
-	*/
-	virtual void update_speed();
+    /**
+     * 	@brief Met Ã  jour la vitesse du Projectile
+    */
+    virtual void update_speed();
 
 protected:
-	void changeDirDirect();
-	void changeDirIndirect();
+    void changeDirDirect();
+    void changeDirIndirect();
 
 };
 

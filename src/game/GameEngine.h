@@ -36,125 +36,132 @@ class AnimatedSetManager;
  *	Contient notamment les listes de sprites, la matrice
  *	de collision.
  */
-class GameEngine {
+class GameEngine
+{
 private:
-	unsigned int m_matrix_weight;					/* Largeur de la matrice */
-	unsigned int m_matrix_height;					/* Hauteur de la matrice */
-	Monsters_manager *m_monsters_manager;
-	AnimatedSetManager * m_sets;
-	int m_spawn;                                    /* temps d'attente avant respawn */
-	bool m_victory;
+    unsigned int m_matrix_weight;					/* Largeur de la matrice */
+    unsigned int m_matrix_height;					/* Hauteur de la matrice */
+    Monsters_manager *m_monsters_manager;
+    AnimatedSetManager * m_sets;
+    int m_spawn;                                    /* temps d'attente avant respawn */
+    bool m_victory;
 
 public:
-	/**
-	 * 	@brief Constructeur
-	*/
-	GameEngine();
-
-	/**
-	 * 	@brief Destructeur
-	*/
-	~GameEngine();
-
-	/**
-	 * 	@brief Initialisation des donnees
-	 * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
-	 * 	@param camera La camera qui servira a  afficher les images
-	*/
-	void init_GameEngine(std::string level_name, Camera *camera);
-
-	/**
-	 *	@brief Met a jour le GameEngine
-	*/
-	void update();
-
-	/**
-	 * 	@brief Mise a  jour des positions des éléments du jeu
-	 *	@todo a  déplacer
-	*/
-	void update_pos();
-
-	/**
-	 * 	@brief Mise a  jour des vitesses des éléments du jeu
-	*/
-	void update_speed();
-
-	/**
-	 * 	@brief Supprimer les projectiles et monstres "morts"
-	 *	@param StaticData données du niveau
-	*/
-	void delete_dead_things();
-
-	/**
-	 * 	@brief Check les collisions monstres/projectiles
-	*/
-	void update_monsters_projectiles();
-
-	/**
-	 * 	@brief Check les collisions babar/projectiles
-	*/
-	void update_babar_projectiles();
-
-	/**
-	 *  @brief Regarde si Babar doit perdre des vies a cause du decor.
-	 */
-	void update_babar_damage();
-
-	/**
-	 * 	@brief Affichage des monstres
-	 *	@param camera La camera d'affichage
-	*/
-	void display_monsters(Camera * const camera) const;
-
- 	/**
-	 * 	@brief Affichage des projectiles amis
-	 *	@param camera La camera d'affichage
-	 *	@todo a déplacer
-	*/
-	void display_projectiles_friend(Camera *camera);
-
-	/**
-	 * 	@brief Affiche les événements affichables
-	 *	@param camera La camera qui affichera les événéments
-	*/
-	void display_events(Camera *camera);
-
-	/**
-	 * 	@brief Joue les sons a jouer ce cycle
-	 *	@param SoundEngine Gestionnaire de son
-	 *
-	 * Gère pour l'instant les sons de babar et des monstres
-	*/
-	void play_sounds();
-
-	/**
-	 *	@brief Fait gagner le niveau
-	*/
-	void set_victory();
-
-	/**
-	 *	@brief Accesseur
-	 *	@return Vrai si le joueur a gagne
-	*/
-	bool has_won();
-
-	/**
-	 *	@brief Accesseur
-	 *	@return Vrai si le joueur a perdu
-	*/
-	bool has_lost();
-
-	/**
-	 *	@brief Accesseur
-	 *	@return Pointeur vers le gestionnaire de monstres
-	*/
-	Monsters_manager *get_monsters_manager() { return m_monsters_manager;}
+    /**
+     * 	@brief Constructeur
+    */
+    GameEngine();
 
     /**
-	 *	@brief Accesseur
-	 *	@return Pointeur vers le gestionnaire des sets
-	*/
-	AnimatedSetManager * get_sets() { return m_sets;}
+     * 	@brief Destructeur
+    */
+    ~GameEngine();
+
+    /**
+     * 	@brief Initialisation des donnees
+     * 	@param level_name Le chemin depuis le repertoire des niveaux vers le niveau a charger
+     * 	@param camera La camera qui servira a  afficher les images
+    */
+    void init_GameEngine (std::string level_name, Camera *camera);
+
+    /**
+     *	@brief Met a jour le GameEngine
+    */
+    void update();
+
+    /**
+     * 	@brief Mise a  jour des positions des éléments du jeu
+     *	@todo a  déplacer
+    */
+    void update_pos();
+
+    /**
+     * 	@brief Mise a  jour des vitesses des éléments du jeu
+    */
+    void update_speed();
+
+    /**
+     * 	@brief Supprimer les projectiles et monstres "morts"
+     *	@param StaticData données du niveau
+    */
+    void delete_dead_things();
+
+    /**
+     * 	@brief Check les collisions monstres/projectiles
+    */
+    void update_monsters_projectiles();
+
+    /**
+     * 	@brief Check les collisions babar/projectiles
+    */
+    void update_babar_projectiles();
+
+    /**
+     *  @brief Regarde si Babar doit perdre des vies a cause du decor.
+     */
+    void update_babar_damage();
+
+    /**
+     * 	@brief Affichage des monstres
+     *	@param camera La camera d'affichage
+    */
+    void display_monsters (Camera * const camera) const;
+
+    /**
+     * 	@brief Affichage des projectiles amis
+     *	@param camera La camera d'affichage
+     *	@todo a déplacer
+    */
+    void display_projectiles_friend (Camera *camera);
+
+    /**
+     * 	@brief Affiche les événements affichables
+     *	@param camera La camera qui affichera les événéments
+    */
+    void display_events (Camera *camera);
+
+    /**
+     * 	@brief Joue les sons a jouer ce cycle
+     *	@param SoundEngine Gestionnaire de son
+     *
+     * Gère pour l'instant les sons de babar et des monstres
+    */
+    void play_sounds();
+
+    /**
+     *	@brief Fait gagner le niveau
+    */
+    void set_victory();
+
+    /**
+     *	@brief Accesseur
+     *	@return Vrai si le joueur a gagne
+    */
+    bool has_won();
+
+    /**
+     *	@brief Accesseur
+     *	@return Vrai si le joueur a perdu
+    */
+    bool has_lost();
+
+    /**
+     *	@brief Accesseur
+     *	@return Pointeur vers le gestionnaire de monstres
+    */
+    Monsters_manager *get_monsters_manager()
+    {
+        return m_monsters_manager;
+    }
+
+    /**
+     *	@brief Accesseur
+     *	@return Pointeur vers le gestionnaire des sets
+    */
+    AnimatedSetManager * get_sets()
+    {
+        return m_sets;
+    }
 };
 
 

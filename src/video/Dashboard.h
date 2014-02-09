@@ -37,69 +37,76 @@ class LifeBarPossessor;
  *
  *	@todo A deplacer dans GraphicEngine
  */
-class Dashboard {
+class Dashboard
+{
 private:
-	Surface *m_heart;
-	Surface **m_weapons_pictures;
-	Rect m_HP_pos;
-	Rect m_weapons_pos;
-	Surface *m_peanut;
-	Surface *m_babar_head;
-	int m_sizeFont;
-	int m_rFont;
-	int m_gFont;
-	int m_bFont;
-	std::string m_nameFont;
-	AnimText * m_alert;
-	LifeBarPossessor *m_life_bar_possessor;
-	Surface *m_green_rect;
-	Surface *m_red_rect;
-	Surface *m_life_bar;
-	Rect m_frame_life_bar;
-	Rect m_rect_null;
+    Surface *m_heart;
+    Surface **m_weapons_pictures;
+    Rect m_HP_pos;
+    Rect m_weapons_pos;
+    Surface *m_peanut;
+    Surface *m_babar_head;
+    int m_sizeFont;
+    int m_rFont;
+    int m_gFont;
+    int m_bFont;
+    std::string m_nameFont;
+    AnimText * m_alert;
+    LifeBarPossessor *m_life_bar_possessor;
+    Surface *m_green_rect;
+    Surface *m_red_rect;
+    Surface *m_life_bar;
+    Rect m_frame_life_bar;
+    Rect m_rect_null;
 
 public:
 
-	/**
-	 * 	@brief Constructeur
-	 */
-	Dashboard();
+    /**
+     * 	@brief Constructeur
+     */
+    Dashboard();
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~Dashboard();
+    /**
+     * 	@brief Destructeur
+     */
+    ~Dashboard();
 
-	/**
-	 * 	@brief Initialise le tableau de board
-	 */
-	void init_dashboard();
+    /**
+     * 	@brief Initialise le tableau de board
+     */
+    void init_dashboard();
 
-	/**
-	 * 	@brief Affiche le tableau de board
-	 * 	@param HP Le nombre de vies de Babar
-	 *	@param camera Le gestionnaire d'affichage
-	 *	@param babar Pointeur vers babar
-	 */
-	void draw_dashboard(Camera *camera);
+    /**
+     * 	@brief Affiche le tableau de board
+     * 	@param HP Le nombre de vies de Babar
+     *	@param camera Le gestionnaire d'affichage
+     *	@param babar Pointeur vers babar
+     */
+    void draw_dashboard (Camera *camera);
 
-	/**
-	 *  @brief Fonction affichant un message Ã  l'Ã©cran
-	 *  @param text : Texte Ã  afficher
-	 */
-    void alert(std::string text);
+    /**
+     *  @brief Fonction affichant un message Ã  l'Ã©cran
+     *  @param text : Texte Ã  afficher
+     */
+    void alert (std::string text);
 
     /**
      *  @brief Mets Ã  jour l'animation de texte et la suppr si besoin
      */
     void update();
 
-	void set_life_bar_possessor(LifeBarPossessor *lfb) {m_life_bar_possessor = lfb;}
+    void set_life_bar_possessor (LifeBarPossessor *lfb)
+    {
+        m_life_bar_possessor = lfb;
+    }
 
-	void remove_life_bar_possessor() {m_life_bar_possessor = NULL;}
+    void remove_life_bar_possessor()
+    {
+        m_life_bar_possessor = NULL;
+    }
 
 private:
-	void clear_dashboard();
+    void clear_dashboard();
 
 };
 

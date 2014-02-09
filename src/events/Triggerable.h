@@ -33,60 +33,61 @@ class Analyser;
  *
  *
  */
-class Triggerable {
+class Triggerable
+{
 protected:
-	int m_x;
-	int m_y;
-	std::string m_nature;
-	std::string m_text;
+    int m_x;
+    int m_y;
+    std::string m_nature;
+    std::string m_text;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param analyser l'analyser positionne juste avant un triggerable
-	*/
-	Triggerable(Analyser &analyser);
+    /**
+     * 	@brief Constructeur
+     *	@param analyser l'analyser positionne juste avant un triggerable
+    */
+    Triggerable (Analyser &analyser);
 
-	/**
-	 * 	@brief Destructeur
-	*/
-	virtual ~Triggerable();
+    /**
+     * 	@brief Destructeur
+    */
+    virtual ~Triggerable();
 
-	/**
-	 * 	@brief Déclenche l'événement
-	*/
-	virtual void start();
+    /**
+     * 	@brief Déclenche l'événement
+    */
+    virtual void start();
 
 protected:
-	/**
-	* @brief Apparition d'un monstre
-	*
-	* Le champ nature vaut "monster"
-	* Les champs de position indiquent la position d'apparition du monstre
-	* Le champ text indique le nom du monstre a ajouter
-	*/
-	void process_monster();
+    /**
+    * @brief Apparition d'un monstre
+    *
+    * Le champ nature vaut "monster"
+    * Les champs de position indiquent la position d'apparition du monstre
+    * Le champ text indique le nom du monstre a ajouter
+    */
+    void process_monster();
 
 
-	/**
-	* @brief Lancement d'un dialogue
-	*
-	* Le champ nature vaut "dialog"
-	* Les champs de positions n'ont aucun sens
-	* Le champ text indique le dialogue a ecrire
-	*
-	*/
-	void process_dialog();
+    /**
+    * @brief Lancement d'un dialogue
+    *
+    * Le champ nature vaut "dialog"
+    * Les champs de positions n'ont aucun sens
+    * Le champ text indique le dialogue a ecrire
+    *
+    */
+    void process_dialog();
 
-	/**
-	* @brief Lancement d'une alerte (le monster kill)
-	*
-	* Le champ nature vaut "alert"
-	* Les champs de positions n'ont aucun sens
-	* Le champ text indique l'alerte a ecrire
-	*
-	*/
-	void process_alert();
+    /**
+    * @brief Lancement d'une alerte (le monster kill)
+    *
+    * Le champ nature vaut "alert"
+    * Les champs de positions n'ont aucun sens
+    * Le champ text indique l'alerte a ecrire
+    *
+    */
+    void process_alert();
 
 
 

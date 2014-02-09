@@ -13,48 +13,49 @@
 #include "util/globals.h"
 #include "sound/SoundEngine.h"
 
-MenuActionInteger::MenuActionInteger(std::string str, int i, int val, int valmin, int valmax, int step):
-	MenuAction(str, i),
-	m_value(val),
-	m_valmin(valmin),
-	m_valmax(valmax),
-	m_step(step)
+MenuActionInteger::MenuActionInteger (std::string str, int i, int val, int valmin, int valmax, int step) :
+    MenuAction (str, i),
+    m_value (val),
+    m_valmin (valmin),
+    m_valmax (valmax),
+    m_step (step)
 {
 
 }
 
-void MenuActionInteger::incr_value(int value)
+void MenuActionInteger::incr_value (int value)
 {
-	m_value += m_step * value;
-	if (m_value > m_valmax)
-		m_value = m_valmax;
-	if (m_value < m_valmin)
-		m_value = m_valmin;
-	update();
+    m_value += m_step * value;
+    if (m_value > m_valmax)
+        m_value = m_valmax;
+    if (m_value < m_valmin)
+        m_value = m_valmin;
+    update();
 }
 
 void MenuActionInteger::update_text()
 {
-	std::ostringstream oss;
-	oss << m_text << " < " <<  m_value << " >";
-	m_text_to_display = oss.str();
+    std::ostringstream oss;
+    oss << m_text << " < " <<  m_value << " >";
+    m_text_to_display = oss.str();
 }
 
-void MenuActionInteger::treatEvent(EventKeyboard *eventKeyboard)
+void MenuActionInteger::treatEvent (EventKeyboard *eventKeyboard)
 {
-	menu_key key = eventKeyboard->getMenuKey();
-	switch (key) {
-	case mk_left:
-		incr_value(-1);
-		eventKeyboard->markTreated();
-                gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
-		break;
-	case mk_right:
-		incr_value(1);
-		eventKeyboard->markTreated();
-                gSound->play_sound(MENU_SOUNDS_R + "move_selection.wav");
-		break;	
-	default:
-		break;
-	}
+    menu_key key = eventKeyboard->getMenuKey();
+    switch (key)
+    {
+    case mk_left:
+        incr_value (-1);
+        eventKeyboard->markTreated();
+        gSound->play_sound (MENU_SOUNDS_R + "move_selection.wav");
+        break;
+    case mk_right:
+        incr_value (1);
+        eventKeyboard->markTreated();
+        gSound->play_sound (MENU_SOUNDS_R + "move_selection.wav");
+        break;
+    default:
+        break;
+    }
 }

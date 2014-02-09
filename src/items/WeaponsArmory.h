@@ -18,58 +18,59 @@
  * 	@class WeaponsArmory
  * 	@brief Contient et gère les armes possédées par un personnage
  */
-class WeaponsArmory {
+class WeaponsArmory
+{
 private:
-	std::list<Weapon*> m_armory;
-	std::list<Weapon *>::iterator m_current_weapon;
+    std::list<Weapon*> m_armory;
+    std::list<Weapon *>::iterator m_current_weapon;
 public:
-	/**
-	 *	@brief Constructeur
-	 *	@param pictures_container Le gestionnaire d'images
-	 *	@param sound_manager Le gestionnaire de son
-	*/
-	WeaponsArmory();
+    /**
+     *	@brief Constructeur
+     *	@param pictures_container Le gestionnaire d'images
+     *	@param sound_manager Le gestionnaire de son
+    */
+    WeaponsArmory();
 
-	/**
-	 *	@brief Destructeur
-	*/
-	~WeaponsArmory();
+    /**
+     *	@brief Destructeur
+    */
+    ~WeaponsArmory();
 
-	/**
-	 *	@brief Accesseur
-	 *	@return Un pointeur vers l'arme actuelle
-	*/
-	Weapon *get_current_weapon();
+    /**
+     *	@brief Accesseur
+     *	@return Un pointeur vers l'arme actuelle
+    */
+    Weapon *get_current_weapon();
 
-	/**
-	 *	@brief Ajout d'une arme a l'arsenal
-	 *	@param type Le type d'arme a ajouter
-	 *
-	 *	Si l'arme est déja présente dans l'inventaire, on lui rajoute
-	 *	des munitions. Sinon, on la crée et on l'ajoute.
-	*/
-	void add_weapon(weapon_type type);
+    /**
+     *	@brief Ajout d'une arme a l'arsenal
+     *	@param type Le type d'arme a ajouter
+     *
+     *	Si l'arme est déja présente dans l'inventaire, on lui rajoute
+     *	des munitions. Sinon, on la crée et on l'ajoute.
+    */
+    void add_weapon (weapon_type type);
 
-	/**
-	 *	@brief Mise a jour de l'inventaire
-	 *
-	 *	Supprime les armes n'ayant plus de munitions
-	*/
-	void update();
+    /**
+     *	@brief Mise a jour de l'inventaire
+     *
+     *	Supprime les armes n'ayant plus de munitions
+    */
+    void update();
 
-	/**
-	 *	@brief Sélectionne l'arme suivante
-	 *
-	 *	Quand on arrive a la dernière arme, on repart de la première
-	*/
-	void next_weapon();
+    /**
+     *	@brief Sélectionne l'arme suivante
+     *
+     *	Quand on arrive a la dernière arme, on repart de la première
+    */
+    void next_weapon();
 
-	/**
-	 *	@brief Sélectionne l'arme précédente
-	 *
-	 *	Quand on arrive a la première arme, on repart de la dernière
-	*/
-	void previous_weapon();
+    /**
+     *	@brief Sélectionne l'arme précédente
+     *
+     *	Quand on arrive a la première arme, on repart de la dernière
+    */
+    void previous_weapon();
 };
 
 

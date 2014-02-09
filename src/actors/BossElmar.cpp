@@ -18,8 +18,8 @@
 #include "video/Surface.h"
 #include "video/Talks.h"
 
-BossElmar::BossElmar(std::string name, int posx, int posy):
-	Boss(name, posx, posy)
+BossElmar::BossElmar (std::string name, int posx, int posy) :
+    Boss (name, posx, posy)
 {
     m_weapon = new ElmarMachineGun();
     m_fire = 0;
@@ -29,8 +29,8 @@ BossElmar::BossElmar(std::string name, int posx, int posy):
     m_wait = 0;
 }
 
-BossElmar::BossElmar(Analyser *analyserLevel):
-	Boss(analyserLevel)
+BossElmar::BossElmar (Analyser *analyserLevel) :
+    Boss (analyserLevel)
 {
     m_weapon = new ElmarMachineGun();
     m_fire = 0;
@@ -43,9 +43,9 @@ BossElmar::BossElmar(Analyser *analyserLevel):
 BossElmar::~BossElmar()
 {
 
-	std::string text;
-	text = "<elmar> Aah...! Tu penses m'avoir vaincu ? Haha. Non loin de la salopette. Je ne suis qu'un pion... Hehe. Je... ne suis... pas...";
-	gGraphics->get_talks()->display_text(text);
+    std::string text;
+    text = "<elmar> Aah...! Tu penses m'avoir vaincu ? Haha. Non loin de la salopette. Je ne suis qu'un pion... Hehe. Je... ne suis... pas...";
+    gGraphics->get_talks()->display_text (text);
 }
 
 void BossElmar::update_speed_simple()
@@ -81,25 +81,25 @@ void BossElmar::update()
 {
     update_state();
 
-	// mise �  jour des dimensions
-	Rect pos_basse = m_pos;
-	pos_basse.y += pos_basse.h;
-	//pour toujours avoir la mm position malgré le changement d'état
-	m_sprite->change_anim(m_elmar_state,m_dir);
+    // mise �  jour des dimensions
+    Rect pos_basse = m_pos;
+    pos_basse.y += pos_basse.h;
+    //pour toujours avoir la mm position malgré le changement d'état
+    m_sprite->change_anim (m_elmar_state, m_dir);
     m_pos.w = m_sprite->w();
     m_pos.h = m_sprite->h();
     m_pos.y = pos_basse.y - m_pos.h;
-    m_sprite->set_pos(m_pos);
+    m_sprite->set_pos (m_pos);
 }
 
 bool BossElmar::bottom()
 {
-    return ( m_pos.y + 2*m_pos.h > int(gStatic->StaticData_height()) );
+    return ( m_pos.y + 2 * m_pos.h > int (gStatic->StaticData_height() ) );
 }
 
 bool BossElmar::top()
 {
-    return ( m_pos.y + 2*m_pos.h < int(gStatic->StaticData_height()) );
+    return ( m_pos.y + 2 * m_pos.h < int (gStatic->StaticData_height() ) );
 }
 
 bool BossElmar::in_bottom_left_corner()
@@ -110,73 +110,83 @@ bool BossElmar::in_bottom_left_corner()
 
 bool BossElmar::in_bottom_right_corner()
 {
-    return  ( m_pos.x + (5*m_pos.w)/4 > int(gStatic->StaticData_width()) ) &&
+    return  ( m_pos.x + (5 * m_pos.w) / 4 > int (gStatic->StaticData_width() ) ) &&
             bottom();
 }
 
 bool BossElmar::in_top_left_corner()
 {
-    return  ( m_pos.x < m_pos.w/2 ) &&
+    return  ( m_pos.x < m_pos.w / 2 ) &&
             top();
 }
 
 bool BossElmar::in_top_right_corner()
 {
-    return  ( m_pos.x + (4*m_pos.w)/4 > int(gStatic->StaticData_width()) ) &&
+    return  ( m_pos.x + (4 * m_pos.w) / 4 > int (gStatic->StaticData_width() ) ) &&
             top();
 }
 
 bool BossElmar::in_bottom_middle()
 {
-    return ( m_pos.x + 30 > int(gStatic->StaticData_width()) / 2 &&
-             m_pos.x - 30 < int(gStatic->StaticData_width()) / 2 ) &&
-             bottom();
+    return ( m_pos.x + 30 > int (gStatic->StaticData_width() ) / 2 &&
+             m_pos.x - 30 < int (gStatic->StaticData_width() ) / 2 ) &&
+           bottom();
 }
 
 void BossElmar::update_state()
 {
-	// comprotement d'Elmar
-	// De façon générale Elmar se met dans les coins et en fonction
-	// de la position de Babar saute ou non
-	switch ( m_elmar_state ) {
-	    case ELMAR_CHARGE :
-            elmar_charge();
-            break;
-	    case ELMAR_FIRE :
-            elmar_fire();
-            break;
-        case ELMAR_JUMP :
-            elmar_jump();
-            break;
-        default:
-            break;
-	}
+    // comprotement d'Elmar
+    // De façon générale Elmar se met dans les coins et en fonction
+    // de la position de Babar saute ou non
+    switch ( m_elmar_state )
+    {
+    case ELMAR_CHARGE :
+        elmar_charge();
+        break;
+    case ELMAR_FIRE :
+        elmar_fire();
+        break;
+    case ELMAR_JUMP :
+        elmar_jump();
+        break;
+    default:
+        break;
+    }
 }
 
 void BossElmar::elmar_charge()
 {
-    Rect babarpos = gPlayers->closer_babar(position())->position();
+    Rect babarpos = gPlayers->closer_babar (position() )->position();
 
     // on regarde si Elmar est arrivé dans un coin
-    if ( ( in_bottom_left_corner() || in_top_left_corner() ) && m_dir == LEFT ) {
+    if ( ( in_bottom_left_corner() || in_top_left_corner() ) && m_dir == LEFT )
+    {
         m_dir = RIGHT;
         m_speed.x = 0;
         m_elmar_state = ELMAR_FIRE;
-        m_fire = rand()%10+5;
-    } else if ( ( in_bottom_right_corner() || in_top_right_corner() ) && m_dir == RIGHT ) {
+        m_fire = rand() % 10 + 5;
+    }
+    else if ( ( in_bottom_right_corner() || in_top_right_corner() ) && m_dir == RIGHT )
+    {
         m_dir = LEFT;
         m_speed.x = 0;
-        m_fire = rand()%10+5;
+        m_fire = rand() % 10 + 5;
         m_elmar_state = ELMAR_FIRE;
-    } else if ( in_bottom_middle() ) {
-        if ( (rand()%5 == 0) && babarpos.y > m_pos.y - m_pos.h ) {
-            if ( babarpos.x > m_pos.x ) {
+    }
+    else if ( in_bottom_middle() )
+    {
+        if ( (rand() % 5 == 0) && babarpos.y > m_pos.y - m_pos.h )
+        {
+            if ( babarpos.x > m_pos.x )
+            {
                 m_dir = RIGHT;
-            } else {
+            }
+            else
+            {
                 m_dir = LEFT;
             }
             m_speed.x = 0;
-            m_fire = rand()%10+5;
+            m_fire = rand() % 10 + 5;
             m_elmar_state = ELMAR_FIRE;
         }
     }
@@ -184,40 +194,53 @@ void BossElmar::elmar_charge()
 
 void BossElmar::elmar_fire()
 {
-    if ( wait(10) ) {
-        Rect babarpos = gPlayers->closer_babar(position())->position();
+    if ( wait (10) )
+    {
+        Rect babarpos = gPlayers->closer_babar (position() )->position();
 
-        if ( m_phase%2 ) {
+        if ( m_phase % 2 )
+        {
             // pour eviter de tirer trop vite
-            if ( m_fire ) {
+            if ( m_fire )
+            {
                 // temps de tir
-                if ( m_weapon->munitions() == 0) {
+                if ( m_weapon->munitions() == 0)
+                {
                     m_weapon->add_munitions();
                 }
-                gProj->add_proj(fire(), MONSTERS);
+                gProj->add_proj (fire(), MONSTERS);
                 --m_fire;
-            } else {
+            }
+            else
+            {
                 // qd on a fini de tirer
-                if ( babarpos.y < m_pos.y /*|| rand()%2==0*/ ) {
+                if ( babarpos.y < m_pos.y /*|| rand()%2==0*/ )
+                {
                     // si le joueur est sur une plateforme au dessus
                     // on saute si on est bien pas au millieu ni en haut
-                    if ( in_bottom_left_corner() ) {
+                    if ( in_bottom_left_corner() )
+                    {
                         m_elmar_state = ELMAR_JUMP;
                         m_dir = RIGHT;
                         m_speed.y = -100;
                         m_wait = 0;
-                    } else if ( in_bottom_right_corner() ) {
+                    }
+                    else if ( in_bottom_right_corner() )
+                    {
                         m_elmar_state = ELMAR_JUMP;
                         m_dir = LEFT;
                         m_speed.y = -100;
                         m_wait = 0;
                     }
-                } else {
+                }
+                else
+                {
                     // sinon on le charge
                     m_elmar_state = ELMAR_CHARGE;
                     m_speed.x = 30;
                     m_wait = 0;
-                    if ( m_dir == LEFT ) {
+                    if ( m_dir == LEFT )
+                    {
                         m_speed.x *= -1;
                     }
                 }
@@ -228,25 +251,32 @@ void BossElmar::elmar_fire()
 
 void BossElmar::elmar_jump()
 {
-    Rect babarpos = gPlayers->closer_babar(position())->position();
-    if ( m_speed.y == 0 || !gCollision->get_matrix()->can_fall(m_pos) ) {
+    Rect babarpos = gPlayers->closer_babar (position() )->position();
+    if ( m_speed.y == 0 || !gCollision->get_matrix()->can_fall (m_pos) )
+    {
         m_elmar_state = ELMAR_CHARGE;
         m_speed.x = 30;
         m_speed.y = 0;
-        if ( m_dir == LEFT ) {
+        if ( m_dir == LEFT )
+        {
             m_speed.x *= -1;
         }
     }
 }
 
-bool BossElmar::wait(int cycles)
+bool BossElmar::wait (int cycles)
 {
-    if ( m_wait == 0) {
+    if ( m_wait == 0)
+    {
         m_wait = cycles;
         return false;
-    } else if ( m_wait == 1) {
+    }
+    else if ( m_wait == 1)
+    {
         return true;
-    } else {
+    }
+    else
+    {
         m_wait--;
         return false;
     }
@@ -254,7 +284,7 @@ bool BossElmar::wait(int cycles)
 
 void BossElmar::kill()
 {
-	gEvent->add_end_level(1540, 1100);
-	Boss::kill();
+    gEvent->add_end_level (1540, 1100);
+    Boss::kill();
 }
 

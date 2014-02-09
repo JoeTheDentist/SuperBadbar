@@ -10,24 +10,24 @@
 
 bool GameInitializer::init_game()
 {
-	// chargement des librairies
-	srand(time(NULL));
-	Constants::init();
-	
-	// chargement des variables globales a  l'ensemble du jeu
-	gPlayers = new PlayersManager();
-	gSound = new SoundEngine();
-	gGraphics = new GraphicEngine();
-	gGraphics->init_graphic_engine(false);
-	gKeyboardConfig = new KeyboardConfig();
-	return true;
+    // chargement des librairies
+    srand (time (NULL) );
+    Constants::init();
+
+    // chargement des variables globales a  l'ensemble du jeu
+    gPlayers = new PlayersManager();
+    gSound = new SoundEngine();
+    gGraphics = new GraphicEngine();
+    gGraphics->init_graphic_engine (false);
+    gKeyboardConfig = new KeyboardConfig();
+    return true;
 }
 
 bool GameInitializer::close_game()
 {
-	delete gSound;
-	delete gGraphics;
-	Keyboard::Destroy();
-	delete gKeyboardConfig;
-	return true;
+    delete gSound;
+    delete gGraphics;
+    Keyboard::Destroy();
+    delete gKeyboardConfig;
+    return true;
 }

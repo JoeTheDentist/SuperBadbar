@@ -15,51 +15,52 @@
 
 class SurfaceSelectionMenu;
 
-class MenuActionSelectMap: public MenuAction {
+class MenuActionSelectMap: public MenuAction
+{
 protected:
 
 public:
-	/**
-	*	@brief Constructeur
-	*	@param i L'indice du button dans le menu
-	*/
-	MenuActionSelectMap(int i);
+    /**
+    *	@brief Constructeur
+    *	@param i L'indice du button dans le menu
+    */
+    MenuActionSelectMap (int i);
 
-	/*!
-	*	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action
-	*	@param value Coefficient d'incremementation
-	*/
-	virtual void incr_value(int value);
+    /*!
+    *	@brief Augmente la valeur contenue dans l'integer de value * le step de l'action
+    *	@param value Coefficient d'incremementation
+    */
+    virtual void incr_value (int value);
 
-	/*!
-	*	@brief Traite l'evenement eventKeyboard recu
-	*	@param eventKeyboard L'evenement recu
-	*
-	*	Si l'evenement est vraiment traite, il sera marque comme
-	*	traite apres l'appel
-	*/
-	virtual void treatEvent(EventKeyboard *eventKeyboard);
-
-
-	virtual Surface *get_surface() const;
-
-	/*!
-	*	@brief Maj du bouton
-	*/
-	virtual void update();
-
-	virtual void setSurfaceSelection(SurfaceSelectionMenu *surf);
+    /*!
+    *	@brief Traite l'evenement eventKeyboard recu
+    *	@param eventKeyboard L'evenement recu
+    *
+    *	Si l'evenement est vraiment traite, il sera marque comme
+    *	traite apres l'appel
+    */
+    virtual void treatEvent (EventKeyboard *eventKeyboard);
 
 
+    virtual Surface *get_surface() const;
 
-protected:
-	virtual void update_text();
+    /*!
+    *	@brief Maj du bouton
+    */
+    virtual void update();
+
+    virtual void setSurfaceSelection (SurfaceSelectionMenu *surf);
+
+
 
 protected:
-	// les deux pointeurs suivants pointent sur la meme variable!
-	// ne modifier que la surfaceComposite
-	Surface *m_interfaceForSurfaceComposite;
-	SurfaceSelectionMenu *m_surfaceComposite;
+    virtual void update_text();
+
+protected:
+    // les deux pointeurs suivants pointent sur la meme variable!
+    // ne modifier que la surfaceComposite
+    Surface *m_interfaceForSurfaceComposite;
+    SurfaceSelectionMenu *m_surfaceComposite;
 };
 
 

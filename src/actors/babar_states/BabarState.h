@@ -10,71 +10,71 @@ class Babar;
 class BabarState
 {
 public:
-	/**
-	 *	Ctor
-	 *	@param context: context of the state
-	 */
-	BabarState(Babar *context);
+    /**
+     *	Ctor
+     *	@param context: context of the state
+     */
+    BabarState (Babar *context);
 
-	/**
-	 *	Gets the initial state, to hide the states behind
-	 *	@param context: context for the state
-	 *	@return an new state
-	 */
-	static BabarState *GetInitialState(Babar *context);
+    /**
+     *	Gets the initial state, to hide the states behind
+     *	@param context: context for the state
+     *	@return an new state
+     */
+    static BabarState *GetInitialState (Babar *context);
 
-	/**
-	 *	Update
-	 */
-	virtual void update() = 0;
+    /**
+     *	Update
+     */
+    virtual void update() = 0;
 
-	/**
-	 *	Move Up (jump & double jump)
-	 */
-	virtual void moveUp() = 0;
+    /**
+     *	Move Up (jump & double jump)
+     */
+    virtual void moveUp() = 0;
 
-	/**
-	 *	Move Down (crouch)
-	 */
-	virtual void moveDown() = 0;
+    /**
+     *	Move Down (crouch)
+     */
+    virtual void moveDown() = 0;
 
-	/**
-	 *	Move Left
-	 */
-	virtual void moveLeft();
+    /**
+     *	Move Left
+     */
+    virtual void moveLeft();
 
-	/**
-	 *	Move Right
-	 */
-	virtual void moveRight();
+    /**
+     *	Move Right
+     */
+    virtual void moveRight();
 
-	/**
-	 *	Fire action
-	 */
-	virtual void fire();
+    /**
+     *	Fire action
+     */
+    virtual void fire();
 
-	/**
-	 *	Protect action
-	 */
-	virtual void protect();
+    /**
+     *	Protect action
+     */
+    virtual void protect();
 
 protected:
-	bool m_wasFiring;
-	bool m_wasCrouched;
+    bool m_wasFiring;
+    bool m_wasCrouched;
 
-	/**
-	 *	Getter
-	 *	@return context
-	 */
-	Babar *getContext();
+    /**
+     *	Getter
+     *	@return context
+     */
+    Babar *getContext();
 
-	/**
-	 *	Set the animation according to the context
-	 */
-	void setAnimation();
+    /**
+     *	Set the animation according to the context
+     */
+    void setAnimation();
 
 private:
-	Babar *m_context;
+    Babar *m_context;
 };
 
 #endif // BABARSTATE_H

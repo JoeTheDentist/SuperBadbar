@@ -16,28 +16,28 @@
 
 Static::Static()
 {
-	PRINT_CONSTR(3, "Construction d'un Static")
+    PRINT_CONSTR (3, "Construction d'un Static")
     m_image = NULL;
 }
 
-Static::Static(std::string dir_image, Rect pos): m_image(new SurfaceBig(dir_image))
+Static::Static (std::string dir_image, Rect pos) : m_image (new SurfaceBig (dir_image) )
 {
-	PRINT_CONSTR(3, "Construction du Static %s", dir_image.c_str())
+    PRINT_CONSTR (3, "Construction du Static %s", dir_image.c_str() )
     m_pos = pos;
 }
 
-Static::Static(Surface * img, Rect pos)
+Static::Static (Surface * img, Rect pos)
 {
-	PRINT_CONSTR(3, "Construction d'un Static")
-	m_image = img;
+    PRINT_CONSTR (3, "Construction d'un Static")
+    m_image = img;
     m_pos = pos;
 }
 
 
 Static::~Static()
 {
-	PRINT_CONSTR(3, "Destruction d'un Static")
-	delete m_image;
+    PRINT_CONSTR (3, "Destruction d'un Static")
+    delete m_image;
 }
 
 Surface * Static::current_picture() const

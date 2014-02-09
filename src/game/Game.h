@@ -26,12 +26,14 @@ class SoundEngine;
 class Keyboard;
 class Menu;
 
-enum result_game {
-	victory, defeat, leave
+enum result_game
+{
+    victory, defeat, leave
 };
 
-enum game_state {
-	gs_playing, gs_pause, gs_talks
+enum game_state
+{
+    gs_playing, gs_pause, gs_talks
 };
 
 /**
@@ -42,100 +44,101 @@ enum game_state {
  *	moteur de jeu, moteur graphique, moteur de son, r√©cup√©ration des entr√©es
  *	clavier, donn√©es du niveau.
  */
-class Game {
+class Game
+{
 private:
-	unsigned int m_time;			/* temps actuel */
-	unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
-	Menu *m_pause;
-	game_state m_state;
-	sf::Clock m_clock;
+    unsigned int m_time;			/* temps actuel */
+    unsigned int m_previous_time;	/* temps depuis le dernier tour de jeu */
+    Menu *m_pause;
+    game_state m_state;
+    sf::Clock m_clock;
 
 public:
 
-	/**
-	 * 	@brief Constructeur utilis√© par le jeu
-	 *	@param level Le numero du niveau actuel
-	 * 	@param record_on Indique si on doit sauvegarder la sequence de touches
-	 *	@param replay_on Indique si on doit charger une sequence de touches
-	 *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
-	 *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
-	 *
-	 *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par d√©faut)
-	*/
-	Game(int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
+    /**
+     * 	@brief Constructeur utilis√© par le jeu
+     *	@param level Le numero du niveau actuel
+     * 	@param record_on Indique si on doit sauvegarder la sequence de touches
+     *	@param replay_on Indique si on doit charger une sequence de touches
+     *	@param Nom du fichier dans lequel on doit sauvegarder la sequence de touches
+     *	@param Nom du fichier depuis lequel on doit charger la sequence de touches
+     *
+     *	Pour une execution normale, appeler game avec false, false, "", "" (valeurs par d√©faut)
+    */
+    Game (int level, bool record_on = false, bool replay_on = false, std::string output_name = "", std::string input_name = "");
 
 
-	/**
-	 *	@brief Constructeur utilise par l'editeur
-	 *	@param level_name nom du niveau a ouvrir (depuis le dossier des levels)
-	*/
-	Game(std::string level_name);
+    /**
+     *	@brief Constructeur utilise par l'editeur
+     *	@param level_name nom du niveau a ouvrir (depuis le dossier des levels)
+    */
+    Game (std::string level_name);
 
-	/**
-	 * @brief Destructeur
-	*/
-	~Game();
+    /**
+     * @brief Destructeur
+    */
+    ~Game();
 
-	/**
-	 * @brief La boucle de jeu
-	 * @return Le resultat du joueur
-	*/
-	result_game game_loop();
+    /**
+     * @brief La boucle de jeu
+     * @return Le resultat du joueur
+    */
+    result_game game_loop();
 
-	/**
-	 * @brief check les collisions monstres/projectiles
-	*/
-	void check_monsters();
+    /**
+     * @brief check les collisions monstres/projectiles
+    */
+    void check_monsters();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-	void set_state_playing();
+    /**
+     *  TOCOMMENT
+     *  @brief
+     */
+    void set_state_playing();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-	void set_state_pause();
+    /**
+     *  TOCOMMENT
+     *  @brief
+     */
+    void set_state_pause();
 
-        /**
-         *  TOCOMMENT
-         *  @brief
-         */
-	void set_state_talks();
+    /**
+     *  TOCOMMENT
+     *  @brief
+     */
+    void set_state_talks();
 
 
 
 private:
-	void init_game(std::string level_name);
+    void init_game (std::string level_name);
 
-	/**
-	 * 	@brief Mise √  jour du moteur graphique et rafraichissement de l'√©cran
-	*/
-	void update_graphic();
+    /**
+     * 	@brief Mise √  jour du moteur graphique et rafraichissement de l'√©cran
+    */
+    void update_graphic();
 
-	/**
-	 *  @brief Mise √  jour des donn√©es du jeu
-	*/
-	void update_game();
+    /**
+     *  @brief Mise √  jour des donn√©es du jeu
+    */
+    void update_game();
 
-	/**
-	 *  @brief Mise √  jour des evenements claviers
-	*/
-	void update_keyboard();
+    /**
+     *  @brief Mise √  jour des evenements claviers
+    */
+    void update_keyboard();
 
-	/**
-	 * 	@brief Joue les sons √  jouer ce cycle
-	*/
-	void play_sounds();
+    /**
+     * 	@brief Joue les sons √  jouer ce cycle
+    */
+    void play_sounds();
 
-	/**
-	 *	@brief Affiche l'√©cran de victoire
-	 *
-	 *	TODO a faire!
-	*/
-	void play_victory();
+    /**
+     *	@brief Affiche l'√©cran de victoire
+     *
+     *	TODO a faire!
+    */
+    void play_victory();
 
 
 };

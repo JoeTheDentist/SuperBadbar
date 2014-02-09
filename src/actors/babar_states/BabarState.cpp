@@ -3,16 +3,16 @@
 #include "../Babar.h"
 #include "BabarStateNone.h"
 
-BabarState::BabarState(Babar *context)
+BabarState::BabarState (Babar *context)
 {
-	m_context = context;
-	m_wasFiring = false;
-	m_wasCrouched = false;
+    m_context = context;
+    m_wasFiring = false;
+    m_wasCrouched = false;
 }
 
-BabarState *BabarState::GetInitialState(Babar *context)
+BabarState *BabarState::GetInitialState (Babar *context)
 {
-	return new BabarStateNone(context);
+    return new BabarStateNone (context);
 }
 
 void BabarState::moveLeft()
@@ -37,7 +37,7 @@ void BabarState::protect()
 
 Babar *BabarState::getContext()
 {
-	return m_context;
+    return m_context;
 }
 
 void BabarState::setAnimation()

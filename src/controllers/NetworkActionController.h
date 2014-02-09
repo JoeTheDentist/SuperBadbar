@@ -5,10 +5,10 @@
 #include "network/NetworkController.h"
 
 class NetworkActionController : virtual public ActionController,
-		public NetworkController
+    public NetworkController
 {
 public:
-	NetworkActionController();
+    NetworkActionController();
 };
 
 #endif // NETWORKACTIONCONTROLLER_H

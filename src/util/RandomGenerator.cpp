@@ -18,32 +18,33 @@
 
 void RandomGenerator::init()
 {
-	srand(time(NULL));
+    srand (time (NULL) );
 }
 
-int RandomGenerator::irand(int min, int max)
+int RandomGenerator::irand (int min, int max)
 {
-	if (min < 0) {
-		return irand(0, max - min) + min;
-	}
-	return (rand() % (max + min + 1)) + min;
+    if (min < 0)
+    {
+        return irand (0, max - min) + min;
+    }
+    return (rand() % (max + min + 1) ) + min;
 }
 
-float RandomGenerator::frand(float min, float max)
+float RandomGenerator::frand (float min, float max)
 {
-	return ((float)rand() / (float)RAND_MAX) * (max - min) + min;
+    return ( (float) rand() / (float) RAND_MAX) * (max - min) + min;
 }
 
-double RandomGenerator::drand(double min, double max)
+double RandomGenerator::drand (double min, double max)
 {
-	return ((double)rand() / (double)RAND_MAX) * (max - min) + min;
+    return ( (double) rand() / (double) RAND_MAX) * (max - min) + min;
 }
 
-double RandomGenerator::rnorm(double mu, double sigma)
+double RandomGenerator::rnorm (double mu, double sigma)
 {
-	// code taken from wikipedia
-	double randNumUni = ((double) rand())/((double) RAND_MAX);
-	double randNumBi = ((double) rand())/((double) RAND_MAX);
-	double randNumNorm = sqrt(-2.0*log(randNumUni))*cos(DEUX_PI*randNumBi);
-	return (mu + sigma * randNumNorm);
+    // code taken from wikipedia
+    double randNumUni = ( (double) rand() ) / ( (double) RAND_MAX);
+    double randNumBi = ( (double) rand() ) / ( (double) RAND_MAX);
+    double randNumNorm = sqrt (-2.0 * log (randNumUni) ) * cos (DEUX_PI * randNumBi);
+    return (mu + sigma * randNumNorm);
 }

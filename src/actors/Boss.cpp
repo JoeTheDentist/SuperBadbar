@@ -10,22 +10,22 @@
 #include "Boss.h"
 
 
-Boss::Boss(std::string name, int posx, int posy):
-	Monster(name, posx, posy)
+Boss::Boss (std::string name, int posx, int posy) :
+    Monster (name, posx, posy)
 {
-	initBoss();
+    initBoss();
 }
 
-Boss::Boss(Analyser *analyserLevel):
-	Monster(analyserLevel)
+Boss::Boss (Analyser *analyserLevel) :
+    Monster (analyserLevel)
 {
-	initBoss();
+    initBoss();
 }
 
 void Boss::initBoss()
 {
-	m_state = WALKING;
-	connect_to_dashboard();
+    m_state = WALKING;
+    connect_to_dashboard();
 }
 
 Boss::~Boss()
@@ -34,7 +34,7 @@ Boss::~Boss()
 
 void Boss::update_speed_ai()
 {
-	update_speed_simple(); 
+    update_speed_simple();
 }
 
 void Boss::update()
@@ -43,7 +43,7 @@ void Boss::update()
 
 void Boss::kill()
 {
-	Monster::kill();
-	disconnect_from_dashboard(); // suppression de la life bar
+    Monster::kill();
+    disconnect_from_dashboard(); // suppression de la life bar
 }
 

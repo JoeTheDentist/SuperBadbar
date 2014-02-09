@@ -5,10 +5,10 @@
 #include "NetworkActionController.h"
 
 class NetworkMenuActionController : public MenuKeyboardActionController,
-		public NetworkActionController
+    public NetworkActionController
 {
 public:
-	NetworkMenuActionController();
+    NetworkMenuActionController();
 };
 
 #endif // NETWORKMENUACTIONCONTROLLER_H
