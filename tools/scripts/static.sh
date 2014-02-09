@@ -8,8 +8,7 @@ TOOLS_PATH=$(dirname $PATH_TO_SCRIPT)
 ROOT_PATH=$(dirname $TOOLS_PATH)
 LOG_DIR=$ROOT_PATH/log
 LOG_FILE=$LOG_DIR/cppcheck_lastrun
-#CHECKS="performance,portability,unusedFunction,missingInclude"
-CHECKS="performance"
+CHECKS="performance,portability,unusedFunction,missingInclude"
 
 mkdir -p $LOG_DIR
 cppcheck -v -j 5 --enable=$CHECKS -i $ROOT_PATH/src/soil $ROOT_PATH/src -I $ROOT_PATH/src > /dev/null | tee $LOG_FILE
