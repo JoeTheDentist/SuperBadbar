@@ -95,14 +95,14 @@ MyItem* TriggerItem::selectItem (int x, int y)
     if (res)
         return res;
     for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
-            it != m_triggerables.end(); it++)
+            it != m_triggerables.end(); ++it)
     {
         res = (*it)->selectItem (x, y);
         if (res)
             return res;
     }
     for (std::list<ZoneItem *>::iterator it = m_zones.begin();
-            it != m_zones.end(); it++)
+            it != m_zones.end(); ++it)
     {
         res = (*it)->selectItem (x, y);
         if (res)
@@ -127,14 +127,14 @@ void TriggerItem::saveItem (QTextStream &out)
     out << "#zone#" << endl;
     out << m_zones.size() << endl;
     for (std::list<ZoneItem *>::iterator it = m_zones.begin();
-            it != m_zones.end(); it++)
+            it != m_zones.end(); ++it)
     {
         (*it)->saveItem (out);
     }
     out << "#triggerables#" << endl;
     out << m_triggerables.size() << endl;
     for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
-            it != m_triggerables.end(); it++)
+            it != m_triggerables.end(); ++it)
     {
         (*it)->saveItem (out);
     }
@@ -214,12 +214,12 @@ void TriggerItem::slotAddTriggerable()
 void TriggerItem::removeFromScene (QGraphicsScene *scene)
 {
     for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
-            it != m_triggerables.end(); it++)
+            it != m_triggerables.end(); ++it)
     {
         (*it)->removeFromScene (scene);
     }
     for (std::list<ZoneItem *>::iterator it = m_zones.begin();
-            it != m_zones.end(); it++)
+            it != m_zones.end(); ++it)
     {
         (*it)->removeFromScene (scene);
     }
@@ -229,7 +229,7 @@ void TriggerItem::removeFromScene (QGraphicsScene *scene)
 bool TriggerItem::removeItem (MyItem *item)
 {
     for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
-            it != m_triggerables.end(); it++)
+            it != m_triggerables.end(); ++it)
     {
         if ( (*it) == item)
         {
@@ -239,7 +239,7 @@ bool TriggerItem::removeItem (MyItem *item)
         }
     }
     for (std::list<ZoneItem *>::iterator it = m_zones.begin();
-            it != m_zones.end(); it++)
+            it != m_zones.end(); ++it)
     {
         if ( (*it) == item)
         {
@@ -255,12 +255,12 @@ bool TriggerItem::removeItem (MyItem *item)
 void TriggerItem::updateLines()
 {
     for (std::list<TriggerableItem *>::iterator it = m_triggerables.begin();
-            it != m_triggerables.end(); it++)
+            it != m_triggerables.end(); ++it)
     {
         (*it)->updateLine();
     }
     for (std::list<ZoneItem *>::iterator it = m_zones.begin();
-            it != m_zones.end(); it++)
+            it != m_zones.end(); ++it)
     {
 
     }

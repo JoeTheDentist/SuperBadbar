@@ -163,49 +163,49 @@ MyItem *Data::selectItem (int x, int y)
     {
         return m_babar_item->selectItem (x, y);
     }
-    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+    for (it = m_event_items.begin(); it != m_event_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
+    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+    for (it = m_platform_items.begin(); it != m_platform_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+    for (it = m_set_items.begin(); it != m_set_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
             return (*it)->selectItem (x, y);
         }
     }
-    for (it = m_static_items.begin(); it != m_static_items.end(); it++)
+    for (it = m_static_items.begin(); it != m_static_items.end(); ++it)
     {
         if ( (*it)->selectItem (x, y) )
         {
@@ -223,7 +223,7 @@ MyItem *Data::selectBabar()
 void Data::deleteItem (MyItem *item)
 {
     std::list<MyItem *>::iterator it;
-    for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+    for (it = m_event_items.begin(); it != m_event_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -231,7 +231,7 @@ void Data::deleteItem (MyItem *item)
             return;
         }
     }
-    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -241,7 +241,7 @@ void Data::deleteItem (MyItem *item)
         if ( ( (TriggerItem*) (*it) )->removeItem (item) )
             return;
     }
-    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
+    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -249,7 +249,7 @@ void Data::deleteItem (MyItem *item)
             return;
         }
     }
-    for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+    for (it = m_set_items.begin(); it != m_set_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -257,7 +257,7 @@ void Data::deleteItem (MyItem *item)
             return;
         }
     }
-    for (it = m_static_items.begin(); it != m_static_items.end(); it++)
+    for (it = m_static_items.begin(); it != m_static_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -265,7 +265,7 @@ void Data::deleteItem (MyItem *item)
             return;
         }
     }
-    for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+    for (it = m_platform_items.begin(); it != m_platform_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -273,7 +273,7 @@ void Data::deleteItem (MyItem *item)
             return;
         }
     }
-    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); ++it)
     {
         if (*it == item)
         {
@@ -286,31 +286,31 @@ void Data::deleteItem (MyItem *item)
 void Data::upInStack (MyItem *item)
 {
     std::list<MyItem *>::iterator it;
-    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+    for (it = m_event_items.begin(); it != m_event_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
+    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+    for (it = m_set_items.begin(); it != m_set_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_static_items.begin(); it != m_static_items.end(); it++)
+    for (it = m_static_items.begin(); it != m_static_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+    for (it = m_platform_items.begin(); it != m_platform_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
-    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); ++it)
     {
         (*it)->getItem()->stackBefore (item->getItem() );
     }
@@ -346,41 +346,41 @@ void Data::saveData (QString fileName)
     // sauvegarde des animations
     out << "#Sets#" << endl;
     out << m_set_items.size() << endl;
-    for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+    for (it = m_set_items.begin(); it != m_set_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     // sauvegarde des statics
     out << "#Statics#" << endl;
     out << m_static_items.size() << endl;
-    for (it = m_static_items.begin(); it != m_static_items.end(); it++)
+    for (it = m_static_items.begin(); it != m_static_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     // sauvegarde des monsters
     out << "#Monsters#" << endl;
     out << m_monsters_items.size() << endl;
-    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
+    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     // sauvegarde des events
     out << "#Events#" << endl;
     out << m_event_items.size() << endl;
-    for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+    for (it = m_event_items.begin(); it != m_event_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     // sauvegarde des platformes
     out << "#MovingPlatforms#" << endl;
     out << m_platform_items.size() << endl;
-    for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+    for (it = m_platform_items.begin(); it != m_platform_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     out << "#FallingPlatforms#" << endl;
     out << m_falling_platform_items.size() << endl;
-    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     out << "#Triggers#" << endl;
     out << m_triggers_items.size() << endl;
-    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); ++it)
         (*it)->saveItem (out);
     out << "!" << endl;
     file.close();
@@ -391,7 +391,7 @@ void Data::removeItem (MyItem *item)
 {
     std::list<MyItem *>::iterator it;
 
-    for (it = m_event_items.begin(); it != m_event_items.end(); it++)
+    for (it = m_event_items.begin(); it != m_event_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -399,7 +399,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_set_items.begin(); it != m_set_items.end(); it++)
+    for (it = m_set_items.begin(); it != m_set_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -407,7 +407,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_static_items.begin(); it != m_static_items.end(); it++)
+    for (it = m_static_items.begin(); it != m_static_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -415,7 +415,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); it++)
+    for (it = m_monsters_items.begin(); it != m_monsters_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -423,7 +423,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_platform_items.begin(); it != m_platform_items.end(); it++)
+    for (it = m_platform_items.begin(); it != m_platform_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -431,7 +431,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); it++)
+    for (it = m_falling_platform_items.begin(); it != m_falling_platform_items.end(); ++it)
     {
         if (item == (*it) )
         {
@@ -439,7 +439,7 @@ void Data::removeItem (MyItem *item)
             return;
         }
     }
-    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); it++)
+    for (it = m_triggers_items.begin(); it != m_triggers_items.end(); ++it)
     {
         if (item == (*it) )
         {

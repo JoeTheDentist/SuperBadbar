@@ -39,7 +39,7 @@ ListMenuActions::~ListMenuActions()
 
 void ListMenuActions::update()
 {
-    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++)
+    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); ++it)
     {
         (*it)->update();
     }
@@ -83,7 +83,7 @@ void ListMenuActions::incr_curs (int dep)
     dep = (dep + m_actions.size() ) % m_actions.size(); // si le deplacement est negatif..
     for (int i = 0; i < dep; i++)
     {
-        m_iterator++;
+        ++m_iterator;
         if (m_iterator == m_actions.end() )
             m_iterator = m_actions.begin();
     }
@@ -95,7 +95,7 @@ void ListMenuActions::display (Camera *camera, Rect pos) const
 {
     Surface *surf;
     Rect temp;
-    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++)
+    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); ++it)
     {
         surf = (*it)->get_surface();
         temp = pos;
@@ -128,7 +128,7 @@ int ListMenuActions::getSelectedActionValInteger()
 int ListMenuActions::width() const
 {
     int res = 0;
-    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++)
+    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); ++it)
     {
         res = std::max (res, (*it)->width() );
     }
@@ -138,7 +138,7 @@ int ListMenuActions::width() const
 int ListMenuActions::height() const
 {
     int res = 0;
-    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); it++)
+    for (std::list<MenuAction*>::const_iterator it = m_actions.begin(); it != m_actions.end(); ++it)
     {
         res += (*it)->height();
     }

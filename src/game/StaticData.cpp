@@ -29,12 +29,12 @@ StaticData::~StaticData()
 {
     PRINT_CONSTR (1, "Destruction d'un StaticData");
     for (std::list<Static *>::iterator it = m_statics_first.begin();
-            it != m_statics_first.end(); it++)
+            it != m_statics_first.end(); ++it)
     {
         delete (*it);
     }
     for (std::list<Static *>::iterator it = m_statics_back.begin();
-            it != m_statics_back.end(); it++)
+            it != m_statics_back.end(); ++it)
     {
         delete (*it);
     }
@@ -115,7 +115,7 @@ uint32_t StaticData::StaticData_width()
 void StaticData::display_statics_first (Camera *camera)
 {
     for (std::list<Static *>::iterator it = m_statics_first.begin();
-            it != m_statics_first.end(); it++)
+            it != m_statics_first.end(); ++it)
     {
         camera->display ( (*it) );
     }
@@ -124,7 +124,7 @@ void StaticData::display_statics_first (Camera *camera)
 void StaticData::display_statics_back (Camera *camera)
 {
     for (std::list<Static *>::iterator it = m_statics_back.begin();
-            it != m_statics_back.end(); it++)
+            it != m_statics_back.end(); ++it)
     {
         camera->display ( (*it) );
     }

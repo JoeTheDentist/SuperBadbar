@@ -135,7 +135,7 @@ void Monsters_manager::add (Monster *monster)
 void Monsters_manager::monsters_update_speed()
 {
     for (std::list<Monster *>::iterator it = m_monsters.begin();
-            it != m_monsters.end(); it++)
+            it != m_monsters.end(); ++it)
     {
         (*it)->update_speed();
     }
@@ -144,7 +144,7 @@ void Monsters_manager::monsters_update_speed()
 void Monsters_manager::monsters_update_pos()
 {
     for (std::list<Monster *>::iterator it = m_monsters.begin();
-            it != m_monsters.end(); it++)
+            it != m_monsters.end(); ++it)
     {
         (*it)->update_pos();
     }
@@ -153,7 +153,7 @@ void Monsters_manager::monsters_update_pos()
 void Monsters_manager::make_monsters_fire()
 {
     for (std::list<Monster *>::iterator it = m_monsters.begin();
-            it != m_monsters.end(); it++)
+            it != m_monsters.end(); ++it)
     {
         (*it)->update();
         if ( (*it)->can_fire() )
@@ -165,7 +165,7 @@ void Monsters_manager::babar_monsters_collision()
 {
     Rect babar_pos = gPlayers->local_player()->damage_box();
     for (std::list<Monster *>::iterator it = m_monsters.begin();
-            it != m_monsters.end(); it++)
+            it != m_monsters.end(); ++it)
     {
         if (! (*it)->dead() )
         {
@@ -180,7 +180,7 @@ void Monsters_manager::babar_monsters_collision()
 void Monsters_manager::play_sounds()
 {
     for (std::list<Monster *>::iterator it = m_monsters.begin();
-            it != m_monsters.end(); it++)
+            it != m_monsters.end(); ++it)
     {
         gSound->play_sound ( (*it) );
     }
@@ -198,7 +198,7 @@ bool Monsters_manager::end()
 
 void Monsters_manager::next()
 {
-    m_it_monsters++;
+    ++m_it_monsters;
 }
 
 Monster *Monsters_manager::element()
@@ -240,7 +240,7 @@ Rect Monsters_manager::closer_monster_pos (Rect rect, int radius)
 {
     Rect res;
     radius *= radius; // on regarde des normes au carre
-    for (std::list<Monster *>::iterator it = m_monsters.begin(); it != m_monsters.end(); it++)
+    for (std::list<Monster *>::iterator it = m_monsters.begin(); it != m_monsters.end(); ++it)
     {
         int newradius = ( (*it)->position() - rect).norm_2();
         if (newradius < radius)

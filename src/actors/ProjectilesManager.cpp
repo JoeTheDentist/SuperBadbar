@@ -42,7 +42,7 @@ void ProjectilesManager::update_pos()
     for (int i = 0; i < LAST_dmg_chan; i++)
     {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
-                it != m_proj[i].end(); it++)
+                it != m_proj[i].end(); ++it)
         {
             (*it)->update_pos (gCollision);
         }
@@ -54,7 +54,7 @@ void ProjectilesManager::update_speed()
     for (int i = 0; i < LAST_dmg_chan; i++)
     {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
-                it != m_proj[i].end(); it++)
+                it != m_proj[i].end(); ++it)
         {
             (*it)->update_speed();
         }
@@ -66,7 +66,7 @@ void ProjectilesManager::update_state()
     for (int i = 0; i < LAST_dmg_chan; i++)
     {
         for (std::list<Projectile *>::iterator it = m_proj[i].begin();
-                it != m_proj[i].end(); it++)
+                it != m_proj[i].end(); ++it)
         {
             (*it)->update_state();
         }
@@ -102,7 +102,7 @@ void ProjectilesManager::add_proj (Projectile *proj, dmg_chan chan)
 void ProjectilesManager::add_proj (std::list<Projectile*> *proj, dmg_chan chan)
 {
     for (std::list<Projectile *>::iterator it = proj->begin();
-            it != proj->end(); it++)
+            it != proj->end(); ++it)
     {
         add_proj (*it, chan);
     }

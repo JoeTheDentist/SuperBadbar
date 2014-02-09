@@ -60,7 +60,6 @@ void TransitionScreen::display (Camera *camera)
 void TransitionScreen::wait_for_player()
 {
     m_skipable = true;
-    m_skipable = true;
     display (gGraphics->get_camera() );
     //TODO (Guillaume) wait properly
     //Keyboard::GetInstance()->wait_for_any_key();

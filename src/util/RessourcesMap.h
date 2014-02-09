@@ -48,7 +48,7 @@ template<class K, class T>
 void RessourcesMap<K, T>::clear()
 {
     typename std::map<K, T*>::iterator it;
-    for (it = m_map.begin(); it != m_map.end(); it++)
+    for (it = m_map.begin(); it != m_map.end(); ++it)
     {
         delete it->second;
     }

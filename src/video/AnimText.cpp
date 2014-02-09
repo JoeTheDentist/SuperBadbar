@@ -3,15 +3,13 @@
 
 #include "video/SurfaceText.h"
 
-AnimText::AnimText (std::string text, int begin_size, int end_size, int nb_pic)
-{
-    m_text = text;
-    m_begin_size = begin_size;
-    m_end_size = end_size;
-    m_curr_num = 0;
-    m_nb_pic = nb_pic;
-    m_last_surf = NULL;
-}
+AnimText::AnimText (std::string text, int begin_size, int end_size, int nb_pic) :
+    m_text (text),
+    m_begin_size(begin_size),
+    m_end_size(end_size),
+    m_curr_num(0),
+    m_nb_pic(nb_pic),
+    m_last_surf(0) {}
 
 AnimText::~AnimText()
 {

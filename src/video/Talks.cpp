@@ -406,7 +406,7 @@ void Talks::prepare_cell_string (cell_string cell)
         int linelength = (*it).length;
         while (it != words.end() && ! (*it).newline && (m_pos_text[0].x + linelength + POSX) < POSW)
         {
-            for (std::list<SpecialLetter *>::iterator it2 = (*it).letters.begin(); it2 != (*it).letters.end(); it2++)
+            for (std::list<SpecialLetter *>::iterator it2 = (*it).letters.begin(); it2 != (*it).letters.end(); ++it2)
             {
                 newline.push ( (*it2) );
             }
@@ -414,7 +414,7 @@ void Talks::prepare_cell_string (cell_string cell)
                     TALKS_TEXT_R, TALKS_TEXT_G, TALKS_TEXT_B);
             newline.push (spaceletter);
             linelength += spaceletter->fake_w();
-            it++;
+            ++it;
             linelength += (*it).length;
         }
         newline.push (new SpecialLetter (' ', TALKS_TEXT_SIZE,

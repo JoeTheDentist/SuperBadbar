@@ -2,12 +2,10 @@
 #include "PlayersManager.h"
 #include "actors/Babar.h"
 
-PlayersManager::PlayersManager()
+PlayersManager::PlayersManager() : m_name("Peanut&Co Player"), m_map("")
 {
     m_players = new std::list<Player*>();
     m_local_player = NULL;
-    m_name = "Peanut&Co Player";
-    m_map = "";
 }
 
 PlayersManager::~PlayersManager()

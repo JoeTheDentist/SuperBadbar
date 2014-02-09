@@ -258,7 +258,7 @@ void MyGraphicsView::undo()
     if (m_histo.canUndo() )
     {
         std::list<collAndPos>::iterator it;
-        for (it = m_histo.lastSequence()->begin(); it != m_histo.lastSequence()->end(); it++)
+        for (it = m_histo.lastSequence()->begin(); it != m_histo.lastSequence()->end(); ++it)
         {
             setBox ( (*it).coll, (*it).i * BOX_SIZE, (*it).j * BOX_SIZE, false);
         }

@@ -31,11 +31,11 @@ EventsManager::~EventsManager()
     PRINT_CONSTR (1, "Destruction de EventsManager")
     std::list<Event*>::iterator curs;
     std::list<Trigger*>::iterator curs2;
-    for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++ )
+    for (curs = m_list_events.begin(); curs != m_list_events.end(); ++curs )
     {
         delete (*curs);
     }
-    for (curs2 = m_list_triggers.begin(); curs2 != m_list_triggers.end(); curs2++ )
+    for (curs2 = m_list_triggers.begin(); curs2 != m_list_triggers.end(); ++curs2 )
     {
         delete (*curs2);
     }
@@ -130,7 +130,7 @@ void EventsManager::update()
 void EventsManager::display_events (Camera const * camera)
 {
     std::list<Event*>::iterator curs;
-    for (curs = m_list_events.begin(); curs != m_list_events.end(); curs++)
+    for (curs = m_list_events.begin(); curs != m_list_events.end(); ++curs)
     {
         camera->display_event (*curs);
     }

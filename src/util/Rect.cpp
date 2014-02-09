@@ -37,7 +37,7 @@ int Rect::norm_2() const
     return (*this) * (*this);
 }
 
-int Rect::det (const Rect rect) const
+int Rect::det (const Rect& rect) const
 {
     return x * rect.y - rect.x * y;
 }

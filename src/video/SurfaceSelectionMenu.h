@@ -27,7 +27,7 @@ public:
     /*!
     *	@brief Destructeur
     */
-    virtual ~SurfaceSelectionMenu() {}
+    virtual ~SurfaceSelectionMenu();
 
     /*!
     *	@brief Accesseur

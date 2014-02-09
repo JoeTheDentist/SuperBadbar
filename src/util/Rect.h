@@ -56,7 +56,7 @@ public:
     *	@param rect Le deuxieme vecteur du det
     *	@return Le determinant entre l'objet courant et rect
     */
-    int det (const Rect rect) const;
+    int det (const Rect& rect) const;
 
     /**
     *	@brief Operateur d'addition de deux rect

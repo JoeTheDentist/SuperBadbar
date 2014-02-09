@@ -43,7 +43,7 @@ GridsContainer::GridsContainer()
 GridsContainer::~GridsContainer()
 {
     std::map<std::string, Grid*>::iterator it;
-    for (it = m_grids.begin(); it != m_grids.end(); it++)
+    for (it = m_grids.begin(); it != m_grids.end(); ++it)
     {
         delete it->second;
     }

@@ -31,12 +31,12 @@ CollisionsManager::CollisionsManager()
 CollisionsManager::~CollisionsManager()
 {
     for (std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
-            it != m_moving_platforms.end(); it++)
+            it != m_moving_platforms.end(); ++it)
     {
         delete (*it);
     }
     for (std::list<std::pair<BindablePlatform *, int> > ::const_iterator it = m_waiting_platforms.begin();
-            it != m_waiting_platforms.end(); it++)
+            it != m_waiting_platforms.end(); ++it)
     {
         delete (*it).first;
     }
@@ -126,7 +126,7 @@ bool CollisionsManager::check_collision (Rect A, Rect B)
 void CollisionsManager::display_platforms (Camera * const camera) const
 {
     for (std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
-            it != m_moving_platforms.end(); it++)
+            it != m_moving_platforms.end(); ++it)
     {
         camera->display ( (*it) );
 #ifdef DEBUG_COLL
@@ -140,7 +140,7 @@ void CollisionsManager::display_platforms (Camera * const camera) const
 void CollisionsManager::update_platforms_pos()
 {
     for (std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
-            it != m_moving_platforms.end(); it++)
+            it != m_moving_platforms.end(); ++it)
     {
         (*it)->update_pos();
     }
@@ -149,7 +149,7 @@ void CollisionsManager::update_platforms_pos()
 void CollisionsManager::update_platforms_speed()
 {
     for (std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
-            it != m_moving_platforms.end(); it++)
+            it != m_moving_platforms.end(); ++it)
     {
         (*it)->update_speed();
     }
@@ -158,7 +158,7 @@ void CollisionsManager::update_platforms_speed()
 void CollisionsManager::update_babar_platforms()
 {
     for (std::list<BindablePlatform *>::const_iterator it = m_moving_platforms.begin();
-            it != m_moving_platforms.end(); it++)
+            it != m_moving_platforms.end(); ++it)
     {
         if ( (*it)->check_babar() )
         {
@@ -180,7 +180,7 @@ void CollisionsManager::update_dead_platforms()
         }
         else
         {
-            it++;
+            ++it;
         }
     }
 }
@@ -198,7 +198,7 @@ void CollisionsManager::update_waiting_list()
         }
         else
         {
-            it++;
+            ++it;
         }
     }
 }

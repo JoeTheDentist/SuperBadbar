@@ -10,15 +10,9 @@
 #include <iostream>
 #include "Sound.h"
 
-Sound::Sound (std::string str)
-{
-    m_sound = str;
-}
+Sound::Sound (std::string str) : m_sound (str) {}
 
-Sound::~Sound()
-{
-
-}
+Sound::~Sound() {}
 
 std::string Sound::get_string()
 {

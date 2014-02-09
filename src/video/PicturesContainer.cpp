@@ -115,19 +115,19 @@ sf::Sprite *PicturesContainer::loadSurfaceUniform (int width, int height, int r,
 void PicturesContainer::resetMemory()
 {
     std::map<std::string, sf::Sprite*>::iterator it;
-    for (it = m_container.begin(); it != m_container.end(); it++)
+    for (it = m_container.begin(); it != m_container.end(); ++it)
     {
         delete it->second;
     }
     m_container.clear();
     std::map<KeyMapSurfaceText, sf::String*>::iterator ittext;
-    for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ittext++)
+    for (ittext = m_textContainer.begin(); ittext != m_textContainer.end(); ++ittext)
     {
         delete ittext->second;
     }
     m_textContainer.clear();
     std::list<sf::Image *>::iterator itimages;
-    for (itimages = m_images.begin(); itimages != m_images.end(); itimages++)
+    for (itimages = m_images.begin(); itimages != m_images.end(); ++itimages)
     {
         delete *itimages;
     }

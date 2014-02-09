@@ -75,7 +75,7 @@ double AI::eval_up()
 
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin (PLAYER1);
-            it != gProj->proj_end (PLAYER1); it++)
+            it != gProj->proj_end (PLAYER1); ++it)
     {
         if ( check_collision ( (*it)->position(), zone ) )
         {
@@ -101,7 +101,7 @@ double AI::eval_down()
     zone.y += m_pos->h;
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin (PLAYER1);
-            it != gProj->proj_end (PLAYER1); it++)
+            it != gProj->proj_end (PLAYER1); ++it)
     {
         if ( check_collision ( (*it)->position(), zone ) )
         {
@@ -124,7 +124,7 @@ double AI::eval_left()
     weight += DIST_WEIGHT / dist (gPlayers->local_player()->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin (PLAYER1);
-            it != gProj->proj_begin (PLAYER1); it++)
+            it != gProj->proj_begin (PLAYER1); ++it)
     {
         Rect zone = *m_pos;
         double dimx = (m_pos->h / ESTIM_SPEED) * ( (*it)->speed().x);
@@ -148,7 +148,7 @@ double AI::eval_right()
     weight += DIST_WEIGHT / dist (gPlayers->local_player()->position(), zone);
 
     for (std::list<Projectile *>::iterator it = gProj->proj_begin (PLAYER1);
-            it != gProj->proj_end (PLAYER1); it++)
+            it != gProj->proj_end (PLAYER1); ++it)
     {
         Rect zone = *m_pos;
         double dimx = (-m_pos->h / ESTIM_SPEED) * ( (*it)->speed().x);

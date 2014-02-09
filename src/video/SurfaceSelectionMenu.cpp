@@ -14,8 +14,11 @@ SurfaceSelectionMenu::SurfaceSelectionMenu (Surface *centralSurface, std::string
     m_leftArrow (new Surface (PIC_MENU_R + "leftarrow.png") ),
     m_leftArrowIndex (addChild (m_leftArrow, SurfaceCompositeItem::left, Rect (-30, 0) ) ),
     m_rightArrow (new Surface (PIC_MENU_R + "rightarrow.png") ),
-    m_rightArrowIndex (addChild (m_rightArrow, SurfaceCompositeItem::right, Rect (30, 0) ) )
+    m_rightArrowIndex (addChild (m_rightArrow, SurfaceCompositeItem::right, Rect (30, 0) ) ) {}
+
+SurfaceSelectionMenu::~SurfaceSelectionMenu()
 {
-
+    delete m_surfaceText;
+    delete m_leftArrow;
+    delete m_rightArrow;
 }
-
