@@ -29,3 +29,4 @@ int main(int argc, char *argv[])
 	PRINT_TRACE(1, "Fermeture du jeu");
 	return 0;
 }
+
