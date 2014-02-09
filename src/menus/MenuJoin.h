@@ -10,7 +10,7 @@ public:
      *  @brief Constructeur
      *  @param parent Le menu appelant
      */
-    MenuJoin(Menu *parent);
+    MenuJoin (Menu *parent);
 
     /**
      *  @brief Destructeur
@@ -21,7 +21,7 @@ public:
      *	@brief Traitement du choix
      *	@param l'int correspond au numero de la liste choisi
      */
-    virtual void treat_choice(int choice);
+    virtual void treat_choice (int choice);
 
     /**
      *

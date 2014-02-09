@@ -25,17 +25,18 @@
  * - gGraphics
 **/
 
-class GameInitializer {
-	public:
-	/**
-	* @brief Initialise le jeu
-	*/
-	static bool init_game();
+class GameInitializer
+{
+public:
+    /**
+    * @brief Initialise le jeu
+    */
+    static bool init_game();
 
-	/**
-	* @brief Ferme les librairies et objets globaux du jeu
-	*/
-	static bool close_game();
+    /**
+    * @brief Ferme les librairies et objets globaux du jeu
+    */
+    static bool close_game();
 };
 
 

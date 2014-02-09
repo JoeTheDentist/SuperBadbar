@@ -6,7 +6,7 @@
 class ItemEventController : virtual public EventController
 {
 public:
-	ItemEventController();
+    ItemEventController();
 };
 
 #endif // ITEMEVENTCONTROLLER_H

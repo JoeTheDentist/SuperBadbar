@@ -1,11 +1,12 @@
 #ifndef _COLL_ITEM_H
 #define _COLL_ITEM_H
 
-#include <QGraphicsItem>           
+#include <QGraphicsItem>
 
-struct CollItem {
-	QGraphicsItem *item;
-	int coll;
+struct CollItem
+{
+    QGraphicsItem *item;
+    int coll;
 };
 
 

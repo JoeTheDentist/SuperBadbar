@@ -15,10 +15,10 @@
 #include "video/GraphicEngine.h"
 #include "video/PicturesContainer.h"
 
-SurfaceUniform::SurfaceUniform(int width, int height, int r, int g, int b, int alpha)
+SurfaceUniform::SurfaceUniform (int width, int height, int r, int g, int b, int alpha)
 {
-	m_sprite = PicturesContainer::GetInstance()->loadSurfaceUniform(width, height, r, g, b, alpha);
-	setSurface(m_sprite);
+    m_sprite = PicturesContainer::GetInstance()->loadSurfaceUniform (width, height, r, g, b, alpha);
+    setSurface (m_sprite);
 }
 
 SurfaceUniform::~SurfaceUniform()

@@ -61,7 +61,7 @@ extern Stats * gStats; /* liste si multi */
 extern PlayersManager * gPlayers;
 extern KeyboardConfig *gKeyboardConfig;
 
-double dist(Rect A, Rect B);
+double dist (Rect A, Rect B);
 
 /**
  * Fonction permettant de savoir si un fichier existe ou non.
@@ -70,7 +70,7 @@ double dist(Rect A, Rect B);
  *
  * Code de DPAK, http://www.techbytes.ca/techbyte103.html.
  */
-bool FileExists(std::string strFilename);
+bool FileExists (std::string strFilename);
 
 template <class T>
 inline std::string to_string (const T& t)

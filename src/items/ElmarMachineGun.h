@@ -24,32 +24,32 @@ class Projectile;
 class ElmarMachineGun : public Weapon
 {
 public:
-	/**
-	 * 	@brief Constructeur
-	*/
-	ElmarMachineGun();
+    /**
+     * 	@brief Constructeur
+    */
+    ElmarMachineGun();
 
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~ElmarMachineGun();
+    /**
+     * 	@brief Destructeur
+     */
+    ~ElmarMachineGun();
 
-	/**
-	 * 	@brief Tire
-	 */
-	std::list<Projectile*> *fire(Rect pos, Direction h, dmg_chan type);
+    /**
+     * 	@brief Tire
+     */
+    std::list<Projectile*> *fire (Rect pos, Direction h, dmg_chan type);
 
-	/**
-	 * 	@brief Accesseur
-	 *	@return Le type de l'arme
-	 */
-	weapon_type type_of_weapon() const;
+    /**
+     * 	@brief Accesseur
+     *	@return Le type de l'arme
+     */
+    weapon_type type_of_weapon() const;
 
-	/**
-	 * 	@brief Mutateur: ajoute des munitions
-	 */
-	virtual void add_munitions();
+    /**
+     * 	@brief Mutateur: ajoute des munitions
+     */
+    virtual void add_munitions();
 
 };
 

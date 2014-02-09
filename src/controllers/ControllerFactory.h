@@ -12,41 +12,41 @@ class Controller;
 class ControllerFactory
 {
 public:
-	/**
-	 *	Getter of the singleton instance
-	 *	@return instance
-	 */
-	static ControllerFactory *Factory();
+    /**
+     *	Getter of the singleton instance
+     *	@return instance
+     */
+    static ControllerFactory *Factory();
 
-	/**
-	 *	Frees the instance
-	 */
-	static void Destroy();
+    /**
+     *	Frees the instance
+     */
+    static void Destroy();
 
-	/**
-	 *	Getter of a new action controller for player
-	 *	@return new controller
-	 */
-	Controller *createActionPlayerController();
+    /**
+     *	Getter of a new action controller for player
+     *	@return new controller
+     */
+    Controller *createActionPlayerController();
 
-	/**
-	 *	Getter of a new event controller for player
-	 *	@return new controller
-	 */
-	Controller *createEventPlayerController();
+    /**
+     *	Getter of a new event controller for player
+     *	@return new controller
+     */
+    Controller *createEventPlayerController();
 
 private:
-	static ControllerFactory *s_instance;
+    static ControllerFactory *s_instance;
 
-	/**
-	 *	Ctor
-	 */
-	ControllerFactory();
+    /**
+     *	Ctor
+     */
+    ControllerFactory();
 
-	/**
-	 *	Dtor
-	 */
-	~ControllerFactory();
+    /**
+     *	Dtor
+     */
+    ~ControllerFactory();
 };
 
 #endif // CONTROLLERFACTORY_H

@@ -17,7 +17,7 @@
 #define EVENTS_EXT ".evt"
 #define TRIGGERS_EXT ".trg"
 
-// dimensions de la camera du jeu (utiles pour calculer 
+// dimensions de la camera du jeu (utiles pour calculer
 // du niveau en fonction de la taille du background)
 #define CAMERA_WIDTH 800
 #define CAMERA_HEIGHT 600

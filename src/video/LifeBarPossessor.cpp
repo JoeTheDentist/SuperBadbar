@@ -14,15 +14,15 @@ Dashboard *LifeBarPossessor::m_dashboard = NULL;
 
 void LifeBarPossessor::connect_to_dashboard()
 {
-	m_dashboard->set_life_bar_possessor(this);
+    m_dashboard->set_life_bar_possessor (this);
 }
 
 void LifeBarPossessor::disconnect_from_dashboard()
 {
-	m_dashboard->remove_life_bar_possessor();
+    m_dashboard->remove_life_bar_possessor();
 }
 
-void LifeBarPossessor::setDashboard(Dashboard *dashboard)
+void LifeBarPossessor::setDashboard (Dashboard *dashboard)
 {
-	m_dashboard = dashboard;
+    m_dashboard = dashboard;
 }

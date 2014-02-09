@@ -4,25 +4,26 @@
 #include <video/Surface.h>
 #include <video/BigImage.h>
 
-class SurfaceBig: public Surface {
+class SurfaceBig: public Surface
+{
 public:
-	SurfaceBig(std::string filename);
-	/*
-	*	@brief Accesseur
-	*	@return La largeur de l'image
-	*/
-	virtual int w();
+    SurfaceBig (std::string filename);
+    /*
+    *	@brief Accesseur
+    *	@return La largeur de l'image
+    */
+    virtual int w();
 
-	/**
-	*	@brief Accesseur
-	*	@return La hauteur de l'image
-	*/
-	virtual int h();	
+    /**
+    *	@brief Accesseur
+    *	@return La hauteur de l'image
+    */
+    virtual int h();
 private:
-	BigSprite *m_bigSprite;
-	
-	
-	
+    BigSprite *m_bigSprite;
+
+
+
 };
 
 

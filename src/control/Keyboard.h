@@ -36,156 +36,160 @@ class EventKeyboard;
  *
  *	Singleton
  **/
-class Keyboard {
+class Keyboard
+{
 
 private:
-	static Keyboard *s_instance;
+    static Keyboard *s_instance;
 
-	int m_key_down[k_fire + 1];		// tableau des touches enfoncees
-	bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
-	Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
-	std::ofstream *m_record_file;
-	std::queue<EventKeyboard> m_eventsKeyboard;
-	std::queue<menu_key> m_menu_input;
-        bool m_key_pressed;
+    int m_key_down[k_fire + 1];		// tableau des touches enfoncees
+    bool m_record_on, m_replay_on; 	// indique si les entrees doivent etre enregistrees (resp lues)
+    Analyser *m_analyser;			// analyser si m_replay_on vaut vrai
+    std::ofstream *m_record_file;
+    std::queue<EventKeyboard> m_eventsKeyboard;
+    std::queue<menu_key> m_menu_input;
+    bool m_key_pressed;
 
 public:
 
-	/**
-	 *	Getter
-	 *	@return Instance
-	 */
-	static Keyboard *GetInstance();
+    /**
+     *	Getter
+     *	@return Instance
+     */
+    static Keyboard *GetInstance();
 
-	/**
-	 *	Frees the instance
-	 */
-	static void Destroy();
+    /**
+     *	Frees the instance
+     */
+    static void Destroy();
 
-	/*!
-	* 	@brief Met Ã  jour le tableau des touches enfoncees
-	*/
-	void update_events();
+    /*!
+    * 	@brief Met Ã  jour le tableau des touches enfoncees
+    */
+    void update_events();
 
-	/*!
-	* 	@brief Accesseur
-	*	@param k la touche a controler
-	*	@return Vrai si la touche est enfoncee
-	*/
-	bool key_down (enum key k) const;
+    /*!
+    * 	@brief Accesseur
+    *	@param k la touche a controler
+    *	@return Vrai si la touche est enfoncee
+    */
+    bool key_down (enum key k) const;
 
-	/*!
-	* 	@brief Accesseur
-	*	@param k la touche a controler
-	*	@return Le nombre de cycles depuis lequel la touche est enfoncee
-	*/
-	int time_pressed(enum key k) const;
+    /*!
+    * 	@brief Accesseur
+    *	@param k la touche a controler
+    *	@return Le nombre de cycles depuis lequel la touche est enfoncee
+    */
+    int time_pressed (enum key k) const;
 
-	/*!
-	* 	@brief Accesseur
-	*	@return Vrai si une touche gauche ou droite est enfoncee
-	*/
-	bool key_dir_down() const;
+    /*!
+    * 	@brief Accesseur
+    *	@return Vrai si une touche gauche ou droite est enfoncee
+    */
+    bool key_dir_down() const;
 
-	/*!
-	* 	@brief Force le relachement de la touche
-	*	@param k la touche Ã  relacher
-	*/
-	void disable_key(enum key k);
+    /*!
+    * 	@brief Force le relachement de la touche
+    *	@param k la touche Ã  relacher
+    */
+    void disable_key (enum key k);
 
-	/*!
-	* 	@brief Force le relachement de toutes les touches
-	*/
-	void disable_all_keys();
+    /*!
+    * 	@brief Force le relachement de toutes les touches
+    */
+    void disable_all_keys();
 
-	/*!
-	*	@brief Detecte dans la pile un evenement menu_key et le retourne
-	*	@return Le menu_key entre par l'utilisateur (mk_none s'il n'y en a pas)
-	*/
-	menu_key poll_menu_key();
+    /*!
+    *	@brief Detecte dans la pile un evenement menu_key et le retourne
+    *	@return Le menu_key entre par l'utilisateur (mk_none s'il n'y en a pas)
+    */
+    menu_key poll_menu_key();
 
-	/*!
-	*	@brief Autorise la repetition des touches (typiquement pour le menu)
-	*/
-	void enable_key_repeat();
+    /*!
+    *	@brief Autorise la repetition des touches (typiquement pour le menu)
+    */
+    void enable_key_repeat();
 
-	/*!
-	*	@brief Interdit la repetition des touches (typiquement pour le jeu normal)
-	*/
-	void disable_key_repeat();
+    /*!
+    *	@brief Interdit la repetition des touches (typiquement pour le jeu normal)
+    */
+    void disable_key_repeat();
 
-	/*!
-	*	@brief Vide la liste des touches menu recemment enfoncees
-	*/
-	void reset_menu_keys();
+    /*!
+    *	@brief Vide la liste des touches menu recemment enfoncees
+    */
+    void reset_menu_keys();
 
-	/*!
-	*	@brief Accesseur
-	*	@return Vrai s'il reste au des evenements a traiter dans la file
-	*/
-	bool isNextKeyInQueue() const;
+    /*!
+    *	@brief Accesseur
+    *	@return Vrai s'il reste au des evenements a traiter dans la file
+    */
+    bool isNextKeyInQueue() const;
 
-	/*!
-	*	@brief Sort un element de la file des evenements
-	*	@return L'element sorti
-	*/
-	EventKeyboard getNextKeyInQueue();
+    /*!
+    *	@brief Sort un element de la file des evenements
+    *	@return L'element sorti
+    */
+    EventKeyboard getNextKeyInQueue();
 
-	/*!
-	*	@brief Vide la file des evenements
-	*/
-	void resetKeysInQueue();
+    /*!
+    *	@brief Vide la file des evenements
+    */
+    void resetKeysInQueue();
 
-	/*!
-	*	@brief Teste s'il reste des touches menu enfoncees non traitees
-	*	@return Vrai s'il reste au moins une touche non traitee
-	*/
-	bool is_next_menu_key() const;
+    /*!
+    *	@brief Teste s'il reste des touches menu enfoncees non traitees
+    *	@return Vrai s'il reste au moins une touche non traitee
+    */
+    bool is_next_menu_key() const;
 
-	/*!
-	*	@brief Supprime la derniere touche menu enfoncee de la liste
-	*	@return La derniere touche menu enfoncee
-	*/
-	menu_key pop_menu_key();
+    /*!
+    *	@brief Supprime la derniere touche menu enfoncee de la liste
+    *	@return La derniere touche menu enfoncee
+    */
+    menu_key pop_menu_key();
 
-	/*!
-	*	@brief Change la configuration de la touche k pour sdl_code
-	*	@param k La touche a modifier
-	*	@param sdl_code Le code string sdl de la nouvelle touche (cf SdlKeyConverter)
-	*	@param save True if we want to save the configuration
-	*/
-	void set_config_key(key k, std::string sdl_code, bool save = true);
+    /*!
+    *	@brief Change la configuration de la touche k pour sdl_code
+    *	@param k La touche a modifier
+    *	@param sdl_code Le code string sdl de la nouvelle touche (cf SdlKeyConverter)
+    *	@param save True if we want to save the configuration
+    */
+    void set_config_key (key k, std::string sdl_code, bool save = true);
 
-        /**
-          *     @brief Retourne vrai <=> une touche a été pressée au cycle courant
-          */
-        bool key_pressed() const {return m_key_pressed;}
+    /**
+      *     @brief Retourne vrai <=> une touche a été pressée au cycle courant
+      */
+    bool key_pressed() const
+    {
+        return m_key_pressed;
+    }
 
 //~ 	bool
 
 
 
 private:
-	/*!
-	* 	@brief Constructeur
-	*	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
-	*	@param replay_on Si vrai, le clavier lit les entrees dans file_name
-	*	@param file_name Chemin du fichier d'input ou output a partir du repertoire courant
-	*/
-	Keyboard(bool record_on = false, bool replay_on = false,  std::string output_name = "", std::string input_name = "");
+    /*!
+    * 	@brief Constructeur
+    *	@param record_on Si vrai, le clavier sauvegarde les entrees dans file_name
+    *	@param replay_on Si vrai, le clavier lit les entrees dans file_name
+    *	@param file_name Chemin du fichier d'input ou output a partir du repertoire courant
+    */
+    Keyboard (bool record_on = false, bool replay_on = false,  std::string output_name = "", std::string input_name = "");
 
-	/*!
-	* 	@brief Destructeur
-	*/
-	~Keyboard();
+    /*!
+    * 	@brief Destructeur
+    */
+    ~Keyboard();
 
-	// mutateur: affecte val enfonce a l'indice k dans le tableau des touches
-	void set_key(enum key k, int val);
-	void set_key(int k, int val);
+    // mutateur: affecte val enfonce a l'indice k dans le tableau des touches
+    void set_key (enum key k, int val);
+    void set_key (int k, int val);
 
-	// increment le temps d'appui sur k
-	void incr_key_down(enum key k);
-	void incr_key_down(int k);
+    // increment le temps d'appui sur k
+    void incr_key_down (enum key k);
+    void incr_key_down (int k);
 
 
 };

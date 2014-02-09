@@ -4,7 +4,7 @@
 class Controller
 {
 public:
-	Controller();
+    Controller();
 };
 
 #endif // CONTROLLER_H

@@ -5,10 +5,10 @@
 #include "NetworkEventController.h"
 
 class NetworkItemEventController : public ItemEventController,
-		public NetworkEventController
+    public NetworkEventController
 {
 public:
-	NetworkItemEventController();
+    NetworkItemEventController();
 };
 
 #endif // NETWORKITEMEVENTCONTROLLER_H

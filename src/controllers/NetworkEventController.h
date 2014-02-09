@@ -5,10 +5,10 @@
 #include "network/NetworkController.h"
 
 class NetworkEventController : virtual public EventController,
-		public NetworkController
+    public NetworkController
 {
 public:
-	NetworkEventController();
+    NetworkEventController();
 };
 
 #endif // NETWORKEVENTCONTROLLER_H

@@ -21,35 +21,36 @@ class Analyser;
  * 	@brief Monstre qui vole et qui suit
  *
  */
-class FollowingFlyingMonster : public FlyingMonster {
+class FollowingFlyingMonster : public FlyingMonster
+{
 private:
-	int m_high_min;
+    int m_high_min;
 
 public:
 
-	/**
-	 *	@brief Constructeur
-	 *	@param name Le nom du monstre
-	 *	@param posx Position initiale
-	 *	@param posy Position initiale
-	*/
-	FollowingFlyingMonster(std::string name, int posx, int posy);
+    /**
+     *	@brief Constructeur
+     *	@param name Le nom du monstre
+     *	@param posx Position initiale
+     *	@param posy Position initiale
+    */
+    FollowingFlyingMonster (std::string name, int posx, int posy);
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
-	*/
-	FollowingFlyingMonster(Analyser *analyserLevel);
+    /**
+     * 	@brief Constructeur
+     *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
+    */
+    FollowingFlyingMonster (Analyser *analyserLevel);
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~FollowingFlyingMonster();
+    /**
+     * 	@brief Destructeur
+     */
+    ~FollowingFlyingMonster();
 
-	/**
-	 * 	@brief Met a jour la vitesse du monstre
-	**/
-	void update_speed_simple();
+    /**
+     * 	@brief Met a jour la vitesse du monstre
+    **/
+    void update_speed_simple();
 };
 
 

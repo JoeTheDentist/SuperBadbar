@@ -4,7 +4,7 @@
 class NetworkController
 {
 public:
-	NetworkController();
+    NetworkController();
 };
 
 #endif // NETWORKCONTROLLER_H

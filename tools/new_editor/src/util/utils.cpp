@@ -1,12 +1,12 @@
 #include "utils.h"
 
-QString substringAfter(QString bigStr, QString littleStr)
+QString substringAfter (QString bigStr, QString littleStr)
 {
-	return bigStr.right(bigStr.size() - (bigStr.lastIndexOf(littleStr) + littleStr.size()));
+    return bigStr.right (bigStr.size() - (bigStr.lastIndexOf (littleStr) + littleStr.size() ) );
 }
 
-QString suppressExtension(QString str)
+QString suppressExtension (QString str)
 {
-	str.chop(str.size() - str.lastIndexOf("."));
-	return str;
+    str.chop (str.size() - str.lastIndexOf (".") );
+    return str;
 }

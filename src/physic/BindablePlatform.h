@@ -38,84 +38,84 @@ class Camera;
 class BindablePlatform : public Static, public CollisionsMatrix
 {
 protected:
-	Babar *m_babar;
-	Rect m_speed;
-	int m_phase;
-	int m_can_bind;
+    Babar *m_babar;
+    Rect m_speed;
+    int m_phase;
+    int m_can_bind;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	 */
-	BindablePlatform();
+    /**
+     * 	@brief Constructeur
+     */
+    BindablePlatform();
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	virtual ~BindablePlatform();
+    /**
+     * 	@brief Destructeur
+     */
+    virtual ~BindablePlatform();
 
-	/**
-	 * 	@brief Initialise le BindablePlatform
-	 *	@param posx La position x du bindable
-	 *	@param posy La position y du bindable
-	 *	@param file_name Le nom du fichier depuis les statics
-	 */
-	void init_bindable_platform(int posx, int posy, std::string file_name);
+    /**
+     * 	@brief Initialise le BindablePlatform
+     *	@param posx La position x du bindable
+     *	@param posy La position y du bindable
+     *	@param file_name Le nom du fichier depuis les statics
+     */
+    void init_bindable_platform (int posx, int posy, std::string file_name);
 
-	/**
-	 * 	@brief Mise √  jour de la position
-	 *	@param babar Un personnage controle par le joueur
-	 *
-	 *	Detecte la collision avec babar par le bas pour √©ventuellement le lier
-	 */
-	void update_pos();
+    /**
+     * 	@brief Mise √  jour de la position
+     *	@param babar Un personnage controle par le joueur
+     *
+     *	Detecte la collision avec babar par le bas pour √©ventuellement le lier
+     */
+    void update_pos();
 
-	/**
-	 * 	@brief Mise √  jour de la vitesse
-	 */
-	virtual void update_speed();
+    /**
+     * 	@brief Mise √  jour de la vitesse
+     */
+    virtual void update_speed();
 
-	/**
-	 * 	@brief lie Babar √  la plateforme
-	 */
-	virtual void bind();
+    /**
+     * 	@brief lie Babar √  la plateforme
+     */
+    virtual void bind();
 
-	/**
-	 * 	@brief delie Babar de la plateforme
-	 */
-	void unbind();
+    /**
+     * 	@brief delie Babar de la plateforme
+     */
+    void unbind();
 
 
     /**
-	 * 	@brief Accesseur
-	 *	@return La vitesse actuelle de la plateforme
-	 */
-	Rect speed() const;
+     * 	@brief Accesseur
+     *	@return La vitesse actuelle de la plateforme
+     */
+    Rect speed() const;
 
-	bool is_going_down();
+    bool is_going_down();
 
 
-	/**
-	 * 	@brief Indique si Babar doit etre li√© √  la plateforme
-	 *	@return Vrai si Babar doit etre li√© √  la plateforme courante
-	 */
-	bool check_babar();
+    /**
+     * 	@brief Indique si Babar doit etre li√© √  la plateforme
+     *	@return Vrai si Babar doit etre li√© √  la plateforme courante
+     */
+    bool check_babar();
 
-	/**
-	 *	@brief Indique si la plateforme doit etre supprimee
-	 *	@return Vrai si oui
-	 */
-	bool dead();
+    /**
+     *	@brief Indique si la plateforme doit etre supprimee
+     *	@return Vrai si oui
+     */
+    bool dead();
 
-	/**
-	 * 	@brief Indique si la plateforme est en √©tat d'etre liee
-	 *	@return Vrai si la plateforme peut etre liee
-	 */
-	bool can_bind();
+    /**
+     * 	@brief Indique si la plateforme est en √©tat d'etre liee
+     *	@return Vrai si la plateforme peut etre liee
+     */
+    bool can_bind();
 
-	#ifdef DEBUG_COLL
-	void display_coll(Camera *camera);
-	#endif
+#ifdef DEBUG_COLL
+    void display_coll (Camera *camera);
+#endif
 
 };
 

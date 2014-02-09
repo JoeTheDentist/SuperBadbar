@@ -6,7 +6,7 @@
 class EventControlled : virtual public Controlled
 {
 public:
-	EventControlled();
+    EventControlled();
 };
 
 #endif // EVENTCONTROLLED_H

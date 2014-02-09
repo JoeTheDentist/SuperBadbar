@@ -4,7 +4,7 @@
 
 AnimatedSet::AnimatedSet()
 {
-	m_sprite = NULL;
+    m_sprite = NULL;
 }
 
 AnimatedSet::~AnimatedSet()
@@ -17,9 +17,9 @@ void AnimatedSet::update_pos()
     m_pos.x += m_speed.x;
     m_pos.y += m_speed.y;
 
-    m_sprite->set_pos(m_pos);
-	m_pos.h = m_sprite->h();
-	m_pos.w = m_sprite->w();
+    m_sprite->set_pos (m_pos);
+    m_pos.h = m_sprite->h();
+    m_pos.w = m_sprite->w();
 }
 
 void AnimatedSet::update_speed()

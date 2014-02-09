@@ -15,47 +15,52 @@
 #include "util/globals.h"
 #include <sstream>
 
-MenuActionKeyconfig::MenuActionKeyconfig(std::string str, int i, std::string val, key k):
-	MenuAction(str, i),
-	m_value(val),
-	m_key(k),
-	m_waitingForInput(false)
+MenuActionKeyconfig::MenuActionKeyconfig (std::string str, int i, std::string val, key k) :
+    MenuAction (str, i),
+    m_value (val),
+    m_key (k),
+    m_waitingForInput (false)
 {
 
 }
 
 void MenuActionKeyconfig::update_text()
 {
-	std::ostringstream oss;
-	std::string value = m_value;
-	oss << m_text << " < " <<  gKeyboardConfig->getStringKey(m_key) << " >";
-	m_text_to_display = oss.str();
+    std::ostringstream oss;
+    std::string value = m_value;
+    oss << m_text << " < " <<  gKeyboardConfig->getStringKey (m_key) << " >";
+    m_text_to_display = oss.str();
 }
 
 void MenuActionKeyconfig::update()
 {
-	MenuAction::update();
-	update_text();
+    MenuAction::update();
+    update_text();
 }
 
 std::string MenuActionKeyconfig::get_string() const
 {
-	return m_value;
+    return m_value;
 }
 
-void MenuActionKeyconfig::treatEvent(EventKeyboard *eventKeyboard)
+void MenuActionKeyconfig::treatEvent (EventKeyboard *eventKeyboard)
 {
-	if (!m_waitingForInput) {
-		if (eventKeyboard->enterMenuPressed()) {
-			m_waitingForInput = true;
-			eventKeyboard->markTreated();
-		}
-	} else {
-		if (eventKeyboard->keyPressed()) {
-			m_value = eventKeyboard->getKeyString();
-			gKeyboardConfig->setConfigKey(m_key, m_value);
-			eventKeyboard->markTreated();
-			m_waitingForInput = false;
-		}
-	}
+    if (!m_waitingForInput)
+    {
+        if (eventKeyboard->enterMenuPressed() )
+        {
+            m_waitingForInput = true;
+            eventKeyboard->markTreated();
+        }
+    }
+    else
+    {
+        if (eventKeyboard->keyPressed() )
+        {
+            m_value = eventKeyboard->getKeyString();
+            gKeyboardConfig->setConfigKey (m_key, m_value);
+            eventKeyboard->markTreated();
+            m_waitingForInput = false;
+        }
+    }
 }

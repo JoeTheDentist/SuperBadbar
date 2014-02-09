@@ -21,25 +21,26 @@
 class Camera;
 class Surface;
 
-class MainTitle {
+class MainTitle
+{
 protected:
-	Surface *m_surface;
-	Surface *m_surface_background;
-	std::string m_title;
-	int m_y;
-	int m_size;
-	int m_offset;
-	Rect m_posbackground;
-	Rect m_pos;
+    Surface *m_surface;
+    Surface *m_surface_background;
+    std::string m_title;
+    int m_y;
+    int m_size;
+    int m_offset;
+    Rect m_posbackground;
+    Rect m_pos;
 
 public:
-	MainTitle(std::string title);
-	~MainTitle();
-	void update();
-	void display(Camera *camera);
+    MainTitle (std::string title);
+    ~MainTitle();
+    void update();
+    void display (Camera *camera);
 protected:
-	void recompute_surface();
-	void recompute_pos();
+    void recompute_surface();
+    void recompute_pos();
 
 
 };

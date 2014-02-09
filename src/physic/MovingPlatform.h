@@ -30,29 +30,30 @@ class Camera;
  *
  *	C'est une plateforme bindable qui se deplace
  */
-class MovingPlatform : public BindablePlatform {
+class MovingPlatform : public BindablePlatform
+{
 protected:
-	Rect m_begin;
-	Rect m_end;
+    Rect m_begin;
+    Rect m_end;
 public:
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param analyserLevel Un analyser positionne avant la description d'un MovingPlatform
-	 */
-	MovingPlatform(Analyser &analyserLevel);
+    /**
+     * 	@brief Constructeur
+     *	@param analyserLevel Un analyser positionne avant la description d'un MovingPlatform
+     */
+    MovingPlatform (Analyser &analyserLevel);
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	virtual ~MovingPlatform();
+    /**
+     * 	@brief Destructeur
+     */
+    virtual ~MovingPlatform();
 
 
-	/**
-	 * 	@brief Mise Ã  jour de la vitesse
-	 *	@todo Ã  coder
-	 */
-	virtual void update_speed();
+    /**
+     * 	@brief Mise Ã  jour de la vitesse
+     *	@todo Ã  coder
+     */
+    virtual void update_speed();
 
 
 

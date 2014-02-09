@@ -18,11 +18,11 @@ PlayersManager::~PlayersManager()
     delete m_local_player;
 }
 
-void PlayersManager::init_players_manager(Analyser * analyser)
+void PlayersManager::init_players_manager (Analyser * analyser)
 {
     /* creation du joueur local */
     delete m_local_player;
-    m_local_player = new Player(/* TODO */ 0, analyser, true);
+    m_local_player = new Player (/* TODO */ 0, analyser, true);
 }
 
 void PlayersManager::update()
@@ -42,9 +42,9 @@ int PlayersManager::nb_players()
     return m_players->size();
 }
 
-Babar *PlayersManager::closer_babar(Rect pos)
+Babar *PlayersManager::closer_babar (Rect pos)
 {
-	Babar * best_babar = local_player();
+    Babar * best_babar = local_player();
 //~ 	Babar *best_babar = (*(m_players->begin()))->get_actor();
 //~ 	int best_dist = norm_2(pos, best_babar->position());
 //~ 	for (std::list<Player*>::iterator it = m_players->begin(); it != m_players->end(); ++it) {
@@ -53,7 +53,7 @@ Babar *PlayersManager::closer_babar(Rect pos)
 //~ 			best_dist = norm_2(pos, best_babar->position());
 //~ 		}
 //~ 	}
-	return best_babar;
+    return best_babar;
 }
 
 std::string PlayersManager::playerName()
@@ -61,7 +61,7 @@ std::string PlayersManager::playerName()
     return m_name;
 }
 
-void PlayersManager::setMap(std::string map_name)
+void PlayersManager::setMap (std::string map_name)
 {
     m_map = map_name;
 }

@@ -1,13 +1,13 @@
- #include <QApplication>
+#include <QApplication>
 
- #include "mainwindow.h"
+#include "mainwindow.h"
 
- int main(int argc, char *argv[])
- {
+int main (int argc, char *argv[])
+{
 //~ 	Q_INIT_RESOURCE(application);
 
-	QApplication app(argc, argv);
-	MainWindow mainWin;
-	mainWin.show();
-	return app.exec();
- }
+    QApplication app (argc, argv);
+    MainWindow mainWin;
+    mainWin.show();
+    return app.exec();
+}

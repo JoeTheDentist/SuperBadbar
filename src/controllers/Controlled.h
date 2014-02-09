@@ -4,7 +4,7 @@
 class Controlled
 {
 public:
-	Controlled();
+    Controlled();
 };
 
 #endif // CONTROLLED_H

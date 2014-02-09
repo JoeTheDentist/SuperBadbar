@@ -6,7 +6,7 @@
 class PlayerKeyboardActionController : virtual public KeyboardActionController
 {
 public:
-	PlayerKeyboardActionController();
+    PlayerKeyboardActionController();
 };
 
 #endif // PLAYERKEYBOARDACTIONCONTROLLER_H

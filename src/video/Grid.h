@@ -16,29 +16,29 @@ class Surface;
 class Grid
 {
 public:
-	/**
-	 *	Ctor
-	 *	@param imgPath: path to the image to cut according to the pink lines
-	 */
-	Grid(std::string imgPath);
+    /**
+     *	Ctor
+     *	@param imgPath: path to the image to cut according to the pink lines
+     */
+    Grid (std::string imgPath);
 
-	/**
-	 *	Dtor
-	 */
-	~Grid();
+    /**
+     *	Dtor
+     */
+    ~Grid();
 
-	/**
-	 *	Getter
-	 *	@param i: position of the wanted image
-	 *	@return image at position i
-	 */
-	Surface *getImage(int i);
+    /**
+     *	Getter
+     *	@param i: position of the wanted image
+     *	@return image at position i
+     */
+    Surface *getImage (int i);
 
 private:
-	Surface *m_originalImage;
-	std::vector<Surface*> m_images;
-	std::vector<sf::Image*> m_saveImages;
-	std::vector<sf::Sprite*> m_saveSprites;
+    Surface *m_originalImage;
+    std::vector<Surface*> m_images;
+    std::vector<sf::Image*> m_saveImages;
+    std::vector<sf::Sprite*> m_saveSprites;
 };
 
 #endif // GRID_H

@@ -9,14 +9,14 @@
 class FontMap: public RessourcesMap<std::string, sf::Font>
 {
 public:
-	virtual sf::Font *create(std::string key) 
-	{
-		sf::Font *font = new sf::Font();
-		font->LoadFromFile(key);
-		return font;
-	}
-	
-	
+    virtual sf::Font *create (std::string key)
+    {
+        sf::Font *font = new sf::Font();
+        font->LoadFromFile (key);
+        return font;
+    }
+
+
 };
 
 

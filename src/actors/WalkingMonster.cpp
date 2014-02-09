@@ -7,7 +7,7 @@
  *
  */
 
- #include "WalkingMonster.h"
+#include "WalkingMonster.h"
 
 #include <iostream>
 #include <stdint.h>
@@ -19,20 +19,20 @@
 #include "actors/Babar.h"
 
 
-WalkingMonster::WalkingMonster(std::string name, int posx, int posy):
-	Monster(name, posx, posy)
+WalkingMonster::WalkingMonster (std::string name, int posx, int posy) :
+    Monster (name, posx, posy)
 {
-    PRINT_CONSTR(2, "Construction de WalkingMonster");
+    PRINT_CONSTR (2, "Construction de WalkingMonster");
 }
 
-WalkingMonster::WalkingMonster(Analyser *analyserLevel):
-	Monster(analyserLevel)
+WalkingMonster::WalkingMonster (Analyser *analyserLevel) :
+    Monster (analyserLevel)
 {
-    PRINT_CONSTR(2, "Construction de WalkingMonster");
+    PRINT_CONSTR (2, "Construction de WalkingMonster");
 }
 
 WalkingMonster::~WalkingMonster()
 {
-    PRINT_CONSTR(2, "Destruction de WalkingMonster");
+    PRINT_CONSTR (2, "Destruction de WalkingMonster");
 }
 

@@ -6,7 +6,7 @@
 class PlayerEventController : virtual public EventController
 {
 public:
-	PlayerEventController();
+    PlayerEventController();
 };
 
 #endif // PLAYEREVENTCONTROLLER_H

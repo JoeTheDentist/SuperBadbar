@@ -18,35 +18,36 @@ class Game;
  *  @brief
  *	@todo comment
  */
-class LevelsManager {
+class LevelsManager
+{
 private:
-	int m_level;
-	Game *m_game;
+    int m_level;
+    Game *m_game;
 public:
-	/**
-		 *  @brief Constructeur
-		 */
-	LevelsManager();
+    /**
+    	 *  @brief Constructeur
+    	 */
+    LevelsManager();
 
-	/**
-		 *  @brief Destructeur
-		 */
-	~LevelsManager();
+    /**
+    	 *  @brief Destructeur
+    	 */
+    ~LevelsManager();
 
-	/**
-		 *  @brief Jeu
-		 */
-	void play();
+    /**
+    	 *  @brief Jeu
+    	 */
+    void play();
 
-	/**
-		 *  @brief Active gameover
-		 */
-	void play_defeat();
+    /**
+    	 *  @brief Active gameover
+    	 */
+    void play_defeat();
 
-	/**
-		 *  @brief Fin
-		 */
-	void the_end();
+    /**
+    	 *  @brief Fin
+    	 */
+    void the_end();
 };
 
 

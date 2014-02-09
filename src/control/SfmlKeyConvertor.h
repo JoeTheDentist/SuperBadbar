@@ -14,28 +14,29 @@
 
 #include <string>
 
-class SfmlKeyConvertor {
+class SfmlKeyConvertor
+{
 public:
-	/**
-		 *  @brief Destructeur
-		 */
-	virtual ~SfmlKeyConvertor() = 0;
+    /**
+    	 *  @brief Destructeur
+    	 */
+    virtual ~SfmlKeyConvertor() = 0;
 
-	/**
-		 *  TOCOMMENT
-		 *  @brief
-		 *  @param
-		 *  @return
-		 */
-	static std::string sfmlkeyToStdstring(sf::Key::Code key);
+    /**
+    	 *  TOCOMMENT
+    	 *  @brief
+    	 *  @param
+    	 *  @return
+    	 */
+    static std::string sfmlkeyToStdstring (sf::Key::Code key);
 
-	/**
-		 *  TOCOMMENT
-		 *  @brief
-		 *  @param
-		 *  @return
-		 */
-	static sf::Key::Code stdstringToSfmlkey(std::string str);
+    /**
+    	 *  TOCOMMENT
+    	 *  @brief
+    	 *  @param
+    	 *  @return
+    	 */
+    static sf::Key::Code stdstringToSfmlkey (std::string str);
 };
 
 

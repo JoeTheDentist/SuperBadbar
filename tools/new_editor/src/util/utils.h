@@ -5,6 +5,6 @@
 #include <util/Analyser.h>
 #include <util/paths.h>
 
-QString substringAfter(QString bigstr, QString littleStr);
-QString suppressExtension(QString str);
+QString substringAfter (QString bigstr, QString littleStr);
+QString suppressExtension (QString str);
 #endif

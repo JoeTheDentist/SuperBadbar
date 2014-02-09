@@ -7,18 +7,19 @@
 #include "menus/ListMenuActions.h"
 
 
-class KeyconfigMenu: public Menu {
-	protected:
+class KeyconfigMenu: public Menu
+{
+protected:
 
 
 
-	public:
-	KeyconfigMenu(Menu *parent = NULL);
-	~KeyconfigMenu();
-	virtual void update();
+public:
+    KeyconfigMenu (Menu *parent = NULL);
+    ~KeyconfigMenu();
+    virtual void update();
 
-	protected:
-	virtual void treat_choice(int choice);
+protected:
+    virtual void treat_choice (int choice);
 };
 
 

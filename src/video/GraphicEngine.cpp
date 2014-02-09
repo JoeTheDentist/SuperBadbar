@@ -23,66 +23,69 @@
 
 GraphicEngine::GraphicEngine()
 {
-	PRINT_CONSTR(1, "Construction de GraphicEngine");
-	m_camera = new Camera();
-	m_talks = new Talks();
-	m_dashboard = new Dashboard();
-	m_sprites = new SpritesManager;
+    PRINT_CONSTR (1, "Construction de GraphicEngine");
+    m_camera = new Camera();
+    m_talks = new Talks();
+    m_dashboard = new Dashboard();
+    m_sprites = new SpritesManager;
 }
 
 GraphicEngine::~GraphicEngine()
 {
-	PRINT_CONSTR(1, "Destruction de GraphicEngine");
-	delete m_camera;
-	delete m_talks;
-	delete m_dashboard;
-	PicturesContainer::Destroy();
-	GridsContainer::Destroy();
-	delete m_sprites;
+    PRINT_CONSTR (1, "Destruction de GraphicEngine");
+    delete m_camera;
+    delete m_talks;
+    delete m_dashboard;
+    PicturesContainer::Destroy();
+    GridsContainer::Destroy();
+    delete m_sprites;
 }
 
-void GraphicEngine::init_graphic_engine(bool game)
+void GraphicEngine::init_graphic_engine (bool game)
 {
-	if (game) {
-		m_camera->init_camera(gPlayers->local_player());
-	} else {
-		m_camera->init_camera(NULL);
-	}
-	m_talks->init_talks(m_camera);
-	m_dashboard->init_dashboard();
+    if (game)
+    {
+        m_camera->init_camera (gPlayers->local_player() );
+    }
+    else
+    {
+        m_camera->init_camera (NULL);
+    }
+    m_talks->init_talks (m_camera);
+    m_dashboard->init_dashboard();
 }
 
 void GraphicEngine::update()
 {
-	m_camera->update_pos();
-	m_dashboard->update();
-	m_sprites->update();
-	m_sprites->delete_dead_sprites();
+    m_camera->update_pos();
+    m_dashboard->update();
+    m_sprites->update();
+    m_sprites->delete_dead_sprites();
 }
 
-void GraphicEngine::draw_dashboard(Camera *camera)
+void GraphicEngine::draw_dashboard (Camera *camera)
 {
-	m_dashboard->draw_dashboard(camera);
+    m_dashboard->draw_dashboard (camera);
 }
 
-void GraphicEngine::display_sprites(Camera * cam)
+void GraphicEngine::display_sprites (Camera * cam)
 {
-    m_sprites->display_sprites(cam);
+    m_sprites->display_sprites (cam);
 }
 
-void GraphicEngine::alert(std::string text)
+void GraphicEngine::alert (std::string text)
 {
-    m_dashboard->alert(text);
+    m_dashboard->alert (text);
 }
 
 Camera *GraphicEngine::get_camera()
 {
-	return m_camera;
+    return m_camera;
 }
 
 Talks *GraphicEngine::get_talks()
 {
-	return m_talks;
+    return m_talks;
 }
 
 SpritesManager * GraphicEngine::get_sprites_manager()
@@ -97,5 +100,5 @@ void GraphicEngine::clean()
 
 void GraphicEngine::flip_camera()
 {
-	m_camera->flip_camera();
+    m_camera->flip_camera();
 }

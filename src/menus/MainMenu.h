@@ -8,66 +8,70 @@
 
 class MainTitle;
 
-class MainMenu: public Menu {
-	protected:
-	Surface *m_menu_background;
-	Rect m_pos_background;
-	MainTitle *m_main_title;
+class MainMenu: public Menu
+{
+protected:
+    Surface *m_menu_background;
+    Rect m_pos_background;
+    MainTitle *m_main_title;
 
 
-	public:
-	/*!
-	*	@brief Constructeur
-	*/
-	MainMenu();
+public:
+    /*!
+    *	@brief Constructeur
+    */
+    MainMenu();
 
-	/*!
-	*	@brief Destructeur
-	*/
-	~MainMenu();
+    /*!
+    *	@brief Destructeur
+    */
+    ~MainMenu();
 
-	/*!
-	*	@brief Mise a jour de l'affichage du menu
-	*/
-	virtual void update_graphics();
+    /*!
+    *	@brief Mise a jour de l'affichage du menu
+    */
+    virtual void update_graphics();
 
-	/*!
-	*	@brief Accesseur
-	*	@return Vrai si un fond gris doit etre affiche
-	*/
-	virtual bool can_display_grey_background() const {return false;}
-	protected:
+    /*!
+    *	@brief Accesseur
+    *	@return Vrai si un fond gris doit etre affiche
+    */
+    virtual bool can_display_grey_background() const
+    {
+        return false;
+    }
+protected:
 
-	/*!
-	*	@brief Boucle de jeu (qui remplace ici celle de game)
-	*/
-	void loop();
+    /*!
+    *	@brief Boucle de jeu (qui remplace ici celle de game)
+    */
+    void loop();
 
-	/*!
-	*	@brief Lancement du jeu
-	*/
-	void launchGame();
+    /*!
+    *	@brief Lancement du jeu
+    */
+    void launchGame();
 
-	/*!
-	*	@brief Lancement menu multi
-	*/
-	void launchMulti();
+    /*!
+    *	@brief Lancement menu multi
+    */
+    void launchMulti();
 
-	/*!
-	*	@brief Lancement menu ChoseLevel
-	*/
-	void launchFastGame();
+    /*!
+    *	@brief Lancement menu ChoseLevel
+    */
+    void launchFastGame();
 
-	/*!
-	*	@brief Lancement du menu options
-	*/
-	void launchOptions();
+    /*!
+    *	@brief Lancement du menu options
+    */
+    void launchOptions();
 
-	/*!
-	*	@brief Traitement du choix
-	*	@param l'int correspond au numero de la liste choisi
-	*/
-	virtual void treat_choice(int choice);
+    /*!
+    *	@brief Traitement du choix
+    *	@param l'int correspond au numero de la liste choisi
+    */
+    virtual void treat_choice (int choice);
 };
 
 

@@ -14,13 +14,14 @@
 
 class Sound_manager;
 
-class Sound {
+class Sound
+{
 protected:
-	std::string m_sound; // chemin du son DEPUIS LA RACINE
+    std::string m_sound; // chemin du son DEPUIS LA RACINE
 public:
-	Sound(std::string str);
-	~Sound();
-	std::string get_string();
+    Sound (std::string str);
+    ~Sound();
+    std::string get_string();
 };
 
 

@@ -17,16 +17,16 @@
 #include "game/GameInitializer.h"
 #include "video/Talks.h"
 
-int main(int argc, char *argv[])
+int main (int argc, char *argv[])
 {
-	PRINT_TRACE(1,"Lancement du jeu");
-	GameInitializer::init_game();
+    PRINT_TRACE (1, "Lancement du jeu");
+    GameInitializer::init_game();
 
-	MainMenu *menu = new MainMenu();
-	delete menu;
-	
-	GameInitializer::close_game();
-	PRINT_TRACE(1, "Fermeture du jeu");
-	return 0;
+    MainMenu *menu = new MainMenu();
+    delete menu;
+
+    GameInitializer::close_game();
+    PRINT_TRACE (1, "Fermeture du jeu");
+    return 0;
 }
 

@@ -20,29 +20,30 @@ class Analyser;
  * 	@brief Monstre qui vole
  *
  */
-class FlyingMonster : public Monster {
+class FlyingMonster : public Monster
+{
 private:
-	int m_high_min;
+    int m_high_min;
 
 public:
-	/**
-	 *	@brief Constructeur
-	 *	@param name Le nom du monstre
-	 *	@param posx Position initiale
-	 *	@param posy Position initiale
-	*/
-	FlyingMonster(std::string name, int posx, int posy);
+    /**
+     *	@brief Constructeur
+     *	@param name Le nom du monstre
+     *	@param posx Position initiale
+     *	@param posy Position initiale
+    */
+    FlyingMonster (std::string name, int posx, int posy);
 
-	/**
-	 * 	@brief Constructeur
-	 *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
-	*/
-	FlyingMonster(Analyser *analyserLevel);
+    /**
+     * 	@brief Constructeur
+     *	@param analyserLevel Analyseur du level avec curseur devant le monstre a ajouter
+    */
+    FlyingMonster (Analyser *analyserLevel);
 
-	/**
-	 * 	@brief Destructeur
-	 */
-	~FlyingMonster();
+    /**
+     * 	@brief Destructeur
+     */
+    ~FlyingMonster();
 };
 
 
