@@ -1,1 +1,1 @@
-#define STATIC_DIR "../pic/statics/"
+#define STATIC_DIR "../pic/statics/"
