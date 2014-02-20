@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/bin/sh -x
 # Static analysis of the code.
 # Should be cleqn for commit.
 # Depends on cppcheck.
+
+# Fail at first error
+set -e
 
 PATH_TO_SCRIPT=$(dirname $(readlink -f $0))
 TOOLS_PATH=$(dirname $PATH_TO_SCRIPT)

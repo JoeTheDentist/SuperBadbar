@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/sh -x
 # Format coding style
 # Depends on astyle binary
+
+# Fail at first error
+set -e
 
 PATH_TO_SCRIPT=$(dirname $(readlink -f $0))
 TOOLS_PATH=$(dirname $PATH_TO_SCRIPT)
