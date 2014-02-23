@@ -1,0 +1,37 @@
+
+# Build rules for SuperBadbar project
+# TODO checking for SFML headers and libs
+
+# Imports
+import os
+
+# Utils
+def iter_find_extention(search_path = ".", extentions = ["cpp"], ignore_folders = []):
+	"""
+	Searches for all files with the given extentions.
+	Generator. Call list to create list.
+	"""
+	for root, dirnames, filenames in os.walk(search_path):
+		for ignore_folder in ignore_folders:
+			if ignore_folder in dirnames:
+				dirnames.remove(ignore_folder)
+  		for filename in filenames:
+			for ex in extentions:
+				if filename.endswith("."+ex):
+					yield os.path.join(root, filename)
+					break
+
+# Resources
+SRC_DIR = os.path.join("..", "src")
+SRC_FILES = list(iter_find_extention(SRC_DIR, ["cpp", "c"], ["soil"]))
+
+# Setup
+# CPPPATH for -I option to the compiler
+e = Environment(CPPPATH=SRC_DIR)
+
+# Build rules
+superbadbar_prog = e.Program(target = "SuperBadbar", source = SRC_FILES)
+
+# Aliases
+e.Alias("build", [SRC_DIR])
+
